@@ -41,6 +41,16 @@ Nakalikha na ang **bidirectional generator system** na nagbibigay ng complete ci
 - `6-deployment-automation.md` - Generated protocol
 - `analysis-6-deployment-automation.md` - Meta-analysis of generated protocol
 
+### 5. Batch 1 – Critical Path Assets
+**New Protocol Inputs & Generators:**
+- `protocol-input-form-6-technical-design.yaml` & `6-technical-design-generator.md`
+- `protocol-input-form-7-environment.yaml` & `7-environment-generator.md`
+- `protocol-input-form-11-deployment.yaml` & `11-deployment-generator.md`
+- `protocol-input-form-12-monitoring.yaml` & `12-monitoring-generator.md`
+- `protocol-input-form-13-incident.yaml` & `13-incident-generator.md`
+
+These assets connect directly to `.cursor/ai-driven-workflow/6,7,11,12,13-*.md` protocols to complete the deployment and operations lifecycle.
+
 ---
 
 ## 🔄 HOW TO USE THE SYSTEM

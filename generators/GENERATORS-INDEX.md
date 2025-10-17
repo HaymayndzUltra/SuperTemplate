@@ -29,12 +29,22 @@ protocol-generator-instructions.md           ← AI guide: Requirements → Prot
 ```
 protocol-input-form.yaml                     ← Empty template (fill this!)
 sample-filled-form.yaml                      ← Filled example (reference)
+protocol-input-form-6-technical-design.yaml  ← Filled form for Technical Design protocol
+protocol-input-form-7-environment.yaml       ← Filled form for Environment Setup protocol
+protocol-input-form-11-deployment.yaml       ← Filled form for Production Deployment protocol
+protocol-input-form-12-monitoring.yaml       ← Filled form for Monitoring protocol
+protocol-input-form-13-incident.yaml         ← Filled form for Incident Response protocol
 ```
 
 ### ✅ Validation Examples
 ```
 6-deployment-automation.md                   ← Sample generated protocol
 analysis-6-deployment-automation.md          ← Sample generated analysis
+6-technical-design-generator.md              ← Generator playbook for Protocol 6
+7-environment-generator.md                   ← Generator playbook for Protocol 7
+11-deployment-generator.md                   ← Generator playbook for Protocol 11
+12-monitoring-generator.md                   ← Generator playbook for Protocol 12
+13-incident-generator.md                     ← Generator playbook for Protocol 13
 ```
 
 ---
