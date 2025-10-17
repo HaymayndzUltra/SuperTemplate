@@ -1,0 +1,249 @@
+# PROTOCOL REQUIREMENTS FORM - PROTOCOL 7
+# Development Environment Setup & Validation
+
+## ============================================
+## SECTION 1: BASIC INFORMATION
+## ============================================
+
+protocol_number: "7"
+protocol_name: "environment-setup-validation"
+domain_compliance: "DevOps"
+purpose: "Provision, configure, and validate a consistent development environment aligned with architectural decisions and task prerequisites."
+
+## ============================================
+## SECTION 2: AI ROLE & CONTEXT
+## ============================================
+
+ai_role: "DevOps Engineer"
+primary_guardrail: "DO NOT mark the development environment as ready without documented validation evidence for tooling, connectivity, and reproducibility."
+
+prerequisites:
+  - protocol: "2-generate-tasks"
+    required_artifacts: "TASK-PLAN.md, task-handoff-summary.json, dependency-matrix.csv"
+  - protocol: "6-technical-design-architecture"
+    required_artifacts: "architecture-spec.md, technology stack selections, infrastructure topology"
+
+phase_in_workflow: "Before Protocol 3 (Process Tasks) to guarantee developers have a validated environment."
+
+## ============================================
+## SECTION 3: EXECUTION STRUCTURE
+## ============================================
+
+phases:
+  - phase_number: 1
+    phase_name: "Baseline Assessment & Prerequisites"
+    objective: "Inventory existing developer machines, verify prerequisites, and align environment scope with architecture."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Run Environment Diagnostics"
+        instructions: "Execute doctor and inventory scripts to detect installed tooling, system resources, and missing dependencies."
+        communication_template: "[PHASE 1] Running environment diagnostics across developer workstations..."
+        halt_condition: "Stop if critical tooling is missing or minimum specs not met."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Map Environment Requirements"
+        instructions: "Cross-reference architecture spec and task dependency matrix to compile required runtimes, services, and credentials."
+        communication_template: "[MAPPING] Aligning environment requirements with architecture and task plan..."
+        halt_condition: "Await clarification when conflicting requirements are discovered."
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Plan Access Provisioning"
+        instructions: "Coordinate access requests for repositories, secrets, and third-party services needed for development."
+        communication_template: "[ACCESS] Planning credential and repository provisioning..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "environment-inventory.json"
+        storage_location: ".artifacts/environment/environment-inventory.json"
+      - evidence_item: "prerequisite-gap-report.md"
+        storage_location: ".artifacts/environment/prerequisite-gap-report.md"
+
+    quality_gate:
+      gate_name: "Baseline Readiness Gate"
+      criteria: "Diagnostics completed, gaps documented with owners, and prerequisites aligned with architecture specification."
+      failure_handling: "Notify project lead, resolve missing prerequisites, and rerun diagnostics."
+
+  - phase_number: 2
+    phase_name: "Provisioning & Configuration"
+    objective: "Install required tooling, configure environment variables, and establish reproducible setup scripts."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Execute Provisioning Scripts"
+        instructions: "Run automated setup scripts to install dependencies, SDKs, and language runtimes defined by architecture."
+        communication_template: "[PHASE 2] Executing provisioning scripts and installing toolchain..."
+        halt_condition: "Stop if provisioning scripts fail or raise security prompts requiring approval."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Configure Environment Variables"
+        instructions: "Populate .env templates, secrets managers, and local configuration files; verify sensitive data handling policy."
+        communication_template: "[CONFIG] Applying environment variables and secrets as per configuration baseline..."
+        halt_condition: "Await security approval when accessing protected secrets."
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Document Setup Procedures"
+        instructions: "Update onboarding documentation and README with step-by-step setup instructions and troubleshooting tips."
+        communication_template: "[DOCS] Refreshing onboarding documentation for reproducible setup..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "provisioning-log.txt"
+        storage_location: ".artifacts/environment/provisioning-log.txt"
+      - evidence_item: "environment-config-pack.zip"
+        storage_location: ".artifacts/environment/environment-config-pack.zip"
+      - evidence_item: "updated-onboarding-guide.md"
+        storage_location: ".artifacts/environment/updated-onboarding-guide.md"
+
+    quality_gate:
+      gate_name: "Provisioning Integrity Gate"
+      criteria: "Provisioning scripts succeed, environment variables validated, and reproducible documentation updated."
+      failure_handling: "Rollback partial installations, address script failures, and repeat provisioning."
+
+  - phase_number: 3
+    phase_name: "Validation & Developer Handoff"
+    objective: "Verify the environment through smoke tests, workspace sync, and onboarding rehearsal before handing off to developers."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Run Environment Validation Suite"
+        instructions: "Execute integration and workflow validation scripts to ensure services compile, tests run, and tooling inter-operates."
+        communication_template: "[PHASE 3] Running environment validation suite (build + tests + lint)..."
+        halt_condition: "Stop if any validation script returns non-zero status."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Conduct Onboarding Dry Run"
+        instructions: "Walk through the updated onboarding guide on a clean machine or container to confirm reproducibility."
+        communication_template: "[DRY RUN] Rehearsing onboarding steps to confirm reproducibility..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Capture Validation Evidence"
+        instructions: "Store validation reports, screenshots, and log artifacts; prepare environment status summary for developers."
+        communication_template: "[EVIDENCE] Archiving validation artifacts and preparing environment status summary..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "environment-validation-report.json"
+        storage_location: ".artifacts/environment/environment-validation-report.json"
+      - evidence_item: "onboarding-dry-run-notes.md"
+        storage_location: ".artifacts/environment/onboarding-dry-run-notes.md"
+      - evidence_item: "environment-handoff-summary.md"
+        storage_location: ".artifacts/environment/environment-handoff-summary.md"
+
+    quality_gate:
+      gate_name: "Environment Validation Gate"
+      criteria: "Validation suite passes, onboarding dry run completes without blockers, and handoff summary approved by tech lead."
+      failure_handling: "Address validation failures, update documentation, and rerun dry run before declaring readiness."
+
+## ============================================
+## SECTION 4: INTEGRATION & DATA FLOW
+## ============================================
+
+inputs_from:
+  - protocol: "2-generate-tasks"
+    artifacts_consumed: "TASK-PLAN.md, dependency-matrix.csv, tooling-requirements.json"
+    usage: "Determine necessary tools, services, and pre-configured tasks for environment readiness."
+  - protocol: "6-technical-design-architecture"
+    artifacts_consumed: "architecture-spec.md, technology stack selections, infrastructure topology"
+    usage: "Align tooling, services, and configuration with architectural boundaries."
+
+outputs_to:
+  - protocol: "3-process-tasks"
+    artifacts_provided: "environment-validation-report.json, environment-handoff-summary.md, updated-onboarding-guide.md"
+    purpose: "Provide developers with validated environment instructions and status evidence for task execution."
+  - protocol: "4-quality-audit"
+    artifacts_provided: "environment-validation-report.json, provisioning-log.txt"
+    purpose: "Enable auditors to verify environment consistency during quality gates."
+
+## ============================================
+## SECTION 5: AUTOMATION & TOOLING
+## ============================================
+
+automation_hooks:
+  - hook_name: "doctor"
+    trigger_point: "Phase 1 diagnostics"
+    command: "python scripts/doctor.py --strict --output .artifacts/environment/doctor-report.json"
+    expected_output: "doctor-report.json summarizing dependency health and missing tooling"
+
+  - hook_name: "setup"
+    trigger_point: "Phase 2 provisioning"
+    command: "bash scripts/setup.sh --headless --log .artifacts/environment/provisioning-log.txt"
+    expected_output: "provisioning-log.txt detailing install steps and status"
+
+  - hook_name: "validate_workflows"
+    trigger_point: "Phase 3 validation"
+    command: "python scripts/validate_workflows.py --mode dev --output .artifacts/environment/environment-validation-report.json"
+    expected_output: "environment-validation-report.json with pass/fail status for compilation, tests, and linting"
+
+  - hook_name: "test_workflow_integration"
+    trigger_point: "Phase 3 validation"
+    command: "bash scripts/test_workflow_integration.sh --smoke"
+    expected_output: "Console output confirming smoke tests for key workflows"
+
+## ============================================
+## SECTION 6: COMMUNICATION PROTOCOLS
+## ============================================
+
+announcements:
+  phase_start_template: "[ENV SETUP PHASE {N} START] - Beginning {phase_name}..."
+  phase_complete_template: "[ENV SETUP PHASE {N} COMPLETE] - {phase_name} finished successfully."
+  automation_status_template: "[AUTOMATION] {script_name} executed: {status}"
+
+validation_prompts:
+  - prompt_context: "After validation suite completes"
+    prompt_template: "[VALIDATION REVIEW] Environment validation suite completed. Approve environment for developer handoff? (yes/no)"
+
+  - prompt_context: "When provisioning scripts fail"
+    prompt_template: "[RETRY DECISION] Provisioning step failed: {failure_summary}. Retry after remediation? (yes/no)"
+
+error_handling:
+  - error_type: "MissingPrerequisites"
+    error_message_template: "[ERROR] Required prerequisites not met for environment provisioning."
+    recovery_steps: "1. Update prerequisite-gap-report.md, 2. Coordinate with responsible owner, 3. Resume once resolved."
+
+  - error_type: "ProvisioningFailure"
+    error_message_template: "[ERROR] Provisioning scripts encountered failures: {details}."
+    recovery_steps: "1. Review provisioning-log.txt, 2. Roll back partial installs, 3. Fix scripts or dependencies, 4. Re-run setup.sh."
+
+  - error_type: "ValidationFailure"
+    error_message_template: "[ERROR] Environment validation suite failed: {summary}."
+    recovery_steps: "1. Investigate failing tests, 2. Update configuration or documentation, 3. Re-run validation workflow."
+
+## ============================================
+## SECTION 7: COMPLETION & HANDOFF
+## ============================================
+
+completion_checklist:
+  - "Doctor diagnostics executed and gaps resolved"
+  - "Provisioning scripts completed successfully"
+  - ".env templates and configuration packs updated"
+  - "Onboarding documentation refreshed"
+  - "Validation suite passed with evidence archived"
+  - "Environment handoff summary approved by tech lead"
+
+handoff_command: "[PROTOCOL COMPLETE] - Development environment validated. Ready for Protocol 3 (Process Tasks)."
+
+next_protocol: "3-process-tasks"
+
+## ============================================
+## SECTION 8: ADDITIONAL CONTEXT (OPTIONAL)
+## ============================================
+
+context: "Ensures every developer and CI workspace replicates the approved architecture stack with deterministic setup scripts and validation."
+
+focus_areas:
+  - "Reproducible setup across operating systems"
+  - "Automated validation of build/test workflows"
+  - "Documented troubleshooting paths for onboarding"
+
+special_considerations: "If remote or containerized development is required, include additional instructions for provisioning cloud workspaces or dev containers."

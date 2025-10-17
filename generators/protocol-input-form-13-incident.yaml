@@ -1,0 +1,252 @@
+# PROTOCOL REQUIREMENTS FORM - PROTOCOL 13
+# Incident Response & Rollback
+
+## ============================================
+## SECTION 1: BASIC INFORMATION
+## ============================================
+
+protocol_number: "13"
+protocol_name: "incident-response-rollback"
+domain_compliance: "Operations"
+purpose: "Detect, triage, and resolve production incidents with controlled rollback execution, stakeholder communication, and post-incident learning."
+
+## ============================================
+## SECTION 2: AI ROLE & CONTEXT
+## ============================================
+
+ai_role: "Incident Commander"
+primary_guardrail: "DO NOT close an incident or restore normal operations without validated root cause analysis and rollback verification."
+
+prerequisites:
+  - protocol: "12-monitoring-observability"
+    required_artifacts: "monitoring-handoff-package.zip, alert-policy-catalog.yaml, stabilization-observation-log.md"
+  - protocol: "11-production-deployment"
+    required_artifacts: "deployment-run-log.txt, release-evidence-bundle.zip, rollback-readiness-checklist.md"
+
+phase_in_workflow: "Activated when alerts trigger after deployment; precedes retrospectives and feeds continuous improvement."
+
+## ============================================
+## SECTION 3: EXECUTION STRUCTURE
+## ============================================
+
+phases:
+  - phase_number: 1
+    phase_name: "Detection & Triage"
+    objective: "Rapidly identify incident scope, classify severity, and establish command structure."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Acknowledge Alert & Create Incident Record"
+        instructions: "Ingest monitoring handoff package, acknowledge alert, and open incident record with severity classification."
+        communication_template: "[PHASE 1] Incident detected. Creating incident record and classifying severity..."
+        halt_condition: "Stop if monitoring artifacts are incomplete; request missing data before proceeding."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Assemble Response Team"
+        instructions: "Notify on-call engineers, assign roles (commander, communications, operations), and schedule incident bridge."
+        communication_template: "[ASSEMBLY] Notifying response team and establishing roles..."
+        halt_condition: "Await confirmation from essential responders."
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Initial Impact Assessment"
+        instructions: "Review telemetry, customer reports, and recent changes to determine blast radius and affected services."
+        communication_template: "[ASSESSMENT] Evaluating impact scope and affected components..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "incident-record.json"
+        storage_location: ".artifacts/incidents/incident-record.json"
+      - evidence_item: "incident-timeline.md"
+        storage_location: ".artifacts/incidents/incident-timeline.md"
+
+    quality_gate:
+      gate_name: "Triage Confirmation Gate"
+      criteria: "Incident record created with severity, responders assigned, and initial impact assessment logged."
+      failure_handling: "Escalate to leadership, ensure coverage, and repeat triage before mitigation."
+
+  - phase_number: 2
+    phase_name: "Containment & Mitigation"
+    objective: "Stabilize services, execute rollback or mitigation steps, and communicate status."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Execute Containment Actions"
+        instructions: "Follow runbooks to isolate affected systems, scale resources, or disable problematic features."
+        communication_template: "[PHASE 2] Executing containment actions to stabilize impact..."
+        halt_condition: "Stop if containment step introduces additional risk; reassess plan."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Perform Rollback or Hotfix"
+        instructions: "If deployment changes caused the incident, trigger rollback scripts or coordinated hotfix following governance approvals."
+        communication_template: "[ROLLBACK] Initiating rollback/hotfix procedure..."
+        halt_condition: "Await confirmation of rollback readiness checklist items."
+
+      - step_number: 3
+        action_type: "MUST"
+        action_title: "Communicate Incident Status"
+        instructions: "Send stakeholder updates with current status, ETA, and customer impact; update incident communication channels."
+        communication_template: "[COMMUNICATION] Broadcasting incident status update to stakeholders..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "mitigation-actions.md"
+        storage_location: ".artifacts/incidents/mitigation-actions.md"
+      - evidence_item: "rollback-execution-log.txt"
+        storage_location: ".artifacts/incidents/rollback-execution-log.txt"
+      - evidence_item: "stakeholder-updates.md"
+        storage_location: ".artifacts/incidents/stakeholder-updates.md"
+
+    quality_gate:
+      gate_name: "Stabilization Gate"
+      criteria: "Containment actions executed, rollback/hotfix verified, and stakeholder communications distributed."
+      failure_handling: "Escalate to leadership, engage additional SMEs, and revisit rollback strategy."
+
+  - phase_number: 3
+    phase_name: "Recovery & Post-Incident Analysis"
+    objective: "Validate service restoration, document root cause, and capture lessons learned."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Verify Service Restoration"
+        instructions: "Run monitoring validation, confirm alerts cleared, and ensure KPIs back within SLO thresholds."
+        communication_template: "[PHASE 3] Verifying service restoration and monitoring stability..."
+        halt_condition: "Stop if metrics remain degraded; return to containment."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Conduct Root Cause Analysis"
+        instructions: "Facilitate RCA workshop, analyze incident timeline, identify contributing factors, and capture corrective actions."
+        communication_template: "[RCA] Conducting root cause analysis workshop..."
+        halt_condition: "Await participation from key stakeholders."
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Publish Post-Incident Report"
+        instructions: "Compile incident summary, impact, resolution steps, and follow-up actions; distribute to stakeholders and retrospectives."
+        communication_template: "[REPORT] Publishing post-incident report and follow-up actions..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "service-restoration-report.json"
+        storage_location: ".artifacts/incidents/service-restoration-report.json"
+      - evidence_item: "root-cause-analysis.md"
+        storage_location: ".artifacts/incidents/root-cause-analysis.md"
+      - evidence_item: "post-incident-report.md"
+        storage_location: ".artifacts/incidents/post-incident-report.md"
+
+    quality_gate:
+      gate_name: "Incident Closure Gate"
+      criteria: "Services stable, RCA documented with actions/owners, and post-incident report published."
+      failure_handling: "Keep incident open, schedule follow-up actions, and reassess mitigation steps."
+
+## ============================================
+## SECTION 4: INTEGRATION & DATA FLOW
+## ============================================
+
+inputs_from:
+  - protocol: "12-monitoring-observability"
+    artifacts_consumed: "monitoring-handoff-package.zip, alert-policy-catalog.yaml, stabilization-observation-log.md"
+    usage: "Provide current monitoring context, alert IDs, and known anomalies."
+  - protocol: "11-production-deployment"
+    artifacts_consumed: "deployment-run-log.txt, release-evidence-bundle.zip, rollback-readiness-checklist.md"
+    usage: "Reference release changes and rollback procedures during mitigation."
+
+outputs_to:
+  - protocol: "5-implementation-retrospective"
+    artifacts_provided: "post-incident-report.md, root-cause-analysis.md, corrective-action-tracker.csv"
+    purpose: "Feed continuous improvement and retrospectives with incident learnings."
+  - protocol: "6-technical-design-architecture"
+    artifacts_provided: "architecture-impact-notes.md"
+    purpose: "Inform architecture updates based on incident findings."
+  - protocol: "7-environment-setup-validation"
+    artifacts_provided: "environment-hardening-tasks.md"
+    purpose: "Update environment setup with remediation steps discovered during incident response."
+
+## ============================================
+## SECTION 5: AUTOMATION & TOOLING
+## ============================================
+
+automation_hooks:
+  - hook_name: "workflow_automation_incident"
+    trigger_point: "Phase 1 incident creation"
+    command: "python scripts/workflow_automation.py --workflow incident --output .artifacts/incidents/incident-record.json"
+    expected_output: "incident-record.json pre-populated with incident metadata"
+
+  - hook_name: "rollback_backend"
+    trigger_point: "Phase 2 rollback"
+    command: "bash scripts/rollback_backend.sh --env production --log .artifacts/incidents/rollback-execution-log.txt"
+    expected_output: "rollback-execution-log.txt capturing rollback steps and status"
+
+  - hook_name: "rollback_frontend"
+    trigger_point: "Phase 2 rollback"
+    command: "bash scripts/rollback_frontend.sh --env production --log .artifacts/incidents/rollback-frontend-log.txt"
+    expected_output: "rollback-frontend-log.txt documenting frontend rollback"
+
+  - hook_name: "validate_workflow_integration"
+    trigger_point: "Phase 3 service restoration"
+    command: "python scripts/validate_workflow_integration.py --mode incident --output .artifacts/incidents/service-restoration-report.json"
+    expected_output: "service-restoration-report.json summarizing validation outcomes"
+
+## ============================================
+## SECTION 6: COMMUNICATION PROTOCOLS
+## ============================================
+
+announcements:
+  phase_start_template: "[INCIDENT PHASE {N} START] - Beginning {phase_name}..."
+  phase_complete_template: "[INCIDENT PHASE {N} COMPLETE] - {phase_name} finished successfully."
+  automation_status_template: "[AUTOMATION] {script_name} executed: {status}"
+
+validation_prompts:
+  - prompt_context: "Before executing rollback"
+    prompt_template: "[ROLLBACK CONFIRMATION] Preconditions met. Execute rollback procedure now? (yes/no)"
+
+  - prompt_context: "Before incident closure"
+    prompt_template: "[CLOSURE CHECK] RCA captured and services stable. Close incident? (yes/no)"
+
+error_handling:
+  - error_type: "MissingMonitoringArtifacts"
+    error_message_template: "[ERROR] Monitoring handoff artifacts missing; cannot proceed with incident triage."
+    recovery_steps: "1. Request artifacts from monitoring protocol, 2. Update incident-record placeholder, 3. Resume triage."
+
+  - error_type: "RollbackFailure"
+    error_message_template: "[CRITICAL] Rollback command failed: {details}."
+    recovery_steps: "1. Halt rollback, 2. Engage senior engineer, 3. Execute contingency plan, 4. Notify stakeholders."
+
+  - error_type: "RCAIncomplete"
+    error_message_template: "[ERROR] Root cause analysis incomplete; incident cannot be closed."
+    recovery_steps: "1. Schedule follow-up RCA session, 2. Assign action owners, 3. Update incident timeline, 4. Reattempt closure."
+
+## ============================================
+## SECTION 7: COMPLETION & HANDOFF
+## ============================================
+
+completion_checklist:
+  - "Incident record updated with final state"
+  - "Mitigation and rollback evidence archived"
+  - "Service restoration validated"
+  - "Root cause analysis approved"
+  - "Post-incident report distributed"
+  - "Corrective actions assigned and tracked"
+
+handoff_command: "[PROTOCOL COMPLETE] - Incident resolved and documented. Ready for Protocol 5 (Implementation Retrospective)."
+
+next_protocol: "5-implementation-retrospective"
+
+## ============================================
+## SECTION 8: ADDITIONAL CONTEXT (OPTIONAL)
+## ============================================
+
+context: "Provides a structured incident response lifecycle that coordinates monitoring inputs, rollback execution, and post-incident learning."
+
+focus_areas:
+  - "Rapid severity classification and responder alignment"
+  - "Deterministic rollback and mitigation procedures"
+  - "Actionable post-incident analysis feeding continuous improvement"
+
+special_considerations: "For regulated industries, ensure incident artifacts meet audit requirements and sensitive data is redacted before distribution."
