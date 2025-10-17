@@ -1,0 +1,189 @@
+# Protocol 9 Requirements (Integration Testing & System Validation)
+protocol_number: "9"
+protocol_name: "integration-testing-system-validation"
+domain_compliance: "Quality"
+purpose: "Validate cross-component functionality, contracts, and data flows so the system is production-ready before quality audit and staging promotion."
+
+aio_role: "Integration Test Engineer"
+primary_guardrail: "Do not approve integration readiness without production-representative evidence for all critical paths."
+prerequisites:
+  - protocol: "3-process-tasks"
+    required_artifacts: "completed feature list, API implementations, migration scripts, automated test hooks"
+  - protocol: "6-technical-design-architecture"
+    required_artifacts: "architecture decisions, interface contracts, sequence diagrams"
+  - protocol: "7-environment-setup-validation"
+    required_artifacts: "environment baseline report, configuration manifests, secrets policy"
+phase_in_workflow: "Between Protocol 3 (Process Tasks) and Protocol 4 (Quality Audit)"
+
+phases:
+  - phase_number: 1
+    phase_name: "Scope Alignment and Environment Readiness"
+    objective: "Align integration scope with architecture, delivery artifacts, and validate environment parity."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Reconcile Integration Scope"
+        instructions: "Consolidate feature outputs, architecture contracts, and environment assumptions to define coverage."
+        communication_template: "[PHASE 1 START] - Aligning integration scope with architecture and delivery artifacts..."
+        halt_condition: "Stop if prerequisite artifacts are missing or mismatched."
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Validate Integration Environment"
+        instructions: "Verify configuration parity, seeded data, and connectivity for integration environment."
+        communication_template: "Validating integration environment configuration and data parity..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Refresh Test Data"
+        instructions: "Update datasets, fixtures, and schemas for integration runs."
+        communication_template: "Refreshing integration datasets and fixtures..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Integration scope matrix"
+        storage_location: ".artifacts/integration/integration-scope-matrix.json"
+      - evidence_item: "Environment validation report"
+        storage_location: ".artifacts/integration/environment-validation-report.json"
+      - evidence_item: "Test data inventory"
+        storage_location: ".artifacts/integration/test-data-inventory.md"
+    quality_gate:
+      gate_name: "Scope Alignment Gate"
+      criteria: "Scope matrix reconciled, environment validation completed."
+      failure_handling: "Resolve missing artifacts or environment gaps before continuing."
+  - phase_number: 2
+    phase_name: "Test Design and Instrumentation"
+    objective: "Design integration scenarios, configure contract validation, and ensure observability coverage."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Assemble Integration Test Plan"
+        instructions: "Map scenarios to automated tests with entry/exit criteria and rollback notes."
+        communication_template: "[PHASE 2 START] - Building integration scenarios and automation suites..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Configure Contract Validators"
+        instructions: "Enable contract and schema validation tooling for shared interfaces."
+        communication_template: "Configuring contract validation tooling..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Instrument Observability"
+        instructions: "Ensure logs, traces, and metrics exist for failure analysis."
+        communication_template: "Instrumenting observability hooks for integration monitoring..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Integration test plan"
+        storage_location: ".artifacts/integration/integration-test-plan.md"
+      - evidence_item: "Contract validation configuration"
+        storage_location: ".artifacts/integration/contract-validation-config.json"
+      - evidence_item: "Observability readiness notes"
+        storage_location: ".artifacts/integration/observability-readiness.md"
+    quality_gate:
+      gate_name: "Contract Assurance Gate"
+      criteria: "Contract validation configured and observability coverage documented."
+      failure_handling: "Fix tooling gaps, rerun validation before execution."
+  - phase_number: 3
+    phase_name: "Execution and Defect Management"
+    objective: "Run integration suites, capture evidence, and manage defects until resolved."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Run Integration Suites"
+        instructions: "Execute automation across APIs, workflows, and data pipelines with log capture."
+        communication_template: "[PHASE 3 START] - Executing integration automation across critical paths..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Triage Defects"
+        instructions: "Log failures, assign owners, and track remediation status."
+        communication_template: "Recording integration defects and routing to owners..."
+        halt_condition: "Pause until critical issues have mitigation plans."
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Run Regression Spot-Checks"
+        instructions: "Re-execute targeted regressions on resolved areas."
+        communication_template: "Running targeted regression spot-checks..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Test execution report"
+        storage_location: ".artifacts/integration/test-execution-report.json"
+      - evidence_item: "Defect log"
+        storage_location: ".artifacts/integration/defect-log.csv"
+      - evidence_item: "Regression summary"
+        storage_location: ".artifacts/integration/regression-summary.md"
+    quality_gate:
+      gate_name: "Execution Integrity Gate"
+      criteria: "Suites executed, critical defects resolved or mitigated, regressions recorded."
+      failure_handling: "Stop sign-off until blocking issues closed and reruns pass."
+  - phase_number: 4
+    phase_name: "Sign-Off and Handoff Preparation"
+    objective: "Compile evidence bundle, secure approvals, and communicate downstream recommendations."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Assemble Evidence Bundle"
+        instructions: "Package reports, logs, and validations into shareable archive."
+        communication_template: "[PHASE 4 START] - Compiling integration validation bundle for quality audit..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Record Integration Sign-Off"
+        instructions: "Obtain approval confirming readiness for quality audit and staging deployment."
+        communication_template: "Requesting integration sign-off from quality owner..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Publish Recommendations"
+        instructions: "Share monitoring and environment recommendations with downstream protocols."
+        communication_template: "Sharing integration recommendations with downstream teams..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Evidence bundle manifest"
+        storage_location: ".artifacts/integration/integration-evidence-manifest.json"
+      - evidence_item: "Integration sign-off record"
+        storage_location: ".artifacts/integration/integration-signoff.json"
+      - evidence_item: "Forward recommendations"
+        storage_location: ".artifacts/integration/forward-recommendations.md"
+    quality_gate:
+      gate_name: "Sign-Off Gate"
+      criteria: "Approval recorded, evidence bundle complete, downstream recommendations delivered."
+      failure_handling: "Hold handoff until approval and documentation complete."
+
+integration_inputs:
+  - source_protocol: "3-process-tasks"
+    artifacts_consumed: "feature list, API implementations, migration scripts"
+  - source_protocol: "6-technical-design-architecture"
+    artifacts_consumed: "architecture decisions, interface contracts"
+  - source_protocol: "7-environment-setup-validation"
+    artifacts_consumed: "environment baseline, configuration manifests"
+integration_outputs:
+  - target_protocol: "4-quality-audit"
+    artifacts_produced: "INTEGRATION-EVIDENCE.zip, integration-test-plan.md, defect-log.csv, integration-signoff.json"
+  - target_protocol: "10-pre-deployment-staging"
+    artifacts_produced: "environment-validation-report.json, contract-validation-results.json, observability-readiness.md"
+  - target_protocol: "12-monitoring-observability"
+    artifacts_produced: "forward-recommendations.md"
+
+communication_templates:
+  status_announcements:
+    - "[PHASE 1 START] - Aligning integration scope with architecture and delivery artifacts..."
+    - "[PHASE 2 START] - Building integration scenarios and automation suites..."
+    - "[PHASE 3 START] - Executing integration automation across critical paths..."
+    - "[PHASE 4 START] - Compiling integration validation bundle for quality audit..."
+  validation_prompts:
+    - "[DEFECT REVIEW] Critical integration failures detected. Confirm remediation plan recorded before rerun? (yes/no)"
+    - "[SIGN-OFF REQUEST] Integration evidence bundle assembled. Approve transfer to Protocol 4? (yes/no)"
+  error_handling:
+    - "MissingArtifacts: Request updated artifacts from Protocol 3/6 owners and revalidate scope matrix."
+    - "EnvironmentMismatch: Sync with Protocol 7 to restore parity and rerun validation script."
+    - "TestFailure: Log defect, assign owner, rerun suite before sign-off."
+
+quality_gates_summary:
+  - gate_name: "Scope Alignment Gate"
+    criteria: "Scope reconciled, environment validated."
+  - gate_name: "Contract Assurance Gate"
+    criteria: "Contract validation configured and passing."
+  - gate_name: "Execution Integrity Gate"
+    criteria: "Integration suites executed with no unresolved critical defects."
+  - gate_name: "Sign-Off Gate"
+    criteria: "Evidence bundle complete and approved."

@@ -1,0 +1,189 @@
+# Protocol 14 Requirements (Performance Optimization & Tuning)
+protocol_number: "14"
+protocol_name: "performance-optimization-tuning"
+domain_compliance: "Performance"
+purpose: "Identify and remediate performance bottlenecks using telemetry, load testing, and targeted optimizations to protect service-level objectives."
+
+aio_role: "Performance Engineer"
+primary_guardrail: "Do not deploy performance changes without reproducible benchmarks and updated SLO instrumentation." 
+prerequisites:
+  - protocol: "12-monitoring-observability"
+    required_artifacts: "monitoring dashboards, alert logs, SLO definitions"
+  - protocol: "13-incident-response-rollback"
+    required_artifacts: "incident timelines, post-incident reviews"
+  - protocol: "11-production-deployment"
+    required_artifacts: "deployment reports, change manifests"
+phase_in_workflow: "After Protocol 12 (Monitoring) and Protocol 13 (Incident Response) with feedback to Protocol 5 (Retrospective)"
+
+phases:
+  - phase_number: 1
+    phase_name: "Intake, Baseline, and Hypothesis Framing"
+    objective: "Consolidate telemetry and establish performance baselines before analysis."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Collect Telemetry Inputs"
+        instructions: "Aggregate monitoring data, incident notes, and deployment context for impacted services."
+        communication_template: "[PHASE 1 START] - Consolidating telemetry and incident evidence for performance triage..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Establish Baseline Metrics"
+        instructions: "Capture throughput, latency, error rates, and resource utilization for affected workloads."
+        communication_template: "Capturing baseline performance metrics across services..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Formulate Hypotheses"
+        instructions: "Draft hypotheses linking symptoms to likely bottlenecks and prioritize investigations."
+        communication_template: "Drafting performance hypotheses and prioritizing investigations..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Performance intake report"
+        storage_location: ".artifacts/performance/performance-intake-report.json"
+      - evidence_item: "Baseline metrics"
+        storage_location: ".artifacts/performance/baseline-metrics.csv"
+      - evidence_item: "Hypothesis log"
+        storage_location: ".artifacts/performance/hypothesis-log.md"
+    quality_gate:
+      gate_name: "Baseline Validation Gate"
+      criteria: "Telemetry consolidated and baseline metrics recorded with hypotheses documented."
+      failure_handling: "Fill telemetry gaps or recompute baselines before diagnostics."
+  - phase_number: 2
+    phase_name: "Diagnostics and Load Simulation"
+    objective: "Profile critical transactions and simulate load to identify bottlenecks."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Profile Critical Transactions"
+        instructions: "Run profilers, tracing, and query analysis to pinpoint hotspots."
+        communication_template: "[PHASE 2 START] - Profiling critical transactions across services..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Execute Load & Stress Tests"
+        instructions: "Run load scenarios representing peak demand and failure conditions."
+        communication_template: "Executing performance load tests for peak scenarios..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Analyze Capacity & Cost"
+        instructions: "Review infrastructure utilization, scaling rules, and cost impact."
+        communication_template: "Analyzing capacity and cost trade-offs for optimization options..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Profiling report"
+        storage_location: ".artifacts/performance/profiling-report.md"
+      - evidence_item: "Load test results"
+        storage_location: ".artifacts/performance/load-test-results.json"
+      - evidence_item: "Capacity analysis"
+        storage_location: ".artifacts/performance/capacity-analysis.md"
+    quality_gate:
+      gate_name: "Diagnostic Coverage Gate"
+      criteria: "Profiling and load tests executed with findings documented."
+      failure_handling: "Add instrumentation or expand scenarios before planning optimizations."
+  - phase_number: 3
+    phase_name: "Optimization Implementation and Verification"
+    objective: "Plan, execute, and validate performance improvements."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Define Optimization Plan"
+        instructions: "Prioritize remediation tasks, assign owners, and estimate expected gains."
+        communication_template: "[PHASE 3 START] - Publishing optimization backlog with ownership and risk notes..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Implement & Validate Changes"
+        instructions: "Coordinate fixes, rerun targeted tests, and capture before/after metrics."
+        communication_template: "Validating optimization changes with performance regression suite..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Update Instrumentation"
+        instructions: "Adjust dashboards and alerts to reflect optimized metrics."
+        communication_template: "Updating instrumentation to monitor optimized metrics..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Optimization plan"
+        storage_location: ".artifacts/performance/optimization-plan.json"
+      - evidence_item: "Optimization validation report"
+        storage_location: ".artifacts/performance/optimization-validation-report.json"
+      - evidence_item: "Instrumentation update log"
+        storage_location: ".artifacts/performance/instrumentation-update-log.md"
+    quality_gate:
+      gate_name: "Optimization Validation Gate"
+      criteria: "Plan approved and validation report shows measurable improvement."
+      failure_handling: "Adjust plan or revert changes and rerun validation."
+  - phase_number: 4
+    phase_name: "Governance, Communication, and Handoff"
+    objective: "Document SLO updates, publish performance report, and inform downstream teams."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Record SLO Adjustments"
+        instructions: "Update SLO/SLA targets, alert thresholds, and escalation policies."
+        communication_template: "[PHASE 4 START] - Documenting SLO updates and communicating performance improvements..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Publish Performance Report"
+        instructions: "Assemble diagnostics, optimizations, and validation results into a report."
+        communication_template: "Publishing performance optimization report for stakeholders..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Share Continuous Improvement Notes"
+        instructions: "Provide learnings to retrospectives and monitoring teams."
+        communication_template: "Sharing continuous improvement recommendations with downstream teams..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "SLO update record"
+        storage_location: ".artifacts/performance/slo-update-record.json"
+      - evidence_item: "Performance report manifest"
+        storage_location: ".artifacts/performance/performance-report-manifest.json"
+      - evidence_item: "Continuous improvement notes"
+        storage_location: ".artifacts/performance/continuous-improvement-notes.md"
+    quality_gate:
+      gate_name: "Governance & Communication Gate"
+      criteria: "SLO updates recorded, report published, recommendations shared."
+      failure_handling: "Complete documentation and approvals before closing protocol."
+
+integration_inputs:
+  - source_protocol: "12-monitoring-observability"
+    artifacts_consumed: "dashboards, alert logs, SLO metrics"
+  - source_protocol: "13-incident-response-rollback"
+    artifacts_consumed: "incident timelines, mitigation notes"
+  - source_protocol: "11-production-deployment"
+    artifacts_consumed: "deployment-report.md, post-deployment validation"
+integration_outputs:
+  - target_protocol: "5-implementation-retrospective"
+    artifacts_produced: "PERFORMANCE-REPORT.md, continuous-improvement-notes.md"
+  - target_protocol: "12-monitoring-observability"
+    artifacts_produced: "instrumentation-update-log.md, slo-update-record.json"
+  - target_protocol: "3-process-tasks"
+    artifacts_produced: "optimization-plan.json for backlog prioritization"
+
+communication_templates:
+  status_announcements:
+    - "[PHASE 1 START] - Consolidating telemetry and incident evidence for performance triage..."
+    - "[PHASE 2 START] - Profiling critical transactions across services..."
+    - "[PHASE 3 START] - Publishing optimization backlog with ownership and risk notes..."
+    - "[PHASE 4 START] - Documenting SLO updates and communicating performance improvements..."
+  validation_prompts:
+    - "[BASELINE CHECK] Telemetry gaps detected. Confirm data sources refreshed before diagnostics? (yes/no)"
+    - "[RELEASE REQUEST] Optimization validation complete. Approve SLO updates and publish report? (yes/no)"
+  error_handling:
+    - "TelemetryGap: Coordinate with Protocol 12 to restore monitoring data and rerun baseline capture."
+    - "LoadTestFailure: Investigate infrastructure or configuration issues, adjust scenarios, rerun tests."
+    - "RegressionDetected: Roll back change set, update plan, rerun validation before sign-off."
+
+quality_gates_summary:
+  - gate_name: "Baseline Validation Gate"
+    criteria: "Telemetry consolidated and baselines recorded."
+  - gate_name: "Diagnostic Coverage Gate"
+    criteria: "Profiling and load tests executed."
+  - gate_name: "Optimization Validation Gate"
+    criteria: "Improvements validated and instrumentation updated."
+  - gate_name: "Governance & Communication Gate"
+    criteria: "SLO updates recorded, report published."

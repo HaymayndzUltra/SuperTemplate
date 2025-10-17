@@ -25,9 +25,13 @@ meta-analysis-generator-instructions.md      ← AI guide: Protocol → Analysis
 protocol-generator-instructions.md           ← AI guide: Requirements → Protocol
 6-technical-design-generator.md              ← Protocol 6 architecture generator blueprint
 7-environment-generator.md                   ← Protocol 7 environment generator blueprint
+9-integration-generator.md                   ← Protocol 9 integration testing generator blueprint
+10-staging-generator.md                      ← Protocol 10 pre-deployment generator blueprint
 11-deployment-generator.md                   ← Protocol 11 deployment generator blueprint
 12-monitoring-generator.md                   ← Protocol 12 monitoring generator blueprint
 13-incident-generator.md                     ← Protocol 13 incident response generator blueprint
+14-performance-generator.md                  ← Protocol 14 performance optimization generator blueprint
+15-uat-generator.md                          ← Protocol 15 UAT coordination generator blueprint
 ```
 
 ### 📝 User Templates & Forms
@@ -36,18 +40,26 @@ protocol-input-form.yaml                     ← Empty template (fill this!)
 sample-filled-form.yaml                      ← Filled example (reference)
 protocol-input-form-6-technical-design.yaml  ← Form for architecture specification protocol
 protocol-input-form-7-environment.yaml       ← Form for environment setup & validation protocol
+protocol-input-form-9-integration.yaml       ← Form for integration testing & validation protocol
+protocol-input-form-10-staging.yaml          ← Form for pre-deployment & staging readiness protocol
 protocol-input-form-11-deployment.yaml       ← Form for production deployment protocol
 protocol-input-form-12-monitoring.yaml       ← Form for monitoring & observability protocol
 protocol-input-form-13-incident.yaml         ← Form for incident response protocol
+protocol-input-form-14-performance.yaml      ← Form for performance optimization protocol
+protocol-input-form-15-uat.yaml              ← Form for UAT coordination protocol
 ```
 
 ### ✅ Validation Examples
 ```
 6-technical-design-architecture.md           ← Protocol 6 architecture specification (workflow)
 7-environment-setup-validation.md            ← Protocol 7 environment validation (workflow)
+9-integration-testing.md                     ← Protocol 9 integration validation (workflow)
+10-pre-deployment-staging.md                 ← Protocol 10 staging readiness (workflow)
 11-production-deployment.md                  ← Protocol 11 deployment orchestration (workflow)
 12-monitoring-observability.md               ← Protocol 12 monitoring activation (workflow)
 13-incident-response-rollback.md             ← Protocol 13 incident response (workflow)
+14-performance-optimization.md               ← Protocol 14 performance optimization (workflow)
+15-uat-coordination.md                       ← Protocol 15 UAT coordination (workflow)
 ```
 
 ---

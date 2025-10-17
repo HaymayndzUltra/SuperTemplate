@@ -29,10 +29,11 @@ Phase 1-2: Planning (PRD, Architecture & Tasks)
 Phase 2.5: Environment Readiness
 └── 7-environment-setup-validation.md (DevOps Environment Engineer)
 
-Phase 3: Execution
-└── 3-process-tasks.md (Paired Developer)
+Phase 3: Execution & Integration
+├── 3-process-tasks.md (Paired Developer)
+└── 9-integration-testing.md (Integration Test Engineer)
 
-Phase 4: Quality Assurance
+Phase 4: Quality Assurance & Customer Validation
 ├── 4-quality-audit.md (Quality Orchestrator)
 ├── review-protocols/
 │   ├── architecture-review.md
@@ -47,11 +48,14 @@ Phase 4: Quality Assurance
 │       ├── enhanced-static-template.md
 │       ├── enhanced-static-validation.md
 │       └── rule-injection-system.md
+└── 15-uat-coordination.md (UAT Coordinator)
 
-Phase 4.5: Deployment & Operations
+Phase 4.5: Staging, Deployment & Operations
+├── 10-pre-deployment-staging.md (Release Engineer)
 ├── 11-production-deployment.md (Release Manager)
 ├── 12-monitoring-observability.md (Site Reliability Engineer)
-└── 13-incident-response-rollback.md (Incident Commander)
+├── 13-incident-response-rollback.md (Incident Commander)
+└── 14-performance-optimization.md (Performance Engineer)
 
 Phase 5: Continuous Improvement
 ├── 5-implementation-retrospective.md (Process Improvement Lead)
@@ -529,8 +533,44 @@ WHILE there are unchecked [ ] sub-tasks for CURRENT parent task:
 
 ## 6. Phase 4: Quality Assurance Protocols
 
+### Protocol 9: Integration Testing & System Validation
+**Role:** Integration Test Engineer
+**File:** `9-integration-testing.md`
+
+#### Purpose
+Validate end-to-end workflows, interface contracts, and shared data flows using production-like environments so downstream quality audit and staging teams receive trustworthy evidence packages.
+
+#### Prerequisites
+- Protocol 3 feature implementation, API endpoints, migration scripts
+- Protocol 6 architecture decisions and interface contracts
+- Protocol 7 environment baseline and configuration manifests
+
+#### Execution Algorithm (4-Phase Process)
+1. **Scope Alignment & Environment Readiness** – Consolidate feature outputs, architecture contracts, and environment baselines; run `validate_environment.py --env integration` to confirm parity.
+2. **Test Design & Instrumentation** – Assemble cross-service scenarios, configure contract validation via `run_contract_tests.py`, and ensure observability hooks are active.
+3. **Execution & Defect Management** – Execute suites (e.g., `pytest -m integration`), log failures, triage defects, and rerun regressions on resolved items.
+4. **Validation & Handoff Preparation** – Package `INTEGRATION-EVIDENCE.zip`, capture approvals, and publish recommendations for Quality Audit and Pre-Deployment teams.
+
+#### Quality Gates
+- **Scope Alignment Gate** – Scope matrix reconciled with architecture and environment validation complete.
+- **Contract Assurance Gate** – Contract tests pass and instrumentation coverage documented.
+- **Execution Integrity Gate** – Automation suites executed; critical defects resolved or waived.
+- **Sign-Off Gate** – Evidence bundle compiled and approval recorded for downstream protocols.
+
+#### Automation Hooks
+- `python scripts/validate_environment.py --env integration`
+- `python scripts/run_contract_tests.py --env integration`
+- `pytest -m integration --json-report`
+- Optional: `python scripts/generate_artifact_manifest.py`
+
+#### Outputs
+- `.artifacts/integration/integration-scope-matrix.json`
+- `.artifacts/integration/test-execution-report.json`
+- `.artifacts/integration/defect-log.csv`
+- `INTEGRATION-EVIDENCE.zip` and `integration-signoff.json`
+
 ### Protocol 4: Quality Audit Orchestrator
-**Role:** Senior Quality Engineer / Audit Orchestrator  
+**Role:** Senior Quality Engineer / Audit Orchestrator
 **File:** `4-quality-audit.md`
 
 #### Purpose
@@ -584,6 +624,44 @@ Orchestrate execution of specialized review protocols with intelligent routing, 
 - Coverage data and metrics
 - Actionable remediation steps
 - Evidence artifacts for retrospective
+
+---
+
+### Protocol 15: User Acceptance Testing (UAT) Coordination
+**Role:** UAT Coordinator
+**File:** `15-uat-coordination.md`
+
+#### Purpose
+Coordinate customer-facing validation cycles to confirm requirements, capture qualitative feedback, and secure stakeholder sign-off before production deployment.
+
+#### Prerequisites
+- Protocol 1 PRD acceptance criteria and success metrics
+- Protocol 4 quality audit approvals and risk exceptions
+- Protocol 9 integration evidence bundle and defect log
+- Protocol 10 staging readiness confirmations for retest cycles
+
+#### Execution Algorithm (4-Phase Process)
+1. **Preparation & Logistics** – Validate entry checklist, confirm participant roster, and distribute UAT toolkit materials.
+2. **Orientation & Cycle Execution** – Host kickoff briefing, facilitate scenario execution, and capture qualitative insights with `collect_uat_results.py`.
+3. **Defect Management & Revalidation** – Log findings in the UAT defect register, coordinate fixes, run retests, and refresh release notes.
+4. **Acceptance & Handoff** – Record stakeholder approvals, compile `UAT-CLOSURE-PACKAGE.zip`, and brief deployment teams on known issues and support expectations.
+
+#### Quality Gates
+- **UAT Entry Gate** – Entry checklist approved, participants provisioned, toolkit prepared.
+- **Execution Integrity Gate** – Kickoff complete, execution logs captured, feedback documented.
+- **Defect Resolution Gate** – Critical/blocker findings resolved or deferred with agreement; retests pass.
+- **Acceptance Gate** – Sign-off recorded, closure package compiled, deployment handoff communicated.
+
+#### Automation Hooks
+- `python scripts/send_uat_invites.py --config config/uat-participants.yaml`
+- `python scripts/collect_uat_results.py --output .artifacts/uat/execution-log.json`
+- `python scripts/generate_release_notes.py --source .artifacts/uat/feedback-notebook.md`
+
+#### Outputs
+- `.artifacts/uat/uat-entry-checklist.json`
+- `.artifacts/uat/execution-log.json`
+- `.artifacts/uat/uat-defect-register.csv`
+- `UAT-CLOSURE-PACKAGE.zip`, `uat-approval-record.json`, `handoff-brief.md`
 
 ---
 
@@ -786,7 +864,46 @@ Orchestrate execution of specialized review protocols with intelligent routing, 
 
 ---
 
-## 6.5 Deployment & Operations Protocols
+## 6.5 Deployment, Staging & Operations Protocols
+
+### Protocol 10: Pre-Deployment Validation & Staging Readiness
+**Role:** Release Engineer
+**File:** `10-pre-deployment-staging.md`
+
+#### Purpose
+Ensure the release candidate is production-ready by validating staging parity, rehearsing deployment and rollback procedures, and packaging go/no-go evidence for the Release Manager.
+
+#### Prerequisites
+- Protocol 4 quality audit approvals and risk exceptions
+- Protocol 9 integration evidence bundle and environment validation
+- Protocol 7 environment baseline and configuration manifests
+
+#### Execution Algorithm (4-Phase Process)
+1. **Intake Validation & Staging Alignment** – Confirm upstream approvals, compare staging vs production using `compare_environments.py`, and refresh datasets/feature flags.
+2. **Deployment Rehearsal & Verification** – Execute `deploy_backend.sh --env staging`, run smoke and acceptance suites via `run_smoke_tests.py`, capture observability baseline snapshots.
+3. **Rollback, Security & Operational Readiness** – Rehearse rollback scripts, run `run_security_audit.py`, and update runbooks/on-call schedules.
+4. **Final Readiness Review & Handoff** – Compile `PRE-DEPLOYMENT-PACKAGE.zip`, record readiness approvals, and update deployment checklist and communications plan.
+
+#### Quality Gates
+- **Intake Confirmation Gate** – Approvals verified; staging parity confirmed.
+- **Deployment Rehearsal Gate** – Staging deployment successful; validation suites passed.
+- **Rollback & Security Gate** – Rollback rehearsal validated; security/compliance checks cleared.
+- **Readiness Approval Gate** – Go/no-go package complete with approvals and checklist updates.
+
+#### Automation Hooks
+- `python scripts/compare_environments.py --source staging --target production`
+- `bash scripts/deploy_backend.sh --env staging --release {tag}`
+- `python scripts/run_smoke_tests.py --env staging`
+- `bash scripts/rollback_backend.sh --env staging`
+- `python scripts/run_security_audit.py --env staging`
+
+#### Outputs
+- `.artifacts/pre-deployment/intake-validation-report.json`
+- `.artifacts/pre-deployment/staging-deployment-run.log`
+- `.artifacts/pre-deployment/rollback-verification-report.json`
+- `PRE-DEPLOYMENT-PACKAGE.zip`, `pre-deployment-manifest.json`, `readiness-approval.json`
+
+---
 
 ### Protocol 11: Production Deployment & Release Management
 **Role:** Release Manager
@@ -896,6 +1013,44 @@ Coordinate rapid mitigation of production incidents triggered after deployment, 
 - `.artifacts/incidents/mitigation-execution-report.json`
 - `.artifacts/incidents/recovery-validation.json`
 - `INCIDENT-REPORT.md` and `rca-manifest.json`
+
+---
+
+### Protocol 14: Performance Optimization & Tuning
+**Role:** Performance Engineer
+**File:** `14-performance-optimization.md`
+
+#### Purpose
+Diagnose and remediate performance bottlenecks using telemetry, profiling, and load testing so service-level objectives remain on track.
+
+#### Prerequisites
+- Protocol 12 monitoring dashboards, alert logs, SLO definitions
+- Protocol 13 incident timelines and mitigation notes
+- Protocol 11 deployment reports and post-deployment validation outputs
+
+#### Execution Algorithm (4-Phase Process)
+1. **Intake & Baseline Capture** – Aggregate telemetry, create `performance-intake-report.json`, and run `analyze_metrics.py` to establish baselines.
+2. **Diagnostics & Load Simulation** – Profile services with `profile_service.py`, execute load tests (`k6 run ...`), and analyze capacity/cost trade-offs.
+3. **Optimization Implementation & Verification** – Publish optimization plan, coordinate fixes, rerun performance suites (e.g., `pytest -m performance`), and update instrumentation.
+4. **Governance & Handoff** – Record SLO updates, compile `PERFORMANCE-REPORT.md`, and share continuous improvement notes with retrospectives and monitoring teams.
+
+#### Quality Gates
+- **Baseline Validation Gate** – Intake completed, baselines recorded, hypotheses documented.
+- **Diagnostic Coverage Gate** – Profiling and load tests executed; findings captured.
+- **Optimization Validation Gate** – Improvements validated with measurable gains and instrumentation updates.
+- **Governance & Communication Gate** – SLO updates recorded; performance report and recommendations delivered.
+
+#### Automation Hooks
+- `python scripts/analyze_metrics.py --window 7d`
+- `python scripts/profile_service.py --service {name}`
+- `k6 run testing/performance/{scenario}.js --out json=.artifacts/performance/load-test-results.json`
+- `pytest -m performance --json-report --json-report-file .artifacts/performance/optimization-validation-report.json`
+
+#### Outputs
+- `.artifacts/performance/performance-intake-report.json`
+- `.artifacts/performance/load-test-results.json`
+- `.artifacts/performance/optimization-plan.json`
+- `PERFORMANCE-REPORT.md`, `slo-update-record.json`, `continuous-improvement-notes.md`
 
 ---
 

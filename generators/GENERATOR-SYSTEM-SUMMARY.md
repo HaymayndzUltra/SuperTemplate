@@ -32,18 +32,26 @@ Nakalikha na ang **bidirectional generator system** na nagbibigay ng complete ci
 - `protocol-input-form.yaml` – Base template
 - `protocol-input-form-6-technical-design.yaml`
 - `protocol-input-form-7-environment.yaml`
+- `protocol-input-form-9-integration.yaml`
+- `protocol-input-form-10-staging.yaml`
 - `protocol-input-form-11-deployment.yaml`
 - `protocol-input-form-12-monitoring.yaml`
 - `protocol-input-form-13-incident.yaml`
+- `protocol-input-form-14-performance.yaml`
+- `protocol-input-form-15-uat.yaml`
 
 Each form includes required fields, contextual examples, and validation notes tailored to its protocol domain.
 
 ### 4. Generator Blueprints & Validation Artifacts
 - `6-technical-design-generator.md` ↔ `.cursor/ai-driven-workflow/6-technical-design-architecture.md`
 - `7-environment-generator.md` ↔ `.cursor/ai-driven-workflow/7-environment-setup-validation.md`
+- `9-integration-generator.md` ↔ `.cursor/ai-driven-workflow/9-integration-testing.md`
+- `10-staging-generator.md` ↔ `.cursor/ai-driven-workflow/10-pre-deployment-staging.md`
 - `11-deployment-generator.md` ↔ `.cursor/ai-driven-workflow/11-production-deployment.md`
 - `12-monitoring-generator.md` ↔ `.cursor/ai-driven-workflow/12-monitoring-observability.md`
 - `13-incident-generator.md` ↔ `.cursor/ai-driven-workflow/13-incident-response-rollback.md`
+- `14-performance-generator.md` ↔ `.cursor/ai-driven-workflow/14-performance-optimization.md`
+- `15-uat-generator.md` ↔ `.cursor/ai-driven-workflow/15-uat-coordination.md`
 
 Meta-analysis validation is recommended for each generated protocol to preserve the circular workflow.
 

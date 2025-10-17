@@ -1,0 +1,193 @@
+# Protocol 15 Requirements (User Acceptance Testing Coordination)
+protocol_number: "15"
+protocol_name: "uat-coordination"
+domain_compliance: "Customer Validation"
+purpose: "Coordinate user acceptance testing cycles that confirm requirements, capture feedback, and secure stakeholder sign-off before deployment."
+
+aio_role: "UAT Coordinator"
+primary_guardrail: "Do not close UAT without stakeholder approvals, resolved critical feedback, and aligned release documentation."
+prerequisites:
+  - protocol: "1-create-prd"
+    required_artifacts: "PRD acceptance criteria, success metrics, user journeys"
+  - protocol: "4-quality-audit"
+    required_artifacts: "quality audit approvals, risk exceptions"
+  - protocol: "9-integration-testing"
+    required_artifacts: "integration evidence bundle, defect log"
+  - protocol: "10-pre-deployment-staging"
+    required_artifacts: "staging readiness confirmation, deployment rehearsal results"
+phase_in_workflow: "Between Protocol 9/10 (Integration & Pre-Deployment) and Protocol 11 (Production Deployment)"
+
+phases:
+  - phase_number: 1
+    phase_name: "Preparation, Participant Alignment, and Logistics"
+    objective: "Confirm UAT entry criteria, recruit participants, and prepare materials."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Validate UAT Scope"
+        instructions: "Reconcile acceptance criteria, integration evidence, and audit results to define objectives."
+        communication_template: "[PHASE 1 START] - Validating UAT scope and entry criteria with product stakeholders..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Assemble Participants"
+        instructions: "Confirm tester roster, environment access, and schedule."
+        communication_template: "Confirming UAT participants and provisioning access..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Prepare UAT Toolkit"
+        instructions: "Compile scenarios, datasets, and guidance materials for testers."
+        communication_template: "Preparing UAT toolkit and distribution materials..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "UAT entry checklist"
+        storage_location: ".artifacts/uat/uat-entry-checklist.json"
+      - evidence_item: "Participant roster"
+        storage_location: ".artifacts/uat/participant-roster.csv"
+      - evidence_item: "Toolkit manifest"
+        storage_location: ".artifacts/uat/uat-toolkit-manifest.json"
+    quality_gate:
+      gate_name: "UAT Entry Gate"
+      criteria: "Entry checklist approved, participants confirmed, toolkit prepared."
+      failure_handling: "Resolve gaps before kickoff."
+  - phase_number: 2
+    phase_name: "Orientation and Cycle Execution"
+    objective: "Brief stakeholders and manage execution of UAT scenarios."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Conduct Kickoff"
+        instructions: "Review objectives, scope, success criteria, and communication channels."
+        communication_template: "[PHASE 2 START] - Hosting UAT kickoff and briefing participants on objectives..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Facilitate Test Cycles"
+        instructions: "Support testers, capture execution status, and resolve environment/data issues."
+        communication_template: "Monitoring UAT execution and capturing scenario outcomes..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Capture Qualitative Feedback"
+        instructions: "Document usability insights, enhancement ideas, and product sentiments."
+        communication_template: "Collecting qualitative feedback from UAT participants..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Kickoff notes"
+        storage_location: ".artifacts/uat/kickoff-notes.md"
+      - evidence_item: "Execution log"
+        storage_location: ".artifacts/uat/execution-log.json"
+      - evidence_item: "Feedback notebook"
+        storage_location: ".artifacts/uat/feedback-notebook.md"
+    quality_gate:
+      gate_name: "Execution Integrity Gate"
+      criteria: "Kickoff completed, execution logs captured, feedback documented."
+      failure_handling: "Address environment blockers or re-engage participants before progressing."
+  - phase_number: 3
+    phase_name: "Defect Management, Feedback Integration, and Revalidation"
+    objective: "Resolve findings, verify fixes, and update release documentation."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Log and Prioritize Findings"
+        instructions: "Create defect tickets, categorize severity, and assign owners."
+        communication_template: "[PHASE 3 START] - Triage UAT findings and routing actions to delivery teams..."
+        halt_condition: "Pause progression if blocking defects persist."
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Coordinate Retests"
+        instructions: "Ensure fixes deployed to UAT/staging are retested and results recorded."
+        communication_template: "Coordinating retests for resolved UAT findings..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Update Release Notes"
+        instructions: "Adjust release notes, known issues, and FAQs to reflect accepted scope."
+        communication_template: "Updating release notes and FAQs with UAT decisions..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "UAT defect register"
+        storage_location: ".artifacts/uat/uat-defect-register.csv"
+      - evidence_item: "Retest results"
+        storage_location: ".artifacts/uat/retest-results.json"
+      - evidence_item: "Release notes draft"
+        storage_location: ".artifacts/uat/release-notes-draft.md"
+    quality_gate:
+      gate_name: "Defect Resolution Gate"
+      criteria: "Critical findings resolved or deferred with agreement; retests passed."
+      failure_handling: "Hold sign-off until blockers closed and retests pass."
+  - phase_number: 4
+    phase_name: "Acceptance, Documentation, and Handoff"
+    objective: "Secure stakeholder approval and handoff artifacts to deployment teams."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Capture Formal Sign-Off"
+        instructions: "Record approvals from designated stakeholders confirming acceptance criteria satisfied."
+        communication_template: "[PHASE 4 START] - Requesting formal UAT acceptance from stakeholders..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Compile Closure Package"
+        instructions: "Assemble entry checklist, execution log, defect register, sign-off record, and release notes."
+        communication_template: "Compiling UAT closure package for deployment teams..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Communicate Handoff"
+        instructions: "Share summary with deployment and retrospective owners, highlighting risks and support expectations."
+        communication_template: "Communicating UAT outcomes and handoff details to deployment teams..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "UAT approval record"
+        storage_location: ".artifacts/uat/uat-approval-record.json"
+      - evidence_item: "UAT closure manifest"
+        storage_location: ".artifacts/uat/uat-closure-manifest.json"
+      - evidence_item: "Handoff brief"
+        storage_location: ".artifacts/uat/handoff-brief.md"
+    quality_gate:
+      gate_name: "Acceptance Gate"
+      criteria: "Sign-off recorded, closure package compiled, handoff communication sent."
+      failure_handling: "Escalate outstanding approvals or documentation gaps before release."
+
+integration_inputs:
+  - source_protocol: "1-create-prd"
+    artifacts_consumed: "acceptance criteria, success metrics"
+  - source_protocol: "4-quality-audit"
+    artifacts_consumed: "quality audit approvals, risk exceptions"
+  - source_protocol: "9-integration-testing"
+    artifacts_consumed: "integration evidence bundle, defect log"
+  - source_protocol: "10-pre-deployment-staging"
+    artifacts_consumed: "readiness approval, staging test results"
+integration_outputs:
+  - target_protocol: "10-pre-deployment-staging"
+    artifacts_produced: "uat-closure-manifest.json, uat-approval-record.json, updated release notes"
+  - target_protocol: "11-production-deployment"
+    artifacts_produced: "UAT-CLOSURE-PACKAGE.zip, handoff-brief.md"
+  - target_protocol: "5-implementation-retrospective"
+    artifacts_produced: "feedback-notebook.md, lessons learned"
+
+communication_templates:
+  status_announcements:
+    - "[PHASE 1 START] - Validating UAT scope and entry criteria with product stakeholders..."
+    - "[PHASE 2 START] - Hosting UAT kickoff and briefing participants on objectives..."
+    - "[PHASE 3 START] - Triage UAT findings and routing actions to delivery teams..."
+    - "[PHASE 4 START] - Requesting formal UAT acceptance from stakeholders..."
+  validation_prompts:
+    - "[ENTRY CHECK] Pending participant access detected. Confirm all testers are provisioned before kickoff? (yes/no)"
+    - "[SIGN-OFF REQUEST] All critical feedback resolved. Approve UAT closure package for deployment handoff? (yes/no)"
+  error_handling:
+    - "AccessIssue: Coordinate with environment owners to grant access before kickoff."
+    - "CriticalFeedback: Engage delivery teams to resolve blocker findings prior to sign-off."
+    - "DocumentationGap: Update artifacts and obtain approvals before closing protocol."
+
+quality_gates_summary:
+  - gate_name: "UAT Entry Gate"
+    criteria: "Entry checklist approved, participants confirmed."
+  - gate_name: "Execution Integrity Gate"
+    criteria: "Kickoff complete, execution logs captured, feedback documented."
+  - gate_name: "Defect Resolution Gate"
+    criteria: "Critical issues resolved or deferred with agreement."
+  - gate_name: "Acceptance Gate"
+    criteria: "Sign-off recorded, closure package shared."
