@@ -1,0 +1,244 @@
+# PROTOCOL REQUIREMENTS FORM - PROTOCOL 6
+# Technical Design & Architecture Specification
+
+## ============================================
+## SECTION 1: BASIC INFORMATION
+## ============================================
+
+protocol_number: "6"
+protocol_name: "technical-design-architecture"
+domain_compliance: "Architecture"
+purpose: "Translate validated requirements into an executable technical architecture with explicit traceability, integration patterns, and governance-ready decision records."
+
+## ============================================
+## SECTION 2: AI ROLE & CONTEXT
+## ============================================
+
+ai_role: "Solutions Architect"
+primary_guardrail: "DO NOT authorize backlog decomposition or implementation until architecture sign-off and risk log approval are recorded."
+
+prerequisites:
+  - protocol: "01-project-brief-creation"
+    required_artifacts: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
+  - protocol: "1-create-prd"
+    required_artifacts: "PRD.md, acceptance-criteria.csv, non-functional-requirements.md"
+
+phase_in_workflow: "Between Protocol 1 (PRD Creation) and Protocol 2 (Task Generation)"
+
+## ============================================
+## SECTION 3: EXECUTION STRUCTURE
+## ============================================
+
+phases:
+  - phase_number: 1
+    phase_name: "Requirements & Context Alignment"
+    objective: "Validate scope inputs, capture quality attributes, and establish traceability anchors for architecture decisions."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Validate Source Artifacts"
+        instructions: "Confirm PROJECT-BRIEF.md, PRD.md, and discovery artifacts are present, version-aligned, and free of unresolved comments."
+        communication_template: "[PHASE 1] Validating brief and PRD artifacts for architectural planning..."
+        halt_condition: "Stop if any required artifact is missing or contains pending client clarifications."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Extract Quality Drivers"
+        instructions: "Synthesize functional scope, non-functional requirements, constraints, and success metrics into a traceability matrix."
+        communication_template: "[SIGNAL] Capturing architectural quality drivers and constraints..."
+        halt_condition: "Await confirmation when conflicting requirements are detected."
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Identify Reference Patterns"
+        instructions: "Reference prior solutions or templates for similar problem spaces and flag reusable assets."
+        communication_template: "[REFERENCE] Reviewing reusable patterns for alignment..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "requirements-traceability-matrix.csv"
+        storage_location: ".artifacts/design/requirements-traceability-matrix.csv"
+      - evidence_item: "quality-attribute-inventory.json"
+        storage_location: ".artifacts/design/quality-attribute-inventory.json"
+
+    quality_gate:
+      gate_name: "Input Integrity Gate"
+      criteria: "All prerequisite artifacts verified, conflicts resolved or logged with owner, and traceability anchors established."
+      failure_handling: "Escalate to Product Manager for clarification and retry once conflicts are resolved."
+
+  - phase_number: 2
+    phase_name: "Architecture Modeling & Decision Capture"
+    objective: "Design solution architecture, map data & integration flows, and document rationale with governance-ready artifacts."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Draft System Context"
+        instructions: "Define actors, external integrations, and deployment boundaries; generate preliminary diagrams and architecture narratives."
+        communication_template: "[PHASE 2] Constructing system context and boundary definitions..."
+        halt_condition: "Await stakeholder confirmation for new integrations or vendors."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Detail Component Architecture"
+        instructions: "Decompose system into services/modules with responsibilities, data contracts, and interface specifications."
+        communication_template: "[DESIGN] Documenting component responsibilities and APIs..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "MUST"
+        action_title: "Validate Technology & Compliance"
+        instructions: "Evaluate candidate technologies against constraints, compliance requirements, and stack standards; record decisions with rationale."
+        communication_template: "[EVALUATION] Validating technology stack selections against constraints..."
+        halt_condition: "Stop if compliance blockers are detected and require governance review."
+
+    evidence_collection:
+      - evidence_item: "architecture-spec.md"
+        storage_location: ".artifacts/design/architecture-spec.md"
+      - evidence_item: "architecture-diagram.mmd"
+        storage_location: ".artifacts/design/architecture-diagram.mmd"
+      - evidence_item: "architecture-decision-records.json"
+        storage_location: ".artifacts/design/architecture-decision-records.json"
+
+    quality_gate:
+      gate_name: "Architecture Integrity Gate"
+      criteria: "Architecture spec covers system context, component breakdown, data flows, and non-functional design strategies with decision rationale."
+      failure_handling: "Revisit modeling with missing sections, resolve decision conflicts, and re-run validation scripts."
+
+  - phase_number: 3
+    phase_name: "Validation, Risks, and Sign-off"
+    objective: "Validate architecture against constraints, capture risks/assumptions, and secure stakeholder approval."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Run Architecture Consistency Checks"
+        instructions: "Execute automated design validations, dependency checks, and alignment audits against governance templates."
+        communication_template: "[PHASE 3] Running architecture validation and consistency checks..."
+        halt_condition: "Stop if validation scripts return non-zero status."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Document Risks & Mitigations"
+        instructions: "Log architectural risks, assumptions, and mitigation plans; classify severity and owners."
+        communication_template: "[RISK] Recording architecture risks and mitigation strategies..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "MUST"
+        action_title: "Secure Stakeholder Approval"
+        instructions: "Share architecture package, collect review notes, and obtain documented approval before releasing to task planning."
+        communication_template: "[APPROVAL] Requesting architecture sign-off from stakeholders..."
+        halt_condition: "Await explicit approval recorded in approval log."
+
+    evidence_collection:
+      - evidence_item: "architecture-validation-report.json"
+        storage_location: ".artifacts/design/architecture-validation-report.json"
+      - evidence_item: "architecture-risk-register.md"
+        storage_location: ".artifacts/design/architecture-risk-register.md"
+      - evidence_item: "architecture-approval-record.json"
+        storage_location: ".artifacts/design/architecture-approval-record.json"
+
+    quality_gate:
+      gate_name: "Approval & Risk Gate"
+      criteria: "Validation report passes, risk register complete with owners, and approval record signed by designated decision maker."
+      failure_handling: "Do not proceed; resolve failed checks or missing approvals and rerun validation before handoff."
+
+## ============================================
+## SECTION 4: INTEGRATION & DATA FLOW
+## ============================================
+
+inputs_from:
+  - protocol: "01-project-brief-creation"
+    artifacts_consumed: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
+    usage: "Anchor design scope, stakeholder objectives, and constraints."
+  - protocol: "1-create-prd"
+    artifacts_consumed: "PRD.md, acceptance criteria, non-functional requirements register"
+    usage: "Drive functional decomposition and quality attribute design strategies."
+
+outputs_to:
+  - protocol: "2-generate-tasks"
+    artifacts_provided: "architecture-spec.md, architecture-diagram.mmd, architecture-decision-records.json, requirements-traceability-matrix.csv"
+    purpose: "Enable task decomposition aligned with architecture boundaries and traceability requirements."
+  - protocol: "7-environment-setup-validation"
+    artifacts_provided: "technology stack selections, infrastructure topology, configuration baselines"
+    purpose: "Guide environment provisioning and toolchain alignment."
+
+## ============================================
+## SECTION 5: AUTOMATION & TOOLING
+## ============================================
+
+automation_hooks:
+  - hook_name: "plan_from_brief"
+    trigger_point: "Phase 1 after validating artifacts"
+    command: "python scripts/plan_from_brief.py --brief PROJECT-BRIEF.md --output .artifacts/design/design-intent.json"
+    expected_output: "design-intent.json summarizing scope domains and capability mapping"
+
+  - hook_name: "generate_consistency_report"
+    trigger_point: "Phase 2 after drafting architecture spec"
+    command: "python scripts/generate_consistency_report.py --spec .artifacts/design/architecture-spec.md --output .artifacts/design/consistency-report.json"
+    expected_output: "Consistency report covering requirement traceability and decision coverage"
+
+  - hook_name: "validate_workflow_integration"
+    trigger_point: "Phase 3 prior to approval request"
+    command: "python scripts/validate_workflow_integration.py --mode architecture --output .artifacts/design/architecture-validation-report.json"
+    expected_output: "Validation report with pass/fail status for architecture gates"
+
+## ============================================
+## SECTION 6: COMMUNICATION PROTOCOLS
+## ============================================
+
+announcements:
+  phase_start_template: "[ARCH DESIGN PHASE {N} START] - Beginning {phase_name}..."
+  phase_complete_template: "[ARCH DESIGN PHASE {N} COMPLETE] - {phase_name} finished successfully."
+  automation_status_template: "[AUTOMATION] {script_name} executed: {status}"
+
+validation_prompts:
+  - prompt_context: "After architecture validation passes"
+    prompt_template: "[APPROVAL REQUEST] Architecture package validated. Approve release to task planning? (yes/no)"
+
+  - prompt_context: "When conflicting requirements detected"
+    prompt_template: "[DECISION] Conflicting requirements logged: {conflict_summary}. Provide resolution or defer? (resolve/defer)"
+
+error_handling:
+  - error_type: "MissingArtifacts"
+    error_message_template: "[ERROR] Required discovery or PRD artifacts missing for architecture planning."
+    recovery_steps: "1. Identify missing files, 2. Request updates from responsible protocol owner, 3. Re-validate inputs."
+
+  - error_type: "ValidationFailure"
+    error_message_template: "[ERROR] Architecture validation checks failed: {issues}."
+    recovery_steps: "1. Review validation report, 2. Address failed criteria, 3. Re-run validate_workflow_integration.py."
+
+  - error_type: "ApprovalPending"
+    error_message_template: "[WAIT] Architecture approval not yet recorded."
+    recovery_steps: "1. Notify stakeholders, 2. Capture decisions in approval record, 3. Resume once approval documented."
+
+## ============================================
+## SECTION 7: COMPLETION & HANDOFF
+## ============================================
+
+completion_checklist:
+  - "Requirements traceability matrix finalized"
+  - "Architecture spec and diagrams stored in .artifacts/design/"
+  - "Architecture decision records captured"
+  - "Risk register populated with owners and mitigations"
+  - "Architecture validation report marked PASS"
+  - "Stakeholder approval recorded"
+
+handoff_command: "[PROTOCOL COMPLETE] - Architecture specification approved. Ready for Protocol 2 (Task Generation)."
+
+next_protocol: "2-generate-tasks"
+
+## ============================================
+## SECTION 8: ADDITIONAL CONTEXT (OPTIONAL)
+## ============================================
+
+context: "This protocol bridges validated requirements and execution planning by producing an evidence-backed architecture package with governance-ready approvals."
+
+focus_areas:
+  - "Traceability from requirements to design components"
+  - "Integration and data flow clarity"
+  - "Decision logging with compliance alignment"
+
+special_considerations: "If multiple solution options exist, capture comparison tables and ensure chosen architecture aligns with budget, compliance, and scalability constraints."

@@ -25,6 +25,10 @@ Phase 1-2: Planning (PRD & Tasks)
 ├── 1-create-prd.md (Product Manager)
 └── 2-generate-tasks.md (Tech Lead)
 
+Phase 2A: Architecture & Environment
+├── 6-technical-design-architecture.md (Solutions Architect)
+└── 7-environment-setup-validation.md (DevOps Engineer)
+
 Phase 3: Execution
 └── 3-process-tasks.md (Paired Developer)
 
@@ -43,6 +47,11 @@ Phase 4: Quality Assurance
 │       ├── enhanced-static-template.md
 │       ├── enhanced-static-validation.md
 │       └── rule-injection-system.md
+
+Phase 4B: Release & Operations
+├── 11-production-deployment.md (Release Manager)
+├── 12-monitoring-observability.md (Site Reliability Engineer)
+└── 13-incident-response-rollback.md (Incident Commander)
 
 Phase 5: Continuous Improvement
 ├── 5-implementation-retrospective.md (Process Improvement Lead)
