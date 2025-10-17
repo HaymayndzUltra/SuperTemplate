@@ -1,0 +1,208 @@
+# Protocol 6 Requirements (Technical Design & Architecture)
+protocol_number: "6"
+protocol_name: "technical-design-architecture"
+domain_compliance: "Architecture"
+purpose: "Translate the approved Project Brief into a validated technical architecture package that downstream teams can execute without ambiguity."
+
+ai_role: "Solutions Architect"
+primary_guardrail: "Do not introduce components or integrations that are not backed by validated brief or discovery artifacts."
+prerequisites:
+  - protocol: "01-project-brief-creation"
+    required_artifacts: "PROJECT-BRIEF.md, BRIEF-APPROVAL-RECORD.json, project-brief-validation-report.json"
+  - protocol: "00B-client-discovery-initiation"
+    required_artifacts: "client-discovery-form.md, scope-clarification.md, communication-plan.md"
+phase_in_workflow: "Between Protocol 01 (Project Brief Creation) and Protocol 02 (Generate Tasks)"
+
+phases:
+  - phase_number: 1
+    phase_name: "Source Validation and Context Alignment"
+    objective: "Confirm all prerequisite artifacts are approved and extract requirements for architecture design."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Validate Source Artifacts"
+        instructions: "Check PROJECT-BRIEF.md, approval records, and discovery notes for completeness and version alignment."
+        communication_template: "[PHASE 1 START] - Validating source artifacts for architecture planning..."
+        halt_condition: "Stop if any artifact is missing or outdated."
+      - step_number: 2
+        action_type: "GUIDELINE"
+        action_title: "Extract Design Inputs"
+        instructions: "Summarize functional scope, constraints, and non-functional requirements into a design input matrix."
+        communication_template: "Consolidating functional and non-functional requirements for architectural mapping..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Source alignment report"
+        storage_location: ".artifacts/design/source-alignment-report.json"
+      - evidence_item: "Design input matrix"
+        storage_location: ".artifacts/design/design-input-matrix.md"
+    quality_gate:
+      gate_name: "Source Alignment Gate"
+      criteria: "All prerequisite artifacts validated, no pending approvals."
+      failure_handling: "Request updated brief or discovery artifacts before proceeding."
+  - phase_number: 2
+    phase_name: "Architecture Decomposition and Decision Mapping"
+    objective: "Define system boundaries, capture ADRs, and produce integration diagrams."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Map System Boundaries"
+        instructions: "Identify services, domains, data stores, and integration points implied by the brief."
+        communication_template: "[PHASE 2 START] - Mapping system boundaries and interaction surfaces..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Document Architecture Decisions"
+        instructions: "Record ADR-style decisions with rationale, constraints, and acceptance criteria."
+        communication_template: "Recording architecture decision records with rationale and constraints..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Generate Interaction Diagram"
+        instructions: "Produce sequence/data flow diagram showing critical paths and dependencies."
+        communication_template: "Generating interaction diagram for critical flows..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Architecture boundaries inventory"
+        storage_location: ".artifacts/design/architecture-boundaries.json"
+      - evidence_item: "Architecture decision log"
+        storage_location: ".artifacts/design/architecture-decisions.md"
+      - evidence_item: "Interaction diagram"
+        storage_location: ".artifacts/design/interaction-diagram.drawio"
+    quality_gate:
+      gate_name: "Architecture Integrity Gate"
+      criteria: "System boundaries defined, ADRs captured, diagrams linked to requirements."
+      failure_handling: "Revisit decisions to ensure traceability before proceeding."
+  - phase_number: 3
+    phase_name: "Specification Packaging and Validation"
+    objective: "Compile technical design, validate compliance, and outline implementation roadmap."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Assemble Technical Specification"
+        instructions: "Compile design inputs, boundaries, ADRs, and interface definitions into TECHNICAL-DESIGN.md."
+        communication_template: "[PHASE 3 START] - Assembling technical design specification..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Run Design Validation"
+        instructions: "Execute workflow integration validation for security, data, and integration compliance."
+        communication_template: "Running design compliance validation across security, data, and integration constraints..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Publish Implementation Roadmap"
+        instructions: "Document epics/modules, sequencing, and task package boundaries for task generation."
+        communication_template: "Publishing implementation roadmap for task planning..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Technical design specification"
+        storage_location: "TECHNICAL-DESIGN.md"
+      - evidence_item: "Design validation report"
+        storage_location: ".artifacts/design/design-validation-report.json"
+      - evidence_item: "Implementation roadmap"
+        storage_location: ".artifacts/design/implementation-roadmap.md"
+    quality_gate:
+      gate_name: "Design Validation Gate"
+      criteria: "Compliance checks pass and risk mitigations documented."
+      failure_handling: "Address failed checks, update ADRs, rerun validation."
+  - phase_number: 4
+    phase_name: "Review, Approval, and Handoff Preparation"
+    objective: "Obtain stakeholder approval and prepare downstream handoff assets."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Conduct Stakeholder Review"
+        instructions: "Present design decisions for sign-off and capture approval."
+        communication_template: "[PHASE 4 START] - Presenting technical design for stakeholder approval..."
+        halt_condition: "Pause until approval is recorded."
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Prepare Task Generation Inputs"
+        instructions: "Export component responsibilities and sequencing into machine-readable format for Protocol 02."
+        communication_template: "Preparing task-generation inputs from approved design..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Archive Supporting Assets"
+        instructions: "Create manifest of diagrams, ADRs, and validation reports for future reference."
+        communication_template: "Archiving supporting design assets..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Design approval record"
+        storage_location: ".artifacts/design/design-approval-record.json"
+      - evidence_item: "Task generation input package"
+        storage_location: ".artifacts/design/task-generation-input.json"
+      - evidence_item: "Design artifact manifest"
+        storage_location: ".artifacts/design/design-artifact-manifest.json"
+    quality_gate:
+      gate_name: "Stakeholder Approval Gate"
+      criteria: "Approval recorded with timestamp and owner; handoff assets prepared."
+      failure_handling: "Follow up with stakeholders and resolve outstanding issues before completion."
+
+inputs_from:
+  - protocol: "01-project-brief-creation"
+    artifacts_consumed: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
+    usage: "Ensure architecture decisions trace back to approved requirements."
+  - protocol: "00B-client-discovery-initiation"
+    artifacts_consumed: "client-context-notes.md, scope-clarification.md, communication-plan.md"
+    usage: "Provide business context, constraints, and collaboration expectations."
+outputs_to:
+  - protocol: "02-generate-tasks"
+    artifacts_provided: "TECHNICAL-DESIGN.md, task-generation-input.json, implementation-roadmap.md"
+    purpose: "Enable task decomposition aligned with approved architecture."
+  - protocol: "07-environment-setup-validation"
+    artifacts_provided: "design-validation-report.json, architecture-boundaries.json"
+    purpose: "Inform environment requirements and integration assumptions."
+
+automation_hooks:
+  - hook_name: "validate_brief.py"
+    trigger_point: "Phase 1 source validation"
+    command: "python scripts/validate_brief.py --path PROJECT-BRIEF.md --output .artifacts/design/source-alignment-report.json"
+    expected_output: "source-alignment-report.json summarizing brief integrity"
+  - hook_name: "plan_from_brief.py"
+    trigger_point: "Phase 2 system boundary mapping"
+    command: "python scripts/plan_from_brief.py --brief PROJECT-BRIEF.md --output .artifacts/design/architecture-boundaries.json"
+    expected_output: "architecture-boundaries.json with component inventory"
+  - hook_name: "validate_workflow_integration.py"
+    trigger_point: "Phase 3 design validation"
+    command: "python scripts/validate_workflow_integration.py --design TECHNICAL-DESIGN.md --output .artifacts/design/design-validation-report.json"
+    expected_output: "design-validation-report.json highlighting compliance status"
+
+announcements:
+  phase_start_template: "[PHASE {N} START] - {phase_name}..."
+  phase_complete_template: "[PHASE {N} COMPLETE] - {phase_name} finished successfully."
+  automation_status_template: "[AUTOMATION] {script_name} executed: {status}"
+
+validation_prompts:
+  - prompt_context: "Before stakeholder approval request"
+    prompt_template: "[VALIDATION REQUEST] - Technical design package compiled. Approve to request stakeholder sign-off? (yes/no)"
+  - prompt_context: "Before handoff"
+    prompt_template: "[APPROVAL CONFIRMATION] - Stakeholder approval received. Confirm handoff to Protocol 02? (yes/no)"
+
+error_handling:
+  - error_type: "MissingArtifacts"
+    error_message_template: "[ERROR] Required brief or discovery artifact missing or outdated."
+    recovery_steps: "Request updated artifact, rerun Phase 1 validation before continuing."
+  - error_type: "ValidationFailure"
+    error_message_template: "[ERROR] Design validation reported critical issues."
+    recovery_steps: "Address findings, update ADRs, rerun validate_workflow_integration.py."
+  - error_type: "ApprovalPending"
+    error_message_template: "[ERROR] Stakeholder approval not recorded."
+    recovery_steps: "Follow up with stakeholders, capture approval record, then proceed."
+
+completion_checklist:
+  - "Source alignment report confirms approved inputs"
+  - "Architecture boundaries, ADRs, and diagrams finalized"
+  - "Design validation report shows no critical issues"
+  - "Stakeholder approval recorded"
+  - "Task-generation inputs packaged"
+
+handoff_command: "[PROTOCOL COMPLETE] - Technical design approved. Ready for Protocol 02 (Generate Tasks)."
+next_protocol: "02-generate-tasks"
+
+context: "Bridges requirements and execution by converting the Project Brief into an actionable architecture package."
+focus_areas:
+  - "Traceability between requirements and architecture"
+  - "Validation of integration and compliance constraints"
+  - "Preparation of machine-readable inputs for task planning"
+special_considerations: "Maintain all artifacts under .artifacts/design/ to support auditability and downstream automation."

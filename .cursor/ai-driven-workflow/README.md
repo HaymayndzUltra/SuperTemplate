@@ -21,9 +21,13 @@ Phase 0: Foundation (Bootstrap & Discovery)
 ├── 00-client-discovery.md (Client Discovery Specialist)  
 └── 00-generate-rules.md (Rule Generation Command)
 
-Phase 1-2: Planning (PRD & Tasks)
+Phase 1-2: Planning (PRD, Architecture & Tasks)
 ├── 1-create-prd.md (Product Manager)
+├── 6-technical-design-architecture.md (Solutions Architect)
 └── 2-generate-tasks.md (Tech Lead)
+
+Phase 2.5: Environment Readiness
+└── 7-environment-setup-validation.md (DevOps Environment Engineer)
 
 Phase 3: Execution
 └── 3-process-tasks.md (Paired Developer)
@@ -43,6 +47,11 @@ Phase 4: Quality Assurance
 │       ├── enhanced-static-template.md
 │       ├── enhanced-static-validation.md
 │       └── rule-injection-system.md
+
+Phase 4.5: Deployment & Operations
+├── 11-production-deployment.md (Release Manager)
+├── 12-monitoring-observability.md (Site Reliability Engineer)
+└── 13-incident-response-rollback.md (Incident Commander)
 
 Phase 5: Continuous Improvement
 ├── 5-implementation-retrospective.md (Process Improvement Lead)
@@ -363,6 +372,77 @@ Transform PRD into simple, actionable plan with minimum viable steps, guiding im
 - Detailed sub-tasks with rule applications and dependencies
 - Automation hooks for CI/CD integration
 - Model persona recommendations for execution
+
+### Protocol 6: Technical Design & Architecture Specification
+**Role:** Solutions Architect
+**File:** `6-technical-design-architecture.md`
+
+#### Purpose
+Translate the approved Project Brief and discovery evidence into an implementation-ready technical architecture package with validated decisions, diagrams, and downstream-ready task inputs.
+
+#### Prerequisites
+- `PROJECT-BRIEF.md`, `BRIEF-APPROVAL-RECORD.json`
+- Discovery artifacts (`client-discovery-form.md`, `scope-clarification.md`)
+- Stakeholder alignment on scope and constraints
+
+#### Execution Algorithm (4-Phase Process)
+1. **Source Validation & Alignment** – Validate brief/discovery artifacts with `validate_brief.py` and create design input matrix.
+2. **Architecture Decomposition** – Map boundaries using `plan_from_brief.py`, document ADRs, and generate interaction diagrams.
+3. **Specification Packaging** – Assemble `TECHNICAL-DESIGN.md`, run `validate_workflow_integration.py`, and produce implementation roadmap.
+4. **Review & Handoff** – Record stakeholder approval, archive artifacts, and export task-generation inputs.
+
+#### Quality Gates
+- **Source Alignment Gate:** All prerequisite artifacts validated.
+- **Architecture Integrity Gate:** Boundaries, ADRs, diagrams complete.
+- **Design Validation Gate:** Compliance checks pass, risks mitigated.
+- **Stakeholder Approval Gate:** Approval recorded with timestamp and owner.
+
+#### Automation Hooks
+- `validate_brief.py`
+- `plan_from_brief.py`
+- `validate_workflow_integration.py`
+
+#### Outputs
+- `TECHNICAL-DESIGN.md`
+- `.artifacts/design/design-validation-report.json`
+- `.artifacts/design/task-generation-input.json`
+- `.artifacts/design/design-approval-record.json`
+
+### Protocol 7: Development Environment Setup & Validation
+**Role:** DevOps Environment Engineer
+**File:** `7-environment-setup-validation.md`
+
+#### Purpose
+Provision and validate a reproducible development environment aligned with the technical design, delivering a documented onboarding package for engineering teams.
+
+#### Prerequisites
+- Technical design artifacts (`TECHNICAL-DESIGN.md`, validation report)
+- Bootstrap context kit (`.cursor/context-kit/`, `.artifacts/bootstrap/`)
+- Access to repository credentials, secrets, and infrastructure endpoints
+
+#### Execution Algorithm (4-Phase Process)
+1. **Preflight Requirements Extraction** – Derive tooling/services from design artifacts and confirm credential readiness.
+2. **Provisioning & Diagnostics** – Run `doctor.py --strict`, execute `scripts/setup.sh`, and document provisioning outputs.
+3. **Configuration & Validation** – Apply configs with `scaffold_phase_artifacts.py` and execute `install_and_test.sh --smoke`.
+4. **Documentation & Distribution** – Produce `ENVIRONMENT-README.md`, record approval, and publish onboarding archive.
+
+#### Quality Gates
+- **Requirements Confirmation Gate:** Requirements and credentials documented.
+- **Tooling Health Gate:** Diagnostics succeed with compliant versions.
+- **Validation Suite Gate:** Smoke/lint/migration suite passes on clean setup.
+- **Onboarding Package Gate:** Handbook, approval, and onboarding bundle completed.
+
+#### Automation Hooks
+- `doctor.py --strict`
+- `scripts/setup.sh --non-interactive`
+- `scaffold_phase_artifacts.py --phase env`
+- `install_and_test.sh --smoke`
+
+#### Outputs
+- `.artifacts/environment/environment-requirements.md`
+- `.artifacts/environment/validation-suite-report.json`
+- `ENVIRONMENT-README.md`
+- `.artifacts/environment/environment-onboarding.zip`
 
 ## 5. Phase 3: Execution Protocol
 
@@ -703,6 +783,119 @@ Orchestrate execution of specialized review protocols with intelligent routing, 
 **Quality Gates:** Rule registry complete, context filtering validated, protocol enhancement confirmed
 
 **Outputs:** FilteredRules (critical/high/medium/low), EnhancedProtocol with injected rules
+
+---
+
+## 6.5 Deployment & Operations Protocols
+
+### Protocol 11: Production Deployment & Release Management
+**Role:** Release Manager
+**File:** `11-production-deployment.md`
+
+#### Purpose
+Execute controlled deployments by validating readiness, orchestrating staging and production releases, and documenting every action for auditability and recovery.
+
+#### Prerequisites
+- Protocol 10 artifacts (staging validation, rollback rehearsal, deployment checklist)
+- Protocol 7 environment validation report
+- Quality audit approvals and stakeholder sign-off
+
+#### Execution Algorithm (4-Phase Process)
+1. **Readiness Verification & Approval** – Confirm prerequisite evidence, finalize release manifest, schedule communication plan.
+2. **Staging Deployment Execution** – Run deployment scripts against staging, validate with `validate_workflows.py`, capture UAT snapshot.
+3. **Production Deployment & Monitoring** – Request approval, execute production rollout with `deploy_backend.sh`, and run immediate checks using `collect_perf.py`.
+4. **Release Review & Documentation** – Monitor stabilization window, compile `DEPLOYMENT-REPORT.md`, deliver retrospective inputs.
+
+#### Quality Gates
+- **Readiness Confirmation Gate** – All prerequisites and approvals recorded.
+- **Staging Validation Gate** – Staging deployment successful with tests/UAT approved.
+- **Production Launch Gate** – Production approval captured, deployment successful, post-checks pass.
+- **Stabilization Gate** – Health window metrics within thresholds, release report completed.
+
+#### Automation Hooks
+- `deploy_backend.sh`
+- `validate_workflows.py --mode staging`
+- `collect_perf.py --env production`
+- `rollback_backend.sh` / `rollback_frontend.sh`
+
+#### Outputs
+- `.artifacts/deployment/deployment-readiness-checklist.json`
+- `.artifacts/deployment/staging-deployment-report.json`
+- `.artifacts/deployment/production-deployment-report.json`
+- `DEPLOYMENT-REPORT.md` and retrospective inputs
+
+---
+
+### Protocol 12: Post-Deployment Monitoring & Observability
+**Role:** Site Reliability Engineer (SRE)
+**File:** `12-monitoring-observability.md`
+
+#### Purpose
+Activate, validate, and tune observability systems immediately after deployment to ensure incidents are detected and triaged within agreed service objectives.
+
+#### Prerequisites
+- Deployment evidence (`post-deployment-validation.json`, `deployment-health-log.md`)
+- Monitoring requirements from quality audit or compliance teams
+
+#### Execution Algorithm (4-Phase Process)
+1. **Instrumentation Alignment & Baseline Capture** – Review deployment outputs, run `collect_perf.py --audit`, record baseline metrics.
+2. **Monitoring Activation & Alert Validation** – Configure dashboards, execute alert tests via `workflow_automation.py --workflow alert-test`, update runbooks.
+3. **Continuous Observability Assurance** – Schedule checks, correlate alerts with incidents, generate tuning report using `aggregate_coverage.py`.
+4. **Handoff & Improvement Loop** – Deliver monitoring package, record approvals, queue improvement actions.
+
+#### Quality Gates
+- **Instrumentation Coverage Gate** – No high-risk telemetry gaps remain.
+- **Alert Validation Gate** – Synthetic alerts reach on-call responders within SLA.
+- **Observability Assurance Gate** – Automation schedule and tuning report documented.
+- **Handoff Package Gate** – Monitoring package manifest and approvals completed.
+
+#### Automation Hooks
+- `collect_perf.py --env production --audit`
+- `workflow_automation.py --workflow alert-test`
+- `aggregate_coverage.py --scope monitoring`
+
+#### Outputs
+- `.artifacts/monitoring/instrumentation-audit.json`
+- `.artifacts/monitoring/alert-test-results.json`
+- `.artifacts/monitoring/observability-scorecard.md`
+- `.artifacts/monitoring/monitoring-package-manifest.json`
+
+---
+
+### Protocol 13: Incident Response & Rollback
+**Role:** Incident Commander
+**File:** `13-incident-response-rollback.md`
+
+#### Purpose
+Coordinate rapid mitigation of production incidents triggered after deployment, execute rollback when necessary, and deliver complete evidence for postmortem analysis.
+
+#### Prerequisites
+- Monitoring package outputs (`monitoring-package-manifest.json`, `alert-test-results.json`)
+- Deployment rollback plan and production deployment logs
+
+#### Execution Algorithm (4-Phase Process)
+1. **Incident Detection & Severity Assessment** – Monitor alerts, classify severity, log communications.
+2. **Containment & Mitigation Planning** – Draft mitigation/rollback plan, validate readiness, capture decision log.
+3. **Execution & Verification** – Run mitigation or rollback scripts, validate recovery with `validate_workflows.py --mode recovery`, update incident timeline.
+4. **Resolution & Documentation** – Confirm resolution, collect root-cause evidence, compile `INCIDENT-REPORT.md`.
+
+#### Quality Gates
+- **Severity Alignment Gate** – Severity documented, stakeholders notified.
+- **Mitigation Readiness Gate** – Plan approved, rollback prerequisites confirmed.
+- **Recovery Validation Gate** – Mitigation executed with successful recovery validation.
+- **Resolution & Documentation Gate** – Resolution summary, RCA inputs, incident report completed.
+
+#### Automation Hooks
+- `rollback_backend.sh` / `rollback_frontend.sh`
+- `validate_workflows.py --mode recovery`
+- `restore_workflows.py`
+- `retrospective_evidence_report.py --scope incident`
+
+#### Outputs
+- `.artifacts/incidents/severity-assessment.json`
+- `.artifacts/incidents/mitigation-execution-report.json`
+- `.artifacts/incidents/recovery-validation.json`
+- `INCIDENT-REPORT.md` and `rca-manifest.json`
 
 ---
 
@@ -1107,9 +1300,14 @@ This directory contains the end-to-end ai-driven-workflow protocols and the unif
 - `00-client-discovery.md` – Protocol 00 client discovery
 - `00-generate-rules.md` – Protocol 00 rule generation command
 - `1-create-prd.md` – Protocol 1 PRD creation
+- `6-technical-design-architecture.md` – Protocol 6 technical design & architecture specification
 - `2-generate-tasks.md` – Protocol 2 task generation
+- `7-environment-setup-validation.md` – Protocol 7 environment setup & validation
 - `3-process-tasks.md` – Protocol 3 controlled execution
 - `4-quality-audit.md` – Unified review orchestrator and entry point
+- `11-production-deployment.md` – Protocol 11 deployment & release management
+- `12-monitoring-observability.md` – Protocol 12 monitoring & observability
+- `13-incident-response-rollback.md` – Protocol 13 incident response & rollback
 - `5-implementation-retrospective.md` – Protocol 5 retrospective
 - `review-protocols/` – Library of specialized review protocols and utilities
 
@@ -1124,9 +1322,14 @@ This directory contains the end-to-end ai-driven-workflow protocols and the unif
 - Discovery → `00-client-discovery.md`
 - Rules → `00-generate-rules.md`
 - PRD → `1-create-prd.md`
+- Architecture → `6-technical-design-architecture.md`
 - Tasks → `2-generate-tasks.md`
+- Environment → `7-environment-setup-validation.md`
 - Execute → `3-process-tasks.md`
 - Review → `4-quality-audit.md`
+- Deploy → `11-production-deployment.md`
+- Monitor → `12-monitoring-observability.md`
+- Incident Response → `13-incident-response-rollback.md`
 - Retro → `5-implementation-retrospective.md`
 
 ### Notes on advanced features

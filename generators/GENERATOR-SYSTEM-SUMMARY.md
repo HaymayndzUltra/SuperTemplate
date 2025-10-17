@@ -28,18 +28,24 @@ Nakalikha na ang **bidirectional generator system** na nagbibigay ng complete ci
 - Circular validation protocol
 - Structural compliance validation
 
-### 3. Fillable Input Form Template
-**File:** `protocol-input-form.yaml`
-- User-facing form for protocol requirements
-- All required fields with examples
-- Complete filled example included
-- Clear instructions and validation notes
+### 3. Fillable Input Form Templates
+- `protocol-input-form.yaml` – Base template
+- `protocol-input-form-6-technical-design.yaml`
+- `protocol-input-form-7-environment.yaml`
+- `protocol-input-form-11-deployment.yaml`
+- `protocol-input-form-12-monitoring.yaml`
+- `protocol-input-form-13-incident.yaml`
 
-### 4. Sample Implementation (Validation Test)
-**Files:**
-- `sample-filled-form.yaml` - Example filled input form
-- `6-deployment-automation.md` - Generated protocol
-- `analysis-6-deployment-automation.md` - Meta-analysis of generated protocol
+Each form includes required fields, contextual examples, and validation notes tailored to its protocol domain.
+
+### 4. Generator Blueprints & Validation Artifacts
+- `6-technical-design-generator.md` ↔ `.cursor/ai-driven-workflow/6-technical-design-architecture.md`
+- `7-environment-generator.md` ↔ `.cursor/ai-driven-workflow/7-environment-setup-validation.md`
+- `11-deployment-generator.md` ↔ `.cursor/ai-driven-workflow/11-production-deployment.md`
+- `12-monitoring-generator.md` ↔ `.cursor/ai-driven-workflow/12-monitoring-observability.md`
+- `13-incident-generator.md` ↔ `.cursor/ai-driven-workflow/13-incident-response-rollback.md`
+
+Meta-analysis validation is recommended for each generated protocol to preserve the circular workflow.
 
 ---
 

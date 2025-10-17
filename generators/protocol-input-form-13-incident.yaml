@@ -1,0 +1,225 @@
+# Protocol 13 Requirements (Incident Response & Rollback)
+protocol_number: "13"
+protocol_name: "incident-response-rollback"
+domain_compliance: "Operations Resilience"
+purpose: "Coordinate rapid detection, mitigation, and rollback of production incidents with complete evidence capture."
+
+ai_role: "Incident Commander"
+primary_guardrail: "Do not execute rollback actions until severity, scope, and stakeholder alignment are confirmed."
+prerequisites:
+  - protocol: "12-monitoring-observability"
+    required_artifacts: "monitoring-package-manifest.json, alert-test-results.json, monitoring-approval-record.json"
+  - protocol: "11-production-deployment"
+    required_artifacts: "rollback-plan.md, production-deployment-report.json, post-deployment-validation.json"
+phase_in_workflow: "Between Protocol 12 (Monitoring & Observability) and Protocol 05 (Implementation Retrospective)"
+
+phases:
+  - phase_number: 1
+    phase_name: "Incident Detection and Severity Assessment"
+    objective: "Identify incident signals, classify severity, and notify stakeholders."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Monitor Active Alerts"
+        instructions: "Review monitoring feeds and alert outputs continuously for incident triggers."
+        communication_template: "[PHASE 1 START] - Monitoring production alerts for incident signals..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Classify Incident Severity"
+        instructions: "Determine severity based on SLO breaches, customer impact, and blast radius."
+        communication_template: "Assessing incident severity and affected services..."
+        halt_condition: "Pause until severity classification confirmed by on-call team."
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Notify Stakeholders"
+        instructions: "Trigger communication plan using channels defined in monitoring approval record."
+        communication_template: "Notifying stakeholders and recording communication log..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Incident intake log"
+        storage_location: ".artifacts/incidents/incident-intake-log.md"
+      - evidence_item: "Severity assessment"
+        storage_location: ".artifacts/incidents/severity-assessment.json"
+      - evidence_item: "Communication log"
+        storage_location: ".artifacts/incidents/communication-log.md"
+    quality_gate:
+      gate_name: "Severity Alignment Gate"
+      criteria: "Severity classification documented and stakeholder notifications recorded."
+      failure_handling: "Reassess severity with incident team before proceeding."
+  - phase_number: 2
+    phase_name: "Containment and Mitigation Planning"
+    objective: "Develop mitigation or rollback strategy and confirm readiness."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Identify Mitigation Actions"
+        instructions: "Consult runbooks and rollback plan to propose mitigation strategy."
+        communication_template: "[PHASE 2 START] - Identifying mitigation strategy for incident containment..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Validate Rollback Feasibility"
+        instructions: "Verify availability of rollback scripts, backups, and dependencies."
+        communication_template: "Validating rollback readiness and dependencies..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Align Stakeholder Decision"
+        instructions: "Present mitigation options and capture approval decision."
+        communication_template: "Recording stakeholder decision for mitigation plan..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Mitigation plan"
+        storage_location: ".artifacts/incidents/mitigation-plan.md"
+      - evidence_item: "Rollback readiness checklist"
+        storage_location: ".artifacts/incidents/rollback-readiness-checklist.json"
+      - evidence_item: "Decision log"
+        storage_location: ".artifacts/incidents/decision-log.json"
+    quality_gate:
+      gate_name: "Mitigation Readiness Gate"
+      criteria: "Mitigation plan documented, rollback prerequisites confirmed, decision recorded."
+      failure_handling: "Escalate missing prerequisites and coordinate with deployment team before executing."
+  - phase_number: 3
+    phase_name: "Execution and Verification"
+    objective: "Execute approved mitigation/rollback actions and verify system recovery."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Execute Mitigation or Rollback"
+        instructions: "Run approved commands while logging outputs and following change management policies."
+        communication_template: "[PHASE 3 START] - Executing approved mitigation/rollback actions..."
+        halt_condition: "Stop if execution fails or unexpected behavior occurs."
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Validate System Recovery"
+        instructions: "Run verification checks to confirm system stability post-mitigation."
+        communication_template: "Validating post-mitigation system health..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Maintain Incident Timeline"
+        instructions: "Document timeline with events, decisions, and outcomes."
+        communication_template: "Updating incident timeline with latest actions..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Mitigation execution report"
+        storage_location: ".artifacts/incidents/mitigation-execution-report.json"
+      - evidence_item: "Recovery validation"
+        storage_location: ".artifacts/incidents/recovery-validation.json"
+      - evidence_item: "Incident timeline"
+        storage_location: ".artifacts/incidents/incident-timeline.md"
+    quality_gate:
+      gate_name: "Recovery Validation Gate"
+      criteria: "Mitigation executed, recovery validation passed, timeline updated."
+      failure_handling: "Re-run mitigation or escalate severity; consider alternate rollback strategies."
+  - phase_number: 4
+    phase_name: "Resolution and Documentation"
+    objective: "Confirm incident resolution, capture root cause inputs, and prepare incident report."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Confirm Incident Resolution"
+        instructions: "Verify SLO/SLA restored, alerts cleared, and stakeholders informed."
+        communication_template: "[PHASE 4 START] - Confirming incident resolution and notifying stakeholders..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Capture Root Cause Inputs"
+        instructions: "Collect logs, dashboards, diffs, and contributing factors for postmortem."
+        communication_template: "Collecting root cause evidence for incident review..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Generate Incident Report"
+        instructions: "Compile INCIDENT-REPORT.md summarizing severity, timeline, actions, and improvements."
+        communication_template: "Drafting incident report and improvement recommendations..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Resolution summary"
+        storage_location: ".artifacts/incidents/resolution-summary.json"
+      - evidence_item: "RCA manifest"
+        storage_location: ".artifacts/incidents/root-cause-inputs/rca-manifest.json"
+      - evidence_item: "Incident report"
+        storage_location: "INCIDENT-REPORT.md"
+    quality_gate:
+      gate_name: "Resolution & Documentation Gate"
+      criteria: "Resolution recorded, root cause inputs archived, incident report drafted."
+      failure_handling: "Complete missing documentation or schedule follow-up review before closure."
+
+inputs_from:
+  - protocol: "12-monitoring-observability"
+    artifacts_consumed: "monitoring-package-manifest.json, alert-test-results.json, instrumentation-audit.json"
+    usage: "Provide detection signals and alert routing details for incident management."
+  - protocol: "11-production-deployment"
+    artifacts_consumed: "rollback-plan.md, production-deployment-report.json"
+    usage: "Ensure mitigation aligns with deployment details and rollback strategy."
+outputs_to:
+  - protocol: "05-implementation-retrospective"
+    artifacts_provided: "INCIDENT-REPORT.md, rca-manifest.json, recovery-validation.json"
+    purpose: "Support post-incident learning and process improvements."
+  - protocol: "14-performance-optimization"
+    artifacts_provided: "Incident notes highlighting performance degradations"
+    purpose: "Inform performance analysis of production issues."
+  - protocol: "00-project-bootstrap-and-context-engineering"
+    artifacts_provided: "Updated runbooks or communication plans if process changes required"
+    purpose: "Keep context kit synchronized with new incident handling guidelines."
+
+automation_hooks:
+  - hook_name: "rollback_backend.sh"
+    trigger_point: "Phase 3 mitigation execution"
+    command: "bash scripts/rollback_backend.sh --env production --release {tag}"
+    expected_output: "mitigation-execution-report.json updated with rollback logs"
+  - hook_name: "validate_workflows.py"
+    trigger_point: "Phase 3 recovery validation"
+    command: "python scripts/validate_workflows.py --mode recovery --output .artifacts/incidents/recovery-validation.json"
+    expected_output: "recovery-validation.json confirming health status"
+  - hook_name: "restore_workflows.py"
+    trigger_point: "Phase 3 or 4 when automation reset required"
+    command: "python scripts/restore_workflows.py --output .artifacts/incidents/automation-restore-log.json"
+    expected_output: "automation-restore-log.json documenting reset status"
+  - hook_name: "retrospective_evidence_report.py"
+    trigger_point: "Phase 4 documentation"
+    command: "python scripts/retrospective_evidence_report.py --scope incident --output .artifacts/incidents/rca-supporting-evidence.json"
+    expected_output: "rca-supporting-evidence.json aggregating logs and metrics"
+
+announcements:
+  phase_start_template: "[PHASE {N} START] - {phase_name}..."
+  phase_complete_template: "[PHASE {N} COMPLETE] - {phase_name} finished successfully."
+  automation_status_template: "[AUTOMATION] {script_name} executed: {status}"
+
+validation_prompts:
+  - prompt_context: "After severity classification"
+    prompt_template: "[SEVERITY CONFIRMATION] Incident classified as {severity}. Approve mitigation planning? (yes/no)"
+  - prompt_context: "Before executing mitigation"
+    prompt_template: "[MITIGATION APPROVAL] Proposed action: {action}. Execute mitigation now? (yes/no)"
+  - prompt_context: "Before closing incident"
+    prompt_template: "[RESOLUTION CONFIRMATION] System stabilized. Close incident and trigger postmortem package? (yes/no)"
+
+error_handling:
+  - error_type: "FalsePositive"
+    error_message_template: "[ALERT] Potential false-positive detected. Incident severity not confirmed."
+    recovery_steps: "Cross-check dashboards, confirm with monitoring team, downgrade severity if appropriate."
+  - error_type: "RollbackFailure"
+    error_message_template: "[ERROR] Rollback script failed: {error}."
+    recovery_steps: "Switch to alternate rollback path, involve deployment team, capture logs for mitigation report."
+  - error_type: "DocumentationGap"
+    error_message_template: "[ERROR] Required incident evidence missing."
+    recovery_steps: "Collect outstanding artifacts before closing incident or scheduling postmortem."
+
+completion_checklist:
+  - "Severity assessment documented and stakeholders notified"
+  - "Mitigation/rollback plan executed with evidence captured"
+  - "Recovery validation confirms system stability"
+  - "Root cause inputs archived and incident report drafted"
+  - "Follow-up actions registered for retrospective review"
+
+handoff_command: "[PROTOCOL COMPLETE] - Incident resolved. Ready for Protocol 05 (Implementation Retrospective)."
+next_protocol: "05-implementation-retrospective"
+
+context: "Provides operational guardrails for responding to incidents introduced by recent deployments."
+focus_areas:
+  - "Rapid detection and classification"
+  - "Rollback readiness"
+  - "Comprehensive evidence capture"
+special_considerations: "Coordinate closely with deployment and monitoring teams; keep communication logs synchronized with incident tooling."

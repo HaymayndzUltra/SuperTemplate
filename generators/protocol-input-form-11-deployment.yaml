@@ -1,0 +1,228 @@
+# Protocol 11 Requirements (Production Deployment & Release Management)
+protocol_number: "11"
+protocol_name: "production-deployment"
+domain_compliance: "Reliability"
+purpose: "Orchestrate production deployments with zero unplanned downtime through validated readiness, controlled rollout, and documented evidence."
+
+ai_role: "Release Manager"
+primary_guardrail: "Do not deploy to production without recorded staging success, approvals, and a tested rollback plan."
+prerequisites:
+  - protocol: "10-pre-deployment-validation"
+    required_artifacts: "staging-validation-report.json, rollback-rehearsal-log.json, deployment-checklist.md"
+  - protocol: "07-environment-setup-validation"
+    required_artifacts: "validation-suite-report.json, ENVIRONMENT-README.md"
+  - protocol: "04-quality-audit"
+    required_artifacts: "quality-audit-report.md, approval-record.json"
+phase_in_workflow: "Between Protocol 10 (Pre-Deployment Validation) and Protocol 12 (Monitoring & Observability)"
+
+phases:
+  - phase_number: 1
+    phase_name: "Readiness Verification and Approval"
+    objective: "Confirm prerequisite artifacts, approvals, and rollback plans before staging deployment."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Validate Pre-Deployment Evidence"
+        instructions: "Verify Protocol 10 outputs, environment validation, and quality approvals are complete and current."
+        communication_template: "[PHASE 1 START] - Verifying deployment readiness artifacts..."
+        halt_condition: "Stop if any prerequisite artifact is missing or stale."
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Confirm Release Scope and Stakeholders"
+        instructions: "Review change manifest, backlog items, and approvals; ensure rollback instructions are accessible."
+        communication_template: "Confirming release scope, dependencies, and stakeholder approvals..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Schedule Deployment Window"
+        instructions: "Coordinate release window, communications, and monitoring assignments with stakeholders."
+        communication_template: "Scheduling deployment window and communication plan..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Deployment readiness checklist"
+        storage_location: ".artifacts/deployment/deployment-readiness-checklist.json"
+      - evidence_item: "Release manifest"
+        storage_location: ".artifacts/deployment/release-manifest.md"
+    quality_gate:
+      gate_name: "Readiness Confirmation Gate"
+      criteria: "Prerequisite artifacts validated, approvals recorded, rollback plan documented."
+      failure_handling: "Resolve gaps and reschedule release if necessary."
+  - phase_number: 2
+    phase_name: "Staging Deployment Execution"
+    objective: "Deploy release candidate to staging and validate readiness."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Deploy to Staging"
+        instructions: "Execute deployment scripts targeting staging environment using production-equivalent configuration."
+        communication_template: "[PHASE 2 START] - Deploying release candidate to staging..."
+        halt_condition: "Stop if deployment script fails."
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Validate Staging Health"
+        instructions: "Run smoke tests, contract tests, and monitoring checks to confirm staging readiness."
+        communication_template: "Running staging validation suite..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Capture UAT Snapshot"
+        instructions: "Record business stakeholder approval or automated UAT status when required."
+        communication_template: "Capturing UAT confirmation for staging deployment..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Staging deployment report"
+        storage_location: ".artifacts/deployment/staging-deployment-report.json"
+      - evidence_item: "Staging validation results"
+        storage_location: ".artifacts/deployment/staging-validation-results.json"
+      - evidence_item: "UAT confirmation"
+        storage_location: ".artifacts/deployment/uat-confirmation.json"
+    quality_gate:
+      gate_name: "Staging Validation Gate"
+      criteria: "Staging deployment successful, tests pass, UAT (if required) approved."
+      failure_handling: "Remediate issues, rerun staging cycle before requesting production approval."
+  - phase_number: 3
+    phase_name: "Production Deployment and Immediate Monitoring"
+    objective: "Execute production deployment with approvals and run immediate health checks."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Request Production Approval"
+        instructions: "Present staging evidence, readiness checklist, and rollback plan; await explicit go decision."
+        communication_template: "[APPROVAL REQUEST] Staging deployment successful. Proceed with production release? (yes/no)"
+        halt_condition: "Do not proceed without recorded approval."
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Execute Production Deployment"
+        instructions: "Perform rollout according to change plan (blue/green, canary, rolling) with monitoring enabled."
+        communication_template: "[PHASE 3 START] - Executing production deployment..."
+        halt_condition: "Stop and rollback if deployment command fails."
+      - step_number: 3
+        action_type: "MUST"
+        action_title: "Run Post-Deployment Checks"
+        instructions: "Trigger smoke tests, health checks, and metrics collection to confirm stability."
+        communication_template: "Running post-deployment smoke tests and monitoring checks..."
+        halt_condition: "Initiate rollback if critical checks fail."
+    evidence_collection:
+      - evidence_item: "Production approval record"
+        storage_location: ".artifacts/deployment/production-approval.json"
+      - evidence_item: "Production deployment report"
+        storage_location: ".artifacts/deployment/production-deployment-report.json"
+      - evidence_item: "Post-deployment validation"
+        storage_location: ".artifacts/deployment/post-deployment-validation.json"
+    quality_gate:
+      gate_name: "Production Launch Gate"
+      criteria: "Approval recorded, deployment executed without critical errors, immediate checks pass."
+      failure_handling: "Execute rollback plan, notify stakeholders, log incident for Protocol 13."
+  - phase_number: 4
+    phase_name: "Release Review and Documentation"
+    objective: "Monitor stabilization window and compile final release report."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Evaluate Health Window"
+        instructions: "Monitor key metrics during soak period and record anomalies or confirmations."
+        communication_template: "[PHASE 4 START] - Monitoring post-deployment health window..."
+        halt_condition: "Escalate if metrics exceed thresholds."
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Finalize Release Report"
+        instructions: "Compile readiness checklist, staging evidence, production logs, and monitoring results into DEPLOYMENT-REPORT.md."
+        communication_template: "Compiling final release report and evidence bundle..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Trigger Retrospective Inputs"
+        instructions: "Deliver summary and evidence bundle to Protocol 5 with improvement notes."
+        communication_template: "Delivering deployment insights to retrospective owners..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Deployment health log"
+        storage_location: ".artifacts/deployment/deployment-health-log.md"
+      - evidence_item: "Deployment report"
+        storage_location: "DEPLOYMENT-REPORT.md"
+      - evidence_item: "Retrospective inputs"
+        storage_location: ".artifacts/deployment/retrospective-inputs.json"
+    quality_gate:
+      gate_name: "Stabilization Gate"
+      criteria: "Health window completed within thresholds and release report compiled."
+      failure_handling: "Escalate anomalies to Protocol 12/13, consider rollback if required."
+
+inputs_from:
+  - protocol: "10-pre-deployment-validation"
+    artifacts_consumed: "staging-validation-report.json, rollback-rehearsal-log.json, deployment-checklist.md"
+    usage: "Confirm release readiness and rollback preparedness."
+  - protocol: "07-environment-setup-validation"
+    artifacts_consumed: "validation-suite-report.json"
+    usage: "Provide baseline smoke test expectations for post-deployment checks."
+  - protocol: "04-quality-audit"
+    artifacts_consumed: "quality-audit-report.md"
+    usage: "Ensure quality gates satisfied prior to release."
+outputs_to:
+  - protocol: "12-monitoring-observability"
+    artifacts_provided: "post-deployment-validation.json, deployment-health-log.md, DEPLOYMENT-REPORT.md"
+    purpose: "Seed monitoring configuration and observability review."
+  - protocol: "13-incident-response-rollback"
+    artifacts_provided: "rollback-plan.md, production logs, approval records"
+    purpose: "Support incident mitigation if deployment introduces issues."
+  - protocol: "05-implementation-retrospective"
+    artifacts_provided: "DEPLOYMENT-REPORT.md, retrospective-inputs.json"
+    purpose: "Enable process improvement discussions." 
+
+automation_hooks:
+  - hook_name: "deploy_backend.sh"
+    trigger_point: "Phase 2 and Phase 3 deployments"
+    command: "bash scripts/deploy_backend.sh --env {target} --release {tag}"
+    expected_output: "deployment report entries with command results"
+  - hook_name: "validate_workflows.py"
+    trigger_point: "Phase 2 staging validation"
+    command: "python scripts/validate_workflows.py --mode staging --output .artifacts/deployment/staging-validation-results.json"
+    expected_output: "staging-validation-results.json with pass/fail metrics"
+  - hook_name: "collect_perf.py"
+    trigger_point: "Phase 3 post-deployment checks"
+    command: "python scripts/collect_perf.py --env production --output .artifacts/deployment/post-deployment-validation.json"
+    expected_output: "post-deployment-validation.json capturing key metrics"
+  - hook_name: "rollback_backend.sh"
+    trigger_point: "Phase 3 failure handling"
+    command: "bash scripts/rollback_backend.sh --env production --release {tag}"
+    expected_output: "rollback execution logs stored with mitigation evidence"
+
+announcements:
+  phase_start_template: "[PHASE {N} START] - {phase_name}..."
+  phase_complete_template: "[PHASE {N} COMPLETE] - {phase_name} finished successfully."
+  automation_status_template: "[AUTOMATION] {script_name} executed: {status}"
+
+validation_prompts:
+  - prompt_context: "Before production deployment"
+    prompt_template: "[APPROVAL REQUEST] Staging deployment successful. Proceed with production release? (yes/no)"
+  - prompt_context: "If anomalies detected"
+    prompt_template: "[ROLLBACK DECISION] Production anomalies detected. Execute rollback plan? (yes/no)"
+  - prompt_context: "After health window"
+    prompt_template: "[RELEASE COMPLETE] Health window passed. Publish release report to Protocol 5? (yes/no)"
+
+error_handling:
+  - error_type: "MissingPrerequisites"
+    error_message_template: "[ERROR] Required staging or validation artifact missing."
+    recovery_steps: "Regenerate missing artifact or rerun Protocol 10 before continuing."
+  - error_type: "DeploymentFailure"
+    error_message_template: "[ERROR] Deployment command failed: {error}."
+    recovery_steps: "Stop deployment, execute rollback script, capture logs, notify stakeholders."
+  - error_type: "HealthDegradation"
+    error_message_template: "[ALERT] Post-deployment metrics outside thresholds."
+    recovery_steps: "Engage monitoring team, evaluate rollback, trigger incident response if needed."
+
+completion_checklist:
+  - "Readiness checklist and release manifest confirmed"
+  - "Staging deployment and validation evidence archived"
+  - "Production approval recorded and deployment logs captured"
+  - "Post-deployment validation and health monitoring completed"
+  - "Release report compiled and shared downstream"
+
+handoff_command: "[PROTOCOL COMPLETE] - Production deployment finalized. Ready for Protocol 12 (Monitoring & Observability)."
+next_protocol: "12-monitoring-observability"
+
+context: "Executes the controlled release process bridging staging validation and production monitoring."
+focus_areas:
+  - "Approval-driven production access"
+  - "Comprehensive evidence capture"
+  - "Rollback readiness and execution"
+special_considerations: "Maintain real-time communication with SRE and incident teams; archive all deployment evidence under .artifacts/deployment/."

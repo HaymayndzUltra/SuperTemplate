@@ -1,0 +1,219 @@
+# Protocol 12 Requirements (Post-Deployment Monitoring & Observability)
+protocol_number: "12"
+protocol_name: "monitoring-observability"
+domain_compliance: "SRE"
+purpose: "Activate and validate observability systems immediately after deployment to ensure incidents are detected within service objectives."
+
+ai_role: "Site Reliability Engineer"
+primary_guardrail: "Do not declare monitoring complete until alerting, dashboards, and runbooks are validated with live telemetry."
+prerequisites:
+  - protocol: "11-production-deployment"
+    required_artifacts: "post-deployment-validation.json, deployment-health-log.md, DEPLOYMENT-REPORT.md"
+  - protocol: "04-quality-audit"
+    required_artifacts: "quality-audit-report.md (monitoring requirements section)"
+phase_in_workflow: "Between Protocol 11 (Production Deployment) and Protocol 13 (Incident Response & Rollback)"
+
+phases:
+  - phase_number: 1
+    phase_name: "Instrumentation Alignment and Baseline Capture"
+    objective: "Review deployment evidence and confirm instrumentation coverage for new release."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Review Deployment Outputs"
+        instructions: "Extract monitoring requirements, risks, and endpoints from deployment artifacts."
+        communication_template: "[PHASE 1 START] - Reviewing deployment evidence to map monitoring requirements..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Verify Instrumentation Coverage"
+        instructions: "Ensure metrics, logs, traces, and synthetic checks cover critical paths."
+        communication_template: "Validating instrumentation coverage across services and dependencies..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Capture Baseline Snapshot"
+        instructions: "Record baseline metrics immediately after deployment for comparison."
+        communication_template: "Capturing baseline metrics for observability..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Monitoring requirements summary"
+        storage_location: ".artifacts/monitoring/monitoring-requirements.md"
+      - evidence_item: "Instrumentation audit"
+        storage_location: ".artifacts/monitoring/instrumentation-audit.json"
+      - evidence_item: "Baseline metrics"
+        storage_location: ".artifacts/monitoring/baseline-metrics.json"
+    quality_gate:
+      gate_name: "Instrumentation Coverage Gate"
+      criteria: "All critical services instrumented with metrics/logs/traces; no high-risk gaps."
+      failure_handling: "Escalate to engineering to add instrumentation before continuing."
+  - phase_number: 2
+    phase_name: "Monitoring Activation and Alert Validation"
+    objective: "Configure dashboards, validate alert delivery, and update runbooks."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Configure Dashboards and Alerts"
+        instructions: "Ensure dashboards include new components and alert thresholds match SLO targets."
+        communication_template: "[PHASE 2 START] - Activating dashboards and alert policies..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Test Alert Paths"
+        instructions: "Trigger synthetic incidents to validate alert delivery and escalation."
+        communication_template: "Triggering synthetic alerts to confirm notification pathways..."
+        halt_condition: "Stop if alerts fail to reach on-call responders."
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Update Runbooks"
+        instructions: "Document new detection signals, mitigation steps, and contact rotations."
+        communication_template: "Updating incident runbooks with new monitoring signals..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Dashboard configuration record"
+        storage_location: ".artifacts/monitoring/dashboard-config.md"
+      - evidence_item: "Alert test results"
+        storage_location: ".artifacts/monitoring/alert-test-results.json"
+      - evidence_item: "Runbook updates"
+        storage_location: "RUNBOOKS/monitoring-runbook.md"
+    quality_gate:
+      gate_name: "Alert Validation Gate"
+      criteria: "Synthetic alerts reach on-call team and acknowledgement captured within SLA."
+      failure_handling: "Fix routing/integrations, rerun alert testing before proceeding."
+  - phase_number: 3
+    phase_name: "Continuous Observability Assurance"
+    objective: "Establish ongoing validation and tune alert thresholds based on incident data."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Schedule Ongoing Checks"
+        instructions: "Automate periodic validation to ensure monitoring assets remain active."
+        communication_template: "[PHASE 3 START] - Scheduling ongoing observability validation tasks..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Correlate Alerts and Incidents"
+        instructions: "Compare recent alerts with incidents to tune thresholds and reduce noise."
+        communication_template: "Correlating recent alerts with incident history to tune thresholds..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Publish Observability Scorecard"
+        instructions: "Summarize SLO attainment, alert precision, and outstanding risks."
+        communication_template: "Publishing observability scorecard for leadership review..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Observability schedule"
+        storage_location: ".artifacts/monitoring/observability-schedule.json"
+      - evidence_item: "Alert tuning report"
+        storage_location: ".artifacts/monitoring/alert-tuning-report.md"
+      - evidence_item: "Observability scorecard"
+        storage_location: ".artifacts/monitoring/observability-scorecard.md"
+    quality_gate:
+      gate_name: "Observability Assurance Gate"
+      criteria: "Automation schedule in place, tuning report documented, improvement backlog created."
+      failure_handling: "Configure missing automation or tuning tasks before proceeding."
+  - phase_number: 4
+    phase_name: "Handoff and Improvement Loop"
+    objective: "Deliver monitoring package to incident response and record ownership approvals."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Deliver Monitoring Package"
+        instructions: "Bundle dashboards, alert configs, runbooks, and evidence for downstream protocols."
+        communication_template: "[PHASE 4 START] - Delivering monitoring package to incident response and retrospective owners..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Record Approval and Ownership"
+        instructions: "Log SRE approval, on-call owner, and effective date for monitoring configuration."
+        communication_template: "Recording monitoring approval and on-call ownership..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Queue Improvement Actions"
+        instructions: "File backlog items for instrumentation gaps or automation enhancements identified."
+        communication_template: "Queuing monitoring improvement actions for future sprints..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Monitoring package manifest"
+        storage_location: ".artifacts/monitoring/monitoring-package-manifest.json"
+      - evidence_item: "Monitoring approval record"
+        storage_location: ".artifacts/monitoring/monitoring-approval-record.json"
+      - evidence_item: "Improvement backlog"
+        storage_location: ".artifacts/monitoring/improvement-backlog.md"
+    quality_gate:
+      gate_name: "Handoff Package Gate"
+      criteria: "Monitoring package completed, approval recorded, improvement actions logged."
+      failure_handling: "Gather missing artifacts or approvals before notifying downstream teams."
+
+inputs_from:
+  - protocol: "11-production-deployment"
+    artifacts_consumed: "post-deployment-validation.json, deployment-health-log.md, DEPLOYMENT-REPORT.md"
+    usage: "Provide context on release health and monitoring priorities."
+  - protocol: "04-quality-audit"
+    artifacts_consumed: "quality-audit-report.md"
+    usage: "Ensure compliance-related monitoring requirements are addressed."
+outputs_to:
+  - protocol: "13-incident-response-rollback"
+    artifacts_provided: "monitoring-package-manifest.json, alert-test-results.json, instrumentation-audit.json"
+    purpose: "Enable rapid detection and mitigation during incidents."
+  - protocol: "05-implementation-retrospective"
+    artifacts_provided: "observability-scorecard.md, alert-tuning-report.md, improvement-backlog.md"
+    purpose: "Support retrospective analysis and process improvements."
+  - protocol: "14-performance-optimization"
+    artifacts_provided: "baseline-metrics.json, instrumentation gaps"
+    purpose: "Inform performance tuning efforts with current telemetry."
+
+automation_hooks:
+  - hook_name: "collect_perf.py"
+    trigger_point: "Phase 1 instrumentation audit"
+    command: "python scripts/collect_perf.py --env production --audit --output .artifacts/monitoring/instrumentation-audit.json"
+    expected_output: "instrumentation-audit.json with coverage status"
+  - hook_name: "workflow_automation.py"
+    trigger_point: "Phase 2 alert testing"
+    command: "python scripts/workflow_automation.py --workflow alert-test --output .artifacts/monitoring/alert-test-results.json"
+    expected_output: "alert-test-results.json with delivery outcomes"
+  - hook_name: "aggregate_coverage.py"
+    trigger_point: "Phase 3 alert tuning"
+    command: "python scripts/aggregate_coverage.py --scope monitoring --output .artifacts/monitoring/alert-tuning-report.md"
+    expected_output: "alert-tuning-report.md summarizing adjustments"
+
+announcements:
+  phase_start_template: "[PHASE {N} START] - {phase_name}..."
+  phase_complete_template: "[PHASE {N} COMPLETE] - {phase_name} finished successfully."
+  automation_status_template: "[AUTOMATION] {script_name} executed: {status}"
+
+validation_prompts:
+  - prompt_context: "Before alert testing"
+    prompt_template: "[VALIDATION REQUEST] - Monitoring instrumentation verified. Approve activation of alert tests? (yes/no)"
+  - prompt_context: "Before handoff"
+    prompt_template: "[HANDOFF CONFIRMATION] - Monitoring package compiled. Confirm delivery to Protocol 13? (yes/no)"
+
+error_handling:
+  - error_type: "InstrumentationGap"
+    error_message_template: "[ERROR] Missing telemetry coverage for critical service: {service}."
+    recovery_steps: "Coordinate with engineering to add instrumentation; rerun Phase 1 checks."
+  - error_type: "AlertFailure"
+    error_message_template: "[ERROR] Synthetic alert did not reach on-call responder."
+    recovery_steps: "Check escalation policies, repair integrations, rerun alert-test workflow."
+  - error_type: "ApprovalMissing"
+    error_message_template: "[ERROR] Monitoring approval not recorded."
+    recovery_steps: "Obtain SRE sign-off and update approval record before closing protocol."
+
+completion_checklist:
+  - "Monitoring requirements and instrumentation audit completed"
+  - "Dashboards and alerts activated with successful test confirmations"
+  - "Observability assurance schedule and tuning reports documented"
+  - "Monitoring package manifest and approval recorded"
+  - "Improvement backlog filed for outstanding actions"
+
+handoff_command: "[PROTOCOL COMPLETE] - Monitoring activated. Ready for Protocol 13 (Incident Response & Rollback)."
+next_protocol: "13-incident-response-rollback"
+
+context: "Ensures newly deployed services remain observable, enabling rapid response and future optimization."
+focus_areas:
+  - "Telemetry coverage"
+  - "Alert reliability"
+  - "Continuous tuning and improvement"
+special_considerations: "Store monitoring evidence under .artifacts/monitoring/ and synchronize runbook updates with context kit."

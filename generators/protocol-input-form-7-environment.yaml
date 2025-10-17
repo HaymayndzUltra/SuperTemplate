@@ -1,0 +1,208 @@
+# Protocol 7 Requirements (Development Environment Setup & Validation)
+protocol_number: "7"
+protocol_name: "environment-setup-validation"
+domain_compliance: "DevOps"
+purpose: "Provision, verify, and document a consistent development environment aligned with the approved technical design."
+
+ai_role: "DevOps Environment Engineer"
+primary_guardrail: "Do not certify the environment until tooling, credentials, and validation suite pass on a clean setup."
+prerequisites:
+  - protocol: "06-technical-design-architecture"
+    required_artifacts: "TECHNICAL-DESIGN.md, design-validation-report.json, task-generation-input.json"
+  - protocol: "00-project-bootstrap-and-context-engineering"
+    required_artifacts: ".cursor/context-kit/, .artifacts/bootstrap/"
+phase_in_workflow: "Between Protocol 02 (Generate Tasks) and Protocol 03 (Controlled Task Execution)"
+
+phases:
+  - phase_number: 1
+    phase_name: "Preflight Alignment and Requirements Extraction"
+    objective: "Extract environment requirements from design artifacts and confirm credential readiness."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Verify Design Dependencies"
+        instructions: "Review TECHNICAL-DESIGN.md and design-validation-report.json to list tooling, services, and runtime constraints."
+        communication_template: "[PHASE 1 START] - Extracting environment requirements from technical design..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Validate Access Credentials"
+        instructions: "Confirm repository access, API keys, secrets storage, and infrastructure credentials are available."
+        communication_template: "Confirming access credentials and secret storage readiness..."
+        halt_condition: "Stop if any credential workflow is missing."
+    evidence_collection:
+      - evidence_item: "Environment requirements summary"
+        storage_location: ".artifacts/environment/environment-requirements.md"
+      - evidence_item: "Access readiness checklist"
+        storage_location: ".artifacts/environment/access-readiness-checklist.json"
+    quality_gate:
+      gate_name: "Requirements Confirmation Gate"
+      criteria: "Environment requirements documented and credentials verified."
+      failure_handling: "Resolve missing credentials or unclear requirements before provisioning."
+  - phase_number: 2
+    phase_name: "Environment Provisioning and Automation"
+    objective: "Install tooling, run environment diagnostics, and provision project scaffold."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Run Environment Doctor"
+        instructions: "Execute doctor.py with strict flag to validate required tooling versions."
+        communication_template: "[PHASE 2 START] - Running environment doctor checks..."
+        halt_condition: "Stop if diagnostics fail."
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Provision Project Scaffold"
+        instructions: "Clone repository, install dependencies, and execute bootstrap scripts defined in generator-config.json."
+        communication_template: "Provisioning project scaffold and installing dependencies..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Validate Containers/Images"
+        instructions: "Build or pull required development containers and document versions."
+        communication_template: "Documenting runtime container images..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Environment diagnostics"
+        storage_location: ".artifacts/environment/environment-diagnostics.json"
+      - evidence_item: "Provisioning log"
+        storage_location: ".artifacts/environment/provision-log.md"
+    quality_gate:
+      gate_name: "Tooling Health Gate"
+      criteria: "doctor.py passes with no critical errors; provisioning completes successfully."
+      failure_handling: "Install missing tooling, update scripts, rerun diagnostics."
+  - phase_number: 3
+    phase_name: "Configuration Normalization and Validation Suite"
+    objective: "Apply environment configuration templates and confirm readiness via validation suite."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Configure Environment Variables"
+        instructions: "Apply .env templates, secrets injection, and verify completeness of configuration files."
+        communication_template: "[PHASE 3 START] - Applying environment configuration templates..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Execute Validation Suite"
+        instructions: "Run smoke tests, linting, and migrations on clean setup to confirm environment readiness."
+        communication_template: "Running validation suite to confirm environment readiness..."
+        halt_condition: "Stop if validation suite fails."
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Record Performance Baseline"
+        instructions: "Capture execution times for provisioning and validation tasks to monitor regressions."
+        communication_template: "Recording baseline metrics for environment setup..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Environment configuration report"
+        storage_location: ".artifacts/environment/env-configuration-report.json"
+      - evidence_item: "Validation suite results"
+        storage_location: ".artifacts/environment/validation-suite-report.json"
+    quality_gate:
+      gate_name: "Validation Suite Gate"
+      criteria: "Configuration report complete and validation suite passes on clean environment."
+      failure_handling: "Investigate failures, adjust configuration, rerun tests before proceeding."
+  - phase_number: 4
+    phase_name: "Documentation, Approval, and Distribution"
+    objective: "Document environment, capture approval, and distribute onboarding assets."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Compile Environment Handbook"
+        instructions: "Create ENVIRONMENT-README.md with setup steps, troubleshooting, and validation evidence."
+        communication_template: "[PHASE 4 START] - Compiling environment handbook for contributors..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Record Approval and Distribution"
+        instructions: "Log approver, validation status, and distribution plan for onboarding package."
+        communication_template: "Recording environment approval and distribution plan..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Publish Onboarding Package"
+        instructions: "Bundle scripts, templates, and handbook for distribution to development team."
+        communication_template: "Publishing environment onboarding package..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "ENVIRONMENT-README"
+        storage_location: "ENVIRONMENT-README.md"
+      - evidence_item: "Environment approval record"
+        storage_location: ".artifacts/environment/environment-approval-record.json"
+      - evidence_item: "Onboarding package archive"
+        storage_location: ".artifacts/environment/environment-onboarding.zip"
+    quality_gate:
+      gate_name: "Onboarding Package Gate"
+      criteria: "Handbook completed, approval recorded, onboarding assets packaged."
+      failure_handling: "Update documentation or approval status before releasing package."
+
+inputs_from:
+  - protocol: "06-technical-design-architecture"
+    artifacts_consumed: "TECHNICAL-DESIGN.md, design-validation-report.json"
+    usage: "Derive environment requirements, integration assumptions, and tooling list."
+  - protocol: "00-project-bootstrap-and-context-engineering"
+    artifacts_consumed: ".cursor/context-kit/, .artifacts/bootstrap/"
+    usage: "Reference baseline rules and context kit for governance constraints."
+outputs_to:
+  - protocol: "03-process-tasks"
+    artifacts_provided: "ENVIRONMENT-README.md, environment-onboarding.zip, environment-approval-record.json"
+    purpose: "Ensure developers have validated setup instructions before task execution."
+  - protocol: "11-production-deployment"
+    artifacts_provided: "validation-suite-report.json"
+    purpose: "Provide baseline smoke test expectations for deployment readiness."
+
+automation_hooks:
+  - hook_name: "doctor.py"
+    trigger_point: "Phase 2 tooling validation"
+    command: "python scripts/doctor.py --strict --output .artifacts/environment/environment-diagnostics.json"
+    expected_output: "environment-diagnostics.json with tool version verification"
+  - hook_name: "setup.sh"
+    trigger_point: "Phase 2 provisioning"
+    command: "bash scripts/setup.sh --non-interactive"
+    expected_output: "provision-log.md with successful installation steps"
+  - hook_name: "scaffold_phase_artifacts.py"
+    trigger_point: "Phase 3 configuration reporting"
+    command: "python scripts/scaffold_phase_artifacts.py --phase env --output .artifacts/environment/env-configuration-report.json"
+    expected_output: "env-configuration-report.json describing applied configuration"
+  - hook_name: "install_and_test.sh"
+    trigger_point: "Phase 3 validation suite"
+    command: "bash scripts/install_and_test.sh --smoke"
+    expected_output: "validation-suite-report.json summarizing smoke/lint/migration results"
+
+announcements:
+  phase_start_template: "[PHASE {N} START] - {phase_name}..."
+  phase_complete_template: "[PHASE {N} COMPLETE] - {phase_name} finished successfully."
+  automation_status_template: "[AUTOMATION] {script_name} executed: {status}"
+
+validation_prompts:
+  - prompt_context: "Before packaging onboarding assets"
+    prompt_template: "[VALIDATION REQUEST] - Environment validation suite passed. Approve packaging onboarding assets? (yes/no)"
+  - prompt_context: "Before releasing onboarding package"
+    prompt_template: "[APPROVAL CONFIRMATION] - Environment onboarding package ready. Confirm release to development team? (yes/no)"
+
+error_handling:
+  - error_type: "MissingCredentials"
+    error_message_template: "[ERROR] Required credential or secret workflow not available."
+    recovery_steps: "Coordinate with security/ops to obtain credentials, update checklist, then resume."
+  - error_type: "ToolingFailure"
+    error_message_template: "[ERROR] doctor.py detected missing or incompatible tooling."
+    recovery_steps: "Install or update tooling, adjust scripts, rerun diagnostics."
+  - error_type: "ValidationFailure"
+    error_message_template: "[ERROR] Environment validation suite failed."
+    recovery_steps: "Investigate failing commands, fix configuration, rerun install_and_test.sh."
+
+completion_checklist:
+  - "Environment requirements and credentials documented"
+  - "Tooling diagnostics passed with evidence captured"
+  - "Configuration report and validation suite confirm readiness"
+  - "Environment handbook and onboarding package finalized"
+  - "Approval record logged with distribution plan"
+
+handoff_command: "[PROTOCOL COMPLETE] - Environment validated. Ready for Protocol 03 (Controlled Task Execution)."
+next_protocol: "03-process-tasks"
+
+context: "Guarantees every contributor starts from a consistent, validated environment informed by architecture decisions."
+focus_areas:
+  - "Tooling parity across contributors"
+  - "Credential and secrets readiness"
+  - "Automated validation of setup steps"
+special_considerations: "Store all environment evidence within .artifacts/environment/ and refresh package when technical design changes."

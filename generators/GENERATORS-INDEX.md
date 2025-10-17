@@ -23,18 +23,31 @@ GENERATORS-INDEX.md                          ← YOU ARE HERE (Start here!)
 ```
 meta-analysis-generator-instructions.md      ← AI guide: Protocol → Analysis
 protocol-generator-instructions.md           ← AI guide: Requirements → Protocol
+6-technical-design-generator.md              ← Protocol 6 architecture generator blueprint
+7-environment-generator.md                   ← Protocol 7 environment generator blueprint
+11-deployment-generator.md                   ← Protocol 11 deployment generator blueprint
+12-monitoring-generator.md                   ← Protocol 12 monitoring generator blueprint
+13-incident-generator.md                     ← Protocol 13 incident response generator blueprint
 ```
 
 ### 📝 User Templates & Forms
 ```
 protocol-input-form.yaml                     ← Empty template (fill this!)
 sample-filled-form.yaml                      ← Filled example (reference)
+protocol-input-form-6-technical-design.yaml  ← Form for architecture specification protocol
+protocol-input-form-7-environment.yaml       ← Form for environment setup & validation protocol
+protocol-input-form-11-deployment.yaml       ← Form for production deployment protocol
+protocol-input-form-12-monitoring.yaml       ← Form for monitoring & observability protocol
+protocol-input-form-13-incident.yaml         ← Form for incident response protocol
 ```
 
 ### ✅ Validation Examples
 ```
-6-deployment-automation.md                   ← Sample generated protocol
-analysis-6-deployment-automation.md          ← Sample generated analysis
+6-technical-design-architecture.md           ← Protocol 6 architecture specification (workflow)
+7-environment-setup-validation.md            ← Protocol 7 environment validation (workflow)
+11-production-deployment.md                  ← Protocol 11 deployment orchestration (workflow)
+12-monitoring-observability.md               ← Protocol 12 monitoring activation (workflow)
+13-incident-response-rollback.md             ← Protocol 13 incident response (workflow)
 ```
 
 ---
