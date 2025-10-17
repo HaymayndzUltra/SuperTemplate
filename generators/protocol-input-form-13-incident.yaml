@@ -1,0 +1,195 @@
+# PROTOCOL REQUIREMENTS FORM - PROTOCOL 13
+# Incident Response & Rollback
+
+## ============================================
+## SECTION 1: BASIC INFORMATION
+## ============================================
+
+protocol_number: "13"
+protocol_name: "incident-response-rollback"
+domain_compliance: "Resilience Governance"
+purpose: "Coordinate production incident triage, execute mitigations or rollbacks safely, and capture post-incident narrative for continuous improvement."
+
+## ============================================
+## SECTION 2: AI ROLE & CONTEXT
+## ============================================
+
+ai_role: "Incident Commander"
+primary_guardrail: "DO NOT attempt mitigation or rollback actions without verifying impact scope, stakeholder alignment, and documented authorization in the incident command log."
+
+prerequisites:
+  - protocol: "12-monitoring-observability"
+    required_artifacts: ".artifacts/monitoring/slo-review.md, telemetry-ingestion-report.json, escalation-matrix.json, monitoring-signoff-log.md"
+  - protocol: "11-production-deployment"
+    required_artifacts: ".artifacts/deployment/rollback-readiness-report.json, post-release-verification.md, release-decision-log.md"
+
+phase_in_workflow: "Between Protocol 12 (Monitoring & Observability) and Protocol 5 (Implementation Retrospective)"
+
+## ============================================
+## SECTION 3: EXECUTION STRUCTURE
+## ============================================
+
+phases:
+  - phase_number: 1
+    phase_name: "Incident Intake and Classification"
+    objective: "Activate incident command, classify severity, and establish communication cadence."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Activate Incident Command"
+        instructions: "Capture alert source, timestamps, severity indicators, and on-call owner in incident intake report."
+        communication_template: "[PHASE 1 START] - Activating incident command and capturing initial telemetry..."
+        halt_condition: "Pause if monitoring evidence is missing or outdated."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Classify Severity and Impact"
+        instructions: "Evaluate SLO burn rate, user impact, and business criticality using monitoring outputs."
+        communication_template: "Assessing severity level, affected user cohorts, and impact radius..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Establish Communication Cadence"
+        instructions: "Launch communication channel and set update frequency per severity tier."
+        communication_template: "Establishing incident communication cadence and stakeholder notifications..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "Incident intake report"
+        storage_location: ".artifacts/incidents/incident-intake-report.md"
+      - evidence_item: "Incident classification"
+        storage_location: ".artifacts/incidents/incident-classification.json"
+      - evidence_item: "Communication plan"
+        storage_location: ".artifacts/incidents/communication-plan.md"
+
+    quality_gate:
+      gate_name: "Incident Intake Gate"
+      criteria: "Intake populated with telemetry evidence, severity confirmed, communication plan established."
+      failure_handling: "Pause mitigation, gather missing telemetry, realign communication cadence."
+
+  - phase_number: 2
+    phase_name: "Mitigation, Remediation, and Rollback Execution"
+    objective: "Select mitigation strategy, execute actions with evidence capture, and validate recovery."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Select Mitigation Strategy"
+        instructions: "Evaluate runbooks, feature flags, and rollback options; document chosen path with approval."
+        communication_template: "[PHASE 2 START] - Selecting mitigation strategy based on risk and rollback readiness..."
+        halt_condition: "Require authorization from incident commander or release manager before irreversible actions."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Execute Mitigation / Rollback"
+        instructions: "Follow validated runbooks, leveraging rollback readiness report and automation hooks."
+        communication_template: "Executing mitigation/rollback actions and monitoring impact in real time..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "MUST"
+        action_title: "Validate Service Recovery"
+        instructions: "Confirm telemetry stabilization, run smoke tests, ensure alerts cleared."
+        communication_template: "Validating service recovery and confirming alert resolution..."
+        halt_condition: ""
+
+      - step_number: 4
+        action_type: "GUIDELINE"
+        action_title: "Manage Stakeholder Updates"
+        instructions: "Provide regular updates on status, ETA, and user messaging."
+        communication_template: "Broadcasting incident status update to stakeholders and support teams..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "Mitigation plan"
+        storage_location: ".artifacts/incidents/mitigation-plan.md"
+      - evidence_item: "Rollback log"
+        storage_location: ".artifacts/incidents/rollback-log.json"
+      - evidence_item: "Recovery validation report"
+        storage_location: ".artifacts/incidents/recovery-validation-report.md"
+
+    quality_gate:
+      gate_name: "Mitigation Execution Gate"
+      criteria: "Mitigation plan approved, rollback log captured, recovery validation confirms stability."
+      failure_handling: "Reassess strategy, escalate to executives or SMEs, retry after adjustments."
+
+  - phase_number: 3
+    phase_name: "Post-Incident Analysis and Handoff"
+    objective: "Capture postmortem, assign follow-up actions, and close communications."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Conduct Incident Debrief"
+        instructions: "Document timeline, root cause hypotheses, and follow-up actions in postmortem within SLA."
+        communication_template: "[PHASE 3 START] - Facilitating post-incident debrief and capturing timeline..."
+        halt_condition: ""
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Update Knowledge Base and Backlog"
+        instructions: "Log corrective tasks for retrospectives and backlog with owners and due dates."
+        communication_template: "Documenting corrective actions and routing to retrospective backlog..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Close Communication Channels"
+        instructions: "Issue final report, archive communication logs, and close incident war room."
+        communication_template: "Closing incident communications and confirming stakeholders notified of resolution..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "Postmortem report"
+        storage_location: ".artifacts/incidents/postmortem.md"
+      - evidence_item: "Follow-up actions"
+        storage_location: ".artifacts/incidents/follow-up-actions.json"
+      - evidence_item: "Incident closure summary"
+        storage_location: ".artifacts/incidents/incident-closure-summary.md"
+
+    quality_gate:
+      gate_name: "Post-Incident Closure Gate"
+      criteria: "Postmortem drafted, actions assigned, closure summary distributed."
+      failure_handling: "Schedule additional debrief, collect missing data, reissue closure communications."
+
+## ============================================
+## SECTION 4: INTEGRATION & DATA FLOW
+## ============================================
+
+inputs_from:
+  - protocol: "12-monitoring-observability"
+    artifacts_consumed: ".artifacts/monitoring/slo-review.md, telemetry-ingestion-report.json, escalation-matrix.json, monitoring-signoff-log.md"
+    usage: "Provide telemetry evidence, escalation contacts, and monitoring readiness."
+  - protocol: "11-production-deployment"
+    artifacts_consumed: ".artifacts/deployment/rollback-readiness-report.json, post-release-verification.md, release-decision-log.md"
+    usage: "Supply rollback procedures, release context, and decision history."
+
+outputs_to:
+  - protocol: "5-implementation-retrospective"
+    artifacts_provided: ".artifacts/incidents/postmortem.md, .artifacts/incidents/follow-up-actions.json, .artifacts/incidents/incident-closure-summary.md"
+    purpose: "Inform retrospectives with incident learnings and corrective actions."
+  - protocol: "2-generate-tasks"
+    artifacts_provided: "Updates to backlog tasks referenced in follow-up actions"
+    purpose: "Ensure remediation work enters planning pipeline."
+
+## ============================================
+## SECTION 5: AUTOMATION & TOOLING
+## ============================================
+
+automation_hooks:
+  - hook_name: "incident_intake_template.py"
+    trigger_point: "Phase 1 incident activation"
+    command: "python scripts/incidents/incident_intake_template.py --output .artifacts/incidents/incident-intake-report.md"
+    expected_output: "incident-intake-report.md initialized with incident metadata"
+
+  - hook_name: "run_rollback.py"
+    trigger_point: "Phase 2 mitigation execution"
+    command: "python scripts/incidents/run_rollback.py --plan .artifacts/deployment/rollback-readiness-report.json --log .artifacts/incidents/rollback-log.json"
+    expected_output: "rollback-log.json capturing executed steps"
+
+  - hook_name: "postmortem_generator.py"
+    trigger_point: "Phase 3 post-incident analysis"
+    command: "python scripts/incidents/postmortem_generator.py --inputs .artifacts/incidents/rollback-log.json --output .artifacts/incidents/postmortem.md"
+    expected_output: "postmortem.md summarizing incident timeline and actions"

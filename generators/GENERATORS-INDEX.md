@@ -35,6 +35,16 @@ sample-filled-form.yaml                      ← Filled example (reference)
 ```
 6-deployment-automation.md                   ← Sample generated protocol
 analysis-6-deployment-automation.md          ← Sample generated analysis
+6-technical-design-generator.md              ← Batch 1 generator instructions (Protocol 6)
+7-environment-generator.md                   ← Batch 1 generator instructions (Protocol 7)
+11-deployment-generator.md                   ← Batch 1 generator instructions (Protocol 11)
+12-monitoring-generator.md                   ← Batch 1 generator instructions (Protocol 12)
+13-incident-generator.md                     ← Batch 1 generator instructions (Protocol 13)
+protocol-input-form-6-technical-design.yaml  ← Batch 1 requirements form
+protocol-input-form-7-environment.yaml       ← Batch 1 requirements form
+protocol-input-form-11-deployment.yaml       ← Batch 1 requirements form
+protocol-input-form-12-monitoring.yaml       ← Batch 1 requirements form
+protocol-input-form-13-incident.yaml         ← Batch 1 requirements form
 ```
 
 ---

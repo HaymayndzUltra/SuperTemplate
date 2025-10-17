@@ -41,6 +41,19 @@ Nakalikha na ang **bidirectional generator system** na nagbibigay ng complete ci
 - `6-deployment-automation.md` - Generated protocol
 - `analysis-6-deployment-automation.md` - Meta-analysis of generated protocol
 
+### 5. Batch 1 Protocol Assets (Design → Operations)
+**Files:**
+- `protocol-input-form-6-technical-design.yaml`
+- `protocol-input-form-7-environment.yaml`
+- `protocol-input-form-11-deployment.yaml`
+- `protocol-input-form-12-monitoring.yaml`
+- `protocol-input-form-13-incident.yaml`
+- `6-technical-design-generator.md`
+- `7-environment-generator.md`
+- `11-deployment-generator.md`
+- `12-monitoring-generator.md`
+- `13-incident-generator.md`
+
 ---
 
 ## 🔄 HOW TO USE THE SYSTEM
