@@ -2,23 +2,25 @@
 ## SECTION 1: BASIC INFORMATION
 ## ============================================
 
-protocol_number: "00"
-protocol_name: "project-bootstrap-and-context-engineering"
-domain_compliance: "Governance / Environment Initialization"
-purpose: "Transform an approved Project Brief into a fully governed project scaffold with validated environment, normalized rules, and initialized context-kit—without modifying production code."
+protocol_number: "01"
+protocol_name: "project-brief-creation"
+domain_compliance: "Project-Scoping"
+purpose: "Validate all discovery artifacts and generate a comprehensive, client-approved Project Brief that serves as the authoritative foundation for all subsequent project phases."
 
 ## ============================================
 ## SECTION 2: AI ROLE & CONTEXT
 ## ============================================
 
-ai_role: "AI Codebase Analyst & Context Architect"
-primary_guardrail: "DO NOT modify or delete production code. Contain all actions inside governed template and artifact directories."
+ai_role: "Freelance Solutions Architect"
+primary_guardrail: "DO NOT generate or approve a project brief until all discovery artifacts are validated and client confirmation is received."
 
 prerequisites:
-  - protocol: "01-project-brief-creation"
-    required_artifacts: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
+  - protocol: "00B-client-discovery-initiation"
+    required_artifacts: "client-discovery-form.md, scope-clarification.md, communication-plan.md, client-context-notes.md, timeline-discussion.md"
+  - protocol: "00A-client-proposal-generation"
+    required_artifacts: "PROPOSAL.md, jobpost-analysis.json"
 
-phase_in_workflow: "Between Protocol 01 (Project Brief Creation) and Protocol 02 (Architecture Planning)"
+phase_in_workflow: "Immediately after Protocol 00B (Client Discovery Initiation) and before Protocol 02 (Architecture Planning)"
 
 ## ============================================
 ## SECTION 3: EXECUTION STRUCTURE
@@ -26,145 +28,106 @@ phase_in_workflow: "Between Protocol 01 (Project Brief Creation) and Protocol 02
 
 phases:
   - phase_number: 1
-    phase_name: "Brief Parsing and Validation"
-    objective: "Parse and validate PROJECT-BRIEF.md to confirm all required configuration fields exist before scaffold generation."
+    phase_name: "Input Validation and Consistency Check"
+    objective: "Verify completeness and consistency of all discovery and proposal artifacts before assembly."
     steps:
       - step_number: 1
         action_type: "MUST"
-        action_title: "Validate Project Brief"
-        instructions: "Run python scripts/validate_brief.py --path PROJECT-BRIEF.md --output .artifacts/bootstrap/brief-validation-report.json"
-        communication_template: "[PHASE 1 START] - Validating Project Brief..."
-        halt_condition: "Stop if PROJECT-BRIEF.md is missing or frontmatter incomplete."
+        action_title: "Validate Discovery Artifacts"
+        instructions: "Ensure all discovery files exist, are non-empty, and contain confirmed client data. Reject incomplete or pending responses."
+        communication_template: "[PHASE 1 START] - Validating discovery artifacts..."
+        halt_condition: "Stop if any required artifact is missing or incomplete."
       - step_number: 2
         action_type: "MUST"
-        action_title: "Perform Generation Dry Run"
-        instructions: "Run python scripts/generate_from_brief.py --brief PROJECT-BRIEF.md --dry-run --yes to confirm mapping."
-        communication_template: "Previewing scaffold plan from validated brief..."
+        action_title: "Cross-Validate Scope and Proposal"
+        instructions: "Compare scope-clarification.md and PROPOSAL.md to ensure all approved features and constraints match client expectations."
+        communication_template: "Cross-validating discovery scope with proposal context..."
     evidence_collection:
-      - evidence_item: "brief-validation-report.json"
-        storage_location: ".artifacts/bootstrap/brief-validation-report.json"
+      - evidence_item: "project-brief-validation-report.json"
+        storage_location: ".artifacts/briefs/project-brief-validation-report.json"
     quality_gate:
-      gate_name: "Brief Validation Gate"
-      criteria: "PROJECT-BRIEF.md parsed successfully and all required fields validated."
-      failure_handling: "Request correction or revalidation of the brief before proceeding."
+      gate_name: "Discovery Validation Gate"
+      criteria: "All discovery files validated and cross-checked with proposal context."
+      failure_handling: "Suspend protocol and request missing or inconsistent data from discovery phase."
 
   - phase_number: 2
-    phase_name: "Environment and Rule Preparation"
-    objective: "Ensure environment readiness and normalize governance rules for consistent configuration."
+    phase_name: "Project Brief Assembly"
+    objective: "Integrate validated artifacts into a unified, structured Project Brief document."
     steps:
       - step_number: 1
         action_type: "MUST"
-        action_title: "Validate System Environment"
-        instructions: "Run python scripts/doctor.py --strict to confirm required tools (Docker, Node, Python, Go) are available."
-        communication_template: "[PHASE 2 START] - Checking environment health..."
-        halt_condition: "Stop if dependencies missing or doctor.py fails."
+        action_title: "Assemble Project Brief Sections"
+        instructions: "Merge validated content from discovery and proposal artifacts into a comprehensive markdown file with standardized structure."
+        communication_template: "[PHASE 2 START] - Assembling Project Brief..."
       - step_number: 2
-        action_type: "MUST"
-        action_title: "Normalize and Audit Rules"
-        instructions: "Run python scripts/normalize_project_rules.py --target .cursor/rules/ then python scripts/rules_audit_quick.py --output .artifacts/bootstrap/rule-audit-report.md"
-        communication_template: "Normalizing rules and validating metadata integrity..."
+        action_type: "GUIDELINE"
+        action_title: "Generate Risk and Constraint Summary"
+        instructions: "Document any constraints or gaps identified during validation as a risk appendix in the brief."
     evidence_collection:
-      - evidence_item: "rule-audit-report.md"
-        storage_location: ".artifacts/bootstrap/rule-audit-report.md"
+      - evidence_item: "PROJECT-BRIEF.md"
+        storage_location: ".artifacts/briefs/PROJECT-BRIEF.md"
     quality_gate:
-      gate_name: "Environment & Rule Integrity Gate"
-      criteria: "All dependencies healthy and rule audit passes."
-      failure_handling: "Suspend bootstrap until environment issues are fixed."
+      gate_name: "Brief Structure Integrity Gate"
+      criteria: "All core sections present: business objectives, functional scope, technical specs, timeline, communication plan."
+      failure_handling: "Rebuild brief with missing sections before proceeding to review."
 
   - phase_number: 3
-    phase_name: "Scaffold Generation from Project Brief"
-    objective: "Generate governed project scaffold directly from validated Project Brief using non-destructive options."
+    phase_name: "Review and Approval Validation"
+    objective: "Confirm automated checks and secure client approval before protocol completion."
     steps:
       - step_number: 1
         action_type: "MUST"
-        action_title: "Generate Scaffold"
-        instructions: "Run python scripts/generate_from_brief.py --brief PROJECT-BRIEF.md --output-root . --in-place --no-subdir --no-cursor-assets --force --yes"
-        communication_template: "[PHASE 3 START] - Generating governed scaffold..."
-        halt_condition: "Stop if generator returns non-zero exit code."
-      - step_number: 2
-        action_type: "GUIDELINE"
-        action_title: "Verify Generated Structure"
-        instructions: "Inspect generated directories, confirm generator-config.json and scaffold integrity."
-        communication_template: "Verifying scaffold structure and generator outputs..."
-    evidence_collection:
-      - evidence_item: "bootstrap-manifest.json"
-        storage_location: ".artifacts/bootstrap/bootstrap-manifest.json"
-    quality_gate:
-      gate_name: "Scaffold Validation Gate"
-      criteria: "Generated scaffold matches expected template registry mapping."
-      failure_handling: "Re-run generation with --force after fixing inconsistencies."
-
-  - phase_number: 4
-    phase_name: "Context Kit and Evidence Initialization"
-    objective: "Initialize context-kit, validate workflow integrity, and finalize evidence tracking."
-    steps:
-      - step_number: 1
-        action_type: "MUST"
-        action_title: "Initialize Evidence Manager"
-        instructions: "Run python scripts/evidence_manager.py init --path .artifacts/bootstrap/"
-        communication_template: "[PHASE 4 START] - Initializing evidence tracking..."
-        halt_condition: "Stop if evidence logs cannot be created."
+        action_title: "Run Automated Validation"
+        instructions: "Validate structure, links, and section completeness in PROJECT-BRIEF.md."
+        communication_template: "[PHASE 3 START] - Running automated brief validation..."
       - step_number: 2
         action_type: "MUST"
-        action_title: "Validate Workflow Integrity"
-        instructions: "Run python scripts/validate_workflows.py --mode bootstrap --output .artifacts/bootstrap/validation-report.json"
-        communication_template: "Validating workflow structure and context-kit..."
-      - step_number: 3
-        action_type: "GUIDELINE"
-        action_title: "Update Context Kit"
-        instructions: "Write .cursor/context-kit/governance-status.md with detected stack and template inventory."
-        communication_template: "Finalizing context-kit and governance mapping..."
+        action_title: "Client Approval Confirmation"
+        instructions: "Send summarized brief to client for confirmation; await approval log before completion."
+        communication_template: "Awaiting client approval for final Project Brief..."
+        halt_condition: "Stop until client confirmation is received."
     evidence_collection:
-      - evidence_item: "validation-report.json"
-        storage_location: ".artifacts/bootstrap/validation-report.json"
+      - evidence_item: "BRIEF-APPROVAL-RECORD.json"
+        storage_location: ".artifacts/briefs/BRIEF-APPROVAL-RECORD.json"
     quality_gate:
-      gate_name: "Context Validation Gate"
-      criteria: "Context-kit initialized successfully and evidence manifest complete."
-      failure_handling: "Re-run evidence initialization or correct validation issues."
+      gate_name: "Approval Validation Gate"
+      criteria: "Automated checks passed and client approval recorded."
+      failure_handling: "Hold protocol until validation passes and client confirms acceptance."
 
 ## ============================================
 ## SECTION 4: INTEGRATION & DATA FLOW
 ## ============================================
 
 inputs_from:
-  - protocol: "01-project-brief-creation"
-    artifacts_consumed: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
-    usage: "Provide validated brief and configuration for scaffold generation."
+  - protocol: "00B-client-discovery-initiation"
+    artifacts_consumed: "client-discovery-form.md, scope-clarification.md, communication-plan.md, client-context-notes.md, timeline-discussion.md"
+    usage: "Provides validated discovery data for brief creation."
+  - protocol: "00A-client-proposal-generation"
+    artifacts_consumed: "PROPOSAL.md, jobpost-analysis.json"
+    usage: "Provides baseline proposal and job post intent for reference alignment."
 
 outputs_to:
-  - protocol: "02-architecture-planning"
-    artifacts_provided: ".cursor/context-kit/, .cursor/rules/, .artifacts/bootstrap/, generator-config.json"
-    purpose: "Serve as foundational environment and context data for architecture planning."
+  - protocol: "00-project-bootstrap-and-context-engineering"
+    artifacts_provided: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
+    purpose: "Provides finalized project scope, technical direction, and business alignment for governed project scaffold generation."
 
 ## ============================================
 ## SECTION 5: AUTOMATION & TOOLING
 ## ============================================
 
 automation_hooks:
-  - hook_name: "validate_brief.py"
+  - hook_name: "validate_discovery_inputs.py"
     trigger_point: "Phase 1 start"
-    command: "python scripts/validate_brief.py --path PROJECT-BRIEF.md"
-    expected_output: ".artifacts/bootstrap/brief-validation-report.json"
-  - hook_name: "generate_from_brief.py"
-    trigger_point: "Phase 3 execution"
-    command: "python scripts/generate_from_brief.py --brief PROJECT-BRIEF.md --in-place --no-subdir --no-cursor-assets --force --yes"
-    expected_output: "generator-config.json, governed scaffold"
-  - hook_name: "doctor.py"
-    trigger_point: "Phase 2 start"
-    command: "python scripts/doctor.py --strict"
-    expected_output: "stdout environment report"
-  - hook_name: "rules_audit_quick.py"
-    trigger_point: "After normalization"
-    command: "python scripts/rules_audit_quick.py --output .artifacts/bootstrap/rule-audit-report.md"
-    expected_output: "rule-audit-report.md"
-  - hook_name: "evidence_manager.py"
-    trigger_point: "Phase 4 initialization"
-    command: "python scripts/evidence_manager.py init --path .artifacts/bootstrap/"
-    expected_output: "evidence manifest.json"
-  - hook_name: "validate_workflows.py"
-    trigger_point: "Phase 4 validation"
-    command: "python scripts/validate_workflows.py --mode bootstrap"
-    expected_output: "validation-report.json"
+    command: "python scripts/validate_discovery_inputs.py --input .artifacts/discovery/"
+    expected_output: "project-brief-validation-report.json"
+  - hook_name: "assemble_project_brief.py"
+    trigger_point: "Phase 2 execution"
+    command: "python scripts/assemble_project_brief.py --output .artifacts/briefs/PROJECT-BRIEF.md"
+    expected_output: "PROJECT-BRIEF.md"
+  - hook_name: "validate_brief_structure.py"
+    trigger_point: "Phase 3 start"
+    command: "python scripts/validate_brief_structure.py --input .artifacts/briefs/PROJECT-BRIEF.md"
+    expected_output: "project-brief-validation-report.json"
 
 ## ============================================
 ## SECTION 6: COMMUNICATION PROTOCOLS
@@ -172,47 +135,44 @@ automation_hooks:
 
 announcements:
   phase_start_template: "[PHASE {N} START] - Beginning {phase_name}..."
-  phase_complete_template: "[PHASE {N} COMPLETE] - {phase_name} finished successfully."
-  automation_status_template: "[AUTOMATION] {script_name} executed: {status}"
+  phase_complete_template: "[PHASE {N} COMPLETE] - {phase_name} completed successfully."
+  automation_status_template: "[STATUS] {phase_name} validation and output generated."
 
 validation_prompts:
-  - prompt_context: "After Phase 3 scaffold generation"
-    prompt_template: "[VALIDATION] Scaffold generated successfully. Approve to initialize context-kit? (yes/no)"
-  - prompt_context: "After Phase 4 validation"
-    prompt_template: "[VALIDATION] Bootstrap complete and validated. Proceed to Architecture Planning? (yes/no)"
+  - prompt_context: "After Phase 3 completion"
+    prompt_template: "[VALIDATION] Project Brief validated and approved. Proceed to Bootstrap? (yes/no)"
 
 error_handling:
   - error_type: "MissingArtifacts"
-    error_message_template: "[ERROR] PROJECT-BRIEF.md or required validation files missing."
-    recovery_steps: "Re-run Protocol 01 or manually supply required brief artifacts."
-  - error_type: "EnvironmentFailure"
-    error_message_template: "[ERROR] doctor.py failed. Dependencies missing or invalid environment."
-    recovery_steps: "Install missing tools and re-run bootstrap."
-  - error_type: "ScaffoldFailure"
-    error_message_template: "[ERROR] Scaffold generation failed or produced mismatched structure."
-    recovery_steps: "Verify PROJECT-BRIEF.md and rerun with --force."
+    error_message_template: "[ERROR] One or more required discovery artifacts not found."
+    recovery_steps: "Re-run Protocol 00B or manually upload missing files."
+  - error_type: "ValidationFailure"
+    error_message_template: "[ERROR] Validation checks failed for assembled brief."
+    recovery_steps: "Review project-brief-validation-report.json and correct discrepancies."
+  - error_type: "ClientApprovalPending"
+    error_message_template: "[ERROR] Client has not yet approved Project Brief."
+    recovery_steps: "Follow up with client and record confirmation in BRIEF-APPROVAL-RECORD.json."
 
 ## ============================================
 ## SECTION 7: COMPLETION & HANDOFF
 ## ============================================
 
 completion_checklist:
-  - "PROJECT-BRIEF.md validated successfully"
-  - "Environment and rules verified"
-  - "Governed scaffold generated"
-  - "Context-kit initialized and validated"
-  - "All bootstrap artifacts archived in .artifacts/bootstrap/"
+  - "All discovery artifacts validated successfully."
+  - "PROJECT-BRIEF.md generated and passes integrity checks."
+  - "Validation report and client approval recorded."
+  - "Brief artifacts stored under .artifacts/briefs/."
 
-handoff_command: "[PROTOCOL COMPLETE] - Project Bootstrap finalized. Ready for Protocol 02 (Architecture Planning)."
-next_protocol: "02-architecture-planning"
+handoff_command: "[PROTOCOL COMPLETE] - Project Brief validated and approved. Ready for Protocol 00 (Bootstrap)."
+next_protocol: "00-project-bootstrap-and-context-engineering"
 
 ## ============================================
 ## SECTION 8: ADDITIONAL CONTEXT (OPTIONAL)
 ## ============================================
 
-context: "This protocol establishes the initial governed environment and scaffold after the client-approved Project Brief. It ensures readiness for downstream architecture planning."
+context: "This protocol consolidates all validated discovery outputs into a single client-approved Project Brief. It ensures business, technical, and communication alignments are captured before any development or bootstrap operations begin."
 focus_areas:
-  - "Non-destructive scaffold generation"
-  - "Environment validation and evidence logging"
-  - "Rule normalization and governance integrity"
-special_considerations: "Must be executed only after client-approved brief. Use non-destructive flags (--no-subdir, --no-cursor-assets, --force, --yes) to prevent altering template repositories."
+  - "Validation of discovery data"
+  - "Brief assembly and evidence generation"
+  - "Client approval and readiness for bootstrap phase"
+special_considerations: "Ensure PROJECT-BRIEF.md includes YAML frontmatter defining stack configuration, industry, and compliance requirements to support automated scaffold generation."
