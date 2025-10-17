@@ -1,0 +1,121 @@
+# Bootstrap Protocol Requirements Form
+# Fill out all required fields before protocol generation
+
+# Basic Protocol Information
+protocol_number: "00"
+protocol_name: "project-bootstrap-and-context-engineering"
+domain_compliance: "Governance / Environment Initialization"
+purpose: "Read the approved Project Brief, validate configuration, and generate a complete governed project scaffold with context-kit and evidence tracking—without modifying production code."
+
+# AI Role and Mission
+ai_role: "AI Codebase Analyst & Context Architect"
+mission: "Transform a validated Project Brief into a reproducible, governed project scaffold using brief-driven automation."
+critical_guardrail: "DO NOT modify or delete production code. Contain all actions inside governed template and artifact directories."
+
+# Process Structure
+process_name: "Brief-Driven Bootstrap Process"
+
+# Process Steps
+process_steps:
+  - step_number: 1
+    step_name: "Brief Parsing and Validation"
+    step_action: "Parse PROJECT-BRIEF.md and confirm all frontmatter keys are valid and complete."
+    concrete_actions:
+      - "Run python scripts/validate_brief.py --path PROJECT-BRIEF.md --output .artifacts/bootstrap/brief-validation-report.json"
+      - "If validation passes, run python scripts/generate_from_brief.py --brief PROJECT-BRIEF.md --dry-run --yes to preview generation plan."
+    evidence_collection: ".artifacts/bootstrap/brief-validation-report.json"
+    halt_conditions:
+      - "Stop if PROJECT-BRIEF.md is missing or malformed."
+      - "Stop if validation report contains missing required keys."
+
+  - step_number: 2
+    step_name: "Environment and Rule Preparation"
+    step_action: "Validate local development environment and normalize governance rules."
+    concrete_actions:
+      - "Run python scripts/doctor.py --strict to confirm Docker, Node, Python, and Go availability."
+      - "Run python scripts/normalize_project_rules.py --target .cursor/rules/"
+      - "Run python scripts/rules_audit_quick.py --output .artifacts/bootstrap/rule-audit-report.md"
+    evidence_collection: ".artifacts/bootstrap/environment-report.json"
+    halt_conditions:
+      - "Stop if any required dependency is missing or rule normalization fails."
+
+  - step_number: 3
+    step_name: "Scaffold Generation from Project Brief"
+    step_action: "Generate the governed project scaffold based on validated Project Brief configuration."
+    concrete_actions:
+      - "Run python scripts/generate_from_brief.py --brief PROJECT-BRIEF.md --output-root . --in-place --no-subdir --no-cursor-assets --force --yes"
+      - "Capture generator-config.json and generated structure summary."
+    evidence_collection: ".artifacts/bootstrap/bootstrap-manifest.json"
+    halt_conditions:
+      - "Stop if generator returns non-zero exit code or if scaffold verification fails."
+
+  - step_number: 4
+    step_name: "Context Kit and Evidence Initialization"
+    step_action: "Initialize context-kit and record evidence for the bootstrap operation."
+    concrete_actions:
+      - "Run python scripts/evidence_manager.py init --path .artifacts/bootstrap/"
+      - "Write .cursor/context-kit/governance-status.md with detected stack and template inventory."
+      - "Run python scripts/validate_workflows.py --mode bootstrap --output .artifacts/bootstrap/validation-report.json"
+    evidence_collection: ".artifacts/bootstrap/validation-report.json"
+    halt_conditions:
+      - "Stop if evidence log cannot be written or validation report fails integrity checks."
+
+# Integration Points
+prerequisites:
+  - "01-project-brief-creation"
+integration_inputs:
+  - "PROJECT-BRIEF.md"
+  - "project-brief-validation-report.json"
+  - "BRIEF-APPROVAL-RECORD.json"
+integration_outputs:
+  - ".cursor/context-kit/"
+  - ".cursor/rules/"
+  - ".artifacts/bootstrap/"
+  - "generator-config.json"
+
+# Quality Gates
+quality_gates:
+  - gate_name: "Brief Parsing & Stack Detection Gate"
+    criteria: "PROJECT-BRIEF.md parsed successfully and validated against required schema."
+    evidence: ".artifacts/bootstrap/brief-validation-report.json"
+    failure_handling: "Request corrected brief before proceeding."
+  - gate_name: "Environment & Rule Integrity Gate"
+    criteria: "doctor.py reports no missing dependencies and rule audit passes."
+    evidence: ".artifacts/bootstrap/rule-audit-report.md"
+    failure_handling: "Suspend bootstrap until environment is corrected."
+  - gate_name: "Scaffold & Context Validation Gate"
+    criteria: "Scaffold structure matches expected template mapping and context-kit is initialized."
+    evidence: ".artifacts/bootstrap/validation-report.json"
+    failure_handling: "Re-run generate_from_brief.py with --force after correction."
+
+# Communication Templates
+communication_templates:
+  status_announcements:
+    - "[PHASE 1 START] - Parsing and validating Project Brief..."
+    - "[PHASE 2 START] - Preparing environment and normalizing rules..."
+    - "[PHASE 3 START] - Generating governed project scaffold..."
+    - "[PHASE 4 START] - Initializing context-kit and recording evidence..."
+  validation_prompts:
+    - "[VALIDATION REQUEST] - Brief validation and scaffold generation complete. Approve environment and context initialization? (yes/no)"
+  error_handling:
+    - "[ERROR] PROJECT-BRIEF.md missing or invalid."
+    - "[ERROR] Environment dependencies not satisfied."
+    - "[ERROR] Scaffold generation failed or produced unexpected structure."
+  completion_message: "[PROTOCOL COMPLETE] - Project scaffold successfully generated and context-kit initialized."
+  next_steps_guidance: "Proceed to Protocol 02 (Architecture Planning) using generated context and template registry."
+
+# Optional Fields
+context: "This protocol transforms a validated Project Brief into a ready-to-develop governed scaffold, initializing all environment evidence and template mappings for downstream architecture planning."
+automation_hooks:
+  - "validate_brief.py"
+  - "generate_from_brief.py"
+  - "doctor.py"
+  - "normalize_project_rules.py"
+  - "rules_audit_quick.py"
+  - "evidence_manager.py"
+  - "validate_workflows.py"
+focus_areas:
+  - "Brief parsing and validation"
+  - "Environment readiness verification"
+  - "Template registry scaffold generation"
+  - "Evidence and context-kit initialization"

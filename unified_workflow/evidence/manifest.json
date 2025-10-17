@@ -1,0 +1,90 @@
+{
+  "artifacts": [
+    {
+      "category": "documentation",
+      "checksum": "",
+      "created_at": "2025-10-05T16:53:23.727042Z",
+      "description": "Project context and architecture overview",
+      "path": "final-validation-test/context-kit/README.md",
+      "phase": 0
+    },
+    {
+      "category": "config",
+      "checksum": "",
+      "created_at": "2025-10-05T16:53:23.727939Z",
+      "description": "Project-specific rules and governance",
+      "path": "final-validation-test/project-rules/",
+      "phase": 0
+    },
+    {
+      "category": "documentation",
+      "checksum": "",
+      "created_at": "2025-10-05T16:53:26.730827Z",
+      "description": "Product Requirements Document",
+      "path": "final-validation-test/prd-final-validation-test.md",
+      "phase": 1
+    },
+    {
+      "category": "documentation",
+      "checksum": "",
+      "created_at": "2025-10-05T16:53:28.755587Z",
+      "description": "Technical task breakdown",
+      "path": "final-validation-test/tasks-final-validation-test.md",
+      "phase": 2
+    },
+    {
+      "category": "code",
+      "checksum": "",
+      "created_at": "2025-10-05T16:53:33.762821Z",
+      "description": "Implemented source code",
+      "path": "final-validation-test/src/",
+      "phase": 3
+    },
+    {
+      "category": "test",
+      "checksum": "",
+      "created_at": "2025-10-05T16:53:33.764545Z",
+      "description": "Unit and integration tests",
+      "path": "final-validation-test/tests/",
+      "phase": 3
+    },
+    {
+      "category": "evidence",
+      "checksum": "",
+      "created_at": "2025-10-05T16:53:36.772928Z",
+      "description": "Quality audit reports",
+      "path": "final-validation-test/audit-reports/",
+      "phase": 4
+    },
+    {
+      "category": "documentation",
+      "checksum": "",
+      "created_at": "2025-10-05T16:53:38.776355Z",
+      "description": "Implementation retrospective and learnings",
+      "path": "final-validation-test/retrospective-notes.md",
+      "phase": 5
+    },
+    {
+      "category": "config",
+      "checksum": "",
+      "created_at": "2025-10-05T16:53:42.805975Z",
+      "description": "Production monitoring configuration",
+      "path": "final-validation-test/monitoring-dashboards/",
+      "phase": 6
+    },
+    {
+      "category": "evidence",
+      "checksum": "",
+      "created_at": "2025-10-05T16:53:42.807260Z",
+      "description": "Incident management documentation",
+      "path": "final-validation-test/incident-reports/",
+      "phase": 6
+    }
+  ],
+  "metadata": {
+    "generated_at": "2025-10-05T16:53:42.807330Z",
+    "project_name": "",
+    "total_artifacts": 10,
+    "workflow_version": "1.0.0"
+  }
+}

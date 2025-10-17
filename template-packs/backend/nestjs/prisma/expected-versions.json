@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@nestjs/core": "^11.1.6",
+    "@prisma/client": "^6.16.2"
+  },
+  "devDependencies": {
+    "prisma": "^6.16.2",
+    "typescript": "^5.9.2",
+    "jest": "^30.0.0",
+    "babel-jest": "^30.0.0",
+    "@babel/preset-typescript": "^7.24.0"
+  }
+}

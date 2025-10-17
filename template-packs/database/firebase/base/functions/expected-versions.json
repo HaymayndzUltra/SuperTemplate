@@ -1,0 +1,4 @@
+{
+  "dependencies": { "firebase-functions": "^6.4.0" },
+  "devDependencies": { "typescript": "^5.9.2" }
+}

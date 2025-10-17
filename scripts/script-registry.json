@@ -1,0 +1,27 @@
+{
+  "bootstrap": {
+    "stack-detection": "scripts/classify_domain.py",
+    "template-generation": "scripts/generate_from_brief.py",
+    "rules-setup": "scripts/normalize_project_rules.py"
+  },
+  "prd": {
+    "validation": "scripts/validate_prd_gate.py",
+    "asset-generation": "scripts/generate_prd_assets.py"
+  },
+  "task-generation": {
+    "task-enrichment": "scripts/enrich_tasks.py",
+    "lifecycle-mapping": "scripts/lifecycle_tasks.py"
+  },
+  "execution": {
+    "workflow-runner": "scripts/run_workflow.py",
+    "task-tracking": "scripts/update_task_state.py"
+  },
+  "quality": {
+    "comprehensive-audit": "scripts/quality_gates.py",
+    "coverage-collection": "scripts/collect_coverage.py"
+  },
+  "retrospective": {
+    "evidence-report": "scripts/evidence_report.py",
+    "improvement-plan": "scripts/trigger_plan.py"
+  }
+}

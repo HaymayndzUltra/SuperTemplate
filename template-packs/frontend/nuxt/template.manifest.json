@@ -1,0 +1,11 @@
+{
+  "name": "nuxt",
+  "type": "frontend",
+  "variants": ["base"],
+  "engines": {
+    "node": ">=20"
+  },
+  "tests": {
+    "command": "npm run test"
+  }
+}

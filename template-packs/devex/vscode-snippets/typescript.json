@@ -1,0 +1,99 @@
+{
+  "React Functional Component": {
+    "prefix": "rfc",
+    "body": [
+      "import React from 'react';",
+      "",
+      "interface ${1:ComponentName}Props {",
+      "  ${2}",
+      "}",
+      "",
+      "export const ${1:ComponentName}: React.FC<${1:ComponentName}Props> = ({${3}}) => {",
+      "  return (",
+      "    <div>",
+      "      ${0}",
+      "    </div>",
+      "  );",
+      "};"
+    ],
+    "description": "Create a React functional component with TypeScript"
+  },
+  
+  "React Hook": {
+    "prefix": "hook",
+    "body": [
+      "import { useState, useEffect } from 'react';",
+      "",
+      "export const use${1:HookName} = (${2}) => {",
+      "  const [${3:state}, set${3/(.*)/${1:/capitalize}/}] = useState(${4});",
+      "",
+      "  useEffect(() => {",
+      "    ${5}",
+      "  }, [${6}]);",
+      "",
+      "  return { ${3:state} };",
+      "};"
+    ],
+    "description": "Create a custom React hook"
+  },
+  
+  "API Call": {
+    "prefix": "api",
+    "body": [
+      "const ${1:functionName} = async (${2:params}) => {",
+      "  try {",
+      "    const response = await api.${3|get,post,put,delete|}('${4:endpoint}'${5:, data});",
+      "    return response.data;",
+      "  } catch (error) {",
+      "    console.error('Error in ${1:functionName}:', error);",
+      "    throw error;",
+      "  }",
+      "};"
+    ],
+    "description": "Create an API call function"
+  },
+  
+  "Next.js Page": {
+    "prefix": "nextpage",
+    "body": [
+      "import { GetServerSideProps } from 'next';",
+      "",
+      "interface ${1:PageName}Props {",
+      "  ${2}",
+      "}",
+      "",
+      "export default function ${1:PageName}({ ${3} }: ${1:PageName}Props) {",
+      "  return (",
+      "    <div>",
+      "      <h1>${1:PageName}</h1>",
+      "      ${0}",
+      "    </div>",
+      "  );",
+      "}",
+      "",
+      "export const getServerSideProps: GetServerSideProps = async (context) => {",
+      "  return {",
+      "    props: {",
+      "      ${4}",
+      "    },",
+      "  };",
+      "};"
+    ],
+    "description": "Create a Next.js page with getServerSideProps"
+  },
+  
+  "Zod Schema": {
+    "prefix": "zod",
+    "body": [
+      "import { z } from 'zod';",
+      "",
+      "export const ${1:SchemaName}Schema = z.object({",
+      "  ${2:field}: z.string()${3:.min(1, 'Required')},",
+      "  ${0}",
+      "});",
+      "",
+      "export type ${1:SchemaName} = z.infer<typeof ${1:SchemaName}Schema>;"
+    ],
+    "description": "Create a Zod schema with TypeScript type"
+  }
+}

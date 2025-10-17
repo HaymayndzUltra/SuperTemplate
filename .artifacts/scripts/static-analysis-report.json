@@ -1,0 +1,33 @@
+{
+  "static_analysis_report": {
+    "timestamp": "2024-01-15T12:15:00Z",
+    "analysis_type": "markdown_static_analysis",
+    "files_analyzed": 2,
+    "analysis_results": [
+      {
+        "file_name": "analysis-00a-client-proposal-generation.md",
+        "markdown_syntax": "VALID",
+        "heading_hierarchy": "VALID",
+        "link_references": "VALID",
+        "code_blocks": "VALID",
+        "ascii_diagram_format": "VALID",
+        "line_length_compliance": "VALID",
+        "issues_found": 0,
+        "severity": "NONE"
+      },
+      {
+        "file_name": "analysis-00B-client-discovery-initiation.md", 
+        "markdown_syntax": "VALID",
+        "heading_hierarchy": "VALID",
+        "link_references": "VALID",
+        "code_blocks": "VALID",
+        "ascii_diagram_format": "VALID",
+        "line_length_compliance": "VALID",
+        "issues_found": 0,
+        "severity": "NONE"
+      }
+    ],
+    "overall_status": "PASSED",
+    "compliance_score": 100
+  }
+}

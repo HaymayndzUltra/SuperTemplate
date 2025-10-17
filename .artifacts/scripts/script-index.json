@@ -1,0 +1,29 @@
+{
+  "session_id": "session-01",
+  "analysis_files": [
+    {
+      "file_name": "analysis-00a-client-proposal-generation.md",
+      "file_path": "meta-analysis/session-01/analysis-00a-client-proposal-generation.md",
+      "source_protocol": "00a-client-proposal-generation.md",
+      "description": "Meta-instruction analysis of client proposal generation protocol",
+      "last_modified": "2024-01-15T10:30:00Z",
+      "file_size": 103,
+      "analysis_type": "protocol_analysis",
+      "completeness_score": 100
+    },
+    {
+      "file_name": "analysis-00B-client-discovery-initiation.md", 
+      "file_path": "meta-analysis/session-01/analysis-00B-client-discovery-initiation.md",
+      "source_protocol": "00B-client-discovery-initiation.md",
+      "description": "Meta-instruction analysis of client discovery initiation protocol",
+      "last_modified": "2024-01-15T11:45:00Z",
+      "file_size": 106,
+      "analysis_type": "protocol_analysis",
+      "completeness_score": 100
+    }
+  ],
+  "metadata_completeness": 100,
+  "total_files": 2,
+  "indexed_files": 2,
+  "validation_status": "pending"
+}

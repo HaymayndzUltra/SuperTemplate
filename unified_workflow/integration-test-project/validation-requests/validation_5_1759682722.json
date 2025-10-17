@@ -1,0 +1,53 @@
+{
+  "phase": 5,
+  "checkpoint": {
+    "name": "phase_5_retrospective",
+    "title": "Retrospective Validation",
+    "description": "Validate retrospective findings",
+    "required_approvals": [
+      "process_owner",
+      "team_lead"
+    ],
+    "artifacts": [
+      "retrospective-notes.md"
+    ],
+    "validation_criteria": [
+      "Retrospective is unbiased and accurate",
+      "Genuine improvement opportunities identified",
+      "Actionable recommendations provided",
+      "Process improvements documented",
+      "Ready for operations"
+    ]
+  },
+  "context": {
+    "project_name": "integration-test-project",
+    "description": "Validation request for Phase 5"
+  },
+  "request_id": "validation_5_1759682722",
+  "created_at": "2025-10-05T16:45:22.052176Z",
+  "status": "approved",
+  "approvals": {
+    "process_owner": {
+      "approved": true,
+      "comments": "",
+      "timestamp": "2025-10-05T16:45:22.067610Z"
+    },
+    "team_lead": {
+      "approved": true,
+      "comments": "",
+      "timestamp": "2025-10-05T16:45:22.068065Z"
+    }
+  },
+  "comments": [],
+  "artifacts": [
+    "retrospective-notes.md"
+  ],
+  "validation_criteria": [
+    "Retrospective is unbiased and accurate",
+    "Genuine improvement opportunities identified",
+    "Actionable recommendations provided",
+    "Process improvements documented",
+    "Ready for operations"
+  ],
+  "completed_at": "2025-10-05T16:45:22.068070Z"
+}

@@ -1,0 +1,232 @@
+{
+  "phases": [
+    {
+      "phase": 2,
+      "name": "Design & Contracts",
+      "templates": [
+        {
+          "relative_path": "workflow1/codex-phase2-design/templates/Architecture.md",
+          "category": "architecture",
+          "description": "Architecture briefing cover sheet copied by generate_architecture_pack",
+          "evidence_target": "architecture"
+        },
+        {
+          "relative_path": "workflow1/codex-phase2-design/templates/C4/context.mmd",
+          "category": "architecture",
+          "description": "C4 context diagram Meridian source",
+          "evidence_target": "architecture/C4"
+        },
+        {
+          "relative_path": "workflow1/codex-phase2-design/templates/C4/container.mmd",
+          "category": "architecture",
+          "description": "C4 container-level template",
+          "evidence_target": "architecture/C4"
+        },
+        {
+          "relative_path": "workflow1/codex-phase2-design/templates/ADR-template.md",
+          "category": "architecture",
+          "description": "Architecture decision record skeleton",
+          "evidence_target": "architecture"
+        },
+        {
+          "relative_path": "workflow1/codex-phase2-design/templates/Env_Strategy.md",
+          "category": "environment",
+          "description": "Environment strategy template",
+          "evidence_target": "architecture"
+        },
+        {
+          "relative_path": "workflow1/codex-phase2-design/templates/Repo_Policy.md",
+          "category": "governance",
+          "description": "Repository policy checklist",
+          "evidence_target": "architecture"
+        },
+        {
+          "relative_path": "workflow1/codex-phase2-design/templates/Coding_Standards.md",
+          "category": "governance",
+          "description": "Coding standards quick reference",
+          "evidence_target": "architecture"
+        },
+        {
+          "relative_path": "workflow1/codex-phase2-design/templates/Product_Backlog.csv",
+          "category": "contracts",
+          "description": "Backlog seed used by generate_contract_assets",
+          "evidence_target": "contracts"
+        },
+        {
+          "relative_path": "workflow1/codex-phase2-design/templates/Sprint0_Plan.md",
+          "category": "contracts",
+          "description": "Sprint zero launch plan",
+          "evidence_target": "contracts"
+        },
+        {
+          "relative_path": "workflow1/codex-phase2-design/templates/OpenAPI/README.md",
+          "category": "contracts",
+          "description": "Instructions for OpenAPI stub generation",
+          "evidence_target": "contracts/openapi"
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "Quality Rails",
+      "templates": [
+        {
+          "relative_path": "workflow1/codex-phase3-quality-rails/templates/Security_Checklist.md",
+          "category": "quality",
+          "description": "Security hardening checklist",
+          "evidence_target": "quality-rails"
+        },
+        {
+          "relative_path": "workflow1/codex-phase3-quality-rails/templates/A11y_Test_Plan.md",
+          "category": "quality",
+          "description": "Accessibility testing plan",
+          "evidence_target": "quality-rails"
+        },
+        {
+          "relative_path": "workflow1/codex-phase3-quality-rails/templates/Feature_Flags.md",
+          "category": "quality",
+          "description": "Feature flag planning worksheet",
+          "evidence_target": "quality-rails"
+        },
+        {
+          "relative_path": "workflow1/codex-phase3-quality-rails/templates/Test_Plan.md",
+          "category": "quality",
+          "description": "Functional test plan template",
+          "evidence_target": "quality-rails"
+        },
+        {
+          "relative_path": "workflow1/codex-phase3-quality-rails/templates/Code_Review_Checklist.md",
+          "category": "quality",
+          "description": "Peer review checklist",
+          "evidence_target": "quality-rails"
+        },
+        {
+          "relative_path": "workflow1/codex-phase3-quality-rails/templates/perf/budgets.json",
+          "category": "performance",
+          "description": "Initial performance budget",
+          "evidence_target": "quality-rails/perf"
+        },
+        {
+          "relative_path": "workflow1/codex-phase3-quality-rails/templates/Analytics_Spec.xlsx",
+          "category": "analytics",
+          "description": "Analytics specification workbook",
+          "evidence_target": "quality-rails"
+        }
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "Integration",
+      "templates": [
+        {
+          "relative_path": "workflow1/codex-phase4-integration/templates/Observability_Spec.md",
+          "category": "observability",
+          "description": "Observability specification outline",
+          "evidence_target": "observability"
+        },
+        {
+          "relative_path": "workflow1/codex-phase4-integration/templates/SLO_SLI.md",
+          "category": "observability",
+          "description": "SLO/SLI definition template",
+          "evidence_target": "observability"
+        },
+        {
+          "relative_path": "workflow1/codex-phase4-integration/templates/CHANGELOG.md",
+          "category": "release",
+          "description": "Changelog starter file",
+          "evidence_target": "observability"
+        },
+        {
+          "relative_path": "workflow1/codex-phase4-integration/templates/Staging_Smoke_Playbook.md",
+          "category": "testing",
+          "description": "Staging smoke playbook referenced by run_staging_smoke",
+          "evidence_target": "integration"
+        }
+      ]
+    },
+    {
+      "phase": 5,
+      "name": "Launch",
+      "templates": [
+        {
+          "relative_path": "workflow1/codex-phase5-launch/templates/Rollback_Plan.md",
+          "category": "release",
+          "description": "Rollback rehearsal playbook",
+          "evidence_target": "launch"
+        },
+        {
+          "relative_path": "workflow1/codex-phase5-launch/templates/GoLive_Checklist.md",
+          "category": "release",
+          "description": "Go-live readiness checklist",
+          "evidence_target": "launch"
+        },
+        {
+          "relative_path": "workflow1/codex-phase5-launch/templates/Release_Notes.md",
+          "category": "release",
+          "description": "Release notes skeleton",
+          "evidence_target": "launch"
+        },
+        {
+          "relative_path": "workflow1/codex-phase5-launch/templates/Deployment_Runbook.md",
+          "category": "operations",
+          "description": "Deployment execution runbook",
+          "evidence_target": "launch"
+        },
+        {
+          "relative_path": "workflow1/codex-phase5-launch/templates/DR_Plan.md",
+          "category": "resilience",
+          "description": "Disaster recovery plan",
+          "evidence_target": "launch"
+        },
+        {
+          "relative_path": "workflow1/codex-phase5-launch/templates/Backup_Policy.md",
+          "category": "resilience",
+          "description": "Backup policy guidance",
+          "evidence_target": "launch"
+        },
+        {
+          "relative_path": "workflow1/codex-phase5-launch/templates/Prod_Observability.md",
+          "category": "observability",
+          "description": "Production observability checklist",
+          "evidence_target": "launch"
+        },
+        {
+          "relative_path": "workflow1/codex-phase5-launch/templates/SEO_Checklist.md",
+          "category": "marketing",
+          "description": "Launch SEO checklist",
+          "evidence_target": "launch"
+        }
+      ]
+    },
+    {
+      "phase": 6,
+      "name": "Operations",
+      "templates": [
+        {
+          "relative_path": "workflow1/codex-phase6-operations/templates/Retro_Template.md",
+          "category": "operations",
+          "description": "Retro facilitation template",
+          "evidence_target": "operations"
+        },
+        {
+          "relative_path": "workflow1/codex-phase6-operations/templates/Postmortem_Template.md",
+          "category": "operations",
+          "description": "Incident postmortem shell",
+          "evidence_target": "operations"
+        },
+        {
+          "relative_path": "workflow1/codex-phase6-operations/templates/Dependency_Update_Log.md",
+          "category": "operations",
+          "description": "Dependency update log",
+          "evidence_target": "operations"
+        },
+        {
+          "relative_path": "workflow1/codex-phase6-operations/templates/Security_Update_Log.md",
+          "category": "operations",
+          "description": "Security patch tracking log",
+          "evidence_target": "operations"
+        }
+      ]
+    }
+  ]
+}

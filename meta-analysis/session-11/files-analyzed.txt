@@ -1,0 +1,4 @@
+.cursor/rules/master-rules/8-master-rule-protocol-integration-methodology.mdc
+.cursor/rules/master-rules/9-master-rule-protocol-orchestrator.mdc
+.cursor/rules/master-rules/advanced-meta-instruction-intelligence-system.mdc
+.cursor/rules/common-rules/common-rule-ui-foundation-design-system.mdc

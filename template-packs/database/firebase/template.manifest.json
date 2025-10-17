@@ -1,0 +1,8 @@
+{
+  "name": "firebase",
+  "type": "database",
+  "variants": ["base"],
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,164 @@
+name: Validate Dev-Workflow Integration
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - '.cursor/ai-driven-workflow/**'
+      - 'scripts/**'
+      - '.github/workflows/validate-integration.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - '.cursor/ai-driven-workflow/**'
+      - 'scripts/**'
+      - '.github/workflows/validate-integration.yml'
+
+jobs:
+  validate-integration:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt || echo "No requirements.txt found"
+        
+    - name: Make scripts executable
+      run: |
+        chmod +x scripts/*.py scripts/*.sh
+        mkdir -p .artifacts
+        
+    - name: Run workflow validation
+      id: validation
+      run: |
+        python scripts/validate_workflow_integration.py --verbose --output .artifacts/validation-results.json
+        
+    - name: Run integration tests
+      id: integration-tests
+      run: |
+        bash scripts/test_workflow_integration.sh --keep
+        
+    - name: Upload validation artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: validation-results
+        path: |
+          .artifacts/
+          .artifacts/integration-tests/
+        retention-days: 7
+        
+    - name: Generate validation report
+      id: report
+      run: |
+        echo "## 🔍 Dev-Workflow Integration Validation Report" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ -f .artifacts/validation-results.json ]; then
+          echo "### Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          cat .artifacts/validation-results.json >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ -f .artifacts/integration-tests/test-report.json ]; then
+          echo "### Integration Test Results" >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          cat .artifacts/integration-tests/test-report.json >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        echo "### Validation Status" >> $GITHUB_STEP_SUMMARY
+        if [ "${{ steps.validation.outcome }}" = "success" ]; then
+          echo "✅ **Validation Passed** - All checks completed successfully" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **Validation Failed** - Please review the issues above" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ steps.integration-tests.outcome }}" = "success" ]; then
+          echo "✅ **Integration Tests Passed** - All workflow tests completed successfully" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **Integration Tests Failed** - Please review the test failures above" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+    - name: Comment on PR
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          
+          let comment = '## 🔍 Dev-Workflow Integration Validation\n\n';
+          
+          // Read validation results
+          if (fs.existsSync('.artifacts/validation-results.json')) {
+            const validationResults = JSON.parse(fs.readFileSync('.artifacts/validation-results.json', 'utf8'));
+            
+            comment += `### Validation Summary\n`;
+            comment += `- **Status**: ${validationResults.status.toUpperCase()}\n`;
+            comment += `- **Total Checks**: ${validationResults.summary.total_checks}\n`;
+            comment += `- **Passed**: ${validationResults.summary.passed}\n`;
+            comment += `- **Failed**: ${validationResults.summary.failed}\n`;
+            comment += `- **Warnings**: ${validationResults.summary.warnings}\n\n`;
+            
+            if (validationResults.issues && validationResults.issues.length > 0) {
+              comment += `### Issues Found\n`;
+              validationResults.issues.forEach(issue => {
+                comment += `- **${issue.severity.toUpperCase()}**: ${issue.message}\n`;
+                comment += `  - Fix: ${issue.fix}\n`;
+              });
+              comment += '\n';
+            }
+            
+            if (validationResults.alignment) {
+              comment += `### Protocol Alignment\n`;
+              Object.entries(validationResults.alignment).forEach(([protocol, status]) => {
+                comment += `- ${protocol}: ${status}\n`;
+              });
+              comment += '\n';
+            }
+          }
+          
+          // Read integration test results
+          if (fs.existsSync('.artifacts/integration-tests/test-report.json')) {
+            const testResults = JSON.parse(fs.readFileSync('.artifacts/integration-tests/test-report.json', 'utf8'));
+            
+            comment += `### Integration Test Summary\n`;
+            comment += `- **Total Tests**: ${testResults.test_summary.total_tests}\n`;
+            comment += `- **Passed**: ${testResults.test_summary.passed}\n`;
+            comment += `- **Failed**: ${testResults.test_summary.failed}\n`;
+            comment += `- **Success Rate**: ${testResults.test_summary.success_rate}\n\n`;
+          }
+          
+          comment += '---\n';
+          comment += '*This validation runs automatically on every commit to ensure ai-driven-workflow integration remains aligned and functional.*';
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+          
+    - name: Fail on critical issues
+      if: steps.validation.outcome != 'success'
+      run: |
+        echo "❌ Validation failed - blocking merge"
+        exit 1
+        
+    - name: Fail on test failures
+      if: steps.integration-tests.outcome != 'success'
+      run: |
+        echo "❌ Integration tests failed - blocking merge"
+        exit 1

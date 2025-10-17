@@ -1,0 +1,11 @@
+{
+  "name": "angular",
+  "type": "frontend",
+  "variants": ["base"],
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "tests": {
+    "command": "npm run test"
+  }
+}

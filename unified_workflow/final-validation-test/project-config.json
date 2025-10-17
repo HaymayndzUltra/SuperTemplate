@@ -1,0 +1,15 @@
+{
+  "project": {
+    "name": "final-validation-test",
+    "type": "web-app",
+    "stack": [
+      "react",
+      "nodejs",
+      "postgresql"
+    ]
+  },
+  "workflow": {
+    "version": "1.0.0",
+    "evidence_root": "evidence"
+  }
+}

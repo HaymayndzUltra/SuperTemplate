@@ -1,0 +1,5 @@
+# Session 08 Insights
+
+- The centralized review router’s environment gate (`CUSTOM_AVAILABLE`) must remain the authoritative toggle because every selection cascade and adapter contract consumes its state, ensuring deterministic fallbacks across all review modes.【F:.cursor/ai-driven-workflow/review-protocols/utils/_review-router.md†L9-L132】
+- Enhanced static artifacts share a common context vocabulary; the analyzer’s interfaces and the template’s MicroSaaS header must stay synchronized so rule relevance tiers and custom protocol mappings interpret change patterns identically.【F:.cursor/ai-driven-workflow/review-protocols/utils/context-analyzer.md†L13-L132】【F:.cursor/ai-driven-workflow/review-protocols/utils/enhanced-static-template.md†L7-L55】
+- Validation governance demands tracking both quantitative KPIs and degradation drills before rollout; the go/no-go table and edge case scripts should be executed together to guarantee measurable gains do not sacrifice graceful fallback behavior.【F:.cursor/ai-driven-workflow/review-protocols/utils/enhanced-static-validation.md†L91-L307】

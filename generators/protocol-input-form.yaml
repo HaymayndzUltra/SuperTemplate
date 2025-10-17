@@ -1,0 +1,308 @@
+# PROTOCOL REQUIREMENTS FORM
+# Fill out this form completely before generating a new protocol
+# AI will use this information to create a protocol that matches existing workflow structure
+
+## ============================================
+## SECTION 1: BASIC INFORMATION
+## ============================================
+
+protocol_number: ""
+# Example: 6, 7, 8 (next sequential number in workflow)
+
+protocol_name: ""
+# Example: "deployment-automation", "security-review", "performance-optimization"
+# Use kebab-case, descriptive, action-oriented
+
+domain_compliance: ""
+# Example: "DevOps", "Security", "Quality", "Performance", "Architecture"
+
+purpose: ""
+# 1-2 sentence mission statement
+# Example: "Automate deployment pipeline validation and ensure zero-downtime releases across all environments."
+
+## ============================================
+## SECTION 2: AI ROLE & CONTEXT
+## ============================================
+
+ai_role: ""
+# Example: "DevOps Engineer", "Security Analyst", "Performance Engineer", "Solutions Architect"
+# What persona should the AI assume during this protocol?
+
+primary_guardrail: ""
+# Critical constraint or safety boundary
+# Example: "DO NOT deploy to production without approval", "DO NOT modify security configurations"
+
+prerequisites:
+  # List protocols or conditions that must be completed before this one
+  - protocol: ""
+    # Example: "3-process-tasks", "4-quality-audit"
+    required_artifacts: ""
+    # Example: "Task completion report", "Quality gate pass"
+
+phase_in_workflow: ""
+# Where does this fit in the 0-5 workflow?
+# Example: "Between Protocol 4 (Quality Audit) and Protocol 5 (Retrospective)"
+
+## ============================================
+## SECTION 3: EXECUTION STRUCTURE
+## ============================================
+
+phases:
+  # Define each execution phase
+  - phase_number: 1
+    phase_name: ""
+    # Example: "Environment Validation", "Security Scan", "Performance Baseline"
+    
+    objective: ""
+    # What this phase accomplishes
+    # Example: "Validate all deployment environments are ready and accessible"
+    
+    steps:
+      # List specific actions within this phase
+      - step_number: 1
+        action_type: "MUST"  # or "GUIDELINE"
+        action_title: ""
+        # Example: "Verify Environment Connectivity"
+        
+        instructions: ""
+        # Detailed instruction
+        # Example: "Execute connectivity tests to staging and production environments"
+        
+        communication_template: ""
+        # Optional: Example announcement or prompt
+        # Example: "I will now verify connectivity to all deployment targets..."
+        
+        halt_condition: ""
+        # Optional: When to stop and await confirmation
+        # Example: "Await user confirmation before proceeding to production validation"
+    
+    evidence_collection:
+      # What artifacts must be collected in this phase
+      - evidence_item: ""
+        # Example: "Environment connectivity test results"
+        storage_location: ""
+        # Example: ".artifacts/deployment/connectivity-report.json"
+    
+    quality_gate:
+      gate_name: ""
+      # Example: "Environment Readiness Gate"
+      
+      criteria: ""
+      # Validation requirements
+      # Example: "All environments must be accessible and health checks passing"
+      
+      failure_handling: ""
+      # What to do if gate fails
+      # Example: "Halt deployment, notify DevOps team, await infrastructure fix"
+
+  # Add more phases as needed (copy the structure above)
+  - phase_number: 2
+    phase_name: ""
+    objective: ""
+    steps: []
+    evidence_collection: []
+    quality_gate: {}
+
+## ============================================
+## SECTION 4: INTEGRATION & DATA FLOW
+## ============================================
+
+inputs_from:
+  # Which protocols provide input to this one?
+  - protocol: ""
+    # Example: "4-quality-audit"
+    
+    artifacts_consumed: ""
+    # What data/files are consumed
+    # Example: "Quality audit report, test coverage results"
+    
+    usage: ""
+    # How these artifacts are used
+    # Example: "Validate quality thresholds before deployment approval"
+
+outputs_to:
+  # Which protocols consume output from this one?
+  - protocol: ""
+    # Example: "5-implementation-retrospective"
+    
+    artifacts_provided: ""
+    # What data/files are provided
+    # Example: "Deployment report, performance metrics"
+    
+    purpose: ""
+    # Why downstream protocol needs this
+    # Example: "Enable retrospective analysis of deployment success"
+
+## ============================================
+## SECTION 5: AUTOMATION & TOOLING
+## ============================================
+
+automation_hooks:
+  # Scripts or tools to integrate
+  - hook_name: ""
+    # Example: "deployment_validator.py"
+    
+    trigger_point: ""
+    # When to execute
+    # Example: "Before Phase 2 deployment execution"
+    
+    command: ""
+    # Actual command to run
+    # Example: "python scripts/deployment_validator.py --env staging"
+    
+    expected_output: ""
+    # What the script should produce
+    # Example: "JSON validation report at .artifacts/deployment-validation.json"
+
+## ============================================
+## SECTION 6: COMMUNICATION PROTOCOLS
+## ============================================
+
+announcements:
+  # Key status messages
+  phase_start_template: ""
+  # Example: "[PHASE {N} START] - Beginning {phase_name}..."
+  
+  phase_complete_template: ""
+  # Example: "[PHASE {N} COMPLETE] - {phase_name} finished successfully"
+  
+  automation_status_template: ""
+  # Example: "[AUTOMATION] {script_name} executed: {status}"
+
+validation_prompts:
+  # User confirmation points
+  - prompt_context: ""
+    # When to show this prompt
+    # Example: "Before production deployment"
+    
+    prompt_template: ""
+    # Actual prompt text
+    # Example: "Production deployment is ready. All gates passed. Proceed with deployment? (yes/no)"
+
+error_handling:
+  # Failure scenarios
+  - error_type: ""
+    # Type of error
+    # Example: "Environment unreachable"
+    
+    error_message_template: ""
+    # Message to show
+    # Example: "[ERROR] Unable to connect to {environment}. Check network/credentials."
+    
+    recovery_steps: ""
+    # What to do
+    # Example: "1. Verify VPN connection, 2. Check credentials, 3. Retry or abort"
+
+## ============================================
+## SECTION 7: COMPLETION & HANDOFF
+## ============================================
+
+completion_checklist:
+  # Items to validate before protocol completion
+  - ""
+  # Example: "All environments validated successfully"
+  - ""
+  # Example: "Deployment artifacts archived"
+  - ""
+  # Example: "Performance baseline established"
+
+handoff_command: ""
+# Transition to next protocol
+# Example: "[PROTOCOL COMPLETE] - Deployment validated. Ready for Protocol 5 (Retrospective)"
+
+next_protocol: ""
+# What comes next
+# Example: "5-implementation-retrospective"
+
+## ============================================
+## SECTION 8: ADDITIONAL CONTEXT (OPTIONAL)
+## ============================================
+
+context: ""
+# Additional background about protocol's role in larger workflow
+# Example: "This protocol bridges quality audit and retrospective by ensuring deployment readiness"
+
+focus_areas:
+  # Specific aspects to emphasize
+  - ""
+  # Example: "Zero-downtime deployment validation"
+  - ""
+  # Example: "Rollback mechanism verification"
+
+special_considerations: ""
+# Any unique requirements or constraints
+# Example: "Must support multi-region deployments with staggered rollout"
+
+## ============================================
+## VALIDATION NOTES
+## ============================================
+
+# Before submitting this form, ensure:
+# ✓ All required fields filled (marked with quotes "")
+# ✓ Protocol number follows sequence
+# ✓ AI role is specific and actionable
+# ✓ At least 1 phase defined with steps
+# ✓ Integration points reference valid protocols
+# ✓ Quality gates have measurable criteria
+# ✓ Communication templates provided
+
+## ============================================
+## EXAMPLE: FILLED FORM
+## ============================================
+
+# Here's a complete example for reference:
+#
+# protocol_number: "6"
+# protocol_name: "deployment-automation"
+# domain_compliance: "DevOps"
+# purpose: "Automate deployment pipeline validation and ensure zero-downtime releases across all environments."
+#
+# ai_role: "DevOps Engineer"
+# primary_guardrail: "DO NOT deploy to production without explicit approval and passing quality gates"
+#
+# prerequisites:
+#   - protocol: "4-quality-audit"
+#     required_artifacts: "Quality audit report with all gates passed"
+#
+# phase_in_workflow: "Between Protocol 4 (Quality Audit) and Protocol 5 (Retrospective)"
+#
+# phases:
+#   - phase_number: 1
+#     phase_name: "Environment Validation"
+#     objective: "Validate all deployment environments are ready and accessible"
+#     steps:
+#       - step_number: 1
+#         action_type: "MUST"
+#         action_title: "Verify Environment Connectivity"
+#         instructions: "Execute connectivity tests to staging and production environments using automated health checks"
+#         communication_template: "I will now verify connectivity to all deployment targets..."
+#         halt_condition: "Await user confirmation before proceeding to production validation"
+#     evidence_collection:
+#       - evidence_item: "Environment connectivity test results"
+#         storage_location: ".artifacts/deployment/connectivity-report.json"
+#     quality_gate:
+#       gate_name: "Environment Readiness Gate"
+#       criteria: "All environments accessible and health checks passing"
+#       failure_handling: "Halt deployment, notify DevOps team, await infrastructure fix"
+#
+# inputs_from:
+#   - protocol: "4-quality-audit"
+#     artifacts_consumed: "Quality audit report, test coverage results"
+#     usage: "Validate quality thresholds before deployment approval"
+#
+# outputs_to:
+#   - protocol: "5-implementation-retrospective"
+#     artifacts_provided: "Deployment report, performance metrics"
+#     purpose: "Enable retrospective analysis of deployment success"
+#
+# announcements:
+#   phase_start_template: "[DEPLOYMENT PHASE {N}] - Beginning {phase_name}..."
+#   phase_complete_template: "[DEPLOYMENT COMPLETE] - {phase_name} finished successfully"
+#
+# completion_checklist:
+#   - "All environments validated successfully"
+#   - "Deployment artifacts archived"
+#   - "Performance baseline established"
+#
+# handoff_command: "[PROTOCOL COMPLETE] - Deployment validated. Ready for Protocol 5 (Retrospective)"
+# next_protocol: "5-implementation-retrospective"

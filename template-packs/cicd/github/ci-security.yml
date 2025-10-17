@@ -1,0 +1,315 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 2 * * 0'  # Weekly scan on Sunday at 2 AM UTC
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  dependency-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: '{{PROJECT_NAME}}'
+          path: '.'
+          format: 'ALL'
+          args: >
+            --enableRetired
+            --enableExperimental
+            {{#if COMPLIANCE contains 'hipaa' || COMPLIANCE contains 'pci'}}
+            --failOnCVSS 7
+            {{else}}
+            --failOnCVSS 8
+            {{/if}}
+      
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-check-report
+          path: reports/
+
+  trivy-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL,HIGH'
+          {{#if COMPLIANCE contains 'hipaa' || COMPLIANCE contains 'pci'}}
+          exit-code: '1'
+          {{/if}}
+      
+      - name: Upload Trivy scan results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  codeql-analysis:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['javascript', 'python', 'go']
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+          queries: security-and-quality
+      
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+      
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+  docker-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Build Docker images
+        run: |
+          docker build -t {{PROJECT_NAME}}-frontend ./frontend
+          docker build -t {{PROJECT_NAME}}-backend ./backend
+      
+      - name: Run Trivy on Docker images
+        run: |
+          # Scan frontend image
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+            aquasec/trivy:latest image {{PROJECT_NAME}}-frontend \
+            --severity CRITICAL,HIGH \
+            {{#if COMPLIANCE contains 'hipaa' || COMPLIANCE contains 'pci'}}
+            --exit-code 1
+            {{/if}}
+          
+          # Scan backend image
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+            aquasec/trivy:latest image {{PROJECT_NAME}}-backend \
+            --severity CRITICAL,HIGH \
+            {{#if COMPLIANCE contains 'hipaa' || COMPLIANCE contains 'pci'}}
+            --exit-code 1
+            {{/if}}
+
+  secret-scanning:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for scanning
+      
+      - name: TruffleHog OSS
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --debug --only-verified
+      
+      - name: Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # SAST - Static Application Security Testing
+  sast-python:
+    if: contains('{{BACKEND}}', 'fastapi') || contains('{{BACKEND}}', 'django')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install Bandit
+        run: pip install bandit[toml]
+      
+      - name: Run Bandit security scan
+        working-directory: backend
+        run: |
+          bandit -r app -f json -o bandit-report.json
+          {{#if COMPLIANCE contains 'hipaa' || COMPLIANCE contains 'pci'}}
+          bandit -r app -ll  # Fail on low severity for compliance
+          {{else}}
+          bandit -r app -lll  # Fail on medium severity
+          {{/if}}
+      
+      - name: Upload Bandit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: bandit-report
+          path: backend/bandit-report.json
+
+  sast-javascript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install ESLint security plugin
+        run: npm install -g eslint eslint-plugin-security
+      
+      - name: Run ESLint security scan
+        run: |
+          npx eslint . --ext .js,.jsx,.ts,.tsx \
+            --plugin security \
+            --rule 'security/detect-object-injection: error' \
+            --rule 'security/detect-non-literal-regexp: error' \
+            --rule 'security/detect-unsafe-regex: error'
+
+  sast-go:
+    if: contains('{{BACKEND}}', 'go')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+      
+      - name: Install gosec
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+      
+      - name: Run gosec security scan
+        working-directory: backend
+        run: |
+          gosec -fmt=json -out=gosec-report.json ./...
+          {{#if COMPLIANCE contains 'hipaa' || COMPLIANCE contains 'pci'}}
+          gosec -severity=low ./...  # Fail on low severity for compliance
+          {{else}}
+          gosec -severity=medium ./...  # Fail on medium severity
+          {{/if}}
+      
+      - name: Upload gosec report
+        uses: actions/upload-artifact@v4
+        with:
+          name: gosec-report
+          path: backend/gosec-report.json
+
+  # Industry-specific security checks
+  {{#if INDUSTRY == 'healthcare'}}
+  hipaa-security-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check for PHI in logs
+        run: |
+          # Ensure no PHI patterns in log statements
+          ! grep -r -i -E "(console\.log|logger\.|print)" . | grep -i -E "(patient|ssn|dob|diagnosis)"
+      
+      - name: Verify encryption usage
+        run: |
+          # Check that sensitive fields use encryption
+          grep -r "@Encrypted" backend/app/models || exit 1
+      
+      - name: Check session configuration
+        run: |
+          # Verify 15-minute session timeout
+          grep -r "SESSION_TIMEOUT.*900" . || exit 1
+  {{/if}}
+  
+  {{#if INDUSTRY == 'finance'}}
+  financial-security-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check for financial data exposure
+        run: |
+          # Ensure no account numbers or financial data in logs
+          ! grep -r -i -E "(console\.log|logger\.|print)" . | grep -i -E "(account_number|routing|credit_card)"
+      
+      - name: Verify transaction integrity
+        run: |
+          # Check for transaction atomicity patterns
+          grep -r "@Transactional" backend/ || grep -r "BEGIN.*COMMIT" backend/ || exit 1
+  {{/if}}
+
+  infrastructure-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Terraform security scan
+        uses: aquasecurity/tfsec-action@v1.0.0
+        with:
+          soft_fail: false
+      
+      - name: Kubernetes security scan
+        if: hashFiles('k8s/*.yaml') != ''
+        run: |
+          # Install kubesec
+          wget -O kubesec https://github.com/controlplaneio/kubesec/releases/download/v2.11.0/kubesec_linux_amd64
+          chmod +x kubesec
+          
+          # Scan Kubernetes manifests
+          for file in k8s/*.yaml; do
+            ./kubesec scan $file
+          done
+
+  security-report:
+    needs: [dependency-check, trivy-scan, codeql-analysis, docker-scan, secret-scanning, sast-python, sast-javascript, sast-go]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate security report
+        run: |
+          echo "# Security Scan Report" > security-report.md
+          echo "Date: $(date)" >> security-report.md
+          echo "" >> security-report.md
+          
+          echo "## Summary" >> security-report.md
+          echo "- Dependency Check: ${{ needs.dependency-check.result }}" >> security-report.md
+          echo "- Trivy Scan: ${{ needs.trivy-scan.result }}" >> security-report.md
+          echo "- CodeQL Analysis: ${{ needs.codeql-analysis.result }}" >> security-report.md
+          echo "- Docker Scan: ${{ needs.docker-scan.result }}" >> security-report.md
+          echo "- Secret Scanning: ${{ needs.secret-scanning.result }}" >> security-report.md
+          echo "" >> security-report.md
+          
+          {{#if COMPLIANCE}}
+          echo "## Compliance Requirements" >> security-report.md
+          echo "- Compliance Standards: {{COMPLIANCE}}" >> security-report.md
+          echo "- Enhanced Security Checks: Enabled" >> security-report.md
+          {{/if}}
+      
+      - name: Upload security report
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-report
+          path: security-report.md
+      
+      - name: Check security gate
+        run: |
+          if ${{ contains(needs.*.result, 'failure') }}; then
+            echo "❌ Security gate failed - vulnerabilities found"
+            exit 1
+          else
+            echo "✅ Security gate passed - no critical vulnerabilities"
+          fi

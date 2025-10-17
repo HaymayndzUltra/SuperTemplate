@@ -1,0 +1,3 @@
+/home/haymayndz/ai-driven-template/.cursor/rules/common-rules/common-rule-ui-interaction-a11y-perf.mdc
+/home/haymayndz/ai-driven-template/.cursor/rules/common-rules/common-rule-ui-premium-brand-dataviz-enterprise-gated.mdc
+/home/haymayndz/ai-driven-template/.cursor/rules/elaboration-specialist.mdc

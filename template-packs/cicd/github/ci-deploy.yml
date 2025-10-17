@@ -1,0 +1,352 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+      skip_tests:
+        description: 'Skip tests (emergency only)'
+        required: false
+        default: false
+        type: boolean
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  pre-deploy-checks:
+    runs-on: ubuntu-latest
+    outputs:
+      deploy_env: ${{ steps.set-env.outputs.environment }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set deployment environment
+        id: set-env
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "environment=${{ github.event.inputs.environment }}" >> $GITHUB_OUTPUT
+          else
+            echo "environment=staging" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Check branch protection
+        if: steps.set-env.outputs.environment == 'production'
+        run: |
+          if [[ "${{ github.ref }}" != "refs/heads/main" ]]; then
+            echo "❌ Production deployments only allowed from main branch"
+            exit 1
+          fi
+
+  run-tests:
+    needs: pre-deploy-checks
+    if: github.event.inputs.skip_tests != 'true'
+    uses: ./.github/workflows/ci-test.yml
+    secrets: inherit
+
+  run-security-scan:
+    needs: pre-deploy-checks
+    if: github.event.inputs.skip_tests != 'true'
+    uses: ./.github/workflows/ci-security.yml
+    secrets: inherit
+
+  build-and-push:
+    needs: [pre-deploy-checks, run-tests, run-security-scan]
+    if: |
+      always() && 
+      needs.pre-deploy-checks.result == 'success' &&
+      (needs.run-tests.result == 'success' || needs.run-tests.result == 'skipped') &&
+      (needs.run-security-scan.result == 'success' || needs.run-security-scan.result == 'skipped')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      matrix:
+        service: [frontend, backend]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-${{ matrix.service }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha,prefix={{branch}}-
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./${{ matrix.service }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            BUILD_DATE=${{ github.event.head_commit.timestamp }}
+            VCS_REF=${{ github.sha }}
+            VERSION=${{ steps.meta.outputs.version }}
+
+  {{#if DEPLOY == 'aws'}}
+  deploy-aws:
+    needs: [pre-deploy-checks, build-and-push]
+    runs-on: ubuntu-latest
+    environment: ${{ needs.pre-deploy-checks.outputs.deploy_env }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+      
+      - name: Deploy to ECS
+        run: |
+          # Update task definition with new image
+          aws ecs register-task-definition \
+            --family {{PROJECT_NAME}}-${{ needs.pre-deploy-checks.outputs.deploy_env }} \
+            --task-definition-file ./deploy/aws/task-definition.json
+          
+          # Update service
+          aws ecs update-service \
+            --cluster {{PROJECT_NAME}}-${{ needs.pre-deploy-checks.outputs.deploy_env }} \
+            --service {{PROJECT_NAME}}-service \
+            --task-definition {{PROJECT_NAME}}-${{ needs.pre-deploy-checks.outputs.deploy_env }}
+      
+      - name: Wait for deployment
+        run: |
+          aws ecs wait services-stable \
+            --cluster {{PROJECT_NAME}}-${{ needs.pre-deploy-checks.outputs.deploy_env }} \
+            --services {{PROJECT_NAME}}-service
+  {{/if}}
+
+  {{#if DEPLOY == 'azure'}}
+  deploy-azure:
+    needs: [pre-deploy-checks, build-and-push]
+    runs-on: ubuntu-latest
+    environment: ${{ needs.pre-deploy-checks.outputs.deploy_env }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Deploy to Container Instances
+        uses: azure/aci-deploy@v1
+        with:
+          resource-group: {{PROJECT_NAME}}-${{ needs.pre-deploy-checks.outputs.deploy_env }}-rg
+          dns-name-label: {{PROJECT_NAME}}-${{ needs.pre-deploy-checks.outputs.deploy_env }}
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          name: {{PROJECT_NAME}}-container
+          location: ${{ vars.AZURE_LOCATION }}
+  {{/if}}
+
+  {{#if DEPLOY == 'gcp'}}
+  deploy-gcp:
+    needs: [pre-deploy-checks, build-and-push]
+    runs-on: ubuntu-latest
+    environment: ${{ needs.pre-deploy-checks.outputs.deploy_env }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+      
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy {{PROJECT_NAME}}-${{ needs.pre-deploy-checks.outputs.deploy_env }} \
+            --image ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+            --platform managed \
+            --region ${{ vars.GCP_REGION }} \
+            --allow-unauthenticated
+  {{/if}}
+
+  {{#if DEPLOY == 'vercel'}}
+  deploy-vercel:
+    needs: [pre-deploy-checks, build-and-push]
+    runs-on: ubuntu-latest
+    environment: ${{ needs.pre-deploy-checks.outputs.deploy_env }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: ${{ needs.pre-deploy-checks.outputs.deploy_env == 'production' && '--prod' || '' }}
+          working-directory: ./frontend
+  {{/if}}
+
+  database-migrations:
+    needs: [pre-deploy-checks, build-and-push]
+    runs-on: ubuntu-latest
+    environment: ${{ needs.pre-deploy-checks.outputs.deploy_env }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run database migrations
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          {{#if BACKEND == 'fastapi' || BACKEND == 'django'}}
+          pip install alembic psycopg2-binary
+          alembic upgrade head
+          {{else if BACKEND == 'go'}}
+          go install -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate@latest
+          migrate -path ./migrations -database $DATABASE_URL up
+          {{else if BACKEND == 'nestjs'}}
+          npm install -g typeorm
+          typeorm migration:run
+          {{/if}}
+
+  smoke-tests:
+    needs: [deploy-aws, deploy-azure, deploy-gcp, deploy-vercel, database-migrations]
+    if: always() && contains(needs.*.result, 'success')
+    runs-on: ubuntu-latest
+    environment: ${{ needs.pre-deploy-checks.outputs.deploy_env }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install test dependencies
+        run: |
+          npm install -g newman
+          pip install httpie
+      
+      - name: Run health checks
+        run: |
+          # Check frontend
+          httpie GET ${{ vars.FRONTEND_URL }}/health
+          
+          # Check backend API
+          httpie GET ${{ vars.API_URL }}/health
+          
+          # Check database connectivity
+          httpie GET ${{ vars.API_URL }}/api/v1/health/db
+      
+      - name: Run smoke tests
+        run: |
+          newman run tests/postman/smoke-tests.json \
+            --environment tests/postman/${{ needs.pre-deploy-checks.outputs.deploy_env }}-env.json
+
+  rollback:
+    needs: [smoke-tests]
+    if: failure()
+    runs-on: ubuntu-latest
+    environment: ${{ needs.pre-deploy-checks.outputs.deploy_env }}
+    steps:
+      - name: Trigger rollback
+        run: |
+          echo "❌ Deployment failed, initiating rollback"
+          
+          {{#if DEPLOY == 'aws'}}
+          # Roll back ECS to previous task definition
+          aws ecs update-service \
+            --cluster {{PROJECT_NAME}}-${{ needs.pre-deploy-checks.outputs.deploy_env }} \
+            --service {{PROJECT_NAME}}-service \
+            --task-definition $(aws ecs describe-services \
+              --cluster {{PROJECT_NAME}}-${{ needs.pre-deploy-checks.outputs.deploy_env }} \
+              --services {{PROJECT_NAME}}-service \
+              --query 'services[0].taskDefinition' --output text | \
+              awk -F: '{print $1":"$2-1}')
+          {{/if}}
+      
+      - name: Notify team
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: 'Deployment rollback initiated for ${{ needs.pre-deploy-checks.outputs.deploy_env }}'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+
+  post-deploy:
+    needs: [smoke-tests]
+    if: success()
+    runs-on: ubuntu-latest
+    environment: ${{ needs.pre-deploy-checks.outputs.deploy_env }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Tag release
+        if: needs.pre-deploy-checks.outputs.deploy_env == 'production'
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          
+          VERSION=$(date +%Y.%m.%d)-${{ github.run_number }}
+          git tag -a "v$VERSION" -m "Production release v$VERSION"
+          git push origin "v$VERSION"
+      
+      - name: Update deployment status
+        uses: bobheadxi/deployments@v1
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          env: ${{ needs.pre-deploy-checks.outputs.deploy_env }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+      
+      - name: Notify team
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow
+          text: '{{PROJECT_NAME}} successfully deployed to ${{ needs.pre-deploy-checks.outputs.deploy_env }}'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+      
+      {{#if COMPLIANCE contains 'hipaa' || COMPLIANCE contains 'sox'}}
+      - name: Generate compliance report
+        run: |
+          echo "# Deployment Compliance Report" > compliance-report.md
+          echo "Date: $(date)" >> compliance-report.md
+          echo "Environment: ${{ needs.pre-deploy-checks.outputs.deploy_env }}" >> compliance-report.md
+          echo "Deployer: ${{ github.actor }}" >> compliance-report.md
+          echo "Commit: ${{ github.sha }}" >> compliance-report.md
+          echo "" >> compliance-report.md
+          echo "## Compliance Checks" >> compliance-report.md
+          echo "- [ ] Security scan passed" >> compliance-report.md
+          echo "- [ ] Test coverage met minimum threshold" >> compliance-report.md
+          echo "- [ ] No hardcoded secrets detected" >> compliance-report.md
+          echo "- [ ] Audit logging enabled" >> compliance-report.md
+          echo "- [ ] Encryption verified" >> compliance-report.md
+      
+      - name: Upload compliance report
+        uses: actions/upload-artifact@v3
+        with:
+          name: compliance-report-${{ github.run_number }}
+          path: compliance-report.md
+          retention-days: 2555  # 7 years for compliance
+      {{/if}}

@@ -1,0 +1,345 @@
+# Policy DSL for Client Project Generator
+# Smart template selection based on industry and project type
+
+version: '1.0'
+schema: 'https://ai-governor.com/schemas/policy-dsl/v1'
+
+# Industry-specific technology recommendations
+industry_policies:
+  healthcare:
+    description: "Healthcare industry requirements with HIPAA compliance"
+    constraints:
+      compliance: ["hipaa"]
+      security_level: "maximum"
+      session_timeout: 15  # minutes
+      audit_logging: "required"
+    
+    web_stack:
+      required:
+        frontend: ["nextjs", "nuxt"]  # SSR for better security
+        backend: ["fastapi", "django"]  # Strong typing and security
+        database: ["postgres"]  # ACID compliance
+        auth: ["auth0", "cognito"]  # HIPAA-compliant providers
+      recommended:
+        deploy: ["aws"]  # BAA available
+        cache: ["redis"]
+        monitoring: ["datadog", "newrelic"]
+      prohibited:
+        database: ["firebase"]  # No BAA available
+        deploy: ["vercel"]  # No BAA available
+    
+    mobile_stack:
+      required:
+        frontend: ["expo"]
+        backend: ["fastapi", "django"]
+        auth: ["auth0", "cognito"]
+      features:
+        - "offline_sync"
+        - "biometric_auth"
+        - "secure_storage"
+    
+    features:
+      mandatory:
+        - "patient_portal"
+        - "appointment_scheduling"
+        - "secure_messaging"
+        - "audit_logging"
+        - "encryption_at_rest"
+        - "phi_protection"
+  
+  finance:
+    description: "Financial services with SOX/PCI compliance"
+    constraints:
+      compliance: ["sox", "pci"]
+      security_level: "maximum"
+      session_timeout: 10
+      multi_factor_auth: "required"
+    
+    web_stack:
+      required:
+        frontend: ["angular", "nextjs"]  # Enterprise-grade
+        backend: ["go", "nestjs"]  # Performance and type safety
+        database: ["postgres"]
+        auth: ["cognito", "auth0"]
+      recommended:
+        deploy: ["aws", "azure"]
+        message_queue: ["rabbitmq", "kafka"]
+        cache: ["redis"]
+    
+    api_stack:
+      required:
+        backend: ["go"]  # High performance
+        database: ["postgres"]
+        auth: ["cognito"]
+      features:
+        - "rate_limiting"
+        - "api_versioning"
+        - "transaction_integrity"
+    
+    features:
+      mandatory:
+        - "transaction_processing"
+        - "audit_trail"
+        - "fraud_detection"
+        - "regulatory_reporting"
+        - "data_retention"
+  
+  ecommerce:
+    description: "E-commerce with PCI compliance and performance focus"
+    constraints:
+      compliance: ["pci", "gdpr"]
+      security_level: "high"
+      page_load_time: 3  # seconds
+      api_response_time: 500  # milliseconds
+    
+    web_stack:
+      required:
+        frontend: ["nextjs"]  # SEO and performance
+        backend: ["django", "fastapi"]
+        database: ["postgres"]
+      recommended:
+        auth: ["firebase", "auth0"]
+        deploy: ["vercel", "aws"]
+        cdn: ["cloudflare", "fastly"]
+        search: ["elasticsearch", "algolia"]
+    
+    features:
+      mandatory:
+        - "product_catalog"
+        - "shopping_cart"
+        - "payment_processing"
+        - "inventory_management"
+        - "order_tracking"
+      optional:
+        - "recommendations"
+        - "reviews_ratings"
+        - "wishlist"
+        - "loyalty_program"
+  
+  saas:
+    description: "SaaS platform with multi-tenancy and scalability"
+    constraints:
+      compliance: ["soc2", "gdpr"]
+      security_level: "high"
+      multi_tenancy: "required"
+      scalability: "horizontal"
+    
+    fullstack:
+      required:
+        frontend: ["nextjs", "nuxt"]
+        backend: ["nestjs", "django"]
+        database: ["postgres"]
+        auth: ["auth0"]
+      recommended:
+        deploy: ["aws", "gcp"]
+        queue: ["redis", "rabbitmq"]
+        storage: ["s3", "gcs"]
+    
+    features:
+      mandatory:
+        - "user_management"
+        - "subscription_billing"
+        - "admin_dashboard"
+        - "api_access"
+        - "webhooks"
+  
+  enterprise:
+    description: "Enterprise applications with strict governance"
+    constraints:
+      compliance: ["soc2"]
+      security_level: "high"
+      sso: "required"
+      rbac: "required"
+    
+    web_stack:
+      required:
+        frontend: ["angular"]  # Enterprise standard
+        backend: ["nestjs", "spring"]
+        database: ["postgres", "oracle"]
+        auth: ["cognito", "okta"]
+      recommended:
+        deploy: ["azure", "aws"]
+        monitoring: ["datadog", "splunk"]
+
+# Project type specific policies
+project_type_policies:
+  web:
+    constraints:
+      requires_frontend: true
+      seo_important: true
+    validations:
+      - frontend != "none"
+      - deploy in ["vercel", "aws", "azure", "gcp"]
+  
+  mobile:
+    constraints:
+      requires_frontend: true
+      offline_capable: true
+    validations:
+      - frontend == "expo"
+      - features contains "offline_sync"
+  
+  api:
+    constraints:
+      requires_frontend: false
+      api_first: true
+    validations:
+      - backend != "none"
+      - frontend == "none"
+      - features contains "api_documentation"
+  
+  fullstack:
+    constraints:
+      requires_frontend: true
+      requires_backend: true
+    validations:
+      - frontend != "none"
+      - backend != "none"
+      - database != "none"
+  
+  microservices:
+    constraints:
+      requires_backend: true
+      distributed: true
+    validations:
+      - backend != "none"
+      - features contains "service_discovery"
+      - features contains "api_gateway"
+
+# Technology compatibility matrix
+technology_compatibility:
+  frontend:
+    nextjs:
+      compatible_backends: ["fastapi", "django", "nestjs", "go"]
+      compatible_auth: ["auth0", "firebase", "cognito", "custom"]
+      compatible_deploy: ["vercel", "aws", "azure", "gcp"]
+      best_for: ["seo", "performance", "full_stack"]
+    
+    nuxt:
+      compatible_backends: ["fastapi", "django", "nestjs", "go"]
+      compatible_auth: ["auth0", "firebase", "cognito"]
+      compatible_deploy: ["vercel", "aws", "azure", "gcp"]
+      best_for: ["seo", "vue_ecosystem"]
+    
+    angular:
+      compatible_backends: ["nestjs", "go", "spring"]
+      compatible_auth: ["auth0", "cognito", "okta"]
+      compatible_deploy: ["aws", "azure", "gcp"]
+      best_for: ["enterprise", "large_teams"]
+    
+    expo:
+      compatible_backends: ["fastapi", "django", "nestjs", "go"]
+      compatible_auth: ["auth0", "firebase", "cognito"]
+      compatible_deploy: ["expo_eas", "aws", "azure"]
+      best_for: ["mobile", "cross_platform"]
+  
+  backend:
+    fastapi:
+      compatible_databases: ["postgres", "mongodb"]
+      performance: "high"
+      type_safety: "high"
+      best_for: ["apis", "microservices", "ml_serving"]
+    
+    django:
+      compatible_databases: ["postgres", "mysql"]
+      batteries_included: true
+      admin_interface: true
+      best_for: ["rapid_development", "content_sites"]
+    
+    nestjs:
+      compatible_databases: ["postgres", "mongodb"]
+      type_safety: "very_high"
+      enterprise_ready: true
+      best_for: ["enterprise", "microservices"]
+    
+    go:
+      compatible_databases: ["postgres", "mongodb"]
+      performance: "very_high"
+      concurrency: "excellent"
+      best_for: ["high_performance", "microservices"]
+
+# Feature compatibility
+feature_requirements:
+  telehealth:
+    requires:
+      - "webrtc_support"
+      - "hipaa_compliance"
+      - "recording_capability"
+    recommended_stack:
+      frontend: "nextjs"
+      backend: "fastapi"
+      services: ["twilio", "agora"]
+  
+  payment_processing:
+    requires:
+      - "pci_compliance"
+      - "tokenization"
+      - "webhook_support"
+    recommended_stack:
+      backend: ["django", "nestjs"]
+      services: ["stripe", "square", "paypal"]
+  
+  real_time_updates:
+    requires:
+      - "websocket_support"
+      - "pub_sub_capability"
+    recommended_stack:
+      backend: ["fastapi", "nestjs", "go"]
+      services: ["redis", "rabbitmq"]
+
+# Validation rules
+validation_rules:
+  - id: "healthcare_requires_hipaa"
+    condition: "industry == 'healthcare'"
+    requirement: "compliance contains 'hipaa'"
+    message: "Healthcare projects must include HIPAA compliance"
+  
+  - id: "finance_requires_secure_auth"
+    condition: "industry == 'finance'"
+    requirement: "auth in ['cognito', 'auth0', 'okta']"
+    message: "Financial projects require enterprise auth providers"
+  
+  - id: "mobile_requires_expo"
+    condition: "project_type == 'mobile'"
+    requirement: "frontend == 'expo'"
+    message: "Mobile projects must use Expo"
+  
+  - id: "api_no_frontend"
+    condition: "project_type == 'api'"
+    requirement: "frontend == 'none'"
+    message: "API projects should not have a frontend"
+  
+  - id: "compliance_deployment_restrictions"
+    condition: "compliance contains 'hipaa'"
+    requirement: "deploy in ['aws', 'azure']"
+    message: "HIPAA compliance requires BAA-capable cloud providers"
+
+# Template selection algorithm
+selection_algorithm:
+  priority_order:
+    1: "compliance_requirements"
+    2: "industry_standards"
+    3: "project_type_constraints"
+    4: "performance_requirements"
+    5: "team_preferences"
+  
+  scoring_weights:
+    compliance_match: 0.3
+    industry_fit: 0.25
+    technology_compatibility: 0.2
+    performance_capability: 0.15
+    developer_experience: 0.1
+
+# Override capabilities
+overrides:
+  allow_custom_stacks: true
+  require_justification: true
+  approval_required_for:
+    - "non_compliant_deployment"
+    - "prohibited_technology"
+    - "missing_security_features"
+  
+  emergency_overrides:
+    enabled: false  # Set to true only in emergencies
+    require_double_approval: true
+    audit_log_required: true

@@ -1,0 +1,9 @@
+{
+  "name": "none",
+  "type": "backend",
+  "variants": ["base"],
+  "engines": {},
+  "tests": {
+    "command": "echo 'No backend tests'"
+  }
+}

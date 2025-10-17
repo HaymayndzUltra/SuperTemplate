@@ -1,0 +1,5 @@
+# Session 06 Insights
+
+1. Architecture review extends the quality gate lattice by pairing strict boundary enforcement with performance telemetry, ensuring router-directed audits verify both isolation and scalability before sign-off.【F:.cursor/ai-driven-workflow/review-protocols/architecture-review.md†L10-L55】【F:.cursor/ai-driven-workflow/4-quality-audit.md†L55-L113】
+2. Quick code reviews provide fast-fail governance by reapplying master rule constraints and craftsmanship checks, producing remediation-ready findings that feed retrospective action validation loops.【F:.cursor/ai-driven-workflow/review-protocols/code-review.md†L21-L48】【F:.cursor/ai-driven-workflow/5-implementation-retrospective.md†L101-L143】
+3. Shared severity tags (`[STRICT]`, `[MUST VERIFY]`, `[ANTI-PATTERNS]`) across review protocols maintain linguistic cohesion for the audit router, enabling deterministic routing decisions across layered review modes.【F:.cursor/ai-driven-workflow/review-protocols/architecture-review.md†L10-L55】【F:.cursor/ai-driven-workflow/review-protocols/code-review.md†L10-L40】

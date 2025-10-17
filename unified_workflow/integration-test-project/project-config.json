@@ -1,0 +1,21 @@
+{
+  "project": {
+    "name": "integration-test-project",
+    "type": "web-app",
+    "stack": [
+      "react",
+      "nodejs",
+      "postgresql"
+    ],
+    "quality_gates": {
+      "security": true,
+      "performance": true,
+      "accessibility": true
+    }
+  },
+  "workflow": {
+    "version": "1.0.0",
+    "evidence_root": "evidence",
+    "quality_gates_mode": "comprehensive"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "test_run_date": "2025-10-14T02:06:21.963620Z",
+    "total_tests": 5,
+    "passed": 0,
+    "failed": 5,
+    "not_found": 0
+  },
+  "results": {
+    "test_evidence_manager.py": {
+      "exit_code": 2,
+      "status": "failed"
+    },
+    "test_ai_executor.py": {
+      "exit_code": 2,
+      "status": "failed"
+    },
+    "test_quality_gates.py": {
+      "exit_code": 2,
+      "status": "failed"
+    },
+    "test_validation_gates.py": {
+      "exit_code": 2,
+      "status": "failed"
+    },
+    "test_integration.py": {
+      "exit_code": 2,
+      "status": "failed"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "dependencies": { "expo": "^54.0.0", "react-native": "0.81.x" },
+  "devDependencies": { "typescript": "^5.9.2" }
+}

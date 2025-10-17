@@ -1,0 +1,55 @@
+{
+  "phase": 3,
+  "checkpoint": {
+    "name": "phase_3_review",
+    "title": "Implementation Review",
+    "description": "Review implemented features",
+    "required_approvals": [
+      "technical_lead",
+      "code_reviewer"
+    ],
+    "artifacts": [
+      "src/",
+      "tests/"
+    ],
+    "validation_criteria": [
+      "All sub-tasks are completed",
+      "Code quality standards are met",
+      "Tests are written and passing",
+      "Documentation is updated",
+      "Security requirements are satisfied"
+    ]
+  },
+  "context": {
+    "project_name": "integration-test-project",
+    "description": "Validation request for Phase 3"
+  },
+  "request_id": "validation_3_1759683096",
+  "created_at": "2025-10-05T16:51:36.681877Z",
+  "status": "approved",
+  "approvals": {
+    "technical_lead": {
+      "approved": true,
+      "comments": "",
+      "timestamp": "2025-10-05T16:51:36.684602Z"
+    },
+    "code_reviewer": {
+      "approved": true,
+      "comments": "",
+      "timestamp": "2025-10-05T16:51:36.685016Z"
+    }
+  },
+  "comments": [],
+  "artifacts": [
+    "src/",
+    "tests/"
+  ],
+  "validation_criteria": [
+    "All sub-tasks are completed",
+    "Code quality standards are met",
+    "Tests are written and passing",
+    "Documentation is updated",
+    "Security requirements are satisfied"
+  ],
+  "completed_at": "2025-10-05T16:51:36.685021Z"
+}

@@ -1,0 +1,193 @@
+---
+description: "TAGS: [nuxt,vue,typescript,tailwind] | TRIGGERS: nuxt4,vue3,typescript5,tailwindcss | SCOPE: frontend | DESCRIPTION: Nuxt 4.1.0 with Vue 3.5.0 and TypeScript 5.9.2 best practices"
+globs: ["**/*.vue", "**/*.ts", "**/*.js", "**/components/**", "**/pages/**", "**/layouts/**", "**/composables/**"]
+alwaysApply: false
+---
+
+# Nuxt 4.1.0 + Vue 3.5.0 + TypeScript 5.9.2 Development Rules
+
+## Version-Specific Guidelines
+
+### Nuxt 4.1.0 Features
+- **App Router**: Use `app.vue` as root component, leverage automatic imports
+- **Server Components**: Utilize `<NuxtServerComponent>` for server-side rendering
+- **Auto-imports**: Leverage automatic component and composable imports
+- **TypeScript Integration**: Use `nuxt typecheck` for type validation
+
+### Vue 3.5.0 Best Practices
+- **Composition API**: Prefer `<script setup>` syntax over Options API
+- **Reactivity**: Use `ref()`, `reactive()`, `computed()`, and `watch()` appropriately
+- **Lifecycle**: Use `onMounted()`, `onUnmounted()`, etc. from Vue 3.5
+- **Performance**: Leverage `shallowRef()` and `shallowReactive()` for large objects
+
+### TypeScript 5.9.2 Standards
+- **Strict Mode**: Enable strict type checking in `nuxt.config.ts`
+- **Type Definitions**: Use proper typing for props, emits, and composables
+- **Generic Types**: Leverage TypeScript 5.x generic improvements
+- **Type Guards**: Implement proper type narrowing patterns
+
+## Code Standards
+
+### Component Structure
+```vue
+<template>
+  <!-- Use semantic HTML5 elements -->
+  <div class="component-container">
+    <h1>{{ title }}</h1>
+    <slot />
+  </div>
+</template>
+
+<script setup lang="ts">
+// Define props with proper typing
+interface Props {
+  title: string
+  variant?: 'primary' | 'secondary'
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  variant: 'primary'
+})
+
+// Use composables for reactive state
+const { data, pending, error } = await useFetch('/api/data')
+</script>
+
+<style scoped>
+/* Use Tailwind CSS classes */
+.component-container {
+  @apply p-4 rounded-lg shadow-md;
+}
+</style>
+```
+
+### Composables Pattern
+```typescript
+// composables/useFeature.ts
+export const useFeature = () => {
+  const state = ref<FeatureState>({
+    loading: false,
+    data: null
+  })
+
+  const fetchData = async () => {
+    state.value.loading = true
+    try {
+      const { data } = await $fetch('/api/feature')
+      state.value.data = data
+    } catch (error) {
+      console.error('Error fetching feature:', error)
+    } finally {
+      state.value.loading = false
+    }
+  }
+
+  return {
+    ...toRefs(state),
+    fetchData
+  }
+}
+```
+
+### API Routes (Server)
+```typescript
+// server/api/example.get.ts
+export default defineEventHandler(async (event) => {
+  const query = getQuery(event)
+  
+  // Validate input
+  if (!query.id) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'ID is required'
+    })
+  }
+
+  // Return typed response
+  return {
+    id: query.id,
+    message: 'Success'
+  }
+})
+```
+
+## Performance Optimizations
+
+### Bundle Optimization
+- Use dynamic imports for large components: `const Component = defineAsyncComponent(() => import('./Component.vue'))`
+- Implement lazy loading for routes
+- Optimize images with `<NuxtImg>` component
+- Use `preloadRouteComponents()` for critical routes
+
+### Memory Management
+- Clean up event listeners in `onUnmounted()`
+- Use `shallowRef()` for large reactive objects
+- Implement proper error boundaries
+- Monitor bundle size with `nuxt analyze`
+
+## Testing Standards
+
+### Unit Tests (Vitest)
+```typescript
+// tests/components/Example.test.ts
+import { mount } from '@vue/test-utils'
+import ExampleComponent from '~/components/Example.vue'
+
+describe('ExampleComponent', () => {
+  it('renders correctly', () => {
+    const wrapper = mount(ExampleComponent, {
+      props: { title: 'Test Title' }
+    })
+    
+    expect(wrapper.text()).toContain('Test Title')
+  })
+})
+```
+
+### E2E Tests
+- Use Playwright for end-to-end testing
+- Test critical user journeys
+- Implement visual regression testing
+- Test responsive design across devices
+
+## Security Best Practices
+
+### Input Validation
+- Validate all user inputs on both client and server
+- Use Zod or similar for schema validation
+- Sanitize data before database operations
+- Implement CSRF protection
+
+### Authentication
+- Use `@sidebase/nuxt-auth` for authentication
+- Implement proper session management
+- Use HTTPS in production
+- Validate JWT tokens properly
+
+## Development Workflow
+
+### Code Quality
+- Run `npm run lint` before commits
+- Use `npm run typecheck` for TypeScript validation
+- Format code with Prettier
+- Use Husky for pre-commit hooks
+
+### Git Workflow
+- Use conventional commits
+- Create feature branches from `main`
+- Require pull request reviews
+- Run CI/CD pipeline on all commits
+
+## Deployment
+
+### Production Build
+- Use `npm run build` for production builds
+- Enable compression and caching
+- Implement proper error handling
+- Monitor performance metrics
+
+### Environment Variables
+- Use `.env` files for configuration
+- Never commit sensitive data
+- Use different configs for dev/staging/prod
+- Validate environment variables at startup

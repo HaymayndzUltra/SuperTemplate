@@ -1,0 +1,11 @@
+{
+  "name": "nextjs",
+  "type": "frontend",
+  "variants": ["base"],
+  "engines": {
+    "node": ">=18"
+  },
+  "tests": {
+    "command": "npm test"
+  }
+}

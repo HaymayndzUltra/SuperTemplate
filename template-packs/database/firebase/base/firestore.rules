@@ -1,0 +1,86 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    function isValidUser(userData) {
+      return userData.keys().hasAll(['email', 'name', 'role', 'createdAt']) &&
+        userData.email is string &&
+        userData.name is string &&
+        userData.role in ['user', 'admin', 'moderator'] &&
+        userData.createdAt is timestamp;
+    }
+    
+    // Users collection - users can read/write their own data, admins can read all
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isOwner(userId) && isValidUser(request.resource.data);
+      allow create: if isAuthenticated() && 
+        request.auth.uid == userId && 
+        isValidUser(request.resource.data);
+      allow delete: if isAdmin();
+    }
+    
+    // User profiles - public read, owner write
+    match /profiles/{userId} {
+      allow read: if true; // Public profiles
+      allow write: if isOwner(userId);
+    }
+    
+    // Sessions - users can only access their own sessions
+    match /sessions/{sessionId} {
+      allow read, write: if isAuthenticated() && 
+        resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() && 
+        request.resource.data.userId == request.auth.uid;
+    }
+    
+    // Posts - authenticated users can read, authors can write
+    match /posts/{postId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && 
+        (resource.data.authorId == request.auth.uid || isAdmin());
+      allow create: if isAuthenticated() && 
+        request.resource.data.authorId == request.auth.uid;
+    }
+    
+    // Comments - authenticated users can read, authors can write
+    match /posts/{postId}/comments/{commentId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && 
+        (resource.data.authorId == request.auth.uid || isAdmin());
+      allow create: if isAuthenticated() && 
+        request.resource.data.authorId == request.auth.uid;
+    }
+    
+    // Admin-only collections
+    match /admin/{document=**} {
+      allow read, write: if isAdmin();
+    }
+    
+    // System collections - read-only for authenticated users
+    match /system/{document=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+    
+    // Deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

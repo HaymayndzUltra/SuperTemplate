@@ -1,0 +1,45 @@
+# Django and core dependencies
+Django==5.2.6
+djangorestframework==3.16.1
+django-cors-headers==4.9.0
+django-environ==0.11.2
+django-filter==25.1
+
+# Database
+psycopg2-binary==2.9.9
+dj-database-url==2.1.0
+
+# Authentication & Security
+djangorestframework-simplejwt==5.5.1
+django-guardian==2.4.0
+cryptography==43.0.1
+
+# API Documentation
+drf-spectacular==0.27.2
+
+# Utilities
+python-decouple==3.8
+celery==5.3.4
+redis==5.0.1
+gunicorn==22.0.0
+whitenoise==6.7.0
+django-health-check==3.18.3
+django-redis==6.0.0
+sentry-sdk==1.45.0
+
+# Development
+django-extensions==3.2.3
+django-debug-toolbar==4.4.6
+
+# Testing
+pytest==8.3.3
+pytest-django==4.9.0
+pytest-cov==5.0.0
+factory-boy==3.3.0
+
+# Code quality
+black==24.8.0
+flake8==7.1.1
+isort==5.13.2
+mypy==1.11.2
+django-stubs==5.1.1

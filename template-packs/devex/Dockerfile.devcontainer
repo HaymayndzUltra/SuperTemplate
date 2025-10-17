@@ -1,0 +1,96 @@
+# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/python-3/.devcontainer/base.Dockerfile
+
+ARG VARIANT="3.11-bullseye"
+FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
+
+ARG NODE_VERSION="18"
+
+# Install Node.js
+RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+
+# Install additional OS packages
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends \
+    postgresql-client \
+    redis-tools \
+    git \
+    make \
+    jq \
+    httpie \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install global Python packages
+RUN pip install --upgrade pip \
+    && pip install \
+    black \
+    flake8 \
+    mypy \
+    pytest \
+    pytest-asyncio \
+    pytest-cov \
+    ipython \
+    pre-commit
+
+# Install global Node packages
+RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g \
+    typescript \
+    @types/node \
+    eslint \
+    prettier \
+    jest \
+    ts-node \
+    nodemon" 2>&1
+
+# Configure git
+RUN git config --global core.editor "code --wait" \
+    && git config --global init.defaultBranch main
+
+# Install GitHub CLI
+RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+    && apt update \
+    && apt install gh -y
+
+# Install Docker CLI
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release \
+    && mkdir -p /etc/apt/keyrings \
+    && curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
+    && echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+    $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null \
+    && apt-get update \
+    && apt-get install -y docker-ce-cli \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create workspace directory
+RUN mkdir -p /workspace && chown vscode:vscode /workspace
+
+# Set up shell
+RUN echo 'alias ll="ls -la"' >> /home/vscode/.bashrc \
+    && echo 'alias gs="git status"' >> /home/vscode/.bashrc \
+    && echo 'alias gp="git pull"' >> /home/vscode/.bashrc \
+    && echo 'alias gc="git commit"' >> /home/vscode/.bashrc \
+    && echo 'alias gco="git checkout"' >> /home/vscode/.bashrc \
+    && echo 'export PATH="/workspace/scripts:$PATH"' >> /home/vscode/.bashrc
+
+# Install starship prompt
+RUN curl -sS https://starship.rs/install.sh | sh -s -- --yes \
+    && echo 'eval "$(starship init bash)"' >> /home/vscode/.bashrc \
+    && echo 'eval "$(starship init zsh)"' >> /home/vscode/.zshrc
+
+USER vscode
+
+# Pre-install VS Code extensions
+RUN code --install-extension --force ms-python.python \
+    && code --install-extension --force ms-python.vscode-pylance \
+    && code --install-extension --force dbaeumer.vscode-eslint \
+    && code --install-extension --force esbenp.prettier-vscode
+
+WORKDIR /workspace

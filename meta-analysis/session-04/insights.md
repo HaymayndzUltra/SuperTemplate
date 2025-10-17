@@ -1,0 +1,5 @@
+# Session 04 Insights
+
+1. Protocol 2 cements a compliance-first planning loop by forcing rule indexing and persona calibration before any task scaffolding, extending the context-first heuristic captured in Session 03’s PRD interrogation pattern.【F:.cursor/ai-driven-workflow/2-generate-tasks.md†L18-L33】
+2. Automation metadata and validation gates now appear at both planning and execution stages, indicating a closed-loop telemetry requirement that begins with hook annotation in Protocol 2 and is consumed by Protocol 3’s state sync and evidence capture phases.【F:.cursor/ai-driven-workflow/2-generate-tasks.md†L71-L127】【F:.cursor/ai-driven-workflow/3-process-tasks.md†L154-L183】
+3. Session partitioning and hybrid commit strategy in Protocol 3 translate the dependency maps and WHY statements from Protocol 2 into auditable execution capsules, reinforcing the architecture-to-implementation continuity established earlier.【F:.cursor/ai-driven-workflow/2-generate-tasks.md†L36-L54】【F:.cursor/ai-driven-workflow/3-process-tasks.md†L16-L145】

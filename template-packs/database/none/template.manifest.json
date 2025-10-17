@@ -1,0 +1,9 @@
+{
+  "name": "none",
+  "type": "database",
+  "variants": ["base"],
+  "engines": {},
+  "tests": {
+    "command": "echo 'No database tests'"
+  }
+}

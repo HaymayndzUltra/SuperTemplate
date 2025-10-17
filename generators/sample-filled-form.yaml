@@ -1,0 +1,218 @@
+# PROTOCOL REQUIREMENTS FORM - FILLED EXAMPLE
+# This is a completed example for Protocol 6: Deployment Automation
+
+## ============================================
+## SECTION 1: BASIC INFORMATION
+## ============================================
+
+protocol_number: "6"
+protocol_name: "deployment-automation"
+domain_compliance: "DevOps"
+purpose: "Automate deployment pipeline validation and ensure zero-downtime releases across all environments with comprehensive rollback capabilities."
+
+## ============================================
+## SECTION 2: AI ROLE & CONTEXT
+## ============================================
+
+ai_role: "DevOps Engineer"
+primary_guardrail: "DO NOT deploy to production without explicit approval and passing quality gates"
+
+prerequisites:
+  - protocol: "4-quality-audit"
+    required_artifacts: "Quality audit report with all gates passed, test coverage >80%"
+
+phase_in_workflow: "Between Protocol 4 (Quality Audit) and Protocol 5 (Retrospective)"
+
+## ============================================
+## SECTION 3: EXECUTION STRUCTURE
+## ============================================
+
+phases:
+  - phase_number: 1
+    phase_name: "Environment Validation"
+    objective: "Validate all deployment environments are ready and accessible"
+    
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Verify Environment Connectivity"
+        instructions: "Execute connectivity tests to staging and production environments using automated health checks"
+        communication_template: "I will now verify connectivity to all deployment targets (staging, production)..."
+        halt_condition: "Await user confirmation before proceeding to production validation"
+      
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Execute Health Checks"
+        instructions: "Run comprehensive health checks on all services in target environments"
+        communication_template: "[VALIDATION] Running health checks on {environment}..."
+        halt_condition: ""
+    
+    evidence_collection:
+      - evidence_item: "Environment connectivity test results"
+        storage_location: ".artifacts/deployment/connectivity-report.json"
+      - evidence_item: "Service health check results"
+        storage_location: ".artifacts/deployment/health-check-report.json"
+    
+    quality_gate:
+      gate_name: "Environment Readiness Gate"
+      criteria: "All environments accessible, health checks passing, no critical alerts"
+      failure_handling: "Halt deployment, notify DevOps team, await infrastructure fix before retry"
+
+  - phase_number: 2
+    phase_name: "Deployment Execution"
+    objective: "Execute deployment to staging and production with validation checkpoints"
+    
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Deploy to Staging"
+        instructions: "Execute deployment pipeline to staging environment and validate"
+        communication_template: "[DEPLOYMENT] Deploying to staging environment..."
+        halt_condition: "Await staging validation results before production deployment"
+      
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Request Production Approval"
+        instructions: "Present deployment summary and request explicit production deployment approval"
+        communication_template: "Staging deployment successful. Request production deployment approval..."
+        halt_condition: "Await explicit user approval"
+      
+      - step_number: 3
+        action_type: "MUST"
+        action_title: "Deploy to Production"
+        instructions: "Execute zero-downtime deployment to production with rollback preparation"
+        communication_template: "[PRODUCTION DEPLOYMENT] Executing production deployment..."
+        halt_condition: ""
+    
+    evidence_collection:
+      - evidence_item: "Staging deployment results"
+        storage_location: ".artifacts/deployment/staging-deployment.json"
+      - evidence_item: "Production deployment results"
+        storage_location: ".artifacts/deployment/production-deployment.json"
+    
+    quality_gate:
+      gate_name: "Deployment Success Gate"
+      criteria: "All services deployed successfully, health checks passing, no errors"
+      failure_handling: "Execute automatic rollback, notify team, capture failure evidence"
+
+  - phase_number: 3
+    phase_name: "Post-Deployment Validation"
+    objective: "Validate deployment success and establish performance baseline"
+    
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Execute Smoke Tests"
+        instructions: "Run automated smoke tests against deployed services"
+        communication_template: "[VALIDATION] Running post-deployment smoke tests..."
+        halt_condition: ""
+      
+      - step_number: 2
+        action_type: "GUIDELINE"
+        action_title: "Capture Performance Baseline"
+        instructions: "Record performance metrics as baseline for future deployments"
+        communication_template: "[BASELINE] Capturing performance metrics..."
+        halt_condition: ""
+    
+    evidence_collection:
+      - evidence_item: "Smoke test results"
+        storage_location: ".artifacts/deployment/smoke-test-results.json"
+      - evidence_item: "Performance baseline metrics"
+        storage_location: ".artifacts/deployment/performance-baseline.json"
+    
+    quality_gate:
+      gate_name: "Post-Deployment Validation Gate"
+      criteria: "Smoke tests passing, performance within acceptable range"
+      failure_handling: "Trigger rollback if critical tests fail, investigate performance degradation"
+
+## ============================================
+## SECTION 4: INTEGRATION & DATA FLOW
+## ============================================
+
+inputs_from:
+  - protocol: "4-quality-audit"
+    artifacts_consumed: "Quality audit report, test coverage results, security scan results"
+    usage: "Validate quality thresholds before deployment approval"
+
+outputs_to:
+  - protocol: "5-implementation-retrospective"
+    artifacts_provided: "Deployment report, performance metrics, rollback evidence (if any)"
+    purpose: "Enable retrospective analysis of deployment success and process improvements"
+
+## ============================================
+## SECTION 5: AUTOMATION & TOOLING
+## ============================================
+
+automation_hooks:
+  - hook_name: "deployment_validator.py"
+    trigger_point: "Before Phase 1 environment validation"
+    command: "python scripts/deployment_validator.py --env all --output .artifacts/deployment/validation.json"
+    expected_output: "JSON validation report at .artifacts/deployment/validation.json"
+  
+  - hook_name: "rollback_prepare.py"
+    trigger_point: "Before Phase 2 production deployment"
+    command: "python scripts/rollback_prepare.py --env production --snapshot"
+    expected_output: "Rollback snapshot created and logged"
+  
+  - hook_name: "smoke_test_runner.py"
+    trigger_point: "Phase 3 post-deployment validation"
+    command: "python scripts/smoke_test_runner.py --env production --critical"
+    expected_output: "Smoke test results at .artifacts/deployment/smoke-test-results.json"
+
+## ============================================
+## SECTION 6: COMMUNICATION PROTOCOLS
+## ============================================
+
+announcements:
+  phase_start_template: "[DEPLOYMENT PHASE {N}] - Beginning {phase_name}..."
+  phase_complete_template: "[DEPLOYMENT PHASE {N} COMPLETE] - {phase_name} finished successfully ✓"
+  automation_status_template: "[AUTOMATION] {script_name} executed: {status}"
+
+validation_prompts:
+  - prompt_context: "Before production deployment"
+    prompt_template: "[APPROVAL REQUEST] Staging deployment successful. All quality gates passed. Proceed with production deployment? (yes/no)"
+  
+  - prompt_context: "After deployment failure"
+    prompt_template: "[ROLLBACK DECISION] Deployment failed: {error}. Execute automatic rollback? (yes/no)"
+
+error_handling:
+  - error_type: "Environment unreachable"
+    error_message_template: "[ERROR] Unable to connect to {environment}. Check network/credentials."
+    recovery_steps: "1. Verify VPN connection, 2. Check service credentials, 3. Retry connection or abort"
+  
+  - error_type: "Deployment failure"
+    error_message_template: "[DEPLOYMENT ERROR] Deployment to {environment} failed: {error}"
+    recovery_steps: "1. Capture failure evidence, 2. Execute rollback, 3. Notify team, 4. Investigate root cause"
+  
+  - error_type: "Health check failure"
+    error_message_template: "[HEALTH CHECK FAILED] Service {service} failing health checks: {details}"
+    recovery_steps: "1. Check service logs, 2. Verify dependencies, 3. Execute rollback if critical"
+
+## ============================================
+## SECTION 7: COMPLETION & HANDOFF
+## ============================================
+
+completion_checklist:
+  - "All environments validated successfully"
+  - "Deployment artifacts archived in .artifacts/deployment/"
+  - "Performance baseline established"
+  - "Smoke tests passing"
+  - "No rollback executed (or rollback completed successfully)"
+  - "Deployment report generated"
+
+handoff_command: "[PROTOCOL COMPLETE] - Deployment validated and artifacts archived. Ready for Protocol 5 (Implementation Retrospective)"
+
+next_protocol: "5-implementation-retrospective"
+
+## ============================================
+## SECTION 8: ADDITIONAL CONTEXT (OPTIONAL)
+## ============================================
+
+context: "This protocol bridges quality audit and retrospective by ensuring deployment readiness and capturing deployment evidence for process improvement analysis."
+
+focus_areas:
+  - "Zero-downtime deployment validation"
+  - "Rollback mechanism verification"
+  - "Performance baseline establishment"
+
+special_considerations: "Must support multi-region deployments with staggered rollout capability for enterprise customers"

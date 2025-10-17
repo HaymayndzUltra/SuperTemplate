@@ -1,0 +1,157 @@
+{
+  "FastAPI Endpoint": {
+    "prefix": "endpoint",
+    "body": [
+      "@router.${1|get,post,put,delete,patch|}('/${2:path}'${3:, response_model=${4:ResponseModel}})",
+      "async def ${5:function_name}(",
+      "    ${6:param}: ${7:type}${8: = Depends()},",
+      "    db: Session = Depends(get_db),",
+      "    current_user: User = Depends(get_current_user)",
+      ") -> ${9:Any}:",
+      "    \"\"\"",
+      "    ${10:Description}",
+      "    \"\"\"",
+      "    try:",
+      "        ${0}",
+      "        return result",
+      "    except Exception as e:",
+      "        logger.error(f\"Error in ${5:function_name}: {str(e)}\")",
+      "        raise HTTPException(status_code=400, detail=str(e))"
+    ],
+    "description": "Create a FastAPI endpoint"
+  },
+  
+  "Pydantic Model": {
+    "prefix": "model",
+    "body": [
+      "from pydantic import BaseModel, Field",
+      "from typing import Optional",
+      "from datetime import datetime",
+      "",
+      "class ${1:ModelName}(BaseModel):",
+      "    ${2:field_name}: ${3:str} = Field(..., description=\"${4:Description}\")",
+      "    ${5:optional_field}: Optional[${6:str}] = None",
+      "    ",
+      "    class Config:",
+      "        orm_mode = True",
+      "        schema_extra = {",
+      "            \"example\": {",
+      "                \"${2:field_name}\": \"${7:example value}\"",
+      "            }",
+      "        }"
+    ],
+    "description": "Create a Pydantic model"
+  },
+  
+  "SQLAlchemy Model": {
+    "prefix": "sqlmodel",
+    "body": [
+      "from sqlalchemy import Column, Integer, String, DateTime, ForeignKey",
+      "from sqlalchemy.orm import relationship",
+      "from datetime import datetime",
+      "",
+      "from app.database import Base",
+      "",
+      "class ${1:ModelName}(Base):",
+      "    __tablename__ = \"${2:table_name}\"",
+      "    ",
+      "    id = Column(Integer, primary_key=True, index=True)",
+      "    ${3:field_name} = Column(String, nullable=False)",
+      "    created_at = Column(DateTime, default=datetime.utcnow)",
+      "    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)",
+      "    ",
+      "    # Relationships",
+      "    ${4:# relation_name = relationship(\"RelatedModel\", back_populates=\"${2:table_name}\")}"
+    ],
+    "description": "Create a SQLAlchemy model"
+  },
+  
+  "Async Function": {
+    "prefix": "async",
+    "body": [
+      "async def ${1:function_name}(${2:params}) -> ${3:ReturnType}:",
+      "    \"\"\"",
+      "    ${4:Description}",
+      "    \"\"\"",
+      "    try:",
+      "        ${0}",
+      "    except Exception as e:",
+      "        logger.error(f\"Error in ${1:function_name}: {str(e)}\")",
+      "        raise"
+    ],
+    "description": "Create an async function"
+  },
+  
+  "Test Function": {
+    "prefix": "test",
+    "body": [
+      "import pytest",
+      "from httpx import AsyncClient",
+      "",
+      "@pytest.mark.asyncio",
+      "async def test_${1:test_name}(client: AsyncClient, ${2:fixtures}):",
+      "    \"\"\"",
+      "    Test ${3:description}",
+      "    \"\"\"",
+      "    # Arrange",
+      "    ${4:setup}",
+      "    ",
+      "    # Act",
+      "    response = await client.${5|get,post,put,delete|}(",
+      "        \"${6:/api/endpoint}\",",
+      "        ${7:json=data}",
+      "    )",
+      "    ",
+      "    # Assert",
+      "    assert response.status_code == ${8:200}",
+      "    ${0}"
+    ],
+    "description": "Create a pytest async test function"
+  },
+  
+  "CRUD Operations": {
+    "prefix": "crud",
+    "body": [
+      "from typing import List, Optional",
+      "from sqlalchemy.orm import Session",
+      "",
+      "from app.models import ${1:Model}",
+      "from app.schemas import ${1:Model}Create, ${1:Model}Update",
+      "",
+      "class ${1:Model}CRUD:",
+      "    @staticmethod",
+      "    def get(db: Session, id: int) -> Optional[${1:Model}]:",
+      "        return db.query(${1:Model}).filter(${1:Model}.id == id).first()",
+      "    ",
+      "    @staticmethod",
+      "    def get_multi(db: Session, skip: int = 0, limit: int = 100) -> List[${1:Model}]:",
+      "        return db.query(${1:Model}).offset(skip).limit(limit).all()",
+      "    ",
+      "    @staticmethod",
+      "    def create(db: Session, obj_in: ${1:Model}Create) -> ${1:Model}:",
+      "        db_obj = ${1:Model}(**obj_in.dict())",
+      "        db.add(db_obj)",
+      "        db.commit()",
+      "        db.refresh(db_obj)",
+      "        return db_obj",
+      "    ",
+      "    @staticmethod",
+      "    def update(db: Session, db_obj: ${1:Model}, obj_in: ${1:Model}Update) -> ${1:Model}:",
+      "        update_data = obj_in.dict(exclude_unset=True)",
+      "        for field, value in update_data.items():",
+      "            setattr(db_obj, field, value)",
+      "        db.add(db_obj)",
+      "        db.commit()",
+      "        db.refresh(db_obj)",
+      "        return db_obj",
+      "    ",
+      "    @staticmethod",
+      "    def delete(db: Session, id: int) -> ${1:Model}:",
+      "        obj = db.query(${1:Model}).get(id)",
+      "        db.delete(obj)",
+      "        db.commit()",
+      "        return obj"
+    ],
+    "description": "Create CRUD operations class"
+  }
+}

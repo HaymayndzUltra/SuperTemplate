@@ -1,0 +1,49 @@
+{
+  "name": "{{PROJECT_NAME}}-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1",
+    "@hookform/resolvers": "^5.2.2",
+    "axios": "^1.12.2",
+    "next": "^15.5.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.62.0",
+    "swr": "^2.3.6",
+    "zod": "^4.1.0",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.24.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^16.0.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.8.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.0",
+    "babel-jest": "^30.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^15.5.3",
+    "jest": "^30.0.0",
+    "jest-environment-jsdom": "^30.0.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=20.10.0"
+  }
+}

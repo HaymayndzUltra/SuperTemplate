@@ -1,0 +1,29 @@
+{
+  "governance_index": {
+    "version": "1.0",
+    "last_updated": "2024-10-17T03:25:00Z",
+    "validated_protocols": {
+      "8-script-governance": {
+        "status": "validated",
+        "validation_date": "2024-10-17T03:25:00Z",
+        "analysis_file": "analysis-8-script-governance.md",
+        "source_file": "8-script-governance-protocol.md",
+        "validation_artifacts_path": ".artifacts/validation/8-script-governance/",
+        "meta_analysis_session": "session-12",
+        "4_layer_extraction": "PASS",
+        "circular_validation": "PASS",
+        "quality_gates": {
+          "structural_compliance": "PASS",
+          "content_accuracy": "PASS",
+          "meta_quality": "PASS"
+        }
+      }
+    },
+    "validation_summary": {
+      "total_validated": 1,
+      "last_validation": "8-script-governance",
+      "validation_method": "meta-analysis-generator-instructions",
+      "framework_version": "4-layer-extraction"
+    }
+  }
+}

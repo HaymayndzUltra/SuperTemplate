@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "next": "^15.5.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "eslint-config-next": "^15.5.3",
+    "typescript": "^5.9.2",
+    "jest": "^30.0.0",
+    "babel-jest": "^30.0.0",
+    "@babel/preset-typescript": "^7.24.0"
+  }
+}

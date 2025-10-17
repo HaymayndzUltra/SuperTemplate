@@ -1,0 +1,16 @@
+{
+  "validation": {
+    "human_approval_required": true,
+    "checkpoints": [
+      "phase_0_completion",
+      "phase_1_approval",
+      "phase_2_confirmation",
+      "phase_3_review",
+      "phase_4_audit_results",
+      "phase_5_retrospective",
+      "phase_6_operations_readiness"
+    ],
+    "approval_timeout": 3600,
+    "escalation_enabled": true
+  }
+}

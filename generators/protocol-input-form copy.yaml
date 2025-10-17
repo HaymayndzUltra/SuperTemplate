@@ -1,0 +1,218 @@
+## ============================================
+## SECTION 1: BASIC INFORMATION
+## ============================================
+
+protocol_number: "00"
+protocol_name: "project-bootstrap-and-context-engineering"
+domain_compliance: "Governance / Environment Initialization"
+purpose: "Transform an approved Project Brief into a fully governed project scaffold with validated environment, normalized rules, and initialized context-kit—without modifying production code."
+
+## ============================================
+## SECTION 2: AI ROLE & CONTEXT
+## ============================================
+
+ai_role: "AI Codebase Analyst & Context Architect"
+primary_guardrail: "DO NOT modify or delete production code. Contain all actions inside governed template and artifact directories."
+
+prerequisites:
+  - protocol: "01-project-brief-creation"
+    required_artifacts: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
+
+phase_in_workflow: "Between Protocol 01 (Project Brief Creation) and Protocol 02 (Architecture Planning)"
+
+## ============================================
+## SECTION 3: EXECUTION STRUCTURE
+## ============================================
+
+phases:
+  - phase_number: 1
+    phase_name: "Brief Parsing and Validation"
+    objective: "Parse and validate PROJECT-BRIEF.md to confirm all required configuration fields exist before scaffold generation."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Validate Project Brief"
+        instructions: "Run python scripts/validate_brief.py --path PROJECT-BRIEF.md --output .artifacts/bootstrap/brief-validation-report.json"
+        communication_template: "[PHASE 1 START] - Validating Project Brief..."
+        halt_condition: "Stop if PROJECT-BRIEF.md is missing or frontmatter incomplete."
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Perform Generation Dry Run"
+        instructions: "Run python scripts/generate_from_brief.py --brief PROJECT-BRIEF.md --dry-run --yes to confirm mapping."
+        communication_template: "Previewing scaffold plan from validated brief..."
+    evidence_collection:
+      - evidence_item: "brief-validation-report.json"
+        storage_location: ".artifacts/bootstrap/brief-validation-report.json"
+    quality_gate:
+      gate_name: "Brief Validation Gate"
+      criteria: "PROJECT-BRIEF.md parsed successfully and all required fields validated."
+      failure_handling: "Request correction or revalidation of the brief before proceeding."
+
+  - phase_number: 2
+    phase_name: "Environment and Rule Preparation"
+    objective: "Ensure environment readiness and normalize governance rules for consistent configuration."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Validate System Environment"
+        instructions: "Run python scripts/doctor.py --strict to confirm required tools (Docker, Node, Python, Go) are available."
+        communication_template: "[PHASE 2 START] - Checking environment health..."
+        halt_condition: "Stop if dependencies missing or doctor.py fails."
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Normalize and Audit Rules"
+        instructions: "Run python scripts/normalize_project_rules.py --target .cursor/rules/ then python scripts/rules_audit_quick.py --output .artifacts/bootstrap/rule-audit-report.md"
+        communication_template: "Normalizing rules and validating metadata integrity..."
+    evidence_collection:
+      - evidence_item: "rule-audit-report.md"
+        storage_location: ".artifacts/bootstrap/rule-audit-report.md"
+    quality_gate:
+      gate_name: "Environment & Rule Integrity Gate"
+      criteria: "All dependencies healthy and rule audit passes."
+      failure_handling: "Suspend bootstrap until environment issues are fixed."
+
+  - phase_number: 3
+    phase_name: "Scaffold Generation from Project Brief"
+    objective: "Generate governed project scaffold directly from validated Project Brief using non-destructive options."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Generate Scaffold"
+        instructions: "Run python scripts/generate_from_brief.py --brief PROJECT-BRIEF.md --output-root . --in-place --no-subdir --no-cursor-assets --force --yes"
+        communication_template: "[PHASE 3 START] - Generating governed scaffold..."
+        halt_condition: "Stop if generator returns non-zero exit code."
+      - step_number: 2
+        action_type: "GUIDELINE"
+        action_title: "Verify Generated Structure"
+        instructions: "Inspect generated directories, confirm generator-config.json and scaffold integrity."
+        communication_template: "Verifying scaffold structure and generator outputs..."
+    evidence_collection:
+      - evidence_item: "bootstrap-manifest.json"
+        storage_location: ".artifacts/bootstrap/bootstrap-manifest.json"
+    quality_gate:
+      gate_name: "Scaffold Validation Gate"
+      criteria: "Generated scaffold matches expected template registry mapping."
+      failure_handling: "Re-run generation with --force after fixing inconsistencies."
+
+  - phase_number: 4
+    phase_name: "Context Kit and Evidence Initialization"
+    objective: "Initialize context-kit, validate workflow integrity, and finalize evidence tracking."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Initialize Evidence Manager"
+        instructions: "Run python scripts/evidence_manager.py init --path .artifacts/bootstrap/"
+        communication_template: "[PHASE 4 START] - Initializing evidence tracking..."
+        halt_condition: "Stop if evidence logs cannot be created."
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Validate Workflow Integrity"
+        instructions: "Run python scripts/validate_workflows.py --mode bootstrap --output .artifacts/bootstrap/validation-report.json"
+        communication_template: "Validating workflow structure and context-kit..."
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Update Context Kit"
+        instructions: "Write .cursor/context-kit/governance-status.md with detected stack and template inventory."
+        communication_template: "Finalizing context-kit and governance mapping..."
+    evidence_collection:
+      - evidence_item: "validation-report.json"
+        storage_location: ".artifacts/bootstrap/validation-report.json"
+    quality_gate:
+      gate_name: "Context Validation Gate"
+      criteria: "Context-kit initialized successfully and evidence manifest complete."
+      failure_handling: "Re-run evidence initialization or correct validation issues."
+
+## ============================================
+## SECTION 4: INTEGRATION & DATA FLOW
+## ============================================
+
+inputs_from:
+  - protocol: "01-project-brief-creation"
+    artifacts_consumed: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
+    usage: "Provide validated brief and configuration for scaffold generation."
+
+outputs_to:
+  - protocol: "02-architecture-planning"
+    artifacts_provided: ".cursor/context-kit/, .cursor/rules/, .artifacts/bootstrap/, generator-config.json"
+    purpose: "Serve as foundational environment and context data for architecture planning."
+
+## ============================================
+## SECTION 5: AUTOMATION & TOOLING
+## ============================================
+
+automation_hooks:
+  - hook_name: "validate_brief.py"
+    trigger_point: "Phase 1 start"
+    command: "python scripts/validate_brief.py --path PROJECT-BRIEF.md"
+    expected_output: ".artifacts/bootstrap/brief-validation-report.json"
+  - hook_name: "generate_from_brief.py"
+    trigger_point: "Phase 3 execution"
+    command: "python scripts/generate_from_brief.py --brief PROJECT-BRIEF.md --in-place --no-subdir --no-cursor-assets --force --yes"
+    expected_output: "generator-config.json, governed scaffold"
+  - hook_name: "doctor.py"
+    trigger_point: "Phase 2 start"
+    command: "python scripts/doctor.py --strict"
+    expected_output: "stdout environment report"
+  - hook_name: "rules_audit_quick.py"
+    trigger_point: "After normalization"
+    command: "python scripts/rules_audit_quick.py --output .artifacts/bootstrap/rule-audit-report.md"
+    expected_output: "rule-audit-report.md"
+  - hook_name: "evidence_manager.py"
+    trigger_point: "Phase 4 initialization"
+    command: "python scripts/evidence_manager.py init --path .artifacts/bootstrap/"
+    expected_output: "evidence manifest.json"
+  - hook_name: "validate_workflows.py"
+    trigger_point: "Phase 4 validation"
+    command: "python scripts/validate_workflows.py --mode bootstrap"
+    expected_output: "validation-report.json"
+
+## ============================================
+## SECTION 6: COMMUNICATION PROTOCOLS
+## ============================================
+
+announcements:
+  phase_start_template: "[PHASE {N} START] - Beginning {phase_name}..."
+  phase_complete_template: "[PHASE {N} COMPLETE] - {phase_name} finished successfully."
+  automation_status_template: "[AUTOMATION] {script_name} executed: {status}"
+
+validation_prompts:
+  - prompt_context: "After Phase 3 scaffold generation"
+    prompt_template: "[VALIDATION] Scaffold generated successfully. Approve to initialize context-kit? (yes/no)"
+  - prompt_context: "After Phase 4 validation"
+    prompt_template: "[VALIDATION] Bootstrap complete and validated. Proceed to Architecture Planning? (yes/no)"
+
+error_handling:
+  - error_type: "MissingArtifacts"
+    error_message_template: "[ERROR] PROJECT-BRIEF.md or required validation files missing."
+    recovery_steps: "Re-run Protocol 01 or manually supply required brief artifacts."
+  - error_type: "EnvironmentFailure"
+    error_message_template: "[ERROR] doctor.py failed. Dependencies missing or invalid environment."
+    recovery_steps: "Install missing tools and re-run bootstrap."
+  - error_type: "ScaffoldFailure"
+    error_message_template: "[ERROR] Scaffold generation failed or produced mismatched structure."
+    recovery_steps: "Verify PROJECT-BRIEF.md and rerun with --force."
+
+## ============================================
+## SECTION 7: COMPLETION & HANDOFF
+## ============================================
+
+completion_checklist:
+  - "PROJECT-BRIEF.md validated successfully"
+  - "Environment and rules verified"
+  - "Governed scaffold generated"
+  - "Context-kit initialized and validated"
+  - "All bootstrap artifacts archived in .artifacts/bootstrap/"
+
+handoff_command: "[PROTOCOL COMPLETE] - Project Bootstrap finalized. Ready for Protocol 02 (Architecture Planning)."
+next_protocol: "02-architecture-planning"
+
+## ============================================
+## SECTION 8: ADDITIONAL CONTEXT (OPTIONAL)
+## ============================================
+
+context: "This protocol establishes the initial governed environment and scaffold after the client-approved Project Brief. It ensures readiness for downstream architecture planning."
+focus_areas:
+  - "Non-destructive scaffold generation"
+  - "Environment validation and evidence logging"
+  - "Rule normalization and governance integrity"
+special_considerations: "Must be executed only after client-approved brief. Use non-destructive flags (--no-subdir, --no-cursor-assets, --force, --yes) to prevent altering template repositories."

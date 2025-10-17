@@ -1,0 +1,54 @@
+{
+  "protocol_4_extension": {
+    "timestamp": "2024-01-15T12:45:00Z",
+    "extension_type": "quality_gates_for_analysis_files",
+    "protocol_4_gates_applied": [
+      {
+        "gate_name": "Documentation Completeness Gate",
+        "criteria": "All analysis files have complete documentation with required sections",
+        "evidence": "validation-report.json with 100% documentation completeness",
+        "failure_handling": "Request documentation completion before proceeding",
+        "status": "PASSED"
+      },
+      {
+        "gate_name": "Artifact Integrity Validation Gate", 
+        "criteria": "All analysis artifacts maintain structural integrity and schema compliance",
+        "evidence": "artifact-compliance-report.json with 100% compliance score",
+        "failure_handling": "Re-generate artifacts with corrected structure",
+        "status": "PASSED"
+      },
+      {
+        "gate_name": "Traceability Requirements Gate",
+        "criteria": "All analysis files maintain line reference traceability to source protocols",
+        "evidence": "validation-report.json with 100% line reference accuracy",
+        "failure_handling": "Correct line references and re-validate",
+        "status": "PASSED"
+      }
+    ],
+    "analysis_specific_gates": [
+      {
+        "gate_name": "Meta-Analysis Structure Gate",
+        "criteria": "All analysis files contain required 5 sections (Phase Map, Diagram, Commentary, Inference, Instructions)",
+        "evidence": "validation-report.json showing all required sections present",
+        "failure_handling": "Complete missing sections before handoff",
+        "status": "PASSED"
+      },
+      {
+        "gate_name": "Layer Extraction Completeness Gate",
+        "criteria": "All 4 layers (System-Level, Behavioral Control, Procedural Logic, Communication Grammar) extracted",
+        "evidence": "validation-report.json with complete layer extraction",
+        "failure_handling": "Re-extract missing layers from source protocols",
+        "status": "PASSED"
+      },
+      {
+        "gate_name": "Cognitive Role Assignment Gate",
+        "criteria": "All cognitive roles (Planner, Executor, Validator, Auditor) properly identified and assigned",
+        "evidence": "artifact-compliance-report.json with complete cognitive role mapping",
+        "failure_handling": "Re-analyze cognitive roles and update commentary",
+        "status": "PASSED"
+      }
+    ],
+    "overall_extension_status": "SUCCESS",
+    "compliance_score": 100
+  }
+}

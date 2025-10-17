@@ -1,0 +1,11 @@
+{
+  "name": "go",
+  "type": "backend",
+  "variants": ["base"],
+  "engines": {
+    "go": ">=1.21"
+  },
+  "tests": {
+    "command": "go test ./..."
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "project_template": {
+    "name": "{{project_name}}",
+    "type": "{{project_type}}",
+    "stack": "{{tech_stack}}",
+    "phases": {
+      "0": {
+        "name": "Bootstrap & Context Engineering",
+        "duration_minutes": 15,
+        "ai_role": "Context Architect",
+        "outputs": [
+          "context-kit/README.md",
+          "project-rules/",
+          "evidence/phase0/"
+        ]
+      },
+      "1": {
+        "name": "PRD Creation",
+        "duration_minutes": 30,
+        "ai_role": "Product Manager",
+        "outputs": [
+          "prd-{{feature_name}}.md",
+          "evidence/phase1/"
+        ]
+      },
+      "2": {
+        "name": "Task Generation",
+        "duration_minutes": 15,
+        "ai_role": "Tech Lead",
+        "outputs": [
+          "tasks-{{feature_name}}.md",
+          "evidence/phase2/"
+        ]
+      },
+      "3": {
+        "name": "Implementation",
+        "duration_minutes": "variable",
+        "ai_role": "Paired Developer",
+        "outputs": [
+          "implemented-features/",
+          "evidence/phase3/"
+        ]
+      },
+      "4": {
+        "name": "Quality Audit",
+        "duration_minutes": 20,
+        "ai_role": "Quality Engineer",
+        "outputs": [
+          "audit-reports/",
+          "evidence/phase4/"
+        ]
+      },
+      "5": {
+        "name": "Retrospective",
+        "duration_minutes": 10,
+        "ai_role": "Process Improvement Lead",
+        "outputs": [
+          "retrospective-notes.md",
+          "rule-updates/",
+          "evidence/phase5/"
+        ]
+      },
+      "6": {
+        "name": "Operations",
+        "duration_minutes": "ongoing",
+        "ai_role": "Operations Engineer",
+        "outputs": [
+          "monitoring-dashboards/",
+          "incident-reports/",
+          "evidence/phase6/"
+        ]
+      }
+    },
+    "quality_gates": {
+      "modes": [
+        "code-review",
+        "security-check",
+        "architecture-review",
+        "design-system",
+        "ui-accessibility",
+        "pre-production",
+        "comprehensive"
+      ],
+      "default_mode": "comprehensive"
+    },
+    "evidence": {
+      "manifest": "evidence/manifest.json",
+      "run_log": "evidence/run.log",
+      "validation": "evidence/validation.md"
+    },
+    "validation_gates": {
+      "human_approval_required": true,
+      "checkpoints": [
+        "phase_0_completion",
+        "phase_1_approval",
+        "phase_2_confirmation",
+        "phase_3_review",
+        "phase_4_audit_results",
+        "phase_5_retrospective",
+        "phase_6_operations_readiness"
+      ]
+    }
+  }
+}

@@ -1,0 +1,73 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        exists(/databases/(default)/documents/users/$(request.auth.uid)) &&
+        get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    function isValidImage() {
+      return request.resource.contentType.matches('image/.*') &&
+        request.resource.size < 5 * 1024 * 1024; // 5MB limit
+    }
+    
+    function isValidDocument() {
+      return request.resource.contentType.matches('(application/pdf|text/.*|application/msword|application/vnd.openxmlformats-officedocument.*)') &&
+        request.resource.size < 10 * 1024 * 1024; // 10MB limit
+    }
+    
+    // User profile images - users can upload their own
+    match /users/{userId}/profile/{fileName} {
+      allow read: if true; // Public read for profile images
+      allow write: if isOwner(userId) && isValidImage();
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+    
+    // User documents - private to user
+    match /users/{userId}/documents/{fileName} {
+      allow read, write: if isOwner(userId);
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+    
+    // Post attachments - authenticated users can read, authors can write
+    match /posts/{postId}/attachments/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && 
+        (isValidImage() || isValidDocument());
+      allow delete: if isAdmin();
+    }
+    
+    // Public assets - anyone can read, admins can write
+    match /public/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Admin uploads - admin only
+    match /admin/{fileName} {
+      allow read, write: if isAdmin();
+    }
+    
+    // Temporary uploads - users can upload, auto-delete after 24h
+    match /temp/{userId}/{fileName} {
+      allow read, write: if isOwner(userId);
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+    
+    // Deny all other access
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

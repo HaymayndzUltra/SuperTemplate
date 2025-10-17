@@ -1,0 +1,8 @@
+{
+  "name": "mongodb",
+  "type": "database",
+  "variants": ["base"],
+  "engines": {
+    "docker": ">=20"
+  }
+}

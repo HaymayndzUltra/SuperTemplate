@@ -1,0 +1,74 @@
+{
+  "project": {
+    "name": "template-project",
+    "description": "Template project configuration for Unified Developer Workflow",
+    "version": "1.0.0",
+    "type": "web_application"
+  },
+  "ai": {
+    "provider": "claude",
+    "model": "claude-3-sonnet",
+    "api_key": "your-api-key-here",
+    "temperature": 0.7,
+    "max_tokens": 4000,
+    "timeout": 30
+  },
+  "quality": {
+    "min_score": 7.0,
+    "comprehensive_audit": true,
+    "automated_tests": true,
+    "security_check": true,
+    "performance_check": true,
+    "accessibility_check": true
+  },
+  "validation": {
+    "required_approvals": ["technical_lead", "product_owner"],
+    "timeout_hours": 24,
+    "auto_approve": false,
+    "notification_enabled": true
+  },
+  "evidence": {
+    "retention_days": 90,
+    "backup_enabled": true,
+    "checksum_validation": true,
+    "compression_enabled": true
+  },
+  "workflow": {
+    "parallel_execution": false,
+    "skip_phases": [],
+    "custom_phases": [],
+    "quality_threshold": 7.0,
+    "validation_required": true
+  },
+  "logging": {
+    "level": "INFO",
+    "file_rotation": true,
+    "max_file_size": "10MB",
+    "backup_count": 5,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  },
+  "monitoring": {
+    "enabled": true,
+    "metrics_collection": true,
+    "alert_thresholds": {
+      "quality_score": 6.0,
+      "execution_time": 3600,
+      "error_rate": 0.1
+    }
+  },
+  "security": {
+    "encrypt_evidence": false,
+    "secure_api_calls": true,
+    "input_validation": true,
+    "output_sanitization": true
+  },
+  "performance": {
+    "max_concurrent_phases": 2,
+    "cache_enabled": true,
+    "cache_ttl": 3600,
+    "resource_limits": {
+      "memory_mb": 2048,
+      "cpu_percent": 80
+    }
+  }
+}

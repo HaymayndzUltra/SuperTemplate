@@ -1,0 +1,105 @@
+// Prisma schema for MongoDB
+// This is an alternative to Mongoose schemas
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URI")
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  username  String   @unique
+  password  String
+  role      Role     @default(USER)
+  isActive  Boolean  @default(true)
+  profile   Profile?
+  lastLogin DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  sessions  Session[]
+  auditLogs AuditLog[]
+
+  @@index([email])
+  @@index([username])
+  @@index([createdAt])
+  @@map("users")
+}
+
+type Profile {
+  firstName String?
+  lastName  String?
+  avatar    String?
+  bio       String?
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String   @db.ObjectId
+  refreshToken String   @unique
+  userAgent    String?
+  ipAddress    String?
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([refreshToken])
+  @@index([expiresAt])
+  @@map("sessions")
+}
+
+model AuditLog {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  action     Action
+  userId     String    @db.ObjectId
+  resource   String
+  resourceId String?
+  changes    Changes?
+  metadata   Json?
+  ipAddress  String?
+  userAgent  String?
+  timestamp  DateTime  @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId, timestamp])
+  @@index([resource, resourceId, timestamp])
+  @@index([action, timestamp])
+  @@map("auditLogs")
+}
+
+type Changes {
+  before Json?
+  after  Json?
+}
+
+// Enums
+enum Role {
+  USER
+  ADMIN
+  MODERATOR
+}
+
+enum Action {
+  CREATE
+  READ
+  UPDATE
+  DELETE
+  LOGIN
+  LOGOUT
+  PASSWORD_CHANGE
+  PERMISSION_CHANGE
+  EXPORT
+  IMPORT
+  SYSTEM_CONFIG_CHANGE
+}

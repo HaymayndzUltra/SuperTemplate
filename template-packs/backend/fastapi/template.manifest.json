@@ -1,0 +1,11 @@
+{
+  "name": "fastapi",
+  "type": "backend",
+  "variants": ["base"],
+  "engines": {
+    "python": ">=3.11"
+  },
+  "tests": {
+    "command": "pytest -q tests -vv"
+  }
+}

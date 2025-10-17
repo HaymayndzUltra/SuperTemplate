@@ -1,0 +1,287 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Unified Developer Workflow Evidence Schema",
+  "description": "Schema for validating evidence artifacts in the unified workflow",
+  "type": "object",
+  "properties": {
+    "manifest": {
+      "type": "object",
+      "description": "Artifact tracking with checksums",
+      "properties": {
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "Relative path to the artifact"
+              },
+              "category": {
+                "type": "string",
+                "enum": ["documentation", "code", "config", "test", "evidence", "template"],
+                "description": "Category of the artifact"
+              },
+              "description": {
+                "type": "string",
+                "description": "Human-readable description"
+              },
+              "checksum": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$",
+                "description": "SHA-256 checksum"
+              },
+              "created_at": {
+                "type": "string",
+                "format": "date-time",
+                "description": "ISO8601 timestamp"
+              },
+              "phase": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 6,
+                "description": "Phase number (0-6)"
+              },
+              "automation": {
+                "type": "object",
+                "description": "Automation context describing which wrapper generated the artifact",
+                "properties": {
+                  "script": {
+                    "type": "string",
+                    "description": "Relative path to the executed workflow1 script"
+                  },
+                  "wrapper": {
+                    "type": "string",
+                    "description": "Qualified name of the automation wrapper"
+                  },
+                  "parameters": {
+                    "type": "object",
+                    "description": "Parameters that were passed to the automation wrapper",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "executed_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp recorded by the orchestrator"
+                  }
+                },
+                "required": ["script", "wrapper"]
+              }
+            },
+            "required": ["path", "category", "description", "checksum", "created_at", "phase"]
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "project_name": {
+              "type": "string"
+            },
+            "workflow_version": {
+              "type": "string"
+            },
+            "generated_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "total_artifacts": {
+              "type": "integer"
+            },
+            "automation_context": {
+              "type": "object",
+              "description": "Summary of automation components used to gather the manifest",
+              "properties": {
+                "wrappers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "version": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "required": ["project_name", "workflow_version", "generated_at", "total_artifacts"]
+        }
+      },
+      "required": ["artifacts", "metadata"]
+    },
+    "run_log": {
+      "type": "object",
+      "description": "Execution timeline with timestamps",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "phase": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 6
+              },
+              "action": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": ["started", "completed", "failed", "skipped"]
+              },
+              "details": {
+                "type": "object"
+              },
+              "duration_seconds": {
+                "type": "number"
+              },
+              "automation_reference": {
+                "type": "object",
+                "description": "Automation wrapper invocation captured for this step",
+                "properties": {
+                  "wrapper": {
+                    "type": "string"
+                  },
+                  "script": {
+                    "type": "string"
+                  },
+                  "parameters": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": ["wrapper"]
+              }
+            },
+            "required": ["timestamp", "phase", "action", "status"]
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "project_name": {
+              "type": "string"
+            },
+            "workflow_version": {
+              "type": "string"
+            },
+            "total_entries": {
+              "type": "integer"
+            },
+            "last_updated": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "automation_enforced": {
+              "type": "boolean",
+              "description": "Indicates whether automation wrappers were used for validation"
+            }
+          },
+          "required": ["project_name", "workflow_version", "total_entries", "last_updated"]
+        }
+      },
+      "required": ["entries", "metadata"]
+    },
+    "validation": {
+      "type": "object",
+      "description": "Quality gate results and recommendations",
+      "properties": {
+        "phases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "phase": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 6
+              },
+              "status": {
+                "type": "string",
+                "enum": ["pending", "in_progress", "passed", "failed", "skipped"]
+              },
+              "score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 10
+              },
+              "findings": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "severity": {
+                      "type": "string",
+                      "enum": ["critical", "high", "medium", "low"]
+                    },
+                    "category": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "file": {
+                      "type": "string"
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "recommendation": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["severity", "category", "description", "recommendation"]
+                }
+              },
+              "recommendations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "validated_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": ["phase", "status", "score", "findings", "recommendations", "validated_at"]
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "project_name": {
+              "type": "string"
+            },
+            "workflow_version": {
+              "type": "string"
+            },
+            "total_phases": {
+              "type": "integer"
+            },
+            "overall_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "last_updated": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": ["project_name", "workflow_version", "total_phases", "overall_score", "last_updated"]
+        }
+      },
+      "required": ["phases", "metadata"]
+    }
+  },
+  "required": ["manifest", "run_log", "validation"]
+}

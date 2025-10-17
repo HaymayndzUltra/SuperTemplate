@@ -1,0 +1,56 @@
+{
+  "brief_path": "/home/haymayndz/ai-driven-template/PROJECT-BRIEF.md",
+  "detected_protocols": [
+    "0-bootstrap",
+    "1-prd-creation",
+    "2-task-generation",
+    "3-implementation",
+    "4-quality-audit",
+    "5-retrospective",
+    "6-operations",
+    "ml-experiments"
+  ],
+  "flags": {
+    "custom_phases": [
+      "0-bootstrap",
+      "1-prd-creation",
+      "2-task-generation",
+      "3-implementation",
+      "4-quality-audit",
+      "5-retrospective",
+      "6-operations",
+      "ml-experiments"
+    ],
+    "ml": true,
+    "operations": true
+  },
+  "metadata": {
+    "complexity": "enterprise",
+    "compliance": [
+      "GDPR",
+      "ISO27001",
+      "MAS-TRM",
+      "PCI",
+      "PCI-DSS",
+      "PSD2",
+      "SOC2",
+      "SOX"
+    ],
+    "lifecycle": "production",
+    "project_type": "fullstack",
+    "stack": {
+      "backend": "go",
+      "data": "PostgreSQL, Cassandra, ClickHouse, Redis, Kafka, Kafka Streams, Debezium",
+      "database": "postgres",
+      "devx": "Nx (workspaces), Turbo, pnpm, Poetry, Go modules, Gradle",
+      "frontend": "nextjs",
+      "infra": "AWS (EKS, EC2, RDS, MSK, S3, Lambda, CloudHSM, KMS), Terraform, Helm, ArgoCD, Istio, Envoy, AWS WAF",
+      "messaging": "Kafka, gRPC, REST, WebSockets",
+      "ml": "Python, PyTorch, TensorFlow, ONNX, Feast (feature store), MLflow",
+      "mobile": "React Native, TypeScript",
+      "observability": "OpenTelemetry, Prometheus, Grafana, Loki, Tempo, ELK",
+      "security": "OIDC (Keycloak/Auth0), OAuth2, mTLS (SPIFFE/SPIRE), HashiCorp Vault, AWS KMS, AWS CloudHSM"
+    },
+    "title": "project-brief-global"
+  }
+}

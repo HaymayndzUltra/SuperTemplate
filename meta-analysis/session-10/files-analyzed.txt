@@ -1,0 +1,4 @@
+.cursor/rules/master-rules/4-master-rule-code-modification-safety-protocol.mdc
+.cursor/rules/master-rules/5-master-rule-documentation-and-context-guidelines.mdc
+.cursor/rules/master-rules/6-master-rule-how-to-create-effective-rules.mdc
+.cursor/rules/master-rules/7-master-rule-dev-workflow-integration-guide.mdc

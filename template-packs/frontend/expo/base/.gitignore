@@ -1,0 +1,5 @@
+.expo/
+.expo-shared/
+# Managed workflow only; remove these if you switch to Bare:
+android/
+ios/

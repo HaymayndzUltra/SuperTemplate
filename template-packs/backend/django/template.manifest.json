@@ -1,0 +1,11 @@
+{
+  "name": "django",
+  "type": "backend",
+  "variants": ["base"],
+  "engines": {
+    "python": ">=3.11"
+  },
+  "tests": {
+    "command": "python manage.py test"
+  }
+}

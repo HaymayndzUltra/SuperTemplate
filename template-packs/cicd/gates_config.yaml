@@ -1,0 +1,292 @@
+# Quality Gates Configuration for {{PROJECT_NAME}}
+# This file defines the quality gates that must pass before deployment
+
+version: '1.0'
+project: {{PROJECT_NAME}}
+industry: {{INDUSTRY}}
+compliance: {{COMPLIANCE}}
+
+# Quality gate definitions
+quality_gates:
+  # Code quality gates
+  code_quality:
+    lint:
+      enabled: true
+      required: true
+      threshold: 0  # No lint errors allowed
+      blocking: true
+      skip_on_emergency: false
+    
+    code_smell:
+      enabled: true
+      required: true
+      max_issues: 10
+      severity_threshold: "major"
+      blocking: false
+    
+    cyclomatic_complexity:
+      enabled: true
+      max_complexity: 10
+      exclude_patterns:
+        - "**/migrations/**"
+        - "**/tests/**"
+  
+  # Test coverage gates
+  test_coverage:
+    unit_tests:
+      enabled: true
+      required: true
+      {{#if INDUSTRY == 'healthcare' || INDUSTRY == 'finance'}}
+      threshold: 80
+      {{else}}
+      threshold: 70
+      {{/if}}
+      blocking: true
+      per_file_threshold: 60
+    
+    integration_tests:
+      enabled: true
+      required: true
+      must_pass: true
+      timeout: 1800  # 30 minutes
+    
+    e2e_tests:
+      enabled: true
+      required: {{INDUSTRY == 'healthcare' || INDUSTRY == 'finance' ? 'true' : 'false'}}
+      environments: ["staging"]
+      retry_count: 2
+  
+  # Security gates
+  security:
+    dependency_scan:
+      enabled: true
+      required: true
+      {{#if COMPLIANCE contains 'hipaa' || COMPLIANCE contains 'pci'}}
+      critical_threshold: 0
+      high_threshold: 0
+      medium_threshold: 5
+      {{else}}
+      critical_threshold: 0
+      high_threshold: 3
+      medium_threshold: 10
+      {{/if}}
+      blocking: true
+    
+    sast_scan:
+      enabled: true
+      required: true
+      tools:
+        - name: "codeql"
+          languages: ["javascript", "typescript", "python", "go"]
+        - name: "bandit"
+          enabled: {{BACKEND == 'fastapi' || BACKEND == 'django' ? 'true' : 'false'}}
+        - name: "gosec"
+          enabled: {{BACKEND == 'go' ? 'true' : 'false'}}
+      severity_threshold: "medium"
+    
+    secret_scan:
+      enabled: true
+      required: true
+      tools: ["trufflehog", "gitleaks"]
+      blocking: true
+      fail_on_detection: true
+    
+    container_scan:
+      enabled: true
+      required: true
+      scan_base_images: true
+      severity_threshold: "high"
+  
+  # Performance gates
+  performance:
+    load_testing:
+      enabled: {{INDUSTRY == 'ecommerce' || INDUSTRY == 'finance' ? 'true' : 'false'}}
+      required: false
+      thresholds:
+        response_time_p95: 500  # milliseconds
+        response_time_p99: 1000
+        error_rate: 0.1  # percentage
+        requests_per_second: 100
+    
+    bundle_size:
+      enabled: true
+      required: false
+      max_size:
+        javascript: 500  # KB
+        css: 100  # KB
+        total: 1000  # KB
+
+# Compliance-specific gates
+{{#if COMPLIANCE}}
+compliance_gates:
+  {{#if COMPLIANCE contains 'hipaa'}}
+  hipaa:
+    encryption_check:
+      enabled: true
+      required: true
+      scan_for:
+        - unencrypted_phi
+        - plain_text_passwords
+        - missing_encryption_decorators
+      blocking: true
+    
+    audit_logging:
+      enabled: true
+      required: true
+      verify:
+        - all_phi_access_logged
+        - user_identification
+        - timestamp_accuracy
+      blocking: true
+    
+    session_management:
+      enabled: true
+      required: true
+      max_timeout: 900  # 15 minutes in seconds
+      verify_logout: true
+  {{/if}}
+  
+  {{#if COMPLIANCE contains 'gdpr'}}
+  gdpr:
+    privacy_check:
+      enabled: true
+      required: true
+      scan_for:
+        - consent_mechanisms
+        - data_retention_policies
+        - right_to_deletion
+      blocking: true
+    
+    data_portability:
+      enabled: true
+      required: true
+      export_formats: ["json", "csv"]
+      verify_completeness: true
+  {{/if}}
+  
+  {{#if COMPLIANCE contains 'sox'}}
+  sox:
+    change_control:
+      enabled: true
+      required: true
+      require_approval: true
+      min_approvers: 2
+      segregation_of_duties: true
+    
+    audit_trail:
+      enabled: true
+      required: true
+      verify:
+        - all_changes_logged
+        - approver_identity
+        - change_justification
+  {{/if}}
+  
+  {{#if COMPLIANCE contains 'pci'}}
+  pci:
+    cardholder_data:
+      enabled: true
+      required: true
+      scan_for:
+        - credit_card_numbers
+        - unencrypted_pan
+        - sensitive_authentication_data
+      blocking: true
+    
+    network_security:
+      enabled: true
+      required: true
+      verify:
+        - firewall_rules
+        - network_segmentation
+        - secure_protocols
+  {{/if}}
+{{/if}}
+
+# Environment-specific gate overrides
+environments:
+  development:
+    skip_gates:
+      - "performance.load_testing"
+      - "test_coverage.e2e_tests"
+    relaxed_thresholds:
+      test_coverage.unit_tests.threshold: 60
+  
+  staging:
+    skip_gates: []
+    additional_gates:
+      - "performance.load_testing"
+    notifications:
+      slack_channel: "#staging-deployments"
+  
+  production:
+    skip_gates: []
+    required_gates: "*"  # All gates must pass
+    manual_approval:
+      required: true
+      approvers:
+        - "tech-lead"
+        - "security-team"
+      timeout: 3600  # 1 hour
+    notifications:
+      slack_channel: "#production-deployments"
+      email: "devops@{{PROJECT_NAME}}.com"
+
+# Gate execution settings
+execution:
+  parallel: true
+  timeout: 3600  # 1 hour total
+  retry_failed_gates: 1
+  fail_fast: false
+  
+  # Emergency override (use with extreme caution)
+  emergency_override:
+    enabled: {{INDUSTRY == 'healthcare' || INDUSTRY == 'finance' ? 'false' : 'true'}}
+    require_reason: true
+    require_approvals: 2
+    audit_log: true
+    valid_reasons:
+      - "critical_security_patch"
+      - "data_corruption_fix"
+      - "service_outage"
+
+# Reporting
+reporting:
+  generate_report: true
+  report_format: ["json", "html", "markdown"]
+  include_in_report:
+    - gate_results
+    - coverage_metrics
+    - security_findings
+    - performance_metrics
+    - compliance_status
+  
+  archive:
+    enabled: true
+    retention_days: {{COMPLIANCE ? '2555' : '90'}}  # 7 years if compliance required
+    storage: "s3://{{PROJECT_NAME}}-artifacts/gate-reports"
+
+# Integrations
+integrations:
+  slack:
+    enabled: true
+    webhook_url: "${SLACK_WEBHOOK_URL}"
+    notify_on:
+      - "gate_failure"
+      - "deployment_blocked"
+      - "emergency_override"
+  
+  jira:
+    enabled: {{INDUSTRY == 'enterprise' ? 'true' : 'false'}}
+    project_key: "{{PROJECT_NAME}}"
+    create_ticket_on_failure: true
+    ticket_type: "Bug"
+    priority: "High"
+  
+  datadog:
+    enabled: false
+    api_key: "${DATADOG_API_KEY}"
+    send_metrics: true
+    custom_tags:
+      - "project:{{PROJECT_NAME}}"
+      - "industry:{{INDUSTRY}}"

@@ -1,0 +1,57 @@
+{
+  "name": "{{PROJECT_NAME}}-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "{{INDUSTRY}} {{PROJECT_TYPE}} frontend built with Nuxt 3",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "typecheck": "nuxt typecheck"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "latest",
+    "@pinia/nuxt": "latest",
+    "@vueuse/nuxt": "latest",
+    "nuxt": "^4.1.0",
+    "pinia": "latest",
+    "vue": "^3.5.0",
+    "vue-router": "^4.4.0"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/node": "^20.11.28",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitest/coverage-v8": "^1.0.0",
+    "@vue/test-utils": "^2.4.3",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-vue": "^9.19.2",
+    "postcss": "^8.4.32",
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.9.2",
+    "vitest": "^2.0.0",
+    "vue-tsc": "^2.0.0"
+  },
+  "type": "module"
+}
