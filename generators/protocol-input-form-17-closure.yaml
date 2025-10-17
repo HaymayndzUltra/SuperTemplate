@@ -1,0 +1,222 @@
+# Protocol 17 Requirements (Project Closure & Handover)
+protocol_number: "17"
+protocol_name: "project-closure"
+domain_compliance: "Program Delivery"
+purpose: "Coordinate formal project completion, ensuring deliverables, financials, and operational ownership are confirmed before exit."
+
+aio_role: "Project Closure Director"
+primary_guardrail: "Do not close the project without signed acceptance, reconciled financials, and documented ownership transfer."
+prerequisites:
+  - protocol: "5-implementation-retrospective"
+    required_artifacts: "retrospective actions, improvement commitments"
+  - protocol: "10-pre-deployment-staging"
+    required_artifacts: "staging validation evidence, rollback rehearsal outcomes"
+  - protocol: "11-production-deployment"
+    required_artifacts: "deployment report, release manifest"
+  - protocol: "12-monitoring-observability"
+    required_artifacts: "post-deployment monitoring reports"
+  - protocol: "13-incident-response-rollback"
+    required_artifacts: "incident logs, mitigation summaries"
+  - protocol: "14-performance-optimization"
+    required_artifacts: "performance metrics, tuning decisions"
+  - protocol: "15-uat-coordination"
+    required_artifacts: "UAT approval record, closure package"
+  - protocol: "16-documentation-knowledge-transfer"
+    required_artifacts: "publication manifest, enablement summary"
+phase_in_workflow: "Immediately after documentation handoff and before maintenance planning"
+
+phases:
+  - phase_number: 1
+    phase_name: "Closure Readiness Assessment"
+    objective: "Verify scope completion, financial reconciliation, and compliance readiness."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Validate Completion Criteria"
+        instructions: "Review scope items, change requests, and retrospective commitments for completion."
+        communication_template: "[PHASE 1 START] - Verifying closure readiness across deliverables, documentation, and quality gates..."
+        halt_condition: "Unresolved deliverables or retrospective actions detected"
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Reconcile Financial Obligations"
+        instructions: "Confirm invoices, procurement tasks, and contractual deliverables are settled."
+        communication_template: "Reconciling financial and contractual obligations for project close-out..."
+        halt_condition: "Outstanding invoice or payment flagged"
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Confirm Governance Requirements"
+        instructions: "Verify legal, security, audit, and data retention tasks are addressed."
+        communication_template: "Validating governance and compliance requirements for project closure..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Completion checklist"
+        storage_location: ".artifacts/closure/completion-checklist.json"
+      - evidence_item: "Financial reconciliation"
+        storage_location: ".artifacts/closure/financial-reconciliation.csv"
+      - evidence_item: "Governance validation"
+        storage_location: ".artifacts/closure/governance-validation.md"
+    quality_gate:
+      gate_name: "Readiness Verification Gate"
+      criteria: "Checklist approved, financials reconciled, governance documented."
+      failure_handling: "Resolve outstanding deliverables or compliance tasks before proceeding."
+  - phase_number: 2
+    phase_name: "Stakeholder Alignment and Handover Planning"
+    objective: "Assign post-project ownership and prepare handover materials."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Map Ownership"
+        instructions: "Assign operational and support owners for ongoing responsibilities."
+        communication_template: "[PHASE 2 START] - Aligning stakeholders on handover responsibilities and packaging deliverables..."
+        halt_condition: "Ownership assignment missing for critical capability"
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Assemble Handover Package"
+        instructions: "Create manifest referencing documentation, deployment assets, and knowledge materials."
+        communication_template: "Compiling handover package manifest and preparing asset bundle..."
+        halt_condition: "Manifest incomplete or missing critical artifact"
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Schedule Closure Communications"
+        instructions: "Plan executive readouts, customer briefings, and internal ceremonies."
+        communication_template: "Drafting closure communication plan and scheduling ceremonies..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Ownership matrix"
+        storage_location: ".artifacts/closure/ownership-matrix.csv"
+      - evidence_item: "Handover manifest"
+        storage_location: ".artifacts/closure/handover-package-manifest.json"
+      - evidence_item: "Communication plan"
+        storage_location: ".artifacts/closure/communication-plan.md"
+    quality_gate:
+      gate_name: "Handover Package Gate"
+      criteria: "Ownership assignments defined, manifest compiled, communication plan drafted."
+      failure_handling: "Complete assignments and manifest before initiating packaging automation."
+  - phase_number: 3
+    phase_name: "Formal Approval & Sign-Off Execution"
+    objective: "Secure stakeholder acceptance and update systems."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Conduct Closure Review"
+        instructions: "Host meeting with stakeholders to review readiness checklist, documentation, and support plan."
+        communication_template: "[PHASE 3 START] - Conducting formal closure review and securing acceptance approvals..."
+        halt_condition: "Stakeholder declines acceptance or raises unresolved condition"
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Capture Approvals"
+        instructions: "Collect signatures/approvals across business, finance, and operations."
+        communication_template: "Capturing closure approvals and final signatures..."
+        halt_condition: "Missing signature or approval pending"
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Update Systems"
+        instructions: "Close project in PM, CRM, and portfolio systems; archive boards."
+        communication_template: "Updating organizational systems to reflect project closure..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Acceptance minutes"
+        storage_location: ".artifacts/closure/acceptance-minutes.md"
+      - evidence_item: "Approval records"
+        storage_location: ".artifacts/closure/acceptance-records.json"
+      - evidence_item: "System updates log"
+        storage_location: ".artifacts/closure/system-updates-log.csv"
+    quality_gate:
+      gate_name: "Acceptance Gate"
+      criteria: "Closure review held, approvals captured, system updates logged."
+      failure_handling: "Resolve conditions, capture approvals, rerun tracking script before announcement."
+  - phase_number: 4
+    phase_name: "Transition, Lessons, and Follow-Up"
+    objective: "Confirm operational transfer and communicate closure."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Confirm Transition"
+        instructions: "Verify operations/support teams acknowledge ownership transfer and maintenance plan."
+        communication_template: "[PHASE 4 START] - Transitioning operational ownership and confirming support readiness..."
+        halt_condition: "Operational owner has not acknowledged transfer"
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Issue Closure Communications"
+        instructions: "Distribute closure announcement to stakeholders with success metrics and support contacts."
+        communication_template: "Issuing closure communications to stakeholders..."
+        halt_condition: "Key stakeholder not notified"
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Archive Lessons & Assets"
+        instructions: "Document lessons learned and archive artifacts per governance policies."
+        communication_template: "Archiving lessons learned and project assets..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Transition confirmation"
+        storage_location: ".artifacts/closure/transition-confirmation.json"
+      - evidence_item: "Closure announcement"
+        storage_location: ".artifacts/closure/closure-announcement.md"
+      - evidence_item: "Lessons learned"
+        storage_location: ".artifacts/closure/lessons-learned.md"
+    quality_gate:
+      gate_name: "Transition Confirmation Gate"
+      criteria: "Ownership confirmed, communications issued, lessons archived."
+      failure_handling: "Secure confirmations and archive proofs before final closure."
+
+integration_inputs:
+  - protocol: "5-implementation-retrospective"
+    artifacts: "retrospective action outcomes"
+  - protocol: "10-pre-deployment-staging"
+    artifacts: "staging readiness results"
+  - protocol: "11-production-deployment"
+    artifacts: "deployment report, rollback plan"
+  - protocol: "12-monitoring-observability"
+    artifacts: "monitoring dashboards, SLO reports"
+  - protocol: "13-incident-response-rollback"
+    artifacts: "incident logs"
+  - protocol: "14-performance-optimization"
+    artifacts: "performance results"
+  - protocol: "15-uat-coordination"
+    artifacts: "UAT approval record"
+  - protocol: "16-documentation-knowledge-transfer"
+    artifacts: "publication manifest, enablement summary"
+
+integration_outputs:
+  - protocol: "18-maintenance-support"
+    artifacts: "ownership matrix, transition confirmation, lessons learned"
+  - destination: "PMO/Finance Systems"
+    artifacts: "financial reconciliation, acceptance records"
+  - destination: "Context Kit / Archives"
+    artifacts: "closure announcement, packaged handover assets"
+
+communication_protocols:
+  status_announcements:
+    - "[PHASE 1 START] - Verifying closure readiness across deliverables, documentation, and quality gates..."
+    - "[PHASE 2 START] - Aligning stakeholders on handover responsibilities and packaging deliverables..."
+    - "[PHASE 3 START] - Conducting formal closure review and securing acceptance approvals..."
+    - "[PHASE 4 START] - Transitioning operational ownership and confirming support readiness..."
+  validation_prompts:
+    - "[FINANCIAL CHECK] Outstanding invoices detected. Proceed with closure planning before reconciliation? (yes/no)"
+    - "[APPROVAL STATUS] All acceptance signatures collected. Issue final closure communications now? (yes/no)"
+  error_handling:
+    - error_code: "OutstandingDeliverable"
+      message: "[ERROR] Completion checklist shows unresolved scope items."
+      recovery: "Coordinate with owners, resolve items, update checklist."
+    - error_code: "ApprovalMissing"
+      message: "[ERROR] Required stakeholder approval not captured."
+      recovery: "Trigger follow-up, update approval log, rerun tracking script."
+    - error_code: "OwnershipGap"
+      message: "[ERROR] Operational owner not assigned for key asset."
+      recovery: "Assign owner, update ownership matrix, reconfirm transition."
+
+automation_hooks:
+  - command: "python scripts/package_handover_assets.py --manifest .artifacts/closure/handover-package-manifest.json --output HANDOVER-PACKAGE.zip"
+    purpose: "Bundle documentation, deployment, and support assets into a packaged archive."
+  - command: "python scripts/track_approvals.py --source .artifacts/closure/acceptance-records.json"
+    purpose: "Monitor approval status and notify when outstanding."
+  - command: "python scripts/notify_stakeholders.py --plan .artifacts/closure/communication-plan.md"
+    purpose: "Execute closure communication plan and log notifications."
+  - command: "python scripts/archive_project_assets.py --manifest .artifacts/closure/handover-package-manifest.json"
+    purpose: "Archive final assets in long-term storage locations."
+
+handoff_checklist:
+  - "Completion checklist, financial reconciliation, and governance validation finalized."
+  - "Ownership assignments, handover manifest, and communication plan prepared."
+  - "Closure review held with approvals captured and systems updated."
+  - "Operational transition confirmed, closure communications issued, lessons archived."

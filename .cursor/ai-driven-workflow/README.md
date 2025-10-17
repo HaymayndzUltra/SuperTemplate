@@ -13,7 +13,7 @@ The goal is to make AI-powered development:
 
 ## 2. Protocol Architecture Map
 
-The workflow consists of **34 protocols** organized in **5 phases** with **dependency-based flow**:
+The workflow consists of **37 protocols** organized in **6 phases** with **dependency-based flow**:
 
 ```
 Phase 0: Foundation (Bootstrap & Discovery)
@@ -60,6 +60,11 @@ Phase 4.5: Staging, Deployment & Operations
 Phase 5: Continuous Improvement
 ├── 5-implementation-retrospective.md (Process Improvement Lead)
 └── 8-script-governance-protocol.md (Automation Compliance Auditor)
+
+Phase 6: Completion & Sustainment
+├── 16-documentation-knowledge-transfer.md (Technical Documentation Lead)
+├── 17-project-closure.md (Project Closure Director)
+└── 18-maintenance-support.md (Sustainment Program Lead)
 ```
 
 ## 3. Phase 0: Foundation Protocols (Bootstrap & Discovery)
@@ -662,6 +667,126 @@ Coordinate customer-facing validation cycles to confirm requirements, capture qu
 - `.artifacts/uat/execution-log.json`
 - `.artifacts/uat/uat-defect-register.csv`
 - `UAT-CLOSURE-PACKAGE.zip`, `uat-approval-record.json`, `handoff-brief.md`
+
+---
+
+### Protocol 16: Documentation & Knowledge Transfer
+**Role:** Technical Documentation Lead
+**File:** `16-documentation-knowledge-transfer.md`
+
+#### Purpose
+Capture, validate, and distribute project knowledge so delivery, operations, and stakeholder teams can operate independently once development concludes.
+
+#### Prerequisites
+- Protocol 1 PRD updates and acceptance criteria
+- Protocol 3 implementation notes and decision logs
+- Protocol 6 architecture diagrams and integration contracts
+- Protocols 11–14 runbooks, monitoring outputs, incident insights, and performance metrics
+- Protocol 15 UAT closure package and stakeholder feedback
+
+#### Execution Algorithm (4-Phase Process)
+1. **Inventory & Scope Confirmation** – Aggregate cross-protocol artifacts, confirm deliverables per audience, and run gap analysis with `audit_doc_gaps.py`.
+2. **Drafting & Knowledge Capture** – Generate documentation drafts, record knowledge transfer sessions, and enrich assets with visuals using `generate_doc_portal.py`.
+3. **Review & Validation** – Facilitate peer reviews, verify accuracy via `verify_doc_accuracy.py`, and document style/accessibility compliance.
+4. **Publication & Enablement** – Publish the final package, deliver enablement, and log feedback backlog for maintenance planning.
+
+#### Quality Gates
+- **Source Inventory Gate** – Inventory complete, audience requirements captured, gaps resolved.
+- **Draft Completion Gate** – Core drafts created, knowledge sessions recorded, visuals catalogued.
+- **Review & Validation Gate** – Reviews approved, validation reports clean, style checks passed.
+- **Publication & Enablement Gate** – Documentation published, enablement delivered, feedback logged.
+
+#### Automation Hooks
+- `python scripts/audit_doc_gaps.py --inventory .artifacts/documentation/source-inventory.json --output .artifacts/documentation/gap-analysis.json`
+- `python scripts/generate_doc_portal.py --config config/documentation-templates.yaml --output docs/`
+- `python scripts/verify_doc_accuracy.py --sources .artifacts/documentation/source-inventory.json --report .artifacts/documentation/validation-report.json`
+- `python scripts/schedule_enablement.py --plan .artifacts/documentation/doc-schedule.md --output .artifacts/documentation/enablement-summary.md`
+
+#### Outputs
+- `.artifacts/documentation/source-inventory.json`
+- `.artifacts/documentation/review-log.csv`
+- `.artifacts/documentation/publication-manifest.json`
+- `.artifacts/documentation/enablement-summary.md`, `.artifacts/documentation/feedback-backlog.json`
+
+---
+
+### Protocol 17: Project Closure & Handover
+**Role:** Project Closure Director
+**File:** `17-project-closure.md`
+
+#### Purpose
+Orchestrate formal project completion by validating readiness, packaging deliverables, capturing approvals, and transitioning ownership to sustainment teams.
+
+#### Prerequisites
+- Protocol 5 retrospective outputs and action items
+- Protocols 10–14 staging, deployment, monitoring, incident, and performance evidence
+- Protocol 15 UAT approvals and closure package
+- Protocol 16 documentation publication manifest and enablement summary
+
+#### Execution Algorithm (4-Phase Process)
+1. **Readiness Assessment** – Validate completion checklist, reconcile financial obligations, and confirm governance compliance.
+2. **Handover Planning** – Assign operational owners, compile `handover-package-manifest.json`, and plan closure communications.
+3. **Approval Execution** – Conduct closure review, capture signatures with `track_approvals.py`, and update organizational systems.
+4. **Transition & Follow-Up** – Confirm operational ownership, issue closure announcements, and archive lessons learned.
+
+#### Quality Gates
+- **Readiness Verification Gate** – Completion checklist, financial reconciliation, and governance validation approved.
+- **Handover Package Gate** – Ownership assignments, manifest, and communication plan finalized.
+- **Acceptance Gate** – Closure meeting completed, approvals stored, system updates logged.
+- **Transition Confirmation Gate** – Operational ownership acknowledged, communications issued, lessons archived.
+
+#### Automation Hooks
+- `python scripts/package_handover_assets.py --manifest .artifacts/closure/handover-package-manifest.json --output HANDOVER-PACKAGE.zip`
+- `python scripts/track_approvals.py --source .artifacts/closure/acceptance-records.json`
+- `python scripts/notify_stakeholders.py --plan .artifacts/closure/communication-plan.md`
+- `python scripts/archive_project_assets.py --manifest .artifacts/closure/handover-package-manifest.json`
+
+#### Outputs
+- `.artifacts/closure/completion-checklist.json`
+- `.artifacts/closure/handover-package-manifest.json`
+- `.artifacts/closure/acceptance-records.json`
+- `.artifacts/closure/transition-confirmation.json`, `.artifacts/closure/closure-announcement.md`
+
+---
+
+### Protocol 18: Continuous Maintenance & Support Planning
+**Role:** Sustainment Program Lead
+**File:** `18-maintenance-support.md`
+
+#### Purpose
+Establish the long-term maintenance, support, and improvement plan that sustains solution reliability after project closure.
+
+#### Prerequisites
+- Protocol 12 monitoring dashboards and alert configurations
+- Protocol 13 incident response playbooks and lessons learned
+- Protocol 14 performance backlog and optimization metrics
+- Protocol 15 UAT feedback backlog and acceptance notes
+- Protocol 16 documentation feedback backlog and enablement summary
+- Protocol 17 ownership matrix and transition confirmation
+
+#### Execution Algorithm (4-Phase Process)
+1. **Charter & Capacity Assessment** – Define maintenance objectives, SLAs, and evaluate team capacity using `assess_support_capacity.py`.
+2. **Operational Enablement** – Consolidate runbooks, configure ticket routing via `configure_ticket_routing.py`, and draft reporting specifications.
+3. **Governance & Backlog Planning** – Seed maintenance backlog with `sync_maintenance_backlog.py`, establish release policy, and map feedback loops.
+4. **Readiness Validation** – Secure stakeholder approvals, activate monitoring through `activate_maintenance_monitoring.py`, and schedule health reviews.
+
+#### Quality Gates
+- **Charter & Capacity Gate** – Maintenance charter approved, SLAs defined, capacity coverage confirmed.
+- **Operations Enablement Gate** – Runbooks consolidated, support workflow configured, reporting spec documented.
+- **Governance Gate** – Backlog register initialized, release policy approved, feedback loops captured.
+- **Readiness Validation Gate** – Stakeholder approvals logged, monitoring activated, review cadence scheduled.
+
+#### Automation Hooks
+- `python scripts/assess_support_capacity.py --output .artifacts/maintenance/capacity-analysis.csv`
+- `python scripts/configure_ticket_routing.py --config .artifacts/maintenance/support-workflow.yaml`
+- `python scripts/sync_maintenance_backlog.py --source .artifacts/documentation/feedback-backlog.json --target .artifacts/maintenance/backlog-register.csv`
+- `python scripts/activate_maintenance_monitoring.py --plan .artifacts/maintenance/monitoring-activation.json`
+
+#### Outputs
+- `.artifacts/maintenance/maintenance-charter.md`
+- `.artifacts/maintenance/support-workflow.yaml`
+- `.artifacts/maintenance/release-policy.md`
+- `.artifacts/maintenance/readiness-approval-log.csv`, `.artifacts/maintenance/monitoring-activation.json`
 
 ---
 

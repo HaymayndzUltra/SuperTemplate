@@ -32,6 +32,9 @@ protocol-generator-instructions.md           ← AI guide: Requirements → Prot
 13-incident-generator.md                     ← Protocol 13 incident response generator blueprint
 14-performance-generator.md                  ← Protocol 14 performance optimization generator blueprint
 15-uat-generator.md                          ← Protocol 15 UAT coordination generator blueprint
+16-documentation-generator.md                ← Protocol 16 documentation & knowledge transfer generator blueprint
+17-closure-generator.md                      ← Protocol 17 project closure & handover generator blueprint
+18-maintenance-generator.md                  ← Protocol 18 maintenance & support planning generator blueprint
 ```
 
 ### 📝 User Templates & Forms
@@ -47,6 +50,9 @@ protocol-input-form-12-monitoring.yaml       ← Form for monitoring & observabi
 protocol-input-form-13-incident.yaml         ← Form for incident response protocol
 protocol-input-form-14-performance.yaml      ← Form for performance optimization protocol
 protocol-input-form-15-uat.yaml              ← Form for UAT coordination protocol
+protocol-input-form-16-documentation.yaml    ← Form for documentation & knowledge transfer protocol
+protocol-input-form-17-closure.yaml          ← Form for project closure & handover protocol
+protocol-input-form-18-maintenance.yaml      ← Form for maintenance & support planning protocol
 ```
 
 ### ✅ Validation Examples
@@ -60,6 +66,9 @@ protocol-input-form-15-uat.yaml              ← Form for UAT coordination proto
 13-incident-response-rollback.md             ← Protocol 13 incident response (workflow)
 14-performance-optimization.md               ← Protocol 14 performance optimization (workflow)
 15-uat-coordination.md                       ← Protocol 15 UAT coordination (workflow)
+16-documentation-knowledge-transfer.md       ← Protocol 16 documentation & knowledge transfer (workflow)
+17-project-closure.md                        ← Protocol 17 project closure & handover (workflow)
+18-maintenance-support.md                    ← Protocol 18 maintenance & support planning (workflow)
 ```
 
 ---

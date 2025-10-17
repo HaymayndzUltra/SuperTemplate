@@ -1,0 +1,214 @@
+# Protocol 18 Requirements (Continuous Maintenance & Support Planning)
+protocol_number: "18"
+protocol_name: "maintenance-support"
+domain_compliance: "Operations Sustainment"
+purpose: "Establish the long-term maintenance, support, and improvement framework to keep the solution reliable post-project."
+
+aio_role: "Sustainment Program Lead"
+primary_guardrail: "Do not finalize maintenance planning without defined ownership, response processes, backlog intake, and capacity commitments."
+prerequisites:
+  - protocol: "12-monitoring-observability"
+    required_artifacts: "monitoring dashboards, alerting configurations, SLO definitions"
+  - protocol: "13-incident-response-rollback"
+    required_artifacts: "incident playbooks, lessons learned"
+  - protocol: "14-performance-optimization"
+    required_artifacts: "performance backlog, optimization metrics"
+  - protocol: "15-uat-coordination"
+    required_artifacts: "feedback notebook, acceptance notes"
+  - protocol: "16-documentation-knowledge-transfer"
+    required_artifacts: "publication manifest, feedback backlog"
+  - protocol: "17-project-closure"
+    required_artifacts: "ownership matrix, transition confirmation, closure announcement"
+phase_in_workflow: "Final phase after project closure to transition into sustainment"
+
+phases:
+  - phase_number: 1
+    phase_name: "Maintenance Charter & Capability Assessment"
+    objective: "Define objectives, SLAs, and capacity needed to support the solution."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Define Maintenance Objectives"
+        instructions: "Set service scope, SLAs, and escalation paths with stakeholders."
+        communication_template: "[PHASE 1 START] - Establishing maintenance charter, SLAs, and escalation pathways for post-launch operations..."
+        halt_condition: "SLAs unapproved or escalation path undefined"
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Assess Capacity"
+        instructions: "Evaluate staffing, on-call rotations, and skill coverage for maintenance."
+        communication_template: "Evaluating support team capacity and on-call readiness..."
+        halt_condition: "Capacity analysis shows critical coverage gaps"
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Verify Tooling & Access"
+        instructions: "Confirm maintenance owners have access to monitoring, ticketing, and deployment tools."
+        communication_template: "Verifying tooling and access requirements for sustainment teams..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Maintenance charter"
+        storage_location: ".artifacts/maintenance/maintenance-charter.md"
+      - evidence_item: "Capacity analysis"
+        storage_location: ".artifacts/maintenance/capacity-analysis.csv"
+      - evidence_item: "Tooling checklist"
+        storage_location: ".artifacts/maintenance/tooling-access-checklist.json"
+    quality_gate:
+      gate_name: "Charter & Capacity Gate"
+      criteria: "Charter approved, SLAs defined, capacity assessment complete."
+      failure_handling: "Resolve SLA or capacity gaps before moving to operational setup."
+  - phase_number: 2
+    phase_name: "Operational Runbooks & Support Processes"
+    objective: "Prepare operational runbooks and ticket workflows for steady-state support."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Consolidate Runbooks"
+        instructions: "Merge deployment, incident, and rollback runbooks into maintenance playbooks."
+        communication_template: "[PHASE 2 START] - Consolidating runbooks and configuring support workflows for steady-state operations..."
+        halt_condition: "Runbook index missing critical procedures"
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Configure Ticket Workflow"
+        instructions: "Define intake channels, prioritization, and routing rules for support issues."
+        communication_template: "Configuring ticket intake and prioritization workflow for maintenance..."
+        halt_condition: "Workflow automation fails validation"
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Define Reporting Dashboard"
+        instructions: "Outline maintenance reporting metrics and dashboard requirements."
+        communication_template: "Drafting maintenance reporting metrics and dashboard spec..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Runbook index"
+        storage_location: ".artifacts/maintenance/runbook-index.json"
+      - evidence_item: "Support workflow"
+        storage_location: ".artifacts/maintenance/support-workflow.yaml"
+      - evidence_item: "Reporting spec"
+        storage_location: ".artifacts/maintenance/reporting-spec.md"
+    quality_gate:
+      gate_name: "Operations Enablement Gate"
+      criteria: "Runbooks consolidated, workflow configured, reporting spec drafted."
+      failure_handling: "Fix tooling or workflow gaps before backlog planning."
+  - phase_number: 3
+    phase_name: "Continuous Improvement & Release Governance"
+    objective: "Establish backlog intake, release cadence, and feedback loops."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Build Maintenance Backlog"
+        instructions: "Seed backlog with documentation feedback, performance improvements, and operational needs."
+        communication_template: "[PHASE 3 START] - Establishing maintenance backlog governance and release planning cadence..."
+        halt_condition: "Backlog register empty or missing priority scheme"
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Define Release Policy"
+        instructions: "Set cadence and criteria for patches, maintenance releases, and communications."
+        communication_template: "Defining maintenance release and patch policy..."
+        halt_condition: "Release policy lacks approval or gating criteria"
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Integrate Feedback Loops"
+        instructions: "Link retrospectives, analytics, and customer feedback to backlog refinement."
+        communication_template: "Integrating feedback loops into maintenance backlog governance..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Backlog register"
+        storage_location: ".artifacts/maintenance/backlog-register.csv"
+      - evidence_item: "Release policy"
+        storage_location: ".artifacts/maintenance/release-policy.md"
+      - evidence_item: "Feedback loop map"
+        storage_location: ".artifacts/maintenance/feedback-loop-map.json"
+    quality_gate:
+      gate_name: "Governance Gate"
+      criteria: "Backlog initialized, release policy defined, feedback loops mapped."
+      failure_handling: "Revisit backlog sources and stakeholder alignment before readiness validation."
+  - phase_number: 4
+    phase_name: "Sustainability Validation & Transition Governance"
+    objective: "Validate readiness, activate monitoring, and schedule health reviews."
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Validate Readiness"
+        instructions: "Review maintenance plan with stakeholders and record approvals."
+        communication_template: "[PHASE 4 START] - Validating maintenance readiness and confirming stakeholder endorsements..."
+        halt_condition: "Stakeholder approval missing or conditional"
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Activate Monitoring & Reporting"
+        instructions: "Confirm monitoring alerts, ticket dashboards, and reporting automation are active."
+        communication_template: "Activating maintenance monitoring and reporting automations..."
+        halt_condition: "Monitoring activation incomplete"
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Schedule Post-Launch Reviews"
+        instructions: "Plan 30/60/90-day reviews and align with retrospectives."
+        communication_template: "Scheduling maintenance health reviews and aligning with retrospectives..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Readiness approval log"
+        storage_location: ".artifacts/maintenance/readiness-approval-log.csv"
+      - evidence_item: "Monitoring activation"
+        storage_location: ".artifacts/maintenance/monitoring-activation.json"
+      - evidence_item: "Review calendar"
+        storage_location: ".artifacts/maintenance/review-calendar.md"
+    quality_gate:
+      gate_name: "Readiness Validation Gate"
+      criteria: "Approvals recorded, monitoring active, review cadence scheduled."
+      failure_handling: "Resolve approvals or monitoring gaps before finalizing handoff."
+
+integration_inputs:
+  - protocol: "12-monitoring-observability"
+    artifacts: "monitoring configuration, SLOs"
+  - protocol: "13-incident-response-rollback"
+    artifacts: "incident runbooks, lessons"
+  - protocol: "14-performance-optimization"
+    artifacts: "performance backlog"
+  - protocol: "15-uat-coordination"
+    artifacts: "feedback backlog"
+  - protocol: "16-documentation-knowledge-transfer"
+    artifacts: "feedback backlog, enablement summary"
+  - protocol: "17-project-closure"
+    artifacts: "ownership matrix, transition confirmation"
+
+integration_outputs:
+  - destination: "Operations Support Teams"
+    artifacts: "maintenance charter, support workflow, reporting spec"
+  - protocol: "5-implementation-retrospective"
+    artifacts: "feedback loop map, review calendar, backlog insights"
+  - destination: "Future Project Bootstrap"
+    artifacts: "capacity analysis, tooling checklist, release policy"
+
+communication_protocols:
+  status_announcements:
+    - "[PHASE 1 START] - Establishing maintenance charter, SLAs, and escalation pathways for post-launch operations..."
+    - "[PHASE 2 START] - Consolidating runbooks and configuring support workflows for steady-state operations..."
+    - "[PHASE 3 START] - Establishing maintenance backlog governance and release planning cadence..."
+    - "[PHASE 4 START] - Validating maintenance readiness and confirming stakeholder endorsements..."
+  validation_prompts:
+    - "[CAPACITY ALERT] Support coverage gaps detected for {time_window}. Escalate staffing adjustments before proceeding? (yes/no)"
+    - "[READINESS APPROVAL] All monitoring and approvals confirmed. Transition maintenance charter to steady-state teams now? (yes/no)"
+  error_handling:
+    - error_code: "SLAConflict"
+      message: "[ERROR] Proposed maintenance SLAs conflict with available capacity."
+      recovery: "Reassess staffing, negotiate revised SLAs, update capacity analysis."
+    - error_code: "WorkflowMisconfiguration"
+      message: "[ERROR] Support workflow automation failed validation."
+      recovery: "Correct configuration, rerun automation, validate routing rules."
+    - error_code: "MonitoringInactive"
+      message: "[ERROR] Maintenance monitoring activation incomplete."
+      recovery: "Resolve alert gaps, rerun activation script, confirm status."
+
+automation_hooks:
+  - command: "python scripts/assess_support_capacity.py --output .artifacts/maintenance/capacity-analysis.csv"
+    purpose: "Aggregate staffing and coverage data for capacity assessment."
+  - command: "python scripts/configure_ticket_routing.py --config .artifacts/maintenance/support-workflow.yaml"
+    purpose: "Apply ticket routing rules and validate automation."
+  - command: "python scripts/sync_maintenance_backlog.py --source .artifacts/documentation/feedback-backlog.json --target .artifacts/maintenance/backlog-register.csv"
+    purpose: "Seed maintenance backlog with documentation and performance feedback."
+  - command: "python scripts/activate_maintenance_monitoring.py --plan .artifacts/maintenance/monitoring-activation.json"
+    purpose: "Enable monitoring alerts and reporting automations for maintenance."
+
+handoff_checklist:
+  - "Maintenance charter approved with capacity coverage validated."
+  - "Runbooks consolidated, support workflow configured, reporting metrics defined."
+  - "Maintenance backlog initialized with release policy and feedback loops documented."
+  - "Stakeholder approvals recorded, monitoring active, review cadence scheduled."

@@ -39,6 +39,9 @@ Nakalikha na ang **bidirectional generator system** na nagbibigay ng complete ci
 - `protocol-input-form-13-incident.yaml`
 - `protocol-input-form-14-performance.yaml`
 - `protocol-input-form-15-uat.yaml`
+- `protocol-input-form-16-documentation.yaml`
+- `protocol-input-form-17-closure.yaml`
+- `protocol-input-form-18-maintenance.yaml`
 
 Each form includes required fields, contextual examples, and validation notes tailored to its protocol domain.
 
@@ -52,6 +55,9 @@ Each form includes required fields, contextual examples, and validation notes ta
 - `13-incident-generator.md` ↔ `.cursor/ai-driven-workflow/13-incident-response-rollback.md`
 - `14-performance-generator.md` ↔ `.cursor/ai-driven-workflow/14-performance-optimization.md`
 - `15-uat-generator.md` ↔ `.cursor/ai-driven-workflow/15-uat-coordination.md`
+- `16-documentation-generator.md` ↔ `.cursor/ai-driven-workflow/16-documentation-knowledge-transfer.md`
+- `17-closure-generator.md` ↔ `.cursor/ai-driven-workflow/17-project-closure.md`
+- `18-maintenance-generator.md` ↔ `.cursor/ai-driven-workflow/18-maintenance-support.md`
 
 Meta-analysis validation is recommended for each generated protocol to preserve the circular workflow.
 
