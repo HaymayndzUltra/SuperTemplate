@@ -1,0 +1,188 @@
+# PROTOCOL REQUIREMENTS FORM - PROTOCOL 12
+# Post-Deployment Monitoring & Observability
+
+## ============================================
+## SECTION 1: BASIC INFORMATION
+## ============================================
+
+protocol_number: "12"
+protocol_name: "monitoring-observability"
+domain_compliance: "Reliability Governance"
+purpose: "Operationalize monitoring for new releases, ensure observability coverage, and establish actionable alerting with validated SLO tracking."
+
+## ============================================
+## SECTION 2: AI ROLE & CONTEXT
+## ============================================
+
+ai_role: "Site Reliability Engineer (SRE)"
+primary_guardrail: "DO NOT declare monitoring complete until dashboards, alerts, and SLO tracking are validated against production telemetry and signed off by stakeholders."
+
+prerequisites:
+  - protocol: "11-production-deployment"
+    required_artifacts: ".artifacts/deployment/monitoring-handoff-package.zip, production-release-log.json, release-decision-log.md"
+  - protocol: "6-technical-design-architecture"
+    required_artifacts: ".cursor/context-kit/architecture-guardrails.md"
+
+phase_in_workflow: "Between Protocol 11 (Production Deployment) and Protocol 13 (Incident Response)"
+
+## ============================================
+## SECTION 3: EXECUTION STRUCTURE
+## ============================================
+
+phases:
+  - phase_number: 1
+    phase_name: "Observability Coverage Alignment"
+    objective: "Review deployment handoff, map telemetry requirements, and update runbook."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Review Release Handoff Package"
+        instructions: "Parse monitoring handoff package and release logs to identify new services and watch items."
+        communication_template: "[PHASE 1 START] - Reviewing deployment handoff package and extracting observability requirements..."
+        halt_condition: "Stop if handoff artifacts are missing."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Map Telemetry Requirements"
+        instructions: "Document metrics, logs, traces, and synthetic checks needed per component."
+        communication_template: "Mapping telemetry requirements and aligning with observability standards..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Update Monitoring Runbook"
+        instructions: "Append release-specific watch items and escalation thresholds to monitoring runbook."
+        communication_template: "Updating monitoring runbook with release-specific guidance..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "Observability intake report"
+        storage_location: ".artifacts/monitoring/observability-intake-report.md"
+      - evidence_item: "Telemetry requirements map"
+        storage_location: ".artifacts/monitoring/telemetry-requirements.json"
+      - evidence_item: "Updated monitoring runbook"
+        storage_location: ".cursor/context-kit/monitoring-runbook.md"
+
+    quality_gate:
+      gate_name: "Observability Coverage Gate"
+      criteria: "Intake report complete, telemetry requirements mapped, runbook updated."
+      failure_handling: "Request missing deployment artifacts, resolve coverage gaps, escalate to release manager."
+
+  - phase_number: 2
+    phase_name: "Instrumentation Validation and Dashboard Activation"
+    objective: "Validate telemetry ingestion, activate dashboards and alerts, and run synthetic checks."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Validate Data Ingestion"
+        instructions: "Confirm metrics, logs, and traces are flowing to observability platforms; reconcile missing signals."
+        communication_template: "[PHASE 2 START] - Validating live telemetry ingestion across monitoring stacks..."
+        halt_condition: ""
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Activate Dashboards and Alerts"
+        instructions: "Create or update dashboards, alert rules, and SLO monitors with proper routing."
+        communication_template: "Publishing dashboards and activating alert policies for new release metrics..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Run Synthetic and Load Checks"
+        instructions: "Execute synthetic probes and optional load tests to validate observability end-to-end."
+        communication_template: "Executing synthetic probes to confirm alert thresholds and response policies..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "Telemetry ingestion report"
+        storage_location: ".artifacts/monitoring/telemetry-ingestion-report.json"
+      - evidence_item: "Dashboard and alert inventory"
+        storage_location: ".artifacts/monitoring/dashboard-alert-inventory.md"
+      - evidence_item: "Synthetic check results"
+        storage_location: ".artifacts/monitoring/synthetic-check-results.json"
+
+    quality_gate:
+      gate_name: "Telemetry Validation Gate"
+      criteria: "All required signals ingesting, dashboards/alerts active, synthetic checks recorded."
+      failure_handling: "Address ingestion failures, adjust alert routing, rerun validation automation."
+
+  - phase_number: 3
+    phase_name: "SLO Validation and Monitoring Sign-Off"
+    objective: "Validate SLO compliance, confirm on-call alignment, and capture monitoring sign-off."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Validate SLO Compliance"
+        instructions: "Compare telemetry against SLOs/SLIs, document burn rates and error budgets."
+        communication_template: "[PHASE 3 START] - Validating SLO compliance and reviewing error budgets..."
+        halt_condition: ""
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Establish On-Call & Escalation Alignment"
+        instructions: "Confirm on-call schedule, escalation contacts, and incident response channels updated."
+        communication_template: "Confirming on-call coverage and escalation pathways for monitoring window..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Conduct Monitoring Readiness Review"
+        instructions: "Present dashboards, alert thresholds, and contingency plans to stakeholders and record sign-off."
+        communication_template: "Presenting monitoring readiness review for stakeholder approval..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "SLO review"
+        storage_location: ".artifacts/monitoring/slo-review.md"
+      - evidence_item: "Escalation matrix"
+        storage_location: ".artifacts/monitoring/escalation-matrix.json"
+      - evidence_item: "Monitoring sign-off log"
+        storage_location: ".artifacts/monitoring/monitoring-signoff-log.md"
+
+    quality_gate:
+      gate_name: "Monitoring Readiness Gate"
+      criteria: "SLO review complete, escalation matrix updated, sign-off log captured."
+      failure_handling: "Reschedule readiness review, remediate SLO risks, confirm on-call alignment."
+
+## ============================================
+## SECTION 4: INTEGRATION & DATA FLOW
+## ============================================
+
+inputs_from:
+  - protocol: "11-production-deployment"
+    artifacts_consumed: ".artifacts/deployment/monitoring-handoff-package.zip, production-release-log.json, release-decision-log.md"
+    usage: "Provide release context, watch metrics, and decision history."
+  - protocol: "6-technical-design-architecture"
+    artifacts_consumed: ".cursor/context-kit/architecture-guardrails.md"
+    usage: "Reference component boundaries and instrumentation guardrails."
+
+outputs_to:
+  - protocol: "13-incident-response-rollback"
+    artifacts_provided: ".artifacts/monitoring/slo-review.md, .artifacts/monitoring/telemetry-ingestion-report.json, .artifacts/monitoring/escalation-matrix.json, .artifacts/monitoring/monitoring-signoff-log.md"
+    purpose: "Enable incident response teams with observability status and escalation paths."
+  - protocol: "5-implementation-retrospective"
+    artifacts_provided: "Monitoring insights and improvement notes"
+    purpose: "Feed reliability learnings into retrospectives."
+
+## ============================================
+## SECTION 5: AUTOMATION & TOOLING
+## ============================================
+
+automation_hooks:
+  - hook_name: "validate_ingestion.py"
+    trigger_point: "Phase 2 telemetry validation"
+    command: "python scripts/monitoring/validate_ingestion.py --config .artifacts/monitoring/telemetry-requirements.json --output .artifacts/monitoring/telemetry-ingestion-report.json"
+    expected_output: "telemetry-ingestion-report.json with pass/fail per signal"
+
+  - hook_name: "synth_check_runner.py"
+    trigger_point: "Phase 2 synthetic checks"
+    command: "python scripts/monitoring/synth_check_runner.py --config .artifacts/monitoring/telemetry-requirements.json --output .artifacts/monitoring/synthetic-check-results.json"
+    expected_output: "synthetic-check-results.json summarizing probe outcomes"
+
+  - hook_name: "generate_slo_review.py"
+    trigger_point: "Phase 3 SLO validation"
+    command: "python scripts/monitoring/generate_slo_review.py --inputs .artifacts/monitoring/telemetry-ingestion-report.json --output .artifacts/monitoring/slo-review.md"
+    expected_output: "slo-review.md documenting compliance and risks"

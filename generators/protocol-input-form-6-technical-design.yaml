@@ -1,0 +1,176 @@
+# PROTOCOL REQUIREMENTS FORM - PROTOCOL 6
+# Technical Design & Architecture Specification
+
+## ============================================
+## SECTION 1: BASIC INFORMATION
+## ============================================
+
+protocol_number: "6"
+protocol_name: "technical-design-architecture"
+domain_compliance: "Design Governance"
+purpose: "Translate the approved PRD into a validated technical architecture package with component blueprints, integration contracts, and delivery guardrails."
+
+## ============================================
+## SECTION 2: AI ROLE & CONTEXT
+## ============================================
+
+ai_role: "Solutions Architect"
+primary_guardrail: "DO NOT authorize engineering work or generate tickets until architecture sign-off and evidence packages are complete."
+
+prerequisites:
+  - protocol: "01-project-brief-creation"
+    required_artifacts: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
+  - protocol: "00B-client-discovery-initiation"
+    required_artifacts: "Discovery summaries for scope, constraints, and communication plans"
+
+phase_in_workflow: "Between Protocol 01 (Project Brief Creation) and Protocol 2 (Task Generation)"
+
+## ============================================
+## SECTION 3: EXECUTION STRUCTURE
+## ============================================
+
+phases:
+  - phase_number: 1
+    phase_name: "Architecture Intake and Signal Mapping"
+    objective: "Synthesize PRD and discovery artifacts into architecture requirements with traceable evidence."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Parse PRD and Discovery Evidence"
+        instructions: "Extract business objectives, functional modules, constraints, and non-functional requirements from PROJECT-BRIEF.md and discovery artifacts."
+        communication_template: "[PHASE 1 START] - Parsing PRD and discovery signals to build architecture inputs..."
+        halt_condition: "Stop if required brief or discovery artifacts are missing."
+
+      - step_number: 2
+        action_type: "GUIDELINE"
+        action_title: "Map Domain Constraints and Assumptions"
+        instructions: "Document technology preferences, regulatory constraints, scalability targets, and unresolved assumptions from discovery."
+        communication_template: "Cataloging domain constraints and unresolved assumptions for architecture alignment..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "Architecture intake notes"
+        storage_location: ".artifacts/design/architecture-intake-notes.md"
+      - evidence_item: "Constraint and assumption inventory"
+        storage_location: ".artifacts/design/architecture-intake-notes.md"
+
+    quality_gate:
+      gate_name: "Architecture Intake Completeness Gate"
+      criteria: "All PRD sections mapped to architectural requirements with traceable references."
+      failure_handling: "Request missing brief sections or discovery clarifications before proceeding."
+
+  - phase_number: 2
+    phase_name: "System Architecture Drafting"
+    objective: "Produce technical design blueprint, diagrams, and stack validation artifacts."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Define Component and Integration Blueprint"
+        instructions: "Document service decomposition, data flow, API contracts, and integration touchpoints."
+        communication_template: "[PHASE 2 START] - Drafting component architecture and integration contracts..."
+        halt_condition: ""
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Validate Technology Stack Decisions"
+        instructions: "Cross-check proposed stack against governance rules and available capabilities; capture deviations."
+        communication_template: "Validating stack selections against governance and capability inventory..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Produce Sequence and Deployment Views"
+        instructions: "Create sequence diagrams for critical journeys and outline deployment topology across environments."
+        communication_template: "Documenting sequence flows and deployment topology for engineering alignment..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "Technical design blueprint"
+        storage_location: ".artifacts/design/TECHNICAL-DESIGN.md"
+      - evidence_item: "Architecture diagrams"
+        storage_location: ".artifacts/design/architecture-diagram.drawio"
+      - evidence_item: "Stack validation report"
+        storage_location: ".artifacts/design/stack-validation-report.json"
+
+    quality_gate:
+      gate_name: "Design Integrity Gate"
+      criteria: "Blueprint covers data flow, integration contracts, deployment topology, and validated stack decisions."
+      failure_handling: "Revise blueprint, adjust technologies, re-run validation automation."
+
+  - phase_number: 3
+    phase_name: "Architecture Review and Sign-Off"
+    objective: "Facilitate review, capture decisions, and publish guardrails for downstream teams."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Facilitate Architecture Review"
+        instructions: "Run architecture review checklist, capture reviewer feedback, and resolve blockers."
+        communication_template: "[PHASE 3 START] - Executing architecture review checklist and capturing reviewer notes..."
+        halt_condition: "Pause until reviewer feedback and blockers resolved."
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Capture Decision Log and Sign-Off"
+        instructions: "Record approved decisions, open risks, mitigation owners with timestamps."
+        communication_template: "Recording architecture decision log and obtaining sign-off confirmation..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Publish Implementation Guardrails"
+        instructions: "Summarize coding standards, integration contracts, and security considerations for task planning."
+        communication_template: "Publishing architecture guardrails for task decomposition alignment..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "Architecture review report"
+        storage_location: ".artifacts/design/architecture-review-report.md"
+      - evidence_item: "Architecture sign-off log"
+        storage_location: ".artifacts/design/architecture-signoff-log.json"
+      - evidence_item: "Architecture guardrails"
+        storage_location: ".cursor/context-kit/architecture-guardrails.md"
+
+    quality_gate:
+      gate_name: "Sign-Off Gate"
+      criteria: "Review checklist completed, decision log signed, risks documented with owners."
+      failure_handling: "Address reviewer findings, document resolutions, repeat review cycle."
+
+## ============================================
+## SECTION 4: INTEGRATION & DATA FLOW
+## ============================================
+
+inputs_from:
+  - protocol: "01-project-brief-creation"
+    artifacts_consumed: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
+    usage: "Provide authoritative scope, constraints, and client approvals."
+  - protocol: "00B-client-discovery-initiation"
+    artifacts_consumed: ".artifacts/discovery/*.md"
+    usage: "Surface client clarifications, communication plans, and scope nuances."
+
+outputs_to:
+  - protocol: "2-generate-tasks"
+    artifacts_provided: ".artifacts/design/TECHNICAL-DESIGN.md, .artifacts/design/architecture-diagram.drawio, .cursor/context-kit/architecture-guardrails.md, .artifacts/design/architecture-signoff-log.json"
+    purpose: "Enable task decomposition aligned with approved architecture and guardrails."
+
+## ============================================
+## SECTION 5: AUTOMATION & TOOLING
+## ============================================
+
+automation_hooks:
+  - hook_name: "extract_prd_signals.py"
+    trigger_point: "Phase 1 architecture intake"
+    command: "python scripts/design/extract_prd_signals.py --brief PROJECT-BRIEF.md --output .artifacts/design/architecture-intake-notes.md"
+    expected_output: "architecture-intake-notes.md containing mapped requirements"
+
+  - hook_name: "generate_architecture_blueprint.py"
+    trigger_point: "Phase 2 blueprint drafting"
+    command: "python scripts/design/generate_architecture_blueprint.py --inputs .artifacts/design/architecture-intake-notes.md --output .artifacts/design/TECHNICAL-DESIGN.md"
+    expected_output: "TECHNICAL-DESIGN.md blueprint file"
+
+  - hook_name: "architecture_review_checklist.py"
+    trigger_point: "Phase 3 review preparation"
+    command: "python scripts/design/architecture_review_checklist.py --design .artifacts/design/TECHNICAL-DESIGN.md --diagram .artifacts/design/architecture-diagram.drawio --output .artifacts/design/architecture-review-report.md"
+    expected_output: "architecture-review-report.md with checklist results"

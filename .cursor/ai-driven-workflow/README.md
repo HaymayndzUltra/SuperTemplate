@@ -23,7 +23,9 @@ Phase 0: Foundation (Bootstrap & Discovery)
 
 Phase 1-2: Planning (PRD & Tasks)
 ├── 1-create-prd.md (Product Manager)
-└── 2-generate-tasks.md (Tech Lead)
+├── 2-generate-tasks.md (Tech Lead)
+├── 6-technical-design-architecture.md (Solutions Architect)
+└── 7-environment-setup-validation.md (DevOps Engineer)
 
 Phase 3: Execution
 └── 3-process-tasks.md (Paired Developer)
@@ -46,7 +48,10 @@ Phase 4: Quality Assurance
 
 Phase 5: Continuous Improvement
 ├── 5-implementation-retrospective.md (Process Improvement Lead)
-└── 8-script-governance-protocol.md (Automation Compliance Auditor)
+├── 8-script-governance-protocol.md (Automation Compliance Auditor)
+├── 11-production-deployment.md (Release Manager)
+├── 12-monitoring-observability.md (Site Reliability Engineer)
+└── 13-incident-response-rollback.md (Incident Commander)
 ```
 
 ## 3. Phase 0: Foundation Protocols (Bootstrap & Discovery)
@@ -363,6 +368,81 @@ Transform PRD into simple, actionable plan with minimum viable steps, guiding im
 - Detailed sub-tasks with rule applications and dependencies
 - Automation hooks for CI/CD integration
 - Model persona recommendations for execution
+
+### Protocol 6: Technical Design & Architecture Specification
+**Role:** Solutions Architect  
+**File:** `6-technical-design-architecture.md`
+
+#### Purpose
+Convert the approved project brief and discovery artifacts into a validated technical architecture package that defines service boundaries, integration contracts, and guardrails for task decomposition.
+
+#### Prerequisites
+- `PROJECT-BRIEF.md`, `project-brief-validation-report.json`, `BRIEF-APPROVAL-RECORD.json`
+- Discovery artifacts detailing scope, constraints, and communication plans
+
+#### Execution Algorithm (3-Phase Process)
+1. **Architecture Intake**
+   - Parse PRD and discovery evidence, capturing requirements into `.artifacts/design/architecture-intake-notes.md`
+   - Document domain constraints, assumptions, and open risks inherited from discovery
+2. **System Drafting**
+   - Generate `TECHNICAL-DESIGN.md` and architecture diagrams covering components, data flows, and integration contracts
+   - Validate technology stack selections against governance rules, logging decisions and exceptions
+   - Provide optional sequence and deployment views for critical journeys
+3. **Review & Sign-Off**
+   - Run architecture review checklist automation, capture reviewer feedback, and resolve blockers
+   - Record sign-off in `.artifacts/design/architecture-signoff-log.json` and publish guardrails for Protocol 2
+
+#### Quality Gates
+- **Intake Completeness:** All PRD requirements mapped with traceability
+- **Design Integrity:** Blueprint includes data flow, integrations, deployment topology, and validated stack decisions
+- **Sign-Off:** Review checklist complete with decision log and owner-assigned risks
+
+#### Automation Hooks
+- `extract_prd_signals.py` – map PRD requirements into intake notes
+- `generate_architecture_blueprint.py` – assemble architecture narrative
+- `architecture_review_checklist.py` – validate review readiness
+
+#### Outputs
+- `.artifacts/design/TECHNICAL-DESIGN.md` and companion diagrams
+- `.cursor/context-kit/architecture-guardrails.md`
+- `.artifacts/design/architecture-signoff-log.json` for downstream traceability
+
+### Protocol 7: Development Environment Setup & Validation
+**Role:** DevOps Engineer  
+**File:** `7-environment-setup-validation.md`
+
+#### Purpose
+Provision consistent development environments, confirm access and tooling parity, and document reproducibility evidence before engineers execute tasks.
+
+#### Prerequisites
+- Protocol 2 task backlog with persona assignments and sample tasks
+- Architecture guardrails and technical design artifacts from Protocol 6
+
+#### Execution Algorithm (3-Phase Process)
+1. **Baseline Assessment**
+   - Inventory target environments and verify repository, registry, and secrets access
+   - Map persona-specific requirements and note variations
+2. **Toolchain Provisioning**
+   - Install runtimes, CLIs, and container tooling using guardrail guidance
+   - Configure environment variables/secrets and optionally publish dev container definitions
+3. **Validation & Reproducibility**
+   - Run validation suite against sample tasks, capture pass/fail evidence
+   - Document reproducibility checklist and publish environment support playbook
+
+#### Quality Gates
+- **Access & Inventory:** All credentials validated and inventory recorded
+- **Toolchain Readiness:** Installations completed without errors and configuration checklist signed off
+- **Reproducibility:** Validation suite passes and support playbook published
+
+#### Automation Hooks
+- `collect_inventory.py` – capture environment inventory baseline
+- `bootstrap_toolchain.py` – automate tooling installation
+- `validate_environment.py` – execute environment smoke tests
+
+#### Outputs
+- `.artifacts/environment/validation-report.json` & `.artifacts/environment/reproducibility-checklist.md`
+- `.artifacts/environment/env-configuration-checklist.md`
+- `.cursor/context-kit/environment-support.md` for Protocol 3 teams
 
 ## 5. Phase 3: Execution Protocol
 
@@ -1134,3 +1214,107 @@ This directory contains the end-to-end ai-driven-workflow protocols and the unif
 - Interactive, tool‑agnostic review selection is centralized in `4-quality-audit.md` and routes through `_review-router.md` for automatic custom↔generic fallback.
 - Automation checkpoints and evidence capture are integrated across protocols to maintain auditable execution.
 - All 34 protocols documented with complete execution logic, quality gates, automation hooks, and outputs.
+
+### Protocol 11: Production Deployment & Release Management
+**Role:** Release Manager  
+**File:** `11-production-deployment.md`
+
+#### Purpose
+Execute production releases using approved plans, enforce change control, and capture rollback readiness and stabilization evidence for monitoring and incident response teams.
+
+#### Prerequisites
+- `.artifacts/staging/release-bundle/` with validated deployment artifacts
+- `staging-validation-report.json`, `release-plan.yaml`, and approval records from Protocol 10
+
+#### Execution Algorithm (3-Phase Process)
+1. **Release Readiness Verification**
+   - Audit release package, approvals, and rollback strategy
+   - Publish deployment communications and confirm change window
+2. **Controlled Deployment Execution**
+   - Run pre-deployment automation, trigger production pipeline, and maintain decision log
+   - Optionally execute canary/phased rollout prior to full traffic shift
+3. **Post-Deployment Stabilization**
+   - Run health checks, deliver monitoring handoff package, and archive release evidence
+
+#### Quality Gates
+- **Release Readiness Gate:** Approvals captured, rollback plan verified
+- **Deployment Execution Gate:** Pre-checks pass, pipeline succeeds, decision log updated
+- **Stabilization Gate:** Post-release health confirmed, monitoring handoff delivered, evidence archived
+
+#### Automation Hooks
+- `validate_release_package.py` – verify release bundle
+- `pre_release_checks.py` – execute automated readiness checks
+- `post_release_health.py` – validate production health
+
+#### Outputs
+- `.artifacts/deployment/production-release-log.json`
+- `.artifacts/deployment/monitoring-handoff-package.zip`
+- `.artifacts/deployment/rollback-readiness-report.json`
+
+### Protocol 12: Post-Deployment Monitoring & Observability
+**Role:** Site Reliability Engineer (SRE)  
+**File:** `12-monitoring-observability.md`
+
+#### Purpose
+Operationalize monitoring after deployment, validate telemetry ingestion, and ensure SLO tracking with clear escalation pathways.
+
+#### Prerequisites
+- `monitoring-handoff-package.zip`, `production-release-log.json`, `release-decision-log.md` from Protocol 11
+- Architecture guardrails for instrumentation references
+
+#### Execution Algorithm (3-Phase Process)
+1. **Observability Coverage Alignment**
+   - Review handoff package, map telemetry requirements, and update monitoring runbook
+2. **Instrumentation Validation**
+   - Validate metrics/log/trace ingestion, activate dashboards and alerts, run synthetic checks
+3. **SLO Validation & Sign-Off**
+   - Review SLO compliance, confirm on-call alignment, and conduct monitoring readiness review
+
+#### Quality Gates
+- **Observability Coverage Gate:** Intake report and telemetry requirements completed
+- **Telemetry Validation Gate:** Ingestion verified, dashboards and alerts active, synthetic results captured
+- **Monitoring Readiness Gate:** SLO review complete, escalation matrix updated, sign-off logged
+
+#### Automation Hooks
+- `validate_ingestion.py` – confirm telemetry flow
+- `synth_check_runner.py` – run synthetic probes
+- `generate_slo_review.py` – produce SLO compliance summary
+
+#### Outputs
+- `.artifacts/monitoring/telemetry-ingestion-report.json`
+- `.artifacts/monitoring/dashboard-alert-inventory.md`
+- `.artifacts/monitoring/slo-review.md` and `escalation-matrix.json`
+
+### Protocol 13: Incident Response & Rollback
+**Role:** Incident Commander  
+**File:** `13-incident-response-rollback.md`
+
+#### Purpose
+Coordinate production incident triage, execute mitigations or rollbacks safely, and capture post-incident documentation for retrospectives and backlog updates.
+
+#### Prerequisites
+- Monitoring artifacts from Protocol 12 (SLO review, telemetry report, escalation matrix)
+- Rollback readiness and post-release verification evidence from Protocol 11
+
+#### Execution Algorithm (3-Phase Process)
+1. **Incident Intake & Classification**
+   - Activate incident command, capture telemetry, classify severity, and establish communications
+2. **Mitigation & Rollback Execution**
+   - Select mitigation strategy, run rollback automation if required, and validate service recovery
+3. **Post-Incident Analysis**
+   - Produce postmortem, assign follow-up actions, and close communication channels
+
+#### Quality Gates
+- **Incident Intake Gate:** Intake report complete, severity confirmed, communications in place
+- **Mitigation Execution Gate:** Mitigation plan approved, rollback log captured, recovery validated
+- **Post-Incident Closure Gate:** Postmortem drafted, follow-up actions assigned, closure summary distributed
+
+#### Automation Hooks
+- `incident_intake_template.py` – initialize intake report
+- `run_rollback.py` – execute rollback plan with logging
+- `postmortem_generator.py` – draft postmortem from incident evidence
+
+#### Outputs
+- `.artifacts/incidents/postmortem.md`
+- `.artifacts/incidents/follow-up-actions.json`
+- `.artifacts/incidents/incident-closure-summary.md`

@@ -1,0 +1,183 @@
+# PROTOCOL REQUIREMENTS FORM - PROTOCOL 7
+# Development Environment Setup & Validation
+
+## ============================================
+## SECTION 1: BASIC INFORMATION
+## ============================================
+
+protocol_number: "7"
+protocol_name: "environment-setup-validation"
+domain_compliance: "DevOps Compliance"
+purpose: "Provision reproducible development environments, validate tooling parity, and capture evidence that all engineers can execute tasks without configuration drift."
+
+## ============================================
+## SECTION 2: AI ROLE & CONTEXT
+## ============================================
+
+ai_role: "DevOps Engineer"
+primary_guardrail: "DO NOT mark environments ready or share credentials until validation evidence confirms parity across developer workstations and sandboxes."
+
+prerequisites:
+  - protocol: "2-generate-tasks"
+    required_artifacts: ".artifacts/tasks/priority-backlog.json, task-estimation-report.md, persona assignments"
+  - protocol: "6-technical-design-architecture"
+    required_artifacts: ".cursor/context-kit/architecture-guardrails.md, .artifacts/design/TECHNICAL-DESIGN.md"
+
+phase_in_workflow: "Between Protocol 2 (Task Generation) and Protocol 3 (Process Tasks)"
+
+## ============================================
+## SECTION 3: EXECUTION STRUCTURE
+## ============================================
+
+phases:
+  - phase_number: 1
+    phase_name: "Baseline Assessment and Access Verification"
+    objective: "Inventory environment requirements, verify access, and align personas before provisioning."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Inventory Target Environments"
+        instructions: "Gather OS versions, hardware requirements, container runtimes, and required accounts for each persona."
+        communication_template: "[PHASE 1 START] - Capturing baseline environment inventory and required access credentials..."
+        halt_condition: ""
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Validate Access and Secrets Management"
+        instructions: "Confirm connectivity to repos, registries, sandboxes, and secret stores; document results."
+        communication_template: "Verifying repository, registry, and secrets access for all engineering personas..."
+        halt_condition: "Pause if any required access is missing."
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Align Environment Personas"
+        instructions: "Map tasks to persona-specific requirements and note environment variations."
+        communication_template: "Mapping persona-specific environment requirements for alignment with task backlog..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "Environment inventory"
+        storage_location: ".artifacts/environment/environment-inventory.json"
+      - evidence_item: "Access verification log"
+        storage_location: ".artifacts/environment/access-verification-log.md"
+
+    quality_gate:
+      gate_name: "Access & Inventory Gate"
+      criteria: "All required systems reachable, credentials issued, environment inventory complete."
+      failure_handling: "Escalate missing access to operations, re-run verification after credentials issued."
+
+  - phase_number: 2
+    phase_name: "Toolchain Provisioning and Configuration"
+    objective: "Install tooling, configure variables, and deliver optional containerized environments."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Install Core Tooling"
+        instructions: "Install runtimes, package managers, container engines, and CLI tools defined in architecture guardrails."
+        communication_template: "[PHASE 2 START] - Installing baseline toolchain across developer environments..."
+        halt_condition: ""
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Configure Environment Variables and Secrets"
+        instructions: "Template env files, secret managers, and shared configuration based on guardrails and acceptance criteria."
+        communication_template: "Configuring environment variables, credentials, and shared configuration templates..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Containerize Reference Environment"
+        instructions: "Publish optional dev container or Compose definition to ensure parity for new contributors."
+        communication_template: "Publishing optional containerized dev environment for rapid onboarding..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "Tooling installation log"
+        storage_location: ".artifacts/environment/tooling-installation-log.txt"
+      - evidence_item: "Environment configuration checklist"
+        storage_location: ".artifacts/environment/env-configuration-checklist.md"
+      - evidence_item: "Container definition (optional)"
+        storage_location: "devcontainer.json or docker-compose.yml"
+
+    quality_gate:
+      gate_name: "Toolchain Readiness Gate"
+      criteria: "Core tooling installed without errors, configuration checklist complete, optional container builds succeed."
+      failure_handling: "Resolve installation errors, update scripts, rerun bootstrap automation."
+
+  - phase_number: 3
+    phase_name: "Validation, Reproducibility, and Sign-Off"
+    objective: "Validate workflows, document reproducibility, and publish support playbook."
+
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Execute Environment Validation Suite"
+        instructions: "Run smoke tests, lint checks, and sample task execution to confirm workflows succeed."
+        communication_template: "[PHASE 3 START] - Running environment validation suite against sample tasks..."
+        halt_condition: ""
+
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Document Reproducibility Checklist"
+        instructions: "Capture setup duration, automation coverage, and known issues in reproducibility checklist."
+        communication_template: "Documenting reproducibility findings and known configuration caveats..."
+        halt_condition: ""
+
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Publish Support Playbook"
+        instructions: "Create environment support documentation with troubleshooting and escalation paths."
+        communication_template: "Publishing environment support playbook for Protocol 3 execution teams..."
+        halt_condition: ""
+
+    evidence_collection:
+      - evidence_item: "Environment validation report"
+        storage_location: ".artifacts/environment/validation-report.json"
+      - evidence_item: "Reproducibility checklist"
+        storage_location: ".artifacts/environment/reproducibility-checklist.md"
+      - evidence_item: "Environment support playbook"
+        storage_location: ".cursor/context-kit/environment-support.md"
+
+    quality_gate:
+      gate_name: "Reproducibility Gate"
+      criteria: "Validation suite passes, reproducibility documented, support playbook published."
+      failure_handling: "Investigate failing checks, document fixes, rerun validation until pass."
+
+## ============================================
+## SECTION 4: INTEGRATION & DATA FLOW
+## ============================================
+
+inputs_from:
+  - protocol: "2-generate-tasks"
+    artifacts_consumed: ".artifacts/tasks/priority-backlog.json, task-estimation-report.md"
+    usage: "Drive persona mapping and sample tasks for validation."
+  - protocol: "6-technical-design-architecture"
+    artifacts_consumed: ".cursor/context-kit/architecture-guardrails.md, .artifacts/design/TECHNICAL-DESIGN.md"
+    usage: "Provide tooling requirements and integration guardrails."
+
+outputs_to:
+  - protocol: "3-process-tasks"
+    artifacts_provided: ".artifacts/environment/validation-report.json, .artifacts/environment/reproducibility-checklist.md, .cursor/context-kit/environment-support.md, .artifacts/environment/env-configuration-checklist.md"
+    purpose: "Enable developers to begin task execution with validated environments."
+
+## ============================================
+## SECTION 5: AUTOMATION & TOOLING
+## ============================================
+
+automation_hooks:
+  - hook_name: "collect_inventory.py"
+    trigger_point: "Phase 1 access verification"
+    command: "python scripts/environment/collect_inventory.py --output .artifacts/environment/environment-inventory.json"
+    expected_output: "environment-inventory.json with machine profiles"
+
+  - hook_name: "bootstrap_toolchain.py"
+    trigger_point: "Phase 2 toolchain installation"
+    command: "python scripts/environment/bootstrap_toolchain.py --config .cursor/context-kit/architecture-guardrails.md --log .artifacts/environment/tooling-installation-log.txt"
+    expected_output: "tooling-installation-log.txt capturing provisioning transcript"
+
+  - hook_name: "validate_environment.py"
+    trigger_point: "Phase 3 validation suite"
+    command: "python scripts/environment/validate_environment.py --tasks .artifacts/tasks/priority-backlog.json --output .artifacts/environment/validation-report.json"
+    expected_output: "validation-report.json summarizing pass/fail status"
