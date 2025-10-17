@@ -1,0 +1,165 @@
+# PROTOCOL REQUIREMENTS FORM - PROTOCOL 13
+
+protocol_number: "13"
+protocol_name: "incident-response-rollback"
+domain_compliance: "Operations Resilience"
+purpose: "Coordinate triage, mitigation, rollback, and post-incident actions with complete documentation and communication."
+
+ai_role: "Incident Commander"
+primary_guardrail: "DO NOT close an incident until root cause, mitigation, and follow-up actions are documented and assigned"
+prerequisites:
+  - protocol: "12-post-deployment-monitoring-observability"
+    required_artifacts: "monitoring-session-log.ndjson, anomaly-report.md"
+  - protocol: "11-production-deployment-release-management"
+    required_artifacts: "rollback-plan.md, release-health-report.md"
+phase_in_workflow: "Between Protocol 12 (Monitoring) and Protocol 05 (Implementation Retrospective)"
+
+phases:
+  - phase_number: 1
+    phase_name: "Detection, Classification & Activation"
+    objective: "Validate incident trigger, assign severity, and mobilize responders"
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Validate Incident Trigger"
+        instructions: "Confirm alert thresholds, impacted services, and trigger source"
+        communication_template: "[PHASE 1 START] - Validating incident trigger and affected services..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Classify Severity & Activate Responders"
+        instructions: "Assign severity level, notify on-call responders, and open communication bridge"
+        communication_template: "Incident classified as {SEV}. Activating responders and opening communication bridge..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Establish Incident Timeline"
+        instructions: "Start incident timeline capturing events, responders, and hypotheses"
+        communication_template: "Logging incident timeline and initial observations..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Incident trigger report"
+        storage_location: ".artifacts/incidents/incident-trigger-report.json"
+      - evidence_item: "Incident timeline"
+        storage_location: ".artifacts/incidents/incident-timeline.md"
+      - evidence_item: "Responder roster"
+        storage_location: ".artifacts/incidents/responder-roster.json"
+    quality_gate:
+      gate_name: "Incident Confirmation Gate"
+      criteria: "Trigger validated, severity assigned, responders activated"
+      failure_handling: "If false alarm, document rationale and close incident"
+
+  - phase_number: 2
+    phase_name: "Mitigation, Containment & Rollback"
+    objective: "Stabilize impacted systems and execute rollback if needed"
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Execute Mitigation Strategy"
+        instructions: "Apply runbooks to stabilize services (feature flags, throttling, scaling, hotfix)"
+        communication_template: "[PHASE 2 START] - Executing mitigation plan: {action}..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Perform Rollback or Recovery"
+        instructions: "Execute rollback plan and validate health metrics"
+        communication_template: "Rollback initiated. Monitoring health signals for recovery confirmation..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Capture Evidence & Decisions"
+        instructions: "Record commands, decisions, and impact assessment"
+        communication_template: "Recording mitigation commands and decision context for audit trail..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Mitigation log"
+        storage_location: ".artifacts/incidents/mitigation-log.ndjson"
+      - evidence_item: "Rollback report"
+        storage_location: ".artifacts/incidents/rollback-report.md"
+      - evidence_item: "Impact assessment"
+        storage_location: ".artifacts/incidents/impact-assessment.json"
+    quality_gate:
+      gate_name: "Containment & Recovery Gate"
+      criteria: "Mitigation executed; rollback validated; impact quantified"
+      failure_handling: "Continue mitigation loop or escalate to leadership"
+
+  - phase_number: 3
+    phase_name: "Post-Incident Review & Preventative Actions"
+    objective: "Complete RCA, assign actions, and communicate resolution"
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Conduct Root Cause Analysis"
+        instructions: "Facilitate RCA capturing contributing factors and detection gaps"
+        communication_template: "[PHASE 3 START] - Facilitating RCA to identify root causes and contributing factors..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Document Actions & Assign Follow-ups"
+        instructions: "Create postmortem report with action items, owners, due dates"
+        communication_template: "Documenting post-incident actions and assigning owners with due dates..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Communicate Incident Summary"
+        instructions: "Share summary with stakeholders including resolution and next steps"
+        communication_template: "Publishing incident summary and remediation plan to stakeholders..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Postmortem report"
+        storage_location: ".artifacts/incidents/postmortem-report.md"
+      - evidence_item: "Action item register"
+        storage_location: ".artifacts/incidents/action-item-register.yaml"
+      - evidence_item: "Incident communication log"
+        storage_location: ".artifacts/incidents/incident-communication-log.md"
+    quality_gate:
+      gate_name: "Postmortem Completion Gate"
+      criteria: "RCA complete, action items assigned, communications delivered"
+      failure_handling: "Keep incident open and schedule follow-up review"
+
+inputs_from:
+  - protocol: "12-post-deployment-monitoring-observability"
+    artifacts_consumed: "monitoring-session-log.ndjson, anomaly-report.md"
+    usage: "Provide incident trigger context"
+  - protocol: "11-production-deployment-release-management"
+    artifacts_consumed: "rollback-plan.md, release-health-report.md"
+    usage: "Guide rollback and recovery actions"
+
+outputs_to:
+  - protocol: "05-implementation-retrospective"
+    artifacts_provided: "postmortem-report.md, action-item-register.yaml, impact-assessment.json"
+    purpose: "Enable retrospective analysis and continuous improvement"
+  - protocol: "02-generate-tasks"
+    artifacts_provided: "incident-derived backlog entries"
+    purpose: "Create follow-up tasks for prevention"
+
+automation_hooks:
+  - hook_name: "incident_bridge.py"
+    trigger_point: "Phase 1 responder activation"
+    command: "python scripts/incident_bridge.py --severity {SEV} --output .artifacts/incidents/responder-roster.json"
+    expected_output: "Roster of activated responders with timestamps"
+  - hook_name: "rollback_executor.py"
+    trigger_point: "Phase 2 rollback"
+    command: "python scripts/rollback_executor.py --plan .artifacts/deployment/rollback-plan.md"
+    expected_output: "Rollback execution log with status"
+  - hook_name: "postmortem_compiler.py"
+    trigger_point: "Phase 3 RCA"
+    command: "python scripts/postmortem_compiler.py --output .artifacts/incidents/postmortem-report.md"
+    expected_output: "Structured postmortem report template"
+
+communication_protocols:
+  status_announcements:
+    - "[PHASE 1 START] - Incident validation and responder activation underway."
+    - "[PHASE 2 START] - Mitigation and rollback actions executing."
+    - "[PHASE 3 START] - Conducting post-incident review and action assignment."
+  validation_prompts:
+    - "[VALIDATION REQUEST] - Incident confirmed with responders engaged. Proceed to mitigation? (yes/no)"
+    - "[VALIDATION REQUEST] - Mitigation complete and systems stable. Begin post-incident review? (yes/no)"
+    - "[VALIDATION REQUEST] - Postmortem documented. Close incident and schedule follow-ups? (yes/no)"
+  error_messages:
+    - code: "FalsePositive"
+      message: "[NOTICE] Alert determined to be false positive."
+    - code: "MitigationFailure"
+      message: "[ERROR] Mitigation attempt failed or impact increasing."
+    - code: "IncompletePostmortem"
+      message: "[ERROR] Postmortem incomplete or action items unassigned."

@@ -1,0 +1,155 @@
+# PROTOCOL REQUIREMENTS FORM - PROTOCOL 6
+
+protocol_number: "6"
+protocol_name: "technical-design-architecture"
+domain_compliance: "Architecture"
+purpose: "Translate validated requirements into an approved technical architecture with complete integration and risk coverage."
+
+ai_role: "Solutions Architect"
+primary_guardrail: "DO NOT finalize or distribute architectural decisions without stakeholder review sign-off and risk documentation"
+prerequisites:
+  - protocol: "01-project-brief-creation"
+    required_artifacts: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
+  - protocol: "02-generate-tasks"
+    required_artifacts: "Initial backlog draft for design traceability"
+phase_in_workflow: "Between Protocol 01 (Project Brief) and Protocol 02 (Generate Tasks)"
+
+phases:
+  - phase_number: 1
+    phase_name: "Requirement Synthesis & Constraint Mapping"
+    objective: "Reconcile requirements and constraints to define architecture drivers"
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Validate Upstream Inputs"
+        instructions: "Review brief, proposal, and discovery artifacts to confirm scope and requirements"
+        communication_template: "[PHASE 1 START] - Confirming requirements and constraints for architecture planning..."
+        halt_condition: "Stop if discrepancies exist between PRD scope and discovery data"
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Identify Architecture Drivers"
+        instructions: "Map success metrics to scalability, security, compliance, and integration drivers"
+        communication_template: "Cataloging architecture drivers and mapping success metrics to design constraints..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Baseline Technology Constraints"
+        instructions: "Document existing stack commitments, vendor choices, and regulatory boundaries"
+        communication_template: "Recording inherited stack decisions and regulatory constraints for traceability..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Validated scope summary"
+        storage_location: ".artifacts/design/design-intent.md"
+      - evidence_item: "Constraint mapping"
+        storage_location: ".artifacts/design/constraint-matrix.json"
+    quality_gate:
+      gate_name: "Requirements Alignment Gate"
+      criteria: "All functional and non-functional requirements reconciled with no unresolved conflicts"
+      failure_handling: "Escalate conflicts to stakeholders and pause protocol until resolved"
+
+  - phase_number: 2
+    phase_name: "Architecture Blueprint Drafting"
+    objective: "Produce logical, physical, and operational architecture views"
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Define System Topology"
+        instructions: "Outline services, data stores, integrations, and deployment topology"
+        communication_template: "[PHASE 2 START] - Drafting system topology and component boundaries..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Document Interaction & Data Flow Contracts"
+        instructions: "Detail APIs, events, data schemas, and interface guarantees"
+        communication_template: "Detailing service interactions and contract guarantees for downstream teams..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Map Operational Views"
+        instructions: "Capture infrastructure, observability, and automation requirements"
+        communication_template: "Capturing deployment lanes, observability hooks, and automation integration points..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Architecture diagrams"
+        storage_location: ".artifacts/design/architecture-blueprint.drawio"
+      - evidence_item: "Integration catalog"
+        storage_location: ".artifacts/design/integration-catalog.yaml"
+      - evidence_item: "Data flow narratives"
+        storage_location: ".artifacts/design/data-flow-map.md"
+    quality_gate:
+      gate_name: "Architecture Completeness Gate"
+      criteria: "Logical, physical, and operational views complete with traceability to drivers"
+      failure_handling: "Iterate on blueprint and catalogs until coverage acknowledged by stakeholders"
+
+  - phase_number: 3
+    phase_name: "Validation, Risk Analysis & Sign-off"
+    objective: "Confirm architecture viability, risks, and approvals"
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Perform Risk & Trade-off Review"
+        instructions: "Evaluate risks, technical debt, and mitigations; document rationale"
+        communication_template: "[PHASE 3 START] - Assessing architectural risks and mitigation strategies..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Facilitate Stakeholder Review"
+        instructions: "Conduct review session, capture approvals, and action items"
+        communication_template: "Presenting architecture package for stakeholder approval and action tracking..."
+        halt_condition: "Await explicit approval record"
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Generate Implementation Traceability"
+        instructions: "Map architecture components to backlog workstreams"
+        communication_template: "Linking architecture components to implementation workstreams for task planning..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Risk register"
+        storage_location: ".artifacts/design/risk-register.md"
+      - evidence_item: "Review minutes"
+        storage_location: ".artifacts/design/architecture-review-minutes.md"
+      - evidence_item: "Decision log"
+        storage_location: ".artifacts/design/decision-log.json"
+    quality_gate:
+      gate_name: "Architecture Approval Gate"
+      criteria: "Approvals captured, critical risks mitigated, decision log updated"
+      failure_handling: "Resolve outstanding actions and reconvene review"
+
+inputs_from:
+  - protocol: "01-project-brief-creation"
+    artifacts_consumed: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
+    usage: "Validate scope, constraints, and stakeholder expectations"
+  - protocol: "02-generate-tasks"
+    artifacts_consumed: "Initial backlog draft"
+    usage: "Ensure architecture supports planned workstreams"
+
+outputs_to:
+  - protocol: "02-generate-tasks"
+    artifacts_provided: "architecture-blueprint.drawio, integration-catalog.yaml, decision-log.json"
+    purpose: "Drive task decomposition and dependency planning"
+  - protocol: "07-development-environment-setup-validation"
+    artifacts_provided: "data-flow-map.md, operational requirements"
+    purpose: "Inform environment provisioning and automation"
+
+automation_hooks:
+  - hook_name: "design_artifact_audit.py"
+    trigger_point: "After blueprint drafting"
+    command: "python scripts/design_artifact_audit.py --input .artifacts/design/"
+    expected_output: "Validation report confirming presence of required design artifacts"
+
+communication_protocols:
+  status_announcements:
+    - "[PHASE 1 START] - Requirement synthesis and constraint mapping initiated."
+    - "[PHASE 2 START] - Architecture blueprint drafting in progress."
+    - "[PHASE 3 START] - Risk analysis and stakeholder review underway."
+  validation_prompts:
+    - "[VALIDATION REQUEST] - Requirements and constraints reconciled. Approve progression to architecture drafting? (yes/no)"
+    - "[VALIDATION REQUEST] - Architecture blueprint ready for stakeholder review. Initiate approval session? (yes/no)"
+    - "[VALIDATION REQUEST] - Stakeholder approvals captured. Publish architecture package to downstream protocols? (yes/no)"
+  error_messages:
+    - code: "MissingInputs"
+      message: "[ERROR] Required discovery or brief artifacts missing. Provide validated inputs before continuing."
+    - code: "UnresolvedConflict"
+      message: "[ERROR] Requirement conflicts unresolved. Document owner responses before blueprint drafting."
+    - code: "ApprovalPending"
+      message: "[ERROR] Architecture review approvals not captured."

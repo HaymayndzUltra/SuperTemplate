@@ -1,0 +1,165 @@
+# PROTOCOL REQUIREMENTS FORM - PROTOCOL 7
+
+protocol_number: "7"
+protocol_name: "development-environment-setup-validation"
+domain_compliance: "DevOps"
+purpose: "Provision and validate a reproducible development environment aligned with architectural requirements and task backlog."
+
+ai_role: "DevOps Enablement Engineer"
+primary_guardrail: "DO NOT commit secrets, access tokens, or machine-specific credentials to the repository or shared artifacts"
+prerequisites:
+  - protocol: "02-generate-tasks"
+    required_artifacts: "Prioritized backlog, dependency notes"
+  - protocol: "06-technical-design-architecture"
+    required_artifacts: "integration-catalog.yaml, data-flow-map.md"
+phase_in_workflow: "Between Protocol 02 (Generate Tasks) and Protocol 03 (Process Tasks)"
+
+phases:
+  - phase_number: 1
+    phase_name: "Baseline Requirements Discovery"
+    objective: "Gather tooling, integration, and security requirements for developer workstations"
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Aggregate Environment Requirements"
+        instructions: "Review architecture outputs and backlog to list runtimes, SDKs, integrations, and services"
+        communication_template: "[PHASE 1 START] - Aggregating environment prerequisites from architecture and task plans..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Audit Host Capabilities"
+        instructions: "Run diagnostics to capture current tooling versions, OS compatibility, and resource availability"
+        communication_template: "Executing host capability audit to identify gaps from required stack..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Define Access & Security Requirements"
+        instructions: "Document credential needs, VPN policies, and secure retrieval instructions"
+        communication_template: "Documenting secure access requirements and escalation procedures for credentials..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Environment requirements inventory"
+        storage_location: ".artifacts/environment/environment-requirements.md"
+      - evidence_item: "Host audit report"
+        storage_location: ".artifacts/environment/host-audit-report.json"
+      - evidence_item: "Dependency gap analysis"
+        storage_location: ".artifacts/environment/dependency-gap-report.md"
+    quality_gate:
+      gate_name: "Baseline Readiness Gate"
+      criteria: "Requirements inventory complete and host capability gaps identified with remediation plan"
+      failure_handling: "Resolve missing prerequisites or escalate before provisioning"
+
+  - phase_number: 2
+    phase_name: "Provisioning & Configuration"
+    objective: "Install required tooling and publish configuration templates"
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Provision Toolchain & Services"
+        instructions: "Install runtimes, package managers, containers, and dependent services using scripts"
+        communication_template: "[PHASE 2 START] - Provisioning toolchain and dependent services for development workflow..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Configure Environment Templates"
+        instructions: "Generate .env.example, docker-compose overrides, and configuration templates"
+        communication_template: "Publishing environment variable templates and configuration guidance (secrets excluded)..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Set Up Automation Hooks"
+        instructions: "Configure linting, formatting, and task runner scripts"
+        communication_template: "Registering developer automation scripts for consistent workflows..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Provisioning log"
+        storage_location: ".artifacts/environment/provisioning-log.md"
+      - evidence_item: "Environment template diff"
+        storage_location: ".artifacts/environment/env-template-diff.txt"
+      - evidence_item: "Automation hook registry"
+        storage_location: ".artifacts/environment/automation-hooks.json"
+    quality_gate:
+      gate_name: "Provisioning Verification Gate"
+      criteria: "Tooling installed, configuration templates generated, automation hooks validated"
+      failure_handling: "Rerun provisioning scripts or escalate access issues"
+
+  - phase_number: 3
+    phase_name: "Validation, Snapshot & Knowledge Transfer"
+    objective: "Verify environment functionality and publish onboarding resources"
+    steps:
+      - step_number: 1
+        action_type: "MUST"
+        action_title: "Execute Validation Suite"
+        instructions: "Run lint, unit tests, and sample build to confirm environment readiness"
+        communication_template: "[PHASE 3 START] - Executing validation suite to confirm environment readiness..."
+        halt_condition: ""
+      - step_number: 2
+        action_type: "MUST"
+        action_title: "Capture Environment Snapshot"
+        instructions: "Document versions and configurations into environment-lock.json"
+        communication_template: "Capturing environment snapshot and publishing setup instructions for contributors..."
+        halt_condition: ""
+      - step_number: 3
+        action_type: "GUIDELINE"
+        action_title: "Publish Onboarding Playbook"
+        instructions: "Create ENVIRONMENT-HANDBOOK.md with setup and troubleshooting guidance"
+        communication_template: "Publishing onboarding handbook with troubleshooting guidance..."
+        halt_condition: ""
+    evidence_collection:
+      - evidence_item: "Validation report"
+        storage_location: ".artifacts/environment/validation-report.json"
+      - evidence_item: "Environment snapshot"
+        storage_location: ".artifacts/environment/environment-lock.json"
+      - evidence_item: "Onboarding handbook"
+        storage_location: "documentation/ENVIRONMENT-HANDBOOK.md"
+    quality_gate:
+      gate_name: "Developer Ready Gate"
+      criteria: "Validation suite passes; environment snapshot and handbook approved"
+      failure_handling: "Fix failing checks, update documentation, rerun validation"
+
+inputs_from:
+  - protocol: "02-generate-tasks"
+    artifacts_consumed: "Prioritized backlog, dependency notes"
+    usage: "Ensure tooling supports planned work"
+  - protocol: "06-technical-design-architecture"
+    artifacts_consumed: "integration-catalog.yaml, data-flow-map.md"
+    usage: "Align tooling with architecture and integration needs"
+
+outputs_to:
+  - protocol: "03-process-tasks"
+    artifacts_provided: "environment-lock.json, automation-hooks.json, ENVIRONMENT-HANDBOOK.md"
+    purpose: "Provide developers with ready-to-use environment and guidance"
+  - protocol: "04-quality-audit"
+    artifacts_provided: "validation-report.json, automation-hooks.json"
+    purpose: "Support CI baseline and audit readiness"
+
+automation_hooks:
+  - hook_name: "env_diagnostics.py"
+    trigger_point: "Phase 1 host audit"
+    command: "python scripts/env_diagnostics.py --output .artifacts/environment/host-audit-report.json"
+    expected_output: "JSON diagnostics of host tooling and resources"
+  - hook_name: "env_provisioner.py"
+    trigger_point: "Phase 2 provisioning"
+    command: "python scripts/env_provisioner.py --config .artifacts/environment/environment-requirements.md"
+    expected_output: "Provisioning log with success/failure details"
+  - hook_name: "env_validator.py"
+    trigger_point: "Phase 3 validation"
+    command: "python scripts/env_validator.py --report .artifacts/environment/validation-report.json"
+    expected_output: "Validation report summarizing lint/test/build results"
+
+communication_protocols:
+  status_announcements:
+    - "[PHASE 1 START] - Gathering development environment requirements."
+    - "[PHASE 2 START] - Provisioning toolchain and configuration templates."
+    - "[PHASE 3 START] - Running validation suite and capturing environment snapshot."
+  validation_prompts:
+    - "[VALIDATION REQUEST] - Environment requirements inventory ready. Approve provisioning? (yes/no)"
+    - "[VALIDATION REQUEST] - Tooling installed and configurations prepared. Approve validation suite execution? (yes/no)"
+    - "[VALIDATION REQUEST] - Environment validated. Publish onboarding handbook to engineering team? (yes/no)"
+  error_messages:
+    - code: "MissingRequirements"
+      message: "[ERROR] Architecture or task inputs missing. Provide finalized outputs from Protocols 02 and 06."
+    - code: "ProvisioningFailure"
+      message: "[ERROR] Tool installation failed or access denied."
+    - code: "ValidationFailure"
+      message: "[ERROR] Environment validation suite failed."

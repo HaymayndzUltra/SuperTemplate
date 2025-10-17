@@ -21,11 +21,13 @@ Phase 0: Foundation (Bootstrap & Discovery)
 ├── 00-client-discovery.md (Client Discovery Specialist)  
 └── 00-generate-rules.md (Rule Generation Command)
 
-Phase 1-2: Planning (PRD & Tasks)
+Phase 1-2: Planning (PRD, Architecture & Tasks)
 ├── 1-create-prd.md (Product Manager)
-└── 2-generate-tasks.md (Tech Lead)
+├── 2-generate-tasks.md (Tech Lead)
+└── 6-technical-design-architecture.md (Solutions Architect)
 
-Phase 3: Execution
+Phase 3: Execution Enablement
+├── 7-development-environment-setup-validation.md (DevOps Enablement Engineer)
 └── 3-process-tasks.md (Paired Developer)
 
 Phase 4: Quality Assurance
@@ -44,7 +46,11 @@ Phase 4: Quality Assurance
 │       ├── enhanced-static-validation.md
 │       └── rule-injection-system.md
 
-Phase 5: Continuous Improvement
+Phase 5: Deployment, Operations & Continuous Improvement
+├── 10-pre-deployment-staging.md (Release Engineer)
+├── 11-production-deployment-release-management.md (Release Manager)
+├── 12-post-deployment-monitoring-observability.md (Site Reliability Engineer)
+├── 13-incident-response-rollback.md (Incident Commander)
 ├── 5-implementation-retrospective.md (Process Improvement Lead)
 └── 8-script-governance-protocol.md (Automation Compliance Auditor)
 ```
