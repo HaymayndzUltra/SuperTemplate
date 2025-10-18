@@ -1,0 +1,31 @@
+{
+  "protocol_summary": {
+    "protocol_count": 23,
+    "totals": {
+      "completeness": 151,
+      "realism": 70,
+      "clarity": 162,
+      "adaptability": 119,
+      "freelance_alignment": 111
+    },
+    "averages": {
+      "completeness": 6.565217391304348,
+      "realism": 3.0434782608695654,
+      "clarity": 7.043478260869565,
+      "adaptability": 5.173913043478261,
+      "freelance_alignment": 4.826086956521739
+    },
+    "overall_score": 613,
+    "average_score": 26.652173913043477
+  },
+  "script_inventory": {
+    "total_scripts": 94,
+    "registered_scripts": 13,
+    "unregistered_scripts": 81
+  },
+  "script_references": {
+    "protocol_files": 26,
+    "references": 205,
+    "missing_references": 160
+  }
+}

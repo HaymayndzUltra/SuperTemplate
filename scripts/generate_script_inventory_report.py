@@ -1,0 +1,237 @@
+#!/usr/bin/env python3
+"""Generate an inventory report for all scripts in the repository."""
+
+from __future__ import annotations
+
+import ast
+import json
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Dict, Iterable, List
+
+
+ROOT = Path(__file__).resolve().parent
+REPO_ROOT = ROOT.parent
+
+
+PRIMARY_CATEGORY_KEYWORDS: Dict[str, Iterable[str]] = {
+    "bootstrap": (
+        "bootstrap",
+        "classify",
+        "normalize",
+        "setup",
+        "initialize",
+        "init",
+        "seed",
+        "configure",
+    ),
+    "validation": (
+        "validate",
+        "check",
+        "audit",
+        "enforce",
+        "compliance",
+        "verify",
+        "lint",
+        "gate",
+    ),
+    "generation": (
+        "generate",
+        "create",
+        "synthesize",
+        "draft",
+        "produce",
+        "builder",
+    ),
+    "execution": (
+        "run",
+        "execute",
+        "process",
+        "orchestrate",
+        "workflow",
+        "dispatch",
+        "update",
+    ),
+    "quality": (
+        "quality",
+        "test",
+        "coverage",
+        "review",
+        "assess",
+    ),
+    "deployment": (
+        "deploy",
+        "release",
+        "monitor",
+        "observe",
+        "pipeline",
+    ),
+}
+
+
+SECONDARY_TAG_KEYWORDS: Dict[str, Iterable[str]] = {
+    "analysis": ("analyze", "analysis", "score", "inspect", "report"),
+    "governance": ("govern", "registry", "policy", "rules"),
+    "support": ("helper", "util", "tool", "common"),
+    "data": ("dataset", "data", "csv", "export"),
+}
+
+
+@dataclass
+class ScriptRecord:
+    """Metadata for a single automation script."""
+
+    path: Path
+    docstring: str
+    registered: bool
+    primary_category: str
+    secondary_tags: List[str] = field(default_factory=list)
+
+    @property
+    def name(self) -> str:
+        return self.path.name
+
+    @property
+    def relative_path(self) -> str:
+        return str(self.path.relative_to(REPO_ROOT))
+
+
+def load_registry() -> Dict[str, str]:
+    registry_path = ROOT / "script-registry.json"
+    if not registry_path.exists():
+        return {}
+    with registry_path.open("r", encoding="utf-8") as fh:
+        registry_data = json.load(fh)
+
+    registry = {}
+    for category_data in registry_data.values():
+        if isinstance(category_data, dict):
+            registry.update(category_data)
+    return registry
+
+
+def extract_docstring(script_path: Path) -> str:
+    if script_path.suffix == ".py":
+        try:
+            module = ast.parse(script_path.read_text(encoding="utf-8"))
+        except SyntaxError:
+            return ""
+        docstring = ast.get_docstring(module) or ""
+        return docstring.strip().splitlines()[0] if docstring else ""
+
+    if script_path.suffix in {".sh", ".bash"}:
+        for line in script_path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line.startswith("#"):
+                return line.lstrip("# ")
+            if line:
+                break
+        return ""
+
+    return ""
+
+
+def categorize(name: str, docstring: str) -> (str, List[str]):
+    lowered = f"{name.lower()} {docstring.lower()}"
+    primary = "analysis"
+    for category, keywords in PRIMARY_CATEGORY_KEYWORDS.items():
+        if any(keyword in lowered for keyword in keywords):
+            primary = category
+            break
+
+    secondary: List[str] = []
+    for tag, keywords in SECONDARY_TAG_KEYWORDS.items():
+        if any(keyword in lowered for keyword in keywords):
+            secondary.append(tag)
+
+    return primary, secondary
+
+
+def collect_scripts(registry: Dict[str, str]) -> List[ScriptRecord]:
+    registry_paths = {
+        (REPO_ROOT / path_str).resolve(): name
+        for name, path_str in registry.items()
+    }
+    records: List[ScriptRecord] = []
+    for script_path in sorted(ROOT.rglob("*")):
+        if script_path.is_dir():
+            continue
+        if script_path.suffix not in {".py", ".sh", ".bash"}:
+            continue
+        if "__pycache__" in script_path.parts:
+            continue
+        docstring = extract_docstring(script_path)
+        primary, secondary = categorize(script_path.name, docstring)
+        registered = script_path.resolve() in registry_paths
+        records.append(
+            ScriptRecord(
+                path=script_path,
+                docstring=docstring,
+                registered=registered,
+                primary_category=primary,
+                secondary_tags=secondary,
+            )
+        )
+    return records
+
+
+def render_report(records: List[ScriptRecord]) -> str:
+    total = len(records)
+    registered = sum(1 for record in records if record.registered)
+    unregistered = total - registered
+
+    counts: Dict[str, int] = {}
+    for record in records:
+        counts[record.primary_category] = counts.get(record.primary_category, 0) + 1
+
+    lines: List[str] = []
+    lines.append("# Scripts Inventory Report")
+    lines.append("")
+    lines.append("Generated by `scripts/generate_script_inventory_report.py`.")
+    lines.append("")
+    lines.append("## Summary")
+    lines.append("")
+    lines.append(f"- Total scripts analyzed: **{total}**")
+    lines.append(f"- Registered in `script-registry.json`: **{registered}** ({registered / total:.0%})")
+    lines.append(f"- Unregistered scripts: **{unregistered}** ({unregistered / total:.0%})")
+    lines.append("")
+    lines.append("### Primary Category Distribution")
+    lines.append("")
+    lines.append("| Category | Count | Share |")
+    lines.append("|----------|-------|-------|")
+    for category, count in sorted(counts.items(), key=lambda item: item[0]):
+        share = count / total
+        lines.append(f"| {category} | {count} | {share:.0%} |")
+
+    lines.append("")
+    lines.append("## Detailed Inventory")
+    lines.append("")
+    lines.append("| Script | Primary Category | Registered | Summary | Tags |")
+    lines.append("|--------|------------------|------------|---------|------|")
+    for record in records:
+        summary = record.docstring or "(No docstring)"
+        summary = summary.replace("|", "\\|")
+        tags = ", ".join(record.secondary_tags) if record.secondary_tags else "-"
+        lines.append(
+            "| {name} | {category} | {registered} | {summary} | {tags} |".format(
+                name=record.relative_path,
+                category=record.primary_category,
+                registered="Yes" if record.registered else "No",
+                summary=summary,
+                tags=tags,
+            )
+        )
+
+    return "\n".join(lines) + "\n"
+
+
+def main() -> None:
+    registry = load_registry()
+    records = collect_scripts(registry)
+    report = render_report(records)
+    output_path = REPO_ROOT / "documentation" / "script-inventory-report.md"
+    output_path.write_text(report, encoding="utf-8")
+
+
+if __name__ == "__main__":
+    main()
