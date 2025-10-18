@@ -1,0 +1,797 @@
+{
+  "0-bootstrap-your-project.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/00-client-discovery.md"
+    ],
+    "protocol_mentions": {
+      "0": 2,
+      "00": 6,
+      "01": 1,
+      "2": 3,
+      "8": 3
+    },
+    "artifact_refs": {
+      "0": 36
+    },
+    "file_refs": {
+      "00-client-discovery.md": 1
+    },
+    "total_protocol_mentions": 15,
+    "total_artifact_refs": 36,
+    "total_file_refs": 1
+  },
+  "00-client-discovery.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/01-project-brief-creation.md"
+    ],
+    "protocol_mentions": {
+      "0": 2,
+      "00": 3,
+      "01": 9,
+      "1": 1
+    },
+    "artifact_refs": {
+      "00": 30
+    },
+    "file_refs": {
+      "01-project-brief-creation.md": 1
+    },
+    "total_protocol_mentions": 15,
+    "total_artifact_refs": 30,
+    "total_file_refs": 1
+  },
+  "00-generate-rules.md": {
+    "apply_targets": [],
+    "protocol_mentions": {},
+    "artifact_refs": {},
+    "file_refs": {},
+    "total_protocol_mentions": 0,
+    "total_artifact_refs": 0,
+    "total_file_refs": 0
+  },
+  "00-project-bootstrap-and-context-engineering.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/0-bootstrap-your-project.md"
+    ],
+    "protocol_mentions": {
+      "0": 8,
+      "00": 2,
+      "01": 4,
+      "02": 2
+    },
+    "artifact_refs": {
+      "00": 43
+    },
+    "file_refs": {
+      "0-bootstrap-your-project.md": 1
+    },
+    "total_protocol_mentions": 16,
+    "total_artifact_refs": 43,
+    "total_file_refs": 1
+  },
+  "00B-client-discovery-initiation.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/01-project-brief-creation.md"
+    ],
+    "protocol_mentions": {
+      "00": 8,
+      "01": 9
+    },
+    "artifact_refs": {
+      "00": 33
+    },
+    "file_refs": {
+      "01-project-brief-creation.md": 1
+    },
+    "total_protocol_mentions": 17,
+    "total_artifact_refs": 33,
+    "total_file_refs": 1
+  },
+  "00a-client-proposal-generation.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/00B-client-discovery-initiation.md"
+    ],
+    "protocol_mentions": {
+      "00": 13,
+      "01": 2
+    },
+    "artifact_refs": {
+      "00": 30
+    },
+    "file_refs": {
+      "00B-client-discovery-initiation.md": 1
+    },
+    "total_protocol_mentions": 15,
+    "total_artifact_refs": 30,
+    "total_file_refs": 1
+  },
+  "01-project-brief-creation.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/00-project-bootstrap-and-context-engineering.md"
+    ],
+    "protocol_mentions": {
+      "00": 12,
+      "01": 2,
+      "06": 3
+    },
+    "artifact_refs": {
+      "00": 2,
+      "01": 26
+    },
+    "file_refs": {
+      "00-project-bootstrap-and-context-engineering.md": 1
+    },
+    "total_protocol_mentions": 17,
+    "total_artifact_refs": 28,
+    "total_file_refs": 1
+  },
+  "1-create-prd.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/6-technical-design-architecture.md"
+    ],
+    "protocol_mentions": {
+      "0": 2,
+      "00": 2,
+      "01": 2,
+      "02": 3,
+      "06": 7,
+      "1": 2
+    },
+    "artifact_refs": {
+      "1": 33
+    },
+    "file_refs": {
+      "6-technical-design-architecture.md": 1
+    },
+    "total_protocol_mentions": 18,
+    "total_artifact_refs": 33,
+    "total_file_refs": 1
+  },
+  "10-pre-deployment-staging.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/11-production-deployment.md"
+    ],
+    "protocol_mentions": {
+      "1": 1,
+      "10": 3,
+      "11": 6,
+      "12": 2,
+      "13": 2,
+      "14": 2,
+      "15": 2,
+      "4": 3,
+      "8": 1,
+      "9": 2
+    },
+    "artifact_refs": {
+      "10": 1
+    },
+    "file_refs": {
+      "11-production-deployment.md": 1
+    },
+    "total_protocol_mentions": 24,
+    "total_artifact_refs": 1,
+    "total_file_refs": 1
+  },
+  "11-production-deployment.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/12-monitoring-observability.md"
+    ],
+    "protocol_mentions": {
+      "10": 6,
+      "11": 3,
+      "12": 8,
+      "13": 4,
+      "14": 1,
+      "15": 2,
+      "5": 3,
+      "7": 1
+    },
+    "artifact_refs": {
+      "11": 1
+    },
+    "file_refs": {
+      "12-monitoring-observability.md": 1
+    },
+    "total_protocol_mentions": 28,
+    "total_artifact_refs": 1,
+    "total_file_refs": 1
+  },
+  "12-monitoring-observability.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/13-incident-response-rollback.md"
+    ],
+    "protocol_mentions": {
+      "10": 2,
+      "11": 5,
+      "12": 4,
+      "13": 7,
+      "14": 1,
+      "4": 1,
+      "5": 1
+    },
+    "artifact_refs": {
+      "12": 1
+    },
+    "file_refs": {
+      "13-incident-response-rollback.md": 1
+    },
+    "total_protocol_mentions": 21,
+    "total_artifact_refs": 1,
+    "total_file_refs": 1
+  },
+  "13-incident-response-rollback.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/14-performance-optimization.md"
+    ],
+    "protocol_mentions": {
+      "10": 2,
+      "11": 2,
+      "12": 5,
+      "13": 4,
+      "14": 3,
+      "5": 6
+    },
+    "artifact_refs": {
+      "13": 1
+    },
+    "file_refs": {
+      "14-performance-optimization.md": 1
+    },
+    "total_protocol_mentions": 22,
+    "total_artifact_refs": 1,
+    "total_file_refs": 1
+  },
+  "14-performance-optimization.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/5-implementation-retrospective.md"
+    ],
+    "protocol_mentions": {
+      "11": 3,
+      "12": 6,
+      "13": 3,
+      "14": 5,
+      "3": 3,
+      "5": 8
+    },
+    "artifact_refs": {
+      "14": 1
+    },
+    "file_refs": {
+      "5-implementation-retrospective.md": 1
+    },
+    "total_protocol_mentions": 28,
+    "total_artifact_refs": 1,
+    "total_file_refs": 1
+  },
+  "15-uat-coordination.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/10-pre-deployment-staging.md"
+    ],
+    "protocol_mentions": {
+      "1": 1,
+      "10": 7,
+      "11": 3,
+      "14": 1,
+      "15": 3,
+      "3": 4,
+      "4": 3,
+      "5": 2,
+      "7": 1,
+      "9": 2
+    },
+    "artifact_refs": {
+      "15": 1
+    },
+    "file_refs": {
+      "10-pre-deployment-staging.md": 1
+    },
+    "total_protocol_mentions": 27,
+    "total_artifact_refs": 1,
+    "total_file_refs": 1
+  },
+  "16-documentation-knowledge-transfer.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/17-project-closure.md"
+    ],
+    "protocol_mentions": {
+      "1": 2,
+      "10": 1,
+      "11": 2,
+      "12": 2,
+      "13": 2,
+      "14": 2,
+      "15": 2,
+      "16": 3,
+      "17": 8,
+      "18": 2,
+      "3": 2,
+      "4": 2,
+      "5": 1,
+      "6": 2,
+      "9": 2
+    },
+    "artifact_refs": {
+      "16": 27
+    },
+    "file_refs": {
+      "17-project-closure.md": 1
+    },
+    "total_protocol_mentions": 35,
+    "total_artifact_refs": 27,
+    "total_file_refs": 1
+  },
+  "17-project-closure.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/18-maintenance-support.md"
+    ],
+    "protocol_mentions": {
+      "11": 2,
+      "12": 2,
+      "13": 2,
+      "14": 2,
+      "16": 3,
+      "17": 2,
+      "18": 8,
+      "5": 2
+    },
+    "artifact_refs": {
+      "17": 22
+    },
+    "file_refs": {
+      "18-maintenance-support.md": 1
+    },
+    "total_protocol_mentions": 23,
+    "total_artifact_refs": 22,
+    "total_file_refs": 1
+  },
+  "18-maintenance-support.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/5-implementation-retrospective.md"
+    ],
+    "protocol_mentions": {
+      "12": 2,
+      "13": 2,
+      "14": 2,
+      "16": 2,
+      "17": 3,
+      "18": 2,
+      "3": 2,
+      "5": 5,
+      "8": 2
+    },
+    "artifact_refs": {
+      "18": 26
+    },
+    "file_refs": {
+      "5-implementation-retrospective.md": 1
+    },
+    "total_protocol_mentions": 22,
+    "total_artifact_refs": 26,
+    "total_file_refs": 1
+  },
+  "2-generate-tasks.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/7-environment-setup-validation.md"
+    ],
+    "protocol_mentions": {
+      "0": 1,
+      "1": 2,
+      "2": 2,
+      "3": 7,
+      "6": 2,
+      "7": 4
+    },
+    "artifact_refs": {
+      "2": 26
+    },
+    "file_refs": {
+      "7-environment-setup-validation.md": 1
+    },
+    "total_protocol_mentions": 18,
+    "total_artifact_refs": 26,
+    "total_file_refs": 1
+  },
+  "3-process-tasks.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/9-integration-testing.md"
+    ],
+    "protocol_mentions": {
+      "2": 2,
+      "3": 2,
+      "4": 4,
+      "7": 4,
+      "9": 6
+    },
+    "artifact_refs": {
+      "3": 27
+    },
+    "file_refs": {
+      "4-quality-audit.md": 1,
+      "9-integration-testing.md": 1
+    },
+    "total_protocol_mentions": 18,
+    "total_artifact_refs": 27,
+    "total_file_refs": 2
+  },
+  "4-quality-audit.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/15-uat-coordination.md"
+    ],
+    "protocol_mentions": {
+      "1": 1,
+      "10": 3,
+      "15": 6,
+      "3": 3,
+      "4": 4,
+      "5": 2,
+      "8": 3,
+      "9": 3
+    },
+    "artifact_refs": {
+      "4": 1
+    },
+    "file_refs": {
+      "15-uat-coordination.md": 1
+    },
+    "total_protocol_mentions": 25,
+    "total_artifact_refs": 1,
+    "total_file_refs": 1
+  },
+  "5-implementation-retrospective.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/8-script-governance-protocol.md"
+    ],
+    "protocol_mentions": {
+      "1": 1,
+      "13": 2,
+      "14": 2,
+      "15": 2,
+      "16": 2,
+      "17": 2,
+      "18": 3,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "8": 4
+    },
+    "artifact_refs": {
+      "5": 25
+    },
+    "file_refs": {
+      "8-script-governance-protocol.md": 1
+    },
+    "total_protocol_mentions": 24,
+    "total_artifact_refs": 25,
+    "total_file_refs": 1
+  },
+  "6-technical-design-architecture.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/2-generate-tasks.md"
+    ],
+    "protocol_mentions": {
+      "00": 2,
+      "01": 2,
+      "1": 2,
+      "2": 8,
+      "6": 2,
+      "7": 2
+    },
+    "artifact_refs": {
+      "6": 31
+    },
+    "file_refs": {
+      "2-generate-tasks.md": 1
+    },
+    "total_protocol_mentions": 18,
+    "total_artifact_refs": 31,
+    "total_file_refs": 1
+  },
+  "7-environment-setup-validation.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/3-process-tasks.md"
+    ],
+    "protocol_mentions": {
+      "00": 2,
+      "11": 3,
+      "2": 2,
+      "3": 6,
+      "6": 2,
+      "7": 2
+    },
+    "artifact_refs": {
+      "7": 27
+    },
+    "file_refs": {
+      "3-process-tasks.md": 1
+    },
+    "total_protocol_mentions": 17,
+    "total_artifact_refs": 27,
+    "total_file_refs": 1
+  },
+  "8-script-governance-protocol.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/4-quality-audit.md"
+    ],
+    "protocol_mentions": {
+      "12": 1,
+      "3": 1,
+      "4": 12,
+      "5": 3,
+      "8": 4
+    },
+    "artifact_refs": {
+      "8": 1
+    },
+    "file_refs": {
+      "4-quality-audit.md": 1
+    },
+    "total_protocol_mentions": 21,
+    "total_artifact_refs": 1,
+    "total_file_refs": 1
+  },
+  "9-integration-testing.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/4-quality-audit.md"
+    ],
+    "protocol_mentions": {
+      "10": 3,
+      "12": 1,
+      "3": 3,
+      "4": 9,
+      "6": 2,
+      "7": 2,
+      "9": 2
+    },
+    "artifact_refs": {
+      "9": 32
+    },
+    "file_refs": {
+      "4-quality-audit.md": 1
+    },
+    "total_protocol_mentions": 22,
+    "total_artifact_refs": 32,
+    "total_file_refs": 1
+  },
+  "INTEGRATION-GUIDE.md": {
+    "apply_targets": [],
+    "protocol_mentions": {
+      "0": 5,
+      "00": 3,
+      "1": 6,
+      "2": 6,
+      "3": 6,
+      "4": 6,
+      "5": 7
+    },
+    "artifact_refs": {},
+    "file_refs": {
+      "0-bootstrap-your-project.md": 1,
+      "00-client-discovery.md": 1,
+      "1-create-prd.md": 1,
+      "2-generate-tasks.md": 1,
+      "3-process-tasks.md": 1,
+      "4-quality-audit.md": 1,
+      "5-implementation-retrospective.md": 1
+    },
+    "total_protocol_mentions": 39,
+    "total_artifact_refs": 0,
+    "total_file_refs": 7
+  },
+  "PROTOCOL-INTEGRATION-MAP.md": {
+    "apply_targets": [],
+    "protocol_mentions": {
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 1,
+      "14": 1,
+      "15": 1,
+      "16": 1,
+      "17": 1,
+      "18": 1,
+      "6": 1,
+      "7": 1,
+      "9": 1
+    },
+    "artifact_refs": {},
+    "file_refs": {},
+    "total_protocol_mentions": 12,
+    "total_artifact_refs": 0,
+    "total_file_refs": 0
+  },
+  "README.md": {
+    "apply_targets": [],
+    "protocol_mentions": {},
+    "artifact_refs": {},
+    "file_refs": {},
+    "total_protocol_mentions": 0,
+    "total_artifact_refs": 0,
+    "total_file_refs": 0
+  },
+  "VALIDATION-GUIDE.md": {
+    "apply_targets": [],
+    "protocol_mentions": {
+      "00": 1,
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "5": 1
+    },
+    "artifact_refs": {},
+    "file_refs": {},
+    "total_protocol_mentions": 5,
+    "total_artifact_refs": 0,
+    "total_file_refs": 0
+  },
+  "review-protocols/README.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/4-quality-audit.md"
+    ],
+    "protocol_mentions": {
+      "3": 1,
+      "4": 1
+    },
+    "artifact_refs": {},
+    "file_refs": {
+      "4-quality-audit.md": 3,
+      "README.md": 1
+    },
+    "total_protocol_mentions": 2,
+    "total_artifact_refs": 0,
+    "total_file_refs": 4
+  },
+  "review-protocols/architecture-review.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/6-technical-design-architecture.md"
+    ],
+    "protocol_mentions": {
+      "14": 2,
+      "2": 2,
+      "4": 3,
+      "6": 7,
+      "9": 2
+    },
+    "artifact_refs": {},
+    "file_refs": {
+      "6-technical-design-architecture.md": 1
+    },
+    "total_protocol_mentions": 16,
+    "total_artifact_refs": 0,
+    "total_file_refs": 1
+  },
+  "review-protocols/code-review.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/3-process-tasks.md"
+    ],
+    "protocol_mentions": {
+      "2": 2,
+      "3": 6,
+      "4": 3,
+      "8": 1,
+      "9": 2
+    },
+    "artifact_refs": {},
+    "file_refs": {
+      "3-process-tasks.md": 1
+    },
+    "total_protocol_mentions": 14,
+    "total_artifact_refs": 0,
+    "total_file_refs": 1
+  },
+  "review-protocols/design-system.md": {
+    "apply_targets": [],
+    "protocol_mentions": {},
+    "artifact_refs": {},
+    "file_refs": {
+      "4-quality-audit.md": 1
+    },
+    "total_protocol_mentions": 0,
+    "total_artifact_refs": 0,
+    "total_file_refs": 1
+  },
+  "review-protocols/pre-production.md": {
+    "apply_targets": [],
+    "protocol_mentions": {},
+    "artifact_refs": {},
+    "file_refs": {},
+    "total_protocol_mentions": 0,
+    "total_artifact_refs": 0,
+    "total_file_refs": 0
+  },
+  "review-protocols/security-check.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/11-production-deployment.md"
+    ],
+    "protocol_mentions": {
+      "11": 6,
+      "12": 2,
+      "13": 2,
+      "18": 2,
+      "4": 2,
+      "6": 2
+    },
+    "artifact_refs": {},
+    "file_refs": {
+      "11-production-deployment.md": 1
+    },
+    "total_protocol_mentions": 16,
+    "total_artifact_refs": 0,
+    "total_file_refs": 1
+  },
+  "review-protocols/ui-accessibility.md": {
+    "apply_targets": [],
+    "protocol_mentions": {},
+    "artifact_refs": {},
+    "file_refs": {
+      "4-quality-audit.md": 1
+    },
+    "total_protocol_mentions": 0,
+    "total_artifact_refs": 0,
+    "total_file_refs": 1
+  },
+  "review-protocols/utils/README.md": {
+    "apply_targets": [],
+    "protocol_mentions": {},
+    "artifact_refs": {},
+    "file_refs": {
+      "README.md": 1
+    },
+    "total_protocol_mentions": 0,
+    "total_artifact_refs": 0,
+    "total_file_refs": 1
+  },
+  "review-protocols/utils/_review-router.md": {
+    "apply_targets": [
+      ".cursor/ai-driven-workflow/4-quality-audit.md"
+    ],
+    "protocol_mentions": {},
+    "artifact_refs": {},
+    "file_refs": {
+      "4-quality-audit.md": 3
+    },
+    "total_protocol_mentions": 0,
+    "total_artifact_refs": 0,
+    "total_file_refs": 3
+  },
+  "review-protocols/utils/context-analyzer.md": {
+    "apply_targets": [],
+    "protocol_mentions": {},
+    "artifact_refs": {},
+    "file_refs": {
+      "4-quality-audit.md": 1
+    },
+    "total_protocol_mentions": 0,
+    "total_artifact_refs": 0,
+    "total_file_refs": 1
+  },
+  "review-protocols/utils/enhanced-static-template.md": {
+    "apply_targets": [],
+    "protocol_mentions": {},
+    "artifact_refs": {},
+    "file_refs": {},
+    "total_protocol_mentions": 0,
+    "total_artifact_refs": 0,
+    "total_file_refs": 0
+  },
+  "review-protocols/utils/enhanced-static-validation.md": {
+    "apply_targets": [],
+    "protocol_mentions": {},
+    "artifact_refs": {},
+    "file_refs": {},
+    "total_protocol_mentions": 0,
+    "total_artifact_refs": 0,
+    "total_file_refs": 0
+  },
+  "review-protocols/utils/rule-injection-system.md": {
+    "apply_targets": [],
+    "protocol_mentions": {},
+    "artifact_refs": {},
+    "file_refs": {
+      "4-quality-audit.md": 1
+    },
+    "total_protocol_mentions": 0,
+    "total_artifact_refs": 0,
+    "total_file_refs": 1
+  }
+}
