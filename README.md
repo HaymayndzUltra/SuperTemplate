@@ -1,267 +1,464 @@
----
+# AI-Driven Workflow System
 
-### Protocol 00a: Client Proposal Generation
+## 🚀 Overview
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang "prerequisites" o "evidence summary" section. Ang automation hooks ay nakakalat lang. | Walang "prerequisites checklist" para i-verify ang `JOB-POST.md`. Ang automation hooks ay hindi nakabukod sa isang summary. | Walang "explicit prerequisite section" para sa mga required inputs. | Walang "prerequisite statement." Ang handoff ay tumutukoy sa maling protocol (00 imbes na 00B). |
-| **ANO ANG SUHESTIYON** | Magdagdag ng "prerequisites subsection." Gumawa ng hiwalay na listahan para sa automation hooks. | Magdagdag ng "prerequisites section." Gumawa ng "Automation Hooks section" na may summary ng mga script. | Magdagdag ng "dedicated prerequisites subsection." Idokumento kung saan itatago ang ebidensya. | Magdagdag ng "prerequisites section." I-update ang handoff message para itama ang susunod na protocol. |
-| **OVERALL SCORE** | **6.67 / 10** | **7.33 / 10** | **8.17 / 10** | **7.83 / 10** |
+The **AI-Driven Workflow System** is a comprehensive, 28-protocol development lifecycle that transforms AI from a simple code generator into a reliable engineering partner. This system provides structured, evidence-based workflows for complete software development from client discovery to project closure.
 
----
+### Core Philosophy
+- **"Why Before How"**: Every action must align with cognitive dependencies
+- **Developer Cognitive Loop**: Protocols follow natural developer thinking patterns
+- **Reasoning Integrity**: Automation extends reasoning, never replaces it
+- **Evidence-Based**: All actions must be validated and documented
 
-### Protocol 00B: Client Discovery Initiation
-
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Kulang sa "prerequisites" at "aggregated evidence requirements." Ang automation ay puro narrative lang. | Walang "prerequisites gate" para kumpirmahin ang proposal acceptance. Ang automation hooks ay hindi naka-summarize. | Walang "prerequisites section." Hindi defined ang automation hooks kahit manual ang paggawa ng ebidensya. | Walang "prerequisites." Walang "automation section" para gawing formal ang evidence capture. |
-| **ANO ANG SUHESTIYON** | Maglagay ng "explicit prerequisites list." Idokumento ang automation hooks sa hiwalay na heading. | Idokumento ang prerequisites. Magbigay ng "Automation Hooks list." | Magdagdag ng "prerequisites checklist." Magbigay ng optional automation commands. | Magdagdag ng "prerequisites block." Mag-introduce ng optional automation hooks. |
-| **OVERALL SCORE** | **6.67 / 10** | **7.33 / 10** | **7.17 / 10** | **7.0 / 10** (Nakalista bilang 6.67 sa text, pero 7.0 sa CSV) |
-
----
-
-### Protocol 01: Project Brief Creation
-
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Ang prerequisites at evidence summary ay hindi hiwalay; kailangan pang hulaan ng mambabasa. | Ang prerequisites para sa validated discovery artifacts ay "implied but not captured explicitly." | Walang "explicit prerequisites section" para kumpirmahin ang pagtanggap sa discovery deliverables. | Walang "explicit prerequisite block" na nagsusummarize ng required discovery files. |
-| **ANO ANG SUHESTIYON** | Magdagdag ng "prerequisites section." Magbigay ng "consolidated evidence table." | Magdagdag ng "prerequisites checklist." | Magdagdag ng "prerequisites block." Linawin kung saan itatago ang validation reports. | Magdagdag ng "prerequisite checklist." Palawakin ang integration narrative. |
-| **OVERALL SCORE** | **7.67 / 10** | **8.0 / 10** | **8.0 / 10** | **7.5 / 10** |
+### Key Benefits
+- ✅ **Complete SDLC Coverage**: From client proposal to project closure
+- ✅ **Quality Assurance**: Built-in quality gates and validation
+- ✅ **Evidence-Based Delivery**: All work documented and validated
+- ✅ **Client-Ready**: Professional workflows for client projects
+- ✅ **Automation Integration**: Scripts and CI/CD integration
+- ✅ **Scalable**: From simple projects to complex enterprise systems
 
 ---
 
-### Protocol 00: Project Bootstrap & Context Engineering
+## 📋 Complete Protocol Inventory (28 Protocols)
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang "dedicated automation hooks section." Ang handoff message ay hindi binabanggit ang susunod na protocol. | Walang "prerequisites checklist." Ang automation commands ay hindi pinagsama-sama. Ang handoff ay hindi binabanggit ang susunod na protocol. | Walang "prerequisites statement." Ang integration points ay tumutukoy sa maling protocol number ("Protocol 02"). | Walang "prerequisites." Ang completion statement ay hindi tinutukoy ang susunod na protocol. |
-| **ANO ANG SUHESTIYON** | I-summarize ang scripts sa "automation hooks section." I-update ang completion announcement. | Mag-define ng prerequisites. Magdagdag ng "consolidated Automation Hooks section." I-update ang handoff message. | Magdagdag ng prerequisites. Itama ang integration nomenclature. | Magdagdag ng "explicit prerequisite list." I-update ang handoff message. |
-| **OVERALL SCORE** | **7.33 / 10** | **6.5 / 10** | **7.17 / 10** | **7.0 / 10** |
+### Phase 0: Foundation & Discovery (01-05)
+**Purpose**: Client engagement, discovery, and project initialization
 
----
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **01** | `client-proposal-generation.md` | Generate professional client proposals | Job post analysis, tone mapping, proposal validation |
+| **02** | `client-discovery-initiation.md` | Initiate client discovery process | Requirements gathering, stakeholder mapping, risk assessment |
+| **03** | `project-brief-creation.md` | Create comprehensive project brief | Scope definition, success criteria, timeline planning |
+| **04** | `project-bootstrap-and-context-engineering.md` | Bootstrap project with context | Environment setup, tooling configuration, team alignment |
+| **05** | `bootstrap-your-project.md` | Initialize project structure | Codebase analysis, architecture setup, development environment |
 
-### Protocol 00-generate-rules: Generate Rules Command
+### Phase 1-2: Planning & Design (06-09)
+**Purpose**: Requirements documentation, architecture design, and task planning
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | **Lahat ng sections ay kulang:** role, mission, integration, quality gates, communication, handoff. Walang evidence requirements. | **Kulang sa required protocol sections.** Walang prerequisites o evidence requirements. Ang outputs ay hindi konektado sa downstream. | **Nawawala ang protocol format.** Ang evidence ay optional. Ang quality gates ay checklist lang na walang pass/fail criteria. | **Kulang sa lahat ng sections.** Walang evidence expectations, na ginagawang imposible ang pag-audit. |
-| **ANO ANG SUHESTIYON** | **I-restructure** para maging protocol-format document na may lahat ng sections. | **Muling isulat** sa standard protocol format. Idokumento ang prerequisites. I-define ang outputs. | **I-refactor** sa standard protocol template. Gawing required ang evidence. Mag-define ng measurable acceptance criteria. | **I-recast** bilang protocol appendix. Mag-define ng mandatory evidence artifacts. |
-| **OVERALL SCORE** | **3.00 / 10** | **4.5 / 10** | **4.17 / 10** | **4.33 / 10** |
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **06** | `create-prd.md` | Create Product Requirements Document | Requirements analysis, feature specification, acceptance criteria |
+| **07** | `technical-design-architecture.md` | Design technical architecture | System design, technology selection, integration planning |
+| **08** | `generate-tasks.md` | Generate development tasks | Task decomposition, effort estimation, priority ordering |
+| **09** | `environment-setup-validation.md` | Setup and validate development environment | Environment configuration, tooling validation, CI/CD setup |
 
----
+### Phase 3: Development (10-11)
+**Purpose**: Task execution and integration testing
 
-### Protocol 1: Implementation-Ready PRD Creation
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **10** | `process-tasks.md` | Execute development tasks | Task implementation, code review, evidence collection |
+| **11** | `integration-testing.md` | Perform integration testing | API testing, system integration, end-to-end validation |
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang integration, quality gate, communication, o handoff sections. Ang ebidensya ay nakakalat lang. | **Wala ang integration points, quality gates, communication, at handoff checklist.** Walang defined na evidence expectations. | Walang integration, quality gate, communication, o handoff sections. Ang quality controls ay "implied but not formalized." | Walang integration, quality gates, at handoff checklist. |
-| **ANO ANG SUHESTIYON** | Magdagdag ng formal prerequisites, integration mapping, quality gates, at handoff checklist. | Magdagdag ng "Integration Points." Mag-define ng "measurable quality gates." Mag-introduce ng "handoff checklist." | Magdagdag ng "Integration Points." Mag-define ng "explicit quality gates." | Magdagdag ng "integration section." I-formalize ang quality gates at mag-append ng handoff checklist. |
-| **OVERALL SCORE** | **4.50 / 10** | **4.67 / 10** | **5.5 / 10** | **5.67 / 10** |
+### Phase 4: Quality & Testing (12-14)
+**Purpose**: Quality assurance, user acceptance testing, and pre-deployment
 
----
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **12** | `quality-audit.md` | Comprehensive quality audit | Code review, security scan, performance analysis |
+| **13** | `uat-coordination.md` | User Acceptance Testing coordination | UAT planning, stakeholder coordination, feedback integration |
+| **14** | `pre-deployment-staging.md` | Pre-deployment staging validation | Staging environment, final testing, deployment preparation |
 
-### Protocol 6: Technical Design & Architecture
+### Phase 5: Deployment & Operations (15-18)
+**Purpose**: Production deployment, monitoring, and incident management
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Ang prerequisites ay "implied but not enumerated." | Ang prerequisites ay "implied rather than explicit." | Walang "prerequisites section." | Walang structural na problema. |
-| **ANO ANG SUHESTIYON** | Mag-introduce ng "short prerequisites section." | Magdagdag ng "prerequisites section." | Magdagdag ng "explicit prerequisites checklist." | Magdagdag ng explicit references sa environment assumptions. |
-| **OVERALL SCORE** | **8.50 / 10** | **8.83 / 10** | **8.5 / 10** | **8.5 / 10** |
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **15** | `production-deployment.md` | Production deployment execution | Deployment strategy, rollback planning, go-live coordination |
+| **16** | `monitoring-observability.md` | Setup monitoring and observability | Metrics collection, alerting, performance monitoring |
+| **17** | `incident-response-rollback.md` | Incident response and rollback procedures | Incident management, rollback execution, post-incident analysis |
+| **18** | `performance-optimization.md` | Performance optimization | Performance analysis, optimization implementation, monitoring |
 
----
+### Phase 6: Closure & Maintenance (19-23)
+**Purpose**: Project closure, documentation, and ongoing maintenance
 
-### Protocol 2: Technical Task Generation
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **19** | `documentation-knowledge-transfer.md` | Documentation and knowledge transfer | Technical documentation, user guides, knowledge transfer |
+| **20** | `project-closure.md` | Project closure and handover | Deliverable validation, stakeholder sign-off, project closure |
+| **21** | `maintenance-support.md` | Ongoing maintenance and support | Maintenance planning, support procedures, SLA management |
+| **22** | `implementation-retrospective.md` | Implementation retrospective | Process analysis, lessons learned, improvement recommendations |
+| **23** | `script-governance-protocol.md` | Script governance and management | Script validation, automation governance, maintenance procedures |
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | **Kulang sa integration points, quality gates, communication, at handoff checklist.** May unrealistic na web-search requirement. | **Nawawala ang integration points.** Walang quality gates o evidence requirements. Walang communication at handoff. | Walang "Integration o Handoff sections." Ang quality gates ay "implied" lang. | Walang integration o handoff guidance. Walang formal quality gates. |
-| **ANO ANG SUHESTIYON** | Magdagdag ng integration mapping. Palitan ang web search ng governed knowledge sources. | Mag-define ng "Integration Points." Mag-introduce ng quality gates. Magdagdag ng "handoff checklist." | Idokumento ang integration inputs at outputs. Magdagdag ng quality gates. | Magdagdag ng "integration section." Mag-define ng quality gates at magbigay ng handoff checklist. |
-| **OVERALL SCORE** | **4.50 / 10** | **4.83 / 10** | **5.83 / 10** | **5.33 / 10** |
+### Supporting Protocols (24-27)
+**Purpose**: Additional tools and reference materials
 
----
-
-### Protocol 3: Controlled Task Execution
-
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | **Kulang sa integration points, quality gates, prerequisites, at handoff checklist.** | Walang "integration mapping." Walang "handoff checklist." | Walang "Integration, Quality Gate, o Handoff sections." Ang prerequisites ay "implied" lang. | Walang formal integration output. Walang explicit quality gates/hand-off checklist. |
-| **ANO ANG SUHESTIYON** | Mag-define ng formal inputs at outputs. Magdagdag ng explicit quality gate criteria. Gumawa ng handoff checklist. | Magdagdag ng "Integration Points." Gumawa ng "handoff checklist." | Magdagdag ng "integration section." I-formalize ang quality gates. | Magdagdag ng "integration section." Mag-introduce ng "parent-task completion gate" at checklist. |
-| **OVERALL SCORE** | **4.50 / 10** | **5.17 / 10** | **5.5 / 10** | **6.67 / 10** |
-
----
-
-### Protocol 4: Quality Audit Orchestrator
-
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | **Kulang sa role heading, integration points, quality gates, communication, automation summary, at handoff checklist.** | **Kulang sa integration mapping.** Walang defined na quality gates at evidence requirements. Walang handoff checklist. | **Kulang sa role/mission, integration, quality gates, at handoff sections.** Ang evidence expectations ay hindi standardized. | Walang integration points o quality gates. Ang evidence expectations ay "implicit." |
-| **ANO ANG SUHESTIYON** | **I-recast** sa standard protocol template na may explicit inputs, outputs, at quality gates. | Magdagdag ng "Integration Points." Mag-define ng quality gates. Gumawa ng "handoff checklist." | **I-convert** sa standard protocol format. Magbigay ng "consolidated evidence schema." | Magdagdag ng explicit inputs/outputs. Mag-introduce ng quality gates. |
-| **OVERALL SCORE** | **3.50 / 10** | **4.5 / 10** | **5.0 / 10** | **5.0 / 10** |
-
----
-
-### Protocol 5: Implementation Retrospective
-
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | **Kulang sa integration points, quality gates, communication scripts, at handoff checklist.** | Walang "integration mapping." Kulang sa prerequisites. Walang defined na handoff outputs. | Walang "Integration, Quality Gate, o Handoff sections." Ang prerequisites ay "implied." | Walang integration guidance. Walang quality gates. |
-| **ANO ANG SUHESTIYON** | Mag-define ng inputs at outputs. I-formalize ang quality gates. Magdagdag ng handoff checklist. | Magdagdag ng "Integration Points." Gumawa ng prerequisites. Magdagdag ng "handoff checklist." | Magdagdag ng "integration points." Mag-define ng quality gates. | Magdagdag ng "integration section." Mag-define ng quality gates. |
-| **OVERALL SCORE** | **4.50 / 10** | **5.17 / 10** | **5.17 / 10** | **5.33 / 10** |
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **24** | `client-discovery.md` | Extended client discovery | Deep discovery, stakeholder analysis, requirement validation |
+| **25** | `protocol-integration-map.md` | Protocol integration mapping | Workflow visualization, dependency mapping, integration points |
+| **26** | `integration-guide.md` | Integration and automation guide | Script integration, CI/CD setup, automation configuration |
+| **27** | `validation-guide.md` | Validation and quality guide | Quality criteria, validation procedures, compliance checking |
 
 ---
 
-### Protocol 8: Script Governance
+## 🎯 Master Rules System
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Ang automation hooks ay "implied" lang. Walang prerequisites at evidence summaries. | Walang defined na prerequisites. | Walang kumpirmasyon sa prerequisites kung anong scripts ang dapat i-check. | **Isang narrative policy lang, hindi actionable na workflow.** Kulang sa halos lahat ng sections. |
-| **ANO ANG SUHESTIYON** | Magdagdag ng "prerequisites list" at "automation hook section." | Magdagdag ng "prerequisites checklist." | Magdagdag ng prerequisites. Linawin ang evidence schemas. | **I-redesign** bilang structured protocol na may phases, evidence, automation hooks, at handoffs. |
-| **OVERALL SCORE** | **6.17 / 10** | **7.83 / 10** | **7.17 / 10** | **4.67 / 10** |
+The system includes **8 master rules** that govern AI behavior and ensure consistent, high-quality execution:
 
----
-
-
-
----
-
-### Protocol 7: Environment Setup & Validation
-
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Ang prerequisites (tulad ng design approval, toolchain access) ay "assumed but not cataloged." | Ang prerequisites para sa pagtanggap ng technical design packages at bootstrap outputs ay "not explicit." | Ang prerequisites ay "not declared" kahit na ang workflow ay umaasa sa finalized task plans at architecture inputs. | Ang prerequisite expectations (tulad ng task packages, credential readiness) ay "not formalized." |
-| **ANO ANG SUHESTIYON** | Magdagdag ng prerequisites na nagbe-verify ng technical design approval, access credentials, at bootstrap outputs. | Magdagdag ng "prerequisites checklist" na kumukumpirma sa design documents, bootstrap artifacts, at credential readiness. | Magdagdag ng prerequisites na tumutukoy sa validated task decomposition at infrastructure credentials. | Magdagdag ng "prerequisite checklist" na nangangailangan ng validated task plans, design assumptions, at access credentials. |
-| **OVERALL SCORE** | **8.33 / 10** | **8.67 / 10** | **7.83 / 10** | **7.0 / 10** |
+| Rule | Name | Purpose |
+|------|------|---------|
+| **1** | `context-discovery-protocol` | Context gathering and rule loading |
+| **2** | `ai-collaboration-guidelines` | AI-user collaboration protocols |
+| **3** | `code-quality-checklist` | Code quality standards and best practices |
+| **4** | `code-modification-safety-protocol` | Safe code modification procedures |
+| **5** | `documentation-and-context-guidelines` | Documentation maintenance and context integrity |
+| **6** | `how-to-create-effective-rules` | Rule creation and optimization guidelines |
+| **9** | `protocol-orchestrator` | Protocol orchestration and workflow management |
+| **Advanced** | `advanced-meta-instruction-intelligence-system` | Advanced analysis and intelligence system |
 
 ---
 
-### Protocol 9: Integration Testing & System Validation
+## 🔍 Quality Audit System
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang kritikal na problema; ang prerequisites ay nakapaloob na sa Gate 1. | Ang prerequisites na nangangailangan ng completed execution evidence at environment readiness ay "not formalized." | Ang prerequisites ay dapat tumukoy sa required unit test evidence at deployment environment readiness. | Ang integration points ay umaasa sa ebidensya mula sa Protocol 3 na hindi pormal na tinukoy doon. |
-| **ANO ANG SUHESTIYON** | Magdagdag ng "explicit prerequisites section" para maging consistent sa iba. | Magdagdag ng prerequisites na nagbe-verify ng Protocol 3 completion evidence at environment validation. | Magdagdag ng "prerequisites section" na nagbe-verify ng integration-ready builds at environment baselines. | Makipag-ugnayan sa Protocol 3 para i-standardize ang execution evidence manifests. |
-| **OVERALL SCORE** | **8.50 / 10** | **8.83 / 10** | **8.17 / 10** | **7.83 / 10** |
+### Review Protocols
+Located in `.cursor/ai-driven-workflow/review-protocols/`:
 
----
+- **`code-review.md`**: Code quality validation and DDD compliance
+- **`security-check.md`**: Security compliance and vulnerability assessment
+- **`architecture-review.md`**: Architecture validation and performance analysis
+- **`design-system.md`**: UI/UX compliance and component validation
+- **`ui-accessibility.md`**: Accessibility validation and compliance
+- **`pre-production.md`**: Pre-deployment validation and readiness check
 
-### Protocol 15: UAT Coordination
-
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang kritikal na problema; ang prerequisites ay "inferred through Gate 1." | Walang "explicit prerequisites" na nagbubuod sa required integration at quality audit approvals. | Ang prerequisites para sa ready-to-test builds, sign-off mula sa quality audit, at listahan ng participants ay "not formalized." | Walang structural na problema. |
-| **ANO ANG SUHESTIYON** | Magdagdag ng "explicit prerequisites" na sumasaklaw sa UAT-ready staging environment at signed quality audit. | Magdagdag ng "prerequisites checklist" na nagbe-verify ng Protocol 9 sign-off, quality audit status, at staging readiness. | Magdagdag ng prerequisites na sumasaklaw sa approved quality audit results at availability ng staging builds. | I-encourage ang automated syncing ng defect data pabalik sa task tracker ng Protocol 3. |
-| **OVERALL SCORE** | **8.17 / 10** | **8.67 / 10** | **8.17 / 10** | **7.67 / 10** |
-
----
-
-### Protocol 10: Pre-Deployment Staging
-
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang kritikal na problema. | Ang prerequisites para kumpirmahin ang UAT outcomes at quality audit approvals ay "not explicit." | Walang "prerequisites section" (hal. validated UAT sign-off, ready release package). | Walang problema; "exemplifies deployment readiness best practices." |
-| **ANO ANG SUHESTIYON** | Idokumento ang prerequisite approvals (UAT sign-off, integration evidence) nang "explicitly." | Magdagdag ng "prerequisites checklist" na sumasaklaw sa UAT closure, quality audit sign-off, at integration evidence. | Magdagdag ng prerequisites na nagbe-verify ng UAT completion, release manifest readiness, at environment credentials. | Magdagdag ng explicit linkage sa Protocol 12 para sa observability baselines. |
-| **OVERALL SCORE** | **8.33 / 10** | **8.83 / 10** | **8.33 / 10** | **8.67 / 10** |
+### Quality Gates
+Each protocol includes quality gates with:
+- **Prerequisite Gates**: Must pass before protocol execution
+- **Execution Gates**: Must pass during protocol execution
+- **Completion Gates**: Must pass before protocol completion
+- **Integration Gates**: Must pass for workflow integration
 
 ---
 
-### Protocol 11: Production Deployment & Release Management
+## ⚙️ Automation Integration
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang kritikal na problema. | Ang prerequisites para i-verify ang final go/no-go approvals ay "implied but not formalized." | Ang prerequisites ay hindi "explicitly" nangangailangan ng signed staging report at release approvals. | Walang problema; "thoroughly addresses production release governance." |
-| **ANO ANG SUHESTIYON** | Magdagdag ng "prerequisites summary" na tumutukoy sa artifacts ng Protocol 10 at 7. | Magdagdag ng "prerequisites checklist" na tumutukoy sa Protocol 10 readiness approvals at rollback artifacts. | Magdagdag ng prerequisites na tinitiyak na mayroon nang staging rehearsal reports, rollback playbooks, at stakeholder approvals. | I-highlight ang dependencies sa incident response drill results para mapalakas ang kahandaan. |
-| **OVERALL SCORE** | **8.33 / 10** | **8.83 / 10** | **8.33 / 10** | **8.67 / 10** |
+### Script Integration
+The system integrates with automation scripts for:
+- **Project Analysis**: `analyze_codebase.py`, `classify_domain.py`
+- **Validation**: `validate_prd.py`, `validate_tasks.py`
+- **Execution**: `execute_task.py`, `evidence_report.py`
+- **Quality**: `run_quality_audit.py`, `aggregate_coverage.py`
 
----
-
-### Protocol 12: Post-Deployment Monitoring & Observability
-
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang kritikal na problema. | Walang "explicit prerequisites" na kumukumpirma sa deployment artifacts at monitoring baseline availability. | Ang prerequisites ay dapat tiyakin na available na ang deployment verification data at SLO baselines. | Ang prerequisites ay "explicit" na dapat tumukoy sa deployment manifests at staging baselines. |
-| **ANO ANG SUHESTIYON** | Isama ang prerequisites na tumutukoy sa deployment report acceptance. | Magdagdag ng prerequisites na sumasaklaw sa deployment reports, go/no-go approvals, at baseline dashboards. | Magdagdag ng prerequisites na tumutukoy sa production deployment logs at service ownership details. | Magdagdag ng "prerequisite checklist" na nangangailangan ng `PRE-DEPLOYMENT-PACKAGE.zip` at deployment manifests. |
-| **OVERALL SCORE** | **8.33 / 10** | **8.83 / 10** | **7.83 / 10** | **7.83 / 10** |
+### CI/CD Integration
+- **Linting**: `.github/workflows/ci-lint.yml`
+- **Testing**: `.github/workflows/ci-test.yml`
+- **Security**: `.github/workflows/security-scan.yml`
+- **Deployment**: `.github/workflows/deploy.yml`
 
 ---
 
-### Protocol 13: Incident Response & Rollback
+## 🚀 Quick Start Guide
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang kritikal na problema. | Walang prerequisites na kumukumpirma na ang monitoring alerts o incident triggers ay pormal nang kinilala. | Ang prerequisites para pumasok sa incident mode (hal. declared severity, monitoring alerts) ay "not formalized as a gate." | Walang problema; "incident governance is well documented." |
-| **ANO ANG SUHESTIYON** | Idokumento ang prerequisites (active incident detection, monitoring outputs) sa itaas. | Magdagdag ng "prerequisites checklist" na tinitiyak ang alert confirmation, severity triage, at stakeholder notification. | Magdagdag ng "prerequisites section" na nangangailangan ng confirmed incident tickets, severity level, at active monitoring signals. | Mag-introduce ng explicit linkage sa retrospective automation para masigurong ang corrective actions ay awtomatikong papasok sa Protocol 5. |
-| **OVERALL SCORE** | **8.33 / 10** | **8.83 / 10** | **8.17 / 10** | **8.5 / 10** |
+### Basic Usage
+1. **Initialize Project**: Start with Protocol 05 (bootstrap-your-project.md)
+2. **Follow Sequence**: Execute protocols in numerical order
+3. **Collect Evidence**: Document all actions and decisions
+4. **Validate Gates**: Ensure all quality gates pass
 
----
+### Command Format
+```bash
+@apply .cursor/ai-driven-workflow/[protocol-number]-[protocol-name].md
+```
 
-### Protocol 14: Performance Optimization & Tuning
+### Example Commands
+```bash
+# Start a new project
+@apply .cursor/ai-driven-workflow/05-bootstrap-your-project.md
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang kritikal na problema. | Ang prerequisites para kumpirmahin ang telemetry availability at incident inputs ay "implied but not formalized." | Ang prerequisites para sa existing monitoring baselines at incident data ay "not explicitly listed." | Walang "prerequisite section," na nagpapababa ng kumpiyansa na available ang production telemetry. |
-| **ANO ANG SUHESTIYON** | Magdagdag ng prerequisites na nagbubuod sa monitoring baselines. | Magdagdag ng "prerequisites checklist" na sumasaklaw sa monitoring baselines, incident reports, at deployment data. | Magdagdag ng prerequisites na tumutukoy sa monitoring dashboards, incident history, at performance targets. | Magdagdag ng "prerequisite checklist" na nangangailangan ng monitoring baselines at incident reports. |
-| **OVERALL SCORE** | **8.33 / 10** | **8.67 / 10** | **7.83 / 10** | **6.83 / 10** |
+# Create requirements document
+@apply .cursor/ai-driven-workflow/06-create-prd.md
 
----
+# Execute development tasks
+@apply .cursor/ai-driven-workflow/10-process-tasks.md @codebase
 
-### Protocol 16: Documentation & Knowledge Transfer
-
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang kritikal na problema. | Ang prerequisites para sa pagtanggap ng sign-off artifacts ay "not explicitly listed." | Ang prerequisites ay kailangang kumpirmahin ang availability ng deployment artifacts, retrospectives, at performance reports. | Ang kawalan ng "explicit prerequisites" ay nagpapahirap na masigurong tapos na ang lahat ng upstream protocols. |
-| **ANO ANG SUHESTIYON** | Magdagdag ng prerequisites (completed deployment report, performance findings). | Magdagdag ng "prerequisites checklist" na tumutukoy sa PRD updates, architecture packages, deployment logs, at UAT outputs. | Magdagdag ng prerequisites na tumutukoy sa final code repositories, monitoring evidence, at incident reports. | Magdagdag ng "prerequisite checklist" na tumutukoy sa UAT sign-off, deployment completion, at incident outcomes. |
-| **OVERALL SCORE** | **8.17 / 10** | **8.83 / 10** | **7.83 / 10** | **6.67 / 10** |
-
----
-
+# Run quality audit
+@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode comprehensive
+```
 
 ---
 
-### Protocol 17: Project Closure & Handover (Pagpapatuloy)
+## 📖 Complete Lifecycle Command Playbook
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang kritikal na problema. | Ang prerequisites para i-verify ang completion ng deliverables ay "not called out explicitly." | Ang prerequisites para sa pagtanggap ng finalized documentation, sign-offs, at maintenance plans ay "missing." | Ang "missing prerequisite list" ay nagpapahirap sa koordinasyon sa documentation at maintenance planning. |
-| **ANO ANG SUHESTIYON** | Magdagdag ng prerequisites na kumukuha ng required documentation at sign-offs. | Magdagdag ng "prerequisites checklist" na sumasaklaw sa documentation packages, deployment reports, at acceptance evidence. | Magdagdag ng prerequisites na tinitiyak na handa na ang documentation completion, acceptance criteria, at support agreements. | Magdagdag ng "prerequisite checklist" na tumutukoy sa approved documentation packages at performance reports. |
-| **OVERALL SCORE** | **8.17 / 10** | **8.83 / 10** | **7.83 / 10** | **6.67 / 10** |
+### Client Project Lifecycle (Full SDLC)
+
+#### Phase 0: Client Engagement
+```bash
+# 1. Generate client proposal
+@apply .cursor/ai-driven-workflow/01-client-proposal-generation.md
+
+# 2. Initiate client discovery
+@apply .cursor/ai-driven-workflow/02-client-discovery-initiation.md
+
+# 3. Create project brief
+@apply .cursor/ai-driven-workflow/03-project-brief-creation.md
+
+# 4. Bootstrap project context
+@apply .cursor/ai-driven-workflow/04-project-bootstrap-and-context-engineering.md
+
+# 5. Initialize project structure
+@apply .cursor/ai-driven-workflow/05-bootstrap-your-project.md
+```
+
+#### Phase 1-2: Planning & Design
+```bash
+# 6. Create Product Requirements Document
+@apply .cursor/ai-driven-workflow/06-create-prd.md
+
+# 7. Design technical architecture
+@apply .cursor/ai-driven-workflow/07-technical-design-architecture.md
+
+# 8. Generate development tasks
+@apply .cursor/ai-driven-workflow/08-generate-tasks.md
+
+# 9. Setup development environment
+@apply .cursor/ai-driven-workflow/09-environment-setup-validation.md
+```
+
+#### Phase 3: Development
+```bash
+# 10. Execute development tasks
+@apply .cursor/ai-driven-workflow/10-process-tasks.md @codebase
+
+# 11. Perform integration testing
+@apply .cursor/ai-driven-workflow/11-integration-testing.md
+```
+
+#### Phase 4: Quality & Testing
+```bash
+# 12. Run comprehensive quality audit
+@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode comprehensive
+
+# 13. Coordinate User Acceptance Testing
+@apply .cursor/ai-driven-workflow/13-uat-coordination.md
+
+# 14. Pre-deployment staging validation
+@apply .cursor/ai-driven-workflow/14-pre-deployment-staging.md
+```
+
+#### Phase 5: Deployment & Operations
+```bash
+# 15. Execute production deployment
+@apply .cursor/ai-driven-workflow/15-production-deployment.md
+
+# 16. Setup monitoring and observability
+@apply .cursor/ai-driven-workflow/16-monitoring-observability.md
+
+# 17. Incident response procedures (if needed)
+@apply .cursor/ai-driven-workflow/17-incident-response-rollback.md
+
+# 18. Performance optimization
+@apply .cursor/ai-driven-workflow/18-performance-optimization.md
+```
+
+#### Phase 6: Closure & Maintenance
+```bash
+# 19. Documentation and knowledge transfer
+@apply .cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md
+
+# 20. Project closure and handover
+@apply .cursor/ai-driven-workflow/20-project-closure.md
+
+# 21. Ongoing maintenance and support
+@apply .cursor/ai-driven-workflow/21-maintenance-support.md
+
+# 22. Implementation retrospective
+@apply .cursor/ai-driven-workflow/22-implementation-retrospective.md
+```
+
+### Technical Development Workflow (Development-Focused)
+
+#### Quick Development Cycle
+```bash
+# Bootstrap project
+@apply .cursor/ai-driven-workflow/05-bootstrap-your-project.md
+
+# Create requirements
+@apply .cursor/ai-driven-workflow/06-create-prd.md
+
+# Design architecture
+@apply .cursor/ai-driven-workflow/07-technical-design-architecture.md
+
+# Generate tasks
+@apply .cursor/ai-driven-workflow/08-generate-tasks.md
+
+# Execute development
+@apply .cursor/ai-driven-workflow/10-process-tasks.md @codebase
+
+# Integration testing
+@apply .cursor/ai-driven-workflow/11-integration-testing.md
+
+# Quality audit
+@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode quick
+```
+
+### Quality Assurance Workflow
+
+#### Comprehensive Quality Check
+```bash
+# Full quality audit
+@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode comprehensive
+
+# Security-focused audit
+@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode security
+
+# Architecture review
+@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode architecture
+
+# Pre-deployment validation
+@apply .cursor/ai-driven-workflow/14-pre-deployment-staging.md
+```
+
+### Emergency Response Workflow
+
+#### Incident Management
+```bash
+# Incident response
+@apply .cursor/ai-driven-workflow/17-incident-response-rollback.md
+
+# Performance optimization
+@apply .cursor/ai-driven-workflow/18-performance-optimization.md
+
+# Monitoring setup
+@apply .cursor/ai-driven-workflow/16-monitoring-observability.md
+```
+
+### Maintenance Workflow
+
+#### Ongoing Maintenance
+```bash
+# Maintenance planning
+@apply .cursor/ai-driven-workflow/21-maintenance-support.md
+
+# Documentation updates
+@apply .cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md
+
+# Script governance
+@apply .cursor/ai-driven-workflow/23-script-governance-protocol.md
+```
 
 ---
 
-### Protocol 18: Continuous Maintenance & Support Planning
+## 🔧 Advanced Usage
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | Walang kritikal na problema. | Ang prerequisites na kumukumpirma sa closure artifacts at operational ownership approvals ay "not explicit." | Ang prerequisites para sa accepted closure deliverables at support agreements ay "not stated." | Ang "missing prerequisites" ay nagpapababa ng kumpiyansa na available na ang closure outputs bago magsimula ang maintenance planning. |
-| **ANO ANG SUHESTIYON** | Magdagdag ng prerequisites na tumutukoy sa closure outputs at support charters. | Magdagdag ng "prerequisites checklist" na sumasaklaw sa closure approvals, documentation packages, at monitoring baselines. | Magdagdag ng prerequisites na tumutukoy sa closure approvals, documentation packages, at SLA baselines. | Magdagdag ng "prerequisite checklist" na nangangailangan ng closure manifest, documentation indexes, at performance insights. |
-| **OVERALL SCORE** | **8.17 / 10** | **8.83 / 10** | **7.83 / 10** | **6.67 / 10** |
+### Custom Workflows
+Create custom sequences for specific needs:
+
+#### MVP Development
+```bash
+@apply .cursor/ai-driven-workflow/05-bootstrap-your-project.md
+@apply .cursor/ai-driven-workflow/06-create-prd.md
+@apply .cursor/ai-driven-workflow/10-process-tasks.md @codebase
+@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode quick
+```
+
+#### Enterprise Project
+```bash
+# Full enterprise workflow with all protocols
+# Use complete client project lifecycle above
+```
+
+#### Bug Fix Workflow
+```bash
+@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode security
+@apply .cursor/ai-driven-workflow/10-process-tasks.md @codebase
+@apply .cursor/ai-driven-workflow/11-integration-testing.md
+```
+
+### Context Integration
+Use Cursor's context features:
+- **`@codebase`**: Full project context
+- **`@recent-changes`**: Git change analysis
+- **`@filename`**: File-specific context
+
+### Automation Hooks
+Integrate with existing scripts:
+```bash
+# Run validation scripts
+python scripts/validate_protocols.py
+python scripts/test_protocol_execution.py
+python scripts/validate_evidence.py
+```
 
 ---
 
+## 🛠️ Troubleshooting
 
+### Common Issues
 
+#### Missing Prerequisites
+- Ensure all prerequisites are met before protocol execution
+- Check required artifacts and approvals
+- Validate system state requirements
 
-#### Protocol 00-CD / 00 (Client Discovery & Project Briefing)
+#### Incomplete Evidence
+- Verify evidence collection is complete
+- Check evidence format and structure
+- Ensure all validation results are documented
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | *Hindi sakop sa Report 1.* | *Hindi sakop sa Report 2.* | **(ID: 00)** Kulang sa formal "integration points section." Ang quality gates ay nakakalat sa text. | **(ID: 00-CD)** Ang automation references ay manual; walang explicit script list. |
-| **ANO ANG SUHESTIYON** | *Hindi sakop sa Report 1.* | *Hindi sakop sa Report 2.* | Magdagdag ng "Integration Points table." Ipunin ang mga gates sa isang "Quality Gates section." | Magdagdag ng "explicit automation hooks." Idokumento kung paano gagamitin ng Protocol 01 ang discovery artifacts. |
-| **OVERALL SCORE** | *Hindi sakop sa Report 1.* | *Hindi sakop sa Report 2.* | **7.67 / 10** | **8.0 / 10** |
+#### Failed Quality Gates
+- Address gate failures immediately
+- Review failure reasons and implement fixes
+- Re-run gate validation after fixes
 
-#### Protocol 0 (Bootstrap Your Project - Legacy)
+#### Integration Problems
+- Check protocol dependencies
+- Verify handoff requirements
+- Ensure proper sequence execution
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | *Hindi sakop sa Report 1.* | *Hindi sakop sa Report 2.* | **(ID: 0)** Kulang sa "explicit Integration, Quality Gates, Communication, at Handoff sections." Walang "prerequisites statement." | **(ID: 0)** Walang "prerequisite o handoff checklist" na kumokonekta dito sa lifecycle. Ang quality gates ay "implied." |
-| **ANO ANG SUHESTIYON** | *Hindi sakop sa Report 2.* | *Hindi sakop sa Report 2.* | **I-restructure** sa standard section format. Magdagdag ng prerequisites. | Magdagdag ng "prerequisite at handoff sections." Gawing "explicit" ang mga implied gates. |
-| **OVERALL SCORE** | *Hindi sakop sa Report 1.* | *Hindi sakop sa Report 2.* | **6.67 / 10** | **5.83 / 10** |
+### Debug Commands
+```bash
+# Validate protocol structure
+python scripts/validate_protocols.py
 
-#### Mga Review Protocol (Architecture, Code, Security)
+# Test protocol execution
+python scripts/test_protocol_execution.py
 
-| | **REPORT 1** | **REPORT 2** | **REPORT 3** | **REPORT 4** |
-| :--- | :--- | :--- | :--- | :--- |
-| **ANO ANG PROBLEMA** | *Hindi sakop sa Report 1.* | *Hindi sakop sa Report 2.* | **(ID: arch-review, code-review, security-review)** **Kulang sa lahat ng standard sections** (role, workflow, integration, quality gates, etc.). Walang evidence requirements. | *Hindi sakop sa Report 4.* |
-| **ANO ANG SUHESTIYON** | *Hindi sakop sa Report 1.* | *Hindi sakop sa Report 2.* | **I-rebuild** ang mga dokumento gamit ang standard protocol template. Mag-define ng "mandatory evidence artifacts." | *Hindi sakop sa Report 4.* |
-| **OVERALL SCORE** | *Hindi sakop sa Report 1.* | *Hindi sakop sa Report 2.* | **3.67 - 3.83 / 10** | *Hindi sakop sa Report 4.* |
+# Check evidence collection
+python scripts/validate_evidence.py
+
+# Run quality audit
+python scripts/run_quality_audit.py
+```
 
 ---
+
+## 📚 Additional Resources
+
+### Documentation
+- **Protocol Integration Map**: `.cursor/ai-driven-workflow/25-protocol-integration-map.md`
+- **Integration Guide**: `.cursor/ai-driven-workflow/26-integration-guide.md`
+- **Validation Guide**: `.cursor/ai-driven-workflow/27-validation-guide.md`
+- **Master Rules**: `.cursor/rules/master-rules/`
+
+### Automation Scripts
+- **Scripts Directory**: `.artifacts/scripts/`
+- **CI/CD Workflows**: `.github/workflows/`
+- **Quality Gates**: Built into each protocol
+
+### Support
+- **Review Protocols**: `.cursor/ai-driven-workflow/review-protocols/`
+- **Validation Reports**: `.artifacts/validation/`
+- **Evidence Collection**: `.artifacts/protocol-[number]/`
+
+---
+
+## 🎯 Success Metrics
+
+### Quality Targets
+- **Protocol Completion**: 100% of protocols executed successfully
+- **Evidence Collection**: Complete documentation for all actions
+- **Quality Gates**: All gates passed with validation
+- **Integration**: Seamless workflow continuity
+- **Client Satisfaction**: Professional delivery and documentation
+
+### Performance Indicators
+- **Efficiency**: Reduced development time through structured workflows
+- **Quality**: Improved code quality through systematic validation
+- **Consistency**: Standardized processes across all projects
+- **Scalability**: Ability to handle projects of any complexity
+- **Reliability**: Evidence-based delivery with validation gates
+
+---
+
+**Ready to transform your development workflow? Start with Protocol 05 and follow the complete lifecycle for professional, evidence-based software development!** 🚀
