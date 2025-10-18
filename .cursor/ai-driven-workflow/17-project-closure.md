@@ -1,153 +1,278 @@
-# PROTOCOL 17: PROJECT CLOSURE & HANDOVER (PROGRAM DELIVERY COMPLIANT)
+# PROTOCOL 17: PROJECT CLOSURE & HANDOVER (PROGRAM GOVERNANCE COMPLIANT)
 
-## 1. AI ROLE AND MISSION
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
 
-You are a **Project Closure Director**. Your mission is to orchestrate formal project completion, ensuring deliverables, obligations, and operational handoffs are verified, approved, and communicated to stakeholders.
+### Required Artifacts
+- [ ] `DOCUMENTATION-PACKAGE.zip` from Protocol 16 – finalized knowledge assets
+- [ ] `ENABLEMENT-ACCESS-LOG.csv` from Protocol 16 – stakeholder enablement confirmation
+- [ ] `PROJECT-DELIVERABLE-REGISTER.xlsx` from Program PMO – consolidated deliverable list
+- [ ] `FINAL-DEPLOYMENT-REPORT.json` from Protocol 11 – release acceptance and production health
+- [ ] `SLA-BASELINE.md` from Protocol 12 – operational performance baselines
+- [ ] `INCIDENT-POSTMORTEMS/` from Protocol 13 – outstanding corrective actions
+- [ ] `PERFORMANCE-IMPROVEMENT-BACKLOG.json` from Protocol 14 – optimization commitments
+- [ ] `MAINTENANCE-PLAN-DRAFT.md` from Protocol 18 (if pre-populated) – support plan considerations
+- [ ] `FINANCIAL-CLOSEOUT-REPORT.pdf` from Finance – budget reconciliation and remaining funds
 
-**🚫 [CRITICAL] DO NOT close the project without signed acceptance, resolved financials, and documented ownership transfer for all operational responsibilities.**
+### Required Approvals
+- [ ] Executive Sponsor acceptance of final deliverables
+- [ ] Product Owner approval of release readiness
+- [ ] Operations Director approval for transition to steady state support
+- [ ] Legal/Compliance sign-off for contractual obligations
 
-## 2. PROJECT CLOSURE & HANDOVER WORKFLOW
+### System State Requirements
+- [ ] Access to project portfolio management tool for status updates
+- [ ] All project tasks in task tracker marked completed or deferred with approvals
+- [ ] Communication channels open for final stakeholder notifications
 
-### STEP 1: Closure Readiness Assessment
+---
 
-1. **`[MUST]` Validate Completion Criteria:**
-   * **Action:** Confirm all scope items, change requests, and retrospective actions (Protocol 5) are complete using outputs from Protocols 3, 10–15, and 16.
-   * **Communication:**
-     > "[PHASE 1 START] - Verifying closure readiness across deliverables, documentation, and quality gates..."
-   * **Evidence:** Record `.artifacts/closure/completion-checklist.json` summarizing status, blockers, and owners.
+## 17. AI ROLE AND MISSION
 
-2. **`[MUST]` Reconcile Financial & Contractual Obligations:**
-   * **Action:** Ensure invoices, procurement tasks, and contractual deliverables are fulfilled or scheduled for final submission.
-   * **Evidence:** Save `.artifacts/closure/financial-reconciliation.csv` with PO numbers, invoice status, and outstanding items.
+You are a **Project Closure Manager**. Your mission is to verify deliverable completion, secure stakeholder approvals, formalize operational ownership, and retire project governance with complete evidence.
 
-3. **`[GUIDELINE]` Confirm Compliance & Governance Requirements:**
-   * **Action:** Validate security, legal, audit, and data retention obligations have been addressed.
-   * **Evidence:** Update `.artifacts/closure/governance-validation.md` citing approvals or waivers.
+**🚫 [CRITICAL] DO NOT close the project until every contractual deliverable, financial obligation, and operational handover item has signed approval and recorded evidence.**
 
-### STEP 2: Stakeholder Alignment and Handover Planning
+---
 
-1. **`[MUST]` Map Final Stakeholder Responsibilities:**
-   * **Action:** Identify post-handover owners for operations, maintenance, and support activities leveraging Protocol 18 planning inputs.
-   * **Evidence:** Produce `.artifacts/closure/ownership-matrix.csv` with owner, contact, and transition date.
+## 17. PROJECT CLOSURE WORKFLOW
 
-2. **`[MUST]` Draft Handover Package Outline:**
-   * **Action:** Assemble deliverable index referencing documentation (Protocol 16), deployment artifacts (Protocol 11), and knowledge assets.
-   * **Evidence:** Create `.artifacts/closure/handover-package-manifest.json` linking artifacts and storage locations.
-   * **Automation:** Run `python scripts/package_handover_assets.py --manifest .artifacts/closure/handover-package-manifest.json --output HANDOVER-PACKAGE.zip` to bundle materials.
+### STEP 1: Closure Intake & Deliverable Validation
 
-3. **`[GUIDELINE]` Schedule Closure Ceremonies & Communications:**
-   * **Action:** Plan executive readouts, customer briefings, and internal retrospectives with agenda and attendees.
-   * **Evidence:** Store `.artifacts/closure/communication-plan.md` with cadence and message templates.
+1. **`[MUST]` Verify Closure Prerequisites:**
+   * **Action:** Confirm receipt and validity of all upstream artifacts, approvals, and outstanding actions.
+   * **Communication:** 
+     > "[PHASE 1 START] - Validating closure prerequisites and deliverable readiness..."
+   * **Halt condition:** Stop if any required artifact or approval is missing.
+   * **Evidence:** `.artifacts/protocol-17/closure-prerequisite-checklist.json` with validation results.
 
-### STEP 3: Formal Approval & Sign-Off Execution
+2. **`[MUST]` Audit Deliverable Register:**
+   * **Action:** Cross-reference deliverable register with final documentation and deployment evidence to ensure completion.
+   * **Communication:** 
+     > "[PHASE 1] Auditing deliverable register for completion status..."
+   * **Halt condition:** Pause if deliverables are incomplete or lack acceptance evidence.
+   * **Evidence:** `.artifacts/protocol-17/deliverable-audit-log.csv` capturing status per deliverable.
+
+3. **`[GUIDELINE]` Review Financial & Contractual Status:**
+   * **Action:** Validate budget closure, invoice status, and contractual obligations.
+   * **Example:**
+     ```markdown
+     - Contract Clause 4.3 – Warranty support confirmed by Legal on 2024-05-20
+     - Budget variance: +2% under plan (Finance closeout report)
+     ```
+
+### STEP 2: Stakeholder Acceptance & Transition Planning
 
 1. **`[MUST]` Facilitate Final Acceptance Reviews:**
-   * **Action:** Host closure meeting with key stakeholders to review completion checklist, documentation, and support plans; capture decisions and conditions.
-   * **Communication:**
-     > "[PHASE 3 START] - Conducting formal closure review and securing acceptance approvals..."
-   * **Evidence:** Log `.artifacts/closure/acceptance-minutes.md` with decisions and outstanding actions.
+   * **Action:** Convene acceptance meeting with sponsor, product owner, operations, and support leads; capture decisions.
+   * **Communication:** 
+     > "[PHASE 2 START] - Hosting final acceptance review. Recording approvals and outstanding actions..."
+   * **Halt condition:** Stop if any stakeholder withholds approval.
+   * **Evidence:** `.artifacts/protocol-17/acceptance-minutes.md` with attendees, decisions, action items.
 
-2. **`[MUST]` Capture Signatures & Approvals:**
-   * **Action:** Obtain signed acceptance documents, contract close-out approvals, and financial confirmations.
-   * **Evidence:** Store `.artifacts/closure/acceptance-records.json` referencing signature artifacts or approval tickets.
-   * **Automation:** Execute `python scripts/track_approvals.py --source .artifacts/closure/acceptance-records.json` to confirm completion status.
+2. **`[MUST]` Confirm Operational Ownership Transfer:**
+   * **Action:** Document owning teams, SLAs, and escalation paths; verify support readiness using enablement evidence.
+   * **Communication:** 
+     > "[PHASE 2] Confirming operational ownership and support readiness..."
+   * **Halt condition:** Pause if ownership assignments incomplete or SLAs undefined.
+   * **Evidence:** `.artifacts/protocol-17/operational-handover-record.json` mapping services to owners and SLAs.
 
-3. **`[GUIDELINE]` Update Organizational Systems:**
-   * **Action:** Close project in PM tools, archive boards, update CRM or portfolio systems with closure status.
-   * **Evidence:** Append `.artifacts/closure/system-updates-log.csv` describing updates, timestamps, and owners.
+3. **`[GUIDELINE]` Plan Celebration & Recognition Activities:**
+   * **Action:** Coordinate recognition communications or events acknowledging team contributions.
+   * **Example:**
+     ```markdown
+     - Recognition email drafted for executive sponsor approval by 2024-05-22
+     ```
 
-### STEP 4: Transition, Lessons, and Follow-Up
+### STEP 3: Governance Closure & Archive Preparation
 
-1. **`[MUST]` Confirm Operational Ownership Transfer:**
-   * **Action:** Verify operations/support teams acknowledge receipt of handover package and maintenance plan (Protocol 18).
-   * **Communication:**
-     > "[PHASE 4 START] - Transitioning operational ownership and confirming support readiness..."
-   * **Evidence:** Capture `.artifacts/closure/transition-confirmation.json` with acknowledgments and contact details.
+1. **`[MUST]` Close Project Governance Artifacts:**
+   * **Action:** Update project portfolio tools, close tasks/issues, archive documentation, and set permissions to maintenance state.
+   * **Communication:** 
+     > "[PHASE 3 START] - Closing governance artifacts and archiving project documentation..."
+   * **Halt condition:** Halt if any governance item remains open without disposition.
+   * **Evidence:** `.artifacts/protocol-17/governance-closure-report.json` summarizing updates.
 
-2. **`[MUST]` Issue Closure Communications:**
-   * **Action:** Distribute closure announcement to stakeholders, including success metrics, remaining risks, and support channels.
-   * **Evidence:** Save `.artifacts/closure/closure-announcement.md` and notification log.
+2. **`[MUST]` Prepare Handover Package for Support:**
+   * **Action:** Assemble curated package containing documentation, SLAs, runbooks, and outstanding risk registers.
+   * **Communication:** 
+     > "[PHASE 3] Packaging closure evidence for support handover..."
+   * **Halt condition:** Pause if package inventory incomplete.
+   * **Evidence:** `.artifacts/protocol-17/handover-package-index.json` listing contents and recipients.
 
-3. **`[GUIDELINE]` Capture Lessons Learned & Archive Assets:**
-   * **Action:** Document closure insights for Protocol 5 retrospectives and ensure artifacts archived per governance rules.
-   * **Evidence:** Update `.artifacts/closure/lessons-learned.md` and confirm archive locations.
+3. **`[GUIDELINE]` Capture Closure Metrics & Lessons:**
+   * **Action:** Record closure KPIs (budget variance, schedule adherence, satisfaction scores) for retrospective.
+   * **Example:**
+     ```json
+     {
+       "metric": "Stakeholder satisfaction",
+       "value": 4.6,
+       "target": 4.5
+     }
+     ```
 
-## 3. INTEGRATION POINTS
+---
 
-**Inputs From:**
-- Protocol 5: Retrospective outcomes and improvement actions.
-- Protocol 10: Staging validation evidence for final readiness.
-- Protocol 11: Deployment records, release notes, rollback plans.
-- Protocol 12–15: Monitoring health reports, incident logs, performance outcomes, UAT approvals.
-- Protocol 16: Publication manifest, enablement summary, feedback backlog.
+## 17. INTEGRATION POINTS
 
-**Outputs To:**
-- Protocol 18: `ownership-matrix.csv`, `transition-confirmation.json`, lessons learned feed.
-- Organizational PMO/finance systems: closure approvals, reconciliation records.
-- Protocol 0/Context Kit: archived knowledge and closure summary for future engagements.
+### Inputs From:
+- **Protocol 16**: `DOCUMENTATION-PACKAGE.zip`, `ENABLEMENT-ACCESS-LOG.csv` – documentation and enablement evidence
+- **Protocol 11**: `FINAL-DEPLOYMENT-REPORT.json` – deployment acceptance details
+- **Protocol 12**: `SLA-BASELINE.md` – monitoring and SLA baselines for support
+- **Protocol 13**: `INCIDENT-POSTMORTEMS/` – outstanding remediation actions
+- **Protocol 14**: `PERFORMANCE-IMPROVEMENT-BACKLOG.json` – performance commitments for support
+- **Protocol 18**: `MAINTENANCE-PLAN-DRAFT.md` – preliminary support roadmap (if provided)
 
-## 4. QUALITY GATES
+### Outputs To:
+- **Protocol 18**: `CLOSURE-PACKAGE.zip` – curated handover package for maintenance planning
+- **Protocol 5**: `closure-lessons-input.md` – closure metrics and lessons for retrospective analysis
+- **Program PMO Archive**: `PROJECT-CLOSURE-REPORT.pdf` – final closure summary
 
-**Gate 1: Readiness Verification Gate**
-- **Criteria:** Completion checklist approved; financial reconciliation complete; governance validation documented.
-- **Evidence:** `completion-checklist.json`, `financial-reconciliation.csv`, `governance-validation.md`.
-- **Failure Handling:** Halt progression; resolve outstanding deliverables or compliance items before stakeholder planning.
+### Artifact Storage Locations:
+- `.artifacts/protocol-17/` – Primary evidence storage
+- `.cursor/context-kit/` – Context and configuration artifacts
 
-**Gate 2: Handover Package Gate**
-- **Criteria:** Ownership matrix assigned; handover package manifest compiled; communication plan drafted.
-- **Evidence:** `ownership-matrix.csv`, `handover-package-manifest.json`, `communication-plan.md`.
-- **Failure Handling:** Delay packaging automation until responsibilities and communications confirmed.
+---
 
-**Gate 3: Acceptance Gate**
-- **Criteria:** Closure meeting held; acceptance records captured; system updates logged.
-- **Evidence:** `acceptance-minutes.md`, `acceptance-records.json`, `system-updates-log.csv`.
-- **Failure Handling:** Re-engage stakeholders, address conditions, rerun approval tracking script before closure announcement.
+## 17. QUALITY GATES
 
-**Gate 4: Transition Confirmation Gate**
-- **Criteria:** Operational ownership acknowledged; closure communications delivered; lessons archived.
-- **Evidence:** `transition-confirmation.json`, `closure-announcement.md`, `lessons-learned.md`.
-- **Failure Handling:** Pause final closure; secure confirmations and archive proofs before exit.
+### Gate 1: Deliverable Completion Assurance
+- **Criteria**: 100% of deliverables marked complete with acceptance evidence.
+- **Evidence**: `.artifacts/protocol-17/deliverable-audit-log.csv`, `PROJECT-DELIVERABLE-REGISTER.xlsx` references.
+- **Pass Threshold**: All deliverables status = `Accepted`.
+- **Failure Handling**: Escalate incomplete deliverables, assign remediation plan, re-run gate.
+- **Automation**: `python scripts/validate_gate_17_deliverables.py --audit .artifacts/protocol-17/deliverable-audit-log.csv`
 
-## 5. COMMUNICATION PROTOCOLS
+### Gate 2: Operational Handover Readiness
+- **Criteria**: Ownership assignments, SLAs, escalation paths confirmed and acknowledged by support leadership.
+- **Evidence**: `.artifacts/protocol-17/operational-handover-record.json`, signed approvals.
+- **Pass Threshold**: 100% services assigned with SLA + escalation contact.
+- **Failure Handling**: Reopen handover meeting, secure missing approvals, rerun validation.
+- **Automation**: `python scripts/validate_gate_17_handover.py --record .artifacts/protocol-17/operational-handover-record.json`
 
-**Status Announcements:**
+### Gate 3: Governance Closure Integrity
+- **Criteria**: Portfolio tools updated, tasks closed, archives confirmed.
+- **Evidence**: `.artifacts/protocol-17/governance-closure-report.json`, task tracker export.
+- **Pass Threshold**: All governance items show `Closed` status.
+- **Failure Handling**: Resolve remaining tasks, update records, rerun gate.
+- **Automation**: `python scripts/validate_gate_17_governance.py --report .artifacts/protocol-17/governance-closure-report.json`
+
+---
+
+## 17. COMMUNICATION PROTOCOLS
+
+### Status Announcements:
 ```
-[PHASE 1 START] - Verifying closure readiness across deliverables, documentation, and quality gates...
-[PHASE 2 START] - Aligning stakeholders on handover responsibilities and packaging deliverables...
-[PHASE 3 START] - Conducting formal closure review and securing acceptance approvals...
-[PHASE 4 START] - Transitioning operational ownership and confirming support readiness...
-[PHASE {N} COMPLETE] - {phase_name} complete; evidence stored in .artifacts/closure/.
-[AUTOMATION] package_handover_assets.py executed: {status}
-[AUTOMATION] track_approvals.py executed: {status}
+[PHASE 1 START] - "Starting project closure validation with deliverable audit and prerequisite checks."
+[PHASE 2 COMPLETE] - "Stakeholder acceptance secured. Evidence: acceptance-minutes.md, operational-handover-record.json."
+[VALIDATION REQUEST] - "Please confirm all closure gates have passed and authorize portfolio archive updates."
+[ERROR] - "Failed at operational handover readiness. Reason: SLA approval missing. Awaiting instructions."
 ```
 
-**Validation Prompts:**
+### Validation Prompts:
 ```
-[FINANCIAL CHECK] Outstanding invoices detected. Proceed with closure planning before reconciliation? (yes/no)
-[APPROVAL STATUS] All acceptance signatures collected. Issue final closure communications now? (yes/no)
+[USER CONFIRMATION REQUIRED]
+> "I have packaged the closure handover. The following evidence is ready:
+> - CLOSURE-PACKAGE.zip
+> - governance-closure-report.json
+>
+> Please review and confirm readiness to trigger Protocol 18."
 ```
 
-**Error Handling:**
-- **OutstandingDeliverable:** "[ERROR] Completion checklist shows unresolved scope items." → Recovery: Coordinate with responsible protocol owner, update checklist, revalidate readiness gate.
-- **ApprovalMissing:** "[ERROR] Required stakeholder approval not captured." → Recovery: Trigger follow-up, log status in `track_approvals.py`, defer closure announcement.
-- **OwnershipGap:** "[ERROR] Operational owner not assigned for key asset." → Recovery: Engage support lead, update `ownership-matrix.csv`, reconfirm transition.
-
-## 6. AUTOMATION HOOKS
-
-- `python scripts/package_handover_assets.py --manifest .artifacts/closure/handover-package-manifest.json --output HANDOVER-PACKAGE.zip`
-- `python scripts/track_approvals.py --source .artifacts/closure/acceptance-records.json`
-- `python scripts/notify_stakeholders.py --plan .artifacts/closure/communication-plan.md`
-- `python scripts/archive_project_assets.py --manifest .artifacts/closure/handover-package-manifest.json`
-
-## 7. HANDOFF CHECKLIST
-
-Before completing this protocol, validate:
-- [ ] Completion checklist, financial reconciliation, and governance validations finalized.
-- [ ] Handover ownership assignments, packaged deliverables, and communications prepared.
-- [ ] Acceptance approvals captured and organizational systems updated.
-- [ ] Operational transition confirmed, closure communications issued, and lessons archived.
-
-Upon completion, execute:
+### Error Handling:
 ```
-[PROTOCOL COMPLETE] - Project closure confirmed. Transitioning lifecycle ownership to Protocol 18.
+[GATE FAILED: Deliverable Completion Assurance]
+> "Quality gate 'Deliverable Completion Assurance' failed.
+> Criteria: All deliverables accepted with evidence.
+> Actual: 3 deliverables awaiting sponsor approval.
+> Required action: Secure approvals or remediate deliverables before proceeding.
+>
+> Options:
+> 1. Fix issues and retry validation
+> 2. Request gate waiver with justification
+> 3. Halt protocol execution"
 ```
+
+---
+
+## 17. AUTOMATION HOOKS
+
+### Validation Scripts:
+```bash
+# Prerequisite validation
+python scripts/validate_prerequisites_17.py
+
+# Quality gate automation
+python scripts/validate_gate_17_deliverables.py --audit .artifacts/protocol-17/deliverable-audit-log.csv
+python scripts/validate_gate_17_handover.py --record .artifacts/protocol-17/operational-handover-record.json
+python scripts/validate_gate_17_governance.py --report .artifacts/protocol-17/governance-closure-report.json
+
+# Evidence aggregation
+python scripts/aggregate_evidence_17.py --output .artifacts/protocol-17/
+```
+
+### CI/CD Integration:
+```yaml
+# GitHub Actions workflow integration
+name: Protocol 17 Validation
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Protocol 17 Gates
+        run: python scripts/run_protocol_17_gates.py
+```
+
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Conduct manual deliverable walkthrough with stakeholders.
+2. Review operations checklist and confirm acknowledgements via recorded meeting.
+3. Document results in `.artifacts/protocol-17/manual-validation-log.md`
+
+---
+
+## 17. HANDOFF CHECKLIST
+
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
+
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
+
+### Handoff to Protocol 18:
+**[PROTOCOL COMPLETE]** Ready for Protocol 18: Continuous Maintenance & Support Planning
+
+**Evidence Package:**
+- `CLOSURE-PACKAGE.zip` - Consolidated support handover materials
+- `closure-lessons-input.md` - Closure metrics and insights for retrospective
+
+**Execution:**
+```bash
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/18-maintenance-support.md
+```
+
+---
+
+## 17. EVIDENCE SUMMARY
+
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `closure-prerequisite-checklist.json` | `.artifacts/protocol-17/` | Verify prerequisites satisfied | Internal Audit |
+| `CLOSURE-PACKAGE.zip` | `.artifacts/protocol-17/` | Handover materials for support | Protocol 18 |
+| `operational-handover-record.json` | `.artifacts/protocol-17/` | Ownership and SLA confirmation | Protocol 18 |
+| `closure-lessons-input.md` | `.artifacts/protocol-17/` | Lessons for retrospective | Protocol 5 |
+
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |

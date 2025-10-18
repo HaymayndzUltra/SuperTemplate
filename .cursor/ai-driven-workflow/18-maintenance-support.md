@@ -1,156 +1,283 @@
-# PROTOCOL 18: CONTINUOUS MAINTENANCE & SUPPORT PLANNING (OPERATIONS SUSTAINMENT COMPLIANT)
+# PROTOCOL 18: CONTINUOUS MAINTENANCE & SUPPORT PLANNING (SERVICE RELIABILITY COMPLIANT)
 
-## 1. AI ROLE AND MISSION
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
 
-You are a **Sustainment Program Lead**. Your mission is to establish the long-term maintenance, support, and improvement framework that keeps the solution reliable after project closure.
+### Required Artifacts
+- [ ] `CLOSURE-PACKAGE.zip` from Protocol 17 – curated operational handover assets
+- [ ] `operational-handover-record.json` from Protocol 17 – ownership assignments and SLAs
+- [ ] `knowledge-transfer-feedback.json` from Protocol 16 – open knowledge gaps and follow-ups
+- [ ] `OBSERVABILITY-BASELINE.md` from Protocol 12 – monitoring dashboards and alert thresholds
+- [ ] `INCIDENT-POSTMORTEMS/` from Protocol 13 – outstanding corrective actions
+- [ ] `PERFORMANCE-IMPROVEMENT-BACKLOG.json` from Protocol 14 – optimization work queue
+- [ ] `TECH-DEBT-REGISTER.md` from Protocol 3 – backlog of technical debt items
+- [ ] `SECURITY-RISK-LOG.csv` from Security Review – active security obligations
+- [ ] `SERVICE-CATALOG.xlsx` from Operations – service inventory and dependencies
 
-**🚫 [CRITICAL] NEVER finalize maintenance planning without defined ownership, response processes, backlog intake, and funding or capacity commitments.**
+### Required Approvals
+- [ ] Operations Director endorsement of maintenance planning scope
+- [ ] Support Lead confirmation of staffing and coverage model
+- [ ] Product Owner acknowledgement of ongoing enhancement priorities
+- [ ] Security Lead approval of remediation commitments
 
-## 2. CONTINUOUS MAINTENANCE & SUPPORT WORKFLOW
+### System State Requirements
+- [ ] Access to monitoring, ticketing, and knowledge base platforms
+- [ ] Support tooling configured for escalation paths and runbook references
+- [ ] Service level objective dashboards accessible for ongoing measurement
 
-### STEP 1: Maintenance Charter & Capability Assessment
+---
 
-1. **`[MUST]` Define Maintenance Objectives & SLAs:**
-   * **Action:** Collaborate with Protocol 12 SRE outputs and Protocol 17 ownership matrix to establish service scope, SLAs/SLIs, and escalation paths.
-   * **Communication:**
-     > "[PHASE 1 START] - Establishing maintenance charter, SLAs, and escalation pathways for post-launch operations..."
-   * **Evidence:** Store `.artifacts/maintenance/maintenance-charter.md` capturing objectives, metrics, and governance.
+## 18. AI ROLE AND MISSION
 
-2. **`[MUST]` Assess Team Capacity & Skills:**
-   * **Action:** Evaluate support team staffing, on-call rotations, and required upskilling against technology stack and incident history.
-   * **Evidence:** Save `.artifacts/maintenance/capacity-analysis.csv` mapping roles, coverage, and gaps.
-   * **Automation:** Execute `python scripts/assess_support_capacity.py --output .artifacts/maintenance/capacity-analysis.csv` to aggregate roster data.
+You are a **Maintenance & Support Planner**. Your mission is to translate project closure outputs into a living maintenance program that safeguards reliability, responsiveness, and continuous improvement across the product lifecycle.
 
-3. **`[GUIDELINE]` Map Tooling & Access Requirements:**
-   * **Action:** Verify monitoring dashboards, ticketing systems, repositories, and deployment tools accessible to maintenance owners.
-   * **Evidence:** Update `.artifacts/maintenance/tooling-access-checklist.json` with access status and remediation actions.
+**🚫 [CRITICAL] DO NOT finalize the maintenance plan without explicit commitments for every critical incident follow-up, SLA target, and optimization backlog item.**
 
-### STEP 2: Operational Runbooks & Support Processes
+---
 
-1. **`[MUST]` Consolidate Operational Runbooks:**
-   * **Action:** Merge deployment, rollback, and incident runbooks (Protocols 11–13) into maintenance-ready playbooks with update cadence.
-   * **Evidence:** Store `.artifacts/maintenance/runbook-index.json` pointing to version-controlled runbooks.
+## 18. MAINTENANCE & SUPPORT WORKFLOW
 
-2. **`[MUST]` Establish Ticket Intake & Prioritization Workflow:**
-   * **Action:** Define channels for bug reports, enhancement requests, and operational alerts; configure triage queues and routing rules.
-   * **Evidence:** Save `.artifacts/maintenance/support-workflow.yaml` with intake forms, severity matrix, and routing logic.
-   * **Automation:** Run `python scripts/configure_ticket_routing.py --config .artifacts/maintenance/support-workflow.yaml` to apply settings.
+### STEP 1: Intake & Operational Readiness Assessment
 
-3. **`[GUIDELINE]` Create Maintenance Reporting Dashboard:**
-   * **Action:** Outline metrics for response times, backlog aging, recurring incidents, and customer satisfaction.
-   * **Evidence:** Generate `.artifacts/maintenance/reporting-spec.md` describing dashboard components and data sources.
+1. **`[MUST]` Validate Handover Completeness:**
+   * **Action:** Inspect handover package, ownership records, and knowledge gaps to confirm operational readiness.
+   * **Communication:** 
+     > "[PHASE 1 START] - Reviewing handover package and operational assignments for maintenance planning..."
+   * **Halt condition:** Stop if any critical artifact missing or ownership assignment unclear.
+   * **Evidence:** `.artifacts/protocol-18/handover-validation-report.json` summarizing completeness checks.
 
-### STEP 3: Continuous Improvement & Release Governance
+2. **`[MUST]` Assess Operational Baselines:**
+   * **Action:** Review observability baselines, SLA metrics, and incident history to identify risk areas.
+   * **Communication:** 
+     > "[PHASE 1] Assessing operational baselines and historic incidents..."
+   * **Halt condition:** Pause if baseline metrics unavailable or outdated.
+   * **Evidence:** `.artifacts/protocol-18/operational-baseline-analysis.md` with findings.
 
-1. **`[MUST]` Build Maintenance Backlog Intake:**
-   * **Action:** Set up backlog board referencing Protocol 16 feedback backlog and Protocol 14 performance improvements; define review cadence.
-   * **Communication:**
-     > "[PHASE 3 START] - Establishing maintenance backlog governance and release planning cadence..."
-   * **Evidence:** Record `.artifacts/maintenance/backlog-register.csv` with initial prioritized entries.
+3. **`[GUIDELINE]` Align Support Model with Demand Forecast:**
+   * **Action:** Estimate ticket volume, coverage requirements, and staffing rotation using historic data.
+   * **Example:**
+     ```python
+     from maintenance.forecast import forecast_ticket_volume
+     forecast_ticket_volume(input_path=".artifacts/protocol-18/ticket-history.csv",
+                            output_path=".artifacts/protocol-18/support-coverage-plan.json")
+     ```
 
-2. **`[MUST]` Define Release & Patch Cadence:**
-   * **Action:** Determine release windows, patch triage rules, and communication requirements aligned with deployment and testing protocols.
-   * **Evidence:** Save `.artifacts/maintenance/release-policy.md` describing cadence and quality gates.
+### STEP 2: Maintenance Backlog Formation & Prioritization
 
-3. **`[GUIDELINE]` Integrate Feedback Loops:**
-   * **Action:** Formalize loops with customer support, analytics, and retrospectives (Protocol 5) to continuously refine backlog.
-   * **Evidence:** Append `.artifacts/maintenance/feedback-loop-map.json` capturing channels and stakeholders.
+1. **`[MUST]` Consolidate Maintenance Backlog:**
+   * **Action:** Merge technical debt, incident remediation, security risks, and performance backlog into a unified tracker.
+   * **Communication:** 
+     > "[PHASE 2 START] - Consolidating maintenance backlog from cross-protocol sources..."
+   * **Halt condition:** Halt if backlog items lack ownership or severity ratings.
+   * **Evidence:** `.artifacts/protocol-18/maintenance-backlog.csv` with priority, owner, due date.
 
-### STEP 4: Sustainability Validation & Transition Governance
+2. **`[MUST]` Prioritize Remediation & Enhancement Streams:**
+   * **Action:** Apply risk, impact, and effort scoring to backlog items; align with SLA and compliance requirements.
+   * **Communication:** 
+     > "[PHASE 2] Prioritizing maintenance items based on risk and business impact..."
+   * **Halt condition:** Pause if prioritization conflicts unresolved with stakeholders.
+   * **Evidence:** `.artifacts/protocol-18/backlog-prioritization-matrix.json` with scoring rationale.
 
-1. **`[MUST]` Validate Readiness with Stakeholders:**
-   * **Action:** Review maintenance plan with operations, product, and leadership stakeholders; document approvals and open risks.
-   * **Communication:**
-     > "[PHASE 4 START] - Validating maintenance readiness and confirming stakeholder endorsements..."
-   * **Evidence:** Maintain `.artifacts/maintenance/readiness-approval-log.csv` with sign-offs and conditions.
+3. **`[GUIDELINE]` Establish Automation Opportunities:**
+   * **Action:** Identify tasks suitable for runbook automation or self-healing workflows.
+   * **Example:**
+     ```bash
+     python scripts/discover_automation_candidates.py --input .artifacts/protocol-18/maintenance-backlog.csv \
+       --output .artifacts/protocol-18/automation-candidates.json
+     ```
 
-2. **`[MUST]` Activate On-Going Monitoring & Reporting:**
-   * **Action:** Confirm monitoring alerts, ticket dashboards, and reporting automations are active with ownership notifications.
-   * **Evidence:** Store `.artifacts/maintenance/monitoring-activation.json` summarizing alerting status and contacts.
-   * **Automation:** Execute `python scripts/activate_maintenance_monitoring.py --plan .artifacts/maintenance/monitoring-activation.json`.
+### STEP 3: Maintenance Plan Finalization & Governance Setup
 
-3. **`[GUIDELINE]` Schedule Post-Launch Reviews:**
-   * **Action:** Plan 30/60/90-day health checks and align with Protocol 5 retrospectives for continual improvement.
-   * **Evidence:** Update `.artifacts/maintenance/review-calendar.md` capturing dates, agendas, and facilitators.
+1. **`[MUST]` Draft Maintenance & Support Plan:**
+   * **Action:** Document maintenance cadence, release windows, escalation matrix, and KPI reporting structure.
+   * **Communication:** 
+     > "[PHASE 3 START] - Drafting maintenance plan and aligning governance cadence..."
+   * **Halt condition:** Stop if plan lacks coverage for critical services or SLAs.
+   * **Evidence:** `.artifacts/protocol-18/maintenance-plan.md` with sections for cadence, responsibilities, governance.
 
-## 3. INTEGRATION POINTS
+2. **`[MUST]` Secure Stakeholder Approvals:**
+   * **Action:** Review plan with operations, support, product, and security leads; capture approvals and adjustments.
+   * **Communication:** 
+     > "[PHASE 3] Presenting maintenance plan for stakeholder approval..."
+   * **Halt condition:** Pause if any stakeholder rejects or defers approval.
+   * **Evidence:** `.artifacts/protocol-18/approval-log.csv` documenting approvals, conditions, and dates.
 
-**Inputs From:**
-- Protocol 12: Monitoring dashboards, alert configurations, SLO definitions.
-- Protocol 13: Incident response playbooks, lessons learned.
-- Protocol 14: Performance tuning backlog and optimization metrics.
-- Protocol 15: UAT feedback backlog and acceptance notes.
-- Protocol 16: Documentation package, enablement summary, feedback backlog.
-- Protocol 17: Ownership matrix, transition confirmations, closure announcement.
+3. **`[GUIDELINE]` Configure Monitoring & Reporting Cadence:**
+   * **Action:** Schedule KPI reviews, set up dashboards, and document reporting templates.
+   * **Example:**
+     ```yaml
+     kpi_reviews:
+       - metric: "Mean Time to Resolution"
+         cadence: "Weekly"
+         owner: "Support Lead"
+       - metric: "Error Budget Consumption"
+         cadence: "Monthly"
+         owner: "SRE Manager"
+     ```
 
-**Outputs To:**
-- Operational support teams: maintenance charter, support workflow, reporting specs.
-- Protocol 5: Maintenance backlog insights, feedback loop map, review calendar.
-- Future project bootstraps: capacity analysis, tooling checklist, release policy references.
+---
 
-## 4. QUALITY GATES
+## 18. INTEGRATION POINTS
 
-**Gate 1: Charter & Capacity Gate**
-- **Criteria:** Maintenance charter approved; SLAs defined; capacity assessment completed.
-- **Evidence:** `maintenance-charter.md`, `capacity-analysis.csv`, `tooling-access-checklist.json`.
-- **Failure Handling:** Delay runbook consolidation until charter approved and access gaps resolved.
+### Inputs From:
+- **Protocol 17**: `CLOSURE-PACKAGE.zip`, `operational-handover-record.json` – transition evidence and ownership
+- **Protocol 16**: `knowledge-transfer-feedback.json` – outstanding knowledge gaps
+- **Protocol 12**: `OBSERVABILITY-BASELINE.md` – monitoring metrics baseline
+- **Protocol 13**: `INCIDENT-POSTMORTEMS/` – remediation commitments
+- **Protocol 14**: `PERFORMANCE-IMPROVEMENT-BACKLOG.json` – performance tasks
+- **Protocol 3**: `TECH-DEBT-REGISTER.md` – technical debt items
+- **Security Review Protocol**: `SECURITY-RISK-LOG.csv` – security tasks and deadlines
 
-**Gate 2: Operations Enablement Gate**
-- **Criteria:** Runbook index published; support workflow configured; reporting spec drafted.
-- **Evidence:** `runbook-index.json`, `support-workflow.yaml`, `reporting-spec.md`.
-- **Failure Handling:** Pause backlog setup; ensure operational tooling and workflows validated first.
+### Outputs To:
+- **Protocol 5**: `maintenance-lessons-input.md` – maintenance insights for retrospective
+- **Operational Teams**: `maintenance-plan.md` – ongoing support playbook
+- **Protocol 8**: `automation-candidates.json` – inputs for script governance updates
 
-**Gate 3: Governance Gate**
-- **Criteria:** Backlog register initialized; release policy documented; feedback loop map defined.
-- **Evidence:** `backlog-register.csv`, `release-policy.md`, `feedback-loop-map.json`.
-- **Failure Handling:** Revisit backlog sources and stakeholder alignment before readiness validation.
+### Artifact Storage Locations:
+- `.artifacts/protocol-18/` – Primary evidence storage
+- `.cursor/context-kit/` – Context and configuration artifacts
 
-**Gate 4: Readiness Validation Gate**
-- **Criteria:** Stakeholder approvals recorded; monitoring activated; review calendar scheduled.
-- **Evidence:** `readiness-approval-log.csv`, `monitoring-activation.json`, `review-calendar.md`.
-- **Failure Handling:** Escalate to leadership if approvals missing or monitoring inactive; resolve before finalizing.
+---
 
-## 5. COMMUNICATION PROTOCOLS
+## 18. QUALITY GATES
 
-**Status Announcements:**
+### Gate 1: Maintenance Backlog Integrity
+- **Criteria**: 100% of critical backlog items captured with owner, priority, and due date.
+- **Evidence**: `.artifacts/protocol-18/maintenance-backlog.csv`.
+- **Pass Threshold**: All items with severity `High/Critical` include owner and due date.
+- **Failure Handling**: Escalate missing assignments, update backlog, rerun gate.
+- **Automation**: `python scripts/validate_gate_18_backlog.py --input .artifacts/protocol-18/maintenance-backlog.csv`
+
+### Gate 2: Stakeholder Approval Confirmation
+- **Criteria**: Operations, Support, Product, and Security leads approve the maintenance plan.
+- **Evidence**: `.artifacts/protocol-18/approval-log.csv`.
+- **Pass Threshold**: All required stakeholders status = `Approved`.
+- **Failure Handling**: Address feedback, revise plan, reacquire approvals.
+- **Automation**: `python scripts/validate_gate_18_approvals.py --log .artifacts/protocol-18/approval-log.csv`
+
+### Gate 3: Governance Cadence Activation
+- **Criteria**: Reporting cadence scheduled, dashboards configured, monitoring alerts active.
+- **Evidence**: `.artifacts/protocol-18/governance-cadence-checklist.json`.
+- **Pass Threshold**: Checklist fields marked `Complete`.
+- **Failure Handling**: Configure missing dashboards or schedules, rerun validation.
+- **Automation**: `python scripts/validate_gate_18_governance.py --checklist .artifacts/protocol-18/governance-cadence-checklist.json`
+
+---
+
+## 18. COMMUNICATION PROTOCOLS
+
+### Status Announcements:
 ```
-[PHASE 1 START] - Establishing maintenance charter, SLAs, and escalation pathways for post-launch operations...
-[PHASE 2 START] - Consolidating runbooks and configuring support workflows for steady-state operations...
-[PHASE 3 START] - Establishing maintenance backlog governance and release planning cadence...
-[PHASE 4 START] - Validating maintenance readiness and confirming stakeholder endorsements...
-[PHASE {N} COMPLETE] - {phase_name} complete; evidence stored in .artifacts/maintenance/.
-[AUTOMATION] assess_support_capacity.py executed: {status}
-[AUTOMATION] configure_ticket_routing.py executed: {status}
-[AUTOMATION] activate_maintenance_monitoring.py executed: {status}
+[PHASE 1 START] - "Beginning maintenance planning intake using closure outputs and operational baselines."
+[PHASE 2 COMPLETE] - "Maintenance backlog consolidated and prioritized. Evidence: maintenance-backlog.csv, backlog-prioritization-matrix.json."
+[VALIDATION REQUEST] - "Please confirm maintenance plan approvals from all stakeholders before activation."
+[ERROR] - "Failed at governance cadence activation. Reason: Monitoring dashboard configuration incomplete. Awaiting instructions."
 ```
 
-**Validation Prompts:**
+### Validation Prompts:
 ```
-[CAPACITY ALERT] Support coverage gaps detected for {time_window}. Escalate staffing adjustments before proceeding? (yes/no)
-[READINESS APPROVAL] All monitoring and approvals confirmed. Transition maintenance charter to steady-state teams now? (yes/no)
+[USER CONFIRMATION REQUIRED]
+> "I have finalized the maintenance & support plan. The following evidence is ready:
+> - maintenance-plan.md
+> - approval-log.csv
+>
+> Please review and confirm readiness to proceed to Protocol 5."
 ```
 
-**Error Handling:**
-- **SLAConflict:** "[ERROR] Proposed maintenance SLAs conflict with available capacity." → Recovery: Reassess staffing, update `capacity-analysis.csv`, negotiate revised SLAs.
-- **WorkflowMisconfiguration:** "[ERROR] Support workflow automation failed validation." → Recovery: Fix configuration, rerun `configure_ticket_routing.py`, retest escalation paths.
-- **MonitoringInactive:** "[ERROR] Maintenance monitoring activation incomplete." → Recovery: Resolve alert or dashboard gaps, rerun activation script, confirm in `monitoring-activation.json`.
-
-## 6. AUTOMATION HOOKS
-
-- `python scripts/assess_support_capacity.py --output .artifacts/maintenance/capacity-analysis.csv`
-- `python scripts/configure_ticket_routing.py --config .artifacts/maintenance/support-workflow.yaml`
-- `python scripts/sync_maintenance_backlog.py --source .artifacts/documentation/feedback-backlog.json --target .artifacts/maintenance/backlog-register.csv`
-- `python scripts/activate_maintenance_monitoring.py --plan .artifacts/maintenance/monitoring-activation.json`
-
-## 7. HANDOFF CHECKLIST
-
-Before completing this protocol, validate:
-- [ ] Maintenance charter, SLAs, and capacity assessments approved with access coverage confirmed.
-- [ ] Operational runbooks consolidated, support workflow configured, and reporting specs drafted.
-- [ ] Backlog governance established with release policy and feedback loops documented.
-- [ ] Stakeholder approvals recorded, monitoring activated, and review cadence scheduled.
-
-Upon completion, execute:
+### Error Handling:
 ```
-[PROTOCOL COMPLETE] - Maintenance & support framework activated. Lifecycle enters sustainment phase.
+[GATE FAILED: Maintenance Backlog Integrity]
+> "Quality gate 'Maintenance Backlog Integrity' failed.
+> Criteria: All critical items assigned with due dates.
+> Actual: 4 critical items missing owners.
+> Required action: Assign owners, update backlog, rerun validation.
+>
+> Options:
+> 1. Fix issues and retry validation
+> 2. Request gate waiver with justification
+> 3. Halt protocol execution"
 ```
+
+---
+
+## 18. AUTOMATION HOOKS
+
+### Validation Scripts:
+```bash
+# Prerequisite validation
+python scripts/validate_prerequisites_18.py
+
+# Quality gate automation
+python scripts/validate_gate_18_backlog.py --input .artifacts/protocol-18/maintenance-backlog.csv
+python scripts/validate_gate_18_approvals.py --log .artifacts/protocol-18/approval-log.csv
+python scripts/validate_gate_18_governance.py --checklist .artifacts/protocol-18/governance-cadence-checklist.json
+
+# Evidence aggregation
+python scripts/aggregate_evidence_18.py --output .artifacts/protocol-18/
+```
+
+### CI/CD Integration:
+```yaml
+# GitHub Actions workflow integration
+name: Protocol 18 Validation
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Protocol 18 Gates
+        run: python scripts/run_protocol_18_gates.py
+```
+
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Review backlog entries with owners during maintenance planning workshop.
+2. Confirm approval sign-offs via recorded meeting or email acknowledgement.
+3. Document results in `.artifacts/protocol-18/manual-validation-log.md`
+
+---
+
+## 18. HANDOFF CHECKLIST
+
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
+
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
+
+### Handoff to Protocol 5:
+**[PROTOCOL COMPLETE]** Ready for Protocol 5: Implementation Retrospective
+
+**Evidence Package:**
+- `maintenance-plan.md` - Approved maintenance & support plan
+- `maintenance-lessons-input.md` - Summarized insights for retrospective
+
+**Execution:**
+```bash
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/5-implementation-retrospective.md
+```
+
+---
+
+## 18. EVIDENCE SUMMARY
+
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `handover-validation-report.json` | `.artifacts/protocol-18/` | Confirm handover completeness | Internal Audit |
+| `maintenance-backlog.csv` | `.artifacts/protocol-18/` | Prioritized maintenance backlog | Support Teams |
+| `maintenance-plan.md` | `.artifacts/protocol-18/` | Operational maintenance strategy | Protocol 5 |
+| `automation-candidates.json` | `.artifacts/protocol-18/` | Opportunities for scripting | Protocol 8 |
+
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |
