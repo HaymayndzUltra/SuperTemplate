@@ -18,6 +18,32 @@ The **AI-Driven Workflow System** is a comprehensive, 28-protocol development li
 - ✅ **Automation Integration**: Scripts and CI/CD integration
 - ✅ **Scalable**: From simple projects to complex enterprise systems
 
+## 🔄 Next Implementation Cycle Guide
+
+Leverage the findings captured in `documentation/pr-comparison-analysis.md` and the refreshed `documentation/action-roadmap.md` to steer the next delivery sprint:
+
+1. **Establish Telemetry First**
+   - Build automated inventory and scoring utilities before modifying protocols. Generated artefacts (JSON/CSV) must live under `documentation/` and be referenced in commits.
+   - Update CI or helper scripts so the new tools run via documented commands (for example, `python scripts/<inventory-tool>.py`). Capture command output for evidence packages.
+
+2. **Restore Gate Automation Incrementally**
+   - Implement configuration-driven gate runners and Phase 0-2 validators once telemetry is in place. Validators must emit evidence compliant with the manifest schema defined in Wave 1 of the roadmap.
+   - Attach regression fixtures for each validator and wire them into the expanded integration harness (Wave 4 testing scope).
+
+3. **Harden Governance & Documentation**
+   - Expand `scripts/script-registry.json`, publish Cursor-independent bootstrapping guidance, and generate Protocol 23 artefacts (script index, documentation audit, remediation backlog) per roadmap Wave 3.
+   - Update protocol Markdown files immediately after new automation or guidance lands to keep references accurate.
+
+4. **Execute Testing & Scenario Validation**
+   - Extend `test_workflow_integration.sh` (or successor) to cover gate runners, validators, and evidence manifest generation.
+   - Run freelance, enterprise, and startup scenario playbooks once automation exists. Archive outputs in `.artifacts/` and link them from readiness reports.
+
+5. **Evidence & Handoff Expectations**
+   - Each PR must include regenerated JSON scorecards, script inventories, and updated readiness metrics alongside Markdown refreshes.
+   - Summarise closed roadmap tasks in PR descriptions and attach logs or artefacts demonstrating gate execution.
+
+Follow this sequence to avoid repeating automation and governance gaps highlighted in upstream PRs #29-#32. Update the roadmap if priorities shift, but always document rationale and evidence.
+
 ---
 
 ## 📋 Complete Protocol Inventory (28 Protocols)
