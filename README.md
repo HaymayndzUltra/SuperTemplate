@@ -158,6 +158,22 @@ Located in `.artifacts/scripts/`:
 - **`artifact-compliance-report.json`**: Artifact structure compliance
 - **`protocol-4-extension-report.json`**: Protocol extension analysis
 
+### Local PR Comparison Utility
+
+Use `scripts/compare_prs.py` when you need an offline-friendly way to review
+multiple GitHub pull requests and decide which one to merge first.
+
+```bash
+python scripts/compare_prs.py 1 3 4 8 --repo HaymayndzUltra/SuperTemplate
+```
+
+- **Inputs**: Up to four PR numbers. Pass `--repo owner/name` or rely on the
+  current git remote. Optionally supply `--token` (or set `GITHUB_TOKEN`) to
+  raise API limits.
+- **Outputs**: Recommended PR to merge, merge order suggestions, risk/priority
+  breakdowns, and a conflict matrix that highlights overlapping files between
+  PRs.
+
 ### Cursor Commands
 Available slash commands in `.cursor/commands/`:
 - **`/compare-prs`**: Advanced PR comparison and analysis
