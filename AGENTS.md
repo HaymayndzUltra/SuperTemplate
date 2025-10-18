@@ -1,26 +1,6 @@
-# 🚀 AI-DRIVEN WORKFLOW SYSTEM - COMPREHENSIVE AGENTS DOCUMENTATION
+# AI-Driven Workflow System
 
-## ⚠️ CRITICAL PRE-FLIGHT VERIFICATION COMMAND
-
-**BEFORE PROCEEDING WITH ANY TASK, YOU MUST EXECUTE THIS VERIFICATION:**
-
-```bash
-# MANDATORY: Verify system integrity before ANY action
-@verify-system-state AGENTS.md
-```
-
-**This command ensures:**
-- All protocols are properly loaded and accessible
-- Master rules are correctly initialized
-- Workflow dependencies are validated
-- Evidence collection systems are operational
-- Quality gates are properly configured
-
-**FAILURE TO EXECUTE THIS VERIFICATION WILL RESULT IN SYSTEM FAILURE.**
-
----
-
-## 📋 SYSTEM OVERVIEW
+## 🚀 Overview
 
 The **AI-Driven Workflow System** is a comprehensive, 28-protocol development lifecycle that transforms AI from a simple code generator into a reliable engineering partner. This system provides structured, evidence-based workflows for complete software development from client discovery to project closure.
 
@@ -40,574 +20,163 @@ The **AI-Driven Workflow System** is a comprehensive, 28-protocol development li
 
 ---
 
-## 🏗️ COMPLETE SYSTEM ARCHITECTURE
-
-### Directory Structure
-```
-AI-DRIVEN-TEMPLATE-TESTING/
-├── .cursor/
-│   ├── rules/
-│   │   ├── master-rules/           # 8 Core Master Rules
-│   │   ├── common-rules/           # 3 Domain-Specific Rules
-│   │   ├── elaboration-specialist.mdc
-│   │   └── meta-instruction-explain.mdc
-│   ├── ai-driven-workflow/        # 28 Protocol System
-│   │   ├── 01-client-proposal-generation.md
-│   │   ├── 02-client-discovery-initiation.md
-│   │   ├── 03-project-brief-creation.md
-│   │   ├── 04-project-bootstrap-and-context-engineering.md
-│   │   ├── 05-bootstrap-your-project.md
-│   │   ├── 06-create-prd.md
-│   │   ├── 07-technical-design-architecture.md
-│   │   ├── 08-generate-tasks.md
-│   │   ├── 09-environment-setup-validation.md
-│   │   ├── 10-process-tasks.md
-│   │   ├── 11-integration-testing.md
-│   │   ├── 12-quality-audit.md
-│   │   ├── 13-uat-coordination.md
-│   │   ├── 14-pre-deployment-staging.md
-│   │   ├── 15-production-deployment.md
-│   │   ├── 16-monitoring-observability.md
-│   │   ├── 17-incident-response-rollback.md
-│   │   ├── 18-performance-optimization.md
-│   │   ├── 19-documentation-knowledge-transfer.md
-│   │   ├── 20-project-closure.md
-│   │   ├── 21-maintenance-support.md
-│   │   ├── 22-implementation-retrospective.md
-│   │   ├── 23-script-governance-protocol.md
-│   │   ├── 24-client-discovery.md
-│   │   ├── 25-protocol-integration-map.md
-│   │   ├── 26-integration-guide.md
-│   │   ├── 27-validation-guide.md
-│   │   └── review-protocols/       # Specialized Review Protocols
-│   │       ├── code-review.md
-│   │       ├── security-check.md
-│   │       ├── architecture-review.md
-│   │       ├── design-system.md
-│   │       ├── ui-accessibility.md
-│   │       └── pre-production.md
-│   └── commands/                   # Cursor Commands
-│       ├── AGENTS.md
-│       ├── elaborate.md
-│       ├── protocol-orchestrator.md
-│       ├── generate-cursor-rules.md
-│       ├── generate-proposal.md
-│       └── meta-analysis-generator.md
-├── scripts/                       # 100+ Automation Scripts
-│   ├── README.md                  # Complete Script Documentation
-│   ├── run_workflow.py
-│   ├── ai_orchestrator.py
-│   ├── workflow_automation.py
-│   ├── ai_executor.py
-│   ├── validation_gates.py
-│   ├── compliance_validator.py
-│   ├── evidence_manager.py
-│   ├── quality_gates.py
-│   └── [95+ additional scripts]
-├── generators/                    # Protocol Generators
-├── template-packs/               # Template System
-├── gates_config.yaml            # Quality Gates Configuration
-├── README.md                     # System Overview
-└── AGENTS.md                     # This Documentation
-```
-
----
-
-## 🎯 MASTER RULES SYSTEM
-
-### Core Master Rules (8 Rules)
-
-#### 1. Context Discovery Protocol (`1-master-rule-context-discovery.mdc`)
-**Purpose**: System BIOS - Initializes foundational operating parameters
-**Key Features**:
-- Exhaustive rule inventory protocol
-- Operational context gathering
-- Relevance evaluation and selection
-- Dynamic context re-evaluation protocol
-- Collaboration protocol activation checkpoints
-
-**Critical Directives**:
-- `[STRICT]` Initial cognitive lock (mandatory internal monologue)
-- `[STRICT]` Context optimization principle
-- `[STRICT]` Discovery robustness protocol
-- `[STRICT]` Report and application (blocking and mandatory action)
-
-#### 2. AI Collaboration Guidelines (`2-master-rule-ai-collaboration-guidelines.mdc`)
-**Purpose**: Supreme operational protocol governing AI-user collaboration
-**Key Features**:
-- Conflict resolution mechanisms
-- Doubt clarification protocols
-- Continuous improvement processes
-- Workflow orchestration guidelines
-
-#### 3. Code Quality Checklist (`3-master-rule-code-quality-checklist.mdc`)
-**Purpose**: Strict checklist for code quality standards
-**Key Features**:
-- Robustness and reliability standards
-- Security best practices
-- Clarity and maintainability guidelines
-- High-level project standards adherence
-
-#### 4. Code Modification Safety Protocol (`4-master-rule-code-modification-safety-protocol.mdc`)
-**Purpose**: Comprehensive protocol for safe code modification
-**Key Features**:
-- Pre-analysis and risk assessment
-- Surgical implementation procedures
-- Validation to prevent regressions
-- Safety checkpoints and rollback procedures
-
-#### 5. Documentation and Context Guidelines (`5-master-rule-documentation-and-context-guidelines.mdc`)
-**Purpose**: Ensures documentation maintenance and context integrity
-**Key Features**:
-- Documentation update protocols
-- Context integrity maintenance
-- README.md management
-- Knowledge transfer procedures
-
-#### 6. How to Create Effective Rules (`6-master-rule-how-to-create-effective-rules.mdc`)
-**Purpose**: Single source of truth for creating effective AI rules
-**Key Features**:
-- Rule creation guidelines
-- Discoverability optimization
-- Maintainability standards
-- 4 core pillars framework
-
-#### 9. Protocol Orchestrator (`9-master-rule-protocol-orchestrator.mdc`)
-**Purpose**: Intelligence layer for analyzing project briefs and generating optimal protocol sequences
-**Key Features**:
-- Project brief analysis
-- Protocol sequence generation
-- Dependency management
-- Automation hooks and quality gates
-
-#### Advanced Meta-Instruction Intelligence System (`advanced-meta-instruction-intelligence-system.mdc`)
-**Purpose**: Advanced Meta-Instruction Intelligence System with 7-layer deep analysis
-**Key Features**:
-- Structural analysis
-- Cognitive analysis
-- Integration analysis
-- Execution analysis
-- Impact analysis
-- Quality analysis
-- Evolutionary analysis
-
-### Common Rules (3 Rules)
-
-#### UI Foundation Design System (`common-rule-ui-foundation-design-system.mdc`)
-**Purpose**: Normalize UI foundations and emit production-ready tokens
-**Key Features**:
-- Design tokens and style guides
-- Accessibility compliance (AA standards)
-- Grid systems and spacing
-- Typography standards
-
-#### UI Interaction A11y Perf (`common-rule-ui-interaction-a11y-perf.mdc`)
-**Purpose**: Make interfaces feel professional via micro-interactions and accessibility
-**Key Features**:
-- Micro-interactions and animations
-- Full accessibility compliance
-- Keyboard navigation
-- Performance optimization (LCP, INP)
-
-#### UI Premium Brand Dataviz Enterprise Gated (`common-rule-ui-premium-brand-dataviz-enterprise-gated.mdc`)
-**Purpose**: Elevate perceived quality with brand and data-viz while guarding AA/perf
-**Key Features**:
-- Premium brand elements
-- Data visualization components
-- Enterprise feature gating
-- RBAC and audit trails
-
-### Specialized Rules
-
-#### Elaboration Specialist (`elaboration-specialist.mdc`)
-**Purpose**: Convert baroque or unclear instructions into clear, detailed meaning
-**Key Features**:
-- Instruction clarification
-- Context elaboration
-- Requirement refinement
-- Communication optimization
-
-#### Meta-Instruction Explain (`meta-instruction-explain.mdc`)
-**Purpose**: Meta-instruction analysis and explanation
-**Key Features**:
-- Instruction analysis
-- Context explanation
-- Requirement interpretation
-- System understanding
-
----
-
-## 🔄 AI-DRIVEN WORKFLOW PROTOCOLS (28 Protocols)
+## 📋 Complete Protocol Inventory (28 Protocols)
 
 ### Phase 0: Foundation & Discovery (01-05)
+**Purpose**: Client engagement, discovery, and project initialization
 
-#### Protocol 01: Client Proposal Generation
-**Purpose**: Generate professional client proposals
-**Key Features**:
-- Job post analysis
-- Tone mapping
-- Proposal validation
-- Client engagement strategies
-
-#### Protocol 02: Client Discovery Initiation
-**Purpose**: Initiate structured client discovery process
-**Key Features**:
-- Requirements gathering
-- Stakeholder mapping
-- Risk assessment
-- Scope validation
-
-#### Protocol 03: Project Brief Creation
-**Purpose**: Create comprehensive project brief
-**Key Features**:
-- Scope definition
-- Success criteria
-- Timeline planning
-- Resource allocation
-
-#### Protocol 04: Project Bootstrap and Context Engineering
-**Purpose**: Bootstrap project with context
-**Key Features**:
-- Environment setup
-- Tooling configuration
-- Team alignment
-- Context initialization
-
-#### Protocol 05: Bootstrap Your Project
-**Purpose**: Initialize project structure
-**Key Features**:
-- Codebase analysis
-- Architecture setup
-- Development environment
-- Project scaffolding
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **01** | `client-proposal-generation.md` | Generate professional client proposals | Job post analysis, tone mapping, proposal validation |
+| **02** | `client-discovery-initiation.md` | Initiate client discovery process | Requirements gathering, stakeholder mapping, risk assessment |
+| **03** | `project-brief-creation.md` | Create comprehensive project brief | Scope definition, success criteria, timeline planning |
+| **04** | `project-bootstrap-and-context-engineering.md` | Bootstrap project with context | Environment setup, tooling configuration, team alignment |
+| **05** | `bootstrap-your-project.md` | Initialize project structure | Codebase analysis, architecture setup, development environment |
 
 ### Phase 1-2: Planning & Design (06-09)
+**Purpose**: Requirements documentation, architecture design, and task planning
 
-#### Protocol 06: Create PRD
-**Purpose**: Create Product Requirements Document
-**Key Features**:
-- Requirements analysis
-- Feature specification
-- Acceptance criteria
-- Implementation readiness
-
-#### Protocol 07: Technical Design Architecture
-**Purpose**: Design technical architecture
-**Key Features**:
-- System design
-- Technology selection
-- Integration planning
-- Architecture validation
-
-#### Protocol 08: Generate Tasks
-**Purpose**: Generate development tasks
-**Key Features**:
-- Task decomposition
-- Effort estimation
-- Priority ordering
-- Dependency mapping
-
-#### Protocol 09: Environment Setup Validation
-**Purpose**: Setup and validate development environment
-**Key Features**:
-- Environment configuration
-- Tooling validation
-- CI/CD setup
-- Quality assurance
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **06** | `create-prd.md` | Create Product Requirements Document | Requirements analysis, feature specification, acceptance criteria |
+| **07** | `technical-design-architecture.md` | Design technical architecture | System design, technology selection, integration planning |
+| **08** | `generate-tasks.md` | Generate development tasks | Task decomposition, effort estimation, priority ordering |
+| **09** | `environment-setup-validation.md` | Setup and validate development environment | Environment configuration, tooling validation, CI/CD setup |
 
 ### Phase 3: Development (10-11)
+**Purpose**: Task execution and integration testing
 
-#### Protocol 10: Process Tasks
-**Purpose**: Execute development tasks
-**Key Features**:
-- Task implementation
-- Code review
-- Evidence collection
-- Progress tracking
-
-#### Protocol 11: Integration Testing
-**Purpose**: Perform integration testing
-**Key Features**:
-- API testing
-- System integration
-- End-to-end validation
-- Regression testing
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **10** | `process-tasks.md` | Execute development tasks | Task implementation, code review, evidence collection |
+| **11** | `integration-testing.md` | Perform integration testing | API testing, system integration, end-to-end validation |
 
 ### Phase 4: Quality & Testing (12-14)
+**Purpose**: Quality assurance, user acceptance testing, and pre-deployment
 
-#### Protocol 12: Quality Audit
-**Purpose**: Comprehensive quality audit
-**Key Features**:
-- Code review
-- Security scan
-- Performance analysis
-- Quality gates
-
-#### Protocol 13: UAT Coordination
-**Purpose**: User Acceptance Testing coordination
-**Key Features**:
-- UAT planning
-- Stakeholder coordination
-- Feedback integration
-- Acceptance validation
-
-#### Protocol 14: Pre-Deployment Staging
-**Purpose**: Pre-deployment staging validation
-**Key Features**:
-- Staging environment
-- Final testing
-- Deployment preparation
-- Go-live readiness
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **12** | `quality-audit.md` | Comprehensive quality audit | Code review, security scan, performance analysis |
+| **13** | `uat-coordination.md` | User Acceptance Testing coordination | UAT planning, stakeholder coordination, feedback integration |
+| **14** | `pre-deployment-staging.md` | Pre-deployment staging validation | Staging environment, final testing, deployment preparation |
 
 ### Phase 5: Deployment & Operations (15-18)
+**Purpose**: Production deployment, monitoring, and incident management
 
-#### Protocol 15: Production Deployment
-**Purpose**: Production deployment execution
-**Key Features**:
-- Deployment strategy
-- Rollback planning
-- Go-live coordination
-- Production validation
-
-#### Protocol 16: Monitoring Observability
-**Purpose**: Setup monitoring and observability
-**Key Features**:
-- Metrics collection
-- Alerting
-- Performance monitoring
-- Incident detection
-
-#### Protocol 17: Incident Response Rollback
-**Purpose**: Incident response and rollback procedures
-**Key Features**:
-- Incident management
-- Rollback execution
-- Post-incident analysis
-- Recovery procedures
-
-#### Protocol 18: Performance Optimization
-**Purpose**: Performance optimization
-**Key Features**:
-- Performance analysis
-- Optimization implementation
-- Monitoring
-- Continuous improvement
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **15** | `production-deployment.md` | Production deployment execution | Deployment strategy, rollback planning, go-live coordination |
+| **16** | `monitoring-observability.md` | Setup monitoring and observability | Metrics collection, alerting, performance monitoring |
+| **17** | `incident-response-rollback.md` | Incident response and rollback procedures | Incident management, rollback execution, post-incident analysis |
+| **18** | `performance-optimization.md` | Performance optimization | Performance analysis, optimization implementation, monitoring |
 
 ### Phase 6: Closure & Maintenance (19-23)
+**Purpose**: Project closure, documentation, and ongoing maintenance
 
-#### Protocol 19: Documentation Knowledge Transfer
-**Purpose**: Documentation and knowledge transfer
-**Key Features**:
-- Technical documentation
-- User guides
-- Knowledge transfer
-- Documentation maintenance
-
-#### Protocol 20: Project Closure
-**Purpose**: Project closure and handover
-**Key Features**:
-- Deliverable validation
-- Stakeholder sign-off
-- Project closure
-- Handover procedures
-
-#### Protocol 21: Maintenance Support
-**Purpose**: Ongoing maintenance and support
-**Key Features**:
-- Maintenance planning
-- Support procedures
-- SLA management
-- Continuous support
-
-#### Protocol 22: Implementation Retrospective
-**Purpose**: Implementation retrospective
-**Key Features**:
-- Process analysis
-- Lessons learned
-- Improvement recommendations
-- Knowledge capture
-
-#### Protocol 23: Script Governance Protocol
-**Purpose**: Script governance and management
-**Key Features**:
-- Script validation
-- Automation governance
-- Maintenance procedures
-- Quality assurance
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **19** | `documentation-knowledge-transfer.md` | Documentation and knowledge transfer | Technical documentation, user guides, knowledge transfer |
+| **20** | `project-closure.md` | Project closure and handover | Deliverable validation, stakeholder sign-off, project closure |
+| **21** | `maintenance-support.md` | Ongoing maintenance and support | Maintenance planning, support procedures, SLA management |
+| **22** | `implementation-retrospective.md` | Implementation retrospective | Process analysis, lessons learned, improvement recommendations |
+| **23** | `script-governance-protocol.md` | Script governance and management | Script validation, automation governance, maintenance procedures |
 
 ### Supporting Protocols (24-27)
+**Purpose**: Additional tools and reference materials
 
-#### Protocol 24: Client Discovery
-**Purpose**: Extended client discovery
-**Key Features**:
-- Deep discovery
-- Stakeholder analysis
-- Requirement validation
-- Relationship building
-
-#### Protocol 25: Protocol Integration Map
-**Purpose**: Protocol integration mapping
-**Key Features**:
-- Workflow visualization
-- Dependency mapping
-- Integration points
-- System architecture
-
-#### Protocol 26: Integration Guide
-**Purpose**: Integration and automation guide
-**Key Features**:
-- Script integration
-- CI/CD setup
-- Automation configuration
-- System integration
-
-#### Protocol 27: Validation Guide
-**Purpose**: Validation and quality guide
-**Key Features**:
-- Quality criteria
-- Validation procedures
-- Compliance checking
-- Quality assurance
+| Protocol | Name | Purpose | Key Features |
+|----------|------|---------|--------------|
+| **24** | `client-discovery.md` | Extended client discovery | Deep discovery, stakeholder analysis, requirement validation |
+| **25** | `protocol-integration-map.md` | Protocol integration mapping | Workflow visualization, dependency mapping, integration points |
+| **26** | `integration-guide.md` | Integration and automation guide | Script integration, CI/CD setup, automation configuration |
+| **27** | `validation-guide.md` | Validation and quality guide | Quality criteria, validation procedures, compliance checking |
 
 ---
 
-## 🔍 REVIEW PROTOCOLS SYSTEM
+## 🎯 Master Rules System
 
-### Specialized Review Protocols
+The system includes **8 master rules** that govern AI behavior and ensure consistent, high-quality execution:
 
-#### Code Review Protocol (`code-review.md`)
-**Purpose**: Code quality validation and DDD compliance
-**Key Features**:
-- Design and structure compliance
-- Test validation
-- Static analysis integration
-- Feedback documentation
-- Decision recording
+| Rule | Name | Purpose |
+|------|------|---------|
+| **1** | `context-discovery-protocol` | Context gathering and rule loading |
+| **2** | `ai-collaboration-guidelines` | AI-user collaboration protocols |
+| **3** | `code-quality-checklist` | Code quality standards and best practices |
+| **4** | `code-modification-safety-protocol` | Safe code modification procedures |
+| **5** | `documentation-and-context-guidelines` | Documentation maintenance and context integrity |
+| **6** | `how-to-create-effective-rules` | Rule creation and optimization guidelines |
+| **9** | `protocol-orchestrator` | Protocol orchestration and workflow management |
+| **Advanced** | `advanced-meta-instruction-intelligence-system` | Advanced analysis and intelligence system |
 
-**Quality Gates**:
-- Standards Compliance Gate
-- Test Coverage & Quality Gate
-- Feedback Resolution Gate
+### Additional Cursor Rules
+The system also includes specialized rules for specific domains:
 
-#### Security Check Protocol (`security-check.md`)
-**Purpose**: Security compliance and vulnerability assessment
-**Key Features**:
-- Automated security scans (SAST, DAST, dependency)
-- Manual security assessment
-- Threat scenario simulations
-- Findings consolidation
-- Risk disposition
-
-**Quality Gates**:
-- Scan Cleanliness Gate
-- Manual Control Verification Gate
-- Risk Disposition Integrity Gate
-
-#### Architecture Review Protocol (`architecture-review.md`)
-**Purpose**: Architecture validation and performance analysis
-**Key Features**:
-- Architecture compliance
-- Performance analysis
-- Scalability assessment
-- Integration validation
-- Design pattern compliance
-
-#### Design System Protocol (`design-system.md`)
-**Purpose**: UI/UX compliance and component validation
-**Key Features**:
-- Design system compliance
-- Component validation
-- Accessibility standards
-- Brand consistency
-- User experience validation
-
-#### UI Accessibility Protocol (`ui-accessibility.md`)
-**Purpose**: Accessibility validation and compliance
-**Key Features**:
-- WCAG compliance
-- Screen reader compatibility
-- Keyboard navigation
-- Color contrast validation
-- Accessibility testing
-
-#### Pre-Production Protocol (`pre-production.md`)
-**Purpose**: Pre-deployment validation and readiness check
-**Key Features**:
-- Deployment readiness
-- Environment validation
-- Configuration verification
-- Performance baseline
-- Go-live checklist
+| Rule Type | Location | Purpose |
+|-----------|----------|---------|
+| **Common Rules** | `.cursor/rules/common-rules/` | Domain-specific guidelines (UI, backend, etc.) |
+| **Project Rules** | `.cursor/rules/project-rules/` | Project-specific configurations |
+| **Elaboration Specialist** | `.cursor/rules/elaboration-specialist.mdc` | Enhanced instruction clarification |
+| **Meta Instructions** | `.cursor/rules/meta-instruction-explain.mdc` | Meta-instruction analysis and explanation |
 
 ---
 
-## ⚙️ AUTOMATION INTEGRATION SYSTEM
+## 🔍 Quality Audit System
 
-### Script Integration (100+ Scripts)
+### Review Protocols
+Located in `.cursor/ai-driven-workflow/review-protocols/`:
 
-#### Core Orchestration Scripts
-- **`run_workflow.py`** - CLI entry point, configuration loading, main execution hub
-- **`ai_orchestrator.py`** - Central AI coordination engine for 7-phase workflow execution
-- **`workflow_automation.py`** - Adapter bridging orchestration and quality/validation gates
-- **`ai_executor.py`** - Main orchestrator executing complete unified workflow
+- **`code-review.md`**: Code quality validation and DDD compliance
+- **`security-check.md`**: Security compliance and vulnerability assessment
+- **`architecture-review.md`**: Architecture validation and performance analysis
+- **`design-system.md`**: UI/UX compliance and component validation
+- **`ui-accessibility.md`**: Accessibility validation and compliance
+- **`pre-production.md`**: Pre-deployment validation and readiness check
 
-#### Human Oversight & Validation Scripts
-- **`validation_gates.py`** - Human validation checkpoints, approval workflows, evidence tracking
-- **`validate_prd_gate.py`** - Validates PRD sign-off metadata and supporting architecture notes
-- **`validate_workflow_integration.py`** - Validates end-to-end workflow integration
-- **`validate_ai_directives.py`** - Validates AI directive structure and compliance
-- **`detect_instruction_conflicts.py`** - Detects ambiguous, conflicting, or contradictory instructions
-- **`generate_consistency_report.py`** - Generates comprehensive consistency reports
-- **`validate_protocol_steps.py`** - Validates logical flow and sequence of steps
-- **`validate_protocol_handoffs.py`** - Validates protocol transitions and handoff logic
-- **`validate_script_bindings.py`** - Validates automation script bindings
-- **`simulate_protocol_execution.py`** - Simulates AI execution of protocols
-- **`test_policy_decisions.py`** - Policy router regression test runner
-- **`check_hipaa.py`** - Lightweight HIPAA compliance checks
-- **`router_benchmark.py`** - Benchmarks router route_decision performance
+### Quality Gates
+Each protocol includes quality gates with:
+- **Prerequisite Gates**: Must pass before protocol execution
+- **Execution Gates**: Must pass during protocol execution
+- **Completion Gates**: Must pass before protocol completion
+- **Integration Gates**: Must pass for workflow integration
 
-#### Brief & Generation Scripts
-- **`analyze_brief.py`** - Extracts structured metadata, maps protocols, classifies domains
-- **`brief_processor.py`** - Unified brief analysis and project generator integration
-- **`generate_from_brief.py`** - Generates separate frontend/backend projects with curated rules
-- **`generate_client_project.py`** - Main CLI script for industry-specific, compliance-ready projects
-- **`generate_prd_assets.py`** - Generates PRD and architecture summaries
+---
 
-#### Compliance & Evidence Scripts
-- **`compliance_validator.py`** - Performs HIPAA/GDPR/SOX/PCI compliance checks
-- **`evidence_manager.py`** - Comprehensive evidence tracking with SHA-256 checksums
-- **`evidence_schema_converter.py`** - Converts legacy evidence formats to unified schema
-- **`evidence_report.py`** - Generates comprehensive evidence reports
-- **`aggregate_coverage.py`** - Aggregates frontend and backend coverage results
-- **`collect_coverage.py`** - Collects Python coverage using pytest-cov
-- **`migrate_evidence_data.py`** - Migrates historical evidence data
+## ⚙️ Automation Integration
 
-#### Quality Assurance Scripts
-- **`quality_gates.py`** - Multi-layer quality validation with specialized protocols
-- **`enforce_gates.py`** - Enforces numeric quality gates for CI/CD pipelines
-- **`scan_deps.py`** - Scans dependencies for vulnerabilities
-- **`collect_perf.py`** - Collects performance metrics for quality gate enforcement
+### Script Integration
+The system integrates with automation scripts for:
+- **Project Analysis**: `analyze_codebase.py`, `classify_domain.py`
+- **Validation**: `validate_prd.py`, `validate_tasks.py`
+- **Execution**: `execute_task.py`, `evidence_report.py`
+- **Quality**: `run_quality_audit.py`, `aggregate_coverage.py`
+
+### Available Scripts
+Located in `.artifacts/scripts/`:
+- **`script-index.json`**: Complete script inventory and capabilities
+- **`static-analysis-report.json`**: Code analysis and quality metrics
+- **`validation-report.json`**: Protocol validation results
+- **`artifact-compliance-report.json`**: Artifact structure compliance
+- **`protocol-4-extension-report.json`**: Protocol extension analysis
 
 ### Cursor Commands
-
-#### Available Slash Commands
-- **`/compare-prs`** - Advanced PR comparison and analysis
-- **`/elaborate`** - Enhanced instruction clarification
-- **`/generate-cursor-rules`** - Automated rule generation
-- **`/generate-proposal`** - Client proposal generation
-- **`/protocol-orchestrator`** - Workflow orchestration
-- **`/meta-analysis-generator`** - Meta-analysis and intelligence
+Available slash commands in `.cursor/commands/`:
+- **`/compare-prs`**: Advanced PR comparison and analysis
+- **`/elaborate`**: Enhanced instruction clarification
+- **`/generate-cursor-rules`**: Automated rule generation
+- **`/generate-proposal`**: Client proposal generation
+- **`/protocol-orchestrator`**: Workflow orchestration
+- **`/meta-analysis-generator`**: Meta-analysis and intelligence
 
 ### Template Packs & Generators
+Located in `generators/` directory:
+- **Protocol Generators**: Automated protocol creation (6-18)
+- **Input Forms**: YAML-based configuration templates
+- **Generator Instructions**: Step-by-step generation guides
+- **Quick Start Guides**: Rapid setup and deployment
+- **Meta Analysis**: Advanced analysis and intelligence tools
 
-#### Protocol Generators
-- Automated protocol creation (6-18)
-- Input forms with YAML-based configuration templates
-- Generator instructions with step-by-step guides
-- Quick start guides for rapid setup and deployment
-- Meta analysis tools for advanced intelligence
-
-#### Template Packs System
+### Template Packs System
+Located in `template-packs/` directory:
 - **Backend Templates**: Django, FastAPI, NestJS, Go frameworks
 - **Frontend Templates**: Next.js, Nuxt, Angular, Expo frameworks
 - **Database Templates**: PostgreSQL, MongoDB, Firebase configurations
@@ -623,7 +192,7 @@ AI-DRIVEN-TEMPLATE-TESTING/
 
 ---
 
-## 🚀 QUICK START GUIDE
+## 🚀 Quick Start Guide
 
 ### Basic Usage
 1. **Initialize Project**: Start with Protocol 05 (bootstrap-your-project.md)
@@ -653,7 +222,7 @@ AI-DRIVEN-TEMPLATE-TESTING/
 
 ---
 
-## 📖 COMPLETE LIFECYCLE COMMAND PLAYBOOK
+## 📖 Complete Lifecycle Command Playbook
 
 ### Client Project Lifecycle (Full SDLC)
 
@@ -814,7 +383,7 @@ AI-DRIVEN-TEMPLATE-TESTING/
 
 ---
 
-## 🔧 ADVANCED USAGE
+## 🔧 Advanced Usage
 
 ### Custom Workflows
 Create custom sequences for specific needs:
@@ -857,7 +426,7 @@ python scripts/validate_evidence.py
 
 ---
 
-## 🛠️ TROUBLESHOOTING
+## 🛠️ Troubleshooting
 
 ### Common Issues
 
@@ -898,7 +467,7 @@ python scripts/run_quality_audit.py
 
 ---
 
-## 📚 ADDITIONAL RESOURCES
+## 📚 Additional Resources
 
 ### Documentation
 - **Protocol Integration Map**: `.cursor/ai-driven-workflow/25-protocol-integration-map.md`
@@ -909,7 +478,7 @@ python scripts/run_quality_audit.py
 - **Project Rules**: `.cursor/rules/project-rules/`
 
 ### Automation Scripts
-- **Scripts Directory**: `scripts/`
+- **Scripts Directory**: `.artifacts/scripts/`
 - **CI/CD Workflows**: `.github/workflows/`
 - **Quality Gates**: Built into each protocol
 
@@ -941,7 +510,7 @@ python scripts/run_quality_audit.py
 
 ---
 
-## 🎯 SUCCESS METRICS
+## 🎯 Success Metrics
 
 ### Quality Targets
 - **Protocol Completion**: 100% of protocols executed successfully
@@ -959,79 +528,4 @@ python scripts/run_quality_audit.py
 
 ---
 
-## 🔗 INTEGRATION POINTS AND DEPENDENCIES
-
-### System Integration Map
-
-#### Master Rules Dependencies
-- **Context Discovery Protocol** → **AI Collaboration Guidelines** → **All Other Rules**
-- **Code Quality Checklist** → **Code Modification Safety Protocol** → **Documentation Guidelines**
-- **Protocol Orchestrator** → **Advanced Meta-Instruction Intelligence System**
-
-#### Workflow Protocol Dependencies
-- **Protocol 01** → **Protocol 02** → **Protocol 03** → **Protocol 04** → **Protocol 05**
-- **Protocol 05** → **Protocol 06** → **Protocol 07** → **Protocol 08** → **Protocol 09**
-- **Protocol 09** → **Protocol 10** → **Protocol 11** → **Protocol 12** → **Protocol 13**
-- **Protocol 13** → **Protocol 14** → **Protocol 15** → **Protocol 16** → **Protocol 17**
-- **Protocol 17** → **Protocol 18** → **Protocol 19** → **Protocol 20** → **Protocol 21**
-- **Protocol 21** → **Protocol 22** → **Protocol 23**
-
-#### Review Protocol Dependencies
-- **Code Review Protocol** → **Security Check Protocol** → **Architecture Review Protocol**
-- **Design System Protocol** → **UI Accessibility Protocol** → **Pre-Production Protocol**
-
-#### Script Integration Dependencies
-- **Core Orchestration Scripts** → **Validation Scripts** → **Evidence Collection Scripts**
-- **Compliance Scripts** → **Quality Assurance Scripts** → **Deployment Scripts**
-
-### Evidence-Based Relationships
-
-#### Protocol Evidence Flow
-- **Discovery Phase**: Client artifacts → Project brief → PRD → Technical specs
-- **Development Phase**: Tasks → Implementation → Testing → Quality audit
-- **Deployment Phase**: Staging → Production → Monitoring → Maintenance
-
-#### Quality Gate Evidence Chain
-- **Pre-Audit Automation** → **Routing Integrity** → **Execution Completion** → **Unified Reporting**
-- **Standards Compliance** → **Test Coverage** → **Feedback Resolution** → **Final Approval**
-
-#### Integration Evidence Validation
-- **Protocol Handoffs**: Evidence packages with validation checkpoints
-- **Quality Gates**: Automated validation with manual fallbacks
-- **Evidence Collection**: SHA-256 checksums and audit trails
-
----
-
-## ⚠️ CRITICAL SYSTEM REQUIREMENTS
-
-### Pre-Flight Verification Checklist
-Before executing any task, verify:
-- [ ] All master rules are loaded and accessible
-- [ ] Workflow protocols are properly initialized
-- [ ] Quality gates are configured and operational
-- [ ] Evidence collection systems are ready
-- [ ] Automation scripts are available and functional
-- [ ] Integration points are validated
-- [ ] Dependencies are resolved
-
-### System Health Indicators
-- **Rule Loading**: All 8 master rules + 3 common rules + 2 specialized rules
-- **Protocol Availability**: All 28 workflow protocols + 6 review protocols
-- **Script Integration**: 100+ automation scripts operational
-- **Quality Gates**: All gates configured with proper thresholds
-- **Evidence Systems**: SHA-256 checksums and audit trails active
-
-### Failure Recovery Procedures
-- **Rule Loading Failure**: Re-execute Context Discovery Protocol
-- **Protocol Execution Failure**: Check prerequisites and dependencies
-- **Quality Gate Failure**: Review evidence and implement fixes
-- **Integration Failure**: Validate handoff requirements and artifacts
-- **Evidence Collection Failure**: Check system permissions and storage
-
----
-
 **Ready to transform your development workflow? Start with Protocol 05 and follow the complete lifecycle for professional, evidence-based software development!** 🚀
-
----
-
-*This documentation represents the complete, evidence-based analysis of the AI-Driven Workflow System. All protocols, rules, scripts, and integrations have been documented with their actual implementations, dependencies, and usage patterns. The system provides a robust foundation for AI-driven development workflows while maintaining human oversight and ensuring production readiness through comprehensive validation and compliance checking.*
