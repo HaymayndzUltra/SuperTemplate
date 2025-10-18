@@ -1,160 +1,303 @@
 # PROTOCOL 12: POST-DEPLOYMENT MONITORING & OBSERVABILITY (SRE COMPLIANT)
 
-## 1. AI ROLE AND MISSION
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
 
-You are a **Site Reliability Engineer (SRE)**. Your mission is to activate, validate, and continuously tune observability systems immediately after a production deployment so that incidents can be detected and triaged within agreed service objectives.
+### Required Artifacts
+- [ ] `post-deployment-validation.json` from Protocol 11 – immediate health check results
+- [ ] `deployment-health-log.md` from Protocol 11 – stabilization observations
+- [ ] `DEPLOYMENT-REPORT.md` from Protocol 11 – release summary and risks
+- [ ] `staging-test-results.json` from Protocol 10 – baseline test data
+- [ ] Prior monitoring baselines `.artifacts/monitoring/baseline-metrics.json` (if available)
+
+### Required Approvals
+- [ ] Release Manager confirmation that production deployment completed successfully
+- [ ] SRE team lead authorization to adjust monitoring configuration
+- [ ] Security/compliance approval for alert thresholds impacting regulated services
+
+### System State Requirements
+- [ ] Production monitoring stack accessible (metrics, logs, traces, synthetics)
+- [ ] Alerting integrations (PagerDuty/Slack/Email) operational with test credentials
+- [ ] Write permissions to `.artifacts/monitoring/` and `.cursor/context-kit/`
+
+---
+
+## 12. AI ROLE AND MISSION
+
+You are a **Site Reliability Engineer (SRE)**. Your mission is to activate, validate, and continuously tune observability systems immediately after production deployment so that incidents can be detected and triaged within agreed service objectives.
 
 **🚫 [CRITICAL] DO NOT declare monitoring complete until alerting rules, dashboards, and runbooks have been validated against live production telemetry for the current release.**
 
-## 2. MONITORING & OBSERVABILITY WORKFLOW
+---
+
+## 12. MONITORING & OBSERVABILITY WORKFLOW
 
 ### STEP 1: Instrumentation Alignment and Baseline Capture
 
 1. **`[MUST]` Review Deployment Outputs:**
-   * **Action:** Consume `post-deployment-validation.json`, `deployment-health-log.md`, and `DEPLOYMENT-REPORT.md` to extract monitoring requirements, risks, and new service endpoints.
-   * **Communication:**
+   * **Action:** Analyze Protocol 11 artifacts to identify monitoring requirements, risky components, and new endpoints.
+   * **Communication:** 
      > "[PHASE 1 START] - Reviewing deployment evidence to map monitoring requirements..."
-   * **Evidence:** Generate `.artifacts/monitoring/monitoring-requirements.md` summarizing KPIs, SLOs, and risky components.
+   * **Halt condition:** Stop if required deployment artifacts missing or inconsistent.
+   * **Evidence:** `.artifacts/monitoring/monitoring-requirements.md` summarizing KPIs, SLOs, and risk items.
 
 2. **`[MUST]` Verify Instrumentation Coverage:**
-   * **Action:** Ensure metrics, logs, traces, and synthetic checks cover all critical paths introduced in the release.
-   * **Communication:**
-     > "Validating instrumentation coverage across services and dependencies..."
-   * **Evidence:** Update `.artifacts/monitoring/instrumentation-audit.json` with pass/fail per service.
-   * **Automation:** Execute `python scripts/collect_perf.py --env production --audit --output .artifacts/monitoring/instrumentation-audit.json`
+   * **Action:** Ensure metrics, logs, traces, and synthetic checks cover all critical services introduced or modified.
+   * **Communication:** 
+     > "[PHASE 1] Validating instrumentation coverage across services and dependencies..."
+   * **Halt condition:** Pause if any critical service lacks telemetry coverage.
+   * **Evidence:** `.artifacts/monitoring/instrumentation-audit.json` listing coverage status per service.
 
 3. **`[GUIDELINE]` Capture Baseline Snapshot:**
-   * **Action:** Record baseline metrics immediately after deployment for comparison during incident response.
-   * **Evidence:** Save `.artifacts/monitoring/baseline-metrics.json`.
+   * **Action:** Record baseline metrics immediately after deployment for reference.
+   * **Example:**
+     ```bash
+     python scripts/collect_perf.py --env production --output .artifacts/monitoring/baseline-metrics.json
+     ```
 
 ### STEP 2: Monitoring Activation and Alert Validation
 
 1. **`[MUST]` Configure Dashboards and Alerts:**
-   * **Action:** Ensure dashboards reflect new components; set alert thresholds aligned with SLO/SLI definitions.
-   * **Communication:**
+   * **Action:** Update dashboards, alert rules, and SLO dashboards to reflect latest release changes.
+   * **Communication:** 
      > "[PHASE 2 START] - Activating dashboards and alert policies..."
-   * **Evidence:** Document `.artifacts/monitoring/dashboard-config.md` with links and threshold settings.
+   * **Halt condition:** Stop if dashboards fail validation or alerts missing thresholds.
+   * **Evidence:** `.artifacts/monitoring/dashboard-config.md` with links and thresholds.
 
 2. **`[MUST]` Test Alert Paths:**
-   * **Action:** Trigger synthetic incidents to validate alert delivery, escalation policies, and on-call routing.
-   * **Communication:**
-     > "Triggering synthetic alerts to confirm notification pathways..."
-   * **Evidence:** Capture `.artifacts/monitoring/alert-test-results.json` including timestamps and response acknowledgements.
-   * **Automation:** Execute `python scripts/workflow_automation.py --workflow alert-test --output .artifacts/monitoring/alert-test-results.json`
+   * **Action:** Trigger synthetic incidents to confirm alert delivery, escalation, and acknowledgment.
+   * **Communication:** 
+     > "[PHASE 2] Triggering synthetic alerts to confirm notification pathways..."
+   * **Halt condition:** Halt if alerts fail to reach on-call or acknowledgement outside SLA.
+   * **Evidence:** `.artifacts/monitoring/alert-test-results.json` capturing timestamps and response times.
 
 3. **`[GUIDELINE]` Update Runbooks:**
-   * **Action:** Amend incident runbooks with new detection signals, mitigation steps, and contact rotations.
-   * **Evidence:** Update `RUNBOOKS/monitoring-runbook.md` or equivalent location noted in context kit.
+   * **Action:** Document new detection signals and mitigation steps in incident runbooks.
+   * **Example:**
+     ```markdown
+     ### Updated Signals
+     - Alert: API latency > 500ms (5m)
+     - Response: Scale API pods + purge CDN cache
+     ```
 
 ### STEP 3: Continuous Observability Assurance
 
-1. **`[MUST]` Establish Ongoing Checks:**
-   * **Action:** Schedule automated checks (cron/CI) to verify monitoring assets remain active and thresholds consistent.
-   * **Communication:**
+1. **`[MUST]` Schedule Ongoing Checks:**
+   * **Action:** Define automated cadence for verifying monitoring assets (dashboards, alerts, synthetic runs).
+   * **Communication:** 
      > "[PHASE 3 START] - Scheduling ongoing observability validation tasks..."
-   * **Evidence:** Record `.artifacts/monitoring/observability-schedule.json` with cadence and responsible roles.
+   * **Halt condition:** Pause if automation cannot be scheduled or lacks ownership.
+   * **Evidence:** `.artifacts/monitoring/observability-schedule.json` documenting cadence and owners.
 
-2. **`[MUST]` Correlate Incidents and Alerts:**
-   * **Action:** Compare recent alerts with incident tickets to detect gaps or noise; adjust thresholds accordingly.
-   * **Communication:**
-     > "Correlating recent alerts with incident history to tune thresholds..."
-   * **Evidence:** Generate `.artifacts/monitoring/alert-tuning-report.md` documenting adjustments.
-   * **Automation:** Execute `python scripts/aggregate_coverage.py --scope monitoring --output .artifacts/monitoring/alert-tuning-report.md`
+2. **`[MUST]` Correlate Alerts with Incidents:**
+   * **Action:** Compare recent alerts to incident tickets, adjust thresholds for noise or missed detections.
+   * **Communication:** 
+     > "[PHASE 3] Correlating recent alerts with incident history to tune thresholds..."
+   * **Halt condition:** Stop if correlation reveals unresolved monitoring gaps.
+   * **Evidence:** `.artifacts/monitoring/alert-tuning-report.md` summarizing adjustments.
 
 3. **`[GUIDELINE]` Publish Observability Scorecard:**
-   * **Action:** Summarize SLO attainment, alert precision, and outstanding risks for leadership review.
-   * **Evidence:** Save `.artifacts/monitoring/observability-scorecard.md`.
+   * **Action:** Create summary of SLO attainment, alert precision, and outstanding risks for leadership review.
+   * **Example:**
+     ```markdown
+     | Metric | Target | Actual | Status |
+     |--------|--------|--------|--------|
+     | Alert Precision | ≥ 85% | 87% | ✅ |
+     ```
 
 ### STEP 4: Handoff and Improvement Loop
 
 1. **`[MUST]` Deliver Monitoring Package:**
-   * **Action:** Bundle dashboards, alert configs, runbooks, and validation evidence for Protocol 13 and Protocol 5.
-   * **Communication:**
+   * **Action:** Bundle instrumentation audit, dashboard configuration, alert results, and schedule into `MONITORING-PACKAGE.zip`.
+   * **Communication:** 
      > "[PHASE 4 START] - Delivering monitoring package to incident response and retrospective owners..."
-   * **Evidence:** Create `.artifacts/monitoring/monitoring-package-manifest.json`.
+   * **Halt condition:** Halt if package incomplete or checksum invalid.
+   * **Evidence:** `.artifacts/monitoring/monitoring-package-manifest.json` plus zipped bundle.
 
 2. **`[MUST]` Record Approval and Ownership:**
-   * **Action:** Log SRE approval, on-call owner, and effective date for monitoring configuration.
-   * **Evidence:** Update `.artifacts/monitoring/monitoring-approval-record.json`.
+   * **Action:** Document SRE approval, on-call rotation owners, and effective date for monitoring configuration.
+   * **Communication:** 
+     > "[PHASE 4] Recording monitoring ownership and approvals..."
+   * **Halt condition:** Pause if approvals missing or outdated.
+   * **Evidence:** `.artifacts/monitoring/monitoring-approval-record.json`.
 
 3. **`[GUIDELINE]` Queue Improvement Actions:**
-   * **Action:** File backlog items for instrumentation gaps or automation enhancements discovered.
-   * **Evidence:** Append actions to `.artifacts/monitoring/improvement-backlog.md`.
+   * **Action:** Log backlog items for instrumentation gaps or automation enhancements discovered.
+   * **Example:**
+     ```markdown
+     - Task: Automate alert noise suppression for service XYZ
+     - Owner: Observability Guild
+     - Due: Next release cycle
+     ```
 
-## 3. INTEGRATION POINTS
+---
 
-**Inputs From:**
-- Protocol 11: `post-deployment-validation.json`, `deployment-health-log.md`, `DEPLOYMENT-REPORT.md`.
-- Protocol 4: Quality audit findings related to monitoring gaps or compliance requirements.
+## 12. INTEGRATION POINTS
 
-**Outputs To:**
-- Protocol 13: `monitoring-package-manifest.json`, `alert-test-results.json`, `instrumentation-audit.json`.
-- Protocol 5: `observability-scorecard.md`, `alert-tuning-report.md`, `improvement-backlog.md`.
-- Protocol 14: Baseline metrics and instrumentation gaps for performance optimization.
+### Inputs From:
+- **Protocol 10**: `staging-test-results.json`, `observability-baseline.md` – provide expected metrics
+- **Protocol 11**: `post-deployment-validation.json`, `deployment-health-log.md`, `DEPLOYMENT-REPORT.md`
+- **Protocol 4**: `quality-audit-summary.json` – highlights monitoring gaps to address
 
-## 4. QUALITY GATES
+### Outputs To:
+- **Protocol 13**: `MONITORING-PACKAGE.zip`, `alert-test-results.json`, `monitoring-approval-record.json`
+- **Protocol 14**: `baseline-metrics.json`, `instrumentation-audit.json`, `alert-tuning-report.md`
+- **Protocol 5**: `observability-scorecard.md`, `improvement-backlog.md`
 
-**Gate 1: Instrumentation Coverage Gate**
-- **Criteria:** All critical services have metrics, logs, traces, and synthetic checks mapped; no high-risk gaps remain.
-- **Evidence:** `monitoring-requirements.md`, `instrumentation-audit.json`.
-- **Failure Handling:** Escalate to engineering teams to implement missing instrumentation; pause protocol until resolved.
+### Artifact Storage Locations:
+- `.artifacts/monitoring/` - Primary evidence storage
+- `.cursor/context-kit/` - Context and configuration artifacts
 
-**Gate 2: Alert Validation Gate**
-- **Criteria:** Synthetic alerts trigger successfully, reach on-call responders, and produce acknowledgment within target SLA.
-- **Evidence:** `alert-test-results.json`, `monitoring-approval-record.json`.
-- **Failure Handling:** Adjust alert routing, fix notification integrations, rerun tests before proceeding.
+---
 
-**Gate 3: Observability Assurance Gate**
-- **Criteria:** Ongoing checks scheduled, alert tuning documented, improvement backlog created.
-- **Evidence:** `observability-schedule.json`, `alert-tuning-report.md`, `improvement-backlog.md`.
-- **Failure Handling:** Configure missing automation, update tuning plan, rerun Gate 3 validation.
+## 12. QUALITY GATES
 
-**Gate 4: Handoff Package Gate**
-- **Criteria:** Monitoring package manifest complete, approval recorded, downstream protocols notified.
-- **Evidence:** `monitoring-package-manifest.json`, `monitoring-approval-record.json`.
-- **Failure Handling:** Compile missing artifacts, obtain approvals, reissue notifications.
+### Gate 1: Instrumentation Coverage Gate
+- **Criteria**: All critical services have telemetry coverage; monitoring requirements documented.
+- **Evidence**: `monitoring-requirements.md`, `instrumentation-audit.json`.
+- **Pass Threshold**: Coverage completeness ≥ 95%.
+- **Failure Handling**: Engage service owners to implement missing instrumentation; rerun audit.
+- **Automation**: `python scripts/validate_gate_12_instrumentation.py --threshold 0.95`
 
-## 5. COMMUNICATION PROTOCOLS
+### Gate 2: Alert Validation Gate
+- **Criteria**: Synthetic alerts triggered; acknowledgements within SLA; dashboards updated.
+- **Evidence**: `dashboard-config.md`, `alert-test-results.json`.
+- **Pass Threshold**: Alert acknowledgement time ≤ target SLA; dashboard validation score ≥ 90%.
+- **Failure Handling**: Fix routing/integration issues; rerun tests before proceeding.
+- **Automation**: `python scripts/validate_gate_12_alerts.py --sla 5`
 
-**Status Announcements:**
+### Gate 3: Observability Assurance Gate
+- **Criteria**: Ongoing schedule defined; alert tuning documented; improvement backlog created.
+- **Evidence**: `observability-schedule.json`, `alert-tuning-report.md`, `improvement-backlog.md`.
+- **Pass Threshold**: Schedule coverage = 100%; backlog entries logged for all gaps.
+- **Failure Handling**: Define schedule, add backlog actions, repeat validation.
+- **Automation**: `python scripts/validate_gate_12_assurance.py`
+
+### Gate 4: Monitoring Handoff Gate
+- **Criteria**: Monitoring package compiled; approvals recorded; downstream protocols notified.
+- **Evidence**: `MONITORING-PACKAGE.zip`, `monitoring-package-manifest.json`, `monitoring-approval-record.json`.
+- **Pass Threshold**: Manifest completeness ≥ 95%; approvals 100% captured.
+- **Failure Handling**: Rebuild package, obtain approvals, resend notifications.
+- **Automation**: `python scripts/validate_gate_12_handoff.py --threshold 0.95`
+
+---
+
+## 12. COMMUNICATION PROTOCOLS
+
+### Status Announcements:
 ```
 [PHASE 1 START] - Reviewing deployment evidence to map monitoring requirements...
 [PHASE 2 START] - Activating dashboards and alert policies...
 [PHASE 3 START] - Scheduling ongoing observability validation tasks...
 [PHASE 4 START] - Delivering monitoring package to incident response and retrospective owners...
-[PHASE {N} COMPLETE] - {phase_name} finished successfully.
-[AUTOMATION] collect_perf.py executed: {status}
-[AUTOMATION] workflow_automation.py (alert-test) executed: {status}
-[AUTOMATION] aggregate_coverage.py executed: {status}
+[PHASE 4 COMPLETE] - Monitoring package delivered. Evidence: MONITORING-PACKAGE.zip.
+[ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
-**Validation Prompts:**
+### Validation Prompts:
 ```
-[VALIDATION REQUEST] - Monitoring instrumentation verified. Approve activation of alert tests? (yes/no)
-[HANDOFF CONFIRMATION] - Monitoring package compiled. Confirm delivery to Protocol 13? (yes/no)
+[USER CONFIRMATION REQUIRED]
+> "Monitoring instrumentation and alert validation complete.
+> - MONITORING-PACKAGE.zip
+> - monitoring-approval-record.json
+>
+> Confirm readiness to transition to Protocol 13?"
 ```
 
-**Error Handling:**
-- **InstrumentationGap:** "[ERROR] Missing telemetry coverage for critical service: {service}." → Recovery: Coordinate with engineering to add instrumentation; rerun Phase 1 checks.
-- **AlertFailure:** "[ERROR] Synthetic alert did not reach on-call responder." → Recovery: Inspect escalation rules, repair integrations, rerun alert test.
-- **ApprovalMissing:** "[ERROR] Monitoring approval not recorded." → Recovery: Obtain SRE sign-off and update approval record before closing protocol.
-
-## 6. AUTOMATION HOOKS
-
-- `collect_perf.py --audit` → Instrumentation coverage validation and baseline capture.
-- `workflow_automation.py --workflow alert-test` → Automated alert path testing.
-- `aggregate_coverage.py --scope monitoring` → Alert tuning and observability scorecard inputs.
-
-## 7. HANDOFF CHECKLIST
-
-Before completing this protocol, validate:
-- [ ] Monitoring requirements and instrumentation audit completed.
-- [ ] Dashboards and alerts activated with successful test confirmations.
-- [ ] Observability assurance schedule and tuning reports documented.
-- [ ] Monitoring package manifest and approval record finalized.
-- [ ] Improvement backlog filed for outstanding actions.
-
-Upon completion, execute:
+### Error Handling:
 ```
-[PROTOCOL COMPLETE] - Monitoring activated. Ready for Protocol 13 (Incident Response & Rollback).
+[GATE FAILED: Alert Validation Gate]
+> "Quality gate 'Alert Validation Gate' failed.
+> Criteria: Synthetic alerts acknowledged within SLA, dashboards updated
+> Actual: {result}
+> Required action: Repair alert routing, update dashboards, rerun tests."
 ```
+
+---
+
+## 12. AUTOMATION HOOKS
+
+### Validation Scripts:
+```bash
+# Prerequisite validation
+python scripts/validate_prerequisites_12.py
+
+# Quality gate automation
+python scripts/validate_gate_12_instrumentation.py --threshold 0.95
+python scripts/validate_gate_12_handoff.py --threshold 0.95
+
+# Evidence aggregation
+python scripts/aggregate_evidence_12.py --output .artifacts/monitoring/
+```
+
+### CI/CD Integration:
+```yaml
+# GitHub Actions workflow integration
+name: Protocol 12 Validation
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run Protocol 12 Gates
+        run: python scripts/run_protocol_12_gates.py
+```
+
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Review dashboards and alerts manually, capturing screenshots.
+2. Trigger manual alert tests and log acknowledgements in spreadsheet.
+3. Document results in `.artifacts/protocol-12/manual-validation-log.md`
+
+---
+
+## 12. HANDOFF CHECKLIST
+
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
+
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
+
+### Handoff to Protocol 13:
+**[PROTOCOL COMPLETE]** Ready for Protocol 13: Incident Response & Rollback
+
+**Evidence Package:**
+- `MONITORING-PACKAGE.zip` - Monitoring configuration and validation bundle
+- `monitoring-approval-record.json` - Ownership and approval record
+
+**Execution:**
+```bash
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/13-incident-response-rollback.md
+```
+
+---
+
+## 12. EVIDENCE SUMMARY
+
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `monitoring-requirements.md` | `.artifacts/monitoring/` | Maps monitoring needs to services | Protocol 12 Gates |
+| `instrumentation-audit.json` | `.artifacts/monitoring/` | Coverage validation | Protocol 13/14 |
+| `alert-test-results.json` | `.artifacts/monitoring/` | Confirms alert routing | Protocol 13 |
+| `observability-schedule.json` | `.artifacts/monitoring/` | Automation cadence | Protocol 12 |
+| `MONITORING-PACKAGE.zip` | `.artifacts/monitoring/` | Handoff deliverable | Protocol 13 |
+
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 2 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |

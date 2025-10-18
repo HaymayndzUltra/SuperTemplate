@@ -1,161 +1,309 @@
 # PROTOCOL 13: INCIDENT RESPONSE & ROLLBACK (OPERATIONS RESILIENCE COMPLIANT)
 
-## 1. AI ROLE AND MISSION
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
+
+### Required Artifacts
+- [ ] `MONITORING-PACKAGE.zip` from Protocol 12 – monitoring configuration and validation evidence
+- [ ] `alert-test-results.json` from Protocol 12 – alert routing baseline
+- [ ] `production-deployment-report.json` from Protocol 11 – deployment context
+- [ ] `rollback-verification-report.json` from Protocol 10 – rollback rehearsal evidence
+- [ ] `incident-playbook.md` (if available) from `.cursor/context-kit/`
+
+### Required Approvals
+- [ ] Incident commander/on-call authority to declare incident state
+- [ ] Release Manager acknowledgement of potential rollback impact
+- [ ] Security/compliance approval if incident involves regulated data or customer notification
+
+### System State Requirements
+- [ ] Access to production monitoring dashboards and alerting tools
+- [ ] Privileged credentials available for executing rollback or mitigation scripts
+- [ ] Communication channels (war-room bridge, incident Slack channel) active
+
+---
+
+## 13. AI ROLE AND MISSION
 
 You are an **Incident Commander**. Your mission is to coordinate rapid detection, mitigation, and resolution of production incidents triggered after deployment, executing rollback or remediation steps while maintaining precise communication and evidence capture.
 
 **🚫 [CRITICAL] DO NOT perform rollback actions without confirming incident severity, affected scope, and stakeholder alignment on recovery strategy.**
 
-## 2. INCIDENT RESPONSE WORKFLOW
+---
 
-### STEP 1: Incident Detection and Severity Assessment
+## 13. INCIDENT RESPONSE WORKFLOW
+
+### STEP 1: Detection and Severity Assessment
 
 1. **`[MUST]` Monitor Active Alerts:**
-   * **Action:** Continuously ingest monitoring package outputs (`alert-test-results.json`, live alerts, dashboards) and identify incident triggers.
-   * **Communication:**
+   * **Action:** Continuously ingest alerts and dashboards from Protocol 12 outputs to detect incidents.
+   * **Communication:** 
      > "[PHASE 1 START] - Monitoring production alerts for incident signals..."
-   * **Evidence:** Log alert intake to `.artifacts/incidents/incident-intake-log.md` with timestamps and alert details.
+   * **Halt condition:** Pause progression until alert validity confirmed (false positive vs real incident).
+   * **Evidence:** `.artifacts/incidents/incident-intake-log.md` capturing alert details and timestamps.
 
 2. **`[MUST]` Classify Incident Severity:**
-   * **Action:** Determine severity level (SEV-1/2/3) based on SLO breaches, customer impact, and blast radius.
-   * **Communication:**
-     > "Assessing incident severity and affected services..."
-   * **Evidence:** Record `.artifacts/incidents/severity-assessment.json` including impacted components and decision rationale.
-   * **Halt condition:** Pause escalation until severity classification agreed upon by on-call responders.
+   * **Action:** Determine severity (SEV-1/2/3) based on SLO breaches, customer impact, and blast radius.
+   * **Communication:** 
+     > "[PHASE 1] Assessing incident severity and affected services..."
+   * **Halt condition:** Stop until severity consensus reached among responders.
+   * **Evidence:** `.artifacts/incidents/severity-assessment.json` documenting rationale.
 
 3. **`[GUIDELINE]` Notify Stakeholders:**
-   * **Action:** Trigger communication plan (Slack, PagerDuty, email) defined in monitoring approval record.
-   * **Evidence:** Append notifications to `.artifacts/incidents/communication-log.md`.
+   * **Action:** Trigger communication plan (PagerDuty, Slack, email) based on severity.
+   * **Example:**
+     ```markdown
+     - Channel: #incident-sev1
+     - Stakeholders: SRE On-call, Product Owner, Support Lead
+     ```
 
 ### STEP 2: Containment and Mitigation Planning
 
-1. **`[MUST]` Identify Immediate Mitigation Actions:**
-   * **Action:** Consult monitoring runbooks and deployment rollback plan to propose mitigation strategy (rollback, feature flag, hotfix).
-   * **Communication:**
+1. **`[MUST]` Identify Mitigation Options:**
+   * **Action:** Consult monitoring runbooks and rollback plan to propose mitigation (rollback, feature flag, hotfix).
+   * **Communication:** 
      > "[PHASE 2 START] - Identifying mitigation strategy for incident containment..."
-   * **Evidence:** Create `.artifacts/incidents/mitigation-plan.md` listing candidate actions and risk tradeoffs.
+   * **Halt condition:** Pause if mitigation options unclear or dependencies unknown.
+   * **Evidence:** `.artifacts/incidents/mitigation-plan.md` enumerating options and risks.
 
 2. **`[MUST]` Validate Rollback Feasibility:**
-   * **Action:** Confirm availability of rollback scripts (`rollback_backend.sh`, `rollback_frontend.sh`) and data backups; verify prerequisites from Protocol 11.
-   * **Communication:**
-     > "Validating rollback readiness and dependencies..."
-   * **Evidence:** Update `.artifacts/incidents/rollback-readiness-checklist.json`.
+   * **Action:** Confirm rollback scripts, data backups, and prerequisites from Protocols 10 and 11 are ready.
+   * **Communication:** 
+     > "[PHASE 2] Validating rollback readiness and dependencies..."
+   * **Halt condition:** Stop if rollback prerequisites unmet.
+   * **Evidence:** `.artifacts/incidents/rollback-readiness-checklist.json` with verification results.
 
-3. **`[GUIDELINE]` Align Stakeholder Decision:**
-   * **Action:** Present mitigation options to incident commander/on-call; capture decision and approval timestamp.
-   * **Evidence:** Append to `.artifacts/incidents/decision-log.json`.
+3. **`[GUIDELINE]` Align Decision Makers:**
+   * **Action:** Present options to incident commander and stakeholders for approval, capturing decision timestamp.
+   * **Example:**
+     ```markdown
+     Decision: Execute rollback_backend.sh
+     Approved by: Incident Commander (Alex), Release Manager (Jordan)
+     Time: 02:34 UTC
+     ```
 
-### STEP 3: Execution and Verification
+### STEP 3: Execution and Recovery Validation
 
 1. **`[MUST]` Execute Mitigation or Rollback:**
-   * **Action:** Run approved mitigation commands, ensuring logging and change management policies are observed.
-   * **Communication:**
+   * **Action:** Run approved mitigation commands with full logging and change management adherence.
+   * **Communication:** 
      > "[PHASE 3 START] - Executing approved mitigation/rollback actions..."
-   * **Evidence:** Store command output and status in `.artifacts/incidents/mitigation-execution-report.json`.
-   * **Automation:** Execute appropriate scripts (e.g., `bash scripts/rollback_backend.sh --env production --release {tag}`) and capture logs.
+   * **Halt condition:** Halt sequence if scripts fail or produce unexpected results.
+   * **Evidence:** `.artifacts/incidents/mitigation-execution-report.json` including command outputs.
 
 2. **`[MUST]` Validate System Recovery:**
-   * **Action:** Run verification checks (smoke tests, metrics, customer journey tests) to confirm system stability post-mitigation.
-   * **Communication:**
-     > "Validating post-mitigation system health..."
-   * **Evidence:** Generate `.artifacts/incidents/recovery-validation.json`.
-   * **Automation:** Execute `python scripts/validate_workflows.py --mode recovery --output .artifacts/incidents/recovery-validation.json`
+   * **Action:** Run smoke tests, health checks, and user journeys to confirm system stability.
+   * **Communication:** 
+     > "[PHASE 3] Validating post-mitigation system health..."
+   * **Halt condition:** If validation fails, re-enter mitigation planning.
+   * **Evidence:** `.artifacts/incidents/recovery-validation.json` summarizing results.
 
 3. **`[GUIDELINE]` Maintain Incident Timeline:**
-   * **Action:** Update shared incident timeline with key events, decisions, and results.
-   * **Evidence:** Update `.artifacts/incidents/incident-timeline.md`.
+   * **Action:** Update timeline with key events, commands, and communications.
+   * **Example:**
+     ```markdown
+     02:10 UTC - Alert triggered (API latency > 800ms)
+     02:25 UTC - Rollback initiated
+     02:32 UTC - Recovery validation passed
+     ```
 
-### STEP 4: Resolution, Documentation, and Postmortem Input
+### STEP 4: Resolution, Documentation, and Handoff
 
 1. **`[MUST]` Confirm Incident Resolution:**
-   * **Action:** Verify SLO/SLA restored, alerts cleared, and stakeholders informed of resolution.
-   * **Communication:**
+   * **Action:** Verify SLO/SLA restored, alerts cleared, and stakeholders informed.
+   * **Communication:** 
      > "[PHASE 4 START] - Confirming incident resolution and notifying stakeholders..."
-   * **Evidence:** Record `.artifacts/incidents/resolution-summary.json` with resolution status and timestamp.
+   * **Halt condition:** Do not close incident until metrics stable and communications sent.
+   * **Evidence:** `.artifacts/incidents/resolution-summary.json` with final status.
 
-2. **`[MUST]` Capture Root Cause Analysis Inputs:**
-   * **Action:** Collect logs, dashboards, diffs, and contributing factors for downstream postmortem.
-   * **Evidence:** Create `.artifacts/incidents/root-cause-inputs/` directory with referenced files and index `rca-manifest.json`.
+2. **`[MUST]` Capture Root Cause Inputs:**
+   * **Action:** Archive logs, dashboards, diffs, and contributing factors for postmortem.
+   * **Communication:** 
+     > "[PHASE 4] Capturing root cause evidence for retrospective..."
+   * **Halt condition:** Halt closure if critical evidence missing.
+   * **Evidence:** `.artifacts/incidents/rca-manifest.json` indexing stored artifacts.
 
-3. **`[GUIDELINE]` Generate Incident Report:**
-   * **Action:** Compile `INCIDENT-REPORT.md` summarizing severity, timeline, actions, outcomes, and recommended improvements for Protocol 5.
+3. **`[GUIDELINE]` Generate Incident Report Draft:**
+   * **Action:** Summarize severity, timeline, actions, and next steps in `INCIDENT-REPORT.md` for Protocol 5.
+   * **Example:**
+     ```markdown
+     ## Summary
+     - Severity: SEV-1
+     - Duration: 27 minutes
+     - Resolution: Rollback to release v1.2.3
+     ```
 
-## 3. INTEGRATION POINTS
+---
 
-**Inputs From:**
-- Protocol 12: `monitoring-package-manifest.json`, `alert-test-results.json`, `monitoring-approval-record.json`.
-- Protocol 11: `rollback-plan.md`, `production-deployment-report.json`, `post-deployment-validation.json`.
+## 13. INTEGRATION POINTS
 
-**Outputs To:**
-- Protocol 5: `INCIDENT-REPORT.md`, `rca-manifest.json`, `recovery-validation.json`.
-- Protocol 14: Performance degradation notes captured in `incident-intake-log.md` (if relevant).
-- Protocol 0/Context Kit: Updated runbooks and communication plans if process changes required.
+### Inputs From:
+- **Protocol 12**: `MONITORING-PACKAGE.zip`, `alert-test-results.json`, `monitoring-approval-record.json`
+- **Protocol 11**: `production-deployment-report.json`, `post-deployment-validation.json`
+- **Protocol 10**: `rollback-verification-report.json`
 
-## 4. QUALITY GATES
+### Outputs To:
+- **Protocol 5**: `INCIDENT-REPORT.md`, `rca-manifest.json`, `recovery-validation.json`
+- **Protocol 14**: `incident-intake-log.md`, performance degradation notes for tuning
+- **Protocol 12**: `alert-tuning-feedback.json` (if alert improvements identified)
 
-**Gate 1: Severity Alignment Gate**
-- **Criteria:** Severity classification agreed upon, stakeholders notified, intake log complete.
-- **Evidence:** `severity-assessment.json`, `communication-log.md`.
-- **Failure Handling:** Reassess severity with on-call team; delay mitigation until consensus reached.
+### Artifact Storage Locations:
+- `.artifacts/incidents/` - Primary evidence storage
+- `.cursor/context-kit/` - Context and configuration artifacts
 
-**Gate 2: Mitigation Readiness Gate**
-- **Criteria:** Mitigation plan documented, rollback readiness confirmed, decision log updated.
-- **Evidence:** `mitigation-plan.md`, `rollback-readiness-checklist.json`, `decision-log.json`.
-- **Failure Handling:** Escalate missing rollback prerequisites; coordinate with deployment team before executing actions.
+---
 
-**Gate 3: Recovery Validation Gate**
-- **Criteria:** Mitigation executed successfully, recovery validation passed, incident timeline updated.
-- **Evidence:** `mitigation-execution-report.json`, `recovery-validation.json`, `incident-timeline.md`.
-- **Failure Handling:** Re-run mitigation or escalate to higher severity; consider alternate rollback strategy.
+## 13. QUALITY GATES
 
-**Gate 4: Resolution & Documentation Gate**
-- **Criteria:** Resolution summary recorded, root cause inputs archived, incident report drafted for retrospective.
-- **Evidence:** `resolution-summary.json`, `rca-manifest.json`, `INCIDENT-REPORT.md`.
-- **Failure Handling:** Complete missing documentation before closing incident; schedule follow-up review if unresolved items remain.
+### Gate 1: Severity Alignment Gate
+- **Criteria**: Incident severity agreed upon; stakeholders notified; intake log complete.
+- **Evidence**: `severity-assessment.json`, `communication-log.md`.
+- **Pass Threshold**: Severity consensus recorded; notifications sent within SLA.
+- **Failure Handling**: Reassess severity with on-call team; delay mitigation until consensus.
+- **Automation**: `python scripts/validate_gate_13_severity.py --sla 5`
 
-## 5. COMMUNICATION PROTOCOLS
+### Gate 2: Mitigation Readiness Gate
+- **Criteria**: Mitigation plan documented; rollback readiness confirmed; decision approvals logged.
+- **Evidence**: `mitigation-plan.md`, `rollback-readiness-checklist.json`, `decision-log.json`.
+- **Pass Threshold**: All rollback prerequisites verified; decision approvals = 100%.
+- **Failure Handling**: Escalate missing prerequisites; involve release engineering before execution.
+- **Automation**: `python scripts/validate_gate_13_mitigation.py`
 
-**Status Announcements:**
+### Gate 3: Recovery Validation Gate
+- **Criteria**: Mitigation executed successfully; recovery validation passed; timeline updated.
+- **Evidence**: `mitigation-execution-report.json`, `recovery-validation.json`, `incident-timeline.md`.
+- **Pass Threshold**: Recovery validation success rate ≥ 95% of critical checks.
+- **Failure Handling**: Re-run mitigation or escalate severity; consider alternate rollback strategy.
+- **Automation**: `python scripts/validate_gate_13_recovery.py --threshold 0.95`
+
+### Gate 4: Resolution & Documentation Gate
+- **Criteria**: Resolution summary recorded; root cause evidence archived; incident report drafted.
+- **Evidence**: `resolution-summary.json`, `rca-manifest.json`, `INCIDENT-REPORT.md`.
+- **Pass Threshold**: Documentation completeness ≥ 95%; required stakeholders informed.
+- **Failure Handling**: Collect missing evidence; schedule follow-up review before closure.
+- **Automation**: `python scripts/validate_gate_13_resolution.py --threshold 0.95`
+
+---
+
+## 13. COMMUNICATION PROTOCOLS
+
+### Status Announcements:
 ```
 [PHASE 1 START] - Monitoring production alerts for incident signals...
 [PHASE 2 START] - Identifying mitigation strategy for incident containment...
 [PHASE 3 START] - Executing approved mitigation/rollback actions...
 [PHASE 4 START] - Confirming incident resolution and notifying stakeholders...
-[PHASE {N} COMPLETE] - {phase_name} finished successfully.
-[AUTOMATION] rollback_backend.sh executed: {status}
-[AUTOMATION] validate_workflows.py (recovery) executed: {status}
-[AUTOMATION] restore_workflows.py executed: {status}
+[PHASE 4 COMPLETE] - Incident documentation finalized. Evidence: INCIDENT-REPORT.md.
+[ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
-**Validation Prompts:**
+### Validation Prompts:
 ```
-[SEVERITY CONFIRMATION] Incident classified as {severity}. Approve mitigation planning? (yes/no)
-[MITIGATION APPROVAL] Proposed action: {action}. Execute mitigation now? (yes/no)
-[RESOLUTION CONFIRMATION] System stabilized. Close incident and trigger postmortem package? (yes/no)
+[SEVERITY CONFIRMATION]
+> "Incident classified as {severity}. Approve mitigation planning? (yes/no)"
+
+[MITIGATION APPROVAL]
+> "Proposed action: {action}. Execute mitigation now? (yes/no)"
+
+[RESOLUTION CONFIRMATION]
+> "System stabilized. Close incident and trigger postmortem package? (yes/no)"
 ```
 
-**Error Handling:**
-- **FalsePositive:** "[ALERT] Potential false-positive detected. Incident severity not confirmed." → Recovery: Cross-check dashboards, confirm with monitoring team before escalating.
-- **RollbackFailure:** "[ERROR] Rollback script failed: {error}." → Recovery: Switch to alternate rollback path, involve deployment team, capture logs in mitigation report.
-- **DocumentationGap:** "[ERROR] Required incident evidence missing." → Recovery: Collect outstanding artifacts prior to closing incident.
-
-## 6. AUTOMATION HOOKS
-
-- `rollback_backend.sh` / `rollback_frontend.sh` → Execute rollback procedures when approved.
-- `validate_workflows.py --mode recovery` → Verify system health after mitigation.
-- `restore_workflows.py` → Reset workflow automations or scheduled jobs affected by incident.
-- `retrospective_evidence_report.py` → Prepare inputs for Protocol 5 postmortem (optional but recommended).
-
-## 7. HANDOFF CHECKLIST
-
-Before completing this protocol, validate:
-- [ ] Severity assessment documented and stakeholders notified.
-- [ ] Mitigation/rollback plan executed with evidence captured.
-- [ ] Recovery validation confirms system stability.
-- [ ] Root cause inputs archived and incident report drafted.
-- [ ] Follow-up actions registered for retrospective review.
-
-Upon completion, execute:
+### Error Handling:
 ```
-[PROTOCOL COMPLETE] - Incident resolved. Ready for Protocol 5 (Implementation Retrospective) and downstream improvements.
+[GATE FAILED: Mitigation Readiness Gate]
+> "Quality gate 'Mitigation Readiness Gate' failed.
+> Criteria: Mitigation plan documented, rollback readiness confirmed
+> Actual: {result}
+> Required action: Complete rollback checklist, secure approvals, then retry."
 ```
+
+---
+
+## 13. AUTOMATION HOOKS
+
+### Validation Scripts:
+```bash
+# Prerequisite validation
+python scripts/validate_prerequisites_13.py
+
+# Quality gate automation
+python scripts/validate_gate_13_severity.py --sla 5
+python scripts/validate_gate_13_resolution.py --threshold 0.95
+
+# Evidence aggregation
+python scripts/aggregate_evidence_13.py --output .artifacts/incidents/
+```
+
+### CI/CD Integration:
+```yaml
+# GitHub Actions workflow integration
+name: Protocol 13 Validation
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.artifacts/monitoring/**'
+      - '.artifacts/incidents/**'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run Protocol 13 Gates
+        run: python scripts/run_protocol_13_gates.py
+```
+
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Review alert logs and severity decisions during war-room session.
+2. Capture mitigation steps manually in timeline and execution report.
+3. Document results in `.artifacts/protocol-13/manual-validation-log.md`
+
+---
+
+## 13. HANDOFF CHECKLIST
+
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
+
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
+
+### Handoff to Protocol 14 & 5:
+**[PROTOCOL COMPLETE]** Ready for Protocol 14: Performance Optimization & Tuning and Protocol 5: Implementation Retrospective
+
+**Evidence Package:**
+- `INCIDENT-REPORT.md` - Incident summary for retrospective
+- `recovery-validation.json` - Verification of restored service health
+
+**Execution:**
+```bash
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/14-performance-optimization.md
+```
+
+---
+
+## 13. EVIDENCE SUMMARY
+
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `incident-intake-log.md` | `.artifacts/incidents/` | Captures alert signals and timestamps | Protocol 13 Gates |
+| `mitigation-plan.md` | `.artifacts/incidents/` | Documents containment strategy | Protocol 13 Gates |
+| `recovery-validation.json` | `.artifacts/incidents/` | Confirms system stabilization | Protocol 5 |
+| `INCIDENT-REPORT.md` | `.artifacts/incidents/` | Incident summary and actions | Protocol 5 |
+| `rca-manifest.json` | `.artifacts/incidents/` | Root cause evidence index | Protocol 5 |
+
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 3 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |
