@@ -167,6 +167,19 @@ Available slash commands in `.cursor/commands/`:
 - **`/protocol-orchestrator`**: Workflow orchestration
 - **`/meta-analysis-generator`**: Meta-analysis and intelligence
 
+### CLI Utilities for PR Reviews
+- **`scripts/compare_pull_requests.py`** – Fetches PR metadata from GitHub (or
+  offline JSON snapshots) and produces dependency-aware review guidance with
+  review signal tables, conflict hotspots, and Markdown/TSV/JSON output modes.
+- **Sample usage**:
+  ```bash
+  python scripts/compare_pull_requests.py --repo HaymayndzUltra/SuperTemplate 1 3 4 8
+  # Offline example
+  python scripts/compare_pull_requests.py --input documentation/sample_pr_data.json
+  # Machine-readable export
+  python scripts/compare_pull_requests.py --input documentation/sample_pr_data.json --format json
+  ```
+
 ### Template Packs & Generators
 Located in `generators/` directory:
 - **Protocol Generators**: Automated protocol creation (6-18)
