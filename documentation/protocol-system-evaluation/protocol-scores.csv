@@ -1,0 +1,43 @@
+Index,Protocol,File,Completeness,Clarity,Actionability,Integration,Evidence,Automation,Overall,Priority,Missing Criteria
+1,PROTOCOL 00A: CLIENT PROPOSAL GENERATION (DISCOVERY COMPLIANT),.cursor/ai-driven-workflow/01-client-proposal-generation.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+2,PROTOCOL 00B: CLIENT DISCOVERY INITIATION (PROJECT-SCOPING COMPLIANT),.cursor/ai-driven-workflow/02-client-discovery-initiation.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+3,PROTOCOL 01: PROJECT BRIEF CREATION (PROJECT-SCOPING COMPLIANT),.cursor/ai-driven-workflow/03-project-brief-creation.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+4,PROTOCOL 00: PROJECT BOOTSTRAP AND CONTEXT ENGINEERING (GOVERNANCE COMPLIANT),.cursor/ai-driven-workflow/04-project-bootstrap-and-context-engineering.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+5,PROTOCOL 0: BOOTSTRAP YOUR PROJECT (LEGACY ALIGNMENT COMPLIANT),.cursor/ai-driven-workflow/05-bootstrap-your-project.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+6,PROTOCOL 1: IMPLEMENTATION-READY PRD CREATION (PLANNING COMPLIANT),.cursor/ai-driven-workflow/06-create-prd.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+7,PROTOCOL 6: TECHNICAL DESIGN & ARCHITECTURE (ARCHITECTURE COMPLIANT),.cursor/ai-driven-workflow/07-technical-design-architecture.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+8,PROTOCOL 2: TECHNICAL TASK GENERATION (PLANNING COMPLIANT),.cursor/ai-driven-workflow/08-generate-tasks.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+9,PROTOCOL 7: ENVIRONMENT SETUP & VALIDATION (DEVOPS COMPLIANT),.cursor/ai-driven-workflow/09-environment-setup-validation.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+10,PROTOCOL 3: CONTROLLED TASK EXECUTION (DELIVERY COMPLIANT),.cursor/ai-driven-workflow/10-process-tasks.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+11,PROTOCOL 9: INTEGRATION TESTING & SYSTEM VALIDATION (QUALITY COMPLIANT),.cursor/ai-driven-workflow/11-integration-testing.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+12,PROTOCOL 4: QUALITY AUDIT ORCHESTRATOR (QUALITY ASSURANCE COMPLIANT),.cursor/ai-driven-workflow/12-quality-audit.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+13,PROTOCOL 15: USER ACCEPTANCE TESTING (UAT) COORDINATION (CUSTOMER VALIDATION COMPLIANT),.cursor/ai-driven-workflow/13-uat-coordination.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+14,PROTOCOL 10: PRE-DEPLOYMENT VALIDATION & STAGING READINESS (RELEASE COMPLIANT),.cursor/ai-driven-workflow/14-pre-deployment-staging.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+15,PROTOCOL 11: PRODUCTION DEPLOYMENT & RELEASE MANAGEMENT (RELIABILITY COMPLIANT),.cursor/ai-driven-workflow/15-production-deployment.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+16,PROTOCOL 12: POST-DEPLOYMENT MONITORING & OBSERVABILITY (SRE COMPLIANT),.cursor/ai-driven-workflow/16-monitoring-observability.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+17,PROTOCOL 13: INCIDENT RESPONSE & ROLLBACK (OPERATIONS RESILIENCE COMPLIANT),.cursor/ai-driven-workflow/17-incident-response-rollback.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+18,PROTOCOL 14: PERFORMANCE OPTIMIZATION & TUNING (PERFORMANCE COMPLIANT),.cursor/ai-driven-workflow/18-performance-optimization.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+19,PROTOCOL 16: DOCUMENTATION & KNOWLEDGE TRANSFER (KNOWLEDGE MANAGEMENT COMPLIANT),.cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+20,PROTOCOL 17: PROJECT CLOSURE & HANDOVER (PROGRAM GOVERNANCE COMPLIANT),.cursor/ai-driven-workflow/20-project-closure.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+21,PROTOCOL 18: CONTINUOUS MAINTENANCE & SUPPORT PLANNING (SERVICE RELIABILITY COMPLIANT),.cursor/ai-driven-workflow/21-maintenance-support.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+22,PROTOCOL 5: IMPLEMENTATION RETROSPECTIVE (CONTINUOUS IMPROVEMENT COMPLIANT),.cursor/ai-driven-workflow/22-implementation-retrospective.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+23,PROTOCOL 8: SCRIPT GOVERNANCE (AUTOMATION QUALITY COMPLIANT),.cursor/ai-driven-workflow/23-script-governance-protocol.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+24,PROTOCOL 00-CD: CLIENT DISCOVERY (DISCOVERY COMPLIANT),.cursor/ai-driven-workflow/24-client-discovery.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+25,PROTOCOL INTEGRATION MAP,.cursor/ai-driven-workflow/25-protocol-integration-map.md,4.44,0.0,6.67,3.33,10.0,10.0,5.74,Critical,"role_mission, steps_algorithm, prerequisites, communication, handoff"
+26,Dev-Workflow Script Integration Guide,.cursor/ai-driven-workflow/26-integration-guide.md,6.67,6.67,10.0,3.33,10.0,10.0,7.78,High,"role_mission, prerequisites, handoff"
+27,Validation Guide,.cursor/ai-driven-workflow/27-validation-guide.md,5.56,3.33,10.0,3.33,10.0,10.0,7.04,High,"role_mission, prerequisites, communication, handoff"
+28,PROTOCOL CR: CODE REVIEW (SOFTWARE QUALITY COMPLIANT),.cursor/ai-driven-workflow/review-protocols/code-review.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+29,PROTOCOL SR: SECURITY CHECK (SECURITY & COMPLIANCE COMPLIANT),.cursor/ai-driven-workflow/review-protocols/security-check.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+30,PROTOCOL AR: ARCHITECTURE REVIEW (SOFTWARE DESIGN COMPLIANT),.cursor/ai-driven-workflow/review-protocols/architecture-review.md,10.0,10.0,10.0,10.0,10.0,10.0,10.0,Pass,
+31,PROTOCOL: Generic Design System Review (DDD Compliant),.cursor/ai-driven-workflow/review-protocols/design-system.md,2.22,3.33,0.0,3.33,0.0,0.0,1.48,Critical,"role_mission, steps_algorithm, prerequisites, evidence, automation, quality, handoff"
+32,PROTOCOL: Generic UI/UX Accessibility Review (DDD Compliant),.cursor/ai-driven-workflow/review-protocols/ui-accessibility.md,2.22,3.33,0.0,3.33,0.0,0.0,1.48,Critical,"role_mission, steps_algorithm, prerequisites, evidence, automation, quality, handoff"
+33,PROTOCOL: Generic Deep Security Audit (Software Design Compliant),.cursor/ai-driven-workflow/review-protocols/pre-production.md,0.0,0.0,0.0,0.0,0.0,0.0,0.0,Critical,"role_mission, steps_algorithm, prerequisites, evidence, automation, integration, quality, communication, handoff"
+
+Metric,Value
+Overall Alignment Score (%),81.82
+Coverage Score (%),103.12
+Average Completeness,8.82
+Average Integration,8.69
+Average Overall,8.89
+Protocols ≥8 Overall,27
+Protocols <8 Overall,6
