@@ -100,6 +100,7 @@ This system provides comprehensive AI-assisted project orchestration with human 
 
 ### **Workflow Management & Utilities** (Medium Importance)
 - **`backup_workflows.py`** - Backs up workflow configurations and state (utility)
+- **`compare_prs.py`** - Compares multiple pull requests, mapping dependencies and merge readiness (review support)
 - **`restore_workflows.py`** - Restores workflow configurations from backup (utility)
 - **`validate_workflows.py`** - Validates workflow configuration completeness (validation)
 - **`validate_tasks.py`** - Validates task specifications and dependencies (validation)
