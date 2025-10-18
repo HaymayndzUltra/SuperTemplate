@@ -1,0 +1,29 @@
+Protocol,Name,Completeness,Clarity,Actionability,Integration,Evidence,Automation,Overall,Key Gaps,Priority
+00-generate-rules,/Generate Cursor Rules,3,7,7,4,3,6,5,"Lacks protocol sections, unclear handoffs",Critical
+01-client-proposal-generation,Protocol 00A,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+02-client-discovery-initiation,Protocol 00B,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+03-project-brief-creation,Protocol 01,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+04-project-bootstrap-and-context-engineering,Protocol 00,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+05-bootstrap-your-project,Protocol 0,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+06-create-prd,Protocol 1,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+07-technical-design-architecture,Protocol 6,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+08-generate-tasks,Protocol 2,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+09-environment-setup-validation,Protocol 7,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+10-process-tasks,Protocol 3,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+11-integration-testing,Protocol 9,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+12-quality-audit,Protocol 4,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+13-uat-coordination,Protocol 15,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+14-pre-deployment-staging,Protocol 10,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+15-production-deployment,Protocol 11,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+16-monitoring-observability,Protocol 12,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+17-incident-response-rollback,Protocol 13,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+18-performance-optimization,Protocol 14,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+19-documentation-knowledge-transfer,Protocol 16,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+20-project-closure,Protocol 17,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+21-maintenance-support,Protocol 18,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+22-implementation-retrospective,Protocol 5,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+23-script-governance-protocol,Protocol 8,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+24-client-discovery,Protocol 00-CD,10,9,9,9,8,9,9,Quality metrics placeholder values,Medium
+25-protocol-integration-map,Integration Map,5,8,6,7,4,3,5.5,Missing protocol sections and explicit evidence,High
+26-integration-guide,Integration Guide,4,7,6,6,3,4,5,Guide format without protocol structure,High
+27-validation-guide,Validation Guide,4,7,6,5,4,5,5.17,Lacks protocol workflow and handoff detail,High
