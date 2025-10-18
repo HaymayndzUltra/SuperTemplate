@@ -1,0 +1,34 @@
+Protocol,Completeness,Clarity,Actionability,Integration,Evidence,Automation,Overall,Notes
+01-client-proposal-generation,10,9,9,9,10,9,9.33,Robust structure; tighten success metric tracking for Gate 5.
+02-client-discovery-initiation,10,9,9,9,10,9,9.33,Add quantitative SLA tracking for communication-plan approvals.
+03-project-brief-creation,10,9,9,9,10,9,9.33,Automate reconciliation against proposal commitments.
+04-project-bootstrap-and-context-engineering,10,9,9,9,10,9,9.33,Clarify toolchain version pinning for automation scripts.
+05-bootstrap-your-project,10,9,9,9,10,9,9.33,Add automated dependency vulnerability scan hook.
+06-create-prd,10,9,9,9,10,9,9.33,Include explicit conflict resolution workflow for stakeholder feedback.
+07-technical-design-architecture,10,9,9,9,10,9,9.33,Add automated diagram verification step.
+08-generate-tasks,10,9,9,9,10,9,9.33,Tie estimates to historical velocity dataset.
+09-environment-setup-validation,10,9,9,9,10,9,9.33,Provide fallback plan for cloud resource provisioning failures.
+10-process-tasks,10,9,9,9,10,9,9.33,Automate linkage between task IDs and evidence artifacts.
+11-integration-testing,10,9,9,9,10,9,9.33,Add coverage trend dashboard export.
+12-quality-audit,10,9,9,9,10,9,9.33,Automate gating for third-party license compliance.
+13-uat-coordination,10,9,9,9,10,9,9.33,Add automated reminder cadence for UAT feedback windows.
+14-pre-deployment-staging,10,9,9,9,10,9,9.33,Include infrastructure drift detection automation.
+15-production-deployment,10,9,9,9,10,9,9.33,Clarify rollback automation prerequisites.
+16-monitoring-observability,10,9,9,9,10,9,9.33,Expand synthetic monitoring coverage thresholds.
+17-incident-response-rollback,10,9,9,9,10,9,9.33,Automate incident postmortem template generation.
+18-performance-optimization,10,9,9,9,10,9,9.33,Integrate cost-optimization metrics in automation suite.
+19-documentation-knowledge-transfer,10,9,9,9,10,9,9.33,Automate knowledge base publish trigger.
+20-project-closure,10,9,9,9,10,9,9.33,Add automated satisfaction survey dispatch.
+21-maintenance-support,10,9,9,9,10,9,9.33,Include predictive maintenance analytics integration.
+22-implementation-retrospective,10,9,9,9,10,9,9.33,Automate action item tracking with ticketing system.
+23-script-governance-protocol,10,9,9,9,10,9,9.33,Add automated checksum verification for script catalog.
+24-client-discovery,10,9,9,9,10,9,9.33,Automate intake metadata enrichment pipeline.
+25-protocol-integration-map,2,6,5,2,3,2,3.33,"Rebuild as full protocol with prerequisites, roles, workflow, and automation."
+26-integration-guide,3,6,5,3,3,4,4,"Add full protocol framing with role, evidence, quality gates, and handoffs."
+27-validation-guide,3,6,5,3,4,4,4.17,Convert into executable validation protocol with gates and automation triggers.
+review-code-review,10,9,9,9,10,9,9.33,Automate linking of review metrics to quality dashboard.
+review-security-check,10,9,9,9,10,9,9.33,Add automated dependency SBOM export step.
+review-architecture-review,10,9,9,9,10,9,9.33,Automate architecture decision record sync.
+review-design-system,3,6,5,3,3,3,3.83,Upgrade to full protocol with gated design asset validation.
+review-ui-accessibility,3,6,5,3,3,3,3.83,"Add accessibility lead role, prerequisites, workflow, and automation."
+review-pre-production,3,6,5,3,3,3,3.83,"Define role, evidence, and automation for pre-production readiness."
