@@ -73,5 +73,5 @@ global glass harms contrast/perf; enterprise enabled without RBAC & compliance i
 ## Integration Notes
 - **Location**: Place these files in `.cursor/rules/common-rules/` for monorepo-wide use, or in a project's `project-rules/` for targeted activation.
 - **Activation**: These rules are triggered by keywords found in the `TRIGGERS` metadata (e.g., `foundation`, `interaction`, `premium`, `tokens`, `aria`, `RBAC`).
-- **Review**: Before committing, ensure the rule passes the Final Review Checklist from `.cursor/rules/master-rules/0-how-to-create-effective-rules.mdc` (structure, metadata, persona, `[STRICT]/[GUIDELINE]` protocol, ✅/❌ examples, clarity).
+- **Review**: Before committing, ensure the rule passes the Final Review Checklist from `.cursor/rules/master-rules/6-master-rule-how-to-create-effective-rules.mdc` (structure, metadata, persona, `[STRICT]/[GUIDELINE]` protocol, ✅/❌ examples, clarity).
 

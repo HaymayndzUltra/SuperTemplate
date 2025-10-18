@@ -355,11 +355,11 @@ Configure evidence artifacts per protocol:
 ```
 
 **Generated Protocols**:
-1. `00-analyze-brief.md` ✓ (validate requirements)
-2. `01-design-ui-components.md` ✓ (custom: focus on UI/UX)
-3. `02-implement-frontend.md` ✓ (custom: no backend needed)
-4. `03-validate-accessibility.md` ✓ (mandatory for public web)
-5. `04-deploy-static.md` ✓ (static hosting)
+1. `03-project-brief-creation.md` ✓ (validate requirements)
+2. `07-technical-design-architecture.md` ✓ (custom: focus on UI/UX)
+3. `10-process-tasks.md` ✓ (custom: no backend needed)
+4. `12-quality-audit.md` ✓ (mandatory for public web)
+5. `15-production-deployment.md` ✓ (static hosting)
 
 **Skipped**: Bootstrap (no codebase analysis), Backend protocols, Complex architecture design
 
@@ -378,20 +378,20 @@ Configure evidence artifacts per protocol:
 ```
 
 **Generated Protocols**:
-1. `00-client-discovery.md` ✓ (detailed requirements)
-2. `01-bootstrap-architecture.md` ✓ (analyze existing patterns)
-3. `02-security-design.md` ✓ (custom: multi-tenancy, PCI compliance)
-4. `03-database-schema.md` ✓ (custom: complex data model)
-5. `04-api-contracts.md` ✓ (custom: OpenAPI spec generation)
-6. `05-generate-tasks.md` ✓ (standard task generation)
-7. `06-process-tasks.md` ✓ (implementation with evidence)
-8. `07-ci-cd-setup.md` ✓ (automated pipeline with quality gates)
-9. `08-testing-strategy.md` ✓ (integration, E2E, performance tests)
-10. `09-quality-audit.md` ✓ (comprehensive validation)
-11. `10-deployment.md` ✓ (blue/green deployment with rollback)
-12. `11-monitoring.md` ✓ (comprehensive observability)
-13. `12-docs.md` ✓ (API docs, user guides, runbooks)
-14. `13-retrospective.md` ✓ (learnings capture)
+1. `24-client-discovery.md` ✓ (detailed requirements)
+2. `05-bootstrap-your-project.md` ✓ (analyze existing patterns)
+3. `07-technical-design-architecture.md` ✓ (custom: multi-tenancy, PCI compliance)
+4. `07-technical-design-architecture.md` ✓ (custom: complex data model)
+5. `07-technical-design-architecture.md` ✓ (custom: OpenAPI spec generation)
+6. `08-generate-tasks.md` ✓ (standard task generation)
+7. `10-process-tasks.md` ✓ (implementation with evidence)
+8. `09-environment-setup-validation.md` ✓ (automated pipeline with quality gates)
+9. `11-integration-testing.md` ✓ (integration, E2E, performance tests)
+10. `12-quality-audit.md` ✓ (comprehensive validation)
+11. `15-production-deployment.md` ✓ (blue/green deployment with rollback)
+12. `16-monitoring-observability.md` ✓ (comprehensive observability)
+13. `19-documentation-knowledge-transfer.md` ✓ (API docs, user guides, runbooks)
+14. `22-implementation-retrospective.md` ✓ (learnings capture)
 
 ### ✅ Correct: Data Analytics Dashboard Orchestration
 
@@ -408,15 +408,15 @@ Configure evidence artifacts per protocol:
 ```
 
 **Generated Protocols**:
-1. `00-data-discovery.md` ✓ (custom: analyze Excel sources)
-2. `01-data-quality-assessment.md` ✓ (custom: validate data integrity)
-3. `02-dashboard-design.md` ✓ (custom: KPI selection, mock-ups)
-4. `03-etl-pipeline.md` ✓ (custom: data extraction and transformation)
-5. `04-visualization-implementation.md` ✓ (Tableau-specific)
-6. `05-user-acceptance-testing.md` ✓ (validate with stakeholders)
-7. `06-monitoring.md` ✓ (dashboard usage metrics)
-8. `07-docs.md` ✓ (stakeholder documentation)
-9. `08-retrospective.md` ✓ (capture data quality learnings)
+1. `02-client-discovery-initiation.md` ✓ (custom: analyze Excel sources)
+2. `12-quality-audit.md` ✓ (custom: validate data integrity)
+3. `07-technical-design-architecture.md` ✓ (custom: KPI selection, mock-ups)
+4. `10-process-tasks.md` ✓ (custom: data extraction and transformation)
+5. `10-process-tasks.md` ✓ (Tableau-specific)
+6. `13-uat-coordination.md` ✓ (validate with stakeholders)
+7. `16-monitoring-observability.md` ✓ (dashboard usage metrics)
+8. `19-documentation-knowledge-transfer.md` ✓ (stakeholder documentation)
+9. `22-implementation-retrospective.md` ✓ (capture data quality learnings)
 
 **Skipped**: Bootstrap (no codebase), PRD (data-driven), CI/CD (not applicable), Testing (data validation different), Deployment (manual Tableau publish)
 
@@ -433,28 +433,28 @@ Configure evidence artifacts per protocol:
 ```
 
 **Incorrect Protocols**:
-1. `00-client-discovery.md` ✓
-2. `01-bootstrap-architecture.md` ✓ ← UNNECESSARY for simple site
-3. `02-security-design.md` ✓ ← UNNECESSARY for contact form
-4. `03-database-schema.md` ✓ ← UNNECESSARY for static site
-5. `04-api-contracts.md` ✓ ← UNNECESSARY for simple form
-6. `05-generate-tasks.md` ✓
-7. `06-process-tasks.md` ✓
-8. `07-security-validation.md` ✓ ← OVERKILL for simple site
-9. `08-integration-testing.md` ✓ ← OVERKILL for simple site
-10. `09-deployment-checklist.md` ✓ ← OVERKILL for static hosting
-11. `10-monitoring-setup.md` ✓ ← UNNECESSARY for MVP
-12. `11-retrospective.md` ✓
+1. `24-client-discovery.md` ✓
+2. `05-bootstrap-your-project.md` ✓ ← UNNECESSARY for simple site
+3. `07-technical-design-architecture.md` ✓ ← UNNECESSARY for contact form
+4. `07-technical-design-architecture.md` ✓ ← UNNECESSARY for static site
+5. `07-technical-design-architecture.md` ✓ ← UNNECESSARY for simple form
+6. `08-generate-tasks.md` ✓
+7. `10-process-tasks.md` ✓
+8. `12-quality-audit.md` ✓ ← OVERKILL for simple site
+9. `11-integration-testing.md` ✓ ← OVERKILL for simple site
+10. `14-pre-deployment-staging.md` ✓ ← OVERKILL for static hosting
+11. `16-monitoring-observability.md` ✓ ← UNNECESSARY for MVP
+12. `22-implementation-retrospective.md` ✓
 
 **Problems**: Over-engineering simple project, wasting time on unnecessary protocols, missing the MVP focus
 
 ### ❌ Anti-Pattern: Dependency Violation
 
 **Incorrect Sequence**:
-1. `02-generate-tasks.md` ← WRONG: No PRD exists
-2. `03-process-tasks.md` ← WRONG: No tasks generated yet
-4. `01-create-prd.md` ← WRONG: Should come before task generation
-5. `00-client-discovery.md` ← WRONG: Should be first
+1. `08-generate-tasks.md` ← WRONG: No PRD exists
+2. `10-process-tasks.md` ← WRONG: No tasks generated yet
+4. `06-create-prd.md` ← WRONG: Should come before task generation
+5. `24-client-discovery.md` ← WRONG: Should be first
 
 **Problems**: Trying to generate tasks without requirements, executing tasks that don't exist, wrong order violates logical dependencies
 
@@ -645,7 +645,7 @@ If orchestration decisions conflict with user requirements:
 ---
 
 ## References
-- [Protocol Orchestrator Design](mdc:.cursor/commands/protocol-orchestrator.md) - Original orchestration system specification
+- [Protocol Orchestrator Design](mdc:.cursor/ai-driven-workflow/09-environment-setup-validation.md) - Environment setup and validation protocol
 - [Dev-Workflow Integration Guide](mdc:.cursor/rules/master-rules/7-master-rule-ai-driven-workflow-integration-guide.mdc) - Integration patterns and automation
 - [Scripts Directory](mdc:scripts/README.md) - Available automation scripts
 - [Protocol Metadata](mdc:.cursor/ai-driven-workflow/protocol-metadata.json) - Protocol definitions and requirements
