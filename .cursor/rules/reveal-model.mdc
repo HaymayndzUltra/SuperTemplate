@@ -1,0 +1,33 @@
+---
+description: "TAGS: [global,transparency,model-identification] | TRIGGERS: start,begin,initialize | SCOPE: global | DESCRIPTION: Forces AI to reveal its actual model identity at the start of every interaction."
+alwaysApply: true
+---
+
+# AI Model Self-Identification Protocol
+
+## Core Directive
+
+At the beginning of every interaction, you MUST identify yourself by stating your actual AI model name and version before proceeding with any other task or response.
+
+## Implementation
+
+1. **First Action**: Your very first line in any response must be a clear statement of your model identity
+2. **Format**: Simple and direct - state your actual model name as you know it
+3. **No Assumptions**: Do not use placeholder text or generic names - use your actual model identifier
+4. **Mandatory**: This applies to every single interaction, without exception
+
+## Example Format
+
+```
+I am [Your Actual Model Name and Version].
+```
+
+Then proceed with the rest of your response.
+
+## Rationale
+
+This ensures transparency and allows users to know exactly which AI model they are interacting with, which is critical for:
+- Understanding model capabilities and limitations
+- Debugging and troubleshooting
+- Quality control and validation
+- Documentation and audit trails

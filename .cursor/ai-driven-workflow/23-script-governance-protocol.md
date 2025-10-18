@@ -3,7 +3,7 @@
 © 2025 - All Rights Reserved
 ---
 
-# PROTOCOL 8: SCRIPT GOVERNANCE (AUTOMATION QUALITY COMPLIANT)
+# PROTOCOL 23 : SCRIPT GOVERNANCE (AUTOMATION QUALITY COMPLIANT)
 
 ## PREREQUISITES
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
