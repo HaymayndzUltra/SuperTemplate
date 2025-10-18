@@ -259,7 +259,7 @@ Before declaring protocol complete, validate:
 **Execution:**
 ```bash
 # Trigger next protocol
-@apply .cursor/ai-driven-workflow/15-production-deployment.md
+@apply .cursor/ai-driven-workflow/11-production-deployment.md
 ```
 
 ---

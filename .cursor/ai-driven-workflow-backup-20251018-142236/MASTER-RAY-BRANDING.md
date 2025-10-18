@@ -46,14 +46,14 @@ Use `RAY` prefix for operational communications:
 
 ### Specialized Context Announcements
 
-#### Protocol 21 (Process Tasks)
+#### Protocol 3 (Process Tasks)
 ```
 [RAY EXECUTION SESSION]
 [RAY SUBTASK COMPLETE]
 [RAY EVIDENCE ARCHIVED]
 ```
 
-#### Protocol 15 (Production Deployment)
+#### Protocol 11 (Production Deployment)
 ```
 [RAY DEPLOYMENT: {percentage}% complete]
 [RAY ROLLBACK INITIATED]

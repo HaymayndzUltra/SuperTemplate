@@ -1,0 +1,10 @@
+{
+  "title": "Add protocol reference inventory and renumbering guidance",
+  "state": "open",
+  "additions": 1177,
+  "deletions": 708,
+  "changed_files": 6,
+  "created_at": "2025-10-18T05:33:50Z",
+  "updated_at": "2025-10-18T05:33:52Z",
+  "body": "## Summary\n- replace the protocol reference mapping report with a data-backed inventory of handoffs, artifact directories, and supporting documentation links\n- refresh the renumbering adjustment prompt with updated mapping tables, artifact translations, and validation tasks\n- add machine-readable reference datasets plus validation and risk-assessment guides to govern the forthcoming renumbering effort\n\n## Testing\n- not run\n\n------\nhttps://chatgpt.com/codex/tasks/task_e_68f323f2fb0c832e8e1b884e815102b4"
+}

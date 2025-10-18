@@ -254,7 +254,7 @@ Before declaring protocol complete, validate:
 **Execution:**
 ```bash
 # Trigger next protocol
-@apply .cursor/ai-driven-workflow/10-process-tasks.md
+@apply .cursor/ai-driven-workflow/3-process-tasks.md
 ```
 
 ---

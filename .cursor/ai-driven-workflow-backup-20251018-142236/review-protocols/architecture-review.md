@@ -255,7 +255,7 @@ Before declaring protocol complete, validate:
 **Execution:**
 ```bash
 # Trigger next protocol
-@apply .cursor/ai-driven-workflow/07-technical-design-architecture.md
+@apply .cursor/ai-driven-workflow/6-technical-design-architecture.md
 ```
 
 ---

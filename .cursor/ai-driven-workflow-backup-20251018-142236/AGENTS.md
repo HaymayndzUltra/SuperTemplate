@@ -222,13 +222,13 @@ Workflow protocols integrate with Cursor commands:
 
 ```bash
 # Apply specific protocol
-@apply .cursor/ai-driven-workflow/06-create-prd.md
+@apply .cursor/ai-driven-workflow/1-create-prd.md
 
 # Execute with context
-@apply .cursor/ai-driven-workflow/10-process-tasks.md @codebase
+@apply .cursor/ai-driven-workflow/3-process-tasks.md @codebase
 
 # Quality audit
-@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode comprehensive
+@apply .cursor/ai-driven-workflow/4-quality-audit.md --mode comprehensive
 ```
 
 ### Context Awareness

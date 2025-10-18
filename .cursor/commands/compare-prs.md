@@ -1,12 +1,3 @@
-
-**[Strict]** Announce reload `1-master-rule-context-discovery.mdc` and then  `elaboration-specialist.mdc` rules before proceed
-
-
-pakianalyze itong nasa baba, gusto kong ienhanced ito kasi lagi akong may apat na PR twing nag papa coding ako sa ibang IDE. so kailangan pag nirun ko ito. iaanalyze niya lahat ng mga naabago as in lahat, icocompare niya ang apat na PR tapos isusuggest niya yung pinaka tamang PR with reason
-NANDITO ANG IEDDIT AH
-`/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/commands/compare-prs.md`
-
-
 # Compare Multiple PRs
 
 ## Purpose
@@ -54,8 +45,59 @@ https://github.com/HaymayndzUltra/SuperTemplate/pull/[PR-number]
 
 ## Output Format
 
+### 🏆 Executive Recommendation: Best PR to Merge
+
+**Recommended PR**: #[number] - [title]
+
+**Why This PR Wins**:
+- **Code Quality Score**: [score]/10 - [explanation]
+- **Implementation Excellence**: [specific technical strengths]
+- **Business Value**: [clear business impact]
+- **Risk Assessment**: [why it's safe to merge]
+- **Dependency Impact**: [what it enables/unblocks]
+
+**Comparison to Other PRs**:
+- vs PR #[X]: [why recommended PR is better]
+- vs PR #[Y]: [why recommended PR is better]
+- vs PR #[Z]: [why recommended PR is better]
+
+**Action**: Merge this PR first, then reassess remaining PRs.
+
 ### Individual PR Deep Dive
+
 For each PR, provide:
+
+#### Code Quality Analysis
+- **Implementation Score**: [X]/10
+  - Pattern consistency: [details]
+  - Code elegance: [details]
+  - Best practices adherence: [details]
+  
+- **FILE-BY-FILE BREAKDOWN**:
+  - `path/to/file1.ts` (+X/-Y lines):
+    - **What changed**: [function/logic description]
+    - **Code patterns detected**: [architectural patterns used]
+    - **Quality assessment**: [strengths and potential issues]
+    - **Performance impact**: [analysis of algorithmic complexity]
+  
+  - `path/to/file2.ts` (+X/-Y lines):
+    - [same detailed analysis]
+
+#### Conflict Detection
+- **Files modified by this PR**: [list]
+- **Overlapping with other PRs**: [list conflicts with PR numbers]
+- **Risk level**: [LOW/MEDIUM/HIGH with explanation]
+
+#### Business Value
+- **What this PR accomplishes**: [clear explanation]
+- **User impact**: [direct user-facing benefits]
+- **Technical impact**: [system improvements]
+
+#### Recommendation Factor
+- **Merge readiness**: [why this PR should/shouldn't be merged first]
+- **Blocking other PRs**: [dependencies]
+- **Code quality edge**: [what makes this PR stand out]
+
 - **ACTUAL CODE REVIEW**: Detailed analysis of specific file changes
 - **FILE-BY-FILE ANALYSIS**: What each file does and how it changes
 - **CODE PATTERN ANALYSIS**: Implementation patterns, best practices, potential issues
@@ -77,6 +119,18 @@ PR 125 (Refactor) → Independent
 PR 126 (Feature B) → Conflicts with PR 125
 ```
 
+### File Conflict Matrix
+
+| File Path | PR #1 | PR #2 | PR #3 | PR #4 | Risk Level |
+|-----------|-------|-------|-------|-------|------------|
+| src/auth/login.ts | ✅ | ❌ | ✅ | ❌ | 🔴 HIGH - Manual Review Required |
+| src/api/users.ts | ✅ | ❌ | ❌ | ❌ | 🟢 LOW - Single PR |
+| src/utils/helpers.ts | ❌ | ✅ | ✅ | ✅ | 🔴 CRITICAL - 3 PRs conflict |
+
+**🔴 HIGH RISK FILES**: [list files modified by 2+ PRs]
+**🟡 MEDIUM RISK FILES**: [list files with function-level dependencies]
+**🟢 LOW RISK FILES**: [list files modified by single PR]
+
 ### Recommended Merge Order
 1. **PR 123** - Ready, low risk, enables PR 124
 2. **PR 124** - Critical bug fix, depends on PR 123
@@ -91,12 +145,31 @@ PR 126 (Feature B) → Conflicts with PR 125
 ## Code Review Process
 
 ### Mandatory Code Review Steps
-1. **Fetch Actual File Changes**: Use GitHub API to get detailed file changes for each PR
-2. **Analyze Each File**: Review the actual content changes, not just metadata
-3. **Detect Conflicts**: Identify files modified by multiple PRs
-4. **Assess Code Quality**: Look for patterns, best practices, potential issues
-5. **Explain Business Value**: Clearly articulate what each PR accomplishes
-6. **Document Findings**: Provide detailed explanations for decision-making
+1. **Fetch Actual File Changes**: Use GitHub API/CLI to get detailed file diffs
+2. **File-Level Analysis**: For each modified file, analyze:
+   - Code patterns (architecture, design patterns, best practices)
+   - Function signatures and logic flow changes
+   - Variable naming conventions and code clarity
+   - Error handling and edge case coverage
+   - Performance implications (loops, queries, algorithms)
+3. **Cross-PR Conflict Detection**: Build a file modification matrix to identify:
+   - Files modified by multiple PRs (HIGH RISK - flag for manual review)
+   - Function-level conflicts (same functions modified)
+   - Dependency conflicts (imports, exports, API contracts)
+4. **Code Quality Scoring**: Rate each PR on:
+   - Implementation elegance (1-10)
+   - Code maintainability (1-10)
+   - Pattern consistency (1-10)
+   - Test coverage quality (1-10)
+5. **Business Value Assessment**: Evaluate:
+   - User-facing impact clarity
+   - Technical debt reduction
+   - System reliability improvement
+6. **Recommendation Engine**: Compare all 4 PRs and select the single best PR based on:
+   - Highest code quality score
+   - Lowest risk assessment
+   - Maximum business value
+   - Optimal dependency enablement
 
 ### Code Review Checklist
 - [ ] **File Changes Analyzed**: Every modified file reviewed
@@ -114,10 +187,17 @@ PR 126 (Feature B) → Conflicts with PR 125
 - **MANDATORY**: Fetches and analyzes actual file changes for comprehensive review
 
 ## Quality Gates
-- [ ] All PRs analyzed for technical quality
+- [ ] All PRs analyzed for technical quality with code pattern detection
+- [ ] File-level analysis completed for every modified file
+- [ ] Cross-PR conflict matrix generated
+- [ ] Files modified by multiple PRs flagged as HIGH RISK
+- [ ] Code quality scores calculated (implementation, maintainability, patterns, tests)
+- [ ] Business value assessed for each PR
 - [ ] Dependencies identified and mapped
 - [ ] Risk levels assessed and documented
-- [ ] Merge order recommended with justification
+- [ ] **EXECUTIVE RECOMMENDATION generated with comparative reasoning**
+- [ ] **SINGLE BEST PR identified with clear justification**
+- [ ] **CONFLICT RESOLUTION strategy defined for high-risk files**
 - [ ] Action items defined for each PR
 - [ ] **ACTUAL CODE REVIEW completed for each PR**
 - [ ] **FILE-BY-FILE ANALYSIS documented**

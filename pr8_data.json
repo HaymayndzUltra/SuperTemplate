@@ -1,0 +1,10 @@
+{
+  "title": "Add protocol reference mapping and validation collateral",
+  "state": "open",
+  "additions": 295,
+  "deletions": 718,
+  "changed_files": 4,
+  "created_at": "2025-10-18T05:32:00Z",
+  "updated_at": "2025-10-18T05:32:01Z",
+  "body": "## Summary\n- rewrite the protocol reference mapping report with per-phase dependency tables and supporting-doc analysis\n- refresh the renumbering adjustment prompt to match the proposed numbering scheme and highlight missing handoffs\n- add a validation script outline and a risk assessment to guide automated and manual checks during renumbering\n\n## Testing\n- not run\n\n------\nhttps://chatgpt.com/codex/tasks/task_e_68f323f2fb0c832e8e1b884e815102b4"
+}

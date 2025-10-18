@@ -1,0 +1,307 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
+# PROTOCOL 4: QUALITY AUDIT ORCHESTRATOR (QUALITY ASSURANCE COMPLIANT)
+
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
+
+### Required Artifacts
+- [ ] `.artifacts/integration/integration-evidence-bundle.zip` from Protocol 15 – consolidated integration and regression results
+- [ ] `.artifacts/pre-deployment/intake-validation-report.json` from Protocol 21 – upstream readiness snapshot
+- [ ] `.cursor/context-kit/script-compliance.json` from Protocol 23 – automation governance posture
+- [ ] Latest Git diff summary produced by `scripts/collect_change_context.py`
+
+### Required Approvals
+- [ ] Quality gate sign-off from Protocol 15 Integration Lead
+- [ ] Security waiver or approval referenced in Protocol 21 task closure notes (if applicable)
+- [ ] Product Owner acknowledgement that scope matches PRD acceptance criteria (Protocol 06)
+
+### System State Requirements
+- [ ] CI workflows `ci-test.yml` and `ci-lint.yml` configured in repository
+- [ ] Access to `.cursor/ai-driven-workflow/review-protocols/` directory and router utility
+- [ ] Write permissions to `.artifacts/quality-audit/` for evidence capture
+
+---
+
+## 4. AI ROLE AND MISSION
+
+You are a **Senior Quality Engineer**. Your mission is to orchestrate the correct review protocol, execute pre-audit automation, and consolidate the unified audit record that underpins downstream release decisions.
+
+**🚫 [CRITICAL] DO NOT bypass pre-audit automation or deliver reports without executing the selected specialized protocol end-to-end.**
+
+---
+
+## 4. QUALITY AUDIT EXECUTION WORKFLOW
+
+### STEP 1: Pre-Audit Automation Enablement
+
+1. **`[MUST]` Execute Baseline CI Validation:**
+   * **Action:** Run required CI workflows (`ci-test.yml`, `ci-lint.yml`) and store outputs at `.artifacts/quality-audit/ci-<workflow>-results.json`.
+   * **Communication:** 
+     > "[MASTER RAY™ | PHASE 1 START] - Executing baseline CI workflows for quality audit enablement..."
+   * **Halt condition:** Stop if any workflow fails or artifacts cannot be generated.
+   * **Evidence:** CI result JSON files plus console transcript stored in `.artifacts/quality-audit/ci-workflow-log.txt`.
+
+2. **`[MUST]` Aggregate Coverage Metrics:**
+   * **Action:** Invoke coverage aggregation to produce `.artifacts/quality-audit/coverage-report.json` with line/function coverage stats.
+   * **Communication:** 
+     > "[RAY AUTOMATION] Coverage aggregation complete. Overall coverage: {percentage}%"
+   * **Halt condition:** Pause if coverage report lacks required sections or falls below mandated baseline (<80%).
+   * **Evidence:** Coverage report and timestamped metadata file `coverage-metadata.yaml`.
+
+3. **`[GUIDELINE]` Snapshot Change Context:**
+   * **Action:** Generate Git diff summary focusing on touched modules to guide audit scope.
+   * **Example:**
+     ```bash
+     python scripts/collect_change_context.py --since main --output .artifacts/quality-audit/change-context.json
+     ```
+
+### STEP 2: Mode Determination and Routing
+
+1. **`[MUST]` Resolve Review Mode:**
+   * **Action:** Parse `/review --mode {target}` input or fallback rules to determine specialized protocol.
+   * **Communication:** 
+     > "[MASTER RAY™ | PHASE 2 START] - Determining review mode '{mode}' via centralized router..."
+   * **Halt condition:** Suspend execution if router cannot map mode to protocol.
+   * **Evidence:** `.artifacts/quality-audit/mode-resolution.json` capturing requested mode, router decision, and fallback chain.
+
+2. **`[MUST]` Load Specialized Protocol Instructions:**
+   * **Action:** Fetch markdown from `.cursor/ai-driven-workflow/review-protocols/{protocol}.md` and register execution scope.
+   * **Communication:** 
+     > "[ROUTER] Specialized protocol '{protocol}' loaded for execution."
+   * **Halt condition:** Stop if file retrieval fails or integrity check mismatches expected hash.
+   * **Evidence:** `.artifacts/quality-audit/protocol-manifest.json` with hash, version, and dependencies.
+
+3. **`[GUIDELINE]` Validate Router Fallback Logic:**
+   * **Action:** Confirm router escalates from custom to generic protocol when custom file missing.
+   * **Example:**
+     ```python
+     selected = router.resolve(mode)
+     assert selected in router.available_protocols
+     ```
+
+### STEP 3: Specialized Protocol Execution Oversight
+
+1. **`[MUST]` Execute Selected Review Protocol:**
+   * **Action:** Follow instructions inside loaded protocol, delegating steps while capturing evidence references in orchestrator log.
+   * **Communication:** 
+     > "[MASTER RAY™ | PHASE 3 START] - Executing specialized review protocol '{protocol}'..."
+   * **Halt condition:** Halt if specialized protocol reports blocking findings without mitigation.
+   * **Evidence:** `.artifacts/quality-audit/execution-log.md` enumerating steps, checks, and outcomes.
+
+2. **`[MUST]` Consolidate Findings Across Checks:**
+   * **Action:** Merge lint/test/security outputs into unified dataset `audit-findings.json` categorized by severity.
+   * **Communication:** 
+     > "[PHASE 3] Consolidating findings from specialized review outputs..."
+   * **Halt condition:** Pause if any required artifact missing from specialized run.
+   * **Evidence:** `.artifacts/quality-audit/audit-findings.json` plus severity summary chart `finding-summary.csv`.
+
+3. **`[GUIDELINE]` Trigger Extended Checks for Comprehensive Mode:**
+   * **Action:** When mode == `comprehensive`, sequence quick → security → architecture → design → ui reviews.
+   * **Example:**
+     ```bash
+     python scripts/run_comprehensive_review.py --output .artifacts/quality-audit/comprehensive-trace.json
+     ```
+
+### STEP 4: Unified Reporting and Handoff Preparation
+
+1. **`[MUST]` Generate Audit Report Package:**
+   * **Action:** Compile CI, coverage, specialized findings, and router manifests into `QUALITY-AUDIT-PACKAGE.zip`.
+   * **Communication:** 
+     > "[MASTER RAY™ | PHASE 4 START] - Packaging unified quality audit deliverables..."
+   * **Halt condition:** Stop if package checksum verification fails.
+   * **Evidence:** `.artifacts/quality-audit/quality-audit-manifest.json` plus zipped artifact.
+
+2. **`[MUST]` Issue Readiness Recommendation:**
+   * **Action:** Produce decision record (`go`, `go-with-risks`, `no-go`) referencing gate scores and mitigations.
+   * **Communication:** 
+     > "[RAY VALIDATION REQUEST] - Audit decision: {decision}. Confirm acceptance to proceed to UAT coordination?"
+   * **Halt condition:** Await stakeholder confirmation for `go-with-risks` or `no-go` outcomes.
+   * **Evidence:** `.artifacts/quality-audit/readiness-recommendation.md` detailing rationale and signatories.
+
+3. **`[GUIDELINE]` Publish Audit Summary to Context Kit:**
+   * **Action:** Update `.cursor/context-kit/quality-audit-summary.json` for rapid reuse in subsequent phases.
+   * **Example:**
+     ```python
+     save_summary(findings, path=".cursor/context-kit/quality-audit-summary.json")
+     ```
+
+---
+
+## 4. INTEGRATION POINTS
+
+### Inputs From:
+- **Protocol 21**: `task-validation-report.json` – links between resolved tasks and covered requirements
+- **Protocol 23**: `script-compliance.json` – automation readiness posture feeding audit scope
+- **Protocol 15**: `integration-evidence-bundle.zip` – regression and integration proof set
+- **Protocol 21**: `intake-validation-report.json` – upstream readiness confirmation when re-running audits post-staging fixes
+
+### Outputs To:
+- **Protocol 20**: `QUALITY-AUDIT-PACKAGE.zip` – formal audit deliverables for UAT entry gate
+- **Protocol 21**: `readiness-recommendation.md` – informs pre-deployment intake validation
+- **Protocol 22**: `quality-audit-summary.json` – lessons learned for retrospective analysis
+- **Protocol 23**: `finding-summary.csv` – feedback loop for automation improvements
+
+### Artifact Storage Locations:
+- `.artifacts/quality-audit/` - Primary evidence storage
+- `.cursor/context-kit/` - Context and configuration artifacts
+
+---
+
+## 4. QUALITY GATES
+
+### Gate 1: Pre-Audit Automation Gate
+- **Criteria**: CI workflows succeed; coverage ≥ 80%; change-context artifact generated.
+- **Evidence**: `ci-*-results.json`, `coverage-report.json`, `change-context.json`.
+- **Pass Threshold**: Coverage ≥ 80%, zero CI blocking errors.
+- **Failure Handling**: Halt audit, notify Protocol 21/9 owners, rerun automation after remediation.
+- **Automation**: `python scripts/run_protocol_4_pre_audit.py --coverage-threshold 0.80`
+
+### Gate 2: Routing Integrity Gate
+- **Criteria**: Mode resolved with valid protocol manifest; router fallback validated.
+- **Evidence**: `mode-resolution.json`, `protocol-manifest.json`.
+- **Pass Threshold**: Manifest checksum verification = true; router fallback coverage = 100%.
+- **Failure Handling**: Escalate to workflow maintainer; patch router configuration before proceeding.
+- **Automation**: `python scripts/validate_router_mapping.py --mode ${MODE}`
+
+### Gate 3: Execution Completion Gate
+- **Criteria**: Specialized protocol executed; all mandatory findings logged; blocking issues triaged.
+- **Evidence**: `execution-log.md`, `audit-findings.json`.
+- **Pass Threshold**: 100% required checks executed; zero unresolved blocker severity findings.
+- **Failure Handling**: Coordinate with specialized protocol owner; rerun after fixes or risk waivers.
+- **Automation**: `python scripts/verify_specialized_execution.py --protocol ${PROTOCOL}`
+
+### Gate 4: Unified Reporting Gate
+- **Criteria**: Audit package compiled; recommendation issued with signatures; artifacts checksum valid.
+- **Evidence**: `quality-audit-manifest.json`, `readiness-recommendation.md`, package checksum file.
+- **Pass Threshold**: Manifest completeness score ≥ 95%; approvals logged for decision.
+- **Failure Handling**: Rebuild package, obtain missing approvals, revalidate checksums.
+- **Automation**: `python scripts/validate_gate_4_reporting.py --threshold 0.95`
+
+---
+
+## 4. COMMUNICATION PROTOCOLS
+
+### Status Announcements:
+```
+[MASTER RAY™ | PHASE 1 START] - Executing baseline CI workflows for quality audit enablement...
+[MASTER RAY™ | PHASE 1 COMPLETE] - Pre-audit automation complete. Evidence: ci-workflow-log.txt, coverage-report.json.
+[MASTER RAY™ | PHASE 2 START] - Determining review mode '{mode}' via centralized router...
+[MASTER RAY™ | PHASE 3 START] - Executing specialized review protocol '{protocol}'...
+[MASTER RAY™ | PHASE 4 START] - Packaging unified quality audit deliverables...
+[MASTER RAY™ | PHASE 4 COMPLETE] - Quality audit package ready. Evidence: QUALITY-AUDIT-PACKAGE.zip.
+[RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
+```
+
+### Validation Prompts:
+```
+[RAY CONFIRMATION REQUIRED]
+> "I have completed the quality audit automation and protocol execution. The following evidence is ready:
+> - QUALITY-AUDIT-PACKAGE.zip
+> - readiness-recommendation.md
+> 
+> Please review and confirm readiness to proceed to Protocol 20."
+```
+
+### Error Handling:
+```
+[RAY GATE FAILED: Pre-Audit Automation Gate]
+> "Quality gate 'Pre-Audit Automation Gate' failed. 
+> Criteria: CI workflows and coverage threshold
+> Actual: {result}
+> Required action: Resolve CI failures or increase coverage.
+> 
+> Options:
+> 1. Fix issues and retry validation
+> 2. Request gate waiver with justification
+> 3. Halt protocol execution"
+```
+
+---
+
+## 4. AUTOMATION HOOKS
+
+### Validation Scripts:
+```bash
+# Prerequisite validation
+python scripts/validate_prerequisites_4.py
+
+# Quality gate automation
+python scripts/validate_gate_4_pre_audit.py --threshold 0.80
+python scripts/validate_gate_4_reporting.py --threshold 0.95
+
+# Evidence aggregation
+python scripts/aggregate_evidence_4.py --output .artifacts/quality-audit/
+```
+
+### CI/CD Integration:
+```yaml
+# GitHub Actions workflow integration
+name: Protocol 19 Validation
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run Protocol 19 Gates
+        run: python scripts/run_protocol_4_gates.py
+```
+
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Review CI results directly in pipeline dashboard and export JSON summaries.
+2. Manually verify router mapping by cross-checking available protocols list.
+3. Document results in `.artifacts/protocol-19/manual-validation-log.md`
+
+---
+
+## 4. HANDOFF CHECKLIST
+
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
+
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
+
+### Handoff to Protocol 20:
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 20: User Acceptance Testing Coordination
+
+**Evidence Package:**
+- `QUALITY-AUDIT-PACKAGE.zip` - Consolidated audit artifacts
+- `readiness-recommendation.md` - Decision record with approvals
+
+**Execution:**
+```bash
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/13-uat-coordination.md
+```
+
+---
+
+## 4. EVIDENCE SUMMARY
+
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `ci-<workflow>-results.json` | `.artifacts/quality-audit/` | Baseline CI validation evidence | Protocol 19 Gates |
+| `coverage-report.json` | `.artifacts/quality-audit/` | Coverage baseline for audit scope | Protocol 19 Gates |
+| `audit-findings.json` | `.artifacts/quality-audit/` | Consolidated review findings | Protocol 20 |
+| `QUALITY-AUDIT-PACKAGE.zip` | `.artifacts/quality-audit/` | Formal audit deliverables | Protocol 20 |
+| `quality-audit-summary.json` | `.cursor/context-kit/` | Snapshot for future contexts | Protocol 22 |
+
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 1 Pass Rate | ≥ 90% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |

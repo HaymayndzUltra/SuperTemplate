@@ -70,7 +70,7 @@ Apply instructions from .cursor/ai-driven-workflow/4-quality-audit.md --mode [qu
 # → Automatic custom ↔ generic fallback
 
 # Direct mode execution
-@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode [quick|security|architecture|design|ui|deep-security|comprehensive]
+@apply .cursor/ai-driven-workflow/4-quality-audit.md --mode [quick|security|architecture|design|ui|deep-security|comprehensive]
 ```
 
 ### Aider (Streamlined)

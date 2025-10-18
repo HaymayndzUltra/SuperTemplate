@@ -176,7 +176,7 @@ Apply instructions from .cursor/ai-driven-workflow/4-quality-audit.md --mode qui
 ### Cursor
 ```bash
 # Router handles selection transparently
-@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode security
+@apply .cursor/ai-driven-workflow/4-quality-audit.md --mode security
 ```
 
 ### Result

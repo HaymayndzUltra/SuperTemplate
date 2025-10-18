@@ -1,0 +1,10 @@
+{
+  "title": "Add protocol reference alignment analysis package",
+  "state": "open",
+  "additions": 251,
+  "deletions": 0,
+  "changed_files": 4,
+  "created_at": "2025-10-18T05:32:41Z",
+  "updated_at": "2025-10-18T05:32:42Z",
+  "body": "## Summary\n- add a reference matrix covering current @apply handoffs and artifact evidence paths\n- provide a renumbering adjustment prompt with artifact remapping guidance\n- document a validation script outline and risk assessment for the protocol renumbering effort\n\n## Testing\n- not run (documentation-only change)\n\n\n------\nhttps://chatgpt.com/codex/tasks/task_e_68f323f2fb0c832e8e1b884e815102b4"
+}
