@@ -1,0 +1,146 @@
+[
+  {
+    "number": 1,
+    "title": "Add Batch 1 design-to-operations protocols and generator assets",
+    "state": "open",
+    "html_url": "https://github.com/HaymayndzUltra/SuperTemplate/pull/1",
+    "draft": false,
+    "merged": false,
+    "user": { "login": "HaymayndzUltra" },
+    "base": { "ref": "main" },
+    "head": { "ref": "batch-1-protocols" },
+    "additions": 1325,
+    "deletions": 210,
+    "changed_files": 42,
+    "labels": [
+      { "name": "priority: high" },
+      { "name": "risk: medium" }
+    ],
+    "created_at": "2024-01-11T12:00:00Z",
+    "updated_at": "2024-01-13T17:00:00Z",
+    "body": "Implements initial design-to-operations protocols. Depends on #0",
+    "review_decision": "approved",
+    "mergeable_state": "behind",
+    "reviews": [
+      {
+        "state": "APPROVED",
+        "user": { "login": "reviewer-bot" }
+      }
+    ],
+    "files": [
+      { "filename": "protocols/design/system-overview.md" },
+      { "filename": "protocols/operations/onboarding.md" },
+      { "filename": "tests/test_protocol_matrix.py" }
+    ]
+  },
+  {
+    "number": 3,
+    "title": "Add architecture, environment, and operations workflow protocols",
+    "state": "open",
+    "html_url": "https://github.com/HaymayndzUltra/SuperTemplate/pull/3",
+    "draft": false,
+    "merged": false,
+    "user": { "login": "HaymayndzUltra" },
+    "base": { "ref": "main" },
+    "head": { "ref": "architecture-phase" },
+    "additions": 870,
+    "deletions": 105,
+    "changed_files": 25,
+    "labels": [
+      { "name": "priority: high" },
+      { "name": "risk: low" }
+    ],
+    "created_at": "2024-01-14T09:00:00Z",
+    "updated_at": "2024-01-15T15:30:00Z",
+    "body": "Depends on #1 to land first.",
+    "review_decision": "changes_requested",
+    "mergeable_state": "dirty",
+    "reviews": [
+      {
+        "state": "CHANGES_REQUESTED",
+        "user": { "login": "architect-guru" }
+      },
+      {
+        "state": "COMMENTED",
+        "user": { "login": "ops-lead" }
+      }
+    ],
+    "files": [
+      { "filename": "protocols/design/system-overview.md" },
+      { "filename": "protocols/architecture/environments.md" },
+      { "filename": "docs/operations/runbook.md" }
+    ]
+  },
+  {
+    "number": 4,
+    "title": "Add Batch 1 critical deployment and operations protocols",
+    "state": "open",
+    "html_url": "https://github.com/HaymayndzUltra/SuperTemplate/pull/4",
+    "draft": false,
+    "merged": false,
+    "user": { "login": "HaymayndzUltra" },
+    "base": { "ref": "main" },
+    "head": { "ref": "critical-deployment" },
+    "additions": 2150,
+    "deletions": 320,
+    "changed_files": 48,
+    "labels": [
+      { "name": "priority: critical" },
+      { "name": "risk: high" }
+    ],
+    "created_at": "2024-01-16T10:45:00Z",
+    "updated_at": "2024-01-17T21:00:00Z",
+    "body": "Blocked by #3.",
+    "review_decision": "review_required",
+    "mergeable_state": "blocked",
+    "reviews": [
+      {
+        "state": "COMMENTED",
+        "user": { "login": "sre-director" }
+      }
+    ],
+    "files": [
+      { "filename": "protocols/operations/onboarding.md" },
+      { "filename": "protocols/deployment/rollout-checklist.md" },
+      { "filename": "docs/operations/runbook.md" }
+    ]
+  },
+  {
+    "number": 8,
+    "title": "Add protocol reference mapping and validation collateral",
+    "state": "open",
+    "html_url": "https://github.com/HaymayndzUltra/SuperTemplate/pull/8",
+    "draft": false,
+    "merged": false,
+    "user": { "login": "HaymayndzUltra" },
+    "base": { "ref": "main" },
+    "head": { "ref": "reference-mapping" },
+    "additions": 420,
+    "deletions": 80,
+    "changed_files": 12,
+    "labels": [
+      { "name": "priority: medium" },
+      { "name": "risk: low" }
+    ],
+    "created_at": "2024-01-18T08:20:00Z",
+    "updated_at": "2024-01-18T18:05:00Z",
+    "body": "Documentation-only updates.",
+    "review_decision": "approved",
+    "mergeable_state": "clean",
+    "reviews": [
+      {
+        "state": "APPROVED",
+        "user": { "login": "doc-bot" }
+      },
+      {
+        "state": "APPROVED",
+        "user": { "login": "ops-lead" }
+      }
+    ],
+    "files": [
+      { "filename": "docs/reference/mapping.md" },
+      { "filename": "docs/operations/runbook.md" },
+      { "filename": "docs/reference/validation-checklist.md" }
+    ]
+  }
+]
