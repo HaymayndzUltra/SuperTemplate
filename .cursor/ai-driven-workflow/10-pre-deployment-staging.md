@@ -1,160 +1,304 @@
 # PROTOCOL 10: PRE-DEPLOYMENT VALIDATION & STAGING READINESS (RELEASE COMPLIANT)
 
-## 1. AI ROLE AND MISSION
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
+
+### Required Artifacts
+- [ ] `QUALITY-AUDIT-PACKAGE.zip` from Protocol 4 – audit readiness evidence
+- [ ] `integration-evidence-bundle.zip` from Protocol 9 – integration validation summary
+- [ ] `UAT-CLOSURE-PACKAGE.zip` from Protocol 15 – stakeholder acceptance proof (if available)
+- [ ] `.artifacts/pre-deployment/release-manifest.json` (initial draft) from Release Planning
+- [ ] Latest deployment scripts (`scripts/deploy_*.sh`, `scripts/rollback_*.sh`) from repository
+
+### Required Approvals
+- [ ] Quality Audit readiness recommendation signed by Senior Quality Engineer (Protocol 4)
+- [ ] Product Owner confirmation that release scope is fixed (Protocol 1/15)
+- [ ] Security and compliance lead clearance for staging deployment rehearsals
+
+### System State Requirements
+- [ ] Staging environment mirrors production configuration (infrastructure, secrets, feature flags)
+- [ ] Access to deployment automation credentials and secret stores for staging
+- [ ] Monitoring dashboards accessible for baseline capture
+
+---
+
+## 10. AI ROLE AND MISSION
 
 You are a **Release Engineer**. Your mission is to transform integration-approved increments into a production-ready release candidate by validating staging parity, rehearsing deployment mechanics, and documenting rollback readiness.
 
 **🚫 [CRITICAL] DO NOT issue a production go/no-go package unless staging mirrors production configurations and both deployment and rollback procedures have been executed successfully with captured evidence.**
 
-## 2. PRE-DEPLOYMENT WORKFLOW
+---
+
+## 10. PRE-DEPLOYMENT VALIDATION WORKFLOW
 
 ### STEP 1: Intake Validation and Staging Alignment
 
 1. **`[MUST]` Confirm Upstream Approvals:**
-   * **Action:** Verify Protocol 4 quality audit results, Protocol 9 integration sign-off, and security/compliance waivers are current.
-   * **Communication:**
+   * **Action:** Validate required artifacts and approvals from Protocols 4, 9, and 15 before staging rehearsal begins.
+   * **Communication:** 
      > "[PHASE 1 START] - Validating upstream approvals and artifact completeness..."
-   * **Evidence:** Generate `.artifacts/pre-deployment/intake-validation-report.json` summarizing prerequisites status.
-   * **Halt condition:** Stop if any prerequisite approval is missing or expired.
+   * **Halt condition:** Stop if any prerequisite artifact missing or expired.
+   * **Evidence:** `.artifacts/pre-deployment/intake-validation-report.json` summarizing status.
 
 2. **`[MUST]` Validate Staging Parity:**
-   * **Action:** Compare staging infrastructure, configuration, and secrets to production baselines; flag drift.
-   * **Evidence:** Save `.artifacts/pre-deployment/staging-parity-report.json` with configuration diffs and remediation notes.
-   * **Automation:** Execute `python scripts/compare_environments.py --source staging --target production --output .artifacts/pre-deployment/staging-parity-report.json`.
+   * **Action:** Compare staging vs production configurations, secrets, and infrastructure components for drift detection.
+   * **Communication:** 
+     > "[PHASE 1] Staging parity check underway. Reporting drift if detected..."
+   * **Halt condition:** Pause if drift exists without remediation plan.
+   * **Evidence:** `.artifacts/pre-deployment/staging-parity-report.json` including diff details.
 
 3. **`[GUIDELINE]` Refresh Test Data & Feature Flags:**
-   * **Action:** Sync staging datasets, feature flag states, and external service stubs to match release requirements.
-   * **Evidence:** Update `.artifacts/pre-deployment/staging-data-refresh.md` with refresh timestamps and owners.
+   * **Action:** Sync staging datasets, feature flags, and service stubs to align with release candidate requirements.
+   * **Example:**
+     ```bash
+     python scripts/refresh_staging_data.py --env staging --output .artifacts/pre-deployment/staging-data-refresh.md
+     ```
 
 ### STEP 2: Deployment Rehearsal and Verification
 
 1. **`[MUST]` Execute Staging Deployment Rehearsal:**
-   * **Action:** Run deployment scripts against staging, mirroring planned production sequencing and automation.
-   * **Communication:**
+   * **Action:** Run deployment scripts in staging replicating production sequencing with logging enabled.
+   * **Communication:** 
      > "[PHASE 2 START] - Rehearsing deployment on staging environment..."
-   * **Evidence:** Store `.artifacts/pre-deployment/staging-deployment-run.log` including command transcripts and timings.
-   * **Automation:** Execute `bash scripts/deploy_backend.sh --env staging --release {tag}` (repeat for each service) with output redirected to artifacts directory.
+   * **Halt condition:** Stop if automation fails or unexpected errors occur.
+   * **Evidence:** `.artifacts/pre-deployment/staging-deployment-run.log` capturing commands and results.
 
 2. **`[MUST]` Validate Smoke & Acceptance Tests:**
-   * **Action:** Run smoke, end-to-end, and targeted regression suites against staging release candidate.
-   * **Evidence:** Append `.artifacts/pre-deployment/staging-test-results.json` with pass/fail status and coverage metrics.
-   * **Automation:** Execute `python scripts/run_smoke_tests.py --env staging --output .artifacts/pre-deployment/staging-test-results.json`.
+   * **Action:** Execute smoke, end-to-end, and targeted regression suites against staging release candidate.
+   * **Communication:** 
+     > "[PHASE 2] Staging test suites executing. Monitoring pass/fail status..."
+   * **Halt condition:** Pause if critical tests fail without mitigation.
+   * **Evidence:** `.artifacts/pre-deployment/staging-test-results.json` with coverage metrics.
 
 3. **`[GUIDELINE]` Capture Observability Baseline:**
-   * **Action:** Record monitoring dashboards, key metrics, and alert status during rehearsal to establish production expectations.
-   * **Evidence:** Update `.artifacts/pre-deployment/observability-baseline.md` with screenshots or metric exports.
+   * **Action:** Record monitoring dashboards and metrics post-rehearsal for Protocol 12 reference.
+   * **Example:**
+     ```markdown
+     - Metric: API latency (p95) – 320ms
+     - Metric: Error rate – 0.2%
+     ```
 
 ### STEP 3: Rollback, Security, and Operational Readiness
 
 1. **`[MUST]` Rehearse Rollback Procedure:**
-   * **Action:** Execute rollback scripts or blue/green switchback to prove recovery path functions end-to-end.
-   * **Communication:**
+   * **Action:** Execute rollback automation or blue/green switchback to validate recovery path.
+   * **Communication:** 
      > "[PHASE 3 START] - Verifying rollback and recovery procedures..."
-   * **Evidence:** Generate `.artifacts/pre-deployment/rollback-verification-report.json` documenting steps and timings.
-   * **Automation:** Execute `bash scripts/rollback_backend.sh --env staging --release {previous_tag}` (per service) capturing logs.
+   * **Halt condition:** Stop if rollback fails or exceeds recovery time objective.
+   * **Evidence:** `.artifacts/pre-deployment/rollback-verification-report.json` detailing steps and timings.
 
 2. **`[MUST]` Complete Security & Compliance Checks:**
-   * **Action:** Run security scans, license audits, and compliance verifications required before production promotion.
-   * **Evidence:** Save `.artifacts/pre-deployment/security-compliance-report.json` summarizing findings and approvals.
-   * **Automation:** Execute `python scripts/run_security_audit.py --env staging --output .artifacts/pre-deployment/security-compliance-report.json`.
+   * **Action:** Run required security scans, license audits, and compliance validations pre-production.
+   * **Communication:** 
+     > "[PHASE 3] Executing security and compliance scans for release candidate..."
+   * **Halt condition:** Pause if blocking findings identified.
+   * **Evidence:** `.artifacts/pre-deployment/security-compliance-report.json` with findings and approvals.
 
 3. **`[GUIDELINE]` Validate Runbooks & Support Coverage:**
-   * **Action:** Ensure operational runbooks, on-call schedules, and escalation matrices are updated for the release.
-   * **Evidence:** Update `.artifacts/pre-deployment/operational-readiness-checklist.md`.
+   * **Action:** Confirm operational runbooks, on-call rotations, and escalation matrices updated for release.
+   * **Example:**
+     ```markdown
+     - Runbook: api-service.md – updated 2024-05-30
+     - On-call: Primary SRE (Alex), Backup (Jordan)
+     ```
 
 ### STEP 4: Final Readiness Review and Handoff
 
 1. **`[MUST]` Assemble Go/No-Go Package:**
-   * **Action:** Bundle parity report, deployment/rollback evidence, test results, and security findings into `PRE-DEPLOYMENT-PACKAGE.zip`.
-   * **Communication:**
+   * **Action:** Bundle parity report, deployment and rollback evidence, test results, and security findings into `PRE-DEPLOYMENT-PACKAGE.zip`.
+   * **Communication:** 
      > "[PHASE 4 START] - Compiling pre-deployment readiness package for release approval..."
-   * **Evidence:** Create `.artifacts/pre-deployment/pre-deployment-manifest.json` indexing all artifacts.
+   * **Halt condition:** Stop if package contents incomplete or checksum invalid.
+   * **Evidence:** `.artifacts/pre-deployment/pre-deployment-manifest.json` indexing artifacts.
 
 2. **`[MUST]` Conduct Readiness Review:**
-   * **Action:** Present findings to Release Manager (Protocol 11) and key stakeholders; capture approvals and risk sign-offs.
-   * **Evidence:** Save `.artifacts/pre-deployment/readiness-approval.json` with decisions, conditions, and signatories.
+   * **Action:** Present findings to Release Manager and stakeholders; capture approvals, risks, and action items.
+   * **Communication:** 
+     > "[PHASE 4] Readiness review in progress. Recording decisions and risk mitigations..."
+   * **Halt condition:** Pause if approvals withheld or risks unresolved.
+   * **Evidence:** `.artifacts/pre-deployment/readiness-approval.json` with signatures.
 
 3. **`[GUIDELINE]` Publish Deployment Checklist Updates:**
-   * **Action:** Update production deployment checklist and communication plan based on rehearsal insights.
-   * **Evidence:** Append `.artifacts/pre-deployment/deployment-checklist.md` with revisions and owner assignments.
+   * **Action:** Update production deployment checklist and communication plan based on rehearsal learnings.
+   * **Example:**
+     ```bash
+     python scripts/update_deployment_checklist.py --source .artifacts/pre-deployment/staging-deployment-run.log --output .artifacts/pre-deployment/deployment-checklist.md
+     ```
 
-## 3. INTEGRATION POINTS
+---
 
-**Inputs From:**
-- Protocol 4: Quality audit findings, risk exceptions, approval status.
-- Protocol 9: Integration evidence bundle, environment validation, defect log.
-- Protocol 7: Environment baselines, configuration manifests, secrets governance.
+## 10. INTEGRATION POINTS
 
-**Outputs To:**
-- Protocol 11: `PRE-DEPLOYMENT-PACKAGE.zip`, `pre-deployment-manifest.json`, `readiness-approval.json`, updated deployment checklist.
-- Protocol 12: `observability-baseline.md`, security/compliance findings impacting monitoring requirements.
-- Protocol 13: `rollback-verification-report.json` for incident preparedness.
+### Inputs From:
+- **Protocol 4**: `QUALITY-AUDIT-PACKAGE.zip`, readiness recommendation – informs release gate
+- **Protocol 8**: `script-compliance.json` – assures automation readiness
+- **Protocol 9**: `integration-evidence-bundle.zip` – verifies integrated functionality
+- **Protocol 15**: `UAT-CLOSURE-PACKAGE.zip`, `uat-approval-record.json` – confirms user acceptance
 
-## 4. QUALITY GATES
+### Outputs To:
+- **Protocol 11**: `PRE-DEPLOYMENT-PACKAGE.zip`, `readiness-approval.json`, `deployment-checklist.md`
+- **Protocol 12**: `observability-baseline.md`, `staging-test-results.json`
+- **Protocol 13**: `rollback-verification-report.json` for incident response readiness
+- **Protocol 14**: `staging-parity-report.json` supporting performance baseline alignment
 
-**Gate 1: Intake Confirmation Gate**
-- **Criteria:** All upstream approvals verified; staging parity report shows no critical drift.
-- **Evidence:** `intake-validation-report.json`, `staging-parity-report.json`.
-- **Failure Handling:** Halt protocol; resolve missing approvals or remediate configuration drift before proceeding.
+### Artifact Storage Locations:
+- `.artifacts/pre-deployment/` - Primary evidence storage
+- `.cursor/context-kit/` - Context and configuration artifacts
 
-**Gate 2: Deployment Rehearsal Gate**
-- **Criteria:** Staging deployment executed without critical errors; smoke and acceptance tests passed.
-- **Evidence:** `staging-deployment-run.log`, `staging-test-results.json`.
-- **Failure Handling:** Fix automation defects or failed tests, rerun rehearsal before continuing.
+---
 
-**Gate 3: Rollback & Security Gate**
-- **Criteria:** Rollback rehearsal successful; security/compliance scans cleared or mitigated.
-- **Evidence:** `rollback-verification-report.json`, `security-compliance-report.json`.
-- **Failure Handling:** Address failed rollback steps or security findings prior to readiness review.
+## 10. QUALITY GATES
 
-**Gate 4: Readiness Approval Gate**
-- **Criteria:** Go/no-go package complete; stakeholder approvals recorded; deployment checklist updated.
-- **Evidence:** `pre-deployment-manifest.json`, `readiness-approval.json`, `deployment-checklist.md`.
-- **Failure Handling:** Defer handoff; obtain approvals or update checklist before notifying Protocol 11.
+### Gate 1: Intake Confirmation Gate
+- **Criteria**: All upstream approvals verified; staging parity report free of critical drift.
+- **Evidence**: `intake-validation-report.json`, `staging-parity-report.json`.
+- **Pass Threshold**: Completeness score = 100%; drift severity ≤ low.
+- **Failure Handling**: Halt; remediate configuration drift or obtain missing approvals.
+- **Automation**: `python scripts/validate_gate_10_intake.py --drift-threshold low`
 
-## 5. COMMUNICATION PROTOCOLS
+### Gate 2: Deployment Rehearsal Gate
+- **Criteria**: Deployment rehearsal successful; smoke/regression tests pass with acceptable coverage.
+- **Evidence**: `staging-deployment-run.log`, `staging-test-results.json`.
+- **Pass Threshold**: 0 blocking errors; coverage ≥ 90% of targeted suites.
+- **Failure Handling**: Rollback staging, fix issues, rerun rehearsal before proceeding.
+- **Automation**: `python scripts/validate_gate_10_rehearsal.py --coverage 0.90`
 
-**Status Announcements:**
+### Gate 3: Rollback & Security Gate
+- **Criteria**: Rollback rehearsal completes within RTO; security/compliance scans cleared.
+- **Evidence**: `rollback-verification-report.json`, `security-compliance-report.json`.
+- **Pass Threshold**: Recovery time ≤ RTO; zero unresolved blocking findings.
+- **Failure Handling**: Address rollback gaps or security issues; rerun validations.
+- **Automation**: `python scripts/validate_gate_10_security.py --rto 10`
+
+### Gate 4: Readiness Approval Gate
+- **Criteria**: Go/no-go package complete; readiness approvals signed; deployment checklist updated.
+- **Evidence**: `pre-deployment-manifest.json`, `readiness-approval.json`, `deployment-checklist.md`.
+- **Pass Threshold**: Manifest completeness ≥ 95%; approvals 100% recorded.
+- **Failure Handling**: Obtain missing approvals; rebuild package; update checklist.
+- **Automation**: `python scripts/validate_gate_10_readiness.py --threshold 0.95`
+
+---
+
+## 10. COMMUNICATION PROTOCOLS
+
+### Status Announcements:
 ```
 [PHASE 1 START] - Validating upstream approvals and artifact completeness...
+[PHASE 1 COMPLETE] - Intake validation succeeded. Evidence: intake-validation-report.json.
 [PHASE 2 START] - Rehearsing deployment on staging environment...
 [PHASE 3 START] - Verifying rollback and recovery procedures...
 [PHASE 4 START] - Compiling pre-deployment readiness package for release approval...
-[PHASE {N} COMPLETE] - {phase_name} finished successfully.
-[AUTOMATION] compare_environments.py executed: {status}
-[AUTOMATION] run_smoke_tests.py executed: {status}
-[AUTOMATION] rollback_backend.sh executed: {status}
+[PHASE 4 COMPLETE] - Pre-deployment package ready. Evidence: PRE-DEPLOYMENT-PACKAGE.zip.
+[ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
-**Validation Prompts:**
+### Validation Prompts:
 ```
-[DRIFT ALERT] Staging parity check failed. Confirm remediation applied before continuing? (yes/no)
-[READINESS REVIEW] Pre-deployment package compiled. Approve handoff to Protocol 11? (yes/no)
+[USER CONFIRMATION REQUIRED]
+> "Pre-deployment validation complete. Evidence prepared:
+> - PRE-DEPLOYMENT-PACKAGE.zip
+> - readiness-approval.json
+>
+> Confirm readiness to transition to Protocol 11?"
 ```
 
-**Error Handling:**
-- **ParityMismatch:** "[ERROR] Staging configuration drift detected against production baseline." → Recovery: Apply remediation, rerun parity script, log changes.
-- **RehearsalFailure:** "[ERROR] Deployment rehearsal encountered critical error." → Recovery: Rollback staging, fix automation or code issues, rerun rehearsal.
-- **SecurityBlocker:** "[ERROR] Security/compliance scan reported blocking findings." → Recovery: Escalate to security owner, implement fixes, rerun scan before approval.
-
-## 6. AUTOMATION HOOKS
-
-- `python scripts/compare_environments.py --source staging --target production` → Validates configuration parity.
-- `bash scripts/deploy_backend.sh --env staging` (plus service-specific deploy scripts) → Executes rehearsal deployment.
-- `python scripts/run_smoke_tests.py --env staging` → Runs smoke and regression suites post-deployment.
-- `bash scripts/rollback_backend.sh --env staging` → Verifies rollback readiness and recovery time.
-- `python scripts/run_security_audit.py --env staging` → Performs required security/compliance scans.
-
-## 7. HANDOFF CHECKLIST
-
-Before completing this protocol, validate:
-- [ ] Intake validation confirms upstream approvals and staging parity.
-- [ ] Deployment rehearsal logs and test results show successful execution.
-- [ ] Rollback procedure validated with documented evidence.
-- [ ] Security and compliance checks cleared with approvals captured.
-- [ ] Go/no-go package compiled with manifest and stakeholder sign-off recorded.
-
-Upon completion, execute:
+### Error Handling:
 ```
-[PROTOCOL COMPLETE] - Pre-deployment readiness approved. Ready for Protocol 11 (Production Deployment).
+[GATE FAILED: Deployment Rehearsal Gate]
+> "Quality gate 'Deployment Rehearsal Gate' failed.
+> Criteria: Rehearsal success and test coverage ≥ 90%
+> Actual: {result}
+> Required action: Review automation logs, remediate failures, rerun rehearsal.
+>
+> Options:
+> 1. Fix issues and retry validation
+> 2. Request gate waiver with justification
+> 3. Halt protocol execution"
 ```
+
+---
+
+## 10. AUTOMATION HOOKS
+
+### Validation Scripts:
+```bash
+# Prerequisite validation
+python scripts/validate_prerequisites_10.py
+
+# Quality gate automation
+python scripts/validate_gate_10_intake.py --drift-threshold low
+python scripts/validate_gate_10_readiness.py --threshold 0.95
+
+# Evidence aggregation
+python scripts/aggregate_evidence_10.py --output .artifacts/pre-deployment/
+```
+
+### CI/CD Integration:
+```yaml
+# GitHub Actions workflow integration
+name: Protocol 10 Validation
+on: [push]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run Protocol 10 Gates
+        run: python scripts/run_protocol_10_gates.py
+```
+
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Review staging parity via infrastructure dashboards and log results.
+2. Manually confirm deployment rehearsal steps using runbooks.
+3. Document results in `.artifacts/protocol-10/manual-validation-log.md`
+
+---
+
+## 10. HANDOFF CHECKLIST
+
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
+
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
+
+### Handoff to Protocol 11:
+**[PROTOCOL COMPLETE]** Ready for Protocol 11: Production Deployment & Release Management
+
+**Evidence Package:**
+- `PRE-DEPLOYMENT-PACKAGE.zip` - Comprehensive readiness evidence
+- `readiness-approval.json` - Stakeholder go/no-go decision record
+
+**Execution:**
+```bash
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/11-production-deployment.md
+```
+
+---
+
+## 10. EVIDENCE SUMMARY
+
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `intake-validation-report.json` | `.artifacts/pre-deployment/` | Confirms prerequisite readiness | Protocol 10 Gates |
+| `staging-parity-report.json` | `.artifacts/pre-deployment/` | Documents config parity | Protocol 14 |
+| `staging-test-results.json` | `.artifacts/pre-deployment/` | Captures rehearsal test outcomes | Protocol 11/12 |
+| `rollback-verification-report.json` | `.artifacts/pre-deployment/` | Validates rollback readiness | Protocol 13 |
+| `PRE-DEPLOYMENT-PACKAGE.zip` | `.artifacts/pre-deployment/` | Final readiness package | Protocol 11 |
+
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 2 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |

@@ -1,157 +1,288 @@
-# PROTOCOL 8: SCRIPT GOVERNANCE (QUALITY COMPLIANT)
+# PROTOCOL 8: SCRIPT GOVERNANCE (AUTOMATION QUALITY COMPLIANT)
+
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
+
+### Required Artifacts
+- [ ] `.artifacts/quality-audit/QUALITY-AUDIT-PACKAGE.zip` from Protocol 4 – baseline quality expectations
+- [ ] `.cursor/context-kit/quality-audit-summary.json` – latest audit findings to align governance focus
+- [ ] Existing `script-registry.json` (if present) in `.cursor/context-kit/` – prior inventory snapshot
+
+### Required Approvals
+- [ ] Automation owner approval to perform read-only validation on `/scripts/`
+- [ ] Security lead acknowledgement for accessing script metadata
+
+### System State Requirements
+- [ ] Repository `/scripts/` directory accessible with read permissions
+- [ ] Static analysis tools (`pylint`, `shellcheck`, `yamllint`) installed or containerized equivalents configured
+- [ ] Write permissions to `.artifacts/scripts/` and `.cursor/context-kit/`
+
+---
 
 ## 8. AI ROLE AND MISSION
 
-You are an **Automation Compliance Auditor**. Your mission is to establish a governance layer that validates, audits, and enforces consistency across all operational scripts in the `/scripts/` directory.
+You are an **Automation Compliance Auditor**. Your mission is to validate, audit, and enforce consistency across operational scripts without modifying them, ensuring automation integrity for downstream protocols.
 
 **🚫 [CRITICAL] DO NOT modify or execute scripts directly; only validate, analyze, and report compliance results.**
 
-## 8. SCRIPT GOVERNANCE EXECUTION
+---
 
-### STEP 1: Script Discovery and Indexing
+## 8. SCRIPT GOVERNANCE EXECUTION WORKFLOW
 
-1. **`[MUST]` Index Scripts:**
-   * **Action:** Locate all `.py`, `.sh`, and `.yml` files in `/scripts/` and build an inventory with file name, description, and last modified date.
+### STEP 1: Script Discovery and Inventory Baseline
+
+1. **`[MUST]` Index Scripts Across Repository:**
+   * **Action:** Enumerate `.py`, `.sh`, `.ps1`, and `.yml` files under `/scripts/`, capturing metadata (path, description, last modified).
    * **Communication:** 
-     > "[PHASE 1 START] - Beginning Script Discovery and Indexing..."
-   * **Halt condition:** Halt if `/scripts/` directory not found.
+     > "[PHASE 1 START] - Beginning script discovery and indexing..."
+   * **Halt condition:** Stop if `/scripts/` directory missing or inaccessible.
+   * **Evidence:** `.artifacts/scripts/script-index.json` with completeness score.
 
-2. **`[MUST]` Generate Script Inventory:**
-   * **Action:** Create comprehensive script registry with metadata completeness > 95%.
-   * **Communication:**
-     > "[PHASE 1] Discovering and indexing all scripts in repository..."
-   * **Evidence:** Store inventory in `.artifacts/scripts/script-index.json`
+2. **`[MUST]` Validate Inventory Completeness:**
+   * **Action:** Compare discovered files against existing registry (if available) ensuring ≥95% alignment.
+   * **Communication:** 
+     > "[PHASE 1] Inventory completeness evaluated. Deviations recorded."
+   * **Halt condition:** Pause if completeness <95% without documented rationale.
+   * **Evidence:** `.artifacts/scripts/inventory-validation-report.json` summarizing matches and gaps.
 
-3. **`[GUIDELINE]` Validate Script Registry:**
-   * **Action:** Cross-reference discovered scripts with existing `script-registry.json` if present.
+3. **`[GUIDELINE]` Categorize Scripts by Function:**
+   * **Action:** Group scripts into categories (deployment, validation, reporting) for governance insights.
    * **Example:**
      ```python
-     # Validate registry completeness
-     discovered_count = len(discovered_scripts)
-     registry_count = len(existing_registry)
-     completeness = (registry_count / discovered_count) * 100
+     categories = classify_scripts(script_index)
+     save(categories, ".artifacts/scripts/script-categories.json")
      ```
 
-### STEP 2: Script Validation and Compliance Check
+### STEP 2: Documentation and Static Compliance Checks
 
-1. **`[MUST]` Validate Documentation and Structure:**
-   * **Action:** Ensure each script has a docstring describing purpose, input/output, and expected result.
-   * **Communication:**
-     > "[PHASE 2 START] - Beginning Script Validation and Compliance Check..."
-   * **Halt condition:** Stop if any script is missing required documentation.
+1. **`[MUST]` Assess Documentation Quality:**
+   * **Action:** Ensure each script includes purpose statement, usage instructions, and artifact output description.
+   * **Communication:** 
+     > "[PHASE 2 START] - Auditing script documentation completeness..."
+   * **Halt condition:** Halt if any critical script lacks documentation.
+   * **Evidence:** `.artifacts/scripts/documentation-audit.csv` capturing compliance per script.
 
-2. **`[MUST]` Execute Static Analysis:**
-   * **Action:** Run read-only static analysis tools without execution:
-     - `pylint` for Python scripts (syntax, style, security flags)
-     - `shellcheck` for Shell scripts (syntax, best practices)
-     - `yamllint` for YAML files (structure, formatting)
-   * **Communication:**
-     > "[AUTOMATION] Executing static analysis: pylint, shellcheck, yamllint..."
-   * **Evidence:** Store analysis results in `.artifacts/scripts/static-analysis-report.json`
+2. **`[MUST]` Run Static Analysis Toolchain:**
+   * **Action:** Execute read-only static analysis (`pylint`, `shellcheck`, `yamllint`) capturing warnings and severity levels.
+   * **Communication:** 
+     > "[AUTOMATION] Executing static analysis suite across script inventory..."
+   * **Halt condition:** Pause if tool execution fails or generates blocking severity findings.
+   * **Evidence:** `.artifacts/scripts/static-analysis-report.json` aggregated by tool and script.
 
-3. **`[MUST]` Check Artifact Output Compliance:**
-   * **Action:** Verify that scripts generate evidence files in `.artifacts/` with correct structure and naming.
-   * **Communication:**
-     > "[AUTOMATION] Verifying artifact compliance for all scripts..."
-   * **Schema Validation:** Validate JSON artifacts against predefined schemas
+3. **`[MUST]` Confirm Artifact Output Compliance:**
+   * **Action:** Validate each script’s expected outputs align with `.artifacts/` storage conventions and JSON schema rules.
+   * **Communication:** 
+     > "[PHASE 2] Verifying artifact output compliance and schema adherence..."
+   * **Halt condition:** Stop if artifact paths or schemas deviate without mitigation plan.
+   * **Evidence:** `.artifacts/scripts/artifact-compliance-report.json` including schema validation results.
 
-4. **`[MUST]` Extend Protocol 4 Quality Gates:**
-   * **Action:** Apply Protocol 4 quality gates to script-specific compliance:
-     - Documentation completeness (from Protocol 4)
-     - Artifact integrity validation (from Protocol 4)
-     - Traceability requirements (from Protocol 4)
-   * **Communication:**
-     > "[INTEGRATION] Extending Protocol 4 quality gates for script governance..."
+4. **`[GUIDELINE]` Extend Protocol 4 Gates:**
+   * **Action:** Map relevant Protocol 4 quality gate expectations to scripts to ensure consistency.
+   * **Example:**
+     ```markdown
+     - Gate Alignment: Pre-Audit Automation → Scripts: run_protocol_4_pre_audit.py
+     - Evidence: static-analysis-report.json (severity <= medium)
+     ```
 
-### STEP 3: Compliance Reporting and Handoff
+### STEP 3: Governance Reporting and Feedback Loop
 
-1. **`[MUST]` Generate Compliance Summary:**
-   * **Action:** Compile script validation results into a compliance scorecard and store it in `.cursor/context-kit/`.
-   * **Communication:**
-     > "[PHASE 3 START] - Beginning Compliance Reporting and Handoff..."
-   * **Evidence:** Store scorecard in `.cursor/context-kit/script-compliance.json`
+1. **`[MUST]` Generate Compliance Scorecard:**
+   * **Action:** Consolidate inventory, documentation, static analysis, and artifact compliance into `script-compliance.json`.
+   * **Communication:** 
+     > "[PHASE 3 START] - Compiling script governance scorecard for downstream consumers..."
+   * **Halt condition:** Pause if data model validation fails.
+   * **Evidence:** `.cursor/context-kit/script-compliance.json` with compliance index.
 
-2. **`[MUST]` Validate Compliance Data Structure:**
-   * **Action:** Ensure compliance scorecard contains valid JSON structure with required fields.
-   * **Communication:**
-     > "[PHASE 3] Generating compliance scorecard for Retrospective..."
-   * **Halt condition:** Re-run report aggregation if data structure invalid.
+2. **`[MUST]` Publish Remediation Backlog:**
+   * **Action:** Create backlog entries for non-compliant scripts and notify owners.
+   * **Communication:** 
+     > "[PHASE 3] Script remediation backlog prepared. Owners notified."
+   * **Halt condition:** Stop if backlog cannot be linked to issue tracker.
+   * **Evidence:** `.artifacts/scripts/remediation-backlog.csv` containing action items.
+
+3. **`[GUIDELINE]` Share Insights with Quality Audit:**
+   * **Action:** Provide summary to Protocol 4 to influence upcoming audits.
+   * **Example:**
+     ```markdown
+     ### Script Governance Highlights
+     - Coverage: 98% scripts documented
+     - Blocking Issues: None
+     - Recommendations: Automate schema validation nightly
+     ```
+
+---
 
 ## 8. INTEGRATION POINTS
 
-**Inputs From:**
-- Protocol 4 (Quality Audit): Quality audit reports and evidence from previous validation phases
-- Usage: Validate that scripts adhere to previously defined quality gates
+### Inputs From:
+- **Protocol 4**: `quality-audit-summary.json` – establishes baseline quality expectations
+- **Protocol 3**: `automation-task-tracker.csv` – links script ownership to tasks
 
-**Outputs To:**
-- Protocol 5 (Implementation Retrospective): script-compliance.json
-- Purpose: Enable retrospective analysis of automation quality
+### Outputs To:
+- **Protocol 4**: `artifact-compliance-report.json`, `script-compliance.json` – informs future audits
+- **Protocol 5**: `remediation-backlog.csv` – retrospective review of automation improvements
+- **Protocol 12**: `script-categories.json` – supports monitoring automation classification
+
+### Artifact Storage Locations:
+- `.artifacts/scripts/` - Primary evidence storage
+- `.cursor/context-kit/` - Context and configuration artifacts
+
+---
 
 ## 8. QUALITY GATES
 
-**Gate 1: Script Inventory Gate**
-- **Criteria:** All scripts discovered and indexed with metadata completeness > 95%
-- **Evidence:** Script inventory file (`.artifacts/scripts/script-index.json`)
-- **Failure Handling:** Re-run indexing with missing descriptions or invalid file paths corrected
+### Gate 1: Inventory Accuracy Gate
+- **Criteria**: All scripts indexed; completeness ≥ 95%; metadata populated.
+- **Evidence**: `script-index.json`, `inventory-validation-report.json`.
+- **Pass Threshold**: Completeness ≥ 0.95.
+- **Failure Handling**: Re-run discovery; resolve permissions; document exceptions.
+- **Automation**: `python scripts/validate_gate_8_inventory.py --threshold 0.95`
 
-**Gate 2: Script Validation Gate**
-- **Criteria:** All scripts meet documentation, naming, and artifact compliance standards
-- **Evidence:** Validation compliance report (`.artifacts/scripts/validation-report.json`)
-- **Failure Handling:** List non-compliant scripts and request correction
+### Gate 2: Documentation & Static Compliance Gate
+- **Criteria**: Documentation coverage ≥ 95%; no blocker severity findings from static analysis.
+- **Evidence**: `documentation-audit.csv`, `static-analysis-report.json`.
+- **Pass Threshold**: Documentation coverage ≥ 0.95; blocker count = 0.
+- **Failure Handling**: Notify script owners; remediate documentation or code issues before proceeding.
+- **Automation**: `python scripts/validate_gate_8_static.py --report .artifacts/scripts/static-analysis-report.json`
 
-**Gate 3: Compliance Reporting Gate**
-- **Criteria:** Compliance summary successfully generated with valid data structure
-- **Evidence:** Script compliance scorecard (`.cursor/context-kit/script-compliance.json`)
-- **Failure Handling:** Re-run report aggregation
+### Gate 3: Artifact Governance Gate
+- **Criteria**: Artifact output paths verified; schema validation success ≥ 98%.
+- **Evidence**: `artifact-compliance-report.json`, schema validation logs.
+- **Pass Threshold**: Compliance score ≥ 0.98.
+- **Failure Handling**: Flag non-compliant scripts; update schemas or script instructions; rerun validation.
+- **Automation**: `python scripts/validate_gate_8_artifacts.py --threshold 0.98`
+
+### Gate 4: Governance Reporting Gate
+- **Criteria**: Scorecard generated; remediation backlog created; insights shared with Protocol 4.
+- **Evidence**: `script-compliance.json`, `remediation-backlog.csv`, governance summary note.
+- **Pass Threshold**: Scorecard validation = true; backlog coverage 100% of non-compliant scripts.
+- **Failure Handling**: Rebuild scorecard; ensure backlog entries mapped to owners; resend summary.
+- **Automation**: `python scripts/validate_gate_8_reporting.py`
+
+---
 
 ## 8. COMMUNICATION PROTOCOLS
 
-**Status Announcements:**
+### Status Announcements:
 ```
-[PHASE 1 START] - Beginning Script Discovery and Indexing...
-[PHASE 1 COMPLETE] - Script Discovery and Indexing successfully validated.
-[PHASE 2 START] - Beginning Script Validation and Compliance Check...
-[PHASE 2 COMPLETE] - Script Validation and Compliance Check successfully validated.
-[PHASE 3 START] - Beginning Compliance Reporting and Handoff...
-[PHASE 3 COMPLETE] - Compliance Reporting and Handoff successfully validated.
-```
-
-**Automation Status:**
-```
-[AUTOMATION] Executing static analysis: pylint, shellcheck, yamllint...
-[AUTOMATION] Verifying artifact compliance for all scripts...
-[AUTOMATION] validate_script_bindings.py executed: success
-[AUTOMATION] evidence_manager.py executed: success
+[PHASE 1 START] - Beginning script discovery and indexing...
+[PHASE 1 COMPLETE] - Inventory baseline captured. Evidence: script-index.json.
+[PHASE 2 START] - Auditing script documentation completeness...
+[PHASE 2 COMPLETE] - Documentation and static analysis results available.
+[PHASE 3 START] - Compiling script governance scorecard for downstream consumers...
+[PHASE 3 COMPLETE] - Governance scorecard delivered. Evidence: script-compliance.json.
+[ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
-**Validation Prompts:**
+### Validation Prompts:
 ```
-[VALIDATION REQUEST] - All script validations complete. Generate compliance scorecard now? (yes/no)
+[USER CONFIRMATION REQUIRED]
+> "Script governance validation is complete.
+> - script-compliance.json
+> - remediation-backlog.csv
+>
+> Please review and confirm readiness to inform Protocol 4 and 5."
 ```
 
-**Error Handling:**
+### Error Handling:
 ```
-[ERROR] Script {script_name} missing documentation.
-Recovery: Add docstring and re-run validation.
-
-[ERROR] Artifact output path invalid for {script_name}.
-Recovery: Fix artifact path or update configuration.
-
-[ERROR] Static analysis failed for {script_name}.
-Recovery: Fix syntax/style issues and re-run validation.
+[GATE FAILED: Documentation & Static Compliance Gate]
+> "Quality gate 'Documentation & Static Compliance Gate' failed.
+> Criteria: Documentation coverage ≥ 95%, blocker findings = 0
+> Actual: {result}
+> Required action: Engage script owners to remediate documentation or fix static analysis issues.
+>
+> Options:
+> 1. Fix issues and retry validation
+> 2. Request gate waiver with justification
+> 3. Halt protocol execution"
 ```
+
+---
+
+## 8. AUTOMATION HOOKS
+
+### Validation Scripts:
+```bash
+# Prerequisite validation
+python scripts/validate_prerequisites_8.py
+
+# Quality gate automation
+python scripts/validate_gate_8_inventory.py --threshold 0.95
+python scripts/validate_gate_8_artifacts.py --threshold 0.98
+
+# Evidence aggregation
+python scripts/aggregate_evidence_8.py --output .artifacts/scripts/
+```
+
+### CI/CD Integration:
+```yaml
+# GitHub Actions workflow integration
+name: Protocol 8 Validation
+on:
+  schedule:
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run Protocol 8 Gates
+        run: python scripts/run_protocol_8_gates.py
+```
+
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Perform manual script inventory using `find` command and update spreadsheet.
+2. Inspect documentation within scripts and annotate compliance results manually.
+3. Document results in `.artifacts/protocol-8/manual-validation-log.md`
+
+---
 
 ## 8. HANDOFF CHECKLIST
 
-Before completing this protocol, validate:
-- [ ] All scripts indexed and validated
-- [ ] Validation report stored in `.artifacts/scripts/`
-- [ ] Compliance scorecard generated
-- [ ] Static analysis completed for all script types
-- [ ] Protocol 4 quality gates successfully extended
-- [ ] JSON schema validation passed for all artifacts
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
 
-Upon completion, execute:
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
+
+### Handoff to Protocol 4 & 5:
+**[PROTOCOL COMPLETE]** Ready for Protocol 4: Quality Audit Orchestrator and Protocol 5: Implementation Retrospective
+
+**Evidence Package:**
+- `script-compliance.json` - Governance summary for audit alignment
+- `remediation-backlog.csv` - Actions for retrospective review
+
+**Execution:**
+```bash
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/4-quality-audit.md
 ```
-[PROTOCOL COMPLETE] - Script Governance complete. Ready for Protocol 5 (Retrospective).
-```
+
+---
+
+## 8. EVIDENCE SUMMARY
+
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `script-index.json` | `.artifacts/scripts/` | Inventory of automation assets | Protocol 8 Gates |
+| `documentation-audit.csv` | `.artifacts/scripts/` | Documentation compliance snapshot | Protocol 8 Gates |
+| `static-analysis-report.json` | `.artifacts/scripts/` | Static analysis findings | Protocol 4 |
+| `remediation-backlog.csv` | `.artifacts/scripts/` | Follow-up actions | Protocol 5 |
+| `script-compliance.json` | `.cursor/context-kit/` | Governance scorecard | Protocol 4 |
+
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |
