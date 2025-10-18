@@ -108,6 +108,16 @@ The system includes **8 master rules** that govern AI behavior and ensure consis
 | **9** | `protocol-orchestrator` | Protocol orchestration and workflow management |
 | **Advanced** | `advanced-meta-instruction-intelligence-system` | Advanced analysis and intelligence system |
 
+### Additional Cursor Rules
+The system also includes specialized rules for specific domains:
+
+| Rule Type | Location | Purpose |
+|-----------|----------|---------|
+| **Common Rules** | `.cursor/rules/common-rules/` | Domain-specific guidelines (UI, backend, etc.) |
+| **Project Rules** | `.cursor/rules/project-rules/` | Project-specific configurations |
+| **Elaboration Specialist** | `.cursor/rules/elaboration-specialist.mdc` | Enhanced instruction clarification |
+| **Meta Instructions** | `.cursor/rules/meta-instruction-explain.mdc` | Meta-instruction analysis and explanation |
+
 ---
 
 ## 🔍 Quality Audit System
@@ -139,6 +149,31 @@ The system integrates with automation scripts for:
 - **Validation**: `validate_prd.py`, `validate_tasks.py`
 - **Execution**: `execute_task.py`, `evidence_report.py`
 - **Quality**: `run_quality_audit.py`, `aggregate_coverage.py`
+
+### Available Scripts
+Located in `.artifacts/scripts/`:
+- **`script-index.json`**: Complete script inventory and capabilities
+- **`static-analysis-report.json`**: Code analysis and quality metrics
+- **`validation-report.json`**: Protocol validation results
+- **`artifact-compliance-report.json`**: Artifact structure compliance
+- **`protocol-4-extension-report.json`**: Protocol extension analysis
+
+### Cursor Commands
+Available slash commands in `.cursor/commands/`:
+- **`/compare-prs`**: Advanced PR comparison and analysis
+- **`/elaborate`**: Enhanced instruction clarification
+- **`/generate-cursor-rules`**: Automated rule generation
+- **`/generate-proposal`**: Client proposal generation
+- **`/protocol-orchestrator`**: Workflow orchestration
+- **`/meta-analysis-generator`**: Meta-analysis and intelligence
+
+### Template Packs & Generators
+Located in `generators/` directory:
+- **Protocol Generators**: Automated protocol creation (6-18)
+- **Input Forms**: YAML-based configuration templates
+- **Generator Instructions**: Step-by-step generation guides
+- **Quick Start Guides**: Rapid setup and deployment
+- **Meta Analysis**: Advanced analysis and intelligence tools
 
 ### CI/CD Integration
 - **Linting**: `.github/workflows/ci-lint.yml`
@@ -430,11 +465,25 @@ python scripts/run_quality_audit.py
 - **Integration Guide**: `.cursor/ai-driven-workflow/26-integration-guide.md`
 - **Validation Guide**: `.cursor/ai-driven-workflow/27-validation-guide.md`
 - **Master Rules**: `.cursor/rules/master-rules/`
+- **Common Rules**: `.cursor/rules/common-rules/`
+- **Project Rules**: `.cursor/rules/project-rules/`
 
 ### Automation Scripts
 - **Scripts Directory**: `.artifacts/scripts/`
 - **CI/CD Workflows**: `.github/workflows/`
 - **Quality Gates**: Built into each protocol
+
+### Template Packs & Generators
+- **Generators Directory**: `generators/`
+- **Protocol Generators**: Automated protocol creation
+- **Input Forms**: YAML configuration templates
+- **Quick Start Guides**: Rapid deployment guides
+
+### Cursor Commands
+- **Commands Directory**: `.cursor/commands/`
+- **Slash Commands**: `/compare-prs`, `/elaborate`, `/generate-proposal`
+- **Protocol Orchestrator**: Workflow management
+- **Meta Analysis**: Advanced intelligence tools
 
 ### Support
 - **Review Protocols**: `.cursor/ai-driven-workflow/review-protocols/`
