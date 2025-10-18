@@ -1,248 +1,289 @@
-Mission
-Transform the AI-driven workflow from a 16-protocol system into a complete 28-protocol lifecycle covering every phase from client discovery to production maintenance, ensuring no gaps exist for any project type (simple, complex, or advanced).
-Current State Analysis
-Existing: 16 core protocols across 5 phases
-Generator System: Functional with circular validation capability
-Gap: 12 critical protocols missing for complete SDLC coverage
-Protocol Creation Strategy
-# Batch 1: Critical Path (Protocols 6, 7, 11, 12, 13)
-Focus: Core deployment and operations lifecycle
-Protocol 6: Technical Design & Architecture Specification
-Role: Solutions Architect
-Purpose: Bridge PRD and task generation with detailed technical architecture
-Key Files: 
-.cursor/ai-driven-workflow/6-technical-design-architecture.md
-generators/protocol-input-form-6-technical-design.yaml
-generators/6-technical-design-generator.md
-Quality Gates: Architecture diagram complete, technology stack validated, integration patterns documented
-Integration: Inputs from Protocol 1 (PRD), outputs to Protocol 2 (Tasks)
-Protocol 7: Development Environment Setup & Validation
-Role: DevOps Engineer
-Purpose: Ensure all developers have consistent, validated development environments
-Key Files:
-.cursor/ai-driven-workflow/7-environment-setup-validation.md
-generators/protocol-input-form-7-environment.yaml
-generators/7-environment-generator.md
-Quality Gates: All tools installed, environment variables configured, connectivity validated
-Integration: Inputs from Protocol 2 (Tasks), outputs to Protocol 3 (Execution)
-Protocol 11: Production Deployment & Release Management
-Role: Release Manager
-Purpose: Execute production deployment with zero-downtime strategies
-Key Files:
-.cursor/ai-driven-workflow/11-production-deployment.md
-generators/protocol-input-form-11-deployment.yaml
-generators/11-deployment-generator.md
-Quality Gates: Deployment checklist complete, rollback plan ready, health checks passing
-Integration: Inputs from Protocol 10 (Pre-Deployment), outputs to Protocol 12 (Monitoring)
-Protocol 12: Post-Deployment Monitoring & Observability
-Role: Site Reliability Engineer (SRE)
-Purpose: Monitor production systems and establish observability
-Key Files:
-.cursor/ai-driven-workflow/12-monitoring-observability.md
-generators/protocol-input-form-12-monitoring.yaml
-generators/12-monitoring-generator.md
-Quality Gates: Monitoring dashboards configured, alerts set up, SLOs defined
-Integration: Inputs from Protocol 11 (Deployment), outputs to Protocol 13 (Incident Response)
-Protocol 13: Incident Response & Rollback
-Role: Incident Commander
-Purpose: Handle production incidents and execute rollback procedures
-Key Files:
-.cursor/ai-driven-workflow/13-incident-response-rollback.md
-generators/protocol-input-form-13-incident.yaml
-generators/13-incident-generator.md
-Quality Gates: Incident detected, root cause identified, rollback executed successfully
-Integration: Inputs from Protocol 12 (Monitoring), outputs to Protocol 5 (Retrospective)
-# Batch 2: Quality & Validation (Protocols 9, 10, 14, 15)
-Focus: Comprehensive testing and validation lifecycle
-Protocol 9: Integration Testing & System Validation
-Role: Integration Test Engineer
-Purpose: Validate system integration and cross-component functionality
-Key Files:
-.cursor/ai-driven-workflow/9-integration-testing.md
-generators/protocol-input-form-9-integration.yaml
-generators/9-integration-generator.md
-Quality Gates: Integration tests passing, API contracts validated, data flow verified
-Integration: Inputs from Protocol 3 (Execution), outputs to Protocol 4 (Quality Audit)
-Protocol 10: Pre-Deployment Validation & Staging
-Role: Release Engineer
-Purpose: Validate staging environment and deployment readiness
-Key Files:
-.cursor/ai-driven-workflow/10-pre-deployment-staging.md
-generators/protocol-input-form-10-staging.yaml
-generators/10-staging-generator.md
-Quality Gates: Staging deployment successful, smoke tests passing, rollback tested
-Integration: Inputs from Protocol 4 (Quality Audit), outputs to Protocol 11 (Deployment)
-Protocol 14: Performance Optimization & Tuning
-Role: Performance Engineer
-Purpose: Optimize production performance and identify bottlenecks
-Key Files:
-.cursor/ai-driven-workflow/14-performance-optimization.md
-generators/protocol-input-form-14-performance.yaml
-generators/14-performance-generator.md
-Quality Gates: Performance baseline established, bottlenecks identified, optimizations applied
-Integration: Inputs from Protocol 12 (Monitoring), outputs to Protocol 5 (Retrospective)
-Protocol 15: User Acceptance Testing (UAT) Coordination
-Role: UAT Coordinator
-Purpose: Coordinate user acceptance testing and gather feedback
-Key Files:
-.cursor/ai-driven-workflow/15-uat-coordination.md
-generators/protocol-input-form-15-uat.yaml
-generators/15-uat-generator.md
-Quality Gates: UAT plan executed, user feedback collected, acceptance criteria met
-Integration: Inputs from Protocol 10 (Staging), outputs to Protocol 11 (Deployment)
-# Batch 3: Completion & Handover (Protocols 16, 17, 18)
-Focus: Project closure and long-term maintenance
-Protocol 16: Documentation & Knowledge Transfer
-Role: Technical Writer
-Purpose: Create comprehensive documentation and knowledge transfer materials
-Key Files:
-.cursor/ai-driven-workflow/16-documentation-knowledge-transfer.md
-generators/protocol-input-form-16-documentation.yaml
-generators/16-documentation-generator.md
-Quality Gates: Documentation complete, knowledge base updated, training materials created
-Integration: Inputs from all protocols, outputs to Protocol 17 (Closure)
-Protocol 17: Project Closure & Handover
-Role: Project Manager
-Purpose: Official project completion and stakeholder handover
-Key Files:
-.cursor/ai-driven-workflow/17-project-closure.md
-generators/protocol-input-form-17-closure.yaml
-generators/17-closure-generator.md
-Quality Gates: All deliverables complete, stakeholder sign-off received, handover executed
-Integration: Inputs from Protocol 16 (Documentation), outputs to Protocol 18 (Maintenance)
-Protocol 18: Continuous Maintenance & Support Planning
-Role: Support Lead
-Purpose: Establish long-term maintenance and support strategy
-Key Files:
-.cursor/ai-driven-workflow/18-maintenance-support.md
-generators/protocol-input-form-18-maintenance.yaml
-generators/18-maintenance-generator.md
-Quality Gates: Support processes defined, SLA established, maintenance schedule created
-Integration: Inputs from Protocol 17 (Closure), outputs to ongoing operations
-Execution Phases
-Phase 1: Protocol Input Forms Creation (All 12)
-For each protocol, create filled protocol-input-form.yaml with:
-Protocol number, name, domain, purpose
-AI role and primary guardrail
-Prerequisites and phase placement
-Detailed execution phases with steps
-Evidence collection requirements
-Quality gates with criteria and failure handling
-Integration points (inputs/outputs)
-Automation hooks
-Communication protocols
-Completion checklist
-Files to Create: 12 YAML forms in /generators/ directory
-Phase 2: Protocol Generation (All 12)
-Using protocol-generator-instructions.md, generate complete protocols:
-Follow exact structure from existing protocols
-Include all required sections (Role, Steps, Integration, Gates, Communication, Handoff)
-Use correct markers ([MUST], [GUIDELINE], [CRITICAL], [STRICT])
-Maintain heading hierarchy (H1 → H2 → H3)
-Include practical examples and code snippets
-Files to Create: 12 protocol markdown files in .cursor/ai-driven-workflow/
-Phase 3: Generator Creation (All 12)
-Create generator instruction files for each protocol:
-Follow generator structure from protocol-generator-instructions.md
-Include 4-layer architecture mapping
-Define template structure
-Specify quality acceptance criteria
-Document validation checklist
-Files to Create: 12 generator markdown files in /generators/
-Phase 4: Circular Validation (All 12)
-For each protocol, execute circular validation:
-Run Meta-Analysis Generator on generated protocol
-Verify all 4 layers present in analysis
-Check subsystem mapping accuracy
-Validate cognitive role assignment
-Regenerate if validation fails
-Validation Criteria:
-Layer 1 (System-Level Decisions): Mission, role, governance ✓
-Layer 2 (Behavioral Control): Quality gates, validation checkpoints ✓
-Layer 3 (Procedural Logic): Step-by-step procedures, tool invocations ✓
-Layer 4 (Communication Grammar): Announcements, prompts, narrative ✓
-Phase 5: Workflow Integration & Documentation
-Update .cursor/ai-driven-workflow/README.md with new protocols
-Update generators/GENERATORS-INDEX.md with new generators
-Create complete workflow map (Markdown) showing all 28 protocols
-Update protocol dependency diagram
-Generate comprehensive quality gates table
-Document automation hooks for new protocols
-Files to Update:
-.cursor/ai-driven-workflow/README.md
-generators/GENERATORS-INDEX.md
-generators/GENERATOR-SYSTEM-SUMMARY.md
-Phase 6: Validation & Testing
-Execute comprehensive validation suite
-Test protocol → generator → protocol circular validation
-Validate workflow integration completeness
-Test automation hooks for all protocols
-Verify no gaps in complete SDLC coverage
-Validation Commands:
+# AI-Driven Workflow Protocol System Evaluation Prompt
 
+## Overview
 
-python scripts/validate_protocols.py --all
-python scripts/test_circular_validation.py --protocols 6-18
-python scripts/validate_workflow_completeness.py
+You are an AI evaluation specialist with extensive experience in assessing AI-driven protocols and developer workflows. I would like you to rigorously test a comprehensive meta-instruction protocol system designed to support the complete software development lifecycle from client discovery to production maintenance.
 
-Quality Acceptance Criteria
-Per-Protocol Criteria
-[ ] Protocol file follows exact format from existing protocols
-[ ] All required sections present (7 mandatory sections)
-[ ] Quality gates have measurable criteria
-[ ] Integration points documented with specific artifacts
-[ ] Communication templates provided
-[ ] Automation hooks specified with commands
-[ ] Handoff checklist complete
-Generator Criteria
-[ ] Generator follows protocol-generator-instructions.md structure
-[ ] 4-layer architecture mapping complete
-[ ] Template structure matches protocol format
-[ ] Quality acceptance criteria defined
-[ ] Validation checklist comprehensive
-Circular Validation Criteria
-[ ] Meta-analysis contains all 4 layers
-[ ] Subsystems properly mapped
-[ ] Cognitive roles identifiable
-[ ] No structural deficiencies flagged
-[ ] Analysis output validates protocol quality
-Workflow Integration Criteria
-[ ] All 28 protocols documented in README
-[ ] Complete workflow map created
-[ ] Protocol dependencies mapped
-[ ] No gaps in SDLC coverage
-[ ] Automation hooks integrated
-Success Metrics
-Coverage Metrics
-Project Initiation: 100% covered (Protocols 00, 0)
-Planning & Design: 100% covered (Protocols 1, 2, 6)
-Development: 100% covered (Protocols 3, 7)
-Integration & Testing: 100% covered (Protocols 9, 4, 15)
-Deployment: 100% covered (Protocols 10, 11)
-Maintenance & Support: 100% covered (Protocols 12, 13, 14)
-Project Closure: 100% covered (Protocols 16, 17, 18, 5)
-Quality Metrics
-[ ] All 12 protocols pass circular validation
-[ ] All 12 generators functional and tested
-[ ] Complete workflow map with no gaps
-[ ] All automation hooks validated
-[ ] Documentation complete and comprehensive
-Integration Metrics
-[ ] Seamless handoffs between all 28 protocols
-[ ] Complete dependency mapping
-[ ] No orphaned protocols
-[ ] Evidence pipeline complete
-[ ] Automation coverage 100%
-Risk Mitigation
-Risk: Protocol Structural Inconsistency
-Mitigation: Use existing protocols as templates, validate structure before generation
-Risk: Circular Validation Failure
-Mitigation: Iterative regeneration with structural fixes based on meta-analysis feedback
-Risk: Generator Complexity Overload
-Mitigation: Follow simple, proven patterns from existing generators
-Risk: Integration Point Mismatch
-Mitigation:
+## Evaluation Scope
 
+### Starting Point: 5 Foundation Protocols
 
+Begin your evaluation with these 5 protocols as the workflow entry point:
 
+1. **00a-client-proposal-generation.md** - Client proposal creation
+2. **00B-client-discovery-initiation.md** - Initial client discovery  
+3. **01-project-brief-creation.md** - Project brief/PRD creation
+4. **00-project-bootstrap-and-context-engineering.md** - Project initialization
+5. **00-generate-rules.md** - Cursor rules generation
 
+### Complete Protocol Sequence (28 Total)
+
+From the 5 starting protocols, trace the workflow through all 28 protocols in this sequence:
+
+**Phase 0: Foundation (5)** → 00a → 00B → 01 → 00 → 00-generate-rules
+
+**Phase 1-2: Planning (3)** → 1 → 6 → 2 → 7
+
+**Phase 3: Development (2)** → 3 → 9
+
+**Phase 4: Quality (3)** → 4 → 15 → 10
+
+**Phase 5: Deployment (4)** → 11 → 12 → 13 → 14
+
+**Phase 6: Closure (5)** → 16 → 17 → 18 → 5 → 8
+
+## Evaluation Framework
+
+### 1. Protocol Validation
+
+For each of the 28 protocols, examine:
+
+#### ✅ Completeness Checklist
+- [ ] All required sections present (Role, Mission, Workflow, Integration, Quality Gates, Communication, Handoff)
+- [ ] Step-by-step execution algorithm defined
+- [ ] Prerequisites clearly documented
+- [ ] Evidence requirements specified
+- [ ] Automation hooks defined
+- [ ] Integration points mapped
+- [ ] Quality gates with measurable criteria
+- [ ] Communication protocols established
+- [ ] Handoff checklist complete
+
+#### ❌ Gap Identification
+- Missing sections or incomplete content
+- Unclear or ambiguous instructions
+- Missing evidence requirements
+- Undefined quality gates
+- Missing automation hooks
+- Unclear integration points
+- Missing communication protocols
+- Incomplete handoff procedures
+
+#### 💡 Improvement Suggestions
+- Specific recommendations for missing content
+- Clarity improvements for ambiguous sections
+- Integration enhancement suggestions
+- Evidence requirement refinements
+- Automation opportunity identification
+- Communication protocol improvements
+- Handoff procedure enhancements
+
+### 2. Integration Validation
+
+#### Handoff Analysis
+For each protocol transition, validate:
+- **Input Artifacts**: Does Protocol N receive complete inputs from Protocol N-1?
+- **Output Artifacts**: Does Protocol N produce all required outputs for Protocol N+1?
+- **Quality Gates**: Are quality gates properly enforced at handoff points?
+- **Evidence Flow**: Does evidence flow seamlessly between protocols?
+
+#### Dependency Mapping
+- Verify all prerequisite dependencies are satisfied
+- Check for circular dependencies
+- Identify missing dependencies
+- Validate dependency ordering
+
+### 3. Scoring Framework
+
+#### Per-Protocol Scoring (1-10 scale)
+Each protocol scored across 6 dimensions:
+
+1. **Completeness** (1-10): All sections present, fully detailed
+2. **Clarity** (1-10): Easy to understand and follow
+3. **Actionability** (1-10): Steps are concrete and executable
+4. **Integration** (1-10): Seamless handoffs with adjacent protocols
+5. **Evidence** (1-10): Clear, measurable validation criteria
+6. **Automation** (1-10): Automation hooks well-defined and executable
+
+**Overall Protocol Score**: Average of 6 dimensions
+
+#### System-Level Scoring
+- **Overall Alignment Score**: Percentage of perfect protocol handoffs
+- **Coverage Score**: Percentage of SDLC phases covered
+- **Completeness Score**: Average of all protocol completeness scores
+- **Integration Score**: Average of all protocol integration scores
+
+### 4. Real-world Simulation
+
+Test the protocols under various project scenarios:
+
+#### Scenario 1: Simple Project
+- Single-page application with basic CRUD
+- Minimal external integrations
+- Standard deployment pipeline
+
+#### Scenario 2: Medium Complexity Project
+- Multi-service architecture
+- Database migrations
+- CI/CD pipeline with testing
+
+#### Scenario 3: Complex Enterprise Project
+- Microservices architecture
+- Multiple external integrations
+- Advanced monitoring and observability
+- Compliance requirements
+
+#### Scenario 4: Crisis Scenario
+- Production incident requiring rollback
+- Performance degradation
+- Security vulnerability
+
+### 5. Reporting Requirements
+
+#### Comprehensive Markdown Report Structure:
+
+```markdown
+# AI-Driven Workflow Protocol System Evaluation
+
+## Executive Summary
+- Overall system scores
+- Critical findings
+- High-priority recommendations
+
+## Protocol Sequence Map
+- Visual workflow diagram
+- Protocol dependencies
+- Integration points
+
+## Per-Protocol Analysis
+### Protocol 00a: Client Proposal Generation
+#### ✅ Completeness Checklist
+#### ❌ Gaps Identified
+#### 💡 Improvement Suggestions
+#### Scores
+- Completeness: X/10
+- Clarity: X/10
+- Actionability: X/10
+- Integration: X/10
+- Evidence: X/10
+- Automation: X/10
+- **Overall: X/10**
+
+[Repeat for all 28 protocols]
+
+## Integration Analysis
+### Critical Integration Points
+### Handoff Quality Matrix
+### Evidence Flow Analysis
+### Dependency Validation
+
+## Scoring Summary
+### System-Level Scores
+### Per-Protocol Score Matrix
+### Dimension Analysis
+
+## Improvement Roadmap
+### Critical Fixes (Required)
+### High-Priority Enhancements
+### Medium-Priority Improvements
+### Nice-to-Have Additions
+
+## Real-world Simulation Results
+### Scenario 1: Simple Project
+### Scenario 2: Medium Complexity Project
+### Scenario 3: Complex Enterprise Project
+### Scenario 4: Crisis Scenario
+```
+
+#### Scoring Spreadsheet Requirements:
+Excel/CSV format with:
+- Per-protocol scores across 6 dimensions
+- System-level aggregate scores
+- Color-coded priority matrix
+- Gap tracking checklist
+
+## Success Criteria
+
+- All 28 protocols evaluated with detailed analysis
+- Complete integration mapping with handoff validation
+- Comprehensive scoring across all dimensions
+- Actionable improvement recommendations
+- Prioritized enhancement roadmap
+- Real-world simulation results
+- Complete documentation package
+
+## Context Files
+
+The following files contain the complete protocol system:
+
+### Foundation Protocols (5)
+- `.cursor/ai-driven-workflow/00a-client-proposal-generation.md`
+- `.cursor/ai-driven-workflow/00B-client-discovery-initiation.md`
+- `.cursor/ai-driven-workflow/01-project-brief-creation.md`
+- `.cursor/ai-driven-workflow/00-project-bootstrap-and-context-engineering.md`
+- `.cursor/ai-driven-workflow/00-generate-rules.md`
+
+### Core Workflow Protocols (23)
+- `.cursor/ai-driven-workflow/1-create-prd.md`
+- `.cursor/ai-driven-workflow/2-generate-tasks.md`
+- `.cursor/ai-driven-workflow/3-process-tasks.md`
+- `.cursor/ai-driven-workflow/4-quality-audit.md`
+- `.cursor/ai-driven-workflow/5-implementation-retrospective.md`
+- `.cursor/ai-driven-workflow/6-technical-design-architecture.md`
+- `.cursor/ai-driven-workflow/7-environment-setup-validation.md`
+- `.cursor/ai-driven-workflow/8-script-governance-protocol.md`
+- `.cursor/ai-driven-workflow/9-integration-testing.md`
+- `.cursor/ai-driven-workflow/10-pre-deployment-staging.md`
+- `.cursor/ai-driven-workflow/11-production-deployment.md`
+- `.cursor/ai-driven-workflow/12-monitoring-observability.md`
+- `.cursor/ai-driven-workflow/13-incident-response-rollback.md`
+- `.cursor/ai-driven-workflow/14-performance-optimization.md`
+- `.cursor/ai-driven-workflow/15-uat-coordination.md`
+- `.cursor/ai-driven-workflow/16-documentation-knowledge-transfer.md`
+- `.cursor/ai-driven-workflow/17-project-closure.md`
+- `.cursor/ai-driven-workflow/18-maintenance-support.md`
+
+### Supporting Documentation
+- `.cursor/ai-driven-workflow/README.md`
+- `.cursor/ai-driven-workflow/AGENTS.md`
+- `.cursor/commands/AGENTS.md`
+- `.cursor/commands/elaborate.md`
+
+## Evaluation Instructions
+
+1. **Read all 28 protocol files** to understand the complete workflow structure
+2. **Analyze each protocol** using the completeness checklist, gap identification, and improvement suggestions framework
+3. **Map integration points** between consecutive protocols to validate handoff completeness
+4. **Score each protocol** across the 6 dimensions (1-10 scale)
+5. **Calculate system-level scores** for overall assessment
+6. **Simulate real-world scenarios** to test protocol robustness
+7. **Generate comprehensive report** with detailed findings and recommendations
+8. **Create scoring spreadsheet** with all metrics and priority matrix
+
+## Expected Deliverables
+
+1. **Comprehensive Markdown Report** (as specified above)
+2. **Scoring Spreadsheet** (Excel/CSV format)
+3. **Protocol Gap Analysis** (detailed per-protocol findings)
+4. **Integration Validation Report** (handoff analysis)
+5. **Real-world Simulation Results** (scenario testing outcomes)
+6. **Improvement Roadmap** (prioritized action items)
+
+## Evaluation Timeline
+
+- **Phase 1**: Protocol Analysis (2-3 hours)
+- **Phase 2**: Integration Validation (1-2 hours)
+- **Phase 3**: Scoring & Simulation (1-2 hours)
+- **Phase 4**: Report Generation (1-2 hours)
+
+**Total Estimated Time**: 5-9 hours
+
+## Quality Standards
+
+- **Thoroughness**: Every protocol must be analyzed in detail
+- **Accuracy**: Scores must be justified with specific evidence
+- **Actionability**: Recommendations must be concrete and implementable
+- **Completeness**: All evaluation criteria must be addressed
+- **Clarity**: Findings must be clearly communicated with examples
+
+## Success Metrics
+
+- **Coverage**: 100% of protocols analyzed
+- **Integration**: All handoff points validated
+- **Scoring**: Complete dimensional analysis
+- **Simulation**: All scenarios tested
+- **Documentation**: Comprehensive report package
+
+---
+
+**Begin your evaluation now. Focus on thoroughness, accuracy, and actionable insights that will help improve this AI-driven workflow protocol system.**
