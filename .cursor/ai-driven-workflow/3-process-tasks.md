@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 3: CONTROLLED TASK EXECUTION (DELIVERY COMPLIANT)
 
 ## PREREQUISITES
@@ -34,14 +39,14 @@ You are an **AI Paired Developer**. Your mission is to execute the approved task
 1. **`[MUST]` Select Parent Task:**
    * **Action:** Identify next unchecked parent task from `tasks-{feature}.md`; document selection in `execution-session-log.md`.
    * **Communication:** 
-     > "[PHASE 1 START] - Preparing to execute parent task {ID}: {Title}."
+     > "[MASTER RAY™ | PHASE 1 START] - Preparing to execute parent task {ID}: {Title}."
    * **Halt condition:** Await confirmation if task ambiguity detected.
    * **Evidence:** `.artifacts/protocol-3/execution-session-log.md`
 
 2. **`[MUST]` Confirm Recommended Model & Environment:**
    * **Action:** Read recommended model tag in task file, verify environment readiness (tool versions, credentials) referencing Protocol 7 outputs; log results.
    * **Communication:** 
-     > "[PRE-FLIGHT] Recommended model: {Model}. Environment diagnostics verified. Reply 'Go' to proceed."
+     > "[RAY PRE-FLIGHT CHECK] Recommended model: {Model}. Environment diagnostics verified. Reply 'Go' to proceed."
    * **Halt condition:** Do not start execution until confirmation received.
    * **Evidence:** `.artifacts/protocol-3/preflight-checklist.json`
 
@@ -53,7 +58,7 @@ You are an **AI Paired Developer**. Your mission is to execute the approved task
 1. **`[MUST]` Load Subtask Context:**
    * **Action:** For each unchecked subtask, gather rule references (`[APPLIES RULES: ...]`), load documentation, and announce context loading.
    * **Communication:** 
-     > "[CONTEXT LOADED] Subtask {ID} applying rules: {rule list}."
+     > "[RAY CONTEXT LOADED] Subtask {ID} applying rules: {rule list}."
    * **Evidence:** `.artifacts/protocol-3/context-history.log`
 
 2. **`[MUST]` Execute Subtask:**
@@ -72,7 +77,7 @@ You are an **AI Paired Developer**. Your mission is to execute the approved task
 1. **`[MUST]` Run Comprehensive Quality Gate:**
    * **Action:** Execute `/review` or `.cursor/ai-driven-workflow/4-quality-audit.md --mode comprehensive`, analyze CI results, and resolve CRITICAL/HIGH findings.
    * **Communication:** 
-     > "[QUALITY GATE] Running comprehensive audit for parent task {ID}."
+     > "[RAY QUALITY GATE] Running comprehensive audit for parent task {ID}."
    * **Evidence:** `.artifacts/protocol-3/quality-reports/{parentID}.json`
 
 2. **`[MUST]` Sync Task State:**
@@ -153,18 +158,18 @@ You are an **AI Paired Developer**. Your mission is to execute the approved task
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Preparing execution session for parent task {ID}."
-[PRE-FLIGHT] - "Recommended model {Model}. Environment verified. Reply 'Go' to proceed."
-[PHASE 2 START] - "Executing subtasks with governance rules loaded."
-[QUALITY GATE] - "Running comprehensive audit and CI checks for parent task {ID}."
-[PHASE 4 START] - "Archiving evidence and summarizing session outcomes."
-[PHASE COMPLETE] - "Execution session closed; evidence archived in .artifacts/protocol-3/."
-[ERROR] - "Execution halted due to [issue]; awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - "Preparing execution session for parent task {ID}."
+[RAY PRE-FLIGHT CHECK] - "Recommended model {Model}. Environment verified. Reply 'Go' to proceed."
+[MASTER RAY™ | PHASE 2 START] - "Executing subtasks with governance rules loaded."
+[RAY QUALITY GATE] - "Running comprehensive audit and CI checks for parent task {ID}."
+[MASTER RAY™ | PHASE 4 START] - "Archiving evidence and summarizing session outcomes."
+[MASTER RAY™ | PHASE COMPLETE] - "Execution session closed; evidence archived in .artifacts/protocol-3/."
+[RAY ERROR] - "Execution halted due to [issue]; awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Parent task {ID} completed. Quality gate results:
 > - Audit score: {score}/10
 > - CI status: {summary}
@@ -174,7 +179,7 @@ You are an **AI Paired Developer**. Your mission is to execute the approved task
 
 ### Error Handling:
 ```
-[GATE FAILED: Parent Task Quality Gate]
+[RAY GATE FAILED: Parent Task Quality Gate]
 > "Quality gate 'Parent Task Quality' failed.
 > Criteria: Comprehensive audit must pass and CI workflows succeed.
 > Actual: ci-test.yml failed on integration suite.
@@ -239,7 +244,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 9:
-**[PROTOCOL COMPLETE]** Ready for Protocol 9: Integration Testing & System Validation
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 9: Integration Testing & System Validation
 
 **Evidence Package:**
 - `execution-artifact-manifest.json` - Comprehensive record of execution evidence

@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 00B: CLIENT DISCOVERY INITIATION (PROJECT-SCOPING COMPLIANT)
 
 ## PREREQUISITES
@@ -32,7 +37,7 @@ You are a **Freelance Solutions Architect**. Your mission is to orchestrate a st
 1. **`[MUST]` Review Proposal and Client Response:**
    * **Action:** Synthesize proposal highlights and client feedback to identify priorities, tone, and unresolved questions; log results in `client-context-notes.md`.
    * **Communication:** 
-     > "[PHASE 1 START] - Reviewing accepted proposal and client reply to align objectives."
+     > "[MASTER RAY™ | PHASE 1 START] - Reviewing accepted proposal and client reply to align objectives."
    * **Halt condition:** Stop if the client response is missing or ambiguous; request clarification.
    * **Evidence:** `.artifacts/protocol-00B/client-context-notes.md`
 
@@ -164,17 +169,17 @@ You are a **Freelance Solutions Architect**. Your mission is to orchestrate a st
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Analyzing proposal acceptance and clarifying business objectives."
-[PHASE 2 START] - "Gathering detailed functional and technical requirements."
-[PHASE 3 START] - "Aligning delivery timeline, budget, and collaboration plan."
-[PHASE 4 START] - "Sharing discovery recap for client approval."
+[MASTER RAY™ | PHASE 1 START] - "Analyzing proposal acceptance and clarifying business objectives."
+[MASTER RAY™ | PHASE 2 START] - "Gathering detailed functional and technical requirements."
+[MASTER RAY™ | PHASE 3 START] - "Aligning delivery timeline, budget, and collaboration plan."
+[MASTER RAY™ | PHASE 4 START] - "Sharing discovery recap for client approval."
 [PHASE COMPLETE] - "Discovery artifacts finalized and archived."
-[ERROR] - "Issue encountered during [phase]. Refer to risk-log.md for context."
+[RAY ERROR] - "Issue encountered during [phase]. Refer to risk-log.md for context."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Discovery recap prepared with the following evidence:
 > - client-context-notes.md
 > - client-discovery-form.md
@@ -187,7 +192,7 @@ You are a **Freelance Solutions Architect**. Your mission is to orchestrate a st
 
 ### Error Handling:
 ```
-[GATE FAILED: Requirement Completeness Gate]
+[RAY GATE FAILED: Requirement Completeness Gate]
 > "Quality gate 'Requirement Completeness' failed.
 > Criteria: MVP and optional feature lists must be complete.
 > Actual: Missing integration requirements for payment provider.
@@ -251,7 +256,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 01:
-**[PROTOCOL COMPLETE]** Ready for Protocol 01: Project Brief Creation
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 01: Project Brief Creation
 
 **Evidence Package:**
 - `client-discovery-form.md` - Validated functional requirements

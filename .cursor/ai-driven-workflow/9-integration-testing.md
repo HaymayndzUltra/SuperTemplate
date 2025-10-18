@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 9: INTEGRATION TESTING & SYSTEM VALIDATION (QUALITY COMPLIANT)
 
 ## PREREQUISITES
@@ -35,7 +40,7 @@ You are an **Integration Test Engineer**. Your mission is to validate cross-serv
 1. **`[MUST]` Define Integration Scope:**
    * **Action:** Consolidate completed features, architectural interfaces, and dependencies from Protocols 3 and 6; produce `integration-scope-matrix.json` if not already created.
    * **Communication:** 
-     > "[PHASE 1 START] - Aligning integration scope across delivery and architecture artifacts."
+     > "[MASTER RAY™ | PHASE 1 START] - Aligning integration scope across delivery and architecture artifacts."
    * **Halt condition:** Stop if required artifacts missing or inconsistent.
    * **Evidence:** `.artifacts/protocol-9/integration-scope-matrix.json`
 
@@ -151,12 +156,12 @@ You are an **Integration Test Engineer**. Your mission is to validate cross-serv
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Aligning integration scope and validating environment readiness."
-[PHASE 2 START] - "Configuring contract validation and integration test plan."
-[PHASE 3 START] - "Executing integration suites and managing defects."
-[PHASE 4 START] - "Packaging integration evidence and seeking sign-off."
+[MASTER RAY™ | PHASE 1 START] - "Aligning integration scope and validating environment readiness."
+[MASTER RAY™ | PHASE 2 START] - "Configuring contract validation and integration test plan."
+[MASTER RAY™ | PHASE 3 START] - "Executing integration suites and managing defects."
+[MASTER RAY™ | PHASE 4 START] - "Packaging integration evidence and seeking sign-off."
 [PHASE COMPLETE] - "Integration validation complete; evidence archived in .artifacts/protocol-9/."
-[ERROR] - "Integration testing halted due to [issue]; refer to defect log."
+[RAY ERROR] - "Integration testing halted due to [issue]; refer to defect log."
 ```
 
 ### Validation Prompts:
@@ -178,7 +183,7 @@ You are an **Integration Test Engineer**. Your mission is to validate cross-serv
 
 ### Error Handling:
 ```
-[GATE FAILED: Execution Integrity Gate]
+[RAY GATE FAILED: Execution Integrity Gate]
 > "Quality gate 'Execution Integrity' failed.
 > Criteria: All critical defects resolved or waived.
 > Actual: Defect #{ID} remains open without mitigation.
@@ -243,7 +248,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 4:
-**[PROTOCOL COMPLETE]** Ready for Protocol 4: Quality Audit
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 4: Quality Audit
 
 **Evidence Package:**
 - `INTEGRATION-EVIDENCE.zip` - Comprehensive integration validation bundle

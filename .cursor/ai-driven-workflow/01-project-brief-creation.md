@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 01: PROJECT BRIEF CREATION (PROJECT-SCOPING COMPLIANT)
 
 ## PREREQUISITES
@@ -34,7 +39,7 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 1. **`[MUST]` Audit Required Artifacts:**
    * **Action:** Confirm discovery artifacts exist, contain approved content, and align with accepted proposal commitments; log results in `project-brief-validation-report.json`.
    * **Communication:** 
-     > "[PHASE 1 START] - Auditing discovery artifacts for completeness and alignment."
+     > "[MASTER RAY™ | PHASE 1 START] - Auditing discovery artifacts for completeness and alignment."
    * **Halt condition:** Stop if any artifact is missing, empty, or lacks approval evidence.
    * **Evidence:** `.artifacts/protocol-01/project-brief-validation-report.json`
 
@@ -149,16 +154,16 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Validating discovery evidence for Project Brief creation."
-[PHASE 2 START] - "Compiling Project Brief sections with traceable sources."
-[PHASE 3 START] - "Running structural validation and collecting approvals."
+[MASTER RAY™ | PHASE 1 START] - "Validating discovery evidence for Project Brief creation."
+[MASTER RAY™ | PHASE 2 START] - "Compiling Project Brief sections with traceable sources."
+[MASTER RAY™ | PHASE 3 START] - "Running structural validation and collecting approvals."
 [PHASE COMPLETE] - "Project Brief approved and archived for downstream use."
-[ERROR] - "Issue encountered during [phase]; see validation-issues.md for details."
+[RAY ERROR] - "Issue encountered during [phase]; see validation-issues.md for details."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Project Brief assembled and validated. Evidence available:
 > - project-brief-validation-report.json
 > - PROJECT-BRIEF.md
@@ -170,7 +175,7 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 
 ### Error Handling:
 ```
-[GATE FAILED: Structural Integrity]
+[RAY GATE FAILED: Structural Integrity]
 > "Quality gate 'Structural Integrity' failed.
 > Criteria: All sections must be populated with traceable references.
 > Actual: Technical Architecture Baseline missing source references.
@@ -234,7 +239,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 00:
-**[PROTOCOL COMPLETE]** Ready for Protocol 00: Project Bootstrap & Context Engineering
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 00: Project Bootstrap & Context Engineering
 
 **Evidence Package:**
 - `PROJECT-BRIEF.md` - Canonical source of truth for planning

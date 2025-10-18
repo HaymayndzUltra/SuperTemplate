@@ -240,13 +240,13 @@ Protocol 5 (Retrospective) → rules_audit_quick.py, evidence_report.py (aggrega
 All automation scripts use standardized announcement format:
 
 ```
-[AUTOMATION] {Script Name}: {Status} - {Summary}
+[RAY AUTOMATION] {Script Name}: {Status} - {Summary}
 ```
 
 **Examples:**
-- `[AUTOMATION] Brief Validation: PASS - Score: 85/100`
-- `[AUTOMATION] Risk Analysis: 5 risks scored, 1 critical`
-- `[AUTOMATION] Domain Classification: web-mobile (92% confidence)`
+- `[RAY AUTOMATION] Brief Validation: PASS - Score: 85/100`
+- `[RAY AUTOMATION] Risk Analysis: 5 risks scored, 1 critical`
+- `[RAY AUTOMATION] Domain Classification: web-mobile (92% confidence)`
 
 ### Gate Announcements
 All automation gates use standardized format:

@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 4: QUALITY AUDIT ORCHESTRATOR (QUALITY ASSURANCE COMPLIANT)
 
 ## PREREQUISITES
@@ -36,14 +41,14 @@ You are a **Senior Quality Engineer**. Your mission is to orchestrate the correc
 1. **`[MUST]` Execute Baseline CI Validation:**
    * **Action:** Run required CI workflows (`ci-test.yml`, `ci-lint.yml`) and store outputs at `.artifacts/quality-audit/ci-<workflow>-results.json`.
    * **Communication:** 
-     > "[PHASE 1 START] - Executing baseline CI workflows for quality audit enablement..."
+     > "[MASTER RAY™ | PHASE 1 START] - Executing baseline CI workflows for quality audit enablement..."
    * **Halt condition:** Stop if any workflow fails or artifacts cannot be generated.
    * **Evidence:** CI result JSON files plus console transcript stored in `.artifacts/quality-audit/ci-workflow-log.txt`.
 
 2. **`[MUST]` Aggregate Coverage Metrics:**
    * **Action:** Invoke coverage aggregation to produce `.artifacts/quality-audit/coverage-report.json` with line/function coverage stats.
    * **Communication:** 
-     > "[AUTOMATION] Coverage aggregation complete. Overall coverage: {percentage}%"
+     > "[RAY AUTOMATION] Coverage aggregation complete. Overall coverage: {percentage}%"
    * **Halt condition:** Pause if coverage report lacks required sections or falls below mandated baseline (<80%).
    * **Evidence:** Coverage report and timestamped metadata file `coverage-metadata.yaml`.
 
@@ -59,7 +64,7 @@ You are a **Senior Quality Engineer**. Your mission is to orchestrate the correc
 1. **`[MUST]` Resolve Review Mode:**
    * **Action:** Parse `/review --mode {target}` input or fallback rules to determine specialized protocol.
    * **Communication:** 
-     > "[PHASE 2 START] - Determining review mode '{mode}' via centralized router..."
+     > "[MASTER RAY™ | PHASE 2 START] - Determining review mode '{mode}' via centralized router..."
    * **Halt condition:** Suspend execution if router cannot map mode to protocol.
    * **Evidence:** `.artifacts/quality-audit/mode-resolution.json` capturing requested mode, router decision, and fallback chain.
 
@@ -83,7 +88,7 @@ You are a **Senior Quality Engineer**. Your mission is to orchestrate the correc
 1. **`[MUST]` Execute Selected Review Protocol:**
    * **Action:** Follow instructions inside loaded protocol, delegating steps while capturing evidence references in orchestrator log.
    * **Communication:** 
-     > "[PHASE 3 START] - Executing specialized review protocol '{protocol}'..."
+     > "[MASTER RAY™ | PHASE 3 START] - Executing specialized review protocol '{protocol}'..."
    * **Halt condition:** Halt if specialized protocol reports blocking findings without mitigation.
    * **Evidence:** `.artifacts/quality-audit/execution-log.md` enumerating steps, checks, and outcomes.
 
@@ -106,14 +111,14 @@ You are a **Senior Quality Engineer**. Your mission is to orchestrate the correc
 1. **`[MUST]` Generate Audit Report Package:**
    * **Action:** Compile CI, coverage, specialized findings, and router manifests into `QUALITY-AUDIT-PACKAGE.zip`.
    * **Communication:** 
-     > "[PHASE 4 START] - Packaging unified quality audit deliverables..."
+     > "[MASTER RAY™ | PHASE 4 START] - Packaging unified quality audit deliverables..."
    * **Halt condition:** Stop if package checksum verification fails.
    * **Evidence:** `.artifacts/quality-audit/quality-audit-manifest.json` plus zipped artifact.
 
 2. **`[MUST]` Issue Readiness Recommendation:**
    * **Action:** Produce decision record (`go`, `go-with-risks`, `no-go`) referencing gate scores and mitigations.
    * **Communication:** 
-     > "[VALIDATION REQUEST] - Audit decision: {decision}. Confirm acceptance to proceed to UAT coordination?"
+     > "[RAY VALIDATION REQUEST] - Audit decision: {decision}. Confirm acceptance to proceed to UAT coordination?"
    * **Halt condition:** Await stakeholder confirmation for `go-with-risks` or `no-go` outcomes.
    * **Evidence:** `.artifacts/quality-audit/readiness-recommendation.md` detailing rationale and signatories.
 
@@ -182,18 +187,18 @@ You are a **Senior Quality Engineer**. Your mission is to orchestrate the correc
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - Executing baseline CI workflows for quality audit enablement...
-[PHASE 1 COMPLETE] - Pre-audit automation complete. Evidence: ci-workflow-log.txt, coverage-report.json.
-[PHASE 2 START] - Determining review mode '{mode}' via centralized router...
-[PHASE 3 START] - Executing specialized review protocol '{protocol}'...
-[PHASE 4 START] - Packaging unified quality audit deliverables...
-[PHASE 4 COMPLETE] - Quality audit package ready. Evidence: QUALITY-AUDIT-PACKAGE.zip.
-[ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - Executing baseline CI workflows for quality audit enablement...
+[MASTER RAY™ | PHASE 1 COMPLETE] - Pre-audit automation complete. Evidence: ci-workflow-log.txt, coverage-report.json.
+[MASTER RAY™ | PHASE 2 START] - Determining review mode '{mode}' via centralized router...
+[MASTER RAY™ | PHASE 3 START] - Executing specialized review protocol '{protocol}'...
+[MASTER RAY™ | PHASE 4 START] - Packaging unified quality audit deliverables...
+[MASTER RAY™ | PHASE 4 COMPLETE] - Quality audit package ready. Evidence: QUALITY-AUDIT-PACKAGE.zip.
+[RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "I have completed the quality audit automation and protocol execution. The following evidence is ready:
 > - QUALITY-AUDIT-PACKAGE.zip
 > - readiness-recommendation.md
@@ -203,7 +208,7 @@ You are a **Senior Quality Engineer**. Your mission is to orchestrate the correc
 
 ### Error Handling:
 ```
-[GATE FAILED: Pre-Audit Automation Gate]
+[RAY GATE FAILED: Pre-Audit Automation Gate]
 > "Quality gate 'Pre-Audit Automation Gate' failed. 
 > Criteria: CI workflows and coverage threshold
 > Actual: {result}
@@ -269,7 +274,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 15:
-**[PROTOCOL COMPLETE]** Ready for Protocol 15: User Acceptance Testing Coordination
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 15: User Acceptance Testing Coordination
 
 **Evidence Package:**
 - `QUALITY-AUDIT-PACKAGE.zip` - Consolidated audit artifacts

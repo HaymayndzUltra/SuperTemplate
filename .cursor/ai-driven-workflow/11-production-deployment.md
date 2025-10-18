@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 11: PRODUCTION DEPLOYMENT & RELEASE MANAGEMENT (RELIABILITY COMPLIANT)
 
 ## PREREQUISITES
@@ -37,7 +42,7 @@ You are a **Release Manager**. Your mission is to orchestrate production deploym
 1. **`[MUST]` Validate Pre-Deployment Evidence:**
    * **Action:** Confirm Protocol 10 and 15 artifacts are complete, current, and free of blocking issues.
    * **Communication:** 
-     > "[PHASE 1 START] - Verifying deployment readiness artifacts..."
+     > "[MASTER RAY™ | PHASE 1 START] - Verifying deployment readiness artifacts..."
    * **Halt condition:** Stop if any prerequisite artifact missing or outdated.
    * **Evidence:** `.artifacts/deployment/deployment-readiness-checklist.json` capturing status per artifact.
 
@@ -62,7 +67,7 @@ You are a **Release Manager**. Your mission is to orchestrate production deploym
 1. **`[MUST]` Reconfirm Staging Health:**
    * **Action:** Review Protocol 10 staging run logs and optionally rerun quick validation to ensure nothing drifted.
    * **Communication:** 
-     > "[PHASE 2 START] - Reconfirming staging health prior to production launch..."
+     > "[MASTER RAY™ | PHASE 2 START] - Reconfirming staging health prior to production launch..."
    * **Halt condition:** Stop if staging validation fails or environment drift detected.
    * **Evidence:** `.artifacts/deployment/staging-validation-results.json` (refreshed if rerun).
 
@@ -92,7 +97,7 @@ You are a **Release Manager**. Your mission is to orchestrate production deploym
 2. **`[MUST]` Execute Production Deployment:**
    * **Action:** Perform deployment according to rollout strategy (blue/green, canary, rolling) while logging commands.
    * **Communication:** 
-     > "[PHASE 3 START] - Executing production deployment sequence..."
+     > "[MASTER RAY™ | PHASE 3 START] - Executing production deployment sequence..."
    * **Halt condition:** Trigger rollback if critical errors encountered.
    * **Evidence:** `.artifacts/deployment/production-deployment-report.json` capturing actions and durations.
 
@@ -107,7 +112,7 @@ You are a **Release Manager**. Your mission is to orchestrate production deploym
    * **Action:** Provide updates at key milestones (start, 50%, completion) in designated channels.
    * **Example:**
      ```markdown
-     [ANNOUNCEMENT] Production deployment 50% complete. No errors observed. Next update in 10 minutes.
+     [RAY ANNOUNCEMENT] Production deployment 50% complete. No errors observed. Next update in 10 minutes.
      ```
 
 ### STEP 4: Stabilization Window and Documentation
@@ -115,7 +120,7 @@ You are a **Release Manager**. Your mission is to orchestrate production deploym
 1. **`[MUST]` Monitor Health Window:**
    * **Action:** Track metrics during agreed soak period, documenting anomalies and decisions.
    * **Communication:** 
-     > "[PHASE 4 START] - Monitoring post-deployment health window..."
+     > "[MASTER RAY™ | PHASE 4 START] - Monitoring post-deployment health window..."
    * **Halt condition:** Escalate to Protocol 13 if thresholds breached.
    * **Evidence:** `.artifacts/deployment/deployment-health-log.md` summarizing observations.
 
@@ -191,17 +196,17 @@ You are a **Release Manager**. Your mission is to orchestrate production deploym
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - Verifying deployment readiness artifacts...
-[PHASE 2 START] - Reconfirming staging health prior to production launch...
-[PHASE 3 START] - Executing production deployment sequence...
-[PHASE 4 START] - Monitoring post-deployment health window...
-[PHASE 4 COMPLETE] - Deployment report compiled. Evidence: DEPLOYMENT-REPORT.md.
-[ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - Verifying deployment readiness artifacts...
+[MASTER RAY™ | PHASE 2 START] - Reconfirming staging health prior to production launch...
+[MASTER RAY™ | PHASE 3 START] - Executing production deployment sequence...
+[MASTER RAY™ | PHASE 4 START] - Monitoring post-deployment health window...
+[MASTER RAY™ | PHASE 4 COMPLETE] - Deployment report compiled. Evidence: DEPLOYMENT-REPORT.md.
+[RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Production deployment executed. Evidence ready:
 > - production-deployment-report.json
 > - post-deployment-validation.json
@@ -211,7 +216,7 @@ You are a **Release Manager**. Your mission is to orchestrate production deploym
 
 ### Error Handling:
 ```
-[GATE FAILED: Production Launch Gate]
+[RAY GATE FAILED: Production Launch Gate]
 > "Quality gate 'Production Launch Gate' failed.
 > Criteria: Approval recorded, deployment successful, immediate checks passed
 > Actual: {result}
@@ -275,7 +280,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 12:
-**[PROTOCOL COMPLETE]** Ready for Protocol 12: Monitoring & Observability
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 12: Monitoring & Observability
 
 **Evidence Package:**
 - `DEPLOYMENT-REPORT.md` - Comprehensive deployment summary

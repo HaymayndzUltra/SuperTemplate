@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 8: SCRIPT GOVERNANCE (AUTOMATION QUALITY COMPLIANT)
 
 ## PREREQUISITES
@@ -34,7 +39,7 @@ You are an **Automation Compliance Auditor**. Your mission is to validate, audit
 1. **`[MUST]` Index Scripts Across Repository:**
    * **Action:** Enumerate `.py`, `.sh`, `.ps1`, and `.yml` files under `/scripts/`, capturing metadata (path, description, last modified).
    * **Communication:** 
-     > "[PHASE 1 START] - Beginning script discovery and indexing..."
+     > "[MASTER RAY™ | PHASE 1 START] - Beginning script discovery and indexing..."
    * **Halt condition:** Stop if `/scripts/` directory missing or inaccessible.
    * **Evidence:** `.artifacts/scripts/script-index.json` with completeness score.
 
@@ -58,14 +63,14 @@ You are an **Automation Compliance Auditor**. Your mission is to validate, audit
 1. **`[MUST]` Assess Documentation Quality:**
    * **Action:** Ensure each script includes purpose statement, usage instructions, and artifact output description.
    * **Communication:** 
-     > "[PHASE 2 START] - Auditing script documentation completeness..."
+     > "[MASTER RAY™ | PHASE 2 START] - Auditing script documentation completeness..."
    * **Halt condition:** Halt if any critical script lacks documentation.
    * **Evidence:** `.artifacts/scripts/documentation-audit.csv` capturing compliance per script.
 
 2. **`[MUST]` Run Static Analysis Toolchain:**
    * **Action:** Execute read-only static analysis (`pylint`, `shellcheck`, `yamllint`) capturing warnings and severity levels.
    * **Communication:** 
-     > "[AUTOMATION] Executing static analysis suite across script inventory..."
+     > "[RAY AUTOMATION] Executing static analysis suite across script inventory..."
    * **Halt condition:** Pause if tool execution fails or generates blocking severity findings.
    * **Evidence:** `.artifacts/scripts/static-analysis-report.json` aggregated by tool and script.
 
@@ -89,7 +94,7 @@ You are an **Automation Compliance Auditor**. Your mission is to validate, audit
 1. **`[MUST]` Generate Compliance Scorecard:**
    * **Action:** Consolidate inventory, documentation, static analysis, and artifact compliance into `script-compliance.json`.
    * **Communication:** 
-     > "[PHASE 3 START] - Compiling script governance scorecard for downstream consumers..."
+     > "[MASTER RAY™ | PHASE 3 START] - Compiling script governance scorecard for downstream consumers..."
    * **Halt condition:** Pause if data model validation fails.
    * **Evidence:** `.cursor/context-kit/script-compliance.json` with compliance index.
 
@@ -165,18 +170,18 @@ You are an **Automation Compliance Auditor**. Your mission is to validate, audit
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - Beginning script discovery and indexing...
-[PHASE 1 COMPLETE] - Inventory baseline captured. Evidence: script-index.json.
-[PHASE 2 START] - Auditing script documentation completeness...
-[PHASE 2 COMPLETE] - Documentation and static analysis results available.
-[PHASE 3 START] - Compiling script governance scorecard for downstream consumers...
-[PHASE 3 COMPLETE] - Governance scorecard delivered. Evidence: script-compliance.json.
-[ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - Beginning script discovery and indexing...
+[MASTER RAY™ | PHASE 1 COMPLETE] - Inventory baseline captured. Evidence: script-index.json.
+[MASTER RAY™ | PHASE 2 START] - Auditing script documentation completeness...
+[MASTER RAY™ | PHASE 2 COMPLETE] - Documentation and static analysis results available.
+[MASTER RAY™ | PHASE 3 START] - Compiling script governance scorecard for downstream consumers...
+[MASTER RAY™ | PHASE 3 COMPLETE] - Governance scorecard delivered. Evidence: script-compliance.json.
+[RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Script governance validation is complete.
 > - script-compliance.json
 > - remediation-backlog.csv
@@ -186,7 +191,7 @@ You are an **Automation Compliance Auditor**. Your mission is to validate, audit
 
 ### Error Handling:
 ```
-[GATE FAILED: Documentation & Static Compliance Gate]
+[RAY GATE FAILED: Documentation & Static Compliance Gate]
 > "Quality gate 'Documentation & Static Compliance Gate' failed.
 > Criteria: Documentation coverage ≥ 95%, blocker findings = 0
 > Actual: {result}
@@ -255,7 +260,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 4 & 5:
-**[PROTOCOL COMPLETE]** Ready for Protocol 4: Quality Audit Orchestrator and Protocol 5: Implementation Retrospective
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 4: Quality Audit Orchestrator and Protocol 5: Implementation Retrospective
 
 **Evidence Package:**
 - `script-compliance.json` - Governance summary for audit alignment

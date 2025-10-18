@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 17: PROJECT CLOSURE & HANDOVER (PROGRAM GOVERNANCE COMPLIANT)
 
 ## PREREQUISITES
@@ -42,7 +47,7 @@ You are a **Project Closure Manager**. Your mission is to verify deliverable com
 1. **`[MUST]` Verify Closure Prerequisites:**
    * **Action:** Confirm receipt and validity of all upstream artifacts, approvals, and outstanding actions.
    * **Communication:** 
-     > "[PHASE 1 START] - Validating closure prerequisites and deliverable readiness..."
+     > "[MASTER RAY™ | PHASE 1 START] - Validating closure prerequisites and deliverable readiness..."
    * **Halt condition:** Stop if any required artifact or approval is missing.
    * **Evidence:** `.artifacts/protocol-17/closure-prerequisite-checklist.json` with validation results.
 
@@ -66,7 +71,7 @@ You are a **Project Closure Manager**. Your mission is to verify deliverable com
 1. **`[MUST]` Facilitate Final Acceptance Reviews:**
    * **Action:** Convene acceptance meeting with sponsor, product owner, operations, and support leads; capture decisions.
    * **Communication:** 
-     > "[PHASE 2 START] - Hosting final acceptance review. Recording approvals and outstanding actions..."
+     > "[MASTER RAY™ | PHASE 2 START] - Hosting final acceptance review. Recording approvals and outstanding actions..."
    * **Halt condition:** Stop if any stakeholder withholds approval.
    * **Evidence:** `.artifacts/protocol-17/acceptance-minutes.md` with attendees, decisions, action items.
 
@@ -89,7 +94,7 @@ You are a **Project Closure Manager**. Your mission is to verify deliverable com
 1. **`[MUST]` Close Project Governance Artifacts:**
    * **Action:** Update project portfolio tools, close tasks/issues, archive documentation, and set permissions to maintenance state.
    * **Communication:** 
-     > "[PHASE 3 START] - Closing governance artifacts and archiving project documentation..."
+     > "[MASTER RAY™ | PHASE 3 START] - Closing governance artifacts and archiving project documentation..."
    * **Halt condition:** Halt if any governance item remains open without disposition.
    * **Evidence:** `.artifacts/protocol-17/governance-closure-report.json` summarizing updates.
 
@@ -163,15 +168,15 @@ You are a **Project Closure Manager**. Your mission is to verify deliverable com
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Starting project closure validation with deliverable audit and prerequisite checks."
-[PHASE 2 COMPLETE] - "Stakeholder acceptance secured. Evidence: acceptance-minutes.md, operational-handover-record.json."
-[VALIDATION REQUEST] - "Please confirm all closure gates have passed and authorize portfolio archive updates."
-[ERROR] - "Failed at operational handover readiness. Reason: SLA approval missing. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - "Starting project closure validation with deliverable audit and prerequisite checks."
+[MASTER RAY™ | PHASE 2 COMPLETE] - "Stakeholder acceptance secured. Evidence: acceptance-minutes.md, operational-handover-record.json."
+[RAY VALIDATION REQUEST] - "Please confirm all closure gates have passed and authorize portfolio archive updates."
+[RAY ERROR] - "Failed at operational handover readiness. Reason: SLA approval missing. Awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "I have packaged the closure handover. The following evidence is ready:
 > - CLOSURE-PACKAGE.zip
 > - governance-closure-report.json
@@ -181,7 +186,7 @@ You are a **Project Closure Manager**. Your mission is to verify deliverable com
 
 ### Error Handling:
 ```
-[GATE FAILED: Deliverable Completion Assurance]
+[RAY GATE FAILED: Deliverable Completion Assurance]
 > "Quality gate 'Deliverable Completion Assurance' failed.
 > Criteria: All deliverables accepted with evidence.
 > Actual: 3 deliverables awaiting sponsor approval.
@@ -246,7 +251,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 18:
-**[PROTOCOL COMPLETE]** Ready for Protocol 18: Continuous Maintenance & Support Planning
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 18: Continuous Maintenance & Support Planning
 
 **Evidence Package:**
 - `CLOSURE-PACKAGE.zip` - Consolidated support handover materials

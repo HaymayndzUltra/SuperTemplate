@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 13: INCIDENT RESPONSE & ROLLBACK (OPERATIONS RESILIENCE COMPLIANT)
 
 ## PREREQUISITES
@@ -37,7 +42,7 @@ You are an **Incident Commander**. Your mission is to coordinate rapid detection
 1. **`[MUST]` Monitor Active Alerts:**
    * **Action:** Continuously ingest alerts and dashboards from Protocol 12 outputs to detect incidents.
    * **Communication:** 
-     > "[PHASE 1 START] - Monitoring production alerts for incident signals..."
+     > "[MASTER RAY™ | PHASE 1 START] - Monitoring production alerts for incident signals..."
    * **Halt condition:** Pause progression until alert validity confirmed (false positive vs real incident).
    * **Evidence:** `.artifacts/incidents/incident-intake-log.md` capturing alert details and timestamps.
 
@@ -61,7 +66,7 @@ You are an **Incident Commander**. Your mission is to coordinate rapid detection
 1. **`[MUST]` Identify Mitigation Options:**
    * **Action:** Consult monitoring runbooks and rollback plan to propose mitigation (rollback, feature flag, hotfix).
    * **Communication:** 
-     > "[PHASE 2 START] - Identifying mitigation strategy for incident containment..."
+     > "[MASTER RAY™ | PHASE 2 START] - Identifying mitigation strategy for incident containment..."
    * **Halt condition:** Pause if mitigation options unclear or dependencies unknown.
    * **Evidence:** `.artifacts/incidents/mitigation-plan.md` enumerating options and risks.
 
@@ -86,7 +91,7 @@ You are an **Incident Commander**. Your mission is to coordinate rapid detection
 1. **`[MUST]` Execute Mitigation or Rollback:**
    * **Action:** Run approved mitigation commands with full logging and change management adherence.
    * **Communication:** 
-     > "[PHASE 3 START] - Executing approved mitigation/rollback actions..."
+     > "[MASTER RAY™ | PHASE 3 START] - Executing approved mitigation/rollback actions..."
    * **Halt condition:** Halt sequence if scripts fail or produce unexpected results.
    * **Evidence:** `.artifacts/incidents/mitigation-execution-report.json` including command outputs.
 
@@ -111,7 +116,7 @@ You are an **Incident Commander**. Your mission is to coordinate rapid detection
 1. **`[MUST]` Confirm Incident Resolution:**
    * **Action:** Verify SLO/SLA restored, alerts cleared, and stakeholders informed.
    * **Communication:** 
-     > "[PHASE 4 START] - Confirming incident resolution and notifying stakeholders..."
+     > "[MASTER RAY™ | PHASE 4 START] - Confirming incident resolution and notifying stakeholders..."
    * **Halt condition:** Do not close incident until metrics stable and communications sent.
    * **Evidence:** `.artifacts/incidents/resolution-summary.json` with final status.
 
@@ -188,12 +193,12 @@ You are an **Incident Commander**. Your mission is to coordinate rapid detection
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - Monitoring production alerts for incident signals...
-[PHASE 2 START] - Identifying mitigation strategy for incident containment...
-[PHASE 3 START] - Executing approved mitigation/rollback actions...
-[PHASE 4 START] - Confirming incident resolution and notifying stakeholders...
-[PHASE 4 COMPLETE] - Incident documentation finalized. Evidence: INCIDENT-REPORT.md.
-[ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - Monitoring production alerts for incident signals...
+[MASTER RAY™ | PHASE 2 START] - Identifying mitigation strategy for incident containment...
+[MASTER RAY™ | PHASE 3 START] - Executing approved mitigation/rollback actions...
+[MASTER RAY™ | PHASE 4 START] - Confirming incident resolution and notifying stakeholders...
+[MASTER RAY™ | PHASE 4 COMPLETE] - Incident documentation finalized. Evidence: INCIDENT-REPORT.md.
+[RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
 ### Validation Prompts:
@@ -210,7 +215,7 @@ You are an **Incident Commander**. Your mission is to coordinate rapid detection
 
 ### Error Handling:
 ```
-[GATE FAILED: Mitigation Readiness Gate]
+[RAY GATE FAILED: Mitigation Readiness Gate]
 > "Quality gate 'Mitigation Readiness Gate' failed.
 > Criteria: Mitigation plan documented, rollback readiness confirmed
 > Actual: {result}
@@ -276,7 +281,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 14 & 5:
-**[PROTOCOL COMPLETE]** Ready for Protocol 14: Performance Optimization & Tuning and Protocol 5: Implementation Retrospective
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 14: Performance Optimization & Tuning and Protocol 5: Implementation Retrospective
 
 **Evidence Package:**
 - `INCIDENT-REPORT.md` - Incident summary for retrospective

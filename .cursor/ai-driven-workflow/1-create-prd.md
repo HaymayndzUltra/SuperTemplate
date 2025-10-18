@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 1: IMPLEMENTATION-READY PRD CREATION (PLANNING COMPLIANT)
 
 ## PREREQUISITES
@@ -33,7 +38,7 @@ You are a **Product Manager**. Your mission is to convert validated discovery in
 1. **`[MUST]` Confirm Feature Intent:**
    * **Action:** Determine whether the effort is a net-new feature or modification; capture rationale in `prd-context.json`.
    * **Communication:** 
-     > "[PHASE 1 START] - Validating feature intent and architectural placement."
+     > "[MASTER RAY™ | PHASE 1 START] - Validating feature intent and architectural placement."
    * **Halt condition:** Await stakeholder clarification if intent unclear.
    * **Evidence:** `.artifacts/protocol-1/prd-context.json`
 
@@ -100,7 +105,7 @@ You are a **Product Manager**. Your mission is to convert validated discovery in
 2. **`[MUST]` Generate PRD Assets:**
    * **Action:** Run `python scripts/generate_prd_assets.py --prd .artifacts/protocol-1/prd-{feature}.md --output .artifacts/protocol-1/prd-assets/` to create supporting artifacts (user stories, schemas, APIs).
    * **Communication:** 
-     > "[AUTOMATION] PRD assets generated and archived."
+     > "[RAY AUTOMATION] PRD assets generated and archived."
    * **Evidence:** `.artifacts/protocol-1/prd-assets/`
 
 3. **`[MUST]` Validate PRD Quality:**
@@ -160,17 +165,17 @@ You are a **Product Manager**. Your mission is to convert validated discovery in
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Aligning feature intent and architectural placement for PRD."
-[PHASE 2 START] - "Detailing functional and technical requirements."
-[PHASE 3 START] - "Consolidating risks, assumptions, and validation plan."
-[PHASE 4 START] - "Assembling PRD and running automation gates."
+[MASTER RAY™ | PHASE 1 START] - "Aligning feature intent and architectural placement for PRD."
+[MASTER RAY™ | PHASE 2 START] - "Detailing functional and technical requirements."
+[MASTER RAY™ | PHASE 3 START] - "Consolidating risks, assumptions, and validation plan."
+[MASTER RAY™ | PHASE 4 START] - "Assembling PRD and running automation gates."
 [PHASE COMPLETE] - "PRD approved; assets archived in .artifacts/protocol-1/."
-[ERROR] - "Issue during [phase]; refer to validation logs for remediation."
+[RAY ERROR] - "Issue during [phase]; refer to validation logs for remediation."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "PRD draft ready with validation evidence:
 > - prd-context.json
 > - functional-requirements.md
@@ -182,7 +187,7 @@ You are a **Product Manager**. Your mission is to convert validated discovery in
 
 ### Error Handling:
 ```
-[GATE FAILED: Requirements Completeness Gate]
+[RAY GATE FAILED: Requirements Completeness Gate]
 > "Quality gate 'Requirements Completeness' failed.
 > Criteria: Functional and technical requirements must reach 95% coverage.
 > Actual: Acceptance criteria missing for checkout workflow.
@@ -246,7 +251,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 06:
-**[PROTOCOL COMPLETE]** Ready for Protocol 06: Technical Design & Architecture
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 06: Technical Design & Architecture
 
 **Evidence Package:**
 - `prd-{feature}.md` - Comprehensive PRD for design translation

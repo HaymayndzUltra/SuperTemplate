@@ -91,7 +91,7 @@ bash scripts/test_workflow_integration.sh --cleanup
 | Conflict Type | Description | Detection Method |
 |---------------|-------------|------------------|
 | Directive Inconsistency | `[MUST]`, `[GUIDELINE]` usage varies | Content analysis |
-| Announcement Format | `[AUTOMATION]` prefix standardization | Pattern matching |
+| Announcement Format | `[RAY AUTOMATION]` prefix standardization | Pattern matching |
 | Duplicate Hooks | Same script referenced multiple times | Cross-protocol analysis |
 | Gate Criteria | Pass/fail thresholds inconsistent | Content analysis |
 

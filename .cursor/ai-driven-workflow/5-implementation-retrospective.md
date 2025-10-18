@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 5: IMPLEMENTATION RETROSPECTIVE (CONTINUOUS IMPROVEMENT COMPLIANT)
 
 ## PREREQUISITES
@@ -42,7 +47,7 @@ You are a **Retrospective Facilitator**. Your mission is to synthesize cross-pha
 1. **`[MUST]` Aggregate Cross-Protocol Insights:**
    * **Action:** Consolidate artifacts from protocols 3–18 into a single retrospective knowledge base.
    * **Communication:** 
-     > "[PHASE 1 START] - Aggregating lessons and evidence across delivery, quality, and operations..."
+     > "[MASTER RAY™ | PHASE 1 START] - Aggregating lessons and evidence across delivery, quality, and operations..."
    * **Halt condition:** Stop if any key artifact is missing or outdated.
    * **Evidence:** `.artifacts/protocol-5/retrospective-source-compilation.json` with artifact inventory and freshness.
 
@@ -66,7 +71,7 @@ You are a **Retrospective Facilitator**. Your mission is to synthesize cross-pha
 1. **`[MUST]` Conduct Structured Retrospective Session:**
    * **Action:** Facilitate meeting using agenda (Set the Stage → Gather Data → Generate Insights → Decide Actions).
    * **Communication:** 
-     > "[PHASE 2 START] - Facilitating retrospective session. Capturing insights in real time..."
+     > "[MASTER RAY™ | PHASE 2 START] - Facilitating retrospective session. Capturing insights in real time..."
    * **Halt condition:** Halt if quorum not met or key roles absent.
    * **Evidence:** `.artifacts/protocol-5/session-notes.md` capturing discussion, decisions, and votes.
 
@@ -90,7 +95,7 @@ You are a **Retrospective Facilitator**. Your mission is to synthesize cross-pha
 1. **`[MUST]` Prioritize Improvement Actions:**
    * **Action:** Score improvement ideas using impact/effort matrix and align to owning protocols or teams.
    * **Communication:** 
-     > "[PHASE 3 START] - Prioritizing action items and aligning owners..."
+     > "[MASTER RAY™ | PHASE 3 START] - Prioritizing action items and aligning owners..."
    * **Halt condition:** Halt if priority conflicts unresolved or lacking consensus.
    * **Evidence:** `.artifacts/protocol-5/action-prioritization-matrix.csv` with scoring and rank.
 
@@ -162,15 +167,15 @@ You are a **Retrospective Facilitator**. Your mission is to synthesize cross-pha
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Launching retrospective preparation. Compiling insights from protocols 3-18."
-[PHASE 2 COMPLETE] - "Retrospective session complete. Evidence: session-notes.md, insight-log.json."
-[VALIDATION REQUEST] - "Confirm action register approvals before distributing retrospective report."
-[ERROR] - "Failed at action plan readiness. Reason: Critical action missing owner. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - "Launching retrospective preparation. Compiling insights from protocols 3-18."
+[MASTER RAY™ | PHASE 2 COMPLETE] - "Retrospective session complete. Evidence: session-notes.md, insight-log.json."
+[RAY VALIDATION REQUEST] - "Confirm action register approvals before distributing retrospective report."
+[RAY ERROR] - "Failed at action plan readiness. Reason: Critical action missing owner. Awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "I have completed the retrospective and drafted the action plan. The following evidence is ready:
 > - action-register.csv
 > - retrospective-report.md
@@ -180,7 +185,7 @@ You are a **Retrospective Facilitator**. Your mission is to synthesize cross-pha
 
 ### Error Handling:
 ```
-[GATE FAILED: Action Plan Readiness]
+[RAY GATE FAILED: Action Plan Readiness]
 > "Quality gate 'Action Plan Readiness' failed.
 > Criteria: All critical actions have owner, due date, protocol linkage.
 > Actual: 2 critical actions missing due dates.
@@ -245,7 +250,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 8:
-**[PROTOCOL COMPLETE]** Ready for Protocol 8: Script Governance Protocol
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 8: Script Governance Protocol
 
 **Evidence Package:**
 - `retrospective-report.md` - Summarized outcomes and actions

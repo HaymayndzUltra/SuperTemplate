@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL AR: ARCHITECTURE REVIEW (SOFTWARE DESIGN COMPLIANT)
 
 ## PREREQUISITES
@@ -38,7 +43,7 @@ You are an **Architecture Review Chair**. Your mission is to validate that the s
 1. **`[MUST]` Validate Architectural Inputs:**
    * **Action:** Confirm all prerequisite artifacts are present, current, and traceable to requirements.
    * **Communication:** 
-     > "[PHASE 1 START] - Verifying architecture review prerequisites and artifact freshness..."
+     > "[MASTER RAY™ | PHASE 1 START] - Verifying architecture review prerequisites and artifact freshness..."
    * **Halt condition:** Stop if any artifact missing or stale beyond agreed threshold.
    * **Evidence:** `.artifacts/review-architecture/input-validation.json` logging artifact status.
 
@@ -61,7 +66,7 @@ You are an **Architecture Review Chair**. Your mission is to validate that the s
 1. **`[MUST]` Evaluate Modular Boundaries & Coupling:**
    * **Action:** Assess adherence to bounded context boundaries, interface contracts, and coupling metrics.
    * **Communication:** 
-     > "[PHASE 2 START] - Reviewing modular boundaries, interfaces, and coupling metrics..."
+     > "[MASTER RAY™ | PHASE 2 START] - Reviewing modular boundaries, interfaces, and coupling metrics..."
    * **Halt condition:** Halt if coupling violations or boundary breaches detected without remediation plan.
    * **Evidence:** `.artifacts/review-architecture/boundary-analysis.md` with findings.
 
@@ -84,7 +89,7 @@ You are an **Architecture Review Chair**. Your mission is to validate that the s
 1. **`[MUST]` Document Findings & Risk Ratings:**
    * **Action:** Log issues, severity, impact, recommended actions, and ownership.
    * **Communication:** 
-     > "[PHASE 3 START] - Documenting architecture review findings and assigning risk levels..."
+     > "[MASTER RAY™ | PHASE 3 START] - Documenting architecture review findings and assigning risk levels..."
    * **Halt condition:** Stop if critical findings lack mitigation path.
    * **Evidence:** `.artifacts/review-architecture/findings-register.csv` with severity, owner, due date.
 
@@ -158,15 +163,15 @@ You are an **Architecture Review Chair**. Your mission is to validate that the s
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Starting architecture review preparation. Validating prerequisite artifacts."
-[PHASE 2 COMPLETE] - "Structural analysis complete. Evidence: boundary-analysis.md, quality-scenarios.json."
-[VALIDATION REQUEST] - "Please confirm acceptance of architecture review decision and mitigation plan."
-[ERROR] - "Failed at quality attribute validation. Reason: Failover scenario lacks mitigation. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - "Starting architecture review preparation. Validating prerequisite artifacts."
+[MASTER RAY™ | PHASE 2 COMPLETE] - "Structural analysis complete. Evidence: boundary-analysis.md, quality-scenarios.json."
+[RAY VALIDATION REQUEST] - "Please confirm acceptance of architecture review decision and mitigation plan."
+[RAY ERROR] - "Failed at quality attribute validation. Reason: Failover scenario lacks mitigation. Awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Architecture review decision is ready. Evidence includes:
 > - findings-register.csv
 > - decision-record.md
@@ -176,7 +181,7 @@ You are an **Architecture Review Chair**. Your mission is to validate that the s
 
 ### Error Handling:
 ```
-[GATE FAILED: Structural Compliance]
+[RAY GATE FAILED: Structural Compliance]
 > "Quality gate 'Structural Compliance' failed.
 > Criteria: No critical boundary violations.
 > Actual: Detected unauthorized dependency between billing and auth services.
@@ -241,7 +246,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 6:
-**[PROTOCOL COMPLETE]** Ready for Protocol 6: Technical Design & Architecture Specification
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 6: Technical Design & Architecture Specification
 
 **Evidence Package:**
 - `architecture-review-findings.csv` - Review findings and actions

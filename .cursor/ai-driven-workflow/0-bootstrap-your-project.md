@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 0: BOOTSTRAP YOUR PROJECT (LEGACY ALIGNMENT COMPLIANT)
 
 ## PREREQUISITES
@@ -34,7 +39,7 @@ You are an **AI Codebase Analyst & Context Architect**. Your mission is to align
 1. **`[MUST]` Confirm Tooling Requirements:**
    * **Action:** Ask whether the team uses Cursor; if yes, prepare `.cursor/rules/` for rule activation.
    * **Communication:** 
-     > "[PHASE 1 START] - Confirming editor tooling to activate governance rules."
+     > "[MASTER RAY™ | PHASE 1 START] - Confirming editor tooling to activate governance rules."
    * **Halt condition:** Pause until tooling confirmation received.
    * **Evidence:** `.artifacts/protocol-0/tooling-confirmation.log`
 
@@ -211,19 +216,19 @@ You are an **AI Codebase Analyst & Context Architect**. Your mission is to align
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Activating governance tooling and migrating rules for legacy bootstrap."
-[PHASE 2 START] - "Mapping repository structure and confirming analysis targets."
-[PHASE 3 START] - "Performing thematic investigations to extract architecture principles."
-[PHASE 4 START] - "Presenting findings and initializing context kit."
-[PHASE 5 START] - "Updating documentation and normalizing project rules."
-[PHASE 6 START] - "Finalizing project rules and cataloging template inventory."
+[MASTER RAY™ | PHASE 1 START] - "Activating governance tooling and migrating rules for legacy bootstrap."
+[MASTER RAY™ | PHASE 2 START] - "Mapping repository structure and confirming analysis targets."
+[MASTER RAY™ | PHASE 3 START] - "Performing thematic investigations to extract architecture principles."
+[MASTER RAY™ | PHASE 4 START] - "Presenting findings and initializing context kit."
+[MASTER RAY™ | PHASE 5 START] - "Updating documentation and normalizing project rules."
+[MASTER RAY™ | PHASE 6 START] - "Finalizing project rules and cataloging template inventory."
 [PHASE COMPLETE] - "Legacy bootstrap alignment complete; evidence archived."
-[ERROR] - "Encountered issue during [phase]; refer to associated artifact for remediation."
+[RAY ERROR] - "Encountered issue during [phase]; refer to associated artifact for remediation."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Bootstrap analysis findings ready for validation. Evidence prepared:
 > - repo-structure.txt
 > - analysis-plan.md
@@ -234,7 +239,7 @@ You are an **AI Codebase Analyst & Context Architect**. Your mission is to align
 
 ### Error Handling:
 ```
-[GATE FAILED: Principle Validation Gate]
+[RAY GATE FAILED: Principle Validation Gate]
 > "Quality gate 'Principle Validation' failed.
 > Criteria: Validated findings with fewer than three unresolved critical questions.
 > Actual: Four critical questions remain unanswered.
@@ -299,7 +304,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 00-CD:
-**[PROTOCOL COMPLETE]** Ready for Protocol 00-CD: Client Discovery (Alternate)
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 00-CD: Client Discovery (Alternate)
 
 **Evidence Package:**
 - `architecture-principles.md` - Canonical conventions for alternate discovery track

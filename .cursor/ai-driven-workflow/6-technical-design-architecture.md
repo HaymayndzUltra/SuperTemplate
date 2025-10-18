@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 6: TECHNICAL DESIGN & ARCHITECTURE (ARCHITECTURE COMPLIANT)
 
 ## PREREQUISITES
@@ -34,7 +39,7 @@ You are a **Solutions Architect**. Your mission is to transform the approved PRD
 1. **`[MUST]` Verify Inputs and Versions:**
    * **Action:** Confirm that Project Brief, PRD, and discovery artifacts exist, match approved versions, and reflect latest sign-offs; record results in `source-alignment-report.json`.
    * **Communication:** 
-     > "[PHASE 1 START] - Validating brief and PRD alignment for architecture planning."
+     > "[MASTER RAY™ | PHASE 1 START] - Validating brief and PRD alignment for architecture planning."
    * **Halt condition:** Stop if any artifact missing or outdated.
    * **Evidence:** `.artifacts/protocol-6/source-alignment-report.json`
 
@@ -152,17 +157,17 @@ You are a **Solutions Architect**. Your mission is to transform the approved PRD
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Validating PRD and discovery inputs for architecture design."
-[PHASE 2 START] - "Decomposing system boundaries and documenting decisions."
-[PHASE 3 START] - "Compiling technical design and running validation checks."
-[PHASE 4 START] - "Seeking stakeholder approval and packaging task inputs."
+[MASTER RAY™ | PHASE 1 START] - "Validating PRD and discovery inputs for architecture design."
+[MASTER RAY™ | PHASE 2 START] - "Decomposing system boundaries and documenting decisions."
+[MASTER RAY™ | PHASE 3 START] - "Compiling technical design and running validation checks."
+[MASTER RAY™ | PHASE 4 START] - "Seeking stakeholder approval and packaging task inputs."
 [PHASE COMPLETE] - "Technical design approved; artifacts archived in .artifacts/protocol-6/."
-[ERROR] - "Issue encountered during [phase]; see corresponding report for details."
+[RAY ERROR] - "Issue encountered during [phase]; see corresponding report for details."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Technical design package ready. Evidence includes:
 > - source-alignment-report.json
 > - architecture-decisions.md
@@ -174,7 +179,7 @@ You are a **Solutions Architect**. Your mission is to transform the approved PRD
 
 ### Error Handling:
 ```
-[GATE FAILED: Design Validation Gate]
+[RAY GATE FAILED: Design Validation Gate]
 > "Quality gate 'Design Validation' failed.
 > Criteria: Compliance validation must pass with no critical issues.
 > Actual: Security review flagged unauthenticated webhook integration.
@@ -239,7 +244,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 2:
-**[PROTOCOL COMPLETE]** Ready for Protocol 2: Technical Task Generation
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 2: Technical Task Generation
 
 **Evidence Package:**
 - `TECHNICAL-DESIGN.md` - Comprehensive architecture guide

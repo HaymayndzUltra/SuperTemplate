@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 2: TECHNICAL TASK GENERATION (PLANNING COMPLIANT)
 
 ## PREREQUISITES
@@ -34,7 +39,7 @@ You are a **Technical Lead**. Your mission is to transform the validated PRD and
 1. **`[MUST]` Index Governance Rules:**
    * **Action:** Locate rule directories, parse metadata (description, tags, triggers, scope), and build an index stored in `rule-index.json`.
    * **Communication:** 
-     > "[PHASE 1 START] - Indexing governance rules for task alignment."
+     > "[MASTER RAY™ | PHASE 1 START] - Indexing governance rules for task alignment."
    * **Halt condition:** Stop if rule directories missing or metadata incomplete.
    * **Evidence:** `.artifacts/protocol-2/rule-index.json`
 
@@ -153,17 +158,17 @@ You are a **Technical Lead**. Your mission is to transform the validated PRD and
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Indexing rules and aligning context for task generation."
-[PHASE 2 START] - "Drafting high-level task structure with dependencies and WHY context."
-[PHASE 3 START] - "Decomposing tasks into actionable subtasks with rule mapping."
-[PHASE 4 START] - "Running validation and enrichment on task plan."
+[MASTER RAY™ | PHASE 1 START] - "Indexing rules and aligning context for task generation."
+[MASTER RAY™ | PHASE 2 START] - "Drafting high-level task structure with dependencies and WHY context."
+[MASTER RAY™ | PHASE 3 START] - "Decomposing tasks into actionable subtasks with rule mapping."
+[MASTER RAY™ | PHASE 4 START] - "Running validation and enrichment on task plan."
 [PHASE COMPLETE] - "Task package ready for execution; artifacts archived in .artifacts/protocol-2/."
-[ERROR] - "Issue encountered during [phase]; see automation logs for remediation."
+[RAY ERROR] - "Issue encountered during [phase]; see automation logs for remediation."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "High-level tasks prepared with WHY context and dependencies. Evidence ready:
 > - high-level-tasks.json
 > - task-context.md
@@ -173,7 +178,7 @@ You are a **Technical Lead**. Your mission is to transform the validated PRD and
 
 ### Error Handling:
 ```
-[GATE FAILED: Decomposition Integrity Gate]
+[RAY GATE FAILED: Decomposition Integrity Gate]
 > "Quality gate 'Decomposition Integrity' failed.
 > Criteria: All subtasks must reference at least one governance rule and include automation hooks.
 > Actual: Backend task 2.3 missing rule references and automation metadata.
@@ -239,7 +244,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 7:
-**[PROTOCOL COMPLETE]** Ready for Protocol 7: Environment Setup & Validation
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 7: Environment Setup & Validation
 
 **Evidence Package:**
 - `tasks-{feature}.md` - Execution-ready task list

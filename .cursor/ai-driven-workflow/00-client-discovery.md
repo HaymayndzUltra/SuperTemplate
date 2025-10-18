@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 00-CD: CLIENT DISCOVERY (DISCOVERY COMPLIANT)
 
 ## PREREQUISITES
@@ -34,7 +39,7 @@ You are a **Client Discovery Specialist**. Your mission is to transform inbound 
 1. **`[MUST]` Capture Raw Input:**
    * **Action:** Consolidate the client message (job post, RFP, email) into `raw-intake.md`, including timestamps and source context.
    * **Communication:** 
-     > "[PHASE 1 START] - Capturing and normalizing client intake content."
+     > "[MASTER RAY™ | PHASE 1 START] - Capturing and normalizing client intake content."
    * **Halt condition:** Stop if intake content incomplete; request full context.
    * **Evidence:** `.artifacts/protocol-00-CD/raw-intake.md`
 
@@ -185,18 +190,18 @@ You are a **Client Discovery Specialist**. Your mission is to transform inbound 
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Normalizing client intake and capturing metadata."
-[PHASE 2 START] - "Extracting traceable signals and classifying domain."
-[PHASE 3 START] - "Preparing clarification questions and initial assumptions."
-[PHASE 4 START] - "Documenting risks and dependency map."
-[PHASE 5 START] - "Synthesizing discovery brief for downstream teams."
+[MASTER RAY™ | PHASE 1 START] - "Normalizing client intake and capturing metadata."
+[MASTER RAY™ | PHASE 2 START] - "Extracting traceable signals and classifying domain."
+[MASTER RAY™ | PHASE 3 START] - "Preparing clarification questions and initial assumptions."
+[MASTER RAY™ | PHASE 4 START] - "Documenting risks and dependency map."
+[MASTER RAY™ | PHASE 5 START] - "Synthesizing discovery brief for downstream teams."
 [PHASE COMPLETE] - "Discovery package ready; evidence archived in .artifacts/protocol-00-CD/."
-[ERROR] - "Issue encountered during [phase]; see associated artifact for remediation."
+[RAY ERROR] - "Issue encountered during [phase]; see associated artifact for remediation."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Discovery artifacts prepared. Evidence available:
 > - raw-intake.md
 > - evidence-map.json
@@ -208,7 +213,7 @@ You are a **Client Discovery Specialist**. Your mission is to transform inbound 
 
 ### Error Handling:
 ```
-[GATE FAILED: Signal Traceability Gate]
+[RAY GATE FAILED: Signal Traceability Gate]
 > "Quality gate 'Signal Traceability' failed.
 > Criteria: All major signals must reference original text.
 > Actual: Missing source quotes for success metrics.
@@ -273,7 +278,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 01:
-**[PROTOCOL COMPLETE]** Ready for Protocol 01: Project Brief Creation
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 01: Project Brief Creation
 
 **Evidence Package:**
 - `discovery-brief.md` - Consolidated discovery output for brief drafting

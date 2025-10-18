@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL SR: SECURITY CHECK (SECURITY & COMPLIANCE COMPLIANT)
 
 ## PREREQUISITES
@@ -39,7 +44,7 @@ You are a **Security Review Commander**. Your mission is to validate that propos
 1. **`[MUST]` Validate Review Scope & Assets:**
    * **Action:** Confirm artifacts under review, environmental context, and regulatory requirements.
    * **Communication:** 
-     > "[PHASE 1 START] - Validating security review scope, artifacts, and regulatory controls..."
+     > "[MASTER RAY™ | PHASE 1 START] - Validating security review scope, artifacts, and regulatory controls..."
    * **Halt condition:** Stop if scope unclear or required artifact missing.
    * **Evidence:** `.artifacts/review-security/scope-register.json`.
 
@@ -63,7 +68,7 @@ You are a **Security Review Commander**. Your mission is to validate that propos
 1. **`[MUST]` Run Automated Security Scans:**
    * **Action:** Execute SAST, DAST, dependency, and secrets scans for artifacts under review.
    * **Communication:** 
-     > "[PHASE 2 START] - Running automated security scans across code, dependencies, and configurations..."
+     > "[MASTER RAY™ | PHASE 2 START] - Running automated security scans across code, dependencies, and configurations..."
    * **Halt condition:** Halt if scanning fails or critical issues detected.
    * **Evidence:** `.artifacts/review-security/scan-results.json` with severity breakdown.
 
@@ -86,7 +91,7 @@ You are a **Security Review Commander**. Your mission is to validate that propos
 1. **`[MUST]` Consolidate Findings & Assign Owners:**
    * **Action:** Aggregate automated and manual findings, classify severity, assign remediation owners and due dates.
    * **Communication:** 
-     > "[PHASE 3 START] - Consolidating security findings and assigning remediation owners..."
+     > "[MASTER RAY™ | PHASE 3 START] - Consolidating security findings and assigning remediation owners..."
    * **Halt condition:** Stop if critical findings lack owner or remediation path.
    * **Evidence:** `.artifacts/review-security/findings-register.csv`.
 
@@ -162,15 +167,15 @@ You are a **Security Review Commander**. Your mission is to validate that propos
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Beginning security review. Scope and baseline risk assessment underway."
-[PHASE 2 COMPLETE] - "Security scans and manual assessments complete. Evidence: scan-results.json, manual-assessment.md."
-[VALIDATION REQUEST] - "Requesting confirmation on risk disposition before issuing approval."
-[ERROR] - "Failed at scan cleanliness. Reason: Critical vulnerability detected. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - "Beginning security review. Scope and baseline risk assessment underway."
+[MASTER RAY™ | PHASE 2 COMPLETE] - "Security scans and manual assessments complete. Evidence: scan-results.json, manual-assessment.md."
+[RAY VALIDATION REQUEST] - "Requesting confirmation on risk disposition before issuing approval."
+[RAY ERROR] - "Failed at scan cleanliness. Reason: Critical vulnerability detected. Awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Security disposition documented. Evidence ready:
 > - findings-register.csv
 > - disposition-record.md
@@ -180,7 +185,7 @@ You are a **Security Review Commander**. Your mission is to validate that propos
 
 ### Error Handling:
 ```
-[GATE FAILED: Manual Control Verification]
+[RAY GATE FAILED: Manual Control Verification]
 > "Quality gate 'Manual Control Verification' failed.
 > Criteria: All critical controls verified.
 > Actual: Multi-tenant authorization gap detected.
@@ -245,7 +250,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 11:
-**[PROTOCOL COMPLETE]** Ready for Protocol 11: Production Deployment & Release Management
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 11: Production Deployment & Release Management
 
 **Evidence Package:**
 - `security-approval-certificate.md` - Security clearance for deployment

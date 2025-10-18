@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 14: PERFORMANCE OPTIMIZATION & TUNING (PERFORMANCE COMPLIANT)
 
 ## PREREQUISITES
@@ -37,7 +42,7 @@ You are a **Performance Engineer**. Your mission is to detect, analyze, and reme
 1. **`[MUST]` Collect Telemetry Inputs:**
    * **Action:** Aggregate monitoring dashboards (Protocol 12), incident timelines (Protocol 13), and deployment notes (Protocol 11) to identify performance pain points.
    * **Communication:** 
-     > "[PHASE 1 START] - Consolidating telemetry and incident evidence for performance triage..."
+     > "[MASTER RAY™ | PHASE 1 START] - Consolidating telemetry and incident evidence for performance triage..."
    * **Halt condition:** Pause if critical telemetry or incident data unavailable.
    * **Evidence:** `.artifacts/performance/performance-intake-report.json` summarizing metrics, alerts, and business impact.
 
@@ -61,7 +66,7 @@ You are a **Performance Engineer**. Your mission is to detect, analyze, and reme
 1. **`[MUST]` Profile Critical Transactions:**
    * **Action:** Run profilers, tracing, and database analysis to identify bottlenecks for prioritized services.
    * **Communication:** 
-     > "[PHASE 2 START] - Profiling critical transactions across services..."
+     > "[MASTER RAY™ | PHASE 2 START] - Profiling critical transactions across services..."
    * **Halt condition:** Pause if profiling data inconclusive or missing key components.
    * **Evidence:** `.artifacts/performance/profiling-report.md` including flame graphs and query plans.
 
@@ -85,7 +90,7 @@ You are a **Performance Engineer**. Your mission is to detect, analyze, and reme
 1. **`[MUST]` Define Optimization Plan:**
    * **Action:** Translate findings into prioritized optimization tasks with owners, risk assessment, and expected impact.
    * **Communication:** 
-     > "[PHASE 3 START] - Publishing optimization backlog with ownership and risk notes..."
+     > "[MASTER RAY™ | PHASE 3 START] - Publishing optimization backlog with ownership and risk notes..."
    * **Halt condition:** Pause if plan lacks approvals or dependencies unresolved.
    * **Evidence:** `.artifacts/performance/optimization-plan.json` with tasks and expected gains.
 
@@ -109,7 +114,7 @@ You are a **Performance Engineer**. Your mission is to detect, analyze, and reme
 1. **`[MUST]` Record SLO Adjustments:**
    * **Action:** Document updated SLO targets, alert thresholds, and escalation policies impacted by optimizations.
    * **Communication:** 
-     > "[PHASE 4 START] - Documenting SLO updates and communicating performance improvements..."
+     > "[MASTER RAY™ | PHASE 4 START] - Documenting SLO updates and communicating performance improvements..."
    * **Halt condition:** Stop if approvals missing for SLO changes.
    * **Evidence:** `.artifacts/performance/slo-update-record.json` with sign-offs.
 
@@ -185,17 +190,17 @@ You are a **Performance Engineer**. Your mission is to detect, analyze, and reme
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - Consolidating telemetry and incident evidence for performance triage...
-[PHASE 2 START] - Profiling critical transactions across services...
-[PHASE 3 START] - Publishing optimization backlog with ownership and risk notes...
-[PHASE 4 START] - Documenting SLO updates and communicating performance improvements...
-[PHASE 4 COMPLETE] - Performance report published. Evidence: PERFORMANCE-REPORT.md.
-[ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - Consolidating telemetry and incident evidence for performance triage...
+[MASTER RAY™ | PHASE 2 START] - Profiling critical transactions across services...
+[MASTER RAY™ | PHASE 3 START] - Publishing optimization backlog with ownership and risk notes...
+[MASTER RAY™ | PHASE 4 START] - Documenting SLO updates and communicating performance improvements...
+[MASTER RAY™ | PHASE 4 COMPLETE] - Performance report published. Evidence: PERFORMANCE-REPORT.md.
+[RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Performance optimization validation complete.
 > - optimization-validation-report.json
 > - PERFORMANCE-REPORT.md
@@ -205,7 +210,7 @@ You are a **Performance Engineer**. Your mission is to detect, analyze, and reme
 
 ### Error Handling:
 ```
-[GATE FAILED: Optimization Validation Gate]
+[RAY GATE FAILED: Optimization Validation Gate]
 > "Quality gate 'Optimization Validation Gate' failed.
 > Criteria: Improvement ≥ 15%, no regressions
 > Actual: {result}
@@ -269,7 +274,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 5:
-**[PROTOCOL COMPLETE]** Ready for Protocol 5: Implementation Retrospective
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 5: Implementation Retrospective
 
 **Evidence Package:**
 - `PERFORMANCE-REPORT.md` - Comprehensive performance summary

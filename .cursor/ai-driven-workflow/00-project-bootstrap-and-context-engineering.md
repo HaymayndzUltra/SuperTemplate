@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 00: PROJECT BOOTSTRAP AND CONTEXT ENGINEERING (GOVERNANCE COMPLIANT)
 
 ## PREREQUISITES
@@ -34,7 +39,7 @@ You are an **AI Codebase Analyst & Context Architect**. Your mission is to conve
 1. **`[MUST]` Validate Project Brief Assets:**
    * **Action:** Run `python scripts/validate_brief.py --path PROJECT-BRIEF.md --output .artifacts/protocol-00/brief-validation-report.json` to ensure structure and approvals are intact.
    * **Communication:** 
-     > "[PHASE 1 START] - Validating Project Brief and approval evidence."
+     > "[MASTER RAY™ | PHASE 1 START] - Validating Project Brief and approval evidence."
    * **Halt condition:** Stop if validation fails or approvals missing.
    * **Evidence:** `.artifacts/protocol-00/brief-validation-report.json`
 
@@ -179,17 +184,17 @@ You are an **AI Codebase Analyst & Context Architect**. Your mission is to conve
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Validating Project Brief inputs before bootstrap."
-[PHASE 2 START] - "Preparing environment and governance rules for scaffold generation."
-[PHASE 3 START] - "Generating governed scaffold based on approved brief."
-[PHASE 4 START] - "Initializing context kit and workflow validation."
+[MASTER RAY™ | PHASE 1 START] - "Validating Project Brief inputs before bootstrap."
+[MASTER RAY™ | PHASE 2 START] - "Preparing environment and governance rules for scaffold generation."
+[MASTER RAY™ | PHASE 3 START] - "Generating governed scaffold based on approved brief."
+[MASTER RAY™ | PHASE 4 START] - "Initializing context kit and workflow validation."
 [PHASE COMPLETE] - "Bootstrap complete; artifacts stored in .artifacts/protocol-00/."
-[ERROR] - "Issue encountered during [phase]; see relevant report for remediation details."
+[RAY ERROR] - "Issue encountered during [phase]; see relevant report for remediation details."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Bootstrap operations complete. Evidence available:
 > - brief-validation-report.json
 > - environment-report.json
@@ -201,7 +206,7 @@ You are an **AI Codebase Analyst & Context Architect**. Your mission is to conve
 
 ### Error Handling:
 ```
-[GATE FAILED: Environment & Rule Integrity]
+[RAY GATE FAILED: Environment & Rule Integrity]
 > "Quality gate 'Environment & Rule Integrity' failed.
 > Criteria: doctor.py success and rule audit without critical issues.
 > Actual: Missing Docker installation detected.
@@ -266,7 +271,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 0:
-**[PROTOCOL COMPLETE]** Ready for Protocol 0: Bootstrap Your Project (Legacy Alignment)
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 0: Bootstrap Your Project (Legacy Alignment)
 
 **Evidence Package:**
 - `bootstrap-manifest.json` - Record of generated scaffold assets

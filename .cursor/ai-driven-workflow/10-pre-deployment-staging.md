@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 10: PRE-DEPLOYMENT VALIDATION & STAGING READINESS (RELEASE COMPLIANT)
 
 ## PREREQUISITES
@@ -37,7 +42,7 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 1. **`[MUST]` Confirm Upstream Approvals:**
    * **Action:** Validate required artifacts and approvals from Protocols 4, 9, and 15 before staging rehearsal begins.
    * **Communication:** 
-     > "[PHASE 1 START] - Validating upstream approvals and artifact completeness..."
+     > "[MASTER RAY™ | PHASE 1 START] - Validating upstream approvals and artifact completeness..."
    * **Halt condition:** Stop if any prerequisite artifact missing or expired.
    * **Evidence:** `.artifacts/pre-deployment/intake-validation-report.json` summarizing status.
 
@@ -60,7 +65,7 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 1. **`[MUST]` Execute Staging Deployment Rehearsal:**
    * **Action:** Run deployment scripts in staging replicating production sequencing with logging enabled.
    * **Communication:** 
-     > "[PHASE 2 START] - Rehearsing deployment on staging environment..."
+     > "[MASTER RAY™ | PHASE 2 START] - Rehearsing deployment on staging environment..."
    * **Halt condition:** Stop if automation fails or unexpected errors occur.
    * **Evidence:** `.artifacts/pre-deployment/staging-deployment-run.log` capturing commands and results.
 
@@ -84,7 +89,7 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 1. **`[MUST]` Rehearse Rollback Procedure:**
    * **Action:** Execute rollback automation or blue/green switchback to validate recovery path.
    * **Communication:** 
-     > "[PHASE 3 START] - Verifying rollback and recovery procedures..."
+     > "[MASTER RAY™ | PHASE 3 START] - Verifying rollback and recovery procedures..."
    * **Halt condition:** Stop if rollback fails or exceeds recovery time objective.
    * **Evidence:** `.artifacts/pre-deployment/rollback-verification-report.json` detailing steps and timings.
 
@@ -108,7 +113,7 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 1. **`[MUST]` Assemble Go/No-Go Package:**
    * **Action:** Bundle parity report, deployment and rollback evidence, test results, and security findings into `PRE-DEPLOYMENT-PACKAGE.zip`.
    * **Communication:** 
-     > "[PHASE 4 START] - Compiling pre-deployment readiness package for release approval..."
+     > "[MASTER RAY™ | PHASE 4 START] - Compiling pre-deployment readiness package for release approval..."
    * **Halt condition:** Stop if package contents incomplete or checksum invalid.
    * **Evidence:** `.artifacts/pre-deployment/pre-deployment-manifest.json` indexing artifacts.
 
@@ -184,18 +189,18 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - Validating upstream approvals and artifact completeness...
-[PHASE 1 COMPLETE] - Intake validation succeeded. Evidence: intake-validation-report.json.
-[PHASE 2 START] - Rehearsing deployment on staging environment...
-[PHASE 3 START] - Verifying rollback and recovery procedures...
-[PHASE 4 START] - Compiling pre-deployment readiness package for release approval...
-[PHASE 4 COMPLETE] - Pre-deployment package ready. Evidence: PRE-DEPLOYMENT-PACKAGE.zip.
-[ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - Validating upstream approvals and artifact completeness...
+[MASTER RAY™ | PHASE 1 COMPLETE] - Intake validation succeeded. Evidence: intake-validation-report.json.
+[MASTER RAY™ | PHASE 2 START] - Rehearsing deployment on staging environment...
+[MASTER RAY™ | PHASE 3 START] - Verifying rollback and recovery procedures...
+[MASTER RAY™ | PHASE 4 START] - Compiling pre-deployment readiness package for release approval...
+[MASTER RAY™ | PHASE 4 COMPLETE] - Pre-deployment package ready. Evidence: PRE-DEPLOYMENT-PACKAGE.zip.
+[RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Pre-deployment validation complete. Evidence prepared:
 > - PRE-DEPLOYMENT-PACKAGE.zip
 > - readiness-approval.json
@@ -205,7 +210,7 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 
 ### Error Handling:
 ```
-[GATE FAILED: Deployment Rehearsal Gate]
+[RAY GATE FAILED: Deployment Rehearsal Gate]
 > "Quality gate 'Deployment Rehearsal Gate' failed.
 > Criteria: Rehearsal success and test coverage ≥ 90%
 > Actual: {result}
@@ -271,7 +276,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 11:
-**[PROTOCOL COMPLETE]** Ready for Protocol 11: Production Deployment & Release Management
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 11: Production Deployment & Release Management
 
 **Evidence Package:**
 - `PRE-DEPLOYMENT-PACKAGE.zip` - Comprehensive readiness evidence

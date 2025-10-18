@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 7: ENVIRONMENT SETUP & VALIDATION (DEVOPS COMPLIANT)
 
 ## PREREQUISITES
@@ -34,7 +39,7 @@ You are a **DevOps Environment Engineer**. Your mission is to provision, validat
 1. **`[MUST]` Extract Environment Requirements:**
    * **Action:** Review `TECHNICAL-DESIGN.md`, `task-generation-input.json`, and `tasks-{feature}.md` to identify runtime tooling, services, and configuration needs; capture in `environment-requirements.md`.
    * **Communication:** 
-     > "[PHASE 1 START] - Consolidating environment requirements from design and task plans."
+     > "[MASTER RAY™ | PHASE 1 START] - Consolidating environment requirements from design and task plans."
    * **Halt condition:** Stop if requirements conflict or remain undefined.
    * **Evidence:** `.artifacts/protocol-7/environment-requirements.md`
 
@@ -149,17 +154,17 @@ You are a **DevOps Environment Engineer**. Your mission is to provision, validat
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Extracting environment requirements and verifying credentials."
-[PHASE 2 START] - "Provisioning environment and validating tooling."
-[PHASE 3 START] - "Applying configuration templates and running validation suite."
-[PHASE 4 START] - "Compiling environment handbook and packaging onboarding assets."
+[MASTER RAY™ | PHASE 1 START] - "Extracting environment requirements and verifying credentials."
+[MASTER RAY™ | PHASE 2 START] - "Provisioning environment and validating tooling."
+[MASTER RAY™ | PHASE 3 START] - "Applying configuration templates and running validation suite."
+[MASTER RAY™ | PHASE 4 START] - "Compiling environment handbook and packaging onboarding assets."
 [PHASE COMPLETE] - "Environment setup validated; artifacts archived in .artifacts/protocol-7/."
-[ERROR] - "Issue encountered during [phase]; see associated evidence report."
+[RAY ERROR] - "Issue encountered during [phase]; see associated evidence report."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Environment validation suite succeeded. Evidence ready:
 > - environment-diagnostics.json
 > - env-configuration-report.json
@@ -170,7 +175,7 @@ You are a **DevOps Environment Engineer**. Your mission is to provision, validat
 
 ### Error Handling:
 ```
-[GATE FAILED: Tooling Health Gate]
+[RAY GATE FAILED: Tooling Health Gate]
 > "Quality gate 'Tooling Health' failed.
 > Criteria: doctor.py must report compliant tooling versions.
 > Actual: Docker version below minimum.
@@ -235,7 +240,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 3:
-**[PROTOCOL COMPLETE]** Ready for Protocol 3: Controlled Task Execution
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 3: Controlled Task Execution
 
 **Evidence Package:**
 - `ENVIRONMENT-README.md` - Contributor onboarding guide

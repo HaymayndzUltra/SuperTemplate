@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 18: CONTINUOUS MAINTENANCE & SUPPORT PLANNING (SERVICE RELIABILITY COMPLIANT)
 
 ## PREREQUISITES
@@ -42,7 +47,7 @@ You are a **Maintenance & Support Planner**. Your mission is to translate projec
 1. **`[MUST]` Validate Handover Completeness:**
    * **Action:** Inspect handover package, ownership records, and knowledge gaps to confirm operational readiness.
    * **Communication:** 
-     > "[PHASE 1 START] - Reviewing handover package and operational assignments for maintenance planning..."
+     > "[MASTER RAY™ | PHASE 1 START] - Reviewing handover package and operational assignments for maintenance planning..."
    * **Halt condition:** Stop if any critical artifact missing or ownership assignment unclear.
    * **Evidence:** `.artifacts/protocol-18/handover-validation-report.json` summarizing completeness checks.
 
@@ -67,7 +72,7 @@ You are a **Maintenance & Support Planner**. Your mission is to translate projec
 1. **`[MUST]` Consolidate Maintenance Backlog:**
    * **Action:** Merge technical debt, incident remediation, security risks, and performance backlog into a unified tracker.
    * **Communication:** 
-     > "[PHASE 2 START] - Consolidating maintenance backlog from cross-protocol sources..."
+     > "[MASTER RAY™ | PHASE 2 START] - Consolidating maintenance backlog from cross-protocol sources..."
    * **Halt condition:** Halt if backlog items lack ownership or severity ratings.
    * **Evidence:** `.artifacts/protocol-18/maintenance-backlog.csv` with priority, owner, due date.
 
@@ -91,7 +96,7 @@ You are a **Maintenance & Support Planner**. Your mission is to translate projec
 1. **`[MUST]` Draft Maintenance & Support Plan:**
    * **Action:** Document maintenance cadence, release windows, escalation matrix, and KPI reporting structure.
    * **Communication:** 
-     > "[PHASE 3 START] - Drafting maintenance plan and aligning governance cadence..."
+     > "[MASTER RAY™ | PHASE 3 START] - Drafting maintenance plan and aligning governance cadence..."
    * **Halt condition:** Stop if plan lacks coverage for critical services or SLAs.
    * **Evidence:** `.artifacts/protocol-18/maintenance-plan.md` with sections for cadence, responsibilities, governance.
 
@@ -168,15 +173,15 @@ You are a **Maintenance & Support Planner**. Your mission is to translate projec
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Beginning maintenance planning intake using closure outputs and operational baselines."
-[PHASE 2 COMPLETE] - "Maintenance backlog consolidated and prioritized. Evidence: maintenance-backlog.csv, backlog-prioritization-matrix.json."
-[VALIDATION REQUEST] - "Please confirm maintenance plan approvals from all stakeholders before activation."
-[ERROR] - "Failed at governance cadence activation. Reason: Monitoring dashboard configuration incomplete. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - "Beginning maintenance planning intake using closure outputs and operational baselines."
+[MASTER RAY™ | PHASE 2 COMPLETE] - "Maintenance backlog consolidated and prioritized. Evidence: maintenance-backlog.csv, backlog-prioritization-matrix.json."
+[RAY VALIDATION REQUEST] - "Please confirm maintenance plan approvals from all stakeholders before activation."
+[RAY ERROR] - "Failed at governance cadence activation. Reason: Monitoring dashboard configuration incomplete. Awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "I have finalized the maintenance & support plan. The following evidence is ready:
 > - maintenance-plan.md
 > - approval-log.csv
@@ -186,7 +191,7 @@ You are a **Maintenance & Support Planner**. Your mission is to translate projec
 
 ### Error Handling:
 ```
-[GATE FAILED: Maintenance Backlog Integrity]
+[RAY GATE FAILED: Maintenance Backlog Integrity]
 > "Quality gate 'Maintenance Backlog Integrity' failed.
 > Criteria: All critical items assigned with due dates.
 > Actual: 4 critical items missing owners.
@@ -251,7 +256,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 5:
-**[PROTOCOL COMPLETE]** Ready for Protocol 5: Implementation Retrospective
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 5: Implementation Retrospective
 
 **Evidence Package:**
 - `maintenance-plan.md` - Approved maintenance & support plan

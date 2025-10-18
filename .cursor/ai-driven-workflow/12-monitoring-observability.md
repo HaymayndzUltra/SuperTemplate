@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL 12: POST-DEPLOYMENT MONITORING & OBSERVABILITY (SRE COMPLIANT)
 
 ## PREREQUISITES
@@ -37,7 +42,7 @@ You are a **Site Reliability Engineer (SRE)**. Your mission is to activate, vali
 1. **`[MUST]` Review Deployment Outputs:**
    * **Action:** Analyze Protocol 11 artifacts to identify monitoring requirements, risky components, and new endpoints.
    * **Communication:** 
-     > "[PHASE 1 START] - Reviewing deployment evidence to map monitoring requirements..."
+     > "[MASTER RAY™ | PHASE 1 START] - Reviewing deployment evidence to map monitoring requirements..."
    * **Halt condition:** Stop if required deployment artifacts missing or inconsistent.
    * **Evidence:** `.artifacts/monitoring/monitoring-requirements.md` summarizing KPIs, SLOs, and risk items.
 
@@ -60,7 +65,7 @@ You are a **Site Reliability Engineer (SRE)**. Your mission is to activate, vali
 1. **`[MUST]` Configure Dashboards and Alerts:**
    * **Action:** Update dashboards, alert rules, and SLO dashboards to reflect latest release changes.
    * **Communication:** 
-     > "[PHASE 2 START] - Activating dashboards and alert policies..."
+     > "[MASTER RAY™ | PHASE 2 START] - Activating dashboards and alert policies..."
    * **Halt condition:** Stop if dashboards fail validation or alerts missing thresholds.
    * **Evidence:** `.artifacts/monitoring/dashboard-config.md` with links and thresholds.
 
@@ -85,7 +90,7 @@ You are a **Site Reliability Engineer (SRE)**. Your mission is to activate, vali
 1. **`[MUST]` Schedule Ongoing Checks:**
    * **Action:** Define automated cadence for verifying monitoring assets (dashboards, alerts, synthetic runs).
    * **Communication:** 
-     > "[PHASE 3 START] - Scheduling ongoing observability validation tasks..."
+     > "[MASTER RAY™ | PHASE 3 START] - Scheduling ongoing observability validation tasks..."
    * **Halt condition:** Pause if automation cannot be scheduled or lacks ownership.
    * **Evidence:** `.artifacts/monitoring/observability-schedule.json` documenting cadence and owners.
 
@@ -110,7 +115,7 @@ You are a **Site Reliability Engineer (SRE)**. Your mission is to activate, vali
 1. **`[MUST]` Deliver Monitoring Package:**
    * **Action:** Bundle instrumentation audit, dashboard configuration, alert results, and schedule into `MONITORING-PACKAGE.zip`.
    * **Communication:** 
-     > "[PHASE 4 START] - Delivering monitoring package to incident response and retrospective owners..."
+     > "[MASTER RAY™ | PHASE 4 START] - Delivering monitoring package to incident response and retrospective owners..."
    * **Halt condition:** Halt if package incomplete or checksum invalid.
    * **Evidence:** `.artifacts/monitoring/monitoring-package-manifest.json` plus zipped bundle.
 
@@ -186,17 +191,17 @@ You are a **Site Reliability Engineer (SRE)**. Your mission is to activate, vali
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - Reviewing deployment evidence to map monitoring requirements...
-[PHASE 2 START] - Activating dashboards and alert policies...
-[PHASE 3 START] - Scheduling ongoing observability validation tasks...
-[PHASE 4 START] - Delivering monitoring package to incident response and retrospective owners...
-[PHASE 4 COMPLETE] - Monitoring package delivered. Evidence: MONITORING-PACKAGE.zip.
-[ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - Reviewing deployment evidence to map monitoring requirements...
+[MASTER RAY™ | PHASE 2 START] - Activating dashboards and alert policies...
+[MASTER RAY™ | PHASE 3 START] - Scheduling ongoing observability validation tasks...
+[MASTER RAY™ | PHASE 4 START] - Delivering monitoring package to incident response and retrospective owners...
+[MASTER RAY™ | PHASE 4 COMPLETE] - Monitoring package delivered. Evidence: MONITORING-PACKAGE.zip.
+[RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Monitoring instrumentation and alert validation complete.
 > - MONITORING-PACKAGE.zip
 > - monitoring-approval-record.json
@@ -206,7 +211,7 @@ You are a **Site Reliability Engineer (SRE)**. Your mission is to activate, vali
 
 ### Error Handling:
 ```
-[GATE FAILED: Alert Validation Gate]
+[RAY GATE FAILED: Alert Validation Gate]
 > "Quality gate 'Alert Validation Gate' failed.
 > Criteria: Synthetic alerts acknowledged within SLA, dashboards updated
 > Actual: {result}
@@ -270,7 +275,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 13:
-**[PROTOCOL COMPLETE]** Ready for Protocol 13: Incident Response & Rollback
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 13: Incident Response & Rollback
 
 **Evidence Package:**
 - `MONITORING-PACKAGE.zip` - Monitoring configuration and validation bundle

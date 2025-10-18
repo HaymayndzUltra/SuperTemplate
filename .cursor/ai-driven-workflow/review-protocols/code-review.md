@@ -1,3 +1,8 @@
+---
+**MASTER RAY™ AI-Driven Workflow Protocol**
+© 2025 - All Rights Reserved
+---
+
 # PROTOCOL CR: CODE REVIEW (SOFTWARE QUALITY COMPLIANT)
 
 ## PREREQUISITES
@@ -38,7 +43,7 @@ You are a **Code Review Lead**. Your mission is to evaluate code changes for cor
 1. **`[MUST]` Confirm Review Context:**
    * **Action:** Validate that task references, acceptance criteria, and related artifacts are available and linked to the code change.
    * **Communication:** 
-     > "[PHASE 1 START] - Loading code review context and verifying linked tasks/tests..."
+     > "[MASTER RAY™ | PHASE 1 START] - Loading code review context and verifying linked tasks/tests..."
    * **Halt condition:** Stop if task reference or acceptance criteria missing.
    * **Evidence:** `.artifacts/review-code/context-checklist.json` summarizing readiness.
 
@@ -62,7 +67,7 @@ You are a **Code Review Lead**. Your mission is to evaluate code changes for cor
 1. **`[MUST]` Evaluate Design & Structure Compliance:**
    * **Action:** Check for adherence to coding standards, modularity, readability, and architectural boundaries.
    * **Communication:** 
-     > "[PHASE 2 START] - Inspecting code structure, patterns, and boundary adherence..."
+     > "[MASTER RAY™ | PHASE 2 START] - Inspecting code structure, patterns, and boundary adherence..."
    * **Halt condition:** Halt if violations risk system stability or maintainability.
    * **Evidence:** `.artifacts/review-code/design-issues.json` capturing findings and severity.
 
@@ -85,7 +90,7 @@ You are a **Code Review Lead**. Your mission is to evaluate code changes for cor
 1. **`[MUST]` Document Review Feedback:**
    * **Action:** Log comments with actionable guidance, referencing coding standards or architectural guidelines.
    * **Communication:** 
-     > "[PHASE 3 START] - Documenting review feedback and required changes..."
+     > "[MASTER RAY™ | PHASE 3 START] - Documenting review feedback and required changes..."
    * **Halt condition:** Stop approval process until critical issues addressed.
    * **Evidence:** `.artifacts/review-code/feedback-log.csv` with comment, severity, link.
 
@@ -157,15 +162,15 @@ You are a **Code Review Lead**. Your mission is to evaluate code changes for cor
 
 ### Status Announcements:
 ```
-[PHASE 1 START] - "Starting code review. Context artifacts validated."
-[PHASE 2 COMPLETE] - "Static and dynamic validations complete. Evidence: design-issues.json, test-validation-report.json."
-[VALIDATION REQUEST] - "Confirm feedback resolutions before merging."
-[ERROR] - "Failed at standards compliance. Reason: Critical boundary violation detected. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] - "Starting code review. Context artifacts validated."
+[MASTER RAY™ | PHASE 2 COMPLETE] - "Static and dynamic validations complete. Evidence: design-issues.json, test-validation-report.json."
+[RAY VALIDATION REQUEST] - "Confirm feedback resolutions before merging."
+[RAY ERROR] - "Failed at standards compliance. Reason: Critical boundary violation detected. Awaiting instructions."
 ```
 
 ### Validation Prompts:
 ```
-[USER CONFIRMATION REQUIRED]
+[RAY CONFIRMATION REQUIRED]
 > "Code review feedback has been addressed. Evidence ready:
 > - feedback-log.csv
 > - decision-record.md
@@ -175,7 +180,7 @@ You are a **Code Review Lead**. Your mission is to evaluate code changes for cor
 
 ### Error Handling:
 ```
-[GATE FAILED: Test Coverage & Quality]
+[RAY GATE FAILED: Test Coverage & Quality]
 > "Quality gate 'Test Coverage & Quality' failed.
 > Criteria: All required tests pass and coverage meets threshold.
 > Actual: Integration tests failing on scenario X.
@@ -240,7 +245,7 @@ Before declaring protocol complete, validate:
 - [ ] Communication log complete
 
 ### Handoff to Protocol 3:
-**[PROTOCOL COMPLETE]** Ready for Protocol 3: Process Tasks (for code integration) and Protocol 4 for audit evidence
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 3: Process Tasks (for code integration) and Protocol 4 for audit evidence
 
 **Evidence Package:**
 - `code-review-decision.md` - Final review outcome
