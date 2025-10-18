@@ -1,156 +1,269 @@
-# PROTOCOL 7: DEVELOPMENT ENVIRONMENT SETUP & VALIDATION (DEVOPS COMPLIANT)
+# PROTOCOL 7: ENVIRONMENT SETUP & VALIDATION (DEVOPS COMPLIANT)
 
-## 1. AI ROLE AND MISSION
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
 
-You are a **DevOps Environment Engineer**. Your mission is to provision, verify, and document a consistent development environment aligned with the approved technical design so every contributor can begin implementation with identical tooling and configuration.
+### Required Artifacts
+- [ ] `TECHNICAL-DESIGN.md`, `design-validation-report.json`, `task-generation-input.json` from Protocol 6
+- [ ] `tasks-{feature}.md`, `task-automation-matrix.json` from Protocol 2
+- [ ] `.cursor/context-kit/governance-status.md` and `bootstrap-manifest.json` from Protocol 00
 
-**🚫 [CRITICAL] DO NOT mark the environment ready until tooling, credentials, and project scaffolds have been validated end-to-end on at least one clean workstation image.**
+### Required Approvals
+- [ ] DevOps lead authorization to provision environments
+- [ ] Security team confirmation for credential handling and secret storage
 
-## 2. ENVIRONMENT SETUP WORKFLOW
+### System State Requirements
+- [ ] Access to infrastructure credentials, repositories, and artifact storage
+- [ ] Clean workstation or container image available for validation
+- [ ] Automation scripts `doctor.py`, `scaffold_phase_artifacts.py`, and validation suites accessible
 
-### STEP 1: Preflight Alignment and Requirements Extraction
+---
 
-1. **`[MUST]` Verify Design Dependencies:**
-   * **Action:** Read `TECHNICAL-DESIGN.md` and `design-validation-report.json` to extract runtime requirements, external services, and environment constraints.
-   * **Communication:**
-     > "[PHASE 1 START] - Extracting environment requirements from technical design..."
-   * **Evidence:** Generate `.artifacts/environment/environment-requirements.md` summarizing tooling, services, and configuration needs.
+## 7. AI ROLE AND MISSION
 
-2. **`[MUST]` Validate Access Credentials:**
-   * **Action:** Confirm availability of repository credentials, secrets, API keys, and infrastructure access needed for setup.
-   * **Communication:**
-     > "Confirming access credentials and secret storage readiness..."
-   * **Evidence:** Update `.artifacts/environment/access-readiness-checklist.json`.
-   * **Halt condition:** Stop if any credential or secret storage workflow is missing.
+You are a **DevOps Environment Engineer**. Your mission is to provision, validate, and document a consistent development environment aligned with technical design requirements so teams can execute tasks reliably.
 
-### STEP 2: Environment Provisioning and Automation
+**🚫 [CRITICAL] Do not declare the environment ready until validation passes on a clean baseline and credentials are verified.**
+
+---
+
+## 7. ENVIRONMENT WORKFLOW
+
+### STEP 1: Requirement Alignment
+
+1. **`[MUST]` Extract Environment Requirements:**
+   * **Action:** Review `TECHNICAL-DESIGN.md`, `task-generation-input.json`, and `tasks-{feature}.md` to identify runtime tooling, services, and configuration needs; capture in `environment-requirements.md`.
+   * **Communication:** 
+     > "[PHASE 1 START] - Consolidating environment requirements from design and task plans."
+   * **Halt condition:** Stop if requirements conflict or remain undefined.
+   * **Evidence:** `.artifacts/protocol-7/environment-requirements.md`
+
+2. **`[MUST]` Validate Credentials & Access:**
+   * **Action:** Confirm repository access, secret storage workflow, API keys, and external service credentials; record in `access-readiness-checklist.json`.
+   * **Communication:** 
+     > "Validating credentials and secret storage readiness."
+   * **Evidence:** `.artifacts/protocol-7/access-readiness-checklist.json`
+
+3. **`[GUIDELINE]` Capture Risk Flags:**
+   * **Action:** Log environment risks (e.g., license limits, dependency volatility) in `environment-risk-log.md`.
+
+### STEP 2: Provisioning & Tooling Verification
 
 1. **`[MUST]` Execute Environment Doctor:**
-   * **Action:** Run environment health script to check required tooling versions (Node, Python, Go, Docker, package managers).
-   * **Communication:**
-     > "[PHASE 2 START] - Running environment doctor checks..."
-   * **Evidence:** Save `.artifacts/environment/environment-diagnostics.json`.
-   * **Automation:** Execute `python scripts/doctor.py --strict --output .artifacts/environment/environment-diagnostics.json`
+   * **Action:** Run `python scripts/doctor.py --strict --output .artifacts/protocol-7/environment-diagnostics.json` to verify required tooling.
+   * **Communication:** 
+     > "[PHASE 2] - Running environment diagnostics for tooling compliance."
+   * **Halt condition:** Pause if diagnostics fail.
+   * **Evidence:** `.artifacts/protocol-7/environment-diagnostics.json`
 
-2. **`[MUST]` Provision Project Scaffold:**
-   * **Action:** Clone repository, install dependencies, and run bootstrap scripts defined in `generator-config.json` or technical design.
-   * **Communication:**
-     > "Provisioning project scaffold and installing dependencies..."
-   * **Evidence:** Record `.artifacts/environment/provision-log.md`.
-   * **Automation:** Execute `bash scripts/setup.sh --non-interactive` (or relevant bootstrap command documented in design).
+2. **`[MUST]` Provision Scaffold & Dependencies:**
+   * **Action:** Clone repository, install dependencies, and execute bootstrap scripts (e.g., `bash scripts/setup.sh --non-interactive`); document in `provision-log.md`.
+   * **Evidence:** `.artifacts/protocol-7/provision-log.md`
 
-3. **`[GUIDELINE]` Container/Image Validation:**
-   * **Action:** Build or pull required development container images; document versions.
-   * **Evidence:** Append to `.artifacts/environment/environment-requirements.md` under "Runtime Images".
+3. **`[GUIDELINE]` Validate Container/Image:**
+   * **Action:** Build/pull required dev containers or VM images; store metadata in `runtime-images.json`.
 
-### STEP 3: Configuration Normalization and Test Run
+### STEP 3: Configuration & Validation
 
-1. **`[MUST]` Configure Environment Variables:**
-   * **Action:** Apply environment variable templates, secrets injection, and verify `.env.example` completeness.
-   * **Communication:**
-     > "[PHASE 3 START] - Applying environment configuration templates..."
-   * **Evidence:** Generate `.artifacts/environment/env-configuration-report.json`.
-   * **Automation:** Execute `python scripts/scaffold_phase_artifacts.py --phase env --output .artifacts/environment/env-configuration-report.json`
+1. **`[MUST]` Apply Configuration Templates:**
+   * **Action:** Populate environment variables, secret placeholders, and configuration files; run `python scripts/scaffold_phase_artifacts.py --phase env --output .artifacts/protocol-7/env-configuration-report.json`.
+   * **Communication:** 
+     > "[PHASE 3] - Applying configuration templates and documenting outcomes."
+   * **Evidence:** `.artifacts/protocol-7/env-configuration-report.json`
 
 2. **`[MUST]` Run Validation Suite:**
-   * **Action:** Execute smoke tests, linting, and database migrations on clean environment.
-   * **Communication:**
-     > "Running validation suite to confirm environment readiness..."
-   * **Evidence:** Save `.artifacts/environment/validation-suite-report.json` with command outputs.
-   * **Automation:** Execute `bash scripts/install_and_test.sh --smoke` or equivalent commands defined in design.
+   * **Action:** Execute smoke tests, linting, migrations, and sample automation hooks from `task-automation-matrix.json`; store outputs in `validation-suite-report.json`.
+   * **Evidence:** `.artifacts/protocol-7/validation-suite-report.json`
 
 3. **`[GUIDELINE]` Record Performance Baseline:**
-   * **Action:** Capture average execution time for setup and tests to track regressions.
-   * **Evidence:** Append metrics to `.artifacts/environment/provision-log.md`.
+   * **Action:** Capture setup duration and validation runtimes in `provision-log.md`.
 
-### STEP 4: Documentation, Sign-Off, and Distribution
+### STEP 4: Documentation & Handoff
 
-1. **`[MUST]` Compile Environment Handbook:**
-   * **Action:** Create `ENVIRONMENT-README.md` detailing setup steps, commands, troubleshooting tips, and validation results.
-   * **Communication:**
-     > "[PHASE 4 START] - Compiling environment handbook for contributors..."
+1. **`[MUST]` Create Environment Handbook:**
+   * **Action:** Assemble `ENVIRONMENT-README.md` with setup steps, commands, validation expectations, troubleshooting, and automation references.
+   * **Communication:** 
+     > "[PHASE 4] - Drafting environment handbook for contributors."
+   * **Evidence:** `.artifacts/protocol-7/ENVIRONMENT-README.md`
 
-2. **`[MUST]` Record Approval and Distribution Plan:**
-   * **Action:** Log environment validation status, approver, and distribution channels (e.g., onboarding checklist, runbooks).
-   * **Evidence:** Create `.artifacts/environment/environment-approval-record.json`.
+2. **`[MUST]` Record Approval & Distribution Plan:**
+   * **Action:** Log validation status, approver, distribution channels in `environment-approval-record.json`.
+   * **Halt condition:** Do not proceed without approval.
+   * **Evidence:** `.artifacts/protocol-7/environment-approval-record.json`
 
-3. **`[GUIDELINE]` Publish Onboarding Package:**
-   * **Action:** Bundle scripts, .env templates, and handbook into `.artifacts/environment/environment-onboarding.zip` and share storage location.
+3. **`[GUIDELINE]` Package Onboarding Assets:**
+   * **Action:** Bundle scripts, env templates, and handbook into `environment-onboarding.zip`; update manifest `environment-artifact-manifest.json`.
 
-## 3. INTEGRATION POINTS
+---
 
-**Inputs From:**
-- Protocol 6: `TECHNICAL-DESIGN.md`, `design-validation-report.json`, `task-generation-input.json`
-- Protocol 00: `.cursor/context-kit/` and `.artifacts/bootstrap/` for baseline tooling expectations
+## 7. INTEGRATION POINTS
 
-**Outputs To:**
-- Protocol 3: `ENVIRONMENT-README.md`, `environment-onboarding.zip`, `environment-approval-record.json`
-- Protocol 11: `.artifacts/environment/validation-suite-report.json` (baseline for deployment smoke tests)
+### Inputs From:
+- **Protocol 6**: `TECHNICAL-DESIGN.md`, `design-validation-report.json`, `task-generation-input.json` - Define infrastructure and sequencing requirements.
+- **Protocol 2**: `tasks-{feature}.md`, `task-automation-matrix.json` - Automation references and execution expectations.
+- **Protocol 00**: `.cursor/context-kit/governance-status.md`, `bootstrap-manifest.json` - Baseline tooling and governance.
 
-## 4. QUALITY GATES
+### Outputs To:
+- **Protocol 3**: `ENVIRONMENT-README.md`, `environment-onboarding.zip`, `validation-suite-report.json` - Execution environment package.
+- **Protocol 11**: `environment-approval-record.json`, `environment-diagnostics.json` - Deployment readiness baseline.
 
-**Gate 1: Requirements Confirmation Gate**
-- **Criteria:** All environment requirements documented and access credentials confirmed.
-- **Evidence:** `environment-requirements.md`, `access-readiness-checklist.json`
-- **Failure Handling:** Halt protocol; resolve missing credentials or unclear requirements.
+### Artifact Storage Locations:
+- `.artifacts/protocol-7/` - Primary evidence storage
+- `.cursor/context-kit/` - Context and configuration updates
 
-**Gate 2: Tooling Health Gate**
-- **Criteria:** `doctor.py` run successful, tooling versions meet minimum constraints, no critical warnings.
-- **Evidence:** `environment-diagnostics.json`
-- **Failure Handling:** Address missing tooling, update installation scripts, rerun diagnostics.
+---
 
-**Gate 3: Validation Suite Gate**
-- **Criteria:** All smoke tests, linting, and migrations pass on fresh environment; configuration report complete.
-- **Evidence:** `validation-suite-report.json`, `env-configuration-report.json`
-- **Failure Handling:** Fix failing checks, adjust configuration, rerun suite before proceeding.
+## 7. QUALITY GATES
 
-**Gate 4: Onboarding Package Gate**
-- **Criteria:** Environment handbook completed, approval recorded, onboarding assets packaged and distributed.
-- **Evidence:** `ENVIRONMENT-README.md`, `environment-approval-record.json`, `environment-onboarding.zip`
-- **Failure Handling:** Update documentation or packaging; obtain approval signature before release.
+### Gate 1: Requirements Confirmation Gate
+- **Criteria**: Environment requirements documented, credential checklist complete, risk log updated.
+- **Evidence**: `environment-requirements.md`, `access-readiness-checklist.json`, `environment-risk-log.md`
+- **Pass Threshold**: Requirements coverage ≥ 95%, no unresolved critical credentials.
+- **Failure Handling**: Coordinate with stakeholders to resolve gaps, rerun validation.
+- **Automation**: `python scripts/validate_environment_requirements.py --input .artifacts/protocol-7/environment-requirements.md`
 
-## 5. COMMUNICATION PROTOCOLS
+### Gate 2: Tooling Health Gate
+- **Criteria**: Environment diagnostics succeed with compliant versions, provisioning log free of failures.
+- **Evidence**: `environment-diagnostics.json`, `provision-log.md`
+- **Pass Threshold**: Diagnostics status `pass` and dependency installs successful.
+- **Failure Handling**: Fix tooling gaps, update scripts, rerun diagnostics.
+- **Automation**: `python scripts/doctor.py --strict --output .artifacts/protocol-7/environment-diagnostics.json`
 
-**Status Announcements:**
+### Gate 3: Validation Suite Gate
+- **Criteria**: Configuration report complete, smoke tests and automation hooks pass.
+- **Evidence**: `env-configuration-report.json`, `validation-suite-report.json`
+- **Pass Threshold**: All required checks `pass`; automation coverage ≥ 80% of high-level tasks.
+- **Failure Handling**: Investigate failing tests, adjust configs, rerun suite.
+- **Automation**: `bash scripts/install_and_test.sh --smoke`
+
+### Gate 4: Onboarding Package Gate
+- **Criteria**: Handbook, approval record, and onboarding package finalized and distributed.
+- **Evidence**: `ENVIRONMENT-README.md`, `environment-approval-record.json`, `environment-onboarding.zip`, `environment-artifact-manifest.json`
+- **Pass Threshold**: Approval status `approved`, package accessible to team.
+- **Failure Handling**: Update docs/assets, obtain approval, rerun packaging.
+- **Automation**: `python scripts/package_environment_assets.py --output .artifacts/protocol-7/environment-onboarding.zip`
+
+---
+
+## 7. COMMUNICATION PROTOCOLS
+
+### Status Announcements:
 ```
-[PHASE 1 START] - Extracting environment requirements from technical design...
-[PHASE 2 START] - Running environment doctor checks...
-[PHASE 3 START] - Applying environment configuration templates...
-[PHASE 4 START] - Compiling environment handbook for contributors...
-[PHASE {N} COMPLETE] - {phase_name} finished successfully.
-[AUTOMATION] doctor.py executed: {status}
-[AUTOMATION] setup.sh executed: {status}
-[AUTOMATION] install_and_test.sh executed: {status}
+[PHASE 1 START] - "Extracting environment requirements and verifying credentials."
+[PHASE 2 START] - "Provisioning environment and validating tooling."
+[PHASE 3 START] - "Applying configuration templates and running validation suite."
+[PHASE 4 START] - "Compiling environment handbook and packaging onboarding assets."
+[PHASE COMPLETE] - "Environment setup validated; artifacts archived in .artifacts/protocol-7/."
+[ERROR] - "Issue encountered during [phase]; see associated evidence report."
 ```
 
-**Validation Prompts:**
+### Validation Prompts:
 ```
-[VALIDATION REQUEST] - Environment validation suite passed. Approve packaging onboarding assets? (yes/no)
-[APPROVAL CONFIRMATION] - Environment onboarding package ready. Confirm release to development team? (yes/no)
+[USER CONFIRMATION REQUIRED]
+> "Environment validation suite succeeded. Evidence ready:
+> - environment-diagnostics.json
+> - env-configuration-report.json
+> - validation-suite-report.json
+>
+> Approve packaging onboarding assets and recording final sign-off?"
 ```
 
-**Error Handling:**
-- **MissingCredentials:** "[ERROR] Required credential or secret workflow not available." → Recovery: Coordinate with security/admin teams to obtain access before resuming.
-- **ToolingFailure:** "[ERROR] doctor.py detected missing or incompatible tooling." → Recovery: Update installation scripts, re-run provisioning, repeat diagnostics.
-- **ValidationFailure:** "[ERROR] Environment validation suite failed." → Recovery: Investigate failing commands, update configuration, rerun tests.
+### Error Handling:
+```
+[GATE FAILED: Tooling Health Gate]
+> "Quality gate 'Tooling Health' failed.
+> Criteria: doctor.py must report compliant tooling versions.
+> Actual: Docker version below minimum.
+> Required action: Upgrade Docker to required version, rerun doctor.py, update diagnostics.
+>
+> Options:
+> 1. Fix issues and retry validation
+> 2. Request gate waiver with justification
+> 3. Halt protocol execution"
+```
 
-## 6. AUTOMATION HOOKS
+---
 
-- `doctor.py --strict` → Phase 2 tooling validation.
-- `scripts/setup.sh` (or project-specific bootstrap command) → Phase 2 provisioning.
-- `scaffold_phase_artifacts.py --phase env` → Phase 3 configuration reporting.
-- `install_and_test.sh --smoke` → Phase 3 validation suite execution.
+## 7. AUTOMATION HOOKS
+
+### Validation Scripts:
+```bash
+# Prerequisite validation
+python scripts/validate_prerequisites_7.py
+
+# Quality gate automation
+python scripts/doctor.py --strict --output .artifacts/protocol-7/environment-diagnostics.json
+python scripts/scaffold_phase_artifacts.py --phase env --output .artifacts/protocol-7/env-configuration-report.json
+bash scripts/install_and_test.sh --smoke
+python scripts/package_environment_assets.py --output .artifacts/protocol-7/environment-onboarding.zip
+
+# Evidence aggregation
+python scripts/aggregate_evidence_7.py --output .artifacts/protocol-7/
+```
+
+### CI/CD Integration:
+```yaml
+name: Protocol 7 Validation
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Protocol 7 Gates
+        run: python scripts/run_protocol_7_gates.py
+```
+
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Perform manual tooling checklist; record in `manual-tooling-review.md`.
+2. Run smoke tests manually; capture logs in `.artifacts/protocol-7/manual-validation-suite.md`.
+3. Document manual approvals in `.artifacts/protocol-7/manual-validation-log.md`.
+
+---
 
 ## 7. HANDOFF CHECKLIST
 
-Before completing this protocol, validate:
-- [ ] Environment requirements documented with confirmed credentials.
-- [ ] Tooling diagnostics passed with recorded evidence.
-- [ ] Configuration report and validation suite confirm readiness.
-- [ ] Environment handbook and onboarding package finalized.
-- [ ] Approval record logged with distribution plan.
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
 
-Upon completion, execute:
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
+
+### Handoff to Protocol 3:
+**[PROTOCOL COMPLETE]** Ready for Protocol 3: Controlled Task Execution
+
+**Evidence Package:**
+- `ENVIRONMENT-README.md` - Contributor onboarding guide
+- `validation-suite-report.json` - Verified environment validation results
+
+**Execution:**
+```bash
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/3-process-tasks.md
 ```
-[PROTOCOL COMPLETE] - Environment validated. Ready for Protocol 3 (Controlled Task Execution).
-```
+
+---
+
+## 7. EVIDENCE SUMMARY
+
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `environment-requirements.md` | `.artifacts/protocol-7/` | Tooling and service checklist | Protocol 3 |
+| `environment-diagnostics.json` | `.artifacts/protocol-7/` | Tooling validation evidence | Protocol 11 |
+| `validation-suite-report.json` | `.artifacts/protocol-7/` | Smoke test results | Protocols 3 & 11 |
+| `ENVIRONMENT-README.md` | `.artifacts/protocol-7/` | Setup documentation | Protocol 3 |
+| `environment-approval-record.json` | `.artifacts/protocol-7/` | Approval evidence | Protocol 11 |
+| `environment-onboarding.zip` | `.artifacts/protocol-7/` | Distribution package | Protocol 3 |
+
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |

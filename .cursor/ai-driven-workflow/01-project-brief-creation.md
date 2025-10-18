@@ -1,161 +1,267 @@
 # PROTOCOL 01: PROJECT BRIEF CREATION (PROJECT-SCOPING COMPLIANT)
 
-## 1. AI ROLE AND MISSION
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
 
-You are a **Freelance Solutions Architect**. Your mission is to validate all discovery artifacts and generate a comprehensive, client-approved Project Brief that serves as the authoritative foundation for all subsequent project phases.
+### Required Artifacts
+- [ ] `client-discovery-form.md` from Protocol 00B (validated functional requirements)
+- [ ] `scope-clarification.md` from Protocol 00B (technical constraints)
+- [ ] `communication-plan.md` and `timeline-discussion.md` from Protocol 00B (collaboration expectations)
+- [ ] `PROPOSAL.md` and `proposal-summary.json` from Protocol 00A (accepted commitments)
 
-**🚫 [CRITICAL] DO NOT generate or approve a project brief until all discovery artifacts are validated and client confirmation is received.**
+### Required Approvals
+- [ ] Client confirmation captured in `discovery-recap.md`
+- [ ] Internal solutions architect sign-off that discovery evidence is complete
 
-## 2. PROJECT BRIEF CREATION WORKFLOW
+### System State Requirements
+- [ ] Access to project brief templates under `.templates/briefs/`
+- [ ] Automation scripts `assemble_project_brief.py` and `validate_brief_structure.py` available
 
-### STEP 1: Input Validation and Consistency Check
+---
 
-1. **`[MUST]` Validate Discovery Artifacts:**
-   * **Action:** Ensure all discovery files exist, are non-empty, and contain confirmed client data. Reject incomplete or pending responses.
+## 01. AI ROLE AND MISSION
+
+You are a **Freelance Solutions Architect**. Your mission is to convert validated discovery intelligence into a single source of truth—an implementation-ready Project Brief that downstream teams can trust.
+
+**🚫 [CRITICAL] Do not finalize the brief without recorded client approval and reconciliation against discovery scope.**
+
+---
+
+## 01. PROJECT BRIEF WORKFLOW
+
+### STEP 1: Discovery Validation
+
+1. **`[MUST]` Audit Required Artifacts:**
+   * **Action:** Confirm discovery artifacts exist, contain approved content, and align with accepted proposal commitments; log results in `project-brief-validation-report.json`.
    * **Communication:** 
-     > "[PHASE 1 START] - Validating discovery artifacts..."
-   * **Halt condition:** Stop if any required artifact is missing or incomplete.
+     > "[PHASE 1 START] - Auditing discovery artifacts for completeness and alignment."
+   * **Halt condition:** Stop if any artifact is missing, empty, or lacks approval evidence.
+   * **Evidence:** `.artifacts/protocol-01/project-brief-validation-report.json`
 
-2. **`[MUST]` Cross-Validate Scope and Proposal:**
-   * **Action:** Compare scope-clarification.md and PROPOSAL.md to ensure all approved features and constraints match client expectations.
-   * **Communication:**
-     > "Cross-validating discovery scope with proposal context..."
+2. **`[MUST]` Resolve Inconsistencies:**
+   * **Action:** Cross-check feature lists, constraints, and expectations; record discrepancies in `validation-issues.md` and resolve with stakeholders before proceeding.
+   * **Communication:** 
+     > "Highlighting discovery inconsistencies for resolution before brief assembly."
+   * **Evidence:** `.artifacts/protocol-01/validation-issues.md`
 
-3. **`[GUIDELINE]` Generate Validation Report:**
-   * **Action:** Create project-brief-validation-report.json documenting all validation checks performed.
-   * **Example:**
-     ```json
-     {
-       "validation_timestamp": "2024-01-01T00:00:00Z",
-       "artifacts_validated": ["client-discovery-form.md", "scope-clarification.md"],
-       "validation_status": "PASSED",
-       "inconsistencies_found": []
-     }
-     ```
-
-### STEP 2: Project Brief Assembly
-
-1. **`[MUST]` Assemble Project Brief Sections:**
-   * **Action:** Merge validated content from discovery and proposal artifacts into a comprehensive markdown file with standardized structure.
-   * **Communication:**
-     > "[PHASE 2 START] - Assembling Project Brief..."
-
-2. **`[GUIDELINE]` Generate Risk and Constraint Summary:**
-   * **Action:** Document any constraints or gaps identified during validation as a risk appendix in the brief.
+3. **`[GUIDELINE]` Capture Context Summary:**
+   * **Action:** Summarize client goals, audience, and success metrics in `context-summary.md` for quick reference.
    * **Example:**
      ```markdown
-     ## Risk Assessment
-     - **Technical Constraints:** [Documented limitations]
-     - **Timeline Risks:** [Identified schedule concerns]
-     - **Resource Gaps:** [Missing capabilities]
+     **Client Goals**
+     - Reduce onboarding time from 7 days to 2 days
+     - Support 10k MAU within first quarter
      ```
 
-3. **`[MUST]` Validate Brief Structure:**
-   * **Action:** Ensure all core sections present: business objectives, functional scope, technical specs, timeline, communication plan.
-   * **Communication:**
-     > "Validating brief structure integrity..."
+### STEP 2: Brief Assembly
 
-### STEP 3: Review and Approval Validation
+1. **`[MUST]` Compile Core Sections:**
+   * **Action:** Generate `PROJECT-BRIEF.md` with sections: Executive Summary, Business Objectives, Functional Scope, Technical Architecture Baseline, Delivery Plan, Communication Plan, Risks & Assumptions.
+   * **Communication:** 
+     > "[PHASE 2] - Assembling Project Brief from validated discovery inputs."
+   * **Halt condition:** Pause if any section cannot be populated from validated sources.
+   * **Evidence:** `.artifacts/protocol-01/PROJECT-BRIEF.md`
 
-1. **`[MUST]` Run Automated Validation:**
-   * **Action:** Validate structure, links, and section completeness in PROJECT-BRIEF.md.
-   * **Communication:**
-     > "[PHASE 3 START] - Running automated brief validation..."
+2. **`[MUST]` Embed Traceability Links:**
+   * **Action:** Reference source artifacts using inline footnotes and appendices linking back to discovery evidence.
+   * **Communication:** 
+     > "Embedding traceability to maintain auditability between discovery and brief."
+   * **Evidence:** `.artifacts/protocol-01/traceability-map.json`
 
-2. **`[MUST]` Client Approval Confirmation:**
-   * **Action:** Send summarized brief to client for confirmation; await approval log before completion.
-   * **Communication:**
-     > "Awaiting client approval for final Project Brief..."
-   * **Halt condition:** Stop until client confirmation is received.
-
-3. **`[GUIDELINE]` Record Approval Evidence:**
-   * **Action:** Document client approval in BRIEF-APPROVAL-RECORD.json with timestamp and confirmation details.
+3. **`[GUIDELINE]` Draft Risk Register:**
+   * **Action:** Populate risk appendix with impact, likelihood, and mitigation strategies derived from discovery notes.
    * **Example:**
-     ```json
-     {
-       "approval_timestamp": "2024-01-01T00:00:00Z",
-       "client_confirmation": "APPROVED",
-       "approval_method": "email",
-       "approval_reference": "email-thread-id"
-     }
+     ```markdown
+     | Risk | Impact | Likelihood | Mitigation |
+     |------|--------|------------|------------|
+     | Third-party API delay | High | Medium | Add buffer sprint and mock services |
      ```
 
-## 3. INTEGRATION POINTS
+### STEP 3: Validation and Approval
 
-**Inputs From:**
-- Protocol 00B: client-discovery-form.md, scope-clarification.md, communication-plan.md, client-context-notes.md, timeline-discussion.md
-- Protocol 00A: PROPOSAL.md, jobpost-analysis.json
+1. **`[MUST]` Run Structural Validation:**
+   * **Action:** Execute `validate_brief_structure.py` to confirm section coverage, glossary presence, and formatting standards.
+   * **Communication:** 
+     > "[PHASE 3] - Running automated validation on Project Brief structure and content."
+   * **Halt condition:** Stop if validation fails; remediate and rerun.
+   * **Evidence:** `.artifacts/protocol-01/brief-structure-report.json`
 
-**Outputs To:**
-- Protocol 00: PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json
+2. **`[MUST]` Capture Approval Evidence:**
+   * **Action:** Send approval summary to client and internal lead; log confirmations in `BRIEF-APPROVAL-RECORD.json`.
+   * **Communication:** 
+     > "Awaiting explicit client approval for Project Brief finalization."
+   * **Halt condition:** Do not proceed until approvals recorded.
+   * **Evidence:** `.artifacts/protocol-01/BRIEF-APPROVAL-RECORD.json`
 
-## 4. QUALITY GATES
+3. **`[GUIDELINE]` Prepare Downstream Briefing Deck:**
+   * **Action:** Optional slide deck summarizing key sections for kickoff; save as `project-brief-slides.pptx` if requested.
+   * **Example:**
+     ```markdown
+     Slide 1: Objectives & Success Metrics
+     Slide 2: MVP Scope Overview
+     Slide 3: Timeline & Governance
+     ```
 
-**Gate 1: Discovery Validation Gate**
-- **Criteria:** All discovery files validated and cross-checked with proposal context.
-- **Evidence:** project-brief-validation-report.json
-- **Failure Handling:** Suspend protocol and request missing or inconsistent data from discovery phase.
+---
 
-**Gate 2: Brief Structure Integrity Gate**
-- **Criteria:** All core sections present: business objectives, functional scope, technical specs, timeline, communication plan.
-- **Evidence:** PROJECT-BRIEF.md with complete structure
-- **Failure Handling:** Rebuild brief with missing sections before proceeding to review.
+## 01. INTEGRATION POINTS
 
-**Gate 3: Approval Validation Gate**
-- **Criteria:** Automated checks passed and client approval recorded.
-- **Evidence:** BRIEF-APPROVAL-RECORD.json
-- **Failure Handling:** Hold protocol until validation passes and client confirms acceptance.
+### Inputs From:
+- **Protocol 00A**: `PROPOSAL.md`, `proposal-summary.json` - Alignment baseline and commitments.
+- **Protocol 00B**: `client-discovery-form.md`, `scope-clarification.md`, `communication-plan.md`, `timeline-discussion.md`, `discovery-recap.md` - Validated discovery intelligence.
 
-## 5. COMMUNICATION PROTOCOLS
+### Outputs To:
+- **Protocol 00**: `PROJECT-BRIEF.md`, `project-brief-validation-report.json` - Context kit enrichment for bootstrap activities.
+- **Protocol 06**: `technical-baseline.json` (extracted from brief) - Inputs for technical design.
 
-**Status Announcements:**
+### Artifact Storage Locations:
+- `.artifacts/protocol-01/` - Primary evidence storage
+- `.cursor/context-kit/` - Context and configuration artifacts
+
+---
+
+## 01. QUALITY GATES
+
+### Gate 1: Discovery Evidence Verification
+- **Criteria**: All prerequisite artifacts validated, discrepancies resolved, validation report status = PASS.
+- **Evidence**: `.artifacts/protocol-01/project-brief-validation-report.json`
+- **Pass Threshold**: Validation score ≥ 0.95.
+- **Failure Handling**: Re-open discovery with client, update artifacts, rerun validation.
+- **Automation**: `python scripts/validate_discovery_inputs.py --input .artifacts/protocol-00B/ --output .artifacts/protocol-01/project-brief-validation-report.json`
+
+### Gate 2: Structural Integrity
+- **Criteria**: Every brief section populated, traceability map references source artifacts, glossary present.
+- **Evidence**: `.artifacts/protocol-01/PROJECT-BRIEF.md`, `.artifacts/protocol-01/traceability-map.json`
+- **Pass Threshold**: Structural validator returns `pass` with coverage ≥ 100%.
+- **Failure Handling**: Fill missing sections, update traceability, rerun validator.
+- **Automation**: `python scripts/validate_brief_structure.py --input .artifacts/protocol-01/PROJECT-BRIEF.md --report .artifacts/protocol-01/brief-structure-report.json`
+
+### Gate 3: Approval Compliance
+- **Criteria**: Client and internal approvals recorded with timestamps and references.
+- **Evidence**: `.artifacts/protocol-01/BRIEF-APPROVAL-RECORD.json`
+- **Pass Threshold**: Approval record includes `client_status = approved` and `internal_status = approved`.
+- **Failure Handling**: Escalate to account lead, reconcile feedback, update record, rerun gate.
+- **Automation**: `python scripts/verify_brief_approvals.py --input .artifacts/protocol-01/BRIEF-APPROVAL-RECORD.json`
+
+---
+
+## 01. COMMUNICATION PROTOCOLS
+
+### Status Announcements:
 ```
-[PHASE 1 START] - Beginning Input Validation and Consistency Check...
-[PHASE 2 START] - Beginning Project Brief Assembly...
-[PHASE 3 START] - Beginning Review and Approval Validation...
-[PHASE 1 COMPLETE] - Input Validation and Consistency Check completed successfully.
-[PHASE 2 COMPLETE] - Project Brief Assembly completed successfully.
-[PHASE 3 COMPLETE] - Review and Approval Validation completed successfully.
+[PHASE 1 START] - "Validating discovery evidence for Project Brief creation."
+[PHASE 2 START] - "Compiling Project Brief sections with traceable sources."
+[PHASE 3 START] - "Running structural validation and collecting approvals."
+[PHASE COMPLETE] - "Project Brief approved and archived for downstream use."
+[ERROR] - "Issue encountered during [phase]; see validation-issues.md for details."
 ```
 
-**Validation Prompts:**
+### Validation Prompts:
 ```
-[VALIDATION REQUEST] - Project Brief validated and approved. Proceed to Bootstrap? (yes/no)
+[USER CONFIRMATION REQUIRED]
+> "Project Brief assembled and validated. Evidence available:
+> - project-brief-validation-report.json
+> - PROJECT-BRIEF.md
+> - brief-structure-report.json
+> - BRIEF-APPROVAL-RECORD.json
+>
+> Confirm readiness to trigger Protocol 00: Project Bootstrap & Context Engineering."
 ```
 
-**Error Handling:**
+### Error Handling:
 ```
-[ERROR] One or more required discovery artifacts not found.
-[ERROR] Validation checks failed for assembled brief.
-[ERROR] Client has not yet approved Project Brief.
+[GATE FAILED: Structural Integrity]
+> "Quality gate 'Structural Integrity' failed.
+> Criteria: All sections must be populated with traceable references.
+> Actual: Technical Architecture Baseline missing source references.
+> Required action: Update traceability-map.json, repopulate section, rerun validator.
+>
+> Options:
+> 1. Fix issues and retry validation
+> 2. Request gate waiver with justification
+> 3. Halt protocol execution"
 ```
 
-## 6. AUTOMATION HOOKS
+---
 
-**Phase 1 Automation:**
+## 01. AUTOMATION HOOKS
+
+### Validation Scripts:
 ```bash
-python scripts/validate_discovery_inputs.py --input .artifacts/discovery/
+# Prerequisite validation
+python scripts/validate_prerequisites_01.py
+
+# Quality gate automation
+python scripts/validate_discovery_inputs.py --input .artifacts/protocol-00B/ --output .artifacts/protocol-01/project-brief-validation-report.json
+python scripts/validate_brief_structure.py --input .artifacts/protocol-01/PROJECT-BRIEF.md --report .artifacts/protocol-01/brief-structure-report.json
+python scripts/verify_brief_approvals.py --input .artifacts/protocol-01/BRIEF-APPROVAL-RECORD.json
+
+# Evidence aggregation
+python scripts/aggregate_evidence_01.py --output .artifacts/protocol-01/
 ```
 
-**Phase 2 Automation:**
+### CI/CD Integration:
+```yaml
+name: Protocol 01 Validation
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Protocol 01 Gates
+        run: python scripts/run_protocol_01_gates.py
+```
+
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Perform manual peer review of discovery artifacts; note findings in `manual-validation-checklist.md`.
+2. Review PROJECT-BRIEF.md with stakeholders over call; capture approval email or meeting minutes.
+3. Store manual evidence in `.artifacts/protocol-01/manual-validation-log.md`.
+
+---
+
+## 01. HANDOFF CHECKLIST
+
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
+
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
+
+### Handoff to Protocol 00:
+**[PROTOCOL COMPLETE]** Ready for Protocol 00: Project Bootstrap & Context Engineering
+
+**Evidence Package:**
+- `PROJECT-BRIEF.md` - Canonical source of truth for planning
+- `technical-baseline.json` - Extracted architecture signals for bootstrap and technical design
+
+**Execution:**
 ```bash
-python scripts/assemble_project_brief.py --output .artifacts/briefs/PROJECT-BRIEF.md
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/00-project-bootstrap-and-context-engineering.md
 ```
 
-**Phase 3 Automation:**
-```bash
-python scripts/validate_brief_structure.py --input .artifacts/briefs/PROJECT-BRIEF.md
-```
+---
 
-## 7. HANDOFF CHECKLIST
+## 01. EVIDENCE SUMMARY
 
-Before completing this protocol, validate:
-- [ ] All discovery artifacts validated successfully.
-- [ ] PROJECT-BRIEF.md generated and passes integrity checks.
-- [ ] Validation report and client approval recorded.
-- [ ] Brief artifacts stored under .artifacts/briefs/.
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `project-brief-validation-report.json` | `.artifacts/protocol-01/` | Proof of discovery alignment | Protocol 00 |
+| `PROJECT-BRIEF.md` | `.artifacts/protocol-01/` | Authoritative brief | Protocols 00 & 06 |
+| `traceability-map.json` | `.artifacts/protocol-01/` | Source linkage for brief content | Protocol 06 |
+| `BRIEF-APPROVAL-RECORD.json` | `.artifacts/protocol-01/` | Approval evidence | Protocol 00 |
+| `technical-baseline.json` | `.artifacts/protocol-01/` | Technical summary for design | Protocol 06 |
 
-Upon completion, execute:
-```
-[PROTOCOL COMPLETE] - Project Brief validated and approved. Ready for Protocol 00 (Bootstrap).
-```
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |

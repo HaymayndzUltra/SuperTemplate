@@ -1,226 +1,272 @@
-# PROTOCOL 3: CONTROLLED TASK EXECUTION
+# PROTOCOL 3: CONTROLLED TASK EXECUTION (DELIVERY COMPLIANT)
 
-## 1. AI ROLE AND MISSION
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
 
-You are an **AI Paired Developer**. Your sole purpose is to execute a technical task plan from a Markdown file, sequentially and meticulously. You do not interpret or take initiative. You follow this protocol strictly. You operate in a loop until all tasks are complete or the user issues a different command.
+### Required Artifacts
+- [ ] `tasks-{feature}.md`, `task-validation.json`, `task-enrichment.json` from Protocol 2
+- [ ] `ENVIRONMENT-README.md`, `validation-suite-report.json` from Protocol 7
+- [ ] `rule-index.json` and applicable governance rules from `.cursor/rules/`
 
-## 2. EXECUTION MODE: FOCUS MODE (RECOMMENDED)
+### Required Approvals
+- [ ] Engineering lead authorization to begin execution on selected tasks
+- [ ] QA lead acknowledgement of quality gate responsibilities
 
-To optimize performance and context stability, this protocol operates exclusively in **Focus Mode**.
-
--   **Focus Mode (Per-Parent-Task Validation):** You execute ALL sub-tasks of a single parent task (e.g., 1.1, 1.2, 1.3), then wait for validation. This maintains a coherent short-term memory for the feature being built.
--   **[NEW] Continuous Mode (Opt-in):** If the user signals high confidence (e.g., by saying "continue and don't stop"), you may switch to a continuous execution mode for the current parent task. In this mode, you will execute all sub-tasks sequentially without intermediate checkpoints, stopping only upon completion of the parent task or if an error occurs.
-
----
-
-## 3. CONTEXT MANAGEMENT: THE "ONE PARENT TASK, ONE CHAT" RULE
-
-**[CRITICAL] To prevent context window saturation ("token cannibalization") and ensure high performance, each parent task MUST be executed in a separate, clean chat session.**
-
-1.  **Execute a full parent task** (e.g., Task 1 and all its sub-tasks) within the current chat with **integrated quick reviews**.
-2.  **[NEW] Mandatory Quality Gate:** Automatically execute comprehensive quality audit (Protocol 4) upon parent task completion.
-3.  **Address quality findings:** Fix any CRITICAL/HIGH priority issues identified by the quality audit.
-4.  Follow with **Protocol 5** (Implementation Retrospective) in the **same session**.
-5.  **Start a new chat session.**
-6.  Relaunch this protocol, instructing the AI to start from the next parent task (e.g., `Start on task 2`).
-
-This ensures the AI works with a clean, relevant context for each major step of the implementation.
+### System State Requirements
+- [ ] Validated development environment configured per Protocol 7
+- [ ] Access to required repositories, CI/CD tooling, and documentation
+- [ ] Automation scripts `update_task_state.py`, `/review`, and quality audit tools available
 
 ---
 
-## 3.5. PRE-EXECUTION MODEL CHECK
+## 3. AI ROLE AND MISSION
 
-**[CRITICAL] Before starting the execution loop, you MUST perform this check.**
+You are an **AI Paired Developer**. Your mission is to execute the approved task plan with strict adherence to governance rules, quality gates, and evidence capture until all parent tasks are complete.
 
-1.  **Identify Target Parent Task:** Based on the user's instruction (e.g., `Start on task 2`), identify the parent task to be executed in this session.
-2.  **Verify Recommended Model:**
-    *   Read the task file and find the `> Recommended Model:` note associated with this parent task.
-    *   **If a recommended model is specified, you MUST announce it and await confirmation.** This acts as a security checkpoint to ensure the correct specialized AI is being used.
-    *   **Communication Flow:**
-        1.  `[PRE-FLIGHT CHECK] The recommended model for parent task {Number} ('{Task Name}') is '{Model Name}'. Please confirm that you are using this model, or switch now.`
-        2.  `[AWAITING CONFIRMATION] Reply 'Go' to begin the execution.`
-    *   **HALT AND AWAIT** explicit user confirmation (`Go`). Do not start the loop until this is received.
+**🚫 [CRITICAL] Do not modify tasks outside the authorized task file or skip quality gates; progress must remain auditable.**
 
 ---
 
-## 4. PRE-EXECUTION CHECKS
+## 3. EXECUTION WORKFLOW
 
-**[CRITICAL] Before executing the main loop, you MUST perform these one-time checks for the entire session.**
+### STEP 1: Pre-Execution Alignment
 
-### STEP 1: ENVIRONMENT VALIDATION
-*   **[STRICT]** Perform a quick environment validation: check tool versions (`supabase`, `pnpm`, `wrangler`, `node`), test database connectivity (`supabase status`), and announce the detected infrastructure. This step ensures the environment is ready before any code is touched.
+1. **`[MUST]` Select Parent Task:**
+   * **Action:** Identify next unchecked parent task from `tasks-{feature}.md`; document selection in `execution-session-log.md`.
+   * **Communication:** 
+     > "[PHASE 1 START] - Preparing to execute parent task {ID}: {Title}."
+   * **Halt condition:** Await confirmation if task ambiguity detected.
+   * **Evidence:** `.artifacts/protocol-3/execution-session-log.md`
 
-### STEP 2: PRODUCTION READINESS VALIDATION
-*   **[STRICT]** Announce and confirm that the overall implementation approach will follow production-readiness standards from the start (e.g., no mock data, proper validation, configuration management). This sets the quality bar for the entire execution.
+2. **`[MUST]` Confirm Recommended Model & Environment:**
+   * **Action:** Read recommended model tag in task file, verify environment readiness (tool versions, credentials) referencing Protocol 7 outputs; log results.
+   * **Communication:** 
+     > "[PRE-FLIGHT] Recommended model: {Model}. Environment diagnostics verified. Reply 'Go' to proceed."
+   * **Halt condition:** Do not start execution until confirmation received.
+   * **Evidence:** `.artifacts/protocol-3/preflight-checklist.json`
 
----
+3. **`[GUIDELINE]` Note Quality Gate Plan:**
+   * **Action:** Outline planned quality checks (tests, linting, audits) in `execution-session-log.md`.
 
-## 5. THE EXECUTION LOOP
+### STEP 2: Subtask Execution Loop
 
-**WHILE there are unchecked `[ ]` sub-tasks for the CURRENT parent task, follow this loop:**
+1. **`[MUST]` Load Subtask Context:**
+   * **Action:** For each unchecked subtask, gather rule references (`[APPLIES RULES: ...]`), load documentation, and announce context loading.
+   * **Communication:** 
+     > "[CONTEXT LOADED] Subtask {ID} applying rules: {rule list}."
+   * **Evidence:** `.artifacts/protocol-3/context-history.log`
 
-### STEP 1: SUB-TASK CONTEXT LOADING
-1.  **Identify Next Sub-Task:** Identify the **first** unchecked sub-task `[ ]` in the plan file.
-2.  **Load Just-in-Time Rule Context:**
-    *   **[CRITICAL]** Read the sub-task line and identify the `[APPLIES RULES: ...]` directive.
-    *   **[STRICT]** For each rule listed, read its corresponding file to load its content into your active context. This is your primary directive for this sub-task.
-    *   **[STRICT]** Announce the context loading: `[CONTEXT LOADED] Applying rules: {list of rule names}`.
-3.  **Platform Documentation Check:**
-    *   **[STRICT]** If the sub-task or its associated rules involve a specific platform (Cloudflare, Supabase, etc.), you **MUST** consult the official documentation first. Announce your research.
-4.  **Initial Communication:**
-    *   Announce the task itself: `[NEXT TASK] {Task number and name}.`
+2. **`[MUST]` Execute Subtask:**
+   * **Action:** Perform implementation steps using allowed tools, keeping scope limited to the subtask description and loaded rules.
+   * **Evidence:** `.artifacts/protocol-3/subtask-evidence/{ID}/`
 
-### STEP 2: EXECUTION
-1.  **Execute Task:** Use your available tools (for file editing, running terminal commands, etc.) in accordance with the **Tool Usage Protocol** to perform ONLY what is asked by the sub-task, strictly applying the consulted rules and the context gathered in Step 1.
-    *   **[GUIDELINE] Avoid Over-Engineering:** Implement the most direct and simple solution that fulfills the task's requirements. Do not add functionality that wasn't asked for. Prioritize clarity and maintainability over cleverness or premature optimization.
-2.  **Continuous Rule Compliance:** During execution, validate against loaded rules:
-    - **Rule 3:** Code quality standards (error handling, naming, simplicity)
-    - **Rule 5:** Documentation requirements (README updates, context preservation)
-3.  **Self-Verification:** Reread the sub-task description and mentally confirm all criteria have been met.
-4.  **Integrated Quick Review & Validation:**
-    - **Security/Architecture Changes:** If the task affects authentication, permissions, or core architecture, perform quick validation:
-      - Apply: `4-quality-audit.md --mode quick`
-      - If CRITICAL issues found → Fix immediately before continuing
-      - Log validation results for Protocol 4 comprehensive audit
-    - **Database Changes:** If the task involves database migrations, verify:
-      - Migration follows database migration standards from common-rules
-      - Rollback procedure is documented and tested
-      - Data integrity is preserved
-    - **System Integration Check:** If the task involves global state, authentication, or system-wide changes, verify complete integration:
-      - **Global State Tasks:** Check initialization, cleanup, and documentation per global state management rules
-      - **Authentication Tasks:** Verify session initialization and listener setup
-      - **System-wide Changes:** Confirm all affected components are properly integrated
-6.  **UI Component Validation:** If the task involves UI components, verify integration readiness:
-    - **Shadow DOM Communication:** Test cross-component communication and slot access
-    - **External Assets:** Validate icon/font loading and fallback strategies
-    - **Build Tool Compatibility:** Check dynamic imports and bundling warnings
-7.  **Error Handling:** If an error occurs (e.g., a test fails, a command fails), **IMMEDIATELY STOP** the loop. Do NOT check the task as complete. Report the failure to the user and await instructions.
+3. **`[MUST]` Update Task File & Commit Strategy:**
+   * **Action:** Mark subtask as complete in `tasks-{feature}.md`, propose semantic commit message, and log actions in `execution-session-log.md`.
+   * **Evidence:** `.artifacts/protocol-3/task-file-diff.patch`
 
-### STEP 3: UPDATE AND SYNCHRONIZE WITH HYBRID COMMIT STRATEGY
-1.  **[CRITICAL] Update Task File:**
-    *   **[MANDATORY]** Following the **Tool Usage Protocol**, use a file editing tool to change the sub-task's status from `[ ]` to `[x]` in the original task file (`.cursor/tasks/*.md`).
-    *   **[STRICT]** This step is NON-NEGOTIABLE and must be completed before any git operations.
-    *   If all sub-tasks of a parent task are now complete, check the parent task `[x]` as well.
-    *   **[REMINDER]** The task file serves as the authoritative source of truth for project progress.
+4. **`[GUIDELINE]` Capture Quick Validation:**
+   * **Action:** Run targeted tests or linting relevant to subtask and record results.
 
-2.  **[NEW] Hybrid Commit Strategy - Sub-task Level:**
-    *   **[GRANULAR COMMITS]** After EACH completed sub-task that represents a functional unit:
-        - **[MANDATORY]** Propose immediate commit with descriptive message
-        - **Message Format**: `{type}({scope}): {brief description of sub-task}`
-        - **Examples**: 
-          - `feat(iam): implement role inheritance logic`
-          - `test(gateway): add resilience middleware e2e tests`
-          - `fix(billing): handle stripe webhook edge case`
-        - **[CRITICAL]** These granular commits enable precise rollback and debugging in distributed architecture
-    
-3.  **Parent Task Completion Checkpoint:**
-    *   If a parent task was just completed, perform a compliance check and **OPTIONAL** consolidation.
-    *   **[STRICT] Module Documentation Check**: For module development tasks, verify README.md files are generated per module documentation template
-    *   **[CRITICAL] Mandatory Quality Gate Integration:**
-        - **[MANDATORY]** Execute unified `/review` command for comprehensive quality validation
-        - **[STRICT]** Apply: `.cursor/ai-driven-workflow/4-quality-audit.md --mode comprehensive`
-        - **[REQUIRED]** Address any CRITICAL or HIGH priority findings before proceeding
-        - **[COMMUNICATION]** `[QUALITY GATE] Running comprehensive quality audit for parent task completion...`
-        - **[VALIDATION]** Report audit results: `[QUALITY REPORT] Score: X/10. Critical: Y, High: Z. Status: PASS/NEEDS_ATTENTION`
-    *   **[NEW] CI Workflow Status Check:**
-        - **[MUST]** Check CI workflow statuses for the current parent task:
-            ```bash
-            gh run list --workflow=ci-lint.yml --limit 5
-            gh run list --workflow=ci-test.yml --limit 5
-            gh run list --workflow=ci-deploy.yml --limit 5
-            ```
-        - **[MUST]** Include CI results in quality report:
-            - Embed workflow run IDs and URLs
-            - Include status indicators (✅/⚠️/❌)
-            - Reference CI artifacts and logs
-        - **[CRITICAL]** Block parent task completion if critical CI workflows fail:
-            - If `ci-test.yml` fails → Status: NEEDS_ATTENTION
-            - If `ci-lint.yml` fails with strict rules → Status: NEEDS_ATTENTION
-            - If `ci-deploy.yml` fails → Status: NEEDS_ATTENTION
-        - **[COMMUNICATION]** `[CI STATUS] ci-lint.yml: ✅ SUCCESS (https://github.com/org/repo/actions/runs/12345)`
-    *   **[NEW] Consolidation Decision Framework:**
-        - **For feature branches**: Offer `git rebase -i` to squash related commits
-        - **For main branch**: Keep granular history for production debugging
-        - **For releases**: Consolidate into semantic commits before merge
-    *   **Communication Flow:**
-        1.  `[FEATURE CHECK] I have completed the feature '{Parent task name}'. I am proceeding with mandatory quality gate validation.`
-        2.  `[QUALITY GATE] Running comprehensive quality audit...`
-        3.  `[COMPLIANCE REPORT] Quality audit complete. Issues addressed. Documentation validated.`
-        4.  **[HYBRID STRATEGY]** `[GIT STRATEGY] Parent task complete. Options: (A) Keep {X} granular commits for debugging (B) Squash into single semantic commit. Recommend: {A/B based on task complexity}. Confirm?`
-        5.  **[STRICT]** Await explicit confirmation before executing consolidation strategy.
+### STEP 3: Parent Task Completion
 
-> Integration Hand-Off: Steps 3.5, 3.6 ensure downstream automation receives synchronized inputs.
+1. **`[MUST]` Run Comprehensive Quality Gate:**
+   * **Action:** Execute `/review` or `.cursor/ai-driven-workflow/4-quality-audit.md --mode comprehensive`, analyze CI results, and resolve CRITICAL/HIGH findings.
+   * **Communication:** 
+     > "[QUALITY GATE] Running comprehensive audit for parent task {ID}."
+   * **Evidence:** `.artifacts/protocol-3/quality-reports/{parentID}.json`
 
-### STEP 3.5: AUTOMATION ENHANCEMENT - TASK STATE SYNC
+2. **`[MUST]` Sync Task State:**
+   * **Action:** Run `python scripts/update_task_state.py --task-file .cursor/tasks/tasks-{feature}.md --task-id {parentID} --status complete --output .artifacts/protocol-3/task-state.json` and update task tracker.
+   * **Evidence:** `.artifacts/protocol-3/task-state.json`
 
-1. **`[MUST]` Execute Task State Synchronization:**
-   ```bash
-   python scripts/update_task_state.py --task-file tasks-{name}.md --task-id {id} --status complete --output .artifacts/task-state.json
-   ```
-   *   **Action:** Sync task status to central task tracker.
-   *   **Action:** Update task metadata and progress indicators.
+3. **`[MUST]` Document Retrospective Snapshot:**
+   * **Action:** Summarize work, risks, remaining issues in `parent-task-retrospective.md`; note commit decisions.
+   * **Evidence:** `.artifacts/protocol-3/parent-task-retrospective.md`
 
-2. **`[MUST]` Announce State Sync:**
-   ```
-   [AUTOMATION] Task State Synced: {task_id} marked complete
-   ```
-   *   **Action:** Confirm task state synchronization.
+4. **`[GUIDELINE]` Recommend Commit Strategy:**
+   * **Action:** Suggest keeping granular commits or squashing based on complexity; await human confirmation before executing.
 
-### STEP 3.6: AUTOMATION ENHANCEMENT - EVIDENCE CAPTURE
+### STEP 4: Session Closeout
 
-1. **`[MUST]` Execute Evidence Capture:**
-   ```bash
-   python scripts/evidence_report.py --scope task-{id} --output .artifacts/task-{id}-evidence.json
-   ```
-   *   **Action:** Capture test results, coverage, lint reports for current task.
-   *   **Action:** Store evidence artifacts for Protocol 5 retrospective.
+1. **`[MUST]` Record Session Summary:**
+   * **Action:** Update `execution-session-log.md` with completed subtasks, quality gate status, CI outcomes, and approvals.
+   * **Evidence:** `.artifacts/protocol-3/execution-session-log.md`
 
-2. **`[MUST]` Announce Evidence Capture:**
-   ```
-   [AUTOMATION] Evidence Captured: {artifact_count} artifacts stored
-   ```
-   *   **Action:** Display captured evidence summary.
-    *   **[STRICT]** Attach evidence file paths to the task log entry.
+2. **`[MUST]` Archive Evidence:**
+   * **Action:** Ensure subtask artifacts, quality reports, and task diffs stored in `.artifacts/protocol-3/` with manifest `execution-artifact-manifest.json`.
 
-4.  **[NEW] MicroSaaS Architecture Considerations:**
-    *   **Gateway Changes**: Always commit separately from service changes for rollback precision
-        - `feat(gateway): add resilience middleware pattern`
-        - `feat(billing): implement stripe webhook handler` (separate commit)
-    *   **Database Migrations**: Commit migration + related code changes together
-        - `feat(iam): add role inheritance schema and logic`
-    *   **Cross-Service Features**: Use consistent commit prefixes across services
-        - `feat(auth): implement JWT validation` (gateway)
-        - `feat(auth): add user session management` (services)
-    *   **E2E Test Updates**: Commit with related feature, not separately
-        - `feat(iam): implement role inheritance with e2e tests`
-    *   **Infrastructure Changes**: Separate commits for each Cloudflare service
-        - `feat(workers): deploy billing service to production`
-        - `feat(r2): configure asset storage buckets`
-    *   **Supabase Integration**: Group database + API changes
-        - `feat(db): implement RLS policies with API endpoints`
-
-### STEP 4: ENHANCED CHECKPOINT WITH QUALITY GATE
-1.  **Single Validation Point:** Task complete and working?
-2.  **Execution Mode Awareness:**
-    *   **In Focus Mode (Default):**
-        *   **Sub-task:** `Task {Number} complete. Quick review: ✅ PASSED. Commit: {commit_hash}. Continue?`
-        *   **Parent task:** `All tasks complete. {X} commits created. Running mandatory quality gate...`
-    *   **In Continuous Mode:**
-        *   No communication after each sub-task.
-        *   **Parent task:** `Parent task '{Task Name}' complete. {X} sub-tasks executed and {Y} commits created. Running mandatory quality gate...`
-3.  **[NEW] Mandatory Quality Gate Execution:**
-    *   **[CRITICAL]** For parent task completion, automatically execute comprehensive quality audit
-    *   **[COMMUNICATION]** `[QUALITY GATE] Running comprehensive quality audit for production readiness...`
-    *   **[VALIDATION]** Address any CRITICAL/HIGH findings before final checkpoint
-    *   **[REPORT]** `[QUALITY REPORT] Audit complete. Score: X/10. Ready for Protocol 5 (Retrospective).`
-4.  **Resume:** Wait for confirmation (`yes`, `continue`, `ok`) only when required by the current execution mode.
-
-**END OF LOOP**
+3. **`[GUIDELINE]` Prepare Next Session Brief:**
+   * **Action:** Document next parent task recommendation and outstanding blockers for upcoming session.
 
 ---
 
-## 5. COMMUNICATION DIRECTIVES
+## 3. INTEGRATION POINTS
 
--   **Mandatory Prefixes:** Use **exclusively** the defined communication prefixes (`[NEXT TASK]`, `[TASK COMPLETE]`, etc.).
--   **Neutrality:** Your communication is factual and direct. No superfluous pleasantries.
--   **Passive Waiting:** During a `[STOP_AND_WAIT]`, you are in a passive waiting state. You do not ask open-ended questions or anticipate the next steps. 
+### Inputs From:
+- **Protocol 2**: `tasks-{feature}.md`, `task-automation-matrix.json` - Task blueprint and automation references.
+- **Protocol 7**: `ENVIRONMENT-README.md`, `validation-suite-report.json` - Validated environment baseline.
+- **Protocol 4**: Quality audit tooling references used within execution.
+
+### Outputs To:
+- **Protocol 4**: `quality-reports/{parentID}.json`, `execution-session-log.md` - Inputs for quality audits.
+- **Protocol 9**: `execution-artifact-manifest.json`, `task-state.json` - Evidence for integration testing.
+
+### Artifact Storage Locations:
+- `.artifacts/protocol-3/` - Primary evidence storage
+- `.cursor/tasks/` - Task status source of truth
+
+---
+
+## 3. QUALITY GATES
+
+### Gate 1: Preflight Confirmation Gate
+- **Criteria**: Parent task selected, recommended model confirmed, environment readiness validated.
+- **Evidence**: `preflight-checklist.json`, `execution-session-log.md`
+- **Pass Threshold**: Confirmation from human reviewer and environment diagnostics success.
+- **Failure Handling**: Resolve configuration issues, re-run diagnostics, reconfirm model.
+- **Automation**: `python scripts/validate_preflight.py --input .artifacts/protocol-3/preflight-checklist.json`
+
+### Gate 2: Subtask Compliance Gate
+- **Criteria**: Each subtask marked complete with rule references, evidence stored, quick validations run.
+- **Evidence**: `context-history.log`, `subtask-evidence/`
+- **Pass Threshold**: 100% subtasks documented with associated rule IDs and validation outputs.
+- **Failure Handling**: Reopen tasks, gather missing evidence, rerun validations.
+- **Automation**: `python scripts/validate_subtask_compliance.py --task-file .cursor/tasks/tasks-{feature}.md`
+
+### Gate 3: Parent Task Quality Gate
+- **Criteria**: Comprehensive quality audit executed, CI checks captured, outstanding issues resolved or waived.
+- **Evidence**: `quality-reports/{parentID}.json`, CI logs referenced in session log.
+- **Pass Threshold**: Audit status = PASS, CI workflows success or waivers approved.
+- **Failure Handling**: Address audit findings, rerun quality gate, document waivers.
+- **Automation**: `python scripts/validate_quality_gate.py --report .artifacts/protocol-3/quality-reports/{parentID}.json`
+
+### Gate 4: Session Closure Gate
+- **Criteria**: Task state synchronized, evidence manifest updated, next session brief prepared.
+- **Evidence**: `task-state.json`, `execution-artifact-manifest.json`, `execution-session-log.md`
+- **Pass Threshold**: All outputs generated and stored.
+- **Failure Handling**: Regenerate missing artifacts, rerun synchronization script.
+- **Automation**: `python scripts/validate_session_closeout.py --manifest .artifacts/protocol-3/execution-artifact-manifest.json`
+
+---
+
+## 3. COMMUNICATION PROTOCOLS
+
+### Status Announcements:
+```
+[PHASE 1 START] - "Preparing execution session for parent task {ID}."
+[PRE-FLIGHT] - "Recommended model {Model}. Environment verified. Reply 'Go' to proceed."
+[PHASE 2 START] - "Executing subtasks with governance rules loaded."
+[QUALITY GATE] - "Running comprehensive audit and CI checks for parent task {ID}."
+[PHASE 4 START] - "Archiving evidence and summarizing session outcomes."
+[PHASE COMPLETE] - "Execution session closed; evidence archived in .artifacts/protocol-3/."
+[ERROR] - "Execution halted due to [issue]; awaiting instructions."
+```
+
+### Validation Prompts:
+```
+[USER CONFIRMATION REQUIRED]
+> "Parent task {ID} completed. Quality gate results:
+> - Audit score: {score}/10
+> - CI status: {summary}
+>
+> Confirm commit strategy (keep granular/squash) and authorize proceeding to next session?"
+```
+
+### Error Handling:
+```
+[GATE FAILED: Parent Task Quality Gate]
+> "Quality gate 'Parent Task Quality' failed.
+> Criteria: Comprehensive audit must pass and CI workflows succeed.
+> Actual: ci-test.yml failed on integration suite.
+> Required action: Investigate failures, push fixes, rerun quality gate.
+>
+> Options:
+> 1. Fix issues and retry validation
+> 2. Request gate waiver with justification
+> 3. Halt protocol execution"
+```
+
+---
+
+## 3. AUTOMATION HOOKS
+
+### Validation Scripts:
+```bash
+# Prerequisite validation
+python scripts/validate_prerequisites_3.py
+
+# Quality gate automation
+python scripts/validate_preflight.py --input .artifacts/protocol-3/preflight-checklist.json
+python scripts/validate_subtask_compliance.py --task-file .cursor/tasks/tasks-{feature}.md
+python scripts/validate_quality_gate.py --report .artifacts/protocol-3/quality-reports/{parentID}.json
+python scripts/validate_session_closeout.py --manifest .artifacts/protocol-3/execution-artifact-manifest.json
+
+# Evidence aggregation
+python scripts/aggregate_evidence_3.py --output .artifacts/protocol-3/
+```
+
+### CI/CD Integration:
+```yaml
+name: Protocol 3 Validation
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Protocol 3 Gates
+        run: python scripts/run_protocol_3_gates.py
+```
+
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Log manual preflight checks in `manual-preflight.md`.
+2. Perform peer review of subtask evidence; document in `.artifacts/protocol-3/manual-review-notes.md`.
+3. Store manual quality gate approvals in `.artifacts/protocol-3/manual-validation-log.md`.
+
+---
+
+## 3. HANDOFF CHECKLIST
+
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
+
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
+
+### Handoff to Protocol 9:
+**[PROTOCOL COMPLETE]** Ready for Protocol 9: Integration Testing & System Validation
+
+**Evidence Package:**
+- `execution-artifact-manifest.json` - Comprehensive record of execution evidence
+- `task-state.json` - Synchronization record for downstream validation
+
+**Execution:**
+```bash
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/9-integration-testing.md
+```
+
+---
+
+## 3. EVIDENCE SUMMARY
+
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `execution-session-log.md` | `.artifacts/protocol-3/` | Session activity log | Protocol 4 |
+| `context-history.log` | `.artifacts/protocol-3/` | Rule/context traceability | Protocol 4 |
+| `quality-reports/{parentID}.json` | `.artifacts/protocol-3/` | Quality gate results | Protocol 9 |
+| `task-state.json` | `.artifacts/protocol-3/` | Task tracker synchronization | Protocol 9 |
+| `execution-artifact-manifest.json` | `.artifacts/protocol-3/` | Evidence catalog | Protocol 9 |
+
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |

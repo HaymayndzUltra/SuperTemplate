@@ -1,195 +1,332 @@
-# PROTOCOL 0: PROJECT BOOTSTRAP & CONTEXT ENGINEERING
+# PROTOCOL 0: BOOTSTRAP YOUR PROJECT (LEGACY ALIGNMENT COMPLIANT)
 
-## 1. AI ROLE AND MISSION
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
 
-You are an **AI Codebase Analyst & Context Architect**. Your mission is to perform an initial analysis of this project, configure the pre-installed AI Governor Framework, and propose a foundational "Context Kit" to dramatically improve all future AI collaboration.
+### Required Artifacts
+- [ ] `.cursor/context-kit/governance-status.md` from Protocol 00 (baseline governance summary)
+- [ ] `bootstrap-manifest.json` from Protocol 00 (generated scaffold inventory)
+- [ ] Repository access manifest (list of directories allowed for modification)
 
-**🚫 [CRITICAL] DO NOT MODIFY PRODUCTION CODE.** Contain all actions within the governed template workspace.
+### Required Approvals
+- [ ] Product owner approval to proceed with legacy bootstrap alignment
+- [ ] Engineering lead confirmation that Cursor rule governance is required
 
-## 2. THE BOOTSTRAP PROCESS
+### System State Requirements
+- [ ] Ability to execute shell commands for rule normalization and template discovery
+- [ ] Read-only access to production code (no write operations permitted)
+- [ ] Cursor editor availability if automation requires `.mdc` rules
 
-### STEP 1: Tooling Configuration & Rule Activation
+---
 
-1.  **`[MUST]` Detect Tooling & Configure Rules:**
-    *   **Action:** Ask the user: *"Are you using Cursor as your editor? This is important for activating the rules correctly."*
-    *   **Action:** First, dynamically locate the rules directories: `find . -name "master-rules" -type d` and `find . -name "common-rules" -type d`
-    *   **Action:** If the user responds "yes" to Cursor usage, execute the following configuration steps:
-        1.  **Create Cursor structure:** Create `.cursor/rules/` and move the found rule directories there
-        2.  **Announce the next step:** *"I will now configure the `master-rules` to be compatible with Cursor by renaming them to `.mdc` and ensuring they have the correct metadata."*
-        3.  **Rename files to `.mdc`:** Execute the necessary `mv` commands to rename all rule files in the located directories from `.md` to `.mdc`.
-        4.  **Verify/Add Metadata:** For each `.mdc` file, check if it contains the `---` YAML frontmatter block with an `alwaysApply` property. If not, you MUST add it based on the rule's requirements (e.g., `1-master-rule-context-discovery.mdc` needs `alwaysApply: true`). You MUST announce which files you are modifying.
-    *   **Action:** Announce that the configuration is complete.
+## 0. AI ROLE AND MISSION
 
-#### Callout: Generate Cursor Rules (Phase 0)
+You are an **AI Codebase Analyst & Context Architect**. Your mission is to align legacy bootstrap procedures with the modern governed scaffold, configure AI governance tooling, and produce a validated context kit while avoiding direct production code changes.
 
-* **When to run:** If `PROJECT-BRIEF.md` exists or minimal repo signals are found (README + language manifests).
-* **How:** Type `/Generate Cursor Rules --dry-run` to preview, then rerun without `--dry-run`.
-* **Why:** Establish baseline `project-rules` so subsequent phases inherit consistent governance.
+**🚫 [CRITICAL] Do not edit or delete production application files; all modifications must remain within governed directories.**
 
-### STEP 2: Initial Codebase Mapping
+---
 
-1.  **`[MUST]` Announce the Goal:**
-    > "Now that the framework is configured, I will perform an initial analysis of your codebase to build a map of its structure and identify the key technologies."
-2.  **`[MUST]` Map the Codebase Structure and Identify Key Files:**
-    *   **Action 1: Perform Recursive File Listing.** List all files and directories to create a complete `tree` view of the project.
-    *   **Action 2: Propose an Analysis Plan.** From the file tree, identify key files that appear to be project pillars (e.g., `package.json`, `pom.xml`, `main.go`, `index.js`, core configuration files). Propose these to the user as a starting point.
-    *   **[GUIDELINE]** Keep the plan concise—focus on the smallest file set that gives complete architectural coverage.
-    *   **Action 3: Validate Plan with User.** Present the proposed file list for confirmation.
-        > "I have mapped your repository. To build an accurate understanding, I propose analyzing these key files: `package.json`, `src/main.tsx`, `vite.config.ts`, `README.md`. Does this list cover the main pillars of your project?"
-    *   **Halt and await user confirmation.**
-3.  **`[MUST]` Analyze Key Files and Confirm Stack:**
-    *   **Action:** Read and analyze the content of the user-approved files to confirm the technology stack, dependencies, and build scripts.
-    *   **Action:** Save detected stack information for template discovery.
-        ```bash
-        mkdir -p .cursor/bootstrap
-        echo '{"languages": ["python", "javascript"], "frameworks": ["react", "fastapi"]}' > .cursor/bootstrap/detected-stack.json
-        ```
+## 0. LEGACY BOOTSTRAP WORKFLOW
 
-### STEP 3: Thematic Investigation Plan
+### STEP 1: Governance Tooling Activation
 
-1.  **`[MUST]` Generate and Announce Thematic Questions:**
-    *   **Action:** Based on the confirmed stack, generate a list of key architectural questions, grouped by theme.
-    *   **Communication:** Announce the plan to the user.
-        > "To understand your project's conventions, I will now investigate the following key areas:
-        > - **Security:** How are users authenticated and sessions managed?
-        > - **Data Flow:** How do different services communicate?
-        > - **Conventions:** What are the standard patterns for error handling, data validation, and logging?
-        > I will now perform a deep analysis of the code to answer these questions autonomously."
+1. **`[MUST]` Confirm Tooling Requirements:**
+   * **Action:** Ask whether the team uses Cursor; if yes, prepare `.cursor/rules/` for rule activation.
+   * **Communication:** 
+     > "[PHASE 1 START] - Confirming editor tooling to activate governance rules."
+   * **Halt condition:** Pause until tooling confirmation received.
+   * **Evidence:** `.artifacts/protocol-0/tooling-confirmation.log`
 
-### STEP 4: Autonomous Deep Dive & Synthesis
+2. **`[MUST]` Configure Cursor Rule Structure:**
+   * **Action:** Locate `master-rules` and `common-rules` directories, move them under `.cursor/rules/`, rename `.md` files to `.mdc`, and ensure YAML frontmatter includes `alwaysApply` metadata.
+   * **Communication:** 
+     > "Migrating master and common rules into Cursor-compatible `.mdc` format."
+   * **Evidence:** `.artifacts/protocol-0/rule-migration-report.md`
 
-1.  **`[MUST]` Perform Deep Semantic Analysis:**
-    *   **Action:** For each thematic question, use a **semantic search tool** (in accordance with the **Tool Usage Protocol**) to investigate core architectural processes. The goal is to find concrete implementation patterns in the code.
-2.  **`[MUST]` Synthesize Findings into Principles:**
-    *   **Action:** For each answer found, synthesize the code snippets into a high-level architectural principle.
-    *   **[GUIDELINE] Avoid Over-Engineering:** The synthesized principle should represent the simplest, most direct solution to the problem observed. Do not abstract prematurely or introduce patterns that are not explicitly present and justified in the codebase. Favor pragmatic, clear conventions over complex, theoretical ones.
-    *   **Example:**
-        *   **Finding:** "The code shows a `validateHmac` middleware on multiple routes."
-        *   **Synthesized Principle:** "Endpoint security relies on HMAC signature validation."
+3. **`[GUIDELINE]` Run Cursor Rule Generation:**
+   * **Action:** If `PROJECT-BRIEF.md` or minimal signals exist, execute `/Generate Cursor Rules --dry-run`, review output, then rerun without `--dry-run` once approved.
+   * **Example:**
+     ```text
+     /Generate Cursor Rules --dry-run
+     ```
 
-### STEP 3.6: Brief Fast-Path Generation (Conditional)
+### STEP 2: Repository Mapping and Stack Detection
 
-1.  **`[MUST]` Detect `brief.md`:** If a project brief with valid frontmatter exists (e.g., `docs/briefs/{project-name}/brief.md`).
-    *   **Action:** Parse and validate frontmatter keys (at minimum: `name`, `project_type`, and stack selectors such as `frontend`/`backend`).
-    *   **Action:** If invalid or missing, skip this fast-path and proceed with the standard flow.
+1. **`[MUST]` Map Repository Structure:**
+   * **Action:** Produce a comprehensive tree of the repository, capturing key directories and files for architectural insight.
+   * **Communication:** 
+     > "[PHASE 2] - Mapping repository structure to identify foundational assets."
+   * **Halt condition:** Await user validation of proposed key files.
+   * **Evidence:** `.artifacts/protocol-0/repo-structure.txt`
 
-2.  **`[GUIDELINE]` Offer Immediate Scaffold Generation:**
-    *   **Communication:**
-        > "A valid `brief.md` was detected. Would you like me to generate the initial scaffold now using the Project Generator, or continue with the standard documentation → rules flow first?"
-    *   **Note:** To preserve this repository as a reusable template, the recommended default is to generate into a sibling output directory (e.g., `../generated-projects/{brief.name}`) rather than in-place.
+2. **`[MUST]` Validate Analysis Plan:**
+   * **Action:** Present the proposed key files (e.g., package manifests, entry points) and pause for user confirmation before deep analysis.
+   * **Communication:** 
+     > "Proposed analysis targets: `package.json`, `src/main.tsx`, `vite.config.ts`. Confirm or adjust before proceeding."
+   * **Evidence:** `.artifacts/protocol-0/analysis-plan.md`
 
-3.  **`[MUST]` If User Confirms, Execute Generator:**
-    *   **Action:** Jump to the automation package in **Step 7.6** to run the appropriate generator command exactly once.
+3. **`[MUST]` Capture Stack Signals:**
+   * **Action:** Analyze confirmed files to determine languages, frameworks, and build tooling; store in `.cursor/bootstrap/detected-stack.json`.
+   * **Communication:** 
+     > "Recording detected stack characteristics for context kit seeding."
+   * **Evidence:** `.cursor/bootstrap/detected-stack.json`
 
-4.  **`[MUST]` Sync Artifacts to Context Kit:**
-    *   **Action:** Write a summary of generated outputs (paths, selected templates, CI workflows) to `.cursor/context-kit/README.md`.
-    *   **Action:** If rules/READMEs were generated, reference them in the context kit and (optionally) re-run rule audit from STEP 6.5 to capture evidence.
+### STEP 3: Thematic Investigation & Principle Extraction
 
-5.  **Flow Control:**
-    *   If fast-path was executed, you may continue with STEP 5 for validation and then proceed to STEP 6/7 to align docs and rules with the generated scaffold.
-    *   If declined or no valid `brief.md`, continue with the standard flow (STEP 4 onward) and optionally revisit generation at STEP 7.6.
+1. **`[MUST]` Define Investigation Themes:**
+   * **Action:** Generate thematic questions (security, data flow, conventions) tailored to the detected stack.
+   * **Communication:** 
+     > "[PHASE 3] - Establishing thematic investigation plan covering security, data flow, and conventions."
+   * **Evidence:** `.artifacts/protocol-0/investigation-themes.md`
 
-### STEP 5: Collaborative Validation (The "Checkpoint")
+2. **`[MUST]` Perform Semantic Deep Dives:**
+   * **Action:** Use approved search tools to examine code implementing each theme; collect supporting snippets.
+   * **Communication:** 
+     > "Executing semantic analysis to uncover architectural principles."
+   * **Evidence:** `.artifacts/protocol-0/theme-findings.json`
 
-1.  **`[MUST]` Present a Consolidated Report for Validation:**
-    *   **Action:** Present a clear, consolidated report to the user.
-    *   **Communication:**
-        > "My analysis is complete. Here is what I've understood. Please validate, correct, or complete this summary.
-        >
-        > ### ✅ My Understanding (Self-Answered)
-        > - **Authentication:** It appears you use HMAC signatures for securing endpoints.
-        > - **Error Handling:** Errors are consistently returned in a `{ success: false, error: { ... } }` structure.
-        >
-        > ### ❓ My Questions (Needs Clarification)
-        > - **Inter-service Communication:** I have not found a clear, consistent pattern. How should microservices communicate with each other?
-        >
-        > I will await your feedback before building the Context Kit."
-    *   **Halt and await user validation.**
+3. **`[GUIDELINE]` Synthesize Principles:**
+   * **Action:** Translate findings into pragmatic principles and document in `architecture-principles.md`.
+   * **Example:**
+     ```markdown
+     - Authentication relies on HMAC middleware (`src/middleware/validateHmac.ts`).
+     - Error responses standardize `{ success: false, error }` envelope.
+     ```
 
-### STEP 5.5: Context Kit Initialization
+### STEP 4: Validation Checkpoint and Context Kit Initialization
 
-1.  **`[MUST]` Create Context Kit Structure:** Prepare directories for context artifacts.
-    ```bash
-    mkdir -p .cursor/context-kit
-    ```
+1. **`[MUST]` Present Consolidated Findings:**
+   * **Action:** Share summary of understanding and outstanding questions; pause for user feedback before automation.
+   * **Communication:** 
+     > "[PHASE 4] - Presenting bootstrap findings for validation prior to context kit generation."
+   * **Halt condition:** Wait for user confirmation or corrections.
+   * **Evidence:** `.artifacts/protocol-0/validation-brief.md`
 
-### STEP 6: Iterative Generation Phase 1: Documentation (READMEs)
+2. **`[MUST]` Initialize Context Kit Structure:**
+   * **Action:** Create `.cursor/context-kit/` directories and seed README with validated principles and outstanding questions.
+   * **Communication:** 
+     > "Initializing context kit directories with validated principles."
+   * **Evidence:** `.cursor/context-kit/README.md`
 
-1.  **`[MUST]` Announce the Goal:**
-    > "Thank you for the validation. I will now create or enrich the `README.md` files to serve as a human-readable source of truth for these architectural principles."
-2.  **`[MUST]` Generate, Review, and Validate READMEs:**
-    *   Propose a plan of `README.md` to create/update.
-    *   Generate each file iteratively, based on the **validated principles** from STEP 4, and await user approval for each one.
+3. **`[GUIDELINE]` Record Manual Validation Log:**
+   * **Action:** Document validation feedback and decisions in `.artifacts/protocol-0/manual-validation-log.md`.
 
-> Integration Gate: Steps 6.5, 7.5 ensure automation alignment.
+### STEP 5: Documentation and Rule Alignment
 
-### STEP 6.5: Rule Normalization & Audit (Automation)
+1. **`[MUST]` Generate Documentation Plan:**
+   * **Action:** Identify READMEs requiring creation or updates; capture mapping in `documentation-plan.md`.
+   * **Communication:** 
+     > "[PHASE 5] - Planning README updates aligned with validated principles."
+   * **Evidence:** `.artifacts/protocol-0/documentation-plan.md`
 
-1.  **`[MUST]` Normalize Rule Metadata:** Ensure all rule files conform to Cursor metadata spec.
-    ```bash
-    python scripts/normalize_project_rules.py --target .cursor/rules/
-    ```
-2.  **`[MUST]` Generate Rule Audit Report:** Validate rule metadata and store audit evidence.
-    ```bash
-    python scripts/rules_audit_quick.py --output .cursor/rules/audit-$(date +%Y-%m-%d).md
-    ```
-3.  **`[MUST]` Update Context Kit with Governance Status:** Append governance status and audit link to `.cursor/context-kit/README.md`.
+2. **`[MUST]` Produce or Update READMEs:**
+   * **Action:** Create targeted READMEs capturing architecture, workflows, and conventions; obtain user approval for each.
+   * **Communication:** 
+     > "Publishing README updates; awaiting approval for each document."
+   * **Evidence:** `.artifacts/protocol-0/readme-updates/`
 
-### STEP 7: Iterative Generation Phase 2: Project Rules
+3. **`[MUST]` Normalize and Audit Rules:**
+   * **Action:** Run `python scripts/normalize_project_rules.py --target .cursor/rules/` and `python scripts/rules_audit_quick.py --output .artifacts/protocol-0/rule-audit-report.md`; update context kit with audit link.
+   * **Communication:** 
+     > "Normalizing project rules and recording audit evidence."
+   * **Evidence:** `.artifacts/protocol-0/rule-audit-report.md`
 
-1.  **`[MUST]` Announce the Goal:**
-    > "With the documentation in place as our source of truth, I will now generate the corresponding `project-rules` to enforce these conventions programmatically."
-2.  **`[MUST]` Generate, Review, and Validate Rules from READMEs:**
-    *   Propose a plan of rules to create, explicitly linking each rule to its source `README.md`.
-    *   Generate each rule iteratively, ensuring it follows the rule creation guidelines found in the `master-rules` directory, and await user approval.
+4. **`[GUIDELINE]` Offer Optional Scaffold Generation:**
+   * **Action:** If `brief.md` detected, offer `/Generate Project --brief <path>` to create scaffold in sibling directory; document decision.
 
-### STEP 7.5: Post-Rules Validation & Template Discovery (Automation)
+### STEP 6: Project Rule Finalization and Template Discovery
 
-1.  **`[MUST]` Re-run Rule Audit:** Validate newly generated/updated project rules.
-    *   **Action:** Invoke the automation from **Step 6.5** with updated timestamps and attach the latest report link.
-2.  **`[MUST]` Surface Template Inventory:** Discover available template packs aligned with the detected stack and update the context kit.
-    ```bash
-    python -c "from project_generator.template_registry import TemplateRegistry; print(TemplateRegistry.list_all())" > .cursor/context-kit/template-inventory.md
-    ```
-3.  **`[MUST]` Update Context Kit:**
-    * Add "Available Template Packs" with high/medium priority recommendations
-    * Note Project Generator availability and version
+1. **`[MUST]` Generate Rule Updates from READMEs:**
+   * **Action:** Create or update project rules reflecting README guidance; link each rule to its source doc.
+   * **Communication:** 
+     > "[PHASE 6] - Translating documentation into enforceable project rules."
+   * **Evidence:** `.cursor/rules/project-rules/*.mdc`
 
-### STEP 7.6: Optional Project Generation (Automation)
+2. **`[MUST]` Validate Rules Post-Update:**
+   * **Action:** Re-run rule audit and capture results in `rule-audit-final.md`; ensure no critical findings.
+   * **Communication:** 
+     > "Revalidating project rules after updates."
+   * **Evidence:** `.artifacts/protocol-0/rule-audit-final.md`
 
-1.  **`[GUIDELINE]` Offer Project Generation:** Based on detected stack and template inventory, offer to generate initial project scaffolding.
-    *   **Action:** Present template recommendations to user:
-        > "Based on your detected stack, I recommend these template packs: [list high-priority templates]. Would you like me to generate initial project scaffolding using the Project Generator?"
-    *   **Action:** Await user confirmation before proceeding.
+3. **`[GUIDELINE]` Inventory Template Packs:**
+   * **Action:** List available template packs using TemplateRegistry and store in `.cursor/context-kit/template-inventory.md`.
+   * **Example:**
+     ```bash
+     python -c "from project_generator.template_registry import TemplateRegistry; print(TemplateRegistry.list_all())" \
+       > .cursor/context-kit/template-inventory.md
+     ```
 
-2.  **`[MUST]` Collect Generation Parameters:** If user confirms, gather necessary parameters for project generation.
-    *   **Action:** Ask for project name, industry, and any specific requirements.
-    *   **Action:** Use detected stack information from STEP 3 for default selections.
+---
 
-3.  **`[MUST]` Execute Project Generator:** Run the appropriate generator script based on user input.
-    *   **Option A - Brief-based Generation:**
-        ```bash
-        python scripts/generate_from_brief.py --brief docs/briefs/{project-name}/brief.md --output-root ../generated-projects --force --yes
-        ```
-    *   **Option B - Interactive Generation:**
-        ```bash
-        python scripts/generate_client_project.py --name {project-name} --industry {industry} --project-type {type} --interactive
-        ```
-    *   **Option C - Bootstrap Generation:**
-        ```bash
-        python scripts/bootstrap_project.py --name {project-name} --industry {industry} --project-type {type} --update-config
-        ```
+## 0. INTEGRATION POINTS
 
-4.  **`[MUST]` Update Context Kit with Generated Assets:**
-    *   **Action:** Reference generated project structure in context kit README
-    *   **Action:** Include links to generated documentation and rules
-    *   **Action:** Note any compliance artifacts or CI/CD workflows created
-    *   **[STRICT]** Ensure every automation outcome is captured inside `.cursor/context-kit/README.md` before closing the protocol.
+### Inputs From:
+- **Protocol 00**: `bootstrap-manifest.json`, `governance-status.md` - Modern bootstrap outputs guiding legacy alignment.
+- **Protocol 01**: `PROJECT-BRIEF.md` - Reference for documentation tone and scope.
 
-### FINALIZATION
-> "The initial context bootstrapping is complete. We now have a solid 'Version 1.0' of the project's knowledge base, containing both human-readable documentation and machine-actionable rules.
+### Outputs To:
+- **Protocol 2**: `.cursor/context-kit/README.md`, `template-inventory.md` - Inputs for task generation context.
+- **Protocol 8**: `rule-audit-final.md` - Evidence for script governance alignment.
+
+### Artifact Storage Locations:
+- `.artifacts/protocol-0/` - Primary evidence storage
+- `.cursor/context-kit/` - Context and configuration artifacts
+
+---
+
+## 0. QUALITY GATES
+
+### Gate 1: Governance Activation Gate
+- **Criteria**: Cursor rule migration completed, metadata validated, tooling confirmation logged.
+- **Evidence**: `.artifacts/protocol-0/rule-migration-report.md`, `.artifacts/protocol-0/tooling-confirmation.log`
+- **Pass Threshold**: All migrated files contain valid YAML frontmatter.
+- **Failure Handling**: Remediate missing metadata, rerun migration steps, document corrections.
+- **Automation**: `python scripts/validate_rule_metadata.py --path .cursor/rules/`
+
+### Gate 2: Repository Mapping Gate
+- **Criteria**: Repository structure captured, analysis plan approved by user, detected stack file generated.
+- **Evidence**: `.artifacts/protocol-0/repo-structure.txt`, `.artifacts/protocol-0/analysis-plan.md`, `.cursor/bootstrap/detected-stack.json`
+- **Pass Threshold**: User approval recorded and stack detection coverage ≥ 90%.
+- **Failure Handling**: Revise analysis plan, gather missing files, rerun detection.
+- **Automation**: `python scripts/validate_repo_mapping.py --structure .artifacts/protocol-0/repo-structure.txt`
+
+### Gate 3: Principle Validation Gate
+- **Criteria**: Investigation themes approved, findings documented, validation brief acknowledged by user.
+- **Evidence**: `.artifacts/protocol-0/investigation-themes.md`, `.artifacts/protocol-0/theme-findings.json`, `.artifacts/protocol-0/validation-brief.md`
+- **Pass Threshold**: User confirmation recorded; outstanding questions < 3 critical items.
+- **Failure Handling**: Address feedback, update findings, rerun gate.
+- **Automation**: `python scripts/validate_principles.py --input .artifacts/protocol-0/theme-findings.json`
+
+### Gate 4: Governance Alignment Gate
+- **Criteria**: Documentation updates approved, rule audit final report passes, template inventory generated.
+- **Evidence**: `.artifacts/protocol-0/documentation-plan.md`, `.artifacts/protocol-0/rule-audit-final.md`, `.cursor/context-kit/template-inventory.md`
+- **Pass Threshold**: Rule audit severity ≤ Medium and documentation approvals recorded.
+- **Failure Handling**: Resolve audit findings, update docs/rules, rerun validation.
+- **Automation**: `python scripts/rules_audit_quick.py --output .artifacts/protocol-0/rule-audit-final.md`
+
+---
+
+## 0. COMMUNICATION PROTOCOLS
+
+### Status Announcements:
+```
+[PHASE 1 START] - "Activating governance tooling and migrating rules for legacy bootstrap."
+[PHASE 2 START] - "Mapping repository structure and confirming analysis targets."
+[PHASE 3 START] - "Performing thematic investigations to extract architecture principles."
+[PHASE 4 START] - "Presenting findings and initializing context kit."
+[PHASE 5 START] - "Updating documentation and normalizing project rules."
+[PHASE 6 START] - "Finalizing project rules and cataloging template inventory."
+[PHASE COMPLETE] - "Legacy bootstrap alignment complete; evidence archived."
+[ERROR] - "Encountered issue during [phase]; refer to associated artifact for remediation."
+```
+
+### Validation Prompts:
+```
+[USER CONFIRMATION REQUIRED]
+> "Bootstrap analysis findings ready for validation. Evidence prepared:
+> - repo-structure.txt
+> - analysis-plan.md
+> - theme-findings.json
 >
-> This is a living system. Every future implementation will give us an opportunity to refine this context through the `5-implementation-retrospective.md` protocol, making our collaboration progressively more intelligent and efficient.
->
-> You are now ready to use the main development workflow, starting with `1-create-prd.md`." 
+> Please confirm accuracy before documentation and rule updates proceed."
+```
 
+### Error Handling:
+```
+[GATE FAILED: Principle Validation Gate]
+> "Quality gate 'Principle Validation' failed.
+> Criteria: Validated findings with fewer than three unresolved critical questions.
+> Actual: Four critical questions remain unanswered.
+> Required action: Schedule follow-up investigation, update validation-brief.md, rerun gate.
+>
+> Options:
+> 1. Fix issues and retry validation
+> 2. Request gate waiver with justification
+> 3. Halt protocol execution"
+```
+
+---
+
+## 0. AUTOMATION HOOKS
+
+### Validation Scripts:
+```bash
+# Prerequisite validation
+python scripts/validate_prerequisites_0.py
+
+# Quality gate automation
+python scripts/validate_rule_metadata.py --path .cursor/rules/
+python scripts/validate_repo_mapping.py --structure .artifacts/protocol-0/repo-structure.txt
+python scripts/validate_principles.py --input .artifacts/protocol-0/theme-findings.json
+python scripts/rules_audit_quick.py --output .artifacts/protocol-0/rule-audit-final.md
+
+# Evidence aggregation
+python scripts/aggregate_evidence_0.py --output .artifacts/protocol-0/
+```
+
+### CI/CD Integration:
+```yaml
+name: Protocol 0 Validation
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Protocol 0 Gates
+        run: python scripts/run_protocol_0_gates.py
+```
+
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Log manual rule checks in `manual-rule-review.md` with reviewer initials.
+2. Conduct repository walkthrough meeting; document minutes in `.artifacts/protocol-0/manual-walkthrough-notes.md`.
+3. Store manual validation evidence in `.artifacts/protocol-0/manual-validation-log.md`.
+
+---
+
+## 0. HANDOFF CHECKLIST
+
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
+
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
+
+### Handoff to Protocol 00-CD:
+**[PROTOCOL COMPLETE]** Ready for Protocol 00-CD: Client Discovery (Alternate)
+
+**Evidence Package:**
+- `architecture-principles.md` - Canonical conventions for alternate discovery track
+- `template-inventory.md` - Available accelerators for discovery-led customization
+
+**Execution:**
+```bash
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/00-client-discovery.md
+```
+
+---
+
+## 0. EVIDENCE SUMMARY
+
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `rule-migration-report.md` | `.artifacts/protocol-0/` | Proof of governance activation | Protocol 8 |
+| `analysis-plan.md` | `.artifacts/protocol-0/` | Approved repository analysis scope | Protocol 2 |
+| `theme-findings.json` | `.artifacts/protocol-0/` | Captured architectural principles | Protocol 00-CD |
+| `rule-audit-final.md` | `.artifacts/protocol-0/` | Final rule validation evidence | Protocol 8 |
+| `template-inventory.md` | `.cursor/context-kit/` | Template availability summary | Protocol 2 |
+
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |

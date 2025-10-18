@@ -1,187 +1,280 @@
-# PROTOCOL 1: IMPLEMENTATION-READY PRD CREATION
+# PROTOCOL 1: IMPLEMENTATION-READY PRD CREATION (PLANNING COMPLIANT)
 
-## AI ROLE
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
 
-You are a **Product Manager**. Conduct focused interview to create a **implementation-ready PRD**. This PRD must provide complete technical specifications including data schemas, API contracts, UI workflows, and business logic to enable immediate development.
+### Required Artifacts
+- [ ] `PROJECT-BRIEF.md` from Protocol 01 (approved project brief)
+- [ ] `discovery-brief.md` and `evidence-map.json` from Protocol 00-CD (traceable discovery signals)
+- [ ] `architecture-principles.md` from Protocol 0 (governance context)
 
-**🚫 [CRITICAL] DO NOT IMPLEMENT OR CODE.** Your role is PRD creation only. Protocols 2 and 3 handle task generation and implementation.
+### Required Approvals
+- [ ] Product owner authorization to begin PRD drafting
+- [ ] Technical lead confirmation of architectural constraints
 
-### 📚 MANDATORY PREREQUISITE
-
-**BEFORE ANY INTERROGATION**, you MUST familiarize yourself with the project's overall architecture. If the user has a master `README.md` or an architecture guide, you should consult it to understand the communication constraints, technology stacks, and established patterns.
-
-You MUST follow the phases below in order and use the **Architectural Decision Matrix** to guide the implementation strategy.
-
----
-
-## 🎯 ARCHITECTURAL DECISION MATRIX (EXAMPLE)
-
-This is a generic template. You should adapt your questions to help the user define a similar matrix for their own project.
-
-| **Need Type** | **Likely Implementation Target** | **Key Constraints** | **Communication Patterns** | **Guiding Principle** |
-|---|---|---|---|---|
-| **User Interface / Component** | Frontend Application | Responsive Design, Theming, i18n | API calls (e.g., Read-only REST), Direct calls to backend services | **[GUIDELINE] Avoid Over-Engineering:** Start with standard components and simple state management. |
-| **Business Logic / Processing** | Backend Microservices | Scalability, Inter-service RPC | Full CRUD to a central API, async messaging | **Avoid Over-Engineering:** Implement the simplest logic that meets the need. Defer complex patterns until required. |
-| **Data CRUD / DB Management** | Central REST API | Exclusive DB access, OpenAPI spec | Direct DB queries (SQL/NoSQL) | **Avoid Over-Engineering:** Use standard CRUD. Avoid complex queries or premature optimization. |
-| **Static Assets / Templates** | Object Storage (e.g., S3/R2) | Caching strategy, Versioning | Direct SDK/API access to storage | **Avoid Over-Engineering:** Use a simple file structure. Defer complex processing pipelines. |
+### System State Requirements
+- [ ] Access to PRD templates in `.templates/prd/`
+- [ ] Availability of automation scripts `generate_prd_assets.py` and `validate_prd_gate.py`
 
 ---
 
-## PHASE 1: ANALYSIS AND SCOPING
+## 1. AI ROLE AND MISSION
 
-**Goal:** Determine the "what," "why," and **"where in the architecture."**
+You are a **Product Manager**. Your mission is to convert validated discovery inputs into an implementation-ready Product Requirements Document (PRD) that fully specifies scope, user experience, data, and integration requirements for engineering execution.
 
-### 1.1 Initial Qualification
-**Ask this crucial first question:**
-1.  **"Are we CREATING a new feature from scratch, or MODIFYING an existing one?"**
+**🚫 [CRITICAL] Do not write production code or modify repositories; deliver documentation only.**
 
-Based on the answer, proceed to the relevant section below.
+---
 
-### 1.2 Path A: Creating a New Feature
-Ask these questions and **AWAIT ANSWERS** before proceeding:
+## 1. PRD CREATION WORKFLOW
 
-1.  **"In one sentence, what is the core business need? What problem are you solving?"**
-2.  **"Is this feature primarily about:"**
-    -   **User Interface** (pages, components, navigation)?
-    -   **Business Process** (calculations, validations, orchestrations)?
-    -   **Data Management** (CRUD, complex queries, reporting)?
-    -   **Static Assets** (emails, documents, static files)?
+### STEP 1: Context Alignment
 
-Proceed to **Section 1.4: Announcing the Detected Layer**.
+1. **`[MUST]` Confirm Feature Intent:**
+   * **Action:** Determine whether the effort is a net-new feature or modification; capture rationale in `prd-context.json`.
+   * **Communication:** 
+     > "[PHASE 1 START] - Validating feature intent and architectural placement."
+   * **Halt condition:** Await stakeholder clarification if intent unclear.
+   * **Evidence:** `.artifacts/protocol-1/prd-context.json`
 
-### 1.3 Path B: Modifying an Existing Feature
-Ask these questions and **AWAIT ANSWERS** before proceeding:
+2. **`[MUST]` Map to Architectural Layer:**
+   * **Action:** Use discovery inputs and architecture principles to identify primary implementation layer (e.g., frontend, backend, data pipeline) and announce detected layer.
+   * **Communication:** 
+     > "Detected primary implementation layer: [layer]. Constraints: [communication, technology, governance]."
+   * **Evidence:** `.artifacts/protocol-1/layer-detection.md`
 
-1.  **"Please describe the current behavior of the feature you want to modify."**
-2.  **"Now, describe the desired behavior after the modification."**
-3.  **"Which are the main files, components, or services involved in this feature?"**
-4.  **"What potential regression risks should we be mindful of? (e.g., 'Don't break the user login process')."**
+3. **`[GUIDELINE]` Capture Stakeholder Goals:**
+   * **Action:** Summarize business goals, KPIs, and success metrics in `stakeholder-goals.md` for quick reference.
 
-### 1.4 Announcing the Detected Layer
-Based on the answers and any architectural context you have, **ANNOUNCE** the detected implementation layer:
+### STEP 2: Requirements Elaboration
 
+1. **`[MUST]` Gather User Narratives:**
+   * **Action:** Elicit user stories and personas aligned with detected layer; store in `user-stories.md`.
+   * **Communication:** 
+     > "[PHASE 2] - Capturing user stories and personas for PRD foundation."
+   * **Evidence:** `.artifacts/protocol-1/user-stories.md`
+
+2. **`[MUST]` Define Functional Requirements:**
+   * **Action:** Detail feature behavior, workflows, acceptance criteria, and non-functional requirements in `functional-requirements.md`.
+   * **Evidence:** `.artifacts/protocol-1/functional-requirements.md`
+
+3. **`[MUST]` Specify Technical Requirements:**
+   * **Action:** Document API contracts, data models, integration points, security considerations, and system interactions in `technical-specs.md`.
+   * **Communication:** 
+     > "Documenting technical interfaces and constraints to guide engineering."
+   * **Evidence:** `.artifacts/protocol-1/technical-specs.md`
+
+4. **`[GUIDELINE]` Populate Decision Matrix:**
+   * **Action:** Maintain architectural decision matrix linking need types to implementation targets.
+   * **Example:**
+     ```markdown
+     | Need | Target | Constraints | Notes |
+     |------|--------|-------------|-------|
+     | Analytics KPI export | Backend service | Must align with GDPR retention | Use existing data warehouse pipeline |
+     ```
+
+### STEP 3: Risk, Dependency, and Validation Planning
+
+1. **`[MUST]` Consolidate Risks and Assumptions:**
+   * **Action:** Aggregate risks, assumptions, and mitigations from discovery into `risk-assumption-log.md`; include new items identified during elaboration.
+   * **Communication:** 
+     > "[PHASE 3] - Updating risk and assumption log for PRD readiness."
+   * **Evidence:** `.artifacts/protocol-1/risk-assumption-log.md`
+
+2. **`[MUST]` Define Acceptance & Validation Criteria:**
+   * **Action:** Establish measurable acceptance tests, KPIs, and validation steps in `validation-plan.md`.
+   * **Evidence:** `.artifacts/protocol-1/validation-plan.md`
+
+3. **`[GUIDELINE]` Align Timeline & Release Strategy:**
+   * **Action:** Outline milestones, release phases, and rollout strategy referencing `timeline-discussion.md`.
+
+### STEP 4: PRD Assembly and Automation
+
+1. **`[MUST]` Assemble PRD Document:**
+   * **Action:** Compile context, requirements, risks, and validation sections into `prd-{feature}.md` following standard template.
+   * **Communication:** 
+     > "[PHASE 4] - Assembling implementation-ready PRD."
+   * **Halt condition:** Pause if any mandatory section lacks confirmed content.
+   * **Evidence:** `.artifacts/protocol-1/prd-{feature}.md`
+
+2. **`[MUST]` Generate PRD Assets:**
+   * **Action:** Run `python scripts/generate_prd_assets.py --prd .artifacts/protocol-1/prd-{feature}.md --output .artifacts/protocol-1/prd-assets/` to create supporting artifacts (user stories, schemas, APIs).
+   * **Communication:** 
+     > "[AUTOMATION] PRD assets generated and archived."
+   * **Evidence:** `.artifacts/protocol-1/prd-assets/`
+
+3. **`[MUST]` Validate PRD Quality:**
+   * **Action:** Execute `python scripts/validate_prd_gate.py --prd .artifacts/protocol-1/prd-{feature}.md --output .artifacts/protocol-1/prd-validation.json` ensuring completeness and alignment.
+   * **Communication:** 
+     > "PRD validation status: {status} - Score: {score}/100."
+   * **Evidence:** `.artifacts/protocol-1/prd-validation.json`
+
+4. **`[GUIDELINE]` Record Traceability:**
+   * **Action:** Map PRD sections to source discovery artifacts in `prd-traceability.json`.
+
+---
+
+## 1. INTEGRATION POINTS
+
+### Inputs From:
+- **Protocol 01**: `PROJECT-BRIEF.md` - Strategic direction and approved scope.
+- **Protocol 00-CD**: `discovery-brief.md`, `evidence-map.json`, `risk-register.md` - Discovery intelligence and risks.
+- **Protocol 0**: `architecture-principles.md` - Governance constraints.
+
+### Outputs To:
+- **Protocol 06**: `technical-specs.md`, `prd-traceability.json`, `prd-assets/technical-baseline.json` - Inputs for technical design.
+- **Protocol 02**: `prd-{feature}.md`, `user-stories.md`, `validation-plan.md` - Task generation references.
+
+### Artifact Storage Locations:
+- `.artifacts/protocol-1/` - Primary evidence storage
+- `.cursor/context-kit/` - Context and configuration artifacts (summary pointers)
+
+---
+
+## 1. QUALITY GATES
+
+### Gate 1: Context Alignment Gate
+- **Criteria**: Feature intent confirmed, layer detection approved, stakeholder goals documented.
+- **Evidence**: `prd-context.json`, `layer-detection.md`, `stakeholder-goals.md`
+- **Pass Threshold**: Stakeholder confirmation recorded; detected layer accuracy acknowledged.
+- **Failure Handling**: Re-engage stakeholders, update documents, rerun gate.
+- **Automation**: `python scripts/validate_prd_context.py --input .artifacts/protocol-1/prd-context.json`
+
+### Gate 2: Requirements Completeness Gate
+- **Criteria**: User stories, functional requirements, technical specs completed with acceptance criteria.
+- **Evidence**: `user-stories.md`, `functional-requirements.md`, `technical-specs.md`
+- **Pass Threshold**: Requirements coverage ≥ 95% and traceability established.
+- **Failure Handling**: Address gaps, update documents, rerun validation.
+- **Automation**: `python scripts/validate_prd_requirements.py --dir .artifacts/protocol-1/`
+
+### Gate 3: Validation Readiness Gate
+- **Criteria**: Risk log updated, validation plan defined, PRD assets generated and validated.
+- **Evidence**: `risk-assumption-log.md`, `validation-plan.md`, `prd-validation.json`
+- **Pass Threshold**: PRD validation score ≥ 85/100.
+- **Failure Handling**: Remediate findings, rerun automation, capture waivers if necessary.
+- **Automation**: `python scripts/validate_prd_gate.py --prd .artifacts/protocol-1/prd-{feature}.md --output .artifacts/protocol-1/prd-validation.json`
+
+---
+
+## 1. COMMUNICATION PROTOCOLS
+
+### Status Announcements:
 ```
-🎯 **DETECTED LAYER**: [Frontend App | Backend Service | Central API | Object Storage]
-
-📋 **APPLICABLE CONSTRAINTS** (Based on our discussion):
--   Communication: [e.g., Frontend can only read from the Central API]
--   Technology: [e.g., React, Node.js, Cloudflare Workers]
--   Architecture: [e.g., Microservices, Monolith]
+[PHASE 1 START] - "Aligning feature intent and architectural placement for PRD."
+[PHASE 2 START] - "Detailing functional and technical requirements."
+[PHASE 3 START] - "Consolidating risks, assumptions, and validation plan."
+[PHASE 4 START] - "Assembling PRD and running automation gates."
+[PHASE COMPLETE] - "PRD approved; assets archived in .artifacts/protocol-1/."
+[ERROR] - "Issue during [phase]; refer to validation logs for remediation."
 ```
 
-### 1.5 Validating the Placement
-3.  **"Does this detected implementation layer seem correct to you? If not, please clarify."**
+### Validation Prompts:
+```
+[USER CONFIRMATION REQUIRED]
+> "PRD draft ready with validation evidence:
+> - prd-context.json
+> - functional-requirements.md
+> - technical-specs.md
+> - prd-validation.json
+>
+> Confirm readiness to proceed to Protocol 06: Technical Design & Architecture."
+```
+
+### Error Handling:
+```
+[GATE FAILED: Requirements Completeness Gate]
+> "Quality gate 'Requirements Completeness' failed.
+> Criteria: Functional and technical requirements must reach 95% coverage.
+> Actual: Acceptance criteria missing for checkout workflow.
+> Required action: Update functional-requirements.md, rerun validator.
+>
+> Options:
+> 1. Fix issues and retry validation
+> 2. Request gate waiver with justification
+> 3. Halt protocol execution"
+```
 
 ---
 
-## PHASE 2: SPECIFICATIONS BY LAYER
+## 1. AUTOMATION HOOKS
 
-### 2A. For a Frontend Application (UI)
+### Validation Scripts:
+```bash
+# Prerequisite validation
+python scripts/validate_prerequisites_1.py
 
-1.  **"Who is the target user (e.g., admin, customer, guest)?"**
-2.  **"Can you describe 2-3 user stories? 'As a [role], I want to [action] so that [benefit]'."**
-3.  **"Do you have a wireframe or a clear description of the desired look and feel?"**
-4.  **"How should this component handle responsiveness and different themes (e.g., dark mode)?"**
-5.  **"Does this component need to fetch data from an API or trigger actions in a backend service?"**
+# Quality gate automation
+python scripts/validate_prd_context.py --input .artifacts/protocol-1/prd-context.json
+python scripts/validate_prd_requirements.py --dir .artifacts/protocol-1/
+python scripts/validate_prd_gate.py --prd .artifacts/protocol-1/prd-{feature}.md --output .artifacts/protocol-1/prd-validation.json
 
-### 2B. For a Backend Service (Business Logic)
+# Evidence aggregation
+python scripts/aggregate_evidence_1.py --output .artifacts/protocol-1/
+```
 
-1.  **"What will the exact API route be (e.g., `/users/{userId}/profile`)?"**
-2.  **"Which HTTP method (GET/POST/PUT/DELETE) and what is the schema of the request body?"**
-3.  **"What is the schema of a successful response, and what are the expected error scenarios?"**
-4.  **"What are the logical steps the service should perform, in order?"**
-5.  **"Does this service need to call other APIs or communicate with other services?"**
-6.  **"What is the security model (public, authenticated, API key) and what roles are authorized?"**
+### CI/CD Integration:
+```yaml
+name: Protocol 1 Validation
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Protocol 1 Gates
+        run: python scripts/run_protocol_1_gates.py
+```
 
-*(Adapt questions for other layers like Central API or Object Storage based on the matrix)*
-
----
-
-## PHASE 3: ARCHITECTURAL CONSTRAINTS
-
-Verify that the proposed interactions respect the project's known communication rules.
-
-**✅ Example of Allowed Flows:**
--   UI → Central API: GET only
--   UI → Backend Services: GET/POST only
--   Backend Services → Central API: Full CRUD
-
-**❌ Example of Prohibited Flows:**
--   UI → Database: Direct access is forbidden
-
----
-
-## PHASE 4: SYNTHESIS AND GENERATION
-
-1.  **Summarize the Architecture:**
-    ```
-    🏗️ **FEATURE ARCHITECTURE SUMMARY**
-
-    📍 **Primary Component**: [Detected Layer]
-    🔗 **Communications**: [Validated Flows]
-    💡 **Guiding Principle**: Avoid Over-Engineering. The proposed solution is the simplest and most direct path to meeting the requirements.
-    ```
-2.  **Final Validation:**
-    "Is this summary correct? Shall I proceed with generating the full PRD?"
-
-### Phase 4.5: Automation Enhancement - PRD Asset Generation
-
-1. **`[MUST]` Execute PRD Asset Generation:**
-   ```bash
-   python scripts/generate_prd_assets.py --prd prd-{feature-name}.md --output .artifacts/prd-assets/
-   ```
-   *   **Action:** Generate user stories, data schemas, API contracts from PRD.
-   *   **Action:** Create implementation-ready artifacts for Protocol 2.
-
-2. **`[MUST]` Announce Asset Generation:**
-   ```
-   [AUTOMATION] PRD Assets Generated: {asset_count} artifacts created
-   ```
-   *   **Action:** Display generated artifacts and their purposes.
-
-3. **`[MUST]` Execute PRD Validation Gate:**
-   ```bash
-   python scripts/validate_prd_gate.py --prd prd-{feature-name}.md --output .artifacts/prd-validation.json
-   ```
-   *   **Action:** Validate PRD completeness, measurability, and traceability.
-   *   **Action:** Check architectural constraints and communication patterns.
-
-4. **`[MUST]` Announce Validation Results:**
-   ```
-   [AUTOMATION] PRD Validation: {status} - {score}/100
-   ```
-   *   **Pass Criteria:** Validation score ≥ 85
-   *   **Fail Action:** Address validation issues before proceeding
-
-5. **`[MUST]` Gate: PRD Automation Complete**
-   *   **Validation:** All automation scripts executed successfully
-   *   **Pass Criteria:** Assets generated, PRD validation ≥ 85
-   *   **Fail Action:** Address automation failures before proceeding
-   *   **[STRICT]** Do not release the PRD unless every validation artifact is archived in `.artifacts/`.
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Conduct PRD review workshop; capture minutes in `manual-prd-review.md`.
+2. Obtain stakeholder sign-off via email; archive under `.artifacts/protocol-1/approvals/`.
+3. Document manual validations in `.artifacts/protocol-1/manual-validation-log.md`.
 
 ---
 
-## FINAL PRD TEMPLATE (EXAMPLE)
+## 1. HANDOFF CHECKLIST
 
-```markdown
-# PRD: [Feature Name]
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
 
-## 1. Overview
-- **Business Goal:** [Description of the need and problem solved]
-- **Detected Architecture:**
-  - **Primary Component:** `[Frontend App | Backend Service | ...]`
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
 
-## 2. Functional Specifications
-- **User Stories:** [For UI] or **API Contract:** [For Services]
-- **Data Flow Diagram:**
-  ```
-  [A simple diagram showing the interaction between components]
-  ```
+### Handoff to Protocol 06:
+**[PROTOCOL COMPLETE]** Ready for Protocol 06: Technical Design & Architecture
 
-## 3. Technical Specifications
-- **Inter-Service Communication:** [Details of API calls]
-- **Security & Authentication:** [Security model for the chosen layer]
+**Evidence Package:**
+- `prd-{feature}.md` - Comprehensive PRD for design translation
+- `technical-specs.md` - Detailed interfaces for architecture planning
 
-## 4. Out of Scope
-- [What this feature will NOT do]
-``` 
+**Execution:**
+```bash
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/6-technical-design-architecture.md
+```
+
+---
+
+## 1. EVIDENCE SUMMARY
+
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `prd-context.json` | `.artifacts/protocol-1/` | Intent and layer alignment | Protocol 06 |
+| `user-stories.md` | `.artifacts/protocol-1/` | Persona narratives | Protocol 02 |
+| `functional-requirements.md` | `.artifacts/protocol-1/` | Behavioral specification | Protocols 02 & 06 |
+| `technical-specs.md` | `.artifacts/protocol-1/` | API/data details | Protocol 06 |
+| `prd-{feature}.md` | `.artifacts/protocol-1/` | Implementation-ready PRD | Protocol 02 |
+| `prd-validation.json` | `.artifacts/protocol-1/` | Quality validation evidence | Protocol 06 |
+
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |
