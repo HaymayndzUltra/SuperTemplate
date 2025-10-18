@@ -1,0 +1,34 @@
+Protocol,Name,Path,Completeness,Clarity,Actionability,Integration,Evidence,Automation,Overall,Status
+01,Client Proposal Generation,.cursor/ai-driven-workflow/01-client-proposal-generation.md,9.6,9.5,9.4,9.5,9.5,9.2,9.5,Pass
+02,Client Discovery Initiation,.cursor/ai-driven-workflow/02-client-discovery-initiation.md,9.5,9.4,9.3,9.4,9.4,9.1,9.3,Pass
+03,Project Brief Creation,.cursor/ai-driven-workflow/03-project-brief-creation.md,9.5,9.3,9.2,9.3,9.3,9.0,9.3,Pass
+04,Project Bootstrap & Context Engineering,.cursor/ai-driven-workflow/04-project-bootstrap-and-context-engineering.md,9.4,9.2,9.1,9.2,9.1,8.9,9.2,Pass
+05,Bootstrap Your Project,.cursor/ai-driven-workflow/05-bootstrap-your-project.md,9.6,9.4,9.3,9.3,9.3,9.0,9.3,Pass
+06,Create PRD,.cursor/ai-driven-workflow/06-create-prd.md,9.5,9.4,9.3,9.4,9.4,9.1,9.3,Pass
+07,Technical Design & Architecture,.cursor/ai-driven-workflow/07-technical-design-architecture.md,9.4,9.3,9.2,9.3,9.3,9.0,9.2,Pass
+08,Generate Tasks,.cursor/ai-driven-workflow/08-generate-tasks.md,9.4,9.2,9.1,9.2,9.2,8.9,9.2,Pass
+09,Environment Setup Validation,.cursor/ai-driven-workflow/09-environment-setup-validation.md,9.3,9.1,9.0,9.1,9.0,8.8,9.0,Pass
+10,Process Tasks,.cursor/ai-driven-workflow/10-process-tasks.md,9.4,9.2,9.2,9.3,9.2,9.0,9.2,Pass
+11,Integration Testing,.cursor/ai-driven-workflow/11-integration-testing.md,9.5,9.3,9.2,9.3,9.3,9.1,9.3,Pass
+12,Quality Audit,.cursor/ai-driven-workflow/12-quality-audit.md,9.5,9.4,9.3,9.4,9.4,9.2,9.4,Pass
+13,UAT Coordination,.cursor/ai-driven-workflow/13-uat-coordination.md,9.3,9.2,9.1,9.2,9.1,8.9,9.1,Pass
+14,Pre-Deployment Staging,.cursor/ai-driven-workflow/14-pre-deployment-staging.md,9.3,9.1,9.0,9.1,9.1,8.8,9.1,Pass
+15,Production Deployment,.cursor/ai-driven-workflow/15-production-deployment.md,9.4,9.2,9.1,9.2,9.2,9.0,9.2,Pass
+16,Monitoring & Observability,.cursor/ai-driven-workflow/16-monitoring-observability.md,9.3,9.1,9.0,9.1,9.1,8.9,9.1,Pass
+17,Incident Response & Rollback,.cursor/ai-driven-workflow/17-incident-response-rollback.md,9.2,9.0,8.9,9.0,9.0,8.7,9.0,Pass
+18,Performance Optimization,.cursor/ai-driven-workflow/18-performance-optimization.md,9.2,9.0,8.9,9.0,9.0,8.7,9.0,Pass
+19,Documentation & Knowledge Transfer,.cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md,9.3,9.1,9.0,9.1,9.1,8.9,9.1,Pass
+20,Project Closure,.cursor/ai-driven-workflow/20-project-closure.md,9.2,9.0,8.9,9.0,9.0,8.7,9.0,Pass
+21,Maintenance & Support,.cursor/ai-driven-workflow/21-maintenance-support.md,9.2,9.0,8.9,9.0,9.0,8.7,9.0,Pass
+22,Implementation Retrospective,.cursor/ai-driven-workflow/22-implementation-retrospective.md,9.3,9.1,9.0,9.1,9.1,8.9,9.1,Pass
+23,Script Governance Protocol,.cursor/ai-driven-workflow/23-script-governance-protocol.md,9.3,9.1,9.0,9.1,9.1,8.9,9.1,Pass
+24,Client Discovery (Supporting),.cursor/ai-driven-workflow/24-client-discovery.md,9.2,9.1,9.0,9.1,9.1,8.9,9.1,Pass
+25,Protocol Integration Map,.cursor/ai-driven-workflow/25-protocol-integration-map.md,4.0,6.0,4.5,4.0,3.5,2.5,4.1,Fail
+26,Integration Guide,.cursor/ai-driven-workflow/26-integration-guide.md,3.5,6.5,4.5,4.0,3.0,2.5,4.0,Fail
+27,Validation Guide,.cursor/ai-driven-workflow/27-validation-guide.md,3.0,6.0,4.0,3.5,3.0,2.5,3.7,Fail
+CR,Code Review,.cursor/ai-driven-workflow/review-protocols/code-review.md,9.4,9.3,9.2,9.3,9.3,9.0,9.2,Pass
+SC,Security Check,.cursor/ai-driven-workflow/review-protocols/security-check.md,9.4,9.3,9.2,9.3,9.3,9.0,9.2,Pass
+AR,Architecture Review,.cursor/ai-driven-workflow/review-protocols/architecture-review.md,9.4,9.3,9.2,9.3,9.3,9.0,9.2,Pass
+DS,Design System Review,.cursor/ai-driven-workflow/review-protocols/design-system.md,3.5,6.0,4.0,3.0,2.5,2.0,3.5,Fail
+UIA,UI Accessibility Review,.cursor/ai-driven-workflow/review-protocols/ui-accessibility.md,3.5,6.0,4.0,3.0,2.5,2.0,3.5,Fail
+PP,Pre-Production Review,.cursor/ai-driven-workflow/review-protocols/pre-production.md,3.0,6.0,3.5,3.0,2.5,2.0,3.3,Fail
