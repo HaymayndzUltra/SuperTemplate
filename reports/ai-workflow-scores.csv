@@ -1,0 +1,29 @@
+Protocol,File,Phase,Completeness,Clarity,Actionability,Integration,Evidence,Automation,Overall
+Generate Cursor Rules,.cursor/ai-driven-workflow/00-generate-rules.md,Foundation,5,7,8,6,5,7,6.33
+Protocol 00A: Client Proposal Generation,.cursor/ai-driven-workflow/01-client-proposal-generation.md,Phase 0,9,9,9,8,8,8,8.5
+Protocol 00B: Client Discovery Initiation,.cursor/ai-driven-workflow/02-client-discovery-initiation.md,Phase 0,9,9,9,8,8,7,8.33
+Protocol 01: Project Brief Creation,.cursor/ai-driven-workflow/03-project-brief-creation.md,Phase 0,9,9,9,8,8,7,8.33
+Protocol 00: Project Bootstrap & Context Engineering,.cursor/ai-driven-workflow/04-project-bootstrap-and-context-engineering.md,Phase 0,9,9,9,8,8,7,8.33
+Protocol 0: Legacy Bootstrap,.cursor/ai-driven-workflow/05-bootstrap-your-project.md,Phase 0,8,8,8,7,7,6,7.33
+Protocol 1: Create PRD,.cursor/ai-driven-workflow/06-create-prd.md,Planning,9,9,9,8,8,7,8.33
+Protocol 6: Technical Design & Architecture,.cursor/ai-driven-workflow/07-technical-design-architecture.md,Planning,9,9,9,8,8,7,8.33
+Protocol 2: Generate Tasks,.cursor/ai-driven-workflow/08-generate-tasks.md,Planning,9,9,9,8,8,7,8.33
+Protocol 7: Environment Setup Validation,.cursor/ai-driven-workflow/09-environment-setup-validation.md,Planning,9,9,9,8,8,7,8.33
+Protocol 3: Process Tasks,.cursor/ai-driven-workflow/10-process-tasks.md,Development,9,9,9,8,8,7,8.33
+Protocol 9: Integration Testing,.cursor/ai-driven-workflow/11-integration-testing.md,Development,9,9,9,8,8,7,8.33
+Protocol 4: Quality Audit,.cursor/ai-driven-workflow/12-quality-audit.md,Quality,9,9,9,8,8,7,8.33
+Protocol 15: UAT Coordination,.cursor/ai-driven-workflow/13-uat-coordination.md,Quality,9,9,9,8,8,7,8.33
+Protocol 10: Pre-Deployment Staging,.cursor/ai-driven-workflow/14-pre-deployment-staging.md,Quality,9,9,9,8,8,7,8.33
+Protocol 11: Production Deployment,.cursor/ai-driven-workflow/15-production-deployment.md,Deployment,9,9,9,8,8,7,8.33
+Protocol 12: Monitoring & Observability,.cursor/ai-driven-workflow/16-monitoring-observability.md,Deployment,9,9,9,8,8,7,8.33
+Protocol 13: Incident Response & Rollback,.cursor/ai-driven-workflow/17-incident-response-rollback.md,Deployment,9,9,9,8,8,7,8.33
+Protocol 14: Performance Optimization,.cursor/ai-driven-workflow/18-performance-optimization.md,Deployment,9,9,9,8,8,7,8.33
+Protocol 16: Documentation & Knowledge Transfer,.cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md,Closure,9,9,9,8,8,7,8.33
+Protocol 17: Project Closure,.cursor/ai-driven-workflow/20-project-closure.md,Closure,9,9,9,8,8,7,8.33
+Protocol 18: Maintenance & Support,.cursor/ai-driven-workflow/21-maintenance-support.md,Closure,9,9,9,8,8,7,8.33
+Protocol 5: Implementation Retrospective,.cursor/ai-driven-workflow/22-implementation-retrospective.md,Closure,9,9,9,8,8,7,8.33
+Protocol 8: Script Governance,.cursor/ai-driven-workflow/23-script-governance-protocol.md,Closure,9,9,9,8,8,7,8.33
+Protocol 00-CD: Client Discovery,.cursor/ai-driven-workflow/24-client-discovery.md,Foundation,9,9,9,8,8,7,8.33
+Protocol Integration Map,.cursor/ai-driven-workflow/25-protocol-integration-map.md,Supporting,7,8,7,8,7,7,7.33
+Integration Guide,.cursor/ai-driven-workflow/26-integration-guide.md,Supporting,7,8,7,8,7,7,7.33
+Validation Guide,.cursor/ai-driven-workflow/27-validation-guide.md,Supporting,7,8,7,8,7,7,7.33
