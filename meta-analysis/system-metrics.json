@@ -1,0 +1,14 @@
+{
+  "avg_scores": {
+    "Completeness": 8.75,
+    "Clarity": 8.857142857142858,
+    "Actionability": 8.857142857142858,
+    "Integration": 6.821428571428571,
+    "Evidence": 8.785714285714286,
+    "Automation": 8.821428571428571
+  },
+  "overall_avg": 8.482857142857142,
+  "alignment_passes": 5,
+  "alignment_total": 22,
+  "perfect_alignment_ratio": 0.22727272727272727
+}
