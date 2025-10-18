@@ -175,6 +175,15 @@ Located in `generators/` directory:
 - **Quick Start Guides**: Rapid setup and deployment
 - **Meta Analysis**: Advanced analysis and intelligence tools
 
+### Template Packs System
+Located in `template-packs/` directory:
+- **Backend Templates**: Django, FastAPI, NestJS, Go frameworks
+- **Frontend Templates**: Next.js, Nuxt, Angular, Expo frameworks
+- **Database Templates**: PostgreSQL, MongoDB, Firebase configurations
+- **DevEx Templates**: DevContainer, Docker Compose, VS Code snippets
+- **CI/CD Templates**: GitHub workflows, gates configuration
+- **Policy DSL**: YAML definitions for gating rules and policies
+
 ### CI/CD Integration
 - **Linting**: `.github/workflows/ci-lint.yml`
 - **Testing**: `.github/workflows/ci-test.yml`
@@ -478,6 +487,15 @@ python scripts/run_quality_audit.py
 - **Protocol Generators**: Automated protocol creation
 - **Input Forms**: YAML configuration templates
 - **Quick Start Guides**: Rapid deployment guides
+
+### Template Packs System
+- **Template Packs Directory**: `template-packs/`
+- **Backend Templates**: Django, FastAPI, NestJS, Go frameworks
+- **Frontend Templates**: Next.js, Nuxt, Angular, Expo frameworks
+- **Database Templates**: PostgreSQL, MongoDB, Firebase configurations
+- **DevEx Templates**: DevContainer, Docker Compose, VS Code snippets
+- **CI/CD Templates**: GitHub workflows, gates configuration
+- **Policy DSL**: YAML definitions for gating rules and policies
 
 ### Cursor Commands
 - **Commands Directory**: `.cursor/commands/`
