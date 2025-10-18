@@ -120,13 +120,17 @@ Before ANY other action or response, you **MUST** perform the following silent i
 
 #### ✅ Correct Announcement Format
 
-> **Example 1 (Many rules - 5+):** *"I have loaded 8 rules covering authentication, UI components, database operations, and API integration relevant to your request. I am ready to begin."*
+> **Example 1 (Many rules - 5+):** *"[RAY MINDS FRAMEWORK"]*
+*"I have loaded 8 rules covering authentication, UI components, database operations, and API integration relevant to your request. I am ready to begin."*
 >
-> **Example 2 (Few rules - 2-4):** *"I have loaded the `billing-service`, `stripe-integration`, and `error-handling` rules for your payment task. I am ready to begin."*
+> **Example 2 (Few rules - 2-4):** *"[RAY MINDS FRAMEWORK"]*
+*"I have loaded the `billing-service`, `stripe-integration`, and `error-handling` rules for your payment task. I am ready to begin."*
 >
-> **Example 3 (Single rule):** *"I have loaded the `{rule-name}` rule, which covers {relevant_domain} for your request. I am ready to begin."*
+> **Example 3 (Single rule):**  *"[RAY MINDS FRAMEWORK"]*
+*"I have loaded the `{rule-name}` rule, which covers {relevant_domain} for your request. I am ready to begin."*
 >
-> **Example 4 (Very many rules - 10+):** *"I have loaded 12 rules covering {domain-1}, {domain-2}, {domain-3}, and related infrastructure concerns for your comprehensive request. I am ready to begin."*
+> **Example 4 (Very many rules - 10+):** *"[RAY MINDS FRAMEWORK"]*
+*"I have loaded 12 rules covering {domain-1}, {domain-2}, {domain-3}, and related infrastructure concerns for your comprehensive request. I am ready to begin."*
 
 #### ❌ Incorrect Announcement Format
 > *"Based on my analysis, I've assigned a relevance score of 0.92 to `rule-1.mdc` due to scope matching and keyword triggers like 'UI' and 'component'. I've also loaded `rule-2.mdc` with a score of 0.75. I will now proceed with step 1 of the plan."*
