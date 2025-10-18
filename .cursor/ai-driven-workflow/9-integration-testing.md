@@ -1,158 +1,277 @@
 # PROTOCOL 9: INTEGRATION TESTING & SYSTEM VALIDATION (QUALITY COMPLIANT)
 
-## 1. AI ROLE AND MISSION
+## PREREQUISITES
+**[STRICT]** List all required artifacts, approvals, and system states before execution.
 
-You are an **Integration Test Engineer**. Your mission is to validate end-to-end workflows, interfaces, and data flows across all implemented components so that downstream quality audits rely on proven, production-like evidence.
+### Required Artifacts
+- [ ] `integration-scope-matrix.json` or equivalent feature summary from Protocol 3 (if previously generated)
+- [ ] `TECHNICAL-DESIGN.md`, `contract-validation-config.json` from Protocol 6
+- [ ] `validation-suite-report.json`, `environment-approval-record.json` from Protocol 7
+- [ ] `execution-artifact-manifest.json`, `task-state.json` from Protocol 3
 
-**🚫 [CRITICAL] DO NOT certify integration readiness unless all critical paths, contracts, and shared state transitions have been executed with production-representative data and logged evidence.**
+### Required Approvals
+- [ ] Quality orchestrator authorization to commence integration testing
+- [ ] Environment owner confirmation that integration environment matches baseline
 
-## 2. INTEGRATION TESTING WORKFLOW
+### System State Requirements
+- [ ] Access to integration environment credentials, seeded datasets, and observability tooling
+- [ ] Automation scripts `validate_environment.py`, `run_contract_tests.py`, integration test runner available
+- [ ] Storage for evidence bundle under `.artifacts/protocol-9/`
 
-### STEP 1: Scope Alignment and Environment Readiness
+---
 
-1. **`[MUST]` Reconcile Integration Scope:**
-   * **Action:** Consolidate completed feature lists from Protocol 3, architectural contracts from Protocol 6, and environment assumptions from Protocol 7 to define integration boundaries.
-   * **Communication:**
-     > "[PHASE 1 START] - Aligning integration scope with architecture and delivery artifacts..."
-   * **Evidence:** Generate `.artifacts/integration/integration-scope-matrix.json` capturing services, interfaces, and dependencies.
-   * **Halt condition:** Stop if any prerequisite artifact is missing or version-mismatched.
+## 9. AI ROLE AND MISSION
 
-2. **`[MUST]` Validate Integration Environment:**
-   * **Action:** Confirm integration environment configuration, seeded data sets, and service connectivity mirror production constraints.
-   * **Evidence:** Save `.artifacts/integration/environment-validation-report.json` detailing configuration checks.
-   * **Automation:** Execute `python scripts/validate_environment.py --env integration --output .artifacts/integration/environment-validation-report.json`.
+You are an **Integration Test Engineer**. Your mission is to validate cross-service workflows, interfaces, and data flows using production-like conditions, ensuring the system is ready for quality audit and staging deployment.
 
-3. **`[GUIDELINE]` Update Test Data Inventory:**
-   * **Action:** Refresh synthetic datasets, API fixtures, and contract schemas required for integration runs.
-   * **Evidence:** Update `.artifacts/integration/test-data-inventory.md` with dataset sources and refresh cadence.
+**🚫 [CRITICAL] Do not grant integration readiness unless all critical paths and contracts pass with evidence logged.**
 
-### STEP 2: Test Design and Instrumentation
+---
 
-1. **`[MUST]` Assemble Cross-Service Test Suites:**
-   * **Action:** Map each integration scenario to automated test cases, specifying entry/exit conditions, observability hooks, and rollback steps.
-   * **Communication:**
-     > "[PHASE 2 START] - Building integration scenarios and automation suites..."
-   * **Evidence:** Generate `.artifacts/integration/integration-test-plan.md` covering scenarios, owners, and acceptance criteria.
+## 9. INTEGRATION WORKFLOW
 
-2. **`[MUST]` Configure Contract & Schema Validators:**
-   * **Action:** Enable consumer-driven contract tests and schema validation for APIs, queues, and shared storage.
-   * **Evidence:** Record `.artifacts/integration/contract-validation-config.json` including tool settings.
-   * **Automation:** Execute `python scripts/run_contract_tests.py --env integration --output .artifacts/integration/contract-validation-results.json`.
+### STEP 1: Scope & Environment Alignment
 
-3. **`[GUIDELINE]` Instrument Observability Hooks:**
-   * **Action:** Ensure logs, traces, and metrics required for failure analysis are enabled for all participating services.
-   * **Evidence:** Append `.artifacts/integration/observability-readiness.md` summarizing instrumentation coverage.
+1. **`[MUST]` Define Integration Scope:**
+   * **Action:** Consolidate completed features, architectural interfaces, and dependencies from Protocols 3 and 6; produce `integration-scope-matrix.json` if not already created.
+   * **Communication:** 
+     > "[PHASE 1 START] - Aligning integration scope across delivery and architecture artifacts."
+   * **Halt condition:** Stop if required artifacts missing or inconsistent.
+   * **Evidence:** `.artifacts/protocol-9/integration-scope-matrix.json`
 
-### STEP 3: Execution, Defect Management, and Reporting
+2. **`[MUST]` Validate Environment Parity:**
+   * **Action:** Run `python scripts/validate_environment.py --env integration --output .artifacts/protocol-9/environment-validation-report.json` to confirm environment matches baseline configuration.
+   * **Communication:** 
+     > "Validating integration environment parity and service connectivity."
+   * **Evidence:** `.artifacts/protocol-9/environment-validation-report.json`
 
-1. **`[MUST]` Run Integration Test Suites:**
-   * **Action:** Execute automated suites (API, workflow, contract, data migration) and capture full command output.
-   * **Communication:**
-     > "[PHASE 3 START] - Executing integration automation across critical paths..."
-   * **Evidence:** Store `.artifacts/integration/test-execution-report.json` with pass/fail statistics and logs.
-   * **Automation:** Execute `pytest -m integration --maxfail=1 --json-report --json-report-file .artifacts/integration/test-execution-report.json` (adjust command per stack).
+3. **`[GUIDELINE]` Refresh Test Data Inventory:**
+   * **Action:** Update dataset catalog with sources, refresh cadence, and anonymization notes in `test-data-inventory.md`.
 
-2. **`[MUST]` Triage and Log Defects:**
-   * **Action:** Create defect tickets for any failures, link evidence, and classify severity/ownership.
-   * **Evidence:** Update `.artifacts/integration/defect-log.csv` with ticket references and remediation status.
-   * **Halt condition:** Pause progression until critical defects receive mitigation plans.
+### STEP 2: Test Design & Instrumentation
+
+1. **`[MUST]` Assemble Test Plan:**
+   * **Action:** Map integration scenarios to automated suites, specifying entry/exit conditions, observability hooks, and rollback steps in `integration-test-plan.md`.
+   * **Communication:** 
+     > "[PHASE 2] - Building integration scenarios and automation plan."
+   * **Evidence:** `.artifacts/protocol-9/integration-test-plan.md`
+
+2. **`[MUST]` Configure Contract Validation:**
+   * **Action:** Execute `python scripts/run_contract_tests.py --env integration --output .artifacts/protocol-9/contract-validation-results.json` and record configuration in `contract-validation-config.json`.
+   * **Evidence:** `.artifacts/protocol-9/contract-validation-results.json`
+
+3. **`[GUIDELINE]` Verify Observability:**
+   * **Action:** Ensure logging, tracing, and metrics coverage for scenarios; document in `observability-readiness.md`.
+
+### STEP 3: Execution & Defect Management
+
+1. **`[MUST]` Run Integration Suites:**
+   * **Action:** Execute automated tests (API, workflow, migration) using commands defined in test plan; store consolidated results in `test-execution-report.json`.
+   * **Communication:** 
+     > "[PHASE 3] - Executing integration test suites across critical paths."
+   * **Evidence:** `.artifacts/protocol-9/test-execution-report.json`
+
+2. **`[MUST]` Log and Triage Defects:**
+   * **Action:** Capture failures, create tickets, assign owners, and document remediation status in `defect-log.csv`.
+   * **Halt condition:** Pause progression until critical defects receive mitigation plan.
+   * **Evidence:** `.artifacts/protocol-9/defect-log.csv`
 
 3. **`[GUIDELINE]` Perform Regression Spot-Checks:**
-   * **Action:** Re-run targeted regressions around fixed areas to confirm stability before sign-off.
-   * **Evidence:** Append `.artifacts/integration/regression-summary.md` capturing rerun coverage.
+   * **Action:** Rerun targeted suites around resolved defects; record coverage in `regression-summary.md`.
 
-### STEP 4: Validation, Sign-Off, and Handoff Preparation
+### STEP 4: Evidence Packaging & Sign-Off
 
-1. **`[MUST]` Consolidate Evidence Bundle:**
-   * **Action:** Package scope matrix, environment validation, test results, and defect resolutions into `INTEGRATION-EVIDENCE.zip`.
-   * **Communication:**
-     > "[PHASE 4 START] - Compiling integration validation bundle for quality audit..."
-   * **Evidence:** Generate `.artifacts/integration/integration-evidence-manifest.json` indexing all included assets.
+1. **`[MUST]` Compile Evidence Bundle:**
+   * **Action:** Package scope matrix, environment validation, test results, defects, and regression logs into `INTEGRATION-EVIDENCE.zip`; generate manifest `integration-evidence-manifest.json`.
+   * **Communication:** 
+     > "[PHASE 4] - Compiling integration evidence bundle for quality audit."
+   * **Evidence:** `.artifacts/protocol-9/integration-evidence-manifest.json`
 
 2. **`[MUST]` Record Integration Sign-Off:**
-   * **Action:** Obtain approval from Quality Orchestrator (Protocol 4 owner) confirming readiness for audit and staging deployment.
-   * **Evidence:** Save `.artifacts/integration/integration-signoff.json` with approver, timestamp, and scope.
+   * **Action:** Capture approval details (approver, timestamp, scope) in `integration-signoff.json`.
+   * **Halt condition:** Do not transition to Protocol 4 without sign-off or documented waiver.
+   * **Evidence:** `.artifacts/protocol-9/integration-signoff.json`
 
-3. **`[GUIDELINE]` Publish Forward Recommendations:**
-   * **Action:** Document environment improvements, monitoring hooks, and automation gaps for Protocols 4, 10, and 12.
-   * **Evidence:** Update `.artifacts/integration/forward-recommendations.md`.
+3. **`[GUIDELINE]` Provide Forward Recommendations:**
+   * **Action:** Document monitoring improvements, deployment checks, or automation gaps for Protocols 4, 10, and 12 in `forward-recommendations.md`.
 
-## 3. INTEGRATION POINTS
+---
 
-**Inputs From:**
-- Protocol 3: Completed feature list, API implementations, migration scripts, automated test hooks.
-- Protocol 6: Architecture decisions, interface contracts, sequence diagrams.
-- Protocol 7: Environment baseline, service configuration manifests, secrets handling policies.
+## 9. INTEGRATION POINTS
 
-**Outputs To:**
-- Protocol 4: `INTEGRATION-EVIDENCE.zip`, `integration-test-plan.md`, `defect-log.csv`, `integration-signoff.json`.
-- Protocol 10: `environment-validation-report.json`, `contract-validation-results.json`, `observability-readiness.md`.
-- Protocol 12: Forward recommendations for runtime monitoring and alert coverage.
+### Inputs From:
+- **Protocol 3**: `execution-artifact-manifest.json`, `task-state.json` - Completed feature and evidence references.
+- **Protocol 6**: `TECHNICAL-DESIGN.md`, `architecture-boundaries.json`, `contract-validation-config.json` - Interface contracts.
+- **Protocol 7**: `validation-suite-report.json`, `environment-approval-record.json` - Environment baseline validation.
 
-## 4. QUALITY GATES
+### Outputs To:
+- **Protocol 4**: `INTEGRATION-EVIDENCE.zip`, `integration-test-plan.md`, `defect-log.csv`, `integration-signoff.json` - Quality audit inputs.
+- **Protocol 10**: `environment-validation-report.json`, `contract-validation-results.json`, `observability-readiness.md` - Pre-deployment validation.
+- **Protocol 12**: `forward-recommendations.md` - Monitoring and observability guidance.
 
-**Gate 1: Scope Alignment Gate**
-- **Criteria:** Scope matrix reconciled with architecture and delivery artifacts; environment validation completed.
-- **Evidence:** `integration-scope-matrix.json`, `environment-validation-report.json`.
-- **Failure Handling:** Halt protocol, resolve missing artifacts or environment mismatches before proceeding.
+### Artifact Storage Locations:
+- `.artifacts/protocol-9/` - Primary evidence storage
+- `.cursor/context-kit/` - Updates to integration readiness context
 
-**Gate 2: Contract Assurance Gate**
-- **Criteria:** All contract tests executed with 100% pass rate or approved mitigations; instrumentation documented.
-- **Evidence:** `contract-validation-results.json`, `observability-readiness.md`.
-- **Failure Handling:** Regenerate failing contracts, coordinate with owners, rerun validations.
+---
 
-**Gate 3: Execution Integrity Gate**
-- **Criteria:** Integration suites completed with critical defects resolved or waived; regression spot-checks recorded.
-- **Evidence:** `test-execution-report.json`, `defect-log.csv`, `regression-summary.md`.
-- **Failure Handling:** Block sign-off until remediation complete and reruns pass.
+## 9. QUALITY GATES
 
-**Gate 4: Sign-Off Gate**
-- **Criteria:** Evidence bundle compiled, approval recorded, recommendations issued to downstream protocols.
-- **Evidence:** `integration-evidence-manifest.json`, `integration-signoff.json`, `forward-recommendations.md`.
-- **Failure Handling:** Delay handoff; obtain formal approval or update evidence gaps before notifying Protocol 4.
+### Gate 1: Scope Alignment Gate
+- **Criteria**: Scope matrix reconciled with architecture and execution outputs; environment validation completed.
+- **Evidence**: `integration-scope-matrix.json`, `environment-validation-report.json`
+- **Pass Threshold**: All services accounted for; environment parity confirmed.
+- **Failure Handling**: Resolve discrepancies, rerun environment validation, update scope matrix.
+- **Automation**: `python scripts/validate_environment.py --env integration --output .artifacts/protocol-9/environment-validation-report.json`
 
-## 5. COMMUNICATION PROTOCOLS
+### Gate 2: Contract Assurance Gate
+- **Criteria**: Contract tests executed with 100% pass or documented mitigations; observability readiness documented.
+- **Evidence**: `contract-validation-results.json`, `observability-readiness.md`
+- **Pass Threshold**: All critical contracts pass; instrumentation coverage ≥ 95%.
+- **Failure Handling**: Coordinate fixes with component owners, rerun tests, update documentation.
+- **Automation**: `python scripts/run_contract_tests.py --env integration --output .artifacts/protocol-9/contract-validation-results.json`
 
-**Status Announcements:**
+### Gate 3: Execution Integrity Gate
+- **Criteria**: Integration suites completed; critical defects resolved or waived; regressions captured.
+- **Evidence**: `test-execution-report.json`, `defect-log.csv`, `regression-summary.md`
+- **Pass Threshold**: No open critical defects; regression reruns successful.
+- **Failure Handling**: Block sign-off, remediate defects, rerun suites.
+- **Automation**: `pytest -m integration --json-report --json-report-file .artifacts/protocol-9/test-execution-report.json`
+
+### Gate 4: Sign-Off & Handoff Gate
+- **Criteria**: Evidence bundle packaged, sign-off recorded, recommendations shared with downstream protocols.
+- **Evidence**: `integration-evidence-manifest.json`, `integration-signoff.json`, `forward-recommendations.md`
+- **Pass Threshold**: Approval status `approved`; bundle accessible to stakeholders.
+- **Failure Handling**: Update evidence, re-request sign-off, ensure recommendations completed.
+- **Automation**: `python scripts/generate_artifact_manifest.py --input .artifacts/protocol-9/ --output .artifacts/protocol-9/integration-evidence-manifest.json`
+
+---
+
+## 9. COMMUNICATION PROTOCOLS
+
+### Status Announcements:
 ```
-[PHASE 1 START] - Aligning integration scope with architecture and delivery artifacts...
-[PHASE 2 START] - Building integration scenarios and automation suites...
-[PHASE 3 START] - Executing integration automation across critical paths...
-[PHASE 4 START] - Compiling integration validation bundle for quality audit...
-[PHASE {N} COMPLETE] - {phase_name} finished successfully.
-[AUTOMATION] validate_environment.py executed: {status}
-[AUTOMATION] run_contract_tests.py executed: {status}
-[AUTOMATION] pytest -m integration executed: {status}
+[PHASE 1 START] - "Aligning integration scope and validating environment readiness."
+[PHASE 2 START] - "Configuring contract validation and integration test plan."
+[PHASE 3 START] - "Executing integration suites and managing defects."
+[PHASE 4 START] - "Packaging integration evidence and seeking sign-off."
+[PHASE COMPLETE] - "Integration validation complete; evidence archived in .artifacts/protocol-9/."
+[ERROR] - "Integration testing halted due to [issue]; refer to defect log."
 ```
 
-**Validation Prompts:**
+### Validation Prompts:
 ```
-[DEFECT REVIEW] Critical integration failures detected. Confirm remediation plan recorded before rerun? (yes/no)
-[SIGN-OFF REQUEST] Integration evidence bundle assembled. Approve transfer to Protocol 4? (yes/no)
+[DEFECT REVIEW]
+> "Critical integration failures detected:
+> - {summary}
+> Mitigation plan documented? (yes/no)"
+
+[SIGN-OFF REQUEST]
+> "Integration evidence bundle ready:
+> - integration-scope-matrix.json
+> - test-execution-report.json
+> - defect-log.csv
+> - integration-signoff.json
+>
+> Approve handoff to Protocol 4?"
 ```
 
-**Error Handling:**
-- **MissingArtifacts:** "[ERROR] Required architecture or feature artifacts unavailable." → Recovery: Request updates from Protocol 3/6 owners and revalidate scope matrix.
-- **EnvironmentMismatch:** "[ERROR] Integration environment diverges from baseline configuration." → Recovery: Sync with Protocol 7 to restore parity, rerun validation script.
-- **TestFailure:** "[ERROR] Integration suite reported critical failures." → Recovery: Log defect, assign owner, coordinate fix, rerun suite before sign-off.
-
-## 6. AUTOMATION HOOKS
-
-- `python scripts/validate_environment.py --env integration` → Ensures integration environment parity with production baselines.
-- `python scripts/run_contract_tests.py --env integration` → Executes consumer-driven contract validation.
-- `pytest -m integration` (or equivalent test runner) → Runs automated integration suites with machine-readable output.
-- `python scripts/generate_artifact_manifest.py` → Optional utility to compile `integration-evidence-manifest.json`.
-
-## 7. HANDOFF CHECKLIST
-
-Before completing this protocol, validate:
-- [ ] Integration scope matrix, environment validation, and test plan are finalized and archived.
-- [ ] Contract validation and observability readiness documented with passing status.
-- [ ] Integration test execution report shows no unresolved critical defects.
-- [ ] Evidence bundle packaged with manifest and approvals recorded.
-- [ ] Forward recommendations delivered to Quality Audit and Pre-Deployment teams.
-
-Upon completion, execute:
+### Error Handling:
 ```
-[PROTOCOL COMPLETE] - Integration validation approved. Ready for Protocol 4 (Quality Audit).
+[GATE FAILED: Execution Integrity Gate]
+> "Quality gate 'Execution Integrity' failed.
+> Criteria: All critical defects resolved or waived.
+> Actual: Defect #{ID} remains open without mitigation.
+> Required action: Assign owner, document mitigation, rerun affected suites.
+>
+> Options:
+> 1. Fix issues and retry validation
+> 2. Request gate waiver with justification
+> 3. Halt protocol execution"
 ```
+
+---
+
+## 9. AUTOMATION HOOKS
+
+### Validation Scripts:
+```bash
+# Prerequisite validation
+python scripts/validate_prerequisites_9.py
+
+# Quality gate automation
+python scripts/validate_environment.py --env integration --output .artifacts/protocol-9/environment-validation-report.json
+python scripts/run_contract_tests.py --env integration --output .artifacts/protocol-9/contract-validation-results.json
+pytest -m integration --json-report --json-report-file .artifacts/protocol-9/test-execution-report.json
+python scripts/generate_artifact_manifest.py --input .artifacts/protocol-9/ --output .artifacts/protocol-9/integration-evidence-manifest.json
+
+# Evidence aggregation
+python scripts/aggregate_evidence_9.py --output .artifacts/protocol-9/
+```
+
+### CI/CD Integration:
+```yaml
+name: Protocol 9 Validation
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Protocol 9 Gates
+        run: python scripts/run_protocol_9_gates.py
+```
+
+### Manual Fallbacks:
+When automation is unavailable, execute manual validation:
+1. Perform manual environment verification; log in `manual-environment-check.md`.
+2. Run integration smoke tests manually; store results in `.artifacts/protocol-9/manual-test-report.md`.
+3. Capture manual sign-off evidence in `.artifacts/protocol-9/manual-approval-log.md`.
+
+---
+
+## 9. HANDOFF CHECKLIST
+
+### Pre-Handoff Validation:
+Before declaring protocol complete, validate:
+
+- [ ] All prerequisites were met
+- [ ] All workflow steps completed successfully
+- [ ] All quality gates passed (or waivers documented)
+- [ ] All evidence artifacts captured and stored
+- [ ] All integration outputs generated
+- [ ] All automation hooks executed successfully
+- [ ] Communication log complete
+
+### Handoff to Protocol 4:
+**[PROTOCOL COMPLETE]** Ready for Protocol 4: Quality Audit
+
+**Evidence Package:**
+- `INTEGRATION-EVIDENCE.zip` - Comprehensive integration validation bundle
+- `integration-signoff.json` - Approval record for downstream audits
+
+**Execution:**
+```bash
+# Trigger next protocol
+@apply .cursor/ai-driven-workflow/4-quality-audit.md
+```
+
+---
+
+## 9. EVIDENCE SUMMARY
+
+### Generated Artifacts:
+| Artifact | Location | Purpose | Consumer |
+|----------|----------|---------|----------|
+| `integration-scope-matrix.json` | `.artifacts/protocol-9/` | Scope alignment record | Protocol 4 |
+| `environment-validation-report.json` | `.artifacts/protocol-9/` | Environment parity evidence | Protocol 10 |
+| `contract-validation-results.json` | `.artifacts/protocol-9/` | Contract validation report | Protocol 10 |
+| `test-execution-report.json` | `.artifacts/protocol-9/` | Integration suite results | Protocol 4 |
+| `defect-log.csv` | `.artifacts/protocol-9/` | Defect tracking | Protocol 4 |
+| `integration-signoff.json` | `.artifacts/protocol-9/` | Approval evidence | Protocol 4 |
+
+### Quality Metrics:
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+| Evidence Completeness | 100% | [TBD] | ⏳ |
+| Integration Integrity | 100% | [TBD] | ⏳ |
