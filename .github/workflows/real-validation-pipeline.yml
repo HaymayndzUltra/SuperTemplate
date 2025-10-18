@@ -1,0 +1,131 @@
+name: Real Proposal Validation Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  real-validation:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install streamlit plotly pandas requests
+    
+    - name: Install external tools
+      run: |
+        # Install LanguageTool
+        wget https://languagetool.org/download/LanguageTool-5.9.zip
+        unzip LanguageTool-5.9.zip
+        
+        # Install security tools
+        pip install bandit safety
+    
+    - name: Run real job post analysis
+      run: |
+        python3 scripts/analyze_jobpost.py JOB-POST.md .artifacts/protocol-00A/real-jobpost-analysis.json
+    
+    - name: Run real tone analysis
+      run: |
+        python3 scripts/tone_mapper.py .artifacts/protocol-00A/real-jobpost-analysis.json .artifacts/protocol-00A/real-tone-analysis.json
+    
+    - name: Run real proposal validation
+      run: |
+        python3 scripts/validate_proposal.py .artifacts/protocol-00A/PROPOSAL.md .artifacts/protocol-00A/real-proposal-validation.json
+    
+    - name: Run external validation
+      env:
+        GRAMMARLY_API_KEY: ${{ secrets.GRAMMARLY_API_KEY }}
+        READABILITY_API_KEY: ${{ secrets.READABILITY_API_KEY }}
+        COMPLIANCE_API_KEY: ${{ secrets.COMPLIANCE_API_KEY }}
+      run: |
+        python3 scripts/real_external_validation.py
+    
+    - name: Run third-party validation
+      run: |
+        python3 scripts/real_third_party_validator.py
+    
+    - name: Security scan
+      run: |
+        bandit -r scripts/ -f json -o security-report.json
+    
+    - name: Vulnerability scan
+      run: |
+        safety check --json --output vulnerability-report.json
+    
+    - name: Upload validation reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: real-validation-reports
+        path: |
+          .artifacts/protocol-00A/real-*.json
+          security-report.json
+          vulnerability-report.json
+    
+    - name: Comment on PR with results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const validationReport = JSON.parse(fs.readFileSync('.artifacts/protocol-00A/real-proposal-validation.json'));
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `## 🔍 Real Validation Results
+            
+            **Readability Score:** ${validationReport.readability_score}
+            **Grade Level:** ${validationReport.grade_level}
+            **Grammar Issues:** ${validationReport.grammar_issues.length}
+            **Overall Score:** ${validationReport.overall_score}
+            
+            ✅ Real external validation completed`
+          });
+
+  real-monitoring:
+    runs-on: ubuntu-latest
+    needs: real-validation
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install streamlit plotly pandas requests
+    
+    - name: Start monitoring dashboard
+      run: |
+        streamlit run scripts/real_monitoring_dashboard.py --server.port 8501 --server.headless true &
+        sleep 10
+    
+    - name: Test dashboard
+      run: |
+        curl -f http://localhost:8501 || exit 1
+    
+    - name: Deploy to monitoring service
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "Deploying real monitoring dashboard to production..."
+        # Add your deployment commands here

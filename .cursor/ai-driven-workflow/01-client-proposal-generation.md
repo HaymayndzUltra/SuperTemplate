@@ -17,7 +17,9 @@
 
 ### System State Requirements
 - [ ] Access to `scripts/analyze_jobpost.py`, `scripts/tone_mapper.py`, and `scripts/validate_proposal.py`
-- [ ] Local environment with JSON processing utilities and markdown renderer
+- [ ] Access to real validation scripts: `scripts/check_hipaa.py`, `scripts/enforce_gates.py`, `scripts/validate_compliance_assets.py`
+- [ ] Local environment with JSON processing utilities, markdown renderer, and Python dependencies
+- [ ] `gates_config.yaml` configured with real validation thresholds
 
 ---
 
@@ -134,28 +136,35 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
 - **Evidence**: `.artifacts/protocol-00A/jobpost-analysis.json`
 - **Pass Threshold**: Completeness score ≥ 0.9 from analyzer script.
 - **Failure Handling**: Request clarified job information, rerun analysis, document issue in reviewer brief.
-- **Automation**: `python scripts/analyze_jobpost.py --input JOB-POST.md --output .artifacts/protocol-00A/jobpost-analysis.json`
+- **Automation**: `python3 scripts/analyze_jobpost.py --input JOB-POST.md --output .artifacts/protocol-00A/jobpost-analysis.json`
 
 ### Gate 2: Tone Strategy Confidence
 - **Criteria**: Tone classification confidence ≥ 0.8 with mapped strategy labels.
 - **Evidence**: `.artifacts/protocol-00A/tone-map.json`
 - **Pass Threshold**: `confidence` field ≥ 0.8 and `strategy` populated.
 - **Failure Handling**: Perform manual tone review with stakeholder, update tone map, rerun gate.
-- **Automation**: `python scripts/tone_mapper.py --input .artifacts/protocol-00A/jobpost-analysis.json --output .artifacts/protocol-00A/tone-map.json`
+- **Automation**: `python3 scripts/tone_mapper.py --input .artifacts/protocol-00A/jobpost-analysis.json --output .artifacts/protocol-00A/tone-map.json`
 
 ### Gate 3: Proposal Structure Integrity
 - **Criteria**: `PROPOSAL.md` includes all mandatory sections with ≥ 120 words each and empathy tokens logged.
 - **Evidence**: `.artifacts/protocol-00A/PROPOSAL.md`, `.artifacts/protocol-00A/humanization-log.json`
 - **Pass Threshold**: Structure validator score ≥ 0.95.
 - **Failure Handling**: Revise missing sections, re-run humanization, revalidate.
-- **Automation**: `python scripts/validate_proposal_structure.py --input .artifacts/protocol-00A/PROPOSAL.md`
+- **Automation**: `python3 scripts/validate_proposal_structure.py --input .artifacts/protocol-00A/PROPOSAL.md`
 
-### Gate 4: Final Validation & Approval Readiness
-- **Criteria**: Readability ≥ 90, zero factual discrepancies, empathy coverage ≥ 3 tokens.
+### Gate 4: Real Compliance Validation
+- **Criteria**: HIPAA compliance check passes, quality gates enforce real thresholds.
+- **Evidence**: `.artifacts/protocol-00A/compliance-validation-report.json`
+- **Pass Threshold**: All compliance checks pass (exit code 0).
+- **Failure Handling**: Address compliance issues, fix PHI violations, update security configurations.
+- **Automation**: `python3 scripts/check_hipaa.py && python3 scripts/enforce_gates.py`
+
+### Gate 5: Final Validation & Approval Readiness
+- **Criteria**: Readability ≥ 90, zero factual discrepancies, empathy coverage ≥ 3 tokens, real validation passed.
 - **Evidence**: `.artifacts/protocol-00A/proposal-validation-report.json`
-- **Pass Threshold**: Validation script returns status `pass`.
+- **Pass Threshold**: Validation script returns status `pass` and all real gates pass.
 - **Failure Handling**: Address flagged items, capture remediation notes, rerun validation.
-- **Automation**: `python scripts/validate_proposal.py --input .artifacts/protocol-00A/PROPOSAL.md --report .artifacts/protocol-00A/proposal-validation-report.json`
+- **Automation**: `python3 scripts/validate_proposal.py --input .artifacts/protocol-00A/PROPOSAL.md --report .artifacts/protocol-00A/proposal-validation-report.json`
 
 ---
 
@@ -204,26 +213,43 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
 ### Validation Scripts:
 ```bash
 # Prerequisite validation
-python scripts/validate_prerequisites_00A.py
+python3 scripts/validate_prerequisites_00A.py
+
+# Real compliance validation
+python3 scripts/check_hipaa.py
+python3 scripts/enforce_gates.py
+python3 scripts/validate_compliance_assets.py
 
 # Quality gate automation
-python scripts/validate_proposal_structure.py --input .artifacts/protocol-00A/PROPOSAL.md
-python scripts/validate_proposal.py --input .artifacts/protocol-00A/PROPOSAL.md --report .artifacts/protocol-00A/proposal-validation-report.json
+python3 scripts/validate_proposal_structure.py --input .artifacts/protocol-00A/PROPOSAL.md
+python3 scripts/validate_proposal.py --input .artifacts/protocol-00A/PROPOSAL.md --report .artifacts/protocol-00A/proposal-validation-report.json
 
 # Evidence aggregation
-python scripts/aggregate_evidence_00A.py --output .artifacts/protocol-00A/
+python3 scripts/aggregate_evidence_00A.py --output .artifacts/protocol-00A/
 ```
 
 ### CI/CD Integration:
 ```yaml
-name: Protocol 00A Validation
+name: Protocol 00A Real Validation
 on: [push, pull_request]
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
+      - name: Run Real Compliance Checks
+        run: |
+          python3 scripts/check_hipaa.py
+          python3 scripts/enforce_gates.py
+          python3 scripts/validate_compliance_assets.py
+      
       - name: Run Protocol 00A Gates
-        run: python scripts/run_protocol_00A_gates.py
+        run: python3 scripts/run_protocol_00A_gates.py
+      
+      - name: Generate Real Validation Report
+        run: |
+          python3 scripts/analyze_jobpost.py JOB-POST.md .artifacts/protocol-00A/jobpost-analysis.json
+          python3 scripts/tone_mapper.py .artifacts/protocol-00A/jobpost-analysis.json .artifacts/protocol-00A/tone-map.json
+          python3 scripts/validate_proposal.py .artifacts/protocol-00A/PROPOSAL.md .artifacts/protocol-00A/proposal-validation-report.json
 ```
 
 ### Manual Fallbacks:

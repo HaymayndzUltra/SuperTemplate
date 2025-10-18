@@ -94,7 +94,7 @@ def check_session_timeout() -> bool:
         "settings.py", "config.py", "app/settings.py",
         "gates_config.yaml", "legal-doc-platform/backend/config/settings.py",
         "template-packs/policy-dsl/client-generator-policies.yaml",
-        "ai-driven-workflow/templates/healthcare/medical-records-api.py"
+        "dev-workflow/templates/healthcare/medical-records-api.py"
     ]
     
     for name in config_files:

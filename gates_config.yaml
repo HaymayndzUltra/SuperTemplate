@@ -1,0 +1,16 @@
+compliance_gates:
+  gdpr:
+    consent_tracking: true
+    data_retention_check: true
+    privacy_impact: true
+quality_gates:
+  lint:
+    required: true
+    threshold: 0
+  security_scan:
+    critical_threshold: 0
+    high_threshold: 5
+    required: true
+  test_coverage:
+    required: true
+    threshold: 70

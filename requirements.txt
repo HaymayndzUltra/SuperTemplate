@@ -1,0 +1,5 @@
+# Real dependencies for actual analysis
+nltk>=3.8
+textstat>=0.7.3
+textblob>=0.17.1
+pathlib2>=2.3.7
