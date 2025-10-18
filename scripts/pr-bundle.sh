@@ -6,6 +6,11 @@ if [[ $# -lt 4 ]]; then
   exit 1
 fi
 
+# Clear proxy settings for GitHub API calls to avoid 403 errors
+unset HTTP_PROXY HTTPS_PROXY http_proxy https_proxy NO_PROXY no_proxy
+git config --global http.https://github.com.proxy ""
+git config --global https.https://github.com.proxy ""
+
 OWNER="${GITHUB_OWNER:-HaymayndzUltra}"
 REPO="${GITHUB_REPO:-SuperTemplate}"
 
