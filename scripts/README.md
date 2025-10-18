@@ -108,6 +108,9 @@ This system provides comprehensive AI-assisted project orchestration with human 
 - **`write_context_report.py`** - Writes context analysis reports for governance (supporting)
 - **`check_compliance_docs.py`** - Checks compliance documentation completeness (validation)
 
+### **Pull Request Analysis** (Medium Importance)
+- **`compare_pull_requests.py`** - Generates dependency-aware review guidance (review signals, conflict hotspots, JSON/Markdown exports) using live GitHub data or offline JSON snapshots (supporting)
+
 ### **Benchmarking & Testing** (Low Importance)
 - **`benchmark_generation.py`** - Benchmarks project generation performance (utility)
 
