@@ -1,0 +1,888 @@
+[
+  {
+    "id": "00a",
+    "title": "Client Proposal Generation",
+    "path": ".cursor/ai-driven-workflow/01-client-proposal-generation.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [],
+    "improvements": [
+      "Add an automated flag to capture optional discovery workshop outputs when `.artifacts/protocol-00A/workshop/` exists so 00-CD can pick up the same evidence."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 9,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 9.0,
+    "priority": "Low"
+  },
+  {
+    "id": "00B",
+    "title": "Client Discovery Initiation",
+    "path": ".cursor/ai-driven-workflow/02-client-discovery-initiation.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [],
+    "improvements": [
+      "Provide a redaction automation step before archiving `.artifacts/protocol-02/transcripts/` to simplify privacy compliance."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 9,
+      "Evidence": 9,
+      "Automation": 8
+    },
+    "overall": 8.83,
+    "priority": "Low"
+  },
+  {
+    "id": "01",
+    "title": "Project Brief Creation",
+    "path": ".cursor/ai-driven-workflow/03-project-brief-creation.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Integration references to 'Protocol 06' can confuse teams now that technical design lives under `07-technical-design-architecture.md`."
+    ],
+    "improvements": [
+      "Add an alias table in the integration section clarifying that 'Protocol 06' corresponds to the Technical Design protocol in this repository numbering."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 8,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.83,
+    "priority": "Medium"
+  },
+  {
+    "id": "00",
+    "title": "Project Bootstrap & Context Engineering",
+    "path": ".cursor/ai-driven-workflow/04-project-bootstrap-and-context-engineering.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Outputs do not declare a contract for handing bootstrap evidence into the /Generate Cursor Rules command."
+    ],
+    "improvements": [
+      "Document explicit outputs for the rule-generation command (e.g., `rule-context-input.json`) so Protocol 00-rules receives governed inputs."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 6,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.5,
+    "priority": "High"
+  },
+  {
+    "id": "00-rules",
+    "title": "Generate Cursor Rules Command",
+    "path": ".cursor/ai-driven-workflow/00-generate-rules.md",
+    "checklist": {
+      "All required sections present": false,
+      "Step-by-step execution algorithm defined": false,
+      "Prerequisites clearly documented": false,
+      "Evidence requirements specified": false,
+      "Automation hooks defined": false,
+      "Integration points mapped": false,
+      "Quality gates with measurable criteria": false,
+      "Communication protocols established": false,
+      "Handoff checklist complete": false
+    },
+    "gaps": [
+      "Protocol lacks required structural sections (role, workflow, integration, quality gates, communication, handoff).",
+      "No prerequisites or evidence expectations are defined for generated rule sets.",
+      "Quality validation relies on an unchecked checklist with no failure handling."
+    ],
+    "improvements": [
+      "Rebuild the command description using the standard protocol template with role, mission, workflow, evidence, and handoff sections.",
+      "Promote Evidence Artifacts into a required schema so downstream audits can verify rule coverage.",
+      "Define measurable quality gates and failure handling for rule generation (e.g., lint status, attach preview validation)."
+    ],
+    "scores": {
+      "Completeness": 2,
+      "Clarity": 5,
+      "Actionability": 5,
+      "Integration": 2,
+      "Evidence": 3,
+      "Automation": 8
+    },
+    "overall": 4.17,
+    "priority": "Critical"
+  },
+  {
+    "id": "0",
+    "title": "Bootstrap Your Project",
+    "path": ".cursor/ai-driven-workflow/05-bootstrap-your-project.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [],
+    "improvements": [
+      "Mirror the numbering alias that maps legacy Protocol 0 outputs to the modern task and governance protocols to avoid cross-reference drift."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 8,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.83,
+    "priority": "Medium"
+  },
+  {
+    "id": "1",
+    "title": "Create PRD",
+    "path": ".cursor/ai-driven-workflow/06-create-prd.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Integration section routes PRD deliverables to 'Protocol 02' even though task planning now lives under `08-generate-tasks.md`."
+    ],
+    "improvements": [
+      "Update integration outputs so the task protocol is referenced by its current identifier and include the directory structure under `.cursor/tasks/`."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 7,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.67,
+    "priority": "High"
+  },
+  {
+    "id": "6",
+    "title": "Technical Design & Architecture",
+    "path": ".cursor/ai-driven-workflow/07-technical-design-architecture.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Prerequisites cite `Protocol 04-CD` without clarifying when the alternate discovery path is invoked."
+    ],
+    "improvements": [
+      "Add a decision table describing when to use the optional discovery artifacts versus the default 00B/01 path."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 8,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.83,
+    "priority": "Medium"
+  },
+  {
+    "id": "2",
+    "title": "Generate Tasks",
+    "path": ".cursor/ai-driven-workflow/08-generate-tasks.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Outputs point to 'Protocol 21' rather than the Process Tasks protocol, and automation manifests still use legacy numbering."
+    ],
+    "improvements": [
+      "Realign output contracts to `10-process-tasks.md` and rename `.artifacts/protocol-08/` manifests so execution teams receive the correct paths."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 6,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.5,
+    "priority": "High"
+  },
+  {
+    "id": "7",
+    "title": "Environment Setup & Validation",
+    "path": ".cursor/ai-driven-workflow/09-environment-setup-validation.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Environment outputs are mapped to 'Protocol 21' (maintenance) instead of the execution and deployment protocols."
+    ],
+    "improvements": [
+      "Update integration outputs to call out Process Tasks and Pre-Deployment by their current identifiers and adjust evidence directories accordingly."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 6,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.5,
+    "priority": "High"
+  },
+  {
+    "id": "3",
+    "title": "Process Tasks",
+    "path": ".cursor/ai-driven-workflow/10-process-tasks.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Integration inputs/outputs reference Protocol 19 and 21, making it unclear how evidence reaches Integration Testing and Quality Audit."
+    ],
+    "improvements": [
+      "Rename integration links to `11-integration-testing.md` and `12-quality-audit.md`, and normalise the `.artifacts/protocol-21/` path to the new execution ID."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 6,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.5,
+    "priority": "High"
+  },
+  {
+    "id": "9",
+    "title": "Integration Testing",
+    "path": ".cursor/ai-driven-workflow/11-integration-testing.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Inputs and outputs still cite Protocol 21 and 19 rather than the Process Tasks and Quality Audit identifiers."
+    ],
+    "improvements": [
+      "Correct integration references so execution evidence from Protocol 3 is consumed explicitly, and quality outputs target Protocol 4/15 with accurate directories."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 6,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.5,
+    "priority": "High"
+  },
+  {
+    "id": "4",
+    "title": "Quality Audit Orchestrator",
+    "path": ".cursor/ai-driven-workflow/12-quality-audit.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Integration section uses outdated protocol numbers (21,23) which obscures how findings reach UAT and retrospectives."
+    ],
+    "improvements": [
+      "Refresh integration mapping so UAT (Protocol 15), Pre-Deployment (Protocol 10), and Retrospective (Protocol 5) receive clearly named packages."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 6,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.5,
+    "priority": "High"
+  },
+  {
+    "id": "15",
+    "title": "UAT Coordination",
+    "path": ".cursor/ai-driven-workflow/13-uat-coordination.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "UAT inputs/outputs still reference legacy protocol IDs, complicating handoff to staging and deployment."
+    ],
+    "improvements": [
+      "Map UAT deliverables directly to `14-pre-deployment-staging.md` and `15-production-deployment.md`, and revise evidence folder names to match."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 6,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.5,
+    "priority": "High"
+  },
+  {
+    "id": "10",
+    "title": "Pre-Deployment Staging",
+    "path": ".cursor/ai-driven-workflow/14-pre-deployment-staging.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Pre-deployment integration table still cites Protocol 19/23/21, making downstream ownership ambiguous."
+    ],
+    "improvements": [
+      "Update the integration table so production deployment, monitoring, and incident response are referenced by their current identifiers and evidence bundles."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 6,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.5,
+    "priority": "High"
+  },
+  {
+    "id": "11",
+    "title": "Production Deployment",
+    "path": ".cursor/ai-driven-workflow/15-production-deployment.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Deployment integration references outdated IDs for staging and monitoring packages."
+    ],
+    "improvements": [
+      "Repoint integration outputs to the Monitoring (Protocol 12) and Performance (Protocol 14) protocols with updated artifact paths."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 6,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.5,
+    "priority": "High"
+  },
+  {
+    "id": "12",
+    "title": "Monitoring & Observability",
+    "path": ".cursor/ai-driven-workflow/16-monitoring-observability.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Integration still lists Protocol 21 as the consumer of monitoring packages instead of Maintenance & Support by its new identifier."
+    ],
+    "improvements": [
+      "Update integration outputs to call Maintenance & Support (Protocol 18) and Retrospective (Protocol 5) explicitly, and align baseline file names."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 6,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.5,
+    "priority": "High"
+  },
+  {
+    "id": "13",
+    "title": "Incident Response & Rollback",
+    "path": ".cursor/ai-driven-workflow/17-incident-response-rollback.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Incident response prerequisites do not explain which monitoring alert IDs trigger activation now that monitoring is Protocol 12."
+    ],
+    "improvements": [
+      "Document alert naming conventions and escalation IDs from Monitoring so the activation gate references concrete artifacts."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 7,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.67,
+    "priority": "Medium"
+  },
+  {
+    "id": "14",
+    "title": "Performance Optimization",
+    "path": ".cursor/ai-driven-workflow/18-performance-optimization.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Performance optimization references Protocol 21 for baselines instead of Maintenance & Support."
+    ],
+    "improvements": [
+      "Clarify that performance baselines come from Monitoring (Protocol 12) and Maintenance (Protocol 18), and adjust evidence directories."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 7,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.67,
+    "priority": "Medium"
+  },
+  {
+    "id": "16",
+    "title": "Documentation & Knowledge Transfer",
+    "path": ".cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Integration list mixes multiple references to Protocol 21, obscuring which team consumes documentation outputs."
+    ],
+    "improvements": [
+      "Collapse duplicate Protocol 21 entries and point to Maintenance Support (Protocol 18) and Retrospective (Protocol 5) using current identifiers."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 7,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.67,
+    "priority": "Medium"
+  },
+  {
+    "id": "17",
+    "title": "Project Closure",
+    "path": ".cursor/ai-driven-workflow/20-project-closure.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Closure inputs assume Maintenance (Protocol 21) terminology and need aliasing to the new numbering."
+    ],
+    "improvements": [
+      "Add a mapping note indicating Maintenance Support corresponds to Protocol 18 and update closure handoff names accordingly."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 7,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.67,
+    "priority": "Medium"
+  },
+  {
+    "id": "18",
+    "title": "Maintenance & Support",
+    "path": ".cursor/ai-driven-workflow/21-maintenance-support.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Maintenance protocol still calls back to Protocol 21 outputs, which no longer exist under that identifier."
+    ],
+    "improvements": [
+      "Rename integration links so retrospectives (Protocol 5) and governance (Protocol 8) receive the correct evidence directories."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 7,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.67,
+    "priority": "Medium"
+  },
+  {
+    "id": "5",
+    "title": "Implementation Retrospective",
+    "path": ".cursor/ai-driven-workflow/22-implementation-retrospective.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Retrospective integration still points to Maintenance and Governance by old numbers, risking feedback loss."
+    ],
+    "improvements": [
+      "Update integration to cite Maintenance (Protocol 18) and Script Governance (Protocol 8) explicitly, including the expected artifact filenames."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 6,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.5,
+    "priority": "High"
+  },
+  {
+    "id": "8",
+    "title": "Script Governance",
+    "path": ".cursor/ai-driven-workflow/23-script-governance-protocol.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [
+      "Script governance still expects retrospective evidence under legacy `.artifacts/protocol-22/` paths."
+    ],
+    "improvements": [
+      "Align intake paths with the updated retrospective package names and add validation for Maintenance (Protocol 18) evidence."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 7,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.67,
+    "priority": "Medium"
+  },
+  {
+    "id": "00-CD",
+    "title": "Alternate Client Discovery",
+    "path": ".cursor/ai-driven-workflow/24-client-discovery.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [],
+    "improvements": [
+      "Reference the numbering alias for Protocol 02 to make it clear how alternate discovery re-enters the main pipeline."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 8,
+      "Evidence": 9,
+      "Automation": 9
+    },
+    "overall": 8.83,
+    "priority": "Medium"
+  },
+  {
+    "id": "arch-review",
+    "title": "Architecture Review",
+    "path": ".cursor/ai-driven-workflow/review-protocols/architecture-review.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [],
+    "improvements": [
+      "Add a trigger condition in Quality Audit to show precisely when the architecture review protocol is invoked."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 8,
+      "Evidence": 9,
+      "Automation": 8
+    },
+    "overall": 8.67,
+    "priority": "Low"
+  },
+  {
+    "id": "code-review",
+    "title": "Code Review",
+    "path": ".cursor/ai-driven-workflow/review-protocols/code-review.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [],
+    "improvements": [
+      "Link the automation hooks to CI job names used in Protocol 4 so reviewers know which pipelines to reference."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 8,
+      "Evidence": 9,
+      "Automation": 8
+    },
+    "overall": 8.67,
+    "priority": "Low"
+  },
+  {
+    "id": "security-review",
+    "title": "Security Check",
+    "path": ".cursor/ai-driven-workflow/review-protocols/security-check.md",
+    "checklist": {
+      "All required sections present": true,
+      "Step-by-step execution algorithm defined": true,
+      "Prerequisites clearly documented": true,
+      "Evidence requirements specified": true,
+      "Automation hooks defined": true,
+      "Integration points mapped": true,
+      "Quality gates with measurable criteria": true,
+      "Communication protocols established": true,
+      "Handoff checklist complete": true
+    },
+    "gaps": [],
+    "improvements": [
+      "Document how security findings feed into Incident Response (Protocol 13) to close the loop on remediation ownership."
+    ],
+    "scores": {
+      "Completeness": 9,
+      "Clarity": 9,
+      "Actionability": 9,
+      "Integration": 8,
+      "Evidence": 9,
+      "Automation": 8
+    },
+    "overall": 8.67,
+    "priority": "Low"
+  }
+]

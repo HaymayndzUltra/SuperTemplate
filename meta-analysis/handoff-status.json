@@ -1,0 +1,112 @@
+[
+  {
+    "from": "00a",
+    "to": "00B",
+    "status": "PASS"
+  },
+  {
+    "from": "00B",
+    "to": "01",
+    "status": "PASS"
+  },
+  {
+    "from": "01",
+    "to": "00",
+    "status": "PASS"
+  },
+  {
+    "from": "00",
+    "to": "00-rules",
+    "status": "FAIL"
+  },
+  {
+    "from": "00-rules",
+    "to": "1",
+    "status": "FAIL"
+  },
+  {
+    "from": "1",
+    "to": "6",
+    "status": "PASS"
+  },
+  {
+    "from": "6",
+    "to": "2",
+    "status": "PASS"
+  },
+  {
+    "from": "2",
+    "to": "7",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "7",
+    "to": "3",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "3",
+    "to": "9",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "9",
+    "to": "4",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "4",
+    "to": "15",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "15",
+    "to": "10",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "10",
+    "to": "11",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "11",
+    "to": "12",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "12",
+    "to": "13",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "13",
+    "to": "14",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "14",
+    "to": "16",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "16",
+    "to": "17",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "17",
+    "to": "18",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "18",
+    "to": "5",
+    "status": "PARTIAL"
+  },
+  {
+    "from": "5",
+    "to": "8",
+    "status": "PARTIAL"
+  }
+]

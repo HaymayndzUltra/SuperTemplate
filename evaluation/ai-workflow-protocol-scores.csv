@@ -1,0 +1,29 @@
+Protocol,Name,Completeness,Clarity,Actionability,Integration,Evidence,Automation,Overall,Priority
+00a,Client Proposal Generation,9,9,9,9,9,9,9.0,Low
+00B,Client Discovery Initiation,9,9,9,9,9,8,8.83,Low
+01,Project Brief Creation,9,9,9,8,9,9,8.83,Medium
+00,Project Bootstrap & Context Engineering,9,9,9,6,9,9,8.5,High
+00-rules,Generate Cursor Rules Command,2,5,5,2,3,8,4.17,Critical
+0,Bootstrap Your Project,9,9,9,8,9,9,8.83,Medium
+1,Create PRD,9,9,9,7,9,9,8.67,High
+6,Technical Design & Architecture,9,9,9,8,9,9,8.83,Medium
+2,Generate Tasks,9,9,9,6,9,9,8.5,High
+7,Environment Setup & Validation,9,9,9,6,9,9,8.5,High
+3,Process Tasks,9,9,9,6,9,9,8.5,High
+9,Integration Testing,9,9,9,6,9,9,8.5,High
+4,Quality Audit Orchestrator,9,9,9,6,9,9,8.5,High
+15,UAT Coordination,9,9,9,6,9,9,8.5,High
+10,Pre-Deployment Staging,9,9,9,6,9,9,8.5,High
+11,Production Deployment,9,9,9,6,9,9,8.5,High
+12,Monitoring & Observability,9,9,9,6,9,9,8.5,High
+13,Incident Response & Rollback,9,9,9,7,9,9,8.67,Medium
+14,Performance Optimization,9,9,9,7,9,9,8.67,Medium
+16,Documentation & Knowledge Transfer,9,9,9,7,9,9,8.67,Medium
+17,Project Closure,9,9,9,7,9,9,8.67,Medium
+18,Maintenance & Support,9,9,9,7,9,9,8.67,Medium
+5,Implementation Retrospective,9,9,9,6,9,9,8.5,High
+8,Script Governance,9,9,9,7,9,9,8.67,Medium
+00-CD,Alternate Client Discovery,9,9,9,8,9,9,8.83,Medium
+arch-review,Architecture Review,9,9,9,8,9,8,8.67,Low
+code-review,Code Review,9,9,9,8,9,8,8.67,Low
+security-review,Security Check,9,9,9,8,9,8,8.67,Low
