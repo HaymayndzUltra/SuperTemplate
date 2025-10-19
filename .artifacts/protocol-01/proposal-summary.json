@@ -1,0 +1,23 @@
+{
+  "client": "Aurelius Ledger Networks",
+  "engagement_duration_weeks": 8,
+  "core_focus": "Zero-trust payments orchestration MVP with post-quantum readiness and regulator-grade evidence",
+  "key_tracks": [
+    "PQ trust fabric with SPIFFE identities and Kyber/Dilithium handshake fallback",
+    "Policy-driven orchestration engine covering FX netting, sanctions screening, and audit logging",
+    "Observability and governance layer delivering telemetry, attestations, and SCC workflow automation"
+  ],
+  "milestone_overview": [
+    "Sprint 1: Architecture dossier, threat model, data residency blueprint",
+    "Sprint 2: Terraform/Pulumi stacks with guardrails, SPIFFE/Vault integrations",
+    "Sprint 3: Zero-trust policy suite, FX reconciliation engine, integration harnesses",
+    "Sprint 4: Runbooks, evidence manifest, compliance drills"
+  ],
+  "collaboration_cadence": {
+    "daily": "Async status updates covering control health and blockers",
+    "weekly": "Executive readouts summarizing risk posture and evidence coverage",
+    "workshops": "Twice-weekly cross-region working sessions plus optional discovery workshop"
+  },
+  "risk_management": "Maintain living risk acceptance register, escalate gating issues promptly, respect hardware lead times and TLS bridging constraints",
+  "next_step": "Schedule 60-minute diligence session to confirm scope assumptions and evidence repositories"
+}
