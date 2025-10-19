@@ -1,0 +1,38 @@
+{
+  "client": "Aurelius Ledger Networks",
+  "protocol": "01-client-proposal-generation",
+  "tone": "Executive-Regulatory Technical",
+  "engagement_length_weeks": 8,
+  "key_objectives": [
+    "Deliver zero-trust payments orchestration MVP with PQ cryptography",
+    "Provide regulator-ready evidence packs (SWIFT CSP, PSD2 RTS, Fed Line, MAS TRM)",
+    "Achieve automated failover under 45 seconds with dual-ledger reconciliation"
+  ],
+  "approach_summary": [
+    "Week 1 discovery and control alignment",
+    "Weeks 2-3 platform + identity build",
+    "Weeks 4-5 policy enforcement and attestation",
+    "Weeks 6-7 runbooks and drills",
+    "Week 8 validation sprints"
+  ],
+  "deliverable_highlights": [
+    "Architecture dossier with PQ migration plan",
+    "Terraform/Pulumi stack with drift detection",
+    "OPA/Rego + Cedar policy suites",
+    "Sigstore-backed evidence manifest",
+    "Runbooks for quantum failback and MAS TRM escalation"
+  ],
+  "collaboration_notes": [
+    "Twice-weekly checkpoints with async updates",
+    "Global timezone coverage (New York, Frankfurt, Singapore)",
+    "Decision log and evidence tracker for transparency"
+  ],
+  "next_steps": "Schedule complimentary 60-minute workshop to confirm risk acceptance matrix and finalize backlog sequencing.",
+  "artifacts": [
+    "jobpost-analysis.json",
+    "tone-map.json",
+    "PROPOSAL.md",
+    "humanization-log.json",
+    "proposal-validation-report.json"
+  ]
+}
