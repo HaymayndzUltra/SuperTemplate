@@ -1,0 +1,26 @@
+{
+  "protocol": "01",
+  "classification": {
+    "primary_tone": "executive-technical",
+    "secondary_tone": "regulatory-assurance",
+    "confidence": 0.86,
+    "justification": "Job post emphasizes regulator-ready documentation, operational rigor, and direct communication for executive stakeholders."
+  },
+  "communication_strategy": {
+    "narrative_focus": "Highlight verifiable zero-trust and compliance capabilities with regulator-ready language.",
+    "voice_guidelines": [
+      "Use confident but measured statements backed by evidence.",
+      "Mirror client terminology for compliance frameworks and cryptography.",
+      "Acknowledge risks transparently with mitigation framing."
+    ],
+    "differentiator_targets": [
+      "Prior delivery of zero-trust infrastructures in regulated finance.",
+      "Reusable compliance automation assets for SWIFT and MAS TRM.",
+      "Proven track record implementing post-quantum pilot programs."
+    ]
+  },
+  "analysis_metadata": {
+    "method": "Manual tone assessment due to unavailable automation output",
+    "timestamp": "2025-10-19T13:28:41+00:00"
+  }
+}

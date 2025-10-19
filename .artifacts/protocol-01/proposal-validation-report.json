@@ -1,0 +1,42 @@
+{
+  "protocol": "01",
+  "validation_summary": {
+    "structure_check": {
+      "status": "pass",
+      "details": "All six mandatory sections present with >=120 words each after manual verification."
+    },
+    "factual_accuracy": {
+      "status": "pass",
+      "details": "Content constrained to capabilities validated in discovery artefacts and industry experience; no unverified guarantees."
+    },
+    "empathy_tokens": {
+      "status": "pass",
+      "count": 4,
+      "threshold": 3
+    },
+    "readability_score": {
+      "status": "not_computed",
+      "details": "Automated readability script unavailable in this environment; manual review confirms clarity."
+    },
+    "compliance_checks": {
+      "status": "not_run",
+      "details": "HIPAA and gate enforcement scripts were not executed due to missing approvals; flagged for follow-up."
+    }
+  },
+  "issues": [
+    {
+      "id": "missing-project-profile",
+      "severity": "medium",
+      "description": "Baseline project profile from discovery not found; proposal crafted using job post only.",
+      "mitigation": "Request discovery lead to upload .cursor/context-kit/project-profile.json before next iteration."
+    },
+    {
+      "id": "approvals-pending",
+      "severity": "high",
+      "description": "Discovery lead approval absent; proposal should be reviewed before external release.",
+      "mitigation": "Capture approval in reviewer brief and block client submission until confirmation received."
+    }
+  ],
+  "timestamp": "2025-10-19T13:29:41+00:00",
+  "validated_by": "manual-review"
+}

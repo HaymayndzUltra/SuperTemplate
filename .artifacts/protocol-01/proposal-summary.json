@@ -1,0 +1,55 @@
+{
+  "protocol": "01",
+  "client": "Aurelius Ledger Networks",
+  "engagement_length_weeks": 8,
+  "budget_range_usd": "240000-320000",
+  "milestones": [
+    {
+      "name": "Architecture & Compliance Baseline",
+      "due_week": 2,
+      "deliverables": [
+        "Validated architecture dossier",
+        "PQ migration sequencing",
+        "Data residency matrix"
+      ]
+    },
+    {
+      "name": "Orchestration Engine MVP",
+      "due_week": 4,
+      "deliverables": [
+        "Policy-driven orchestration service",
+        "Deterministic FX reconciliation",
+        "SPIFFE-integrated access plane"
+      ]
+    },
+    {
+      "name": "Zero-Trust Policy & Testing",
+      "due_week": 6,
+      "deliverables": [
+        "OPA/Rego and Cedar policy packs",
+        "Sanctions engine fixtures",
+        "Integration failover and attack simulations"
+      ]
+    },
+    {
+      "name": "Operational Readiness Package",
+      "due_week": 8,
+      "deliverables": [
+        "Runbooks and tabletop outputs",
+        "Sigstore evidence manifest",
+        "Executive risk acceptance briefing"
+      ]
+    }
+  ],
+  "risks": [
+    "Discovery lead approval pending",
+    "Project profile context missing",
+    "Compliance validation scripts not yet executed"
+  ],
+  "next_steps": [
+    "Schedule alignment workshop",
+    "Collect discovery approvals",
+    "Run validation scripts post-approval"
+  ],
+  "timestamp": "2025-10-19T13:29:57+00:00"
+}

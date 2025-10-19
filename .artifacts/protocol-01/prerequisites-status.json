@@ -1,0 +1,45 @@
+{
+  "protocol": "01",
+  "artifacts": {
+    "JOB-POST.md": {
+      "present": true,
+      "notes": "Source job description available at repository root."
+    },
+    "project_profile": {
+      "present": false,
+      "path": ".cursor/context-kit/project-profile.json",
+      "notes": "File missing; discovery context unavailable."
+    }
+  },
+  "approvals": {
+    "discovery_lead_confirmation": {
+      "status": "missing",
+      "notes": "No documented approval found in repository."
+    }
+  },
+  "system_state": {
+    "scripts_available": {
+      "required": [
+        "scripts/analyze_jobpost.py",
+        "scripts/tone_mapper.py",
+        "scripts/validate_proposal.py",
+        "scripts/check_hipaa.py",
+        "scripts/enforce_gates.py",
+        "scripts/validate_compliance_assets.py"
+      ],
+      "missing": [],
+      "notes": "All required scripts located in scripts/ directory."
+    },
+    "environment": {
+      "json_processing": true,
+      "markdown_renderer": "manual review",
+      "python_dependencies": "partial - runtime available, dependency versions unverified"
+    },
+    "gates_config": {
+      "path": "gates_config.yaml",
+      "present": true,
+      "notes": "Configuration file exists; contents not yet validated."
+    }
+  },
+  "timestamp": "2025-10-19T13:28:33+00:00"
+}
