@@ -24,7 +24,7 @@
 
 ---
 
-## 03. AI ROLE AND MISSION
+## 01. AI ROLE AND MISSION
 
 You are a **Freelance Solutions Architect**. Your mission is to convert validated discovery intelligence into a single source of truth—an implementation-ready Project Brief that downstream teams can trust.
 
@@ -32,7 +32,7 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 
 ---
 
-## 03. PROJECT BRIEF WORKFLOW
+## 01. PROJECT BRIEF WORKFLOW
 
 ### STEP 1: Discovery Validation
 
@@ -109,7 +109,7 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 
 ---
 
-## 03. INTEGRATION POINTS
+## 01. INTEGRATION POINTS
 
 ### Inputs From:
 - **Protocol 01**: `PROPOSAL.md`, `proposal-summary.json` - Alignment baseline and commitments.
@@ -125,7 +125,7 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 
 ---
 
-## 03. QUALITY GATES
+## 01. QUALITY GATES
 
 ### Gate 1: Discovery Evidence Verification
 - **Criteria**: All prerequisite artifacts validated, discrepancies resolved, validation report status = PASS.
@@ -150,7 +150,7 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 
 ---
 
-## 03. COMMUNICATION PROTOCOLS
+## 01. COMMUNICATION PROTOCOLS
 
 ### Status Announcements:
 ```
@@ -189,58 +189,32 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 
 ---
 
-## 03. AUTOMATION HOOKS
+## 01. AUTOMATION HOOKS
 
-### Gate Runner (Recommended):
+### Validation Scripts:
 ```bash
-# Run all quality gates with single command
-python3 scripts/run_protocol_gates.py 03
+# Prerequisite validation
+python scripts/validate_prerequisites_01.py
 
-# Aggregate evidence into manifest
-python3 scripts/aggregate_evidence_03.py
+# Quality gate automation
+python scripts/validate_discovery_inputs.py --input .artifacts/protocol-02/ --output .artifacts/protocol-03/project-brief-validation-report.json
+python scripts/validate_brief_structure.py --input .artifacts/protocol-03/PROJECT-BRIEF.md --report .artifacts/protocol-03/brief-structure-report.json
+python scripts/verify_brief_approvals.py --input .artifacts/protocol-03/BRIEF-APPROVAL-RECORD.json
 
-# Output: .artifacts/protocol-03/gate-manifest.json
-#         .artifacts/protocol-03/evidence-manifest.json
-```
-
-### Individual Validators (Advanced):
-```bash
-# Run gates individually for debugging
-python3 scripts/validate_gate_03_discovery.py    # Gate 1: Discovery evidence verification
-python3 scripts/validate_gate_03_structure.py    # Gate 2: Structural integrity
-python3 scripts/validate_gate_03_approvals.py    # Gate 3: Approval compliance
+# Evidence aggregation
+python scripts/aggregate_evidence_01.py --output .artifacts/protocol-03/
 ```
 
 ### CI/CD Integration:
 ```yaml
-name: Protocol 03 Gate Validation
+name: Protocol 03 Validation
 on: [push, pull_request]
 jobs:
-  validate-gates:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-      
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-      
       - name: Run Protocol 03 Gates
-        run: python3 scripts/run_protocol_gates.py 03
-      
-      - name: Aggregate Evidence
-        run: python3 scripts/aggregate_evidence_03.py
-      
-      - name: Upload Evidence Manifest
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: protocol-03-evidence
-          path: .artifacts/protocol-03/evidence-manifest.json
+        run: python scripts/run_protocol_01_gates.py
 ```
 
 ### Manual Fallbacks:
@@ -248,11 +222,6 @@ When automation is unavailable, execute manual validation:
 1. Perform manual peer review of discovery artifacts; note findings in `manual-validation-checklist.md`.
 2. Review PROJECT-BRIEF.md with stakeholders over call; capture approval email or meeting minutes.
 3. Store manual evidence in `.artifacts/protocol-03/manual-validation-log.md`.
-
-### Quick Reference:
-- **Gate config**: `config/protocol_gates/03.yaml`
-- **Full documentation**: `documentation/gate-automation-quick-reference.md`
-- **Test integration**: `bash scripts/test_gate_integration.sh`
 
 ---
 

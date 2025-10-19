@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Instruction Creator Meta-System enables you to generate specialized protocol-generator instructions for any protocol format. This solves the limitation where the original `protocol-generator-instructions.md` only works for 00A/00B format protocols.
+The Instruction Creator Meta-System enables you to generate specialized protocol-generator instructions for any protocol format. This solves the limitation where the original `protocol-generator-instructions.md` only works for 01/02 format protocols.
 
 ## Command Interface
 
@@ -39,8 +39,8 @@ apply instruction from instruction-creator to protocol-2-generate-tasks
 
 ## Supported Protocol Formats
 
-### Format A: 00A/00B Structure (6-Section)
-- **Example:** `00a-client-proposal-generation.md`, `00B-client-discovery-initiation.md`
+### Format A: 01/02 Structure (6-Section)
+- **Example:** `01-client-proposal-generation.md`, `02-client-discovery-initiation.md`
 - **Structure:** AI ROLE → WORKFLOW → INTEGRATION → QUALITY GATES → COMMUNICATION → HANDOFF
 - **Use Case:** Client-facing protocols with formal quality gates
 
@@ -127,7 +127,7 @@ Ensure generated protocols:
 ## Benefits
 
 ### Format Flexibility
-- Generate protocols in any structure, not just 00A/00B format
+- Generate protocols in any structure, not just 01/02 format
 - Support for bootstrap, PRD, tasks, and custom formats
 - Easy to add new protocol formats
 

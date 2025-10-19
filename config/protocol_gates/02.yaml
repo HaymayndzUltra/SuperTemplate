@@ -1,5 +1,5 @@
-# Protocol 00B: Client Discovery Initiation - Gate Configuration
-# This file defines automated validation gates for Protocol 02 (00B)
+# Protocol 02: Client Discovery Initiation - Gate Configuration
+# This file defines automated validation gates for Protocol 02 (02)
 
 protocol_id: "02"
 protocol_title: "Client Discovery Initiation"

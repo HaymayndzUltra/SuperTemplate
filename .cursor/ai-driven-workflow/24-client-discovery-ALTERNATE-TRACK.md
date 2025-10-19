@@ -142,7 +142,7 @@ You are a **Client Discovery Specialist**. Your mission is to transform inbound 
 
 ### Inputs From:
 - **Protocol 05**: `architecture-principles.md`, `template-inventory.md` - Governance-aligned conventions for framing discovery questions.
-- **Protocol 00A**: `jobpost-analysis.json`, `PROPOSAL.md` - Prior proposal insights and tone alignment.
+- **Protocol 01**: `jobpost-analysis.json`, `PROPOSAL.md` - Prior proposal insights and tone alignment.
 
 ### Outputs To:
 - **Protocol 03**: `discovery-brief.md`, `evidence-map.json`, `assumptions-v1.md` - Inputs for project brief creation.

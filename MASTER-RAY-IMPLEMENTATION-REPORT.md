@@ -104,8 +104,8 @@ Updated to use RAY prefix:
 ## Files Updated
 
 ### Main Protocols (25)
-- 00a-client-proposal-generation.md ✅
-- 00B-client-discovery-initiation.md ✅
+- 01-client-proposal-generation.md ✅
+- 02-client-discovery-initiation.md ✅
 - 01-project-brief-creation.md ✅
 - 00-project-bootstrap-and-context-engineering.md ✅
 - 00-generate-rules.md ✅

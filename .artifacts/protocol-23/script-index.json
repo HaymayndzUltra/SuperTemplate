@@ -39,8 +39,8 @@
       "path": "scripts/aggregate_evidence_01.py",
       "size_bytes": 5771,
       "last_modified": "2025-10-19T09:52:26.474413",
-      "description": "Evidence aggregation for Protocol 01 (00A): Client Proposal Generation.",
-      "full_docstring": "Evidence aggregation for Protocol 01 (00A): Client Proposal Generation.\n\nCollects all gate validation results and artifacts into a consolidated evidence manifest.",
+      "description": "Evidence aggregation for Protocol 01 (01): Client Proposal Generation.",
+      "full_docstring": "Evidence aggregation for Protocol 01 (01): Client Proposal Generation.\n\nCollects all gate validation results and artifacts into a consolidated evidence manifest.",
       "functions": [
         {
           "name": "run_gate_validator",

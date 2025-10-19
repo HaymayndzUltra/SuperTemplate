@@ -3,7 +3,7 @@
 © 2025 - All Rights Reserved
 ---
 
-# PROTOCOL 13: INCIDENT RESPONSE & ROLLBACK (OPERATIONS RESILIENCE COMPLIANT)
+# PROTOCOL 17: INCIDENT RESPONSE & ROLLBACK (OPERATIONS RESILIENCE COMPLIANT)
 
 ## PREREQUISITES
 **[STRICT]** List all required artifacts, approvals, and system states before execution.

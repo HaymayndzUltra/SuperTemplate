@@ -39,7 +39,7 @@ Users must provide:
 ### Phase 2: Format Classification
 Based on structural analysis, classify the target protocol into one of these formats:
 
-**Format A: 00A/00B Structure (6-Section)**
+**Format A: 01/02 Structure (6-Section)**
 ```markdown
 # PROTOCOL [N]: [NAME] ([DOMAIN] COMPLIANT)
 ## 1. AI ROLE AND MISSION
@@ -98,7 +98,7 @@ Extract the following reusable components from the existing `protocol-generator-
 ### Phase 4: Format-Specific Template Generation
 Generate specialized template structure based on target protocol format:
 
-**For Format A (00A/00B Structure):**
+**For Format A (01/02 Structure):**
 ```markdown
 ## Phase 3: Protocol Structure Generation
 Generate protocol following this exact structure:
@@ -205,7 +205,7 @@ You are a **[AI Role]**. Your mission is to [purpose statement].
 ### Phase 5: Input Form Adaptation
 Generate format-specific input forms based on target protocol structure:
 
-**For Format A (00A/00B):**
+**For Format A (01/02):**
 ```yaml
 protocol_number: ""
 protocol_name: ""

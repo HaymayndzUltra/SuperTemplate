@@ -1,4 +1,4 @@
-protocol_number: "00B"
+protocol_number: "02"
 protocol_name: "client-discovery-initiation"
 domain_compliance: "Project-Scoping"
 purpose: "Systematize the initial discovery process that follows a positive client response, ensuring complete clarification of scope, requirements, and expectations before any development begins."
@@ -7,10 +7,10 @@ ai_role: "Freelance Solutions Architect"
 primary_guardrail: "DO NOT proceed to technical planning or proposal submission until all client discovery questions are answered and validated."
 
 prerequisites:
-  - protocol: "00A-client-proposal-generation"
+  - protocol: "01-client-proposal-generation"
     required_artifacts: "PROPOSAL.md approved by client"
 
-phase_in_workflow: "Immediately after Protocol 00A (Client Proposal Generation) and before Protocol 01 (Project Brief Creation)"
+phase_in_workflow: "Immediately after Protocol 01 (Client Proposal Generation) and before Protocol 01 (Project Brief Creation)"
 
 phases:
   - phase_number: 1
@@ -82,7 +82,7 @@ phases:
       failure_handling: "Pause until both parties approve the agreed collaboration setup."
 
 inputs_from:
-  - protocol: "00A-client-proposal-generation"
+  - protocol: "01-client-proposal-generation"
     artifacts_consumed: "PROPOSAL.md, jobpost-analysis.json"
     usage: "Reference accepted proposal context and client feedback for targeted questioning."
 

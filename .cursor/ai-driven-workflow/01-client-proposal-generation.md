@@ -9,7 +9,7 @@
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
 ### Required Artifacts
-- [ ] `JOB-POST.md` - **EXTERNAL INPUT** (client-provided job posting, RFP, or project description)
+- [ ] `JOB-POST.md` from Protocol 04-client-discovery (source job description)
 - [ ] `.cursor/context-kit/project-profile.json` (baseline project profile, if available)
 
 ### Required Approvals
@@ -116,8 +116,8 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
 ## 01. INTEGRATION POINTS
 
 ### Inputs From:
-- **EXTERNAL**: `JOB-POST.md` - Source description and requirements for the opportunity (client-provided, job board, RFP).
-- **OPTIONAL**: `.cursor/context-kit/project-profile.json` - Prior client engagement context if available.
+- **Protocol 04**: `JOB-POST.md` - Source description and requirements for the opportunity.
+- **Protocol 02**: `discovery-brief.md` - Prior discovery intelligence and capability confirmation.
 
 ### Outputs To:
 - **Protocol 02**: `PROPOSAL.md` - Primary proposal delivered for client outreach.
@@ -210,63 +210,46 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
 
 ## 01. AUTOMATION HOOKS
 
-### Gate Runner (Recommended):
+### Validation Scripts:
 ```bash
-# Run all quality gates with single command
-python3 scripts/run_protocol_gates.py 01
+# Prerequisite validation
+python3 scripts/validate_prerequisites_01.py
 
-# Aggregate evidence into manifest
-python3 scripts/aggregate_evidence_01.py
+# Real compliance validation
+python3 scripts/check_hipaa.py
+python3 scripts/enforce_gates.py
+python3 scripts/validate_compliance_assets.py
 
-# Output: .artifacts/protocol-01/gate-manifest.json
-#         .artifacts/protocol-01/evidence-manifest.json
-```
-
-### Individual Validators (Advanced):
-```bash
-# Run gates individually for debugging
-python3 scripts/validate_gate_01_jobpost.py      # Gate 1: Job post intake
-python3 scripts/validate_gate_01_tone.py         # Gate 2: Tone strategy
-python3 scripts/validate_gate_01_structure.py    # Gate 3: Proposal structure
-python3 scripts/validate_gate_01_compliance.py   # Gate 4: Compliance
-python3 scripts/validate_gate_01_final.py        # Gate 5: Final validation
-
-# Legacy validation scripts (if needed)
-python3 scripts/analyze_jobpost.py --input JOB-POST.md --output .artifacts/protocol-01/jobpost-analysis.json
-python3 scripts/tone_mapper.py --input .artifacts/protocol-01/jobpost-analysis.json --output .artifacts/protocol-01/tone-map.json
+# Quality gate automation
+python3 scripts/validate_proposal_structure.py --input .artifacts/protocol-01/PROPOSAL.md
 python3 scripts/validate_proposal.py --input .artifacts/protocol-01/PROPOSAL.md --report .artifacts/protocol-01/proposal-validation-report.json
+
+# Evidence aggregation
+python3 scripts/aggregate_evidence_01.py --output .artifacts/protocol-01/
 ```
 
 ### CI/CD Integration:
 ```yaml
-name: Protocol 01 Gate Validation
+name: Protocol 01 Real Validation
 on: [push, pull_request]
 jobs:
-  validate-gates:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-      
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Run Real Compliance Checks
+        run: |
+          python3 scripts/check_hipaa.py
+          python3 scripts/enforce_gates.py
+          python3 scripts/validate_compliance_assets.py
       
       - name: Run Protocol 01 Gates
-        run: python3 scripts/run_protocol_gates.py 01
+        run: python3 scripts/run_protocol_01_gates.py
       
-      - name: Aggregate Evidence
-        run: python3 scripts/aggregate_evidence_01.py
-      
-      - name: Upload Evidence Manifest
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: protocol-01-evidence
-          path: .artifacts/protocol-01/evidence-manifest.json
+      - name: Generate Real Validation Report
+        run: |
+          python3 scripts/analyze_jobpost.py JOB-POST.md .artifacts/protocol-01/jobpost-analysis.json
+          python3 scripts/tone_mapper.py .artifacts/protocol-01/jobpost-analysis.json .artifacts/protocol-01/tone-map.json
+          python3 scripts/validate_proposal.py .artifacts/protocol-01/PROPOSAL.md .artifacts/protocol-01/proposal-validation-report.json
 ```
 
 ### Manual Fallbacks:
@@ -275,14 +258,9 @@ When automation is unavailable, execute manual validation:
 2. Conduct peer review of proposal tone and accuracy; record results in `manual-tone-checklist.md`.
 3. Document outcomes in `.artifacts/protocol-01/manual-validation-log.md`.
 
-### Quick Reference:
-- **Gate config**: `config/protocol_gates/01.yaml`
-- **Full documentation**: `documentation/gate-automation-quick-reference.md`
-- **Test integration**: `bash scripts/test_gate_integration.sh`
-
 ---
 
-## 00A. HANDOFF CHECKLIST
+## 01. HANDOFF CHECKLIST
 
 ### Pre-Handoff Validation:
 Before declaring protocol complete, validate:
@@ -310,7 +288,7 @@ Before declaring protocol complete, validate:
 
 ---
 
-## 00A. EVIDENCE SUMMARY
+## 01. EVIDENCE SUMMARY
 
 ### Generated Artifacts:
 | Artifact | Location | Purpose | Consumer |

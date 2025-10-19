@@ -27,7 +27,7 @@
 #### ❌ GAPS IDENTIFIED
 - Quality Gate 5 lacks explicit automated metric storage for readability and empathy scores.
 #### 💡 IMPROVEMENT SUGGESTIONS
-- Capture validation metrics in `.artifacts/protocol-00A/proposal-validation-report.json` and expose them to downstream dashboards.【F:.cursor/ai-driven-workflow/01-client-proposal-generation.md†L70-L205】
+- Capture validation metrics in `.artifacts/protocol-01/proposal-validation-report.json` and expose them to downstream dashboards.【F:.cursor/ai-driven-workflow/01-client-proposal-generation.md†L70-L205】
 #### 🎯 SCORES
 - Completeness: 10/10
 - Clarity: 9/10

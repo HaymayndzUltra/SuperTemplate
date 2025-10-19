@@ -9,7 +9,7 @@ primary_guardrail: "Do not introduce components or integrations that are not bac
 prerequisites:
   - protocol: "01-project-brief-creation"
     required_artifacts: "PROJECT-BRIEF.md, BRIEF-APPROVAL-RECORD.json, project-brief-validation-report.json"
-  - protocol: "00B-client-discovery-initiation"
+  - protocol: "02-client-discovery-initiation"
     required_artifacts: "client-discovery-form.md, scope-clarification.md, communication-plan.md"
 phase_in_workflow: "Between Protocol 01 (Project Brief Creation) and Protocol 02 (Generate Tasks)"
 
@@ -143,7 +143,7 @@ inputs_from:
   - protocol: "01-project-brief-creation"
     artifacts_consumed: "PROJECT-BRIEF.md, project-brief-validation-report.json, BRIEF-APPROVAL-RECORD.json"
     usage: "Ensure architecture decisions trace back to approved requirements."
-  - protocol: "00B-client-discovery-initiation"
+  - protocol: "02-client-discovery-initiation"
     artifacts_consumed: "client-context-notes.md, scope-clarification.md, communication-plan.md"
     usage: "Provide business context, constraints, and collaboration expectations."
 outputs_to:

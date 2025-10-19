@@ -69,7 +69,7 @@
     "total_artifact_refs": 43,
     "total_file_refs": 1
   },
-  "00B-client-discovery-initiation.md": {
+  "02-client-discovery-initiation.md": {
     "apply_targets": [
       ".cursor/ai-driven-workflow/01-project-brief-creation.md"
     ],
@@ -87,9 +87,9 @@
     "total_artifact_refs": 33,
     "total_file_refs": 1
   },
-  "00a-client-proposal-generation.md": {
+  "01-client-proposal-generation.md": {
     "apply_targets": [
-      ".cursor/ai-driven-workflow/00B-client-discovery-initiation.md"
+      ".cursor/ai-driven-workflow/02-client-discovery-initiation.md"
     ],
     "protocol_mentions": {
       "00": 13,
@@ -99,7 +99,7 @@
       "00": 30
     },
     "file_refs": {
-      "00B-client-discovery-initiation.md": 1
+      "02-client-discovery-initiation.md": 1
     },
     "total_protocol_mentions": 15,
     "total_artifact_refs": 30,

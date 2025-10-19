@@ -3,7 +3,7 @@
 © 2025 - All Rights Reserved
 ---
 
-# PROTOCOL 0: BOOTSTRAP YOUR PROJECT (LEGACY ALIGNMENT COMPLIANT)
+# PROTOCOL 05: BOOTSTRAP YOUR PROJECT (LEGACY ALIGNMENT COMPLIANT)
 
 ## PREREQUISITES
 **[STRICT]** List all required artifacts, approvals, and system states before execution.

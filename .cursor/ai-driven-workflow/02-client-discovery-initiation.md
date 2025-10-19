@@ -208,57 +208,30 @@ You are a **Freelance Solutions Architect**. Your mission is to orchestrate a st
 
 ## 02. AUTOMATION HOOKS
 
-### Gate Runner (Recommended):
+### Validation Scripts:
 ```bash
-# Run all quality gates with single command
-python3 scripts/run_protocol_gates.py 02
+# Prerequisite validation
+python scripts/validate_prerequisites_02.py
 
-# Aggregate evidence into manifest
-python3 scripts/aggregate_evidence_02.py
+# Quality gate automation
+python scripts/validate_discovery_objectives.py --input .artifacts/protocol-02/client-context-notes.md
+python scripts/validate_discovery_scope.py --form .artifacts/protocol-02/client-discovery-form.md
+python scripts/validate_discovery_expectations.py --recap .artifacts/protocol-02/discovery-recap.md
 
-# Output: .artifacts/protocol-02/gate-manifest.json
-#         .artifacts/protocol-02/evidence-manifest.json
-```
-
-### Individual Validators (Advanced):
-```bash
-# Run gates individually for debugging
-python3 scripts/validate_gate_02_objectives.py      # Gate 1: Objective alignment
-python3 scripts/validate_gate_02_requirements.py    # Gate 2: Requirement completeness
-python3 scripts/validate_gate_02_expectations.py    # Gate 3: Expectation alignment
-python3 scripts/validate_gate_02_confirmation.py    # Gate 4: Discovery confirmation
+# Evidence aggregation
+python scripts/aggregate_evidence_02.py --output .artifacts/protocol-02/
 ```
 
 ### CI/CD Integration:
 ```yaml
-name: Protocol 02 Gate Validation
+name: Protocol 02 Validation
 on: [push, pull_request]
 jobs:
-  validate-gates:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-      
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-      
       - name: Run Protocol 02 Gates
-        run: python3 scripts/run_protocol_gates.py 02
-      
-      - name: Aggregate Evidence
-        run: python3 scripts/aggregate_evidence_02.py
-      
-      - name: Upload Evidence Manifest
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: protocol-02-evidence
-          path: .artifacts/protocol-02/evidence-manifest.json
+        run: python3 scripts/run_protocol_gates.py
 ```
 
 ### Manual Fallbacks:
@@ -267,14 +240,9 @@ When automation is unavailable, execute manual validation:
 2. Obtain written confirmation via email and store `.eml` or `.pdf` copies under `.artifacts/protocol-02/transcripts/`.
 3. Document manual checks in `.artifacts/protocol-02/manual-validation-log.md`.
 
-### Quick Reference:
-- **Gate config**: `config/protocol_gates/02.yaml`
-- **Full documentation**: `documentation/gate-automation-quick-reference.md`
-- **Test integration**: `bash scripts/test_gate_integration.sh`
-
 ---
 
-## 00B. HANDOFF CHECKLIST
+## 02 . HANDOFF CHECKLIST
 
 ### Pre-Handoff Validation:
 Before declaring protocol complete, validate:
@@ -302,7 +270,7 @@ Before declaring protocol complete, validate:
 
 ---
 
-## 00B. EVIDENCE SUMMARY
+## 02. EVIDENCE SUMMARY
 
 ### Generated Artifacts:
 | Artifact | Location | Purpose | Consumer |

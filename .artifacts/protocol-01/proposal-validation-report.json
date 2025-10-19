@@ -1,6 +1,12 @@
 {
-  "status": "pass",
-  "readability_score": 92,
-  "factual_discrepancies": [],
-  "empathy_coverage": 5
+  "readability_score": -39.768367663656875,
+  "grade_level": 32.56290914221219,
+  "grammar_issues": [
+    "Missing space between words"
+  ],
+  "structure_score": 1.0,
+  "empathy_score": 1.0,
+  "factual_score": 0.5,
+  "overall_score": 0.53,
+  "validation_timestamp": "2025-01-18T14:38:00Z"
 }

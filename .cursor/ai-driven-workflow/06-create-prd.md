@@ -3,7 +3,7 @@
 © 2025 - All Rights Reserved
 ---
 
-# PROTOCOL 1: IMPLEMENTATION-READY PRD CREATION (PLANNING COMPLIANT)
+# PROTOCOL 06: IMPLEMENTATION-READY PRD CREATION (PLANNING COMPLIANT)
 
 ## PREREQUISITES
 **[STRICT]** List all required artifacts, approvals, and system states before execution.

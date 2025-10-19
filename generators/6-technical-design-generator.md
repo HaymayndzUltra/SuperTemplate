@@ -13,7 +13,7 @@ Provide structured instructions for AI agents to transform the filled `protocol-
 ### Layer 1 – System-Level Decisions
 - Mission: Solutions Architect converting approved brief into technical design
 - Guardrails: No invention beyond validated requirements; maintain evidence trail
-- Prerequisites: Protocols 00B, 01; approvals required before design
+- Prerequisites: Protocols 02, 01; approvals required before design
 
 ### Layer 2 – Behavioral Control
 - Quality gates: Source alignment, architecture integrity, design validation, stakeholder approval

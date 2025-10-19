@@ -121,8 +121,8 @@ The matrix highlights the disconnect between protocol expectations and available
 | Protocol | Existing Scripts | Missing Scripts |
 |---|---|---|
 | 00 | — | — |
-| 01 | scripts/analyze_jobpost.py, scripts/check_hipaa.py, scripts/enforce_gates.py,… | scripts/aggregate_evidence_00A.py, scripts/run_protocol_00A_gates.py,… |
-| 02 | — | scripts/aggregate_evidence_00B.py, scripts/check_client_confirmation.py,… |
+| 01 | scripts/analyze_jobpost.py, scripts/check_hipaa.py, scripts/enforce_gates.py,… | scripts/aggregate_evidence_01.py, scripts/run_protocol_01_gates.py,… |
+| 02 | — | scripts/aggregate_evidence_02.py, scripts/check_client_confirmation.py,… |
 | 03 | — | scripts/aggregate_evidence_01.py, scripts/run_protocol_01_gates.py,… |
 | 04 | scripts/doctor.py, scripts/evidence_manager.py, scripts/generate_from_brief.py,… | scripts/aggregate_evidence_00.py, scripts/run_protocol_00_gates.py,… |
 | 05 | scripts/normalize_project_rules.py, scripts/rules_audit_quick.py | scripts/aggregate_evidence_0.py, scripts/run_protocol_0_gates.py,… |

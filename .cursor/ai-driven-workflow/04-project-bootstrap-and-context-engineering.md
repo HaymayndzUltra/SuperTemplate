@@ -3,7 +3,7 @@
 © 2025 - All Rights Reserved
 ---
 
-# PROTOCOL 00: PROJECT BOOTSTRAP AND CONTEXT ENGINEERING (GOVERNANCE COMPLIANT)
+# PROTOCOL 04: PROJECT BOOTSTRAP AND CONTEXT ENGINEERING (GOVERNANCE COMPLIANT)
 
 ## PREREQUISITES
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
@@ -232,11 +232,6 @@ python scripts/validate_brief.py --path PROJECT-BRIEF.md --output .artifacts/pro
 python scripts/rules_audit_quick.py --output .artifacts/protocol-04/rule-audit-report.md
 python scripts/validate_scaffold.py --manifest .artifacts/protocol-04/bootstrap-manifest.json
 python scripts/validate_workflows.py --mode bootstrap --output .artifacts/protocol-04/workflow-validation-report.json
-
-# Evidence manifest generation example
-python3 scripts/generate_evidence_manifest.py 04 \
-  --artifact ".artifacts/protocol-04/brief-validation-report.json::pending::Bootstrap brief validation" \
-  --notes "Generated during Phase 1 telemetry"
 
 # Evidence aggregation
 python scripts/aggregate_evidence_00.py --output .artifacts/protocol-04/

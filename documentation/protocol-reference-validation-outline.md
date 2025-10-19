@@ -22,7 +22,7 @@ Design an automated validator that ensures every reference affected by the renum
 
 ### 1. File Rename Verification
 - Confirm that each legacy filename now exists at the sequential path described in the mapping table.
-- Validate that no files retain the old naming pattern (e.g., `00a-*`, `0-*`).
+- Validate that no files retain the old naming pattern (e.g., `01-*`, `0-*`).
 
 ### 2. `@apply` Chain Integrity
 - Extract every `@apply` directive from protocol and review files.

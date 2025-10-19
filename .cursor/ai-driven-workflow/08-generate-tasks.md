@@ -3,7 +3,7 @@
 © 2025 - All Rights Reserved
 ---
 
-# PROTOCOL 2: TECHNICAL TASK GENERATION (PLANNING COMPLIANT)
+# PROTOCOL 08: TECHNICAL TASK GENERATION (PLANNING COMPLIANT)
 
 ## PREREQUISITES
 **[STRICT]** List all required artifacts, approvals, and system states before execution.

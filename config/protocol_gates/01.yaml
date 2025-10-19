@@ -1,5 +1,5 @@
-# Protocol 00A: Client Proposal Generation - Gate Configuration
-# This file defines automated validation gates for Protocol 01 (00A)
+# Protocol 01: Client Proposal Generation - Gate Configuration
+# This file defines automated validation gates for Protocol 01 (01)
 
 protocol_id: "01"
 protocol_title: "Client Proposal Generation"

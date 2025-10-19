@@ -1,7 +1,7 @@
 # Instruction Creator Meta-System Instructions
 
 ## PURPOSE
-This document provides **complete system instructions** for AI agents to analyze any existing protocol structure and generate specialized `protocol-generator-instructions-{name}.md` files that can create protocols in that specific format. This meta-system solves the structural mismatch problem where the current generator only supports 00A/00B format.
+This document provides **complete system instructions** for AI agents to analyze any existing protocol structure and generate specialized `protocol-generator-instructions-{name}.md` files that can create protocols in that specific format. This meta-system solves the structural mismatch problem where the current generator only supports 01/00B format.
 
 ## INPUT REQUIREMENTS
 
@@ -49,7 +49,7 @@ Users must provide:
      - Map handoff/completion formats
 
 3. **`[MUST]` Identify Unique Characteristics:**
-   * **Action:** Compare with standard 00A/00B format
+   * **Action:** Compare with standard 01/00B format
    * **Action:** Document structural differences
    * **Action:** Identify format-specific requirements
    * **Evidence Collection:** Create structural comparison matrix

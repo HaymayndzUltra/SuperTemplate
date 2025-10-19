@@ -36,15 +36,15 @@ jobs:
     
     - name: Run real job post analysis
       run: |
-        python3 scripts/analyze_jobpost.py JOB-POST.md .artifacts/protocol-00A/real-jobpost-analysis.json
+        python3 scripts/analyze_jobpost.py JOB-POST.md .artifacts/protocol-01/real-jobpost-analysis.json
     
     - name: Run real tone analysis
       run: |
-        python3 scripts/tone_mapper.py .artifacts/protocol-00A/real-jobpost-analysis.json .artifacts/protocol-00A/real-tone-analysis.json
+        python3 scripts/tone_mapper.py .artifacts/protocol-01/real-jobpost-analysis.json .artifacts/protocol-01/real-tone-analysis.json
     
     - name: Run real proposal validation
       run: |
-        python3 scripts/validate_proposal.py .artifacts/protocol-00A/PROPOSAL.md .artifacts/protocol-00A/real-proposal-validation.json
+        python3 scripts/validate_proposal.py .artifacts/protocol-01/PROPOSAL.md .artifacts/protocol-01/real-proposal-validation.json
     
     - name: Run external validation
       env:
@@ -71,7 +71,7 @@ jobs:
       with:
         name: real-validation-reports
         path: |
-          .artifacts/protocol-00A/real-*.json
+          .artifacts/protocol-01/real-*.json
           security-report.json
           vulnerability-report.json
     
@@ -81,7 +81,7 @@ jobs:
       with:
         script: |
           const fs = require('fs');
-          const validationReport = JSON.parse(fs.readFileSync('.artifacts/protocol-00A/real-proposal-validation.json'));
+          const validationReport = JSON.parse(fs.readFileSync('.artifacts/protocol-01/real-proposal-validation.json'));
           
           github.rest.issues.createComment({
             issue_number: context.issue.number,

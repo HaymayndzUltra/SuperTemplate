@@ -1,4 +1,4 @@
-# Meta-Instruction Analysis: .cursor/ai-driven-workflow/00a-client-proposal-generation.md
+# Meta-Instruction Analysis: .cursor/ai-driven-workflow/01-client-proposal-generation.md
 
 ## PHASE MAP
 

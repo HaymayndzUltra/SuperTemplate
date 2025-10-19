@@ -18,7 +18,7 @@ def analyze_workflow_completeness():
     # Expected SDLC phases and their protocol coverage
     sdlc_phases = {
         "project_initiation": {
-            "protocols": ["00a", "00B", "01", "00"],
+            "protocols": ["01", "02", "01", "00"],
             "coverage": 0,
             "total_needed": 4
         },

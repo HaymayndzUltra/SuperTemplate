@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evidence aggregation for Protocol 01 (00A): Client Proposal Generation.
+"""Evidence aggregation for Protocol 01 (01): Client Proposal Generation.
 
 Collects all gate validation results and artifacts into a consolidated evidence manifest.
 """

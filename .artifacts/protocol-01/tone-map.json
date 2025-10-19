@@ -1,5 +1,24 @@
 {
-  "confidence": 0.85,
-  "strategy": "technical-professional",
-  "recommended_tone": "confident yet empathetic"
+  "sentiment_score": 0.0,
+  "subjectivity_score": 0.5833333333333334,
+  "tone_classification": "Executive Technical",
+  "confidence": 0.95,
+  "strategy": "Regulatory-Compliant Technical Excellence",
+  "communication_style": "Direct, evidence-based, regulator-ready documentation",
+  "key_indicators": [
+    "Zero-trust architecture depth",
+    "Post-quantum migration viability", 
+    "Regional compliance coverage",
+    "Operational rigor with automation-first approach",
+    "Evidence discipline with traceability",
+    "Risk transparency with clear assumptions"
+  ],
+  "proposal_framing": {
+    "approach": "Technical expertise demonstration with compliance focus",
+    "differentiators": ["Post-quantum cryptography", "Zero-trust architecture", "Regulatory compliance"],
+    "risk_handling": "Explicit risk acceptance matrix with mitigation pathways",
+    "evidence_emphasis": "Attestations, audit packages, regulator-ready documentation"
+  },
+  "analysis_timestamp": "2025-01-18T14:32:00Z",
+  "manual_review": "Updated based on executive technical tone with high regulatory compliance requirements"
 }

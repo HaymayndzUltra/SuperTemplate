@@ -56,7 +56,7 @@
     ],
     "file_specific_results": [
       {
-        "file_name": "analysis-00a-client-proposal-generation.md",
+        "file_name": "analysis-01-client-proposal-generation.md",
         "compliance_score": 100,
         "issues_found": 0,
         "recommendations": "No issues found - file fully compliant"

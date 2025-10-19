@@ -21,20 +21,20 @@
 | Priority | Count | Protocols | Action Required |
 |----------|-------|-----------|-----------------|
 | **CRITICAL** | 6 | 00-generate-rules, 1, 2, 3, 4, 5 | Complete structural rewrite |
-| **HIGH** | 8 | 00a, 00B, 01, 00, 0, 00-CD, 8, arch/code/security-review | Add missing sections |
+| **HIGH** | 8 | 01, 02, 01, 00, 0, 00-CD, 8, arch/code/security-review | Add missing sections |
 | **MEDIUM** | 14 | 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 | Add prerequisites |
 
 ---
 
 ## Protocol-by-Protocol Verification Matrix
 
-### Protocol 00a: Client Proposal Generation
+### Protocol 01: Client Proposal Generation
 | Report | Score | Primary Issues | Suggested Fixes |
 |--------|-------|----------------|-----------------|
 | **Report 1** | 6.67/10 | No prerequisites section, automation hooks scattered | Add prerequisites subsection, consolidate automation hooks |
 | **Report 2** | 7.33/10 | No prerequisites checklist for JOB-POST.md | Add prerequisites section, create Automation Hooks summary |
 | **Report 3** | 8.17/10 | No explicit prerequisite section | Add dedicated prerequisites subsection, document evidence storage |
-| **Report 4** | 7.83/10 | No prerequisite statement, wrong handoff reference | Add prerequisites section, fix handoff to Protocol 00B |
+| **Report 4** | 7.83/10 | No prerequisite statement, wrong handoff reference | Add prerequisites section, fix handoff to Protocol 02 |
 
 **Consolidated Issues**:
 - ❌ Missing explicit prerequisites section
@@ -46,11 +46,11 @@
 - ✅ Add "Prerequisites" section with JOB-POST.md validation
 - ✅ Create "Automation Hooks" section with script summary
 - ✅ Document evidence storage locations
-- ✅ Fix handoff to reference Protocol 00B
+- ✅ Fix handoff to reference Protocol 02
 
 ---
 
-### Protocol 00B: Client Discovery Initiation
+### Protocol 02: Client Discovery Initiation
 | Report | Score | Primary Issues | Suggested Fixes |
 |--------|-------|----------------|-----------------|
 | **Report 1** | 6.67/10 | Missing prerequisites, automation narrative only | Add explicit prerequisites list, document automation hooks |
@@ -546,7 +546,7 @@
 12. **5 → 8**: Retrospective provides no handoff to script governance
 
 ### Evidence Flow Issues (8 Protocols)
-1. **00A-00B**: Produce JSON/Markdown evidence but lack shared manifest
+1. **01-02**: Produce JSON/Markdown evidence but lack shared manifest
 2. **Protocol 3**: Fails to package evidence for integration testing
 3. **Protocol 4**: Lacks defined inputs for audit workflows
 4. **Protocol 5**: Evidence outputs not packaged for downstream
@@ -572,8 +572,8 @@
 ### HIGH (Major Section Additions)
 | Protocol | Current Score | Issues | Action |
 |----------|---------------|--------|--------|
-| **00a** | 6.67-8.17/10 | Missing prerequisites, automation | Add sections |
-| **00B** | 6.67-7.33/10 | Missing prerequisites, automation | Add sections |
+| **01** | 6.67-8.17/10 | Missing prerequisites, automation | Add sections |
+| **02** | 6.67-7.33/10 | Missing prerequisites, automation | Add sections |
 | **01** | 7.50-8.0/10 | Missing prerequisites, evidence | Add sections |
 | **00** | 6.5-7.33/10 | Missing prerequisites, automation | Add sections |
 | **0** | 5.83-6.67/10 | Missing standard sections | Restructure |

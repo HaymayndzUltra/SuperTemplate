@@ -6,7 +6,7 @@ This document maps the integration points between all 28 protocols in the comple
 ## Protocol Flow Sequence
 
 ### Phase 0: Foundation & Discovery (4 protocols)
-1. **00a-client-proposal-generation.md** → **00B-client-discovery-initiation.md**
+1. **01-client-proposal-generation.md** → **00B-client-discovery-initiation.md**
 2. **00B-client-discovery-initiation.md** → **01-project-brief-creation.md**
 3. **01-project-brief-creation.md** → **00-project-bootstrap-and-context-engineering.md**
 4. **00-project-bootstrap-and-context-engineering.md** → **1-create-prd.md**

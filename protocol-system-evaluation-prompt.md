@@ -10,8 +10,8 @@ You are an AI evaluation specialist with extensive experience in assessing AI-dr
 
 Begin your evaluation with these 5 protocols as the workflow entry point:
 
-1. **00a-client-proposal-generation.md** - Client proposal creation
-2. **00B-client-discovery-initiation.md** - Initial client discovery  
+1. **01-client-proposal-generation.md** - Client proposal creation
+2. **02-client-discovery-initiation.md** - Initial client discovery  
 3. **01-project-brief-creation.md** - Project brief/PRD creation
 4. **00-project-bootstrap-and-context-engineering.md** - Project initialization
 5. **00-generate-rules.md** - Cursor rules generation
@@ -20,7 +20,7 @@ Begin your evaluation with these 5 protocols as the workflow entry point:
 
 From the 5 starting protocols, trace the workflow through all 28 protocols in this sequence:
 
-**Phase 0: Foundation (5)** → 00a → 00B → 01 → 00 → 00-generate-rules
+**Phase 0: Foundation (5)** → 01 → 02 → 01 → 00 → 00-generate-rules
 
 **Phase 1-2: Planning (3)** → 1 → 6 → 2 → 7
 
@@ -146,7 +146,7 @@ Test the protocols under various project scenarios:
 - Integration points
 
 ## Per-Protocol Analysis
-### Protocol 00a: Client Proposal Generation
+### Protocol 01: Client Proposal Generation
 #### ✅ Completeness Checklist
 #### ❌ Gaps Identified
 #### 💡 Improvement Suggestions
@@ -207,8 +207,8 @@ Excel/CSV format with:
 The following files contain the complete protocol system:
 
 ### Foundation Protocols (5)
-- `.cursor/ai-driven-workflow/00a-client-proposal-generation.md`
-- `.cursor/ai-driven-workflow/00B-client-discovery-initiation.md`
+- `.cursor/ai-driven-workflow/01-client-proposal-generation.md`
+- `.cursor/ai-driven-workflow/02-client-discovery-initiation.md`
 - `.cursor/ai-driven-workflow/01-project-brief-creation.md`
 - `.cursor/ai-driven-workflow/00-project-bootstrap-and-context-engineering.md`
 - `.cursor/ai-driven-workflow/00-generate-rules.md`

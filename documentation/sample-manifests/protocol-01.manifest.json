@@ -1,6 +1,6 @@
 {
   "protocol_id": "01",
-  "protocol_title": "PROTOCOL 00A: CLIENT PROPOSAL GENERATION (DISCOVERY COMPLIANT)",
+  "protocol_title": "PROTOCOL 01: CLIENT PROPOSAL GENERATION (DISCOVERY COMPLIANT)",
   "generated_at": "2025-10-19T01:32:10.855800Z",
   "automation_coverage": {
     "referenced_scripts": [],

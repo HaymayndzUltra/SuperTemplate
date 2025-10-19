@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evidence aggregation for Protocol 02 (00B): Client Discovery Initiation.
+"""Evidence aggregation for Protocol 02 (02): Client Discovery Initiation.
 
 Collects all gate validation results and artifacts into a consolidated evidence manifest.
 """
