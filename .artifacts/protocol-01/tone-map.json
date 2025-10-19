@@ -1,0 +1,20 @@
+{
+  "tone_classification": "Executive-Technical (Regulator-Ready)",
+  "confidence": 0.95,
+  "strategy": "Lead with zero-trust architecture credibility, foreground compliance evidence, and mirror the client's regulator-focused language while maintaining concise, outcome-driven responses.",
+  "manual_override": true,
+  "override_reason": "Automated tone analysis returned confidence below 0.8 (0.17), requiring manual review per protocol instructions.",
+  "manual_reviewer": "AI agent following Protocol 01 manual classification requirements",
+  "supporting_signals": [
+    "Frequent references to regulators, attestations, and audit packages.",
+    "Direct requests for evidence-backed deliverables and risk transparency.",
+    "Expectations of executive steering committee alignment and compliance readiness."
+  ],
+  "automation_output": {
+    "sentiment_score": 0.0,
+    "subjectivity_score": 0.5833333333333334,
+    "tone_classification": "Strategic",
+    "confidence": 0.17
+  },
+  "analysis_timestamp": "2025-01-18T00:00:00Z"
+}
