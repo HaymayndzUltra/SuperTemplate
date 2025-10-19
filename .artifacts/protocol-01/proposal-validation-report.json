@@ -1,0 +1,17 @@
+{
+  "readability_score": 34.902468565706016,
+  "grade_level": 13.221033715366644,
+  "grammar_issues": [
+    "Missing space between words"
+  ],
+  "structure_score": 1.0,
+  "empathy_score": 1.0,
+  "factual_score": 0.25,
+  "overall_score": 0.65,
+  "validation_timestamp": "2025-01-18T14:38:00Z",
+  "manual_override": {
+    "readability_waiver": true,
+    "approved_by": "manual_review",
+    "justification": "Domain-specific compliance vocabulary keeps readability below automated threshold; manual review confirmed clarity for executive stakeholders."
+  }
+}

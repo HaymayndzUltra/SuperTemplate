@@ -555,3 +555,42 @@ python scripts/run_quality_audit.py
 ---
 
 **Ready to transform your development workflow? Start with Protocol 05 and follow the complete lifecycle for professional, evidence-based software development!** 🚀
+
+---
+
+## 🧭 Protocol 02 – Client Discovery Initiation Guardrails
+
+These rules govern every execution of `.cursor/ai-driven-workflow/02-client-discovery-initiation.md`.
+
+### 1. Session Scope & Ownership
+- Run **exactly one protocol per session**; do not mix Protocol 02 tasks with other protocols or backlog grooming.
+- If prerequisite artifacts from Protocol 01 are missing or stale, stop immediately, document the gap in `.artifacts/protocol-02/manual-validation-log.md`, and notify the reviewer instead of fabricating placeholders.
+
+### 2. Pre-Flight Verification
+- Confirm the following before announcing `[MASTER RAY™ | PHASE 1 START]`:
+  1. `PROPOSAL.md` and `proposal-summary.json` from Protocol 01 are approved and stored in `.artifacts/protocol-01/`.
+  2. Client acceptance or follow-up is captured in `.artifacts/protocol-02/client-reply.md` or an equivalent transcript.
+  3. Communication channel, discovery templates, and scheduling commitments are verified (email/call/chat confirmed with timestamp).
+- If any prerequisite is absent, capture the blocker in `manual-validation-log.md`, request the missing asset, and halt the session.
+
+### 3. Execution Discipline
+- Follow the protocol phases sequentially—Context Alignment → Requirement Deep Dive → Delivery Framework Alignment → Discovery Confirmation.
+- Each sub-step produces a named artifact inside `.artifacts/protocol-02/`; never reuse filenames from earlier sessions.
+- Use the automation hooks when available:
+  - `python scripts/validate_prerequisites_02.py`
+  - `python scripts/validate_discovery_objectives.py --input .artifacts/protocol-02/client-context-notes.md`
+  - `python scripts/validate_discovery_scope.py --form .artifacts/protocol-02/client-discovery-form.md`
+  - `python scripts/validate_discovery_expectations.py --recap .artifacts/protocol-02/discovery-recap.md`
+  - `python scripts/aggregate_evidence_02.py --output .artifacts/protocol-02/`
+- If automation fails, log the command, error, and remediation in `manual-validation-log.md` before retrying. Do not mark gates as passed without evidence.
+
+### 4. Communication & Evidence Integrity
+- Announce each phase transition using the protocol’s status prompts and capture exact wording in `communication-plan.md` or call transcripts.
+- Maintain a live `risk-log.md` capturing unresolved questions, client dependencies, and approval gaps; update it whenever you pause execution.
+- Store raw transcripts in `.artifacts/protocol-02/transcripts/` with ISO-8601 timestamps.
+- Enforce readability and empathy by paraphrasing client language inside `discovery-recap.md`; avoid copy-pasting proposal text.
+
+### 5. Session Closeout & Continuity
+- Run `python scripts/generate_session_continuation.py --protocol 02` after validations complete to produce updated instructions for the next operator.
+- Validate the final evidence package manually if any gate was waived, and record reviewer handoff notes in `.artifacts/protocol-02/reviewer-brief.md`.
+- Do not trigger Protocol 03 until the client has explicitly approved `discovery-recap.md` and the approval is archived in `transcripts/`.
