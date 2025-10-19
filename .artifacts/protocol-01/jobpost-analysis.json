@@ -1,0 +1,72 @@
+{
+  "source": "JOB-POST.md",
+  "summary": {
+    "role": "Principal Zero-Trust Payments Architect",
+    "engagement_length_weeks": 8,
+    "budget_usd_range": "240k-320k"
+  },
+  "objectives": [
+    "Deliver a production-ready, compliance-audited MVP of a zero-trust payments orchestration layer.",
+    "Provide executable architecture, verified controls, and transferable runbooks for internal teams.",
+    "Ensure quantum-resistant, regulator-auditable, and resilient operations across four continents."
+  ],
+  "deliverables": [
+    "Protocolized architecture dossier with threat models, trust boundaries, and migration plans.",
+    "Terraform and Pulumi infrastructure definitions with compliance guardrails and drift detection.",
+    "Zero-trust policy pack in OPA/Rego and Cedar with automated fixtures.",
+    "Operational runbooks covering quantum failback, SWIFT CSP readiness, incident escalation, and PQ key rotation.",
+    "Evidence manifest including Sigstore attestations, in-toto metadata, and regulator checklists.",
+    "Integration test suite for multi-region failover, sanctions accuracy, and policy enforcement."
+  ],
+  "tone_signals": [
+    "Regulator-ready, compliance-focused communication expected.",
+    "Direct, concise responses with evidence-backed claims only.",
+    "Emphasis on operational rigor and risk transparency."
+  ],
+  "risks": [
+    "Need to balance post-quantum adoption with current TLS 1.2 partner constraints.",
+    "Hardware security modules have long lead times requiring interim secure enclave strategy.",
+    "Regulatory updates (MAS TRM 2023) may change requirements mid-engagement.",
+    "Strict on-prem firewall rules for partners necessitate careful zero-trust gateway design."
+  ],
+  "key_terms": [
+    "zero-trust",
+    "post-quantum",
+    "CRYSTALS-Kyber",
+    "Dilithium",
+    "SPIFFE",
+    "HashiCorp Vault",
+    "CloudHSM",
+    "SWIFT CSP",
+    "PSD2",
+    "FedLine",
+    "MAS TRM",
+    "OPA/Rego",
+    "Cedar",
+    "Sigstore",
+    "in-toto"
+  ],
+  "compliance_requirements": [
+    "FIPS 140-3 validated cryptography modules.",
+    "Zero standing credentials with SPIFFE identities and hardware-backed signing.",
+    "Region-specific data sovereignty with SCC workflow documentation.",
+    "Audit evidence for SWIFT CSP, PSD2 RTS, FedLine, and MAS TRM."
+  ],
+  "operational_requirements": [
+    "P99 settlement under 900 ms with graceful degradation.",
+    "Automated multi-region failover within 45 seconds and zero data loss.",
+    "Real-time policy evaluation latency under 30 ms at 5k TPS."
+  ],
+  "submission_requirements": [
+    "Proposal referencing scope with verifiable zero-trust and compliance delivery.",
+    "Workflow outline with quality gates and evidence packages.",
+    "Explicit risk acceptance matrix clarifying assumptions within eight weeks.",
+    "Links to two proof artifacts (PQ crypto, regulated payment runbook, or zero-trust implementation).",
+    "Availability covering New York, Frankfurt, and Singapore time zones."
+  ],
+  "analysis_metadata": {
+    "analyst": "manual",
+    "timestamp": "2025-10-19T13:28:26Z",
+    "method": "Manual review due to missing automation script outputs"
+  }
+}

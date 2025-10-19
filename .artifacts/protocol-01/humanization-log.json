@@ -1,0 +1,22 @@
+{
+  "protocol": "01",
+  "actions": [
+    {
+      "type": "tone_alignment",
+      "description": "Matched regulator-ready, executive tone while maintaining empathy by acknowledging client autonomy and audit needs.",
+      "evidence": "Greeting and Collaboration sections mirror client language such as 'regulator-ready', 'Sigstore attestations', and 'evidence manifest'."
+    },
+    {
+      "type": "risk_acknowledgement",
+      "description": "Explicitly referenced hardware lead times, TLS 1.2 constraints, and MAS TRM change windows to show awareness of client risks.",
+      "evidence": "Collaboration Model section maintains a living risk register with mitigation owners."
+    },
+    {
+      "type": "empathy_token",
+      "description": "Demonstrated partnership mindset by highlighting autonomous handoff, shared evidence workspace, and tailored time-zone overlap.",
+      "evidence": "Greeting and Next Steps sections emphasize empowering internal teams and flexible scheduling."
+    }
+  ],
+  "tokens_count": 4,
+  "timestamp": "2025-10-19T13:29:31+00:00"
+}
