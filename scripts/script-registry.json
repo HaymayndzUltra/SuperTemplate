@@ -1,8 +1,44 @@
 {
+  "protocol-gates": {
+    "gate-runner": "scripts/run_protocol_gates.py",
+    "gate-utilities": "scripts/gate_utils.py",
+    "protocol-01-validators": [
+      "scripts/validate_gate_01_jobpost.py",
+      "scripts/validate_gate_01_tone.py",
+      "scripts/validate_gate_01_structure.py",
+      "scripts/validate_gate_01_compliance.py",
+      "scripts/validate_gate_01_final.py"
+    ],
+    "protocol-02-validators": [
+      "scripts/validate_gate_02_objectives.py",
+      "scripts/validate_gate_02_requirements.py",
+      "scripts/validate_gate_02_expectations.py",
+      "scripts/validate_gate_02_confirmation.py"
+    ],
+    "protocol-03-validators": [
+      "scripts/validate_gate_03_discovery.py",
+      "scripts/validate_gate_03_structure.py",
+      "scripts/validate_gate_03_approvals.py"
+    ],
+    "evidence-aggregation": [
+      "scripts/aggregate_evidence_01.py",
+      "scripts/aggregate_evidence_02.py",
+      "scripts/aggregate_evidence_03.py"
+    ],
+    "integration-tests": [
+      "scripts/test_gate_validators.py",
+      "scripts/test_gate_integration.sh"
+    ]
+  },
   "bootstrap": {
     "stack-detection": "scripts/classify_domain.py",
     "template-generation": "scripts/generate_from_brief.py",
-    "rules-setup": "scripts/normalize_project_rules.py"
+    "rules-setup": "scripts/normalize_project_rules.py",
+    "analyze-project-rules": "scripts/analyze_project_rules.py",
+    "bootstrap-project": "scripts/bootstrap_project.py",
+    "generate-client-project": "scripts/generate_client_project.py",
+    "init-client-project": "scripts/init_client_project.py",
+    "optimize-project-rules": "scripts/optimize_project_rules.py"
   },
   "prd": {
     "validation": "scripts/validate_prd_gate.py",
@@ -10,18 +46,113 @@
   },
   "task-generation": {
     "task-enrichment": "scripts/enrich_tasks.py",
-    "lifecycle-mapping": "scripts/lifecycle_tasks.py"
+    "lifecycle-mapping": "scripts/lifecycle_tasks.py",
+    "plan-from-brief": "scripts/plan_from_brief.py",
+    "pre-lifecycle-plan": "scripts/pre_lifecycle_plan.py",
+    "sync-from-scaffold": "scripts/sync_from_scaffold.py",
+    "validate-tasks": "scripts/validate_tasks.py"
   },
   "execution": {
     "workflow-runner": "scripts/run_workflow.py",
-    "task-tracking": "scripts/update_task_state.py"
+    "task-tracking": "scripts/update_task_state.py",
+    "ai-executor": "scripts/ai_executor.py",
+    "ai-orchestrator": "scripts/ai_orchestrator.py",
+    "lane-executor": "scripts/lane_executor.py",
+    "project-generator-orchestration": "scripts/project_generator_orchestration.py",
+    "workflow-automation": "scripts/workflow_automation.py"
   },
   "quality": {
     "comprehensive-audit": "scripts/quality_gates.py",
-    "coverage-collection": "scripts/collect_coverage.py"
+    "coverage-collection": "scripts/collect_coverage.py",
+    "aggregate-coverage": "scripts/aggregate_coverage.py",
+    "check-compliance-docs": "scripts/check_compliance_docs.py",
+    "check-hipaa": "scripts/check_hipaa.py",
+    "compliance-validator": "scripts/compliance_validator.py",
+    "doctor": "scripts/doctor.py",
+    "enforce-gates": "scripts/enforce_gates.py",
+    "rules-audit-quick": "scripts/rules_audit_quick.py",
+    "validate-brief": "scripts/validate_brief.py",
+    "validate-compliance-assets": "scripts/validate_compliance_assets.py",
+    "validate-ai-directives": "scripts/validate_ai_directives.py",
+    "validation-gates": "scripts/validation_gates.py"
   },
   "retrospective": {
     "evidence-report": "scripts/evidence_report.py",
-    "improvement-plan": "scripts/trigger_plan.py"
+    "improvement-plan": "scripts/trigger_plan.py",
+    "compare-pull-requests": "scripts/compare_pull_requests.py",
+    "retrospective-rules-audit": "scripts/retrospective_rules_audit.py"
+  },
+  "discovery": {
+    "analyze-brief": "scripts/analyze_brief.py",
+    "analyze-jobpost": "scripts/analyze_jobpost.py",
+    "brief-processor": "scripts/brief_processor.py",
+    "tone-mapper": "scripts/tone_mapper.py"
+  },
+  "utilities": {
+    "backup-workflows": "scripts/backup_workflows.py",
+    "benchmark-generation": "scripts/benchmark_generation.py",
+    "build-submission-pack": "scripts/build_submission_pack.sh",
+    "deploy-backend": "scripts/deploy_backend.sh",
+    "detect-instruction-conflicts": "scripts/detect_instruction_conflicts.py",
+    "e2e-from-brief": "scripts/e2e_from_brief.sh",
+    "generate-consistency-report": "scripts/generate_consistency_report.py",
+    "generate-protocol-sequence": "scripts/generate_protocol_sequence.py",
+    "init-project": "scripts/init-project.sh",
+    "install-and-test": "scripts/install_and_test.sh",
+    "pr-bundle": "scripts/pr-bundle.sh",
+    "real-third-party-validator": "scripts/real_third_party_validator.py",
+    "restore-workflows": "scripts/restore_workflows.py",
+    "review-protocol-loader": "scripts/review_protocol_loader.py",
+    "rollback-backend": "scripts/rollback_backend.sh",
+    "rollback-frontend": "scripts/rollback_frontend.sh",
+    "router-benchmark": "scripts/router_benchmark.py",
+    "run-generate-rules": "scripts/run_generate_rules.py",
+    "scaffold-briefs": "scripts/scaffold_briefs.py",
+    "scaffold-phase-artifacts": "scripts/scaffold_phase_artifacts.py",
+    "score-risks": "scripts/score_risks.py",
+    "select-stacks": "scripts/select_stacks.py",
+    "setup": "scripts/setup.sh",
+    "setup-template-tests": "scripts/setup_template_tests.sh",
+    "simulate-protocol-execution": "scripts/simulate_protocol_execution.py",
+    "standardize-frontmatter": "scripts/standardize_frontmatter.py",
+    "system-instruction-formatter": "scripts/system_instruction_formatter.py",
+    "validate-proposal": "scripts/validate_proposal.py",
+    "validate-protocol-handoffs": "scripts/validate_protocol_handoffs.py",
+    "validate-protocol-steps": "scripts/validate_protocol_steps.py",
+    "validate-protocols": "scripts/validate_protocols.py",
+    "validate-script-bindings": "scripts/validate_script_bindings.py",
+    "validate-workflow-completeness": "scripts/validate_workflow_completeness.py",
+    "validate-workflow-integration": "scripts/validate_workflow_integration.py",
+    "validate-workflows": "scripts/validate_workflows.py",
+    "write-context-report": "scripts/write_context_report.py",
+    "scan-deps": "scripts/scan_deps.py"
+  },
+  "governance": {
+    "auto-register-scripts": "scripts/auto_register_scripts.py",
+    "generate-protocol-23-artifacts": "scripts/generate_protocol_23_artifacts.py",
+    "validate-script-registry": "scripts/validate_script_registry.py"
+  },
+  "evidence": {
+    "collect-perf": "scripts/collect_perf.py",
+    "evidence-manager": "scripts/evidence_manager.py",
+    "evidence-schema-converter": "scripts/evidence_schema_converter.py",
+    "migrate-evidence-data": "scripts/migrate_evidence_data.py",
+    "retrospective-evidence-report": "scripts/retrospective_evidence_report.py"
+  },
+  "monitoring": {
+    "external-services": "scripts/external_services.py",
+    "real-external-validation": "scripts/real_external_validation.py",
+    "real-monitoring-dashboard": "scripts/real_monitoring_dashboard.py"
+  },
+  "telemetry": {
+    "generate-evidence-manifest": "scripts/generate_evidence_manifest.py",
+    "generate-protocol-scorecard": "scripts/generate_protocol_scorecard.py",
+    "inventory-protocols": "scripts/inventory_protocols.py"
+  },
+  "testing": {
+    "test-circular-validation": "scripts/test_circular_validation.py",
+    "test-policy-decisions": "scripts/test_policy_decisions.py",
+    "test-workflow-integration": "scripts/test_workflow_integration.sh",
+    "validate-script-registry": "scripts/validate_script_registry.py"
   }
 }

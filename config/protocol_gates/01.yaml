@@ -1,0 +1,66 @@
+# Protocol 00A: Client Proposal Generation - Gate Configuration
+# This file defines automated validation gates for Protocol 01 (00A)
+
+protocol_id: "01"
+protocol_title: "Client Proposal Generation"
+notes: |
+  Gate automation for client proposal generation workflow.
+  Ensures job post analysis, tone mapping, proposal structure, compliance, and final validation.
+
+validators:
+  - name: "gate_1_job_post_intake"
+    command: "python3 scripts/validate_gate_01_jobpost.py"
+    description: "Validates job post analysis completeness and structure"
+    prerequisite: true
+    
+  - name: "gate_2_tone_strategy"
+    command: "python3 scripts/validate_gate_01_tone.py"
+    description: "Validates tone classification confidence and strategy mapping"
+    prerequisite: false
+    
+  - name: "gate_3_proposal_structure"
+    command: "python3 scripts/validate_gate_01_structure.py"
+    description: "Validates proposal structure integrity and humanization"
+    prerequisite: false
+    
+  - name: "gate_4_compliance"
+    command: "python3 scripts/validate_gate_01_compliance.py"
+    description: "Validates HIPAA compliance and quality gates"
+    prerequisite: false
+    
+  - name: "gate_5_final_validation"
+    command: "python3 scripts/validate_gate_01_final.py"
+    description: "Final validation of proposal readability and factual accuracy"
+    prerequisite: false
+
+artifacts:
+  - path: ".artifacts/protocol-01/jobpost-analysis.json"
+    description: "Parsed job post objectives, tone, and risks"
+    status: "pending"
+    
+  - path: ".artifacts/protocol-01/tone-map.json"
+    description: "Tone classification and strategy mapping"
+    status: "pending"
+    
+  - path: ".artifacts/protocol-01/PROPOSAL.md"
+    description: "Client-facing proposal document"
+    status: "pending"
+    
+  - path: ".artifacts/protocol-01/humanization-log.json"
+    description: "Humanization filter application log"
+    status: "pending"
+    
+  - path: ".artifacts/protocol-01/proposal-validation-report.json"
+    description: "Final validation evidence"
+    status: "pending"
+    
+  - path: ".artifacts/protocol-01/compliance-validation-report.json"
+    description: "Compliance check results"
+    status: "pending"
+
+quality_thresholds:
+  jobpost_completeness: 0.9
+  tone_confidence: 0.8
+  structure_score: 0.95
+  readability: 90
+  empathy_tokens: 3

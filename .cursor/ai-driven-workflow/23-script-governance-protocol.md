@@ -24,6 +24,37 @@
 
 ---
 
+## AUTOMATION HOOKS
+
+### Governance Toolkit (Recommended):
+```bash
+# Validate coverage and generate report
+python3 scripts/validate_script_registry.py \
+  --output .artifacts/validation/script-registry-report.json \
+  --min-coverage 95.0
+
+# Auto-register orphaned scripts (review before applying)
+python3 scripts/auto_register_scripts.py --dry-run
+python3 scripts/auto_register_scripts.py
+
+# Generate Protocol 23 evidence package
+python3 scripts/generate_protocol_23_artifacts.py \
+  --registry-report .artifacts/validation/script-registry-report.json
+```
+
+### Manual Spot Checks (Fallback):
+1. Manually list `/scripts/` directory and compare with `scripts/script-registry.json`.
+2. Review documentation and static analysis outputs; record findings in `manual-governance-checklist.md`.
+3. Capture remediation items in `.artifacts/scripts/manual-remediation-log.md`.
+
+### Quick Reference:
+- **Registry**: `scripts/script-registry.json`
+- **Evidence output**: `.artifacts/protocol-23/`
+- **Validation report**: `.artifacts/validation/script-registry-report.json`
+- **Cursor-independent guide**: `documentation/cursor-independent-guide.md`
+
+---
+
 ## 8. AI ROLE AND MISSION
 
 You are an **Automation Compliance Auditor**. Your mission is to validate, audit, and enforce consistency across operational scripts without modifying them, ensuring automation integrity for downstream protocols.
@@ -49,6 +80,7 @@ You are an **Automation Compliance Auditor**. Your mission is to validate, audit
      > "[PHASE 1] Inventory completeness evaluated. Deviations recorded."
    * **Halt condition:** Pause if completeness <95% without documented rationale.
    * **Evidence:** `.artifacts/scripts/inventory-validation-report.json` summarizing matches and gaps.
+   * **Automation:** `python3 scripts/validate_script_registry.py --min-coverage 95.0 --fail-on-orphans`
 
 3. **`[GUIDELINE]` Categorize Scripts by Function:**
    * **Action:** Group scripts into categories (deployment, validation, reporting) for governance insights.
@@ -66,6 +98,7 @@ You are an **Automation Compliance Auditor**. Your mission is to validate, audit
      > "[MASTER RAY™ | PHASE 2 START] - Auditing script documentation completeness..."
    * **Halt condition:** Halt if any critical script lacks documentation.
    * **Evidence:** `.artifacts/scripts/documentation-audit.csv` capturing compliance per script.
+   * **Automation:** `python3 scripts/generate_protocol_23_artifacts.py --output-dir .artifacts/protocol-23`
 
 2. **`[MUST]` Run Static Analysis Toolchain:**
    * **Action:** Execute read-only static analysis (`pylint`, `shellcheck`, `yamllint`) capturing warnings and severity levels.
@@ -80,6 +113,7 @@ You are an **Automation Compliance Auditor**. Your mission is to validate, audit
      > "[PHASE 2] Verifying artifact output compliance and schema adherence..."
    * **Halt condition:** Stop if artifact paths or schemas deviate without mitigation plan.
    * **Evidence:** `.artifacts/scripts/artifact-compliance-report.json` including schema validation results.
+   * **Automation:** `python3 scripts/generate_protocol_23_artifacts.py --output-dir .artifacts/protocol-23`
 
 4. **`[GUIDELINE]` Extend Protocol 19 Gates:**
    * **Action:** Map relevant Protocol 19 quality gate expectations to scripts to ensure consistency.
@@ -97,6 +131,7 @@ You are an **Automation Compliance Auditor**. Your mission is to validate, audit
      > "[MASTER RAY™ | PHASE 3 START] - Compiling script governance scorecard for downstream consumers..."
    * **Halt condition:** Pause if data model validation fails.
    * **Evidence:** `.cursor/context-kit/script-compliance.json` with compliance index.
+   * **Automation:** `python3 scripts/generate_protocol_23_artifacts.py --output-dir .artifacts/protocol-23`
 
 2. **`[MUST]` Publish Remediation Backlog:**
    * **Action:** Create backlog entries for non-compliant scripts and notify owners.

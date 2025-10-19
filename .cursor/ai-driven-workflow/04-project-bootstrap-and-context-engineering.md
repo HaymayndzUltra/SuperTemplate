@@ -233,6 +233,11 @@ python scripts/rules_audit_quick.py --output .artifacts/protocol-04/rule-audit-r
 python scripts/validate_scaffold.py --manifest .artifacts/protocol-04/bootstrap-manifest.json
 python scripts/validate_workflows.py --mode bootstrap --output .artifacts/protocol-04/workflow-validation-report.json
 
+# Evidence manifest generation example
+python3 scripts/generate_evidence_manifest.py 04 \
+  --artifact ".artifacts/protocol-04/brief-validation-report.json::pending::Bootstrap brief validation" \
+  --notes "Generated during Phase 1 telemetry"
+
 # Evidence aggregation
 python scripts/aggregate_evidence_00.py --output .artifacts/protocol-04/
 ```

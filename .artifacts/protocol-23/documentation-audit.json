@@ -1,0 +1,758 @@
+{
+  "generated_at": "2025-10-19T03:16:35.596696Z",
+  "total_scripts": 105,
+  "documented": 85,
+  "undocumented": 1,
+  "partially_documented": 19,
+  "documentation_score": 80.95,
+  "issues": [
+    {
+      "script": "scripts/aggregate_coverage.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/aggregate_evidence_01.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/aggregate_evidence_02.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/aggregate_evidence_03.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/ai_executor.py",
+      "score": 90.0,
+      "issues": [
+        "Only 17/18 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/ai_orchestrator.py",
+      "score": 90.0,
+      "issues": [
+        "Only 13/14 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/analyze_brief.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/analyze_jobpost.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/analyze_project_rules.py",
+      "score": 90.0,
+      "issues": [
+        "Only 1/5 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/auto_register_scripts.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/backup_workflows.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/benchmark_generation.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/bootstrap_project.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/brief_processor.py",
+      "score": 50.0,
+      "issues": [
+        "Only 4/10 functions documented",
+        "Missing main guard (if __name__ == '__main__')",
+        "Missing shebang (#!)"
+      ]
+    },
+    {
+      "script": "scripts/check_compliance_docs.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/check_hipaa.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/classify_domain.py",
+      "score": 90.0,
+      "issues": [
+        "Only 5/6 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/collect_coverage.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/collect_perf.py",
+      "score": 90.0,
+      "issues": [
+        "Only 1/3 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/compare_pull_requests.py",
+      "score": 60.0,
+      "issues": [
+        "No function docstrings",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/compliance_validator.py",
+      "score": 80.0,
+      "issues": [
+        "Missing shebang (#!)"
+      ]
+    },
+    {
+      "script": "scripts/detect_instruction_conflicts.py",
+      "score": 90.0,
+      "issues": [
+        "Only 11/12 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/doctor.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/enforce_gates.py",
+      "score": 90.0,
+      "issues": [
+        "Only 2/8 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/enrich_tasks.py",
+      "score": 90.0,
+      "issues": [
+        "Only 1/5 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/evidence_manager.py",
+      "score": 90.0,
+      "issues": [
+        "Only 19/20 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/evidence_report.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/evidence_schema_converter.py",
+      "score": 60.0,
+      "issues": [
+        "Missing main guard (if __name__ == '__main__')",
+        "Missing shebang (#!)"
+      ]
+    },
+    {
+      "script": "scripts/external_services.py",
+      "score": 60.0,
+      "issues": [
+        "Missing main guard (if __name__ == '__main__')",
+        "Missing shebang (#!)"
+      ]
+    },
+    {
+      "script": "scripts/gate_utils.py",
+      "score": 20.0,
+      "issues": [
+        "No function docstrings",
+        "Missing main guard (if __name__ == '__main__')",
+        "Missing shebang (#!)",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/generate_client_project.py",
+      "score": 90.0,
+      "issues": [
+        "Only 5/6 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/generate_consistency_report.py",
+      "score": 90.0,
+      "issues": [
+        "Only 23/24 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/generate_evidence_manifest.py",
+      "score": 60.0,
+      "issues": [
+        "No function docstrings",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/generate_from_brief.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/generate_prd_assets.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/generate_protocol_23_artifacts.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/generate_protocol_scorecard.py",
+      "score": 60.0,
+      "issues": [
+        "No function docstrings",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/generate_protocol_sequence.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/init_client_project.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/inventory_protocols.py",
+      "score": 60.0,
+      "issues": [
+        "No function docstrings",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/lane_executor.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/lifecycle_tasks.py",
+      "score": 50.0,
+      "issues": [
+        "Only 1/13 functions documented",
+        "Missing main guard (if __name__ == '__main__')",
+        "Missing shebang (#!)"
+      ]
+    },
+    {
+      "script": "scripts/normalize_project_rules.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/optimize_project_rules.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/plan_from_brief.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/pre_lifecycle_plan.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/project_generator_orchestration.py",
+      "score": 50.0,
+      "issues": [
+        "Only 4/10 functions documented",
+        "Missing main guard (if __name__ == '__main__')",
+        "Missing shebang (#!)"
+      ]
+    },
+    {
+      "script": "scripts/quality_gates.py",
+      "score": 90.0,
+      "issues": [
+        "Only 14/15 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/real_external_validation.py",
+      "score": 70.0,
+      "issues": [
+        "Only 3/4 functions documented",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/real_monitoring_dashboard.py",
+      "score": 70.0,
+      "issues": [
+        "Only 2/3 functions documented",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/real_third_party_validator.py",
+      "score": 70.0,
+      "issues": [
+        "Only 5/6 functions documented",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/restore_workflows.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/retrospective_evidence_report.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/retrospective_rules_audit.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/review_protocol_loader.py",
+      "score": 50.0,
+      "issues": [
+        "Only 6/7 functions documented",
+        "Missing main guard (if __name__ == '__main__')",
+        "Missing shebang (#!)"
+      ]
+    },
+    {
+      "script": "scripts/router_benchmark.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/rules_audit_quick.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/run_generate_rules.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/run_protocol_gates.py",
+      "score": 60.0,
+      "issues": [
+        "No function docstrings",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/run_workflow.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/scaffold_briefs.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/scaffold_phase_artifacts.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/scan_deps.py",
+      "score": 90.0,
+      "issues": [
+        "Only 2/4 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/score_risks.py",
+      "score": 90.0,
+      "issues": [
+        "Only 14/15 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/select_stacks.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/simulate_protocol_execution.py",
+      "score": 90.0,
+      "issues": [
+        "Only 19/20 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/sync_from_scaffold.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/system_instruction_formatter.py",
+      "score": 90.0,
+      "issues": [
+        "Only 15/18 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/test_circular_validation.py",
+      "score": 70.0,
+      "issues": [
+        "Only 1/2 functions documented",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/test_gate_validators.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/test_policy_decisions.py",
+      "score": 90.0,
+      "issues": [
+        "Only 1/8 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/tone_mapper.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/trigger_plan.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/update_task_state.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/validate_ai_directives.py",
+      "score": 90.0,
+      "issues": [
+        "Only 14/16 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/validate_brief.py",
+      "score": 90.0,
+      "issues": [
+        "Only 9/10 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/validate_compliance_assets.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/validate_gate_01_compliance.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_gate_01_final.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_gate_01_jobpost.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_gate_01_structure.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_gate_01_tone.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_gate_02_confirmation.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_gate_02_expectations.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_gate_02_objectives.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_gate_02_requirements.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_gate_03_approvals.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_gate_03_discovery.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_gate_03_structure.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_prd_gate.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/validate_proposal.py",
+      "score": 80.0,
+      "issues": [
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_protocol_handoffs.py",
+      "score": 90.0,
+      "issues": [
+        "Only 13/14 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/validate_protocol_steps.py",
+      "score": 90.0,
+      "issues": [
+        "Only 8/10 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/validate_protocols.py",
+      "score": 70.0,
+      "issues": [
+        "Only 1/2 functions documented",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_script_bindings.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/validate_script_registry.py",
+      "score": 70.0,
+      "issues": [
+        "Only 8/9 functions documented",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_tasks.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/validate_workflow_completeness.py",
+      "score": 70.0,
+      "issues": [
+        "Only 1/2 functions documented",
+        "Not executable (chmod +x needed)"
+      ]
+    },
+    {
+      "script": "scripts/validate_workflow_integration.py",
+      "score": 90.0,
+      "issues": [
+        "Only 8/9 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/validate_workflows.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    },
+    {
+      "script": "scripts/validation_gates.py",
+      "score": 90.0,
+      "issues": [
+        "Only 17/18 functions documented"
+      ]
+    },
+    {
+      "script": "scripts/workflow_automation.py",
+      "score": 40.0,
+      "issues": [
+        "No function docstrings",
+        "Missing main guard (if __name__ == '__main__')",
+        "Missing shebang (#!)"
+      ]
+    },
+    {
+      "script": "scripts/write_context_report.py",
+      "score": 80.0,
+      "issues": [
+        "No function docstrings"
+      ]
+    }
+  ]
+}

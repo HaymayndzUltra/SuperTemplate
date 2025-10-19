@@ -1,0 +1,1054 @@
+{
+  "generated_at": "2025-10-19T03:16:35.598636Z",
+  "total_issues": 104,
+  "critical_issues": 1,
+  "high_priority_issues": 1,
+  "medium_priority_issues": 102,
+  "remediation_items": [
+    {
+      "priority": "critical",
+      "category": "governance",
+      "issue": "Script registry coverage is 27.27% (target: \u226595%)",
+      "affected_items": [
+        "scripts/aggregate_coverage.py",
+        "scripts/ai_executor.py",
+        "scripts/ai_orchestrator.py",
+        "scripts/analyze_brief.py",
+        "scripts/analyze_jobpost.py"
+      ],
+      "action": "Register all orphaned scripts in script-registry.json",
+      "estimated_effort": "2-4 hours",
+      "automation": "python3 scripts/auto_register_scripts.py"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/aggregate_coverage.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/aggregate_coverage.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/aggregate_evidence_01.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/aggregate_evidence_01.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/aggregate_evidence_02.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/aggregate_evidence_02.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/aggregate_evidence_03.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/aggregate_evidence_03.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/ai_executor.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/ai_executor.py"
+      ],
+      "action": "Fix the following:\n  - Only 17/18 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/ai_orchestrator.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/ai_orchestrator.py"
+      ],
+      "action": "Fix the following:\n  - Only 13/14 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/analyze_brief.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/analyze_brief.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/analyze_jobpost.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/analyze_jobpost.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/analyze_project_rules.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/analyze_project_rules.py"
+      ],
+      "action": "Fix the following:\n  - Only 1/5 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/auto_register_scripts.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/auto_register_scripts.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/backup_workflows.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/backup_workflows.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/benchmark_generation.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/benchmark_generation.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/bootstrap_project.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/bootstrap_project.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/brief_processor.py has documentation score of 50.0%",
+      "affected_items": [
+        "scripts/brief_processor.py"
+      ],
+      "action": "Fix the following:\n  - Only 4/10 functions documented\n  - Missing main guard (if __name__ == '__main__')\n  - Missing shebang (#!)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/check_compliance_docs.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/check_compliance_docs.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/check_hipaa.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/check_hipaa.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/classify_domain.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/classify_domain.py"
+      ],
+      "action": "Fix the following:\n  - Only 5/6 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/collect_coverage.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/collect_coverage.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/collect_perf.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/collect_perf.py"
+      ],
+      "action": "Fix the following:\n  - Only 1/3 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/compare_pull_requests.py has documentation score of 60.0%",
+      "affected_items": [
+        "scripts/compare_pull_requests.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/compliance_validator.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/compliance_validator.py"
+      ],
+      "action": "Fix the following:\n  - Missing shebang (#!)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/detect_instruction_conflicts.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/detect_instruction_conflicts.py"
+      ],
+      "action": "Fix the following:\n  - Only 11/12 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/doctor.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/doctor.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/enforce_gates.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/enforce_gates.py"
+      ],
+      "action": "Fix the following:\n  - Only 2/8 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/enrich_tasks.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/enrich_tasks.py"
+      ],
+      "action": "Fix the following:\n  - Only 1/5 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/evidence_manager.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/evidence_manager.py"
+      ],
+      "action": "Fix the following:\n  - Only 19/20 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/evidence_report.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/evidence_report.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/evidence_schema_converter.py has documentation score of 60.0%",
+      "affected_items": [
+        "scripts/evidence_schema_converter.py"
+      ],
+      "action": "Fix the following:\n  - Missing main guard (if __name__ == '__main__')\n  - Missing shebang (#!)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/external_services.py has documentation score of 60.0%",
+      "affected_items": [
+        "scripts/external_services.py"
+      ],
+      "action": "Fix the following:\n  - Missing main guard (if __name__ == '__main__')\n  - Missing shebang (#!)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "high",
+      "category": "documentation",
+      "issue": "Script scripts/gate_utils.py has documentation score of 20.0%",
+      "affected_items": [
+        "scripts/gate_utils.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings\n  - Missing main guard (if __name__ == '__main__')\n  - Missing shebang (#!)\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/generate_client_project.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/generate_client_project.py"
+      ],
+      "action": "Fix the following:\n  - Only 5/6 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/generate_consistency_report.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/generate_consistency_report.py"
+      ],
+      "action": "Fix the following:\n  - Only 23/24 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/generate_evidence_manifest.py has documentation score of 60.0%",
+      "affected_items": [
+        "scripts/generate_evidence_manifest.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/generate_from_brief.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/generate_from_brief.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/generate_prd_assets.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/generate_prd_assets.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/generate_protocol_23_artifacts.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/generate_protocol_23_artifacts.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/generate_protocol_scorecard.py has documentation score of 60.0%",
+      "affected_items": [
+        "scripts/generate_protocol_scorecard.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/generate_protocol_sequence.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/generate_protocol_sequence.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/init_client_project.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/init_client_project.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/inventory_protocols.py has documentation score of 60.0%",
+      "affected_items": [
+        "scripts/inventory_protocols.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/lane_executor.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/lane_executor.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/lifecycle_tasks.py has documentation score of 50.0%",
+      "affected_items": [
+        "scripts/lifecycle_tasks.py"
+      ],
+      "action": "Fix the following:\n  - Only 1/13 functions documented\n  - Missing main guard (if __name__ == '__main__')\n  - Missing shebang (#!)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/normalize_project_rules.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/normalize_project_rules.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/optimize_project_rules.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/optimize_project_rules.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/plan_from_brief.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/plan_from_brief.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/pre_lifecycle_plan.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/pre_lifecycle_plan.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/project_generator_orchestration.py has documentation score of 50.0%",
+      "affected_items": [
+        "scripts/project_generator_orchestration.py"
+      ],
+      "action": "Fix the following:\n  - Only 4/10 functions documented\n  - Missing main guard (if __name__ == '__main__')\n  - Missing shebang (#!)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/quality_gates.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/quality_gates.py"
+      ],
+      "action": "Fix the following:\n  - Only 14/15 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/real_external_validation.py has documentation score of 70.0%",
+      "affected_items": [
+        "scripts/real_external_validation.py"
+      ],
+      "action": "Fix the following:\n  - Only 3/4 functions documented\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/real_monitoring_dashboard.py has documentation score of 70.0%",
+      "affected_items": [
+        "scripts/real_monitoring_dashboard.py"
+      ],
+      "action": "Fix the following:\n  - Only 2/3 functions documented\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/real_third_party_validator.py has documentation score of 70.0%",
+      "affected_items": [
+        "scripts/real_third_party_validator.py"
+      ],
+      "action": "Fix the following:\n  - Only 5/6 functions documented\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/restore_workflows.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/restore_workflows.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/retrospective_evidence_report.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/retrospective_evidence_report.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/retrospective_rules_audit.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/retrospective_rules_audit.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/review_protocol_loader.py has documentation score of 50.0%",
+      "affected_items": [
+        "scripts/review_protocol_loader.py"
+      ],
+      "action": "Fix the following:\n  - Only 6/7 functions documented\n  - Missing main guard (if __name__ == '__main__')\n  - Missing shebang (#!)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/router_benchmark.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/router_benchmark.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/rules_audit_quick.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/rules_audit_quick.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/run_generate_rules.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/run_generate_rules.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/run_protocol_gates.py has documentation score of 60.0%",
+      "affected_items": [
+        "scripts/run_protocol_gates.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/run_workflow.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/run_workflow.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/scaffold_briefs.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/scaffold_briefs.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/scaffold_phase_artifacts.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/scaffold_phase_artifacts.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/scan_deps.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/scan_deps.py"
+      ],
+      "action": "Fix the following:\n  - Only 2/4 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/score_risks.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/score_risks.py"
+      ],
+      "action": "Fix the following:\n  - Only 14/15 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/select_stacks.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/select_stacks.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/simulate_protocol_execution.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/simulate_protocol_execution.py"
+      ],
+      "action": "Fix the following:\n  - Only 19/20 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/sync_from_scaffold.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/sync_from_scaffold.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/system_instruction_formatter.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/system_instruction_formatter.py"
+      ],
+      "action": "Fix the following:\n  - Only 15/18 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/test_circular_validation.py has documentation score of 70.0%",
+      "affected_items": [
+        "scripts/test_circular_validation.py"
+      ],
+      "action": "Fix the following:\n  - Only 1/2 functions documented\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/test_gate_validators.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/test_gate_validators.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/test_policy_decisions.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/test_policy_decisions.py"
+      ],
+      "action": "Fix the following:\n  - Only 1/8 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/tone_mapper.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/tone_mapper.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/trigger_plan.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/trigger_plan.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/update_task_state.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/update_task_state.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_ai_directives.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/validate_ai_directives.py"
+      ],
+      "action": "Fix the following:\n  - Only 14/16 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_brief.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/validate_brief.py"
+      ],
+      "action": "Fix the following:\n  - Only 9/10 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_compliance_assets.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_compliance_assets.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_gate_01_compliance.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_gate_01_compliance.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_gate_01_final.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_gate_01_final.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_gate_01_jobpost.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_gate_01_jobpost.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_gate_01_structure.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_gate_01_structure.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_gate_01_tone.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_gate_01_tone.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_gate_02_confirmation.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_gate_02_confirmation.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_gate_02_expectations.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_gate_02_expectations.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_gate_02_objectives.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_gate_02_objectives.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_gate_02_requirements.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_gate_02_requirements.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_gate_03_approvals.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_gate_03_approvals.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_gate_03_discovery.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_gate_03_discovery.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_gate_03_structure.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_gate_03_structure.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_prd_gate.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_prd_gate.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_proposal.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_proposal.py"
+      ],
+      "action": "Fix the following:\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_protocol_handoffs.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/validate_protocol_handoffs.py"
+      ],
+      "action": "Fix the following:\n  - Only 13/14 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_protocol_steps.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/validate_protocol_steps.py"
+      ],
+      "action": "Fix the following:\n  - Only 8/10 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_protocols.py has documentation score of 70.0%",
+      "affected_items": [
+        "scripts/validate_protocols.py"
+      ],
+      "action": "Fix the following:\n  - Only 1/2 functions documented\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_script_bindings.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_script_bindings.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_script_registry.py has documentation score of 70.0%",
+      "affected_items": [
+        "scripts/validate_script_registry.py"
+      ],
+      "action": "Fix the following:\n  - Only 8/9 functions documented\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_tasks.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_tasks.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_workflow_completeness.py has documentation score of 70.0%",
+      "affected_items": [
+        "scripts/validate_workflow_completeness.py"
+      ],
+      "action": "Fix the following:\n  - Only 1/2 functions documented\n  - Not executable (chmod +x needed)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_workflow_integration.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/validate_workflow_integration.py"
+      ],
+      "action": "Fix the following:\n  - Only 8/9 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validate_workflows.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/validate_workflows.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/validation_gates.py has documentation score of 90.0%",
+      "affected_items": [
+        "scripts/validation_gates.py"
+      ],
+      "action": "Fix the following:\n  - Only 17/18 functions documented",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/workflow_automation.py has documentation score of 40.0%",
+      "affected_items": [
+        "scripts/workflow_automation.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings\n  - Missing main guard (if __name__ == '__main__')\n  - Missing shebang (#!)",
+      "estimated_effort": "15-30 minutes per script"
+    },
+    {
+      "priority": "medium",
+      "category": "documentation",
+      "issue": "Script scripts/write_context_report.py has documentation score of 80.0%",
+      "affected_items": [
+        "scripts/write_context_report.py"
+      ],
+      "action": "Fix the following:\n  - No function docstrings",
+      "estimated_effort": "15-30 minutes per script"
+    }
+  ]
+}

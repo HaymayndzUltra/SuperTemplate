@@ -1,0 +1,6 @@
+{
+  "objectives": ["Build mobile app"],
+  "deliverables": ["iOS app", "Android app"],
+  "tone_signals": ["professional", "urgent"],
+  "risks": ["Tight timeline"]
+}

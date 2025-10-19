@@ -1,0 +1,75 @@
+{
+  "protocol_id": "01",
+  "protocol_title": "PROTOCOL 00A: CLIENT PROPOSAL GENERATION (DISCOVERY COMPLIANT)",
+  "generated_at": "2025-10-19T01:59:14.791940Z",
+  "automation_coverage": {
+    "referenced_scripts": [],
+    "missing_scripts": [],
+    "coverage": 1.0
+  },
+  "artifacts": [
+    {
+      "path": ".artifacts/protocol-01/jobpost-analysis.json",
+      "description": "Parsed job post objectives, tone, and risks",
+      "status": "generated"
+    },
+    {
+      "path": ".artifacts/protocol-01/tone-map.json",
+      "description": "Tone classification and strategy mapping",
+      "status": "generated"
+    },
+    {
+      "path": ".artifacts/protocol-01/PROPOSAL.md",
+      "description": "Client-facing proposal document",
+      "status": "generated"
+    },
+    {
+      "path": ".artifacts/protocol-01/humanization-log.json",
+      "description": "Humanization filter application log",
+      "status": "generated"
+    },
+    {
+      "path": ".artifacts/protocol-01/proposal-validation-report.json",
+      "description": "Final validation evidence",
+      "status": "generated"
+    },
+    {
+      "path": ".artifacts/protocol-01/compliance-validation-report.json",
+      "description": "Compliance check results",
+      "status": "missing"
+    }
+  ],
+  "validators": [
+    {
+      "name": "gate_1_job_post_intake",
+      "command": "python3 scripts/validate_gate_01_jobpost.py",
+      "status": "pass",
+      "notes": "Job post analysis complete with score 1.00"
+    },
+    {
+      "name": "gate_2_tone_strategy",
+      "command": "python3 scripts/validate_gate_01_tone.py",
+      "status": "pass",
+      "notes": "Tone classification confidence 0.85 with strategy 'technical-professional'"
+    },
+    {
+      "name": "gate_3_proposal_structure",
+      "command": "python3 scripts/validate_gate_01_structure.py",
+      "status": "fail",
+      "notes": "Section 'greeting' has only 9 words (< 120); Section 'understanding' has only 13 words (< 120); Section 'proposed approach' has only 13 words (< 120); Section 'deliverables' has only 17 words (< 120); Missing section: 'timeline'; Section 'collaboration' has only 12 words (< 120); Section 'next steps' has only 12 words (< 120)"
+    },
+    {
+      "name": "gate_4_compliance",
+      "command": "python3 scripts/validate_gate_01_compliance.py",
+      "status": "fail",
+      "notes": "check_hipaa.py: PASS; enforce_gates.py: FAIL - [GATES] coverage artifact not found (coverage-summary.json or coverage.xml)\n; validate_compliance_assets.py: FAIL - "
+    },
+    {
+      "name": "gate_5_final_validation",
+      "command": "python3 scripts/validate_gate_01_final.py",
+      "status": "pass",
+      "notes": "All final validation checks passed"
+    }
+  ],
+  "notes": "Evidence aggregated at 2025-10-19T01:59:14.791915Z"
+}

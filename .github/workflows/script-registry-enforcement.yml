@@ -1,0 +1,158 @@
+name: Script Registry Enforcement
+
+on:
+  push:
+    branches: [main, master, develop]
+    paths:
+      - 'scripts/**'
+      - 'scripts/script-registry.json'
+  pull_request:
+    branches: [main, master, develop]
+    paths:
+      - 'scripts/**'
+      - 'scripts/script-registry.json'
+
+jobs:
+  validate-registry:
+    name: Validate Script Registry Coverage
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      
+      - name: Run Script Registry Validation
+        id: validate
+        run: |
+          python3 scripts/validate_script_registry.py \
+            --output .artifacts/validation/script-registry-report.json \
+            --min-coverage 95.0 \
+            --fail-on-orphans
+        continue-on-error: true
+      
+      - name: Upload Validation Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: script-registry-report
+          path: .artifacts/validation/script-registry-report.json
+      
+      - name: Comment on PR (if failed)
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('.artifacts/validation/script-registry-report.json', 'utf8'));
+            
+            let comment = '## 📋 Script Registry Validation Failed\\n\\n';
+            comment += `**Coverage:** ${report.coverage_percent}% (target: ≥95%)\\n`;
+            comment += `**Orphaned Scripts:** ${report.orphaned_scripts.length}\\n`;
+            comment += `**Phantom Scripts:** ${report.phantom_scripts.length}\\n\\n`;
+            
+            if (report.orphaned_scripts.length > 0) {
+              comment += '### ⚠️ Orphaned Scripts\\n';
+              comment += 'The following scripts exist but are not registered:\\n\\n';
+              report.orphaned_scripts.slice(0, 10).forEach(script => {
+                comment += `- \`${script}\`\\n`;
+              });
+              if (report.orphaned_scripts.length > 10) {
+                comment += `\\n_...and ${report.orphaned_scripts.length - 10} more_\\n`;
+              }
+              comment += '\\n**Action Required:** Add these scripts to `scripts/script-registry.json`\\n';
+            }
+            
+            if (report.phantom_scripts.length > 0) {
+              comment += '\\n### ❌ Phantom Scripts\\n';
+              comment += 'The following scripts are registered but don\\'t exist:\\n\\n';
+              report.phantom_scripts.forEach(script => {
+                comment += `- \`${script}\`\\n`;
+              });
+              comment += '\\n**Action Required:** Remove these entries from `scripts/script-registry.json` or create the missing scripts\\n';
+            }
+            
+            comment += '\\n### 📚 How to Fix\\n';
+            comment += '```bash\\n';
+            comment += '# Option 1: Manually update script-registry.json\\n';
+            comment += '# Option 2: Use auto-registration (review output first)\\n';
+            comment += 'python3 scripts/auto_register_scripts.py --dry-run\\n';
+            comment += 'python3 scripts/auto_register_scripts.py\\n';
+            comment += '```\\n';
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+      
+      - name: Fail if validation failed
+        if: steps.validate.outcome == 'failure'
+        run: |
+          echo "❌ Script registry validation failed"
+          echo "See the validation report artifact for details"
+          exit 1
+  
+  check-new-scripts:
+    name: Check for New Unregistered Scripts
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      
+      - name: Checkout base branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Check for new scripts
+        run: |
+          # Find new scripts in PR
+          NEW_SCRIPTS=$(comm -13 \
+            <(find base/scripts -name '*.py' -o -name '*.sh' | sort) \
+            <(find scripts -name '*.py' -o -name '*.sh' | sort))
+          
+          if [ -n "$NEW_SCRIPTS" ]; then
+            echo "🆕 New scripts detected in this PR:"
+            echo "$NEW_SCRIPTS"
+            
+            # Check if they're registered
+            UNREGISTERED=""
+            while IFS= read -r script; do
+              script_relative=$(echo "$script" | sed 's/^\.\///')
+              if ! grep -q "$script_relative" scripts/script-registry.json; then
+                UNREGISTERED="$UNREGISTERED\\n- $script_relative"
+              fi
+            done <<< "$NEW_SCRIPTS"
+            
+            if [ -n "$UNREGISTERED" ]; then
+              echo ""
+              echo "⚠️ WARNING: The following new scripts are not registered:"
+              echo -e "$UNREGISTERED"
+              echo ""
+              echo "Please update scripts/script-registry.json to include these scripts."
+              exit 1
+            fi
+          else
+            echo "✅ No new scripts in this PR"
+          fi

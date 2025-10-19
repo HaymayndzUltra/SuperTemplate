@@ -3,7 +3,7 @@
 © 2025 - All Rights Reserved
 ---
 
-# PROTOCOL 01: PROJECT BRIEF CREATION (PROJECT-SCOPING COMPLIANT)
+# PROTOCOL 03: PROJECT BRIEF CREATION (PROJECT-SCOPING COMPLIANT)
 
 ## PREREQUISITES
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
@@ -12,7 +12,7 @@
 - [ ] `client-discovery-form.md` from Protocol 02 (validated functional requirements)
 - [ ] `scope-clarification.md` from Protocol 02 (technical constraints)
 - [ ] `communication-plan.md` and `timeline-discussion.md` from Protocol 02 (collaboration expectations)
-- [ ] `PROPOSAL.md` and `proposal-summary.json` from Protocol 00A (accepted commitments)
+- [ ] `PROPOSAL.md` and `proposal-summary.json` from Protocol 01 (accepted commitments)
 
 ### Required Approvals
 - [ ] Client confirmation captured in `discovery-recap.md`
@@ -24,7 +24,7 @@
 
 ---
 
-## 01. AI ROLE AND MISSION
+## 03. AI ROLE AND MISSION
 
 You are a **Freelance Solutions Architect**. Your mission is to convert validated discovery intelligence into a single source of truth—an implementation-ready Project Brief that downstream teams can trust.
 
@@ -32,7 +32,7 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 
 ---
 
-## 01. PROJECT BRIEF WORKFLOW
+## 03. PROJECT BRIEF WORKFLOW
 
 ### STEP 1: Discovery Validation
 
@@ -109,10 +109,10 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 
 ---
 
-## 01. INTEGRATION POINTS
+## 03. INTEGRATION POINTS
 
 ### Inputs From:
-- **Protocol 00A**: `PROPOSAL.md`, `proposal-summary.json` - Alignment baseline and commitments.
+- **Protocol 01**: `PROPOSAL.md`, `proposal-summary.json` - Alignment baseline and commitments.
 - **Protocol 02**: `client-discovery-form.md`, `scope-clarification.md`, `communication-plan.md`, `timeline-discussion.md`, `discovery-recap.md` - Validated discovery intelligence.
 
 ### Outputs To:
@@ -125,7 +125,7 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 
 ---
 
-## 01. QUALITY GATES
+## 03. QUALITY GATES
 
 ### Gate 1: Discovery Evidence Verification
 - **Criteria**: All prerequisite artifacts validated, discrepancies resolved, validation report status = PASS.
@@ -150,7 +150,7 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 
 ---
 
-## 01. COMMUNICATION PROTOCOLS
+## 03. COMMUNICATION PROTOCOLS
 
 ### Status Announcements:
 ```
@@ -189,32 +189,58 @@ You are a **Freelance Solutions Architect**. Your mission is to convert validate
 
 ---
 
-## 01. AUTOMATION HOOKS
+## 03. AUTOMATION HOOKS
 
-### Validation Scripts:
+### Gate Runner (Recommended):
 ```bash
-# Prerequisite validation
-python scripts/validate_prerequisites_01.py
+# Run all quality gates with single command
+python3 scripts/run_protocol_gates.py 03
 
-# Quality gate automation
-python scripts/validate_discovery_inputs.py --input .artifacts/protocol-02/ --output .artifacts/protocol-03/project-brief-validation-report.json
-python scripts/validate_brief_structure.py --input .artifacts/protocol-03/PROJECT-BRIEF.md --report .artifacts/protocol-03/brief-structure-report.json
-python scripts/verify_brief_approvals.py --input .artifacts/protocol-03/BRIEF-APPROVAL-RECORD.json
+# Aggregate evidence into manifest
+python3 scripts/aggregate_evidence_03.py
 
-# Evidence aggregation
-python scripts/aggregate_evidence_01.py --output .artifacts/protocol-03/
+# Output: .artifacts/protocol-03/gate-manifest.json
+#         .artifacts/protocol-03/evidence-manifest.json
+```
+
+### Individual Validators (Advanced):
+```bash
+# Run gates individually for debugging
+python3 scripts/validate_gate_03_discovery.py    # Gate 1: Discovery evidence verification
+python3 scripts/validate_gate_03_structure.py    # Gate 2: Structural integrity
+python3 scripts/validate_gate_03_approvals.py    # Gate 3: Approval compliance
 ```
 
 ### CI/CD Integration:
 ```yaml
-name: Protocol 03 Validation
+name: Protocol 03 Gate Validation
 on: [push, pull_request]
 jobs:
-  validate:
+  validate-gates:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      
       - name: Run Protocol 03 Gates
-        run: python scripts/run_protocol_01_gates.py
+        run: python3 scripts/run_protocol_gates.py 03
+      
+      - name: Aggregate Evidence
+        run: python3 scripts/aggregate_evidence_03.py
+      
+      - name: Upload Evidence Manifest
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: protocol-03-evidence
+          path: .artifacts/protocol-03/evidence-manifest.json
 ```
 
 ### Manual Fallbacks:
@@ -222,6 +248,11 @@ When automation is unavailable, execute manual validation:
 1. Perform manual peer review of discovery artifacts; note findings in `manual-validation-checklist.md`.
 2. Review PROJECT-BRIEF.md with stakeholders over call; capture approval email or meeting minutes.
 3. Store manual evidence in `.artifacts/protocol-03/manual-validation-log.md`.
+
+### Quick Reference:
+- **Gate config**: `config/protocol_gates/03.yaml`
+- **Full documentation**: `documentation/gate-automation-quick-reference.md`
+- **Test integration**: `bash scripts/test_gate_integration.sh`
 
 ---
 

@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ProtocolEvidenceManifest",
+  "description": "Structured evidence manifest generated after protocol gate execution.",
+  "type": "object",
+  "required": [
+    "protocol_id",
+    "protocol_title",
+    "generated_at",
+    "automation_coverage",
+    "artifacts",
+    "validators"
+  ],
+  "properties": {
+    "protocol_id": {
+      "type": "string",
+      "pattern": "^[0-9]{2}$",
+      "description": "Numeric protocol identifier (01-23)."
+    },
+    "protocol_title": {
+      "type": "string",
+      "description": "Human-readable protocol title extracted from markdown."
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC timestamp when the manifest was generated."
+    },
+    "automation_coverage": {
+      "type": "object",
+      "required": ["referenced_scripts", "missing_scripts", "coverage"],
+      "properties": {
+        "referenced_scripts": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of automation scripts referenced in the protocol."
+        },
+        "missing_scripts": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Subset of referenced scripts not found in repository."
+        },
+        "coverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Ratio of existing scripts to referenced scripts."
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "description": "Evidence files produced during protocol execution.",
+      "items": {
+        "type": "object",
+        "required": ["path", "description", "status"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Relative file path to evidence artifact."
+          },
+          "description": {
+            "type": "string",
+            "description": "Summary of artifact purpose."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["generated", "pending", "missing"],
+            "description": "Production status of the artifact."
+          }
+        }
+      }
+    },
+    "validators": {
+      "type": "array",
+      "description": "Gate validators executed for this protocol.",
+      "items": {
+        "type": "object",
+        "required": ["name", "command", "status", "notes"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Validator identifier."
+          },
+          "command": {
+            "type": "string",
+            "description": "CLI command used to run validator."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pass", "fail", "not-run"],
+            "description": "Execution outcome."
+          },
+          "notes": {
+            "type": "string",
+            "description": "Optional notes or remediation guidance."
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional context or follow-ups." 
+    }
+  }
+}

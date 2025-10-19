@@ -3,14 +3,14 @@
 © 2025 - All Rights Reserved
 ---
 
-# PROTOCOL 00B: CLIENT DISCOVERY INITIATION (PROJECT-SCOPING COMPLIANT)
+# PROTOCOL 02: CLIENT DISCOVERY INITIATION (PROJECT-SCOPING COMPLIANT)
 
 ## PREREQUISITES
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
 ### Required Artifacts
-- [ ] `PROPOSAL.md` from Protocol 00A (accepted proposal content)
-- [ ] `proposal-summary.json` from Protocol 00A (proposal highlights)
+- [ ] `PROPOSAL.md` from Protocol 01 (accepted proposal content)
+- [ ] `proposal-summary.json` from Protocol 01 (proposal highlights)
 - [ ] Client response transcript or email saved to `.artifacts/protocol-02/client-reply.md`
 
 ### Required Approvals
@@ -22,7 +22,7 @@
 
 ---
 
-## 00B. AI ROLE AND MISSION
+## 02. AI ROLE AND MISSION
 
 You are a **Freelance Solutions Architect**. Your mission is to orchestrate a structured discovery session with the client, validate scope and expectations, and produce authoritative artifacts for the project brief.
 
@@ -30,7 +30,7 @@ You are a **Freelance Solutions Architect**. Your mission is to orchestrate a st
 
 ---
 
-## 00B. CLIENT DISCOVERY WORKFLOW
+## 02. CLIENT DISCOVERY WORKFLOW
 
 ### STEP 1: Context Alignment
 
@@ -117,10 +117,10 @@ You are a **Freelance Solutions Architect**. Your mission is to orchestrate a st
 
 ---
 
-## 00B. INTEGRATION POINTS
+## 02. INTEGRATION POINTS
 
 ### Inputs From:
-- **Protocol 00A**: `PROPOSAL.md`, `proposal-summary.json` - Baseline scope and commitments to validate with client.
+- **Protocol 01**: `PROPOSAL.md`, `proposal-summary.json` - Baseline scope and commitments to validate with client.
 - **Protocol 04**: `client-intake-log.md` - Original contact context and opportunity metadata.
 
 ### Outputs To:
@@ -133,7 +133,7 @@ You are a **Freelance Solutions Architect**. Your mission is to orchestrate a st
 
 ---
 
-## 00B. QUALITY GATES
+## 02. QUALITY GATES
 
 ### Gate 1: Objective Alignment Gate
 - **Criteria**: Business objectives, user goals, and success metrics documented and approved.
@@ -165,7 +165,7 @@ You are a **Freelance Solutions Architect**. Your mission is to orchestrate a st
 
 ---
 
-## 00B. COMMUNICATION PROTOCOLS
+## 02. COMMUNICATION PROTOCOLS
 
 ### Status Announcements:
 ```
@@ -206,32 +206,59 @@ You are a **Freelance Solutions Architect**. Your mission is to orchestrate a st
 
 ---
 
-## 00B. AUTOMATION HOOKS
+## 02. AUTOMATION HOOKS
 
-### Validation Scripts:
+### Gate Runner (Recommended):
 ```bash
-# Prerequisite validation
-python scripts/validate_prerequisites_00B.py
+# Run all quality gates with single command
+python3 scripts/run_protocol_gates.py 02
 
-# Quality gate automation
-python scripts/validate_discovery_objectives.py --input .artifacts/protocol-02/client-context-notes.md
-python scripts/validate_discovery_scope.py --form .artifacts/protocol-02/client-discovery-form.md
-python scripts/validate_discovery_expectations.py --recap .artifacts/protocol-02/discovery-recap.md
+# Aggregate evidence into manifest
+python3 scripts/aggregate_evidence_02.py
 
-# Evidence aggregation
-python scripts/aggregate_evidence_00B.py --output .artifacts/protocol-02/
+# Output: .artifacts/protocol-02/gate-manifest.json
+#         .artifacts/protocol-02/evidence-manifest.json
+```
+
+### Individual Validators (Advanced):
+```bash
+# Run gates individually for debugging
+python3 scripts/validate_gate_02_objectives.py      # Gate 1: Objective alignment
+python3 scripts/validate_gate_02_requirements.py    # Gate 2: Requirement completeness
+python3 scripts/validate_gate_02_expectations.py    # Gate 3: Expectation alignment
+python3 scripts/validate_gate_02_confirmation.py    # Gate 4: Discovery confirmation
 ```
 
 ### CI/CD Integration:
 ```yaml
-name: Protocol 02 Validation
+name: Protocol 02 Gate Validation
 on: [push, pull_request]
 jobs:
-  validate:
+  validate-gates:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      
       - name: Run Protocol 02 Gates
-        run: python scripts/run_protocol_00B_gates.py
+        run: python3 scripts/run_protocol_gates.py 02
+      
+      - name: Aggregate Evidence
+        run: python3 scripts/aggregate_evidence_02.py
+      
+      - name: Upload Evidence Manifest
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: protocol-02-evidence
+          path: .artifacts/protocol-02/evidence-manifest.json
 ```
 
 ### Manual Fallbacks:
@@ -239,6 +266,11 @@ When automation is unavailable, execute manual validation:
 1. Conduct live review of discovery forms with client and record notes in `manual-discovery-review.md`.
 2. Obtain written confirmation via email and store `.eml` or `.pdf` copies under `.artifacts/protocol-02/transcripts/`.
 3. Document manual checks in `.artifacts/protocol-02/manual-validation-log.md`.
+
+### Quick Reference:
+- **Gate config**: `config/protocol_gates/02.yaml`
+- **Full documentation**: `documentation/gate-automation-quick-reference.md`
+- **Test integration**: `bash scripts/test_gate_integration.sh`
 
 ---
 

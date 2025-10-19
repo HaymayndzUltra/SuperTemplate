@@ -3,13 +3,13 @@
 © 2025 - All Rights Reserved
 ---
 
-# PROTOCOL 00A: CLIENT PROPOSAL GENERATION (DISCOVERY COMPLIANT)
+# PROTOCOL 01: CLIENT PROPOSAL GENERATION (DISCOVERY COMPLIANT)
 
 ## PREREQUISITES
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
 ### Required Artifacts
-- [ ] `JOB-POST.md` from Protocol 04-client-discovery (source job description)
+- [ ] `JOB-POST.md` - **EXTERNAL INPUT** (client-provided job posting, RFP, or project description)
 - [ ] `.cursor/context-kit/project-profile.json` (baseline project profile, if available)
 
 ### Required Approvals
@@ -23,7 +23,7 @@
 
 ---
 
-## 00A. AI ROLE AND MISSION
+## 01. AI ROLE AND MISSION
 
 You are a **Freelance Solutions Architect**. Your mission is to transform any approved client job post into a truthful, human-centric proposal that demonstrates domain expertise, empathy, and alignment with validated capabilities.
 
@@ -31,16 +31,16 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
 
 ---
 
-## 00A. CLIENT PROPOSAL WORKFLOW
+## 01. CLIENT PROPOSAL WORKFLOW
 
 ### STEP 1: Discovery Context Intake
 
 1. **`[MUST]` Analyze the Job Post:**
-   * **Action:** Parse `JOB-POST.md` to extract objectives, deliverables, tone signals, risks, and key terms; store structured data in `.artifacts/protocol-00A/jobpost-analysis.json`.
+   * **Action:** Parse `JOB-POST.md` to extract objectives, deliverables, tone signals, risks, and key terms; store structured data in `.artifacts/protocol-01/jobpost-analysis.json`.
    * **Communication:** 
      > "[MASTER RAY™ | PHASE 1 START] - Analyzing client opportunity to capture goals, tone, and success criteria."
    * **Halt condition:** Stop and request clarification if the job post is missing, empty, or fails parsing.
-   * **Evidence:** `.artifacts/protocol-00A/jobpost-analysis.json`
+   * **Evidence:** `.artifacts/protocol-01/jobpost-analysis.json`
 
 2. **`[GUIDELINE]` Review Existing Discovery Notes:**
    * **Action:** Cross-reference `.cursor/context-kit/project-profile.json` for prior engagements, preferred tooling, and risk flags.
@@ -59,7 +59,7 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
    * **Communication:** 
      > "[PHASE 2] - Mapping client tone and aligning delivery strategy for authenticity."
    * **Halt condition:** Pause if tone confidence < 0.8 and await manual classification.
-   * **Evidence:** `.artifacts/protocol-00A/tone-map.json`
+   * **Evidence:** `.artifacts/protocol-01/tone-map.json`
 
 2. **`[GUIDELINE]` Curate Differentiators:**
    * **Action:** Identify 2-3 validated strengths relevant to the client scenario (case studies, reusable assets, domain familiarity) using discovery notes.
@@ -76,13 +76,13 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
    * **Communication:** 
      > "[MASTER RAY™ | PHASE 3 START] - Drafting proposal with aligned scope and collaboration plan."
    * **Halt condition:** Pause if any required section lacks content or conflicts with confirmed capabilities.
-   * **Evidence:** `.artifacts/protocol-00A/PROPOSAL.md`
+   * **Evidence:** `.artifacts/protocol-01/PROPOSAL.md`
 
 2. **`[MUST]` Apply Humanization Filters:**
    * **Action:** Inject narrative variation, empathetic acknowledgements, and paraphrased client language to avoid robotic tone.
    * **Communication:** 
      > "[RAY AUTOMATION] - Applying humanization filters and empathy checkpoints."
-   * **Evidence:** `.artifacts/protocol-00A/humanization-log.json`
+   * **Evidence:** `.artifacts/protocol-01/humanization-log.json`
 
 3. **`[GUIDELINE]` Include Optional Value Adds:**
    * **Action:** Add optional call-to-action elements such as complimentary discovery workshop or roadmap sketch when allowed by capability matrix.
@@ -100,10 +100,10 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
    * **Communication:** 
      > "[MASTER RAY™ | PHASE 4 START] - Running proposal validation to confirm clarity and authenticity."
    * **Halt condition:** Await reviewer confirmation if validation highlights discrepancies.
-   * **Evidence:** `.artifacts/protocol-00A/proposal-validation-report.json`
+   * **Evidence:** `.artifacts/protocol-01/proposal-validation-report.json`
 
 2. **`[GUIDELINE]` Prepare Reviewer Summary:**
-   * **Action:** Summarize major proposal choices, risks, and pending client questions in `.artifacts/protocol-00A/reviewer-brief.md`.
+   * **Action:** Summarize major proposal choices, risks, and pending client questions in `.artifacts/protocol-01/reviewer-brief.md`.
    * **Example:**
      ```markdown
      **Key Decisions**
@@ -113,62 +113,62 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
 
 ---
 
-## 00A. INTEGRATION POINTS
+## 01. INTEGRATION POINTS
 
 ### Inputs From:
-- **Protocol 04**: `JOB-POST.md` - Source description and requirements for the opportunity.
-- **Protocol 02**: `discovery-brief.md` - Prior discovery intelligence and capability confirmation.
+- **EXTERNAL**: `JOB-POST.md` - Source description and requirements for the opportunity (client-provided, job board, RFP).
+- **OPTIONAL**: `.cursor/context-kit/project-profile.json` - Prior client engagement context if available.
 
 ### Outputs To:
 - **Protocol 02**: `PROPOSAL.md` - Primary proposal delivered for client outreach.
 - **Protocol 03**: `proposal-summary.json` - Structured highlights feeding project brief creation.
 
 ### Artifact Storage Locations:
-- `.artifacts/protocol-00A/` - Primary evidence storage
+- `.artifacts/protocol-01/` - Primary evidence storage
 - `.cursor/context-kit/` - Context and configuration artifacts
 
 ---
 
-## 00A. QUALITY GATES
+## 01. QUALITY GATES
 
 ### Gate 1: Job Post Intake Validation
 - **Criteria**: `jobpost-analysis.json` captures objectives, deliverables, tone signals, and risk notes.
-- **Evidence**: `.artifacts/protocol-00A/jobpost-analysis.json`
+- **Evidence**: `.artifacts/protocol-01/jobpost-analysis.json`
 - **Pass Threshold**: Completeness score ≥ 0.9 from analyzer script.
 - **Failure Handling**: Request clarified job information, rerun analysis, document issue in reviewer brief.
-- **Automation**: `python3 scripts/analyze_jobpost.py --input JOB-POST.md --output .artifacts/protocol-00A/jobpost-analysis.json`
+- **Automation**: `python3 scripts/analyze_jobpost.py --input JOB-POST.md --output .artifacts/protocol-01/jobpost-analysis.json`
 
 ### Gate 2: Tone Strategy Confidence
 - **Criteria**: Tone classification confidence ≥ 0.8 with mapped strategy labels.
-- **Evidence**: `.artifacts/protocol-00A/tone-map.json`
+- **Evidence**: `.artifacts/protocol-01/tone-map.json`
 - **Pass Threshold**: `confidence` field ≥ 0.8 and `strategy` populated.
 - **Failure Handling**: Perform manual tone review with stakeholder, update tone map, rerun gate.
-- **Automation**: `python3 scripts/tone_mapper.py --input .artifacts/protocol-00A/jobpost-analysis.json --output .artifacts/protocol-00A/tone-map.json`
+- **Automation**: `python3 scripts/tone_mapper.py --input .artifacts/protocol-01/jobpost-analysis.json --output .artifacts/protocol-01/tone-map.json`
 
 ### Gate 3: Proposal Structure Integrity
 - **Criteria**: `PROPOSAL.md` includes all mandatory sections with ≥ 120 words each and empathy tokens logged.
-- **Evidence**: `.artifacts/protocol-00A/PROPOSAL.md`, `.artifacts/protocol-00A/humanization-log.json`
+- **Evidence**: `.artifacts/protocol-01/PROPOSAL.md`, `.artifacts/protocol-01/humanization-log.json`
 - **Pass Threshold**: Structure validator score ≥ 0.95.
 - **Failure Handling**: Revise missing sections, re-run humanization, revalidate.
-- **Automation**: `python3 scripts/validate_proposal_structure.py --input .artifacts/protocol-00A/PROPOSAL.md`
+- **Automation**: `python3 scripts/validate_proposal_structure.py --input .artifacts/protocol-01/PROPOSAL.md`
 
 ### Gate 4: Real Compliance Validation
 - **Criteria**: HIPAA compliance check passes, quality gates enforce real thresholds.
-- **Evidence**: `.artifacts/protocol-00A/compliance-validation-report.json`
+- **Evidence**: `.artifacts/protocol-01/compliance-validation-report.json`
 - **Pass Threshold**: All compliance checks pass (exit code 0).
 - **Failure Handling**: Address compliance issues, fix PHI violations, update security configurations.
 - **Automation**: `python3 scripts/check_hipaa.py && python3 scripts/enforce_gates.py`
 
 ### Gate 5: Final Validation & Approval Readiness
 - **Criteria**: Readability ≥ 90, zero factual discrepancies, empathy coverage ≥ 3 tokens, real validation passed.
-- **Evidence**: `.artifacts/protocol-00A/proposal-validation-report.json`
+- **Evidence**: `.artifacts/protocol-01/proposal-validation-report.json`
 - **Pass Threshold**: Validation script returns status `pass` and all real gates pass.
 - **Failure Handling**: Address flagged items, capture remediation notes, rerun validation.
-- **Automation**: `python3 scripts/validate_proposal.py --input .artifacts/protocol-00A/PROPOSAL.md --report .artifacts/protocol-00A/proposal-validation-report.json`
+- **Automation**: `python3 scripts/validate_proposal.py --input .artifacts/protocol-01/PROPOSAL.md --report .artifacts/protocol-01/proposal-validation-report.json`
 
 ---
 
-## 00A. COMMUNICATION PROTOCOLS
+## 01. COMMUNICATION PROTOCOLS
 
 ### Status Announcements:
 ```
@@ -176,7 +176,7 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
 [MASTER RAY™ | PHASE 2 START] - "Tone classification underway; aligning proposal strategy with client expectations."
 [MASTER RAY™ | PHASE 3 START] - "Drafting proposal with validated differentiators and collaboration plan."
 [MASTER RAY™ | PHASE 4 START] - "Running validation suite on proposal content and tone."
-[PHASE COMPLETE] - "Proposal ready for review. Evidence stored in .artifacts/protocol-00A/."
+[PHASE COMPLETE] - "Proposal ready for review. Evidence stored in .artifacts/protocol-01/."
 [RAY ERROR] - "Encountered issue during [phase]. Details logged in reviewer brief."
 ```
 
@@ -208,55 +208,77 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
 
 ---
 
-## 00A. AUTOMATION HOOKS
+## 01. AUTOMATION HOOKS
 
-### Validation Scripts:
+### Gate Runner (Recommended):
 ```bash
-# Prerequisite validation
-python3 scripts/validate_prerequisites_00A.py
+# Run all quality gates with single command
+python3 scripts/run_protocol_gates.py 01
 
-# Real compliance validation
-python3 scripts/check_hipaa.py
-python3 scripts/enforce_gates.py
-python3 scripts/validate_compliance_assets.py
+# Aggregate evidence into manifest
+python3 scripts/aggregate_evidence_01.py
 
-# Quality gate automation
-python3 scripts/validate_proposal_structure.py --input .artifacts/protocol-00A/PROPOSAL.md
-python3 scripts/validate_proposal.py --input .artifacts/protocol-00A/PROPOSAL.md --report .artifacts/protocol-00A/proposal-validation-report.json
+# Output: .artifacts/protocol-01/gate-manifest.json
+#         .artifacts/protocol-01/evidence-manifest.json
+```
 
-# Evidence aggregation
-python3 scripts/aggregate_evidence_00A.py --output .artifacts/protocol-00A/
+### Individual Validators (Advanced):
+```bash
+# Run gates individually for debugging
+python3 scripts/validate_gate_01_jobpost.py      # Gate 1: Job post intake
+python3 scripts/validate_gate_01_tone.py         # Gate 2: Tone strategy
+python3 scripts/validate_gate_01_structure.py    # Gate 3: Proposal structure
+python3 scripts/validate_gate_01_compliance.py   # Gate 4: Compliance
+python3 scripts/validate_gate_01_final.py        # Gate 5: Final validation
+
+# Legacy validation scripts (if needed)
+python3 scripts/analyze_jobpost.py --input JOB-POST.md --output .artifacts/protocol-01/jobpost-analysis.json
+python3 scripts/tone_mapper.py --input .artifacts/protocol-01/jobpost-analysis.json --output .artifacts/protocol-01/tone-map.json
+python3 scripts/validate_proposal.py --input .artifacts/protocol-01/PROPOSAL.md --report .artifacts/protocol-01/proposal-validation-report.json
 ```
 
 ### CI/CD Integration:
 ```yaml
-name: Protocol 00A Real Validation
+name: Protocol 01 Gate Validation
 on: [push, pull_request]
 jobs:
-  validate:
+  validate-gates:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Real Compliance Checks
-        run: |
-          python3 scripts/check_hipaa.py
-          python3 scripts/enforce_gates.py
-          python3 scripts/validate_compliance_assets.py
+      - uses: actions/checkout@v3
       
-      - name: Run Protocol 00A Gates
-        run: python3 scripts/run_protocol_00A_gates.py
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
       
-      - name: Generate Real Validation Report
-        run: |
-          python3 scripts/analyze_jobpost.py JOB-POST.md .artifacts/protocol-00A/jobpost-analysis.json
-          python3 scripts/tone_mapper.py .artifacts/protocol-00A/jobpost-analysis.json .artifacts/protocol-00A/tone-map.json
-          python3 scripts/validate_proposal.py .artifacts/protocol-00A/PROPOSAL.md .artifacts/protocol-00A/proposal-validation-report.json
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      
+      - name: Run Protocol 01 Gates
+        run: python3 scripts/run_protocol_gates.py 01
+      
+      - name: Aggregate Evidence
+        run: python3 scripts/aggregate_evidence_01.py
+      
+      - name: Upload Evidence Manifest
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: protocol-01-evidence
+          path: .artifacts/protocol-01/evidence-manifest.json
 ```
 
 ### Manual Fallbacks:
 When automation is unavailable, execute manual validation:
 1. Manually review `JOB-POST.md` and document findings in `manual-jobpost-review.md`.
 2. Conduct peer review of proposal tone and accuracy; record results in `manual-tone-checklist.md`.
-3. Document outcomes in `.artifacts/protocol-00A/manual-validation-log.md`.
+3. Document outcomes in `.artifacts/protocol-01/manual-validation-log.md`.
+
+### Quick Reference:
+- **Gate config**: `config/protocol_gates/01.yaml`
+- **Full documentation**: `documentation/gate-automation-quick-reference.md`
+- **Test integration**: `bash scripts/test_gate_integration.sh`
 
 ---
 
@@ -293,11 +315,11 @@ Before declaring protocol complete, validate:
 ### Generated Artifacts:
 | Artifact | Location | Purpose | Consumer |
 |----------|----------|---------|----------|
-| `jobpost-analysis.json` | `.artifacts/protocol-00A/` | Parsed objectives, tone, risks | Protocol 02 |
-| `tone-map.json` | `.artifacts/protocol-00A/` | Tone classification & strategy mapping | Protocol 02 |
-| `PROPOSAL.md` | `.artifacts/protocol-00A/` | Client-facing proposal | Protocol 02 |
-| `proposal-summary.json` | `.artifacts/protocol-00A/` | Key highlights for brief creation | Protocol 03 |
-| `proposal-validation-report.json` | `.artifacts/protocol-00A/` | Validation evidence | Protocol 02 |
+| `jobpost-analysis.json` | `.artifacts/protocol-01/` | Parsed objectives, tone, risks | Protocol 02 |
+| `tone-map.json` | `.artifacts/protocol-01/` | Tone classification & strategy mapping | Protocol 02 |
+| `PROPOSAL.md` | `.artifacts/protocol-01/` | Client-facing proposal | Protocol 02 |
+| `proposal-summary.json` | `.artifacts/protocol-01/` | Key highlights for brief creation | Protocol 03 |
+| `proposal-validation-report.json` | `.artifacts/protocol-01/` | Validation evidence | Protocol 02 |
 
 ### Quality Metrics:
 | Metric | Target | Actual | Status |

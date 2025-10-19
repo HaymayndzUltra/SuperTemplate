@@ -1,0 +1,43 @@
+{
+  "protocol_id": "04",
+  "protocol_title": "PROTOCOL 00: PROJECT BOOTSTRAP AND CONTEXT ENGINEERING (GOVERNANCE COMPLIANT)",
+  "generated_at": "2025-10-19T01:32:18.519272Z",
+  "automation_coverage": {
+    "referenced_scripts": [
+      "aggregate_evidence_00.py",
+      "doctor.py",
+      "evidence_manager.py",
+      "generate_from_brief.py",
+      "normalize_project_rules.py",
+      "rules_audit_quick.py",
+      "run_protocol_00_gates.py",
+      "validate_brief.py",
+      "validate_prerequisites_00.py",
+      "validate_scaffold.py",
+      "validate_workflows.py"
+    ],
+    "missing_scripts": [
+      "aggregate_evidence_00.py",
+      "run_protocol_00_gates.py",
+      "validate_prerequisites_00.py",
+      "validate_scaffold.py"
+    ],
+    "coverage": 0.636
+  },
+  "artifacts": [
+    {
+      "path": ".artifacts/protocol-04/brief-validation-report.json",
+      "status": "pending",
+      "description": "Brief validation result"
+    }
+  ],
+  "validators": [
+    {
+      "name": "Gate1",
+      "command": "python scripts/validate_brief.py",
+      "status": "pass",
+      "notes": "Executed successfully"
+    }
+  ],
+  "notes": "Initial manifest stub for protocol 04."
+}

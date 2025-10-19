@@ -1,192 +1,134 @@
-JOB-POST.md — Senior Freelance Solutions Architect (AI-orchestrated workflow welcome)
+JOB-POST.md — Principal Zero-Trust Payments Architect (Global, Post-Quantum Readiness)
 Company
 
-Heliox Care Systems — B2B HealthTech SaaS for mid-market clinics (15–150 providers). Multi-tenant web app + mobile companion.
+Aurelius Ledger Networks — Cross-border B2B payments network serving regulated financial institutions (Tier 1–3 banks, high-volume fintechs, and sovereign wealth funds).
 
 Goal (Why we’re hiring)
 
-We need a 6–8 week engagement to deliver a phase-1, production-ready MVP of a “Pre-Visit Intake & Eligibility” module while laying the foundation for long-term architecture. We expect evidence-driven artifacts and an execution plan we can hand to our in-house team.
+We need an eight-week expert engagement to deliver a production-ready, compliance-audited MVP of a zero-trust payments orchestration layer that is quantum-resistant, regulator-auditable, and resilient across four continents. The outcome must include executable architecture, verified controls, and runbooks that internal teams can operate without external assistance.
 
 High-Level Objectives
 
-Ship a minimal but billable Pre-Visit Intake flow that:
+Launch a pilot-ready orchestration service that:
 
-Collects demographics + insurance images
+Handles real-time FX netting, settlement, and reconciliation with dual-ledger traceability.
 
-Verifies eligibility with clearinghouse
+Implements post-quantum cryptographic handshakes (CRYSTALS-Kyber + Dilithium) for interbank API sessions.
 
-Schedules/updates an appointment
+Enforces dynamic least-privilege policies across all microservices and partner integrations.
 
-Pushes summary into EHR via FHIR
-
-Establish multi-tenant boundaries, role-based access, audit logs, and data retention.
-
-Replace our brittle cron scripts with event-driven jobs and idempotent workers.
-
-Provide operational runbooks, quality gates, and evidence logs (we like protocolized workflows).
+Provides end-to-end evidence trails for SWIFT CSP, PSD2 RTS, FedLine, and MAS TRM auditors.
 
 Current/Target Environment
 
-Frontend: Next.js 14 (App Router, React Server Components), Tailwind, shadcn/ui
+Platform core: Kubernetes (GKE + Anthos) spanning us-east1, eu-west1, ap-southeast1.
 
-Edge/API: Cloudflare Workers + Durable Objects (new); legacy Node/Express monolith (to be carved out)
+Service mesh: Istio with mTLS, SPIRE identity, gateway-API-based ingress.
 
-Backend services: FastAPI (Python 3.11) for data ops & FHIR adapter (greenfield)
+Eventing: Kafka (Confluent), dual clusters per region, schema registry enforced.
 
-Data: Postgres 15 (Supabase), RLS for tenancy; S3-compatible object store (R2) for uploads; OLAP in Snowflake (later)
+Data layer: CockroachDB (regional survivability) + AWS QLDB for notarized settlement logs.
 
-Messaging: Kafka (Confluent Cloud) preferred, but open to Cloudflare Queues for edge workflows
+Edge connectivity: Cloudflare Workers for low-latency partner onboarding, hardware-backed tokens (YubiHSM2).
 
-Integrations: Stripe (PaymentIntents w/ ACH + cards), Clearinghouse (X12/270/271 over SFTP + REST), EHR (FHIR R4)
+Languages: Rust (transaction engine), Go (policy microservices), Python (analytics pipeline).
 
-Infra as Code: Terraform; CI/CD: GitHub Actions; Observability: Datadog + OpenTelemetry
+Observability: OpenTelemetry + Prometheus + Grafana, bound to ISO 27001 controls.
 
-Auth/SSO: OIDC (Auth0) and SAML for enterprise orgs
+CI/CD: GitHub Actions with in-toto provenance, Sigstore signing, and infrastructure deployment via Terraform + Pulumi hybrid.
 
 Compliance & Security (hard requirements)
 
-PHI present → follow HIPAA safeguards (logging, RBAC, transport/storage encryption).
+All crypto modules must leverage FIPS 140-3 validated libraries; post-quantum suites run behind feature flags with forced downgrade detection.
 
-Data residency split: US tenants → us-east; EEA tenants → eu-west. No cross-region PII.
+Zero standing credentials; adopt SPIFFE identities, HashiCorp Vault, and CloudHSM-backed signing for key material.
 
-PII minimization & RLS enforced on every table path.
+Multi-region data sovereignty: EU data pinned to eu-west1, APAC data to ap-southeast1, US data to us-east1; cross-border transfers require documented SCC workflows.
 
-Zero secrets in code, use CF/KV + Secrets Manager.
+SWIFT CSP attestation pack: logging, transaction replay prevention, segregation of duties, and RBAC evidence.
 
-SOC 2 audit-ability: evidence trails for deployments, approvals, and access.
-
-Threat model for file uploads (malware scanning, content-type validation, image exif stripping).
-
-⚠️ Conflict to resolve: Product wants photo uploads at the edge for speed and server-side virus scanning before persistence. Propose a pattern that meets both.
-
-Performance / SLOs
-
-P95 intake submit < 600 ms (excluding third-party eligibility call; show fallback UX).
-
-Zero-downtime deploys for the new module.
-
-Background jobs must be idempotent and at-least-once safe.
+Regulatory change window: MAS TRM 2023 addenda and FedLine security requirements must be reflected in controls catalogue.
 
 Functional Scope (MVP)
 
-Intake UI (patient link via SMS/email): demographics, insurance photos, consent, e-signature.
+Policy-driven orchestration engine that routes payments to compliant corridors with dynamic risk scoring.
 
-Eligibility check: async; show optimistic confirmation, reconcile later.
+FX netting microservice with deterministic reconciliation and audit-ready journal exports.
 
-Appointment update: writeback to EHR (FHIR Appointment/Patient/Coverage).
+Partner onboarding workflow with post-quantum key exchange, attestation checks, and tamper-proof identity ledger entries.
 
-Payments: pre-auth $1 (or zero-auth) & store pm for later (Stripe).
+Real-time compliance engine interfacing with sanctions list providers (Refinitiv, World-Check), storing decisions with non-repudiation.
 
-Admin console: tenant-scoped configuration (eligibility vendor creds, branding, allowed forms).
+Zero-trust access plane powering just-in-time secrets, command approval workflows, and SOC2 / PCI DSS evidence hooks.
 
-Non-Goals (Phase-1)
+Performance / SLOs
 
-No clinician charting or clinical decision support.
+P99 round-trip settlement < 900 ms (excluding external clearing times) with circuit breakers and graceful degradation.
 
-No patient portal beyond intake link + status page.
+Automated failover between primary and DR regions within 45 seconds, zero data loss.
 
-No in-app chat.
+Real-time policy evaluation latency < 30 ms under 5k TPS sustained load.
 
 Deliverables (must be evidence-backed)
 
-PROJECT-BRIEF.md with risks, assumptions, and traceability to this post.
+Protocolized architecture dossier (threat model, trust boundaries, PQ crypto migration plan, data residency matrix).
 
-TECHNICAL-DESIGN.md with:
+Terraform/Pulumi stack definitions with drift detection and compliance guardrails.
 
-Multi-tenant data model (Postgres + RLS policies as code)
+Zero-trust policy pack (OPA/Rego + Cedar) with automated test fixtures.
 
-Event model & retry strategy (Kafka/Queues)
+Runbooks: quantum failback, SWIFT CSP audit prep, MAS TRM incident escalation, PQ key rotation.
 
-Edge ↔ core service routing & failure modes
+Evidence manifest: Sigstore attestations, in-toto metadata, FedLine checklist coverage, policy drift dashboards.
 
-FHIR mapping for Appointment/Patient/Coverage (tables + transforms)
-
-PRD.md for the intake feature (personas, user stories, acceptance criteria).
-
-Task plan (tasks-intake.md) with dependencies & WHY notes.
-
-CI/CD pipelines (lint, typecheck, unit, smoke); preview env creation.
-
-Runbooks: incident response, rollback, secrets rotation, data residency checks.
-
-Evidence package: validation reports, checksums, and approval gates.
+Integration test suite proving multi-region failover, sanction rule accuracy, and policy enforcement.
 
 Acceptance Criteria (examples)
 
-Security: RLS denies cross-tenant reads/writes in unit & integration tests; e2e proves enforcement.
+Post-quantum handshake fallback fires alarms within 200 ms and records evidence for regulators.
 
-Privacy: EEA tenant data never leaves EU region; build shows region-pinned resources.
+Least-privilege enforcement confirmed via automated attack simulations (chaos & breach exercises) with audit logs attached.
 
-Resilience: Killing the eligibility worker mid-process results in a retry that does not double-charge or duplicate EHR entries.
+Data residency validated through synthetic flow tests; any cross-border transfer emits SCC workflow tickets.
 
-Observability: Each intake flow correlates logs/traces via trace-id across edge + core.
+FX reconciliation demonstrates penny-perfect accuracy across three currencies and survives region failover tests.
 
-DX: Local dev with make up stands up all services; seed tenant + demo user provided.
+Operational SRE drills (game days) prove recovery procedures for PQ certificate compromise and Kafka partition loss.
 
-Data & Schemas (starter constraints)
+Known Constraints / Risks
 
-Tables: tenants, users, patients, intake_sessions, eligibility_requests, payments, audit_logs
+Clearing partners only accept classic TLS 1.2 today; we must bridge while enforcing PQ viability.
 
-RLS baseline: tenant_id enforced; admin bypass forbidden—use security definer functions.
+Hardware security modules have 6-week lead times; need interim secure enclave strategy.
 
-Objects: Insurance images → R2 bucket with signed URLs; scan before finalize.
+Interbank partners reside on-prem with strict firewall rules; must provide zero-trust gateways without exposing core mesh.
 
-Events: intake.submitted, eligibility.requested|succeeded|failed, ehr.writeback.completed|failed.
-
-Known Constraints / Gotchas
-
-Legacy monolith still handles appointment scheduling; must co-exist during cutover.
-
-Clearinghouse sandbox returns false positives on holidays; need circuit-breaker + manual override.
-
-Some clinics require SAML only; others OIDC. Handle both without forking tenants.
-
-Stripe ACH micro-deposits not acceptable for MVP; card tokenization allowed.
-
-Timeline & Milestones
-
-Week 1: Discovery & architecture baseline, runbooks sketched, spike for edge upload + scan.
-
-Week 2–3: Data model + RLS + workers + intake UI skeleton; CI/CD + preview env.
-
-Week 4–5: Integrations (Stripe, eligibility, FHIR adapter), observability, e2e tests.
-
-Week 6: Hardening, load tests, UAT; feature flag rollout.
-
-What We Provide
-
-Access to staging Postgres, R2, Auth0, Stripe test, clearinghouse sandbox.
-
-Sample FHIR fixtures and redacted Postman collections.
-
-Read-only access to monolith repo for extraction points.
+Upcoming MAS TRM update may tighten key rotation; expect mid-engagement requirement changes.
 
 Submission Requirements (no fluff)
 
-Short proposal referencing this post’s constraints; no fabricated experience.
+Concise proposal referencing this scope, highlighting verifiable zero-trust + financial compliance delivery.
 
-Outline of your workflow/protocols (we like explicit quality gates, artifacts).
+Outline of workflow/protocols, quality gates, and evidence packages.
 
-Risks you’ll refuse to accept without extra time/budget.
+Explicit risk acceptance matrix (what will and will not be assumed within eight weeks).
 
-1–2 code or doc samples (RLS policies, Terraform, or runbooks).
+Links to two proof artifacts: PQ cryptography adoption, regulated payment runbook, or zero-trust implementation.
 
-Availability and timezone overlap.
+Availability with timezone overlap across New York, Frankfurt, and Singapore.
 
 Budget
 
-$18–28k for 6–8 weeks, milestone-based. We pay for evidence + working software, not promises.
+$240–320k for eight weeks, milestone-based. Payment issued on evidence-backed deliverables and regulator-ready documentation.
 
 Evaluation Rubric
 
-Architecture clarity & trade-offs (data residency, edge scanning conflict)
+Zero-trust architecture depth, PQ migration viability, and regional compliance coverage.
 
-Security/compliance correctness (RLS, secrets, audit)
+Operational rigor: automation-first approach, incident readiness, observability maturity.
 
-Operational maturity (runbooks, CI/CD, observability)
+Evidence discipline: traceability, attestations, regulator audit packages.
 
-Evidence discipline (traceability, gates, artifacts)
+Risk transparency: clarity on assumptions, blockers, and mitigation pathways.
 
-Communication (direct, no filler; plan-first)
-
-Anti-fabrication clause: Any unverifiable claim or templated buzzwords without concrete references is an auto-reject.
+Communication: direct, regulator-ready documentation tone, alignment with executive steering committee.

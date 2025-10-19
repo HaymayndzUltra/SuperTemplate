@@ -1,0 +1,63 @@
+# Protocol 00B: Client Discovery Initiation - Gate Configuration
+# This file defines automated validation gates for Protocol 02 (00B)
+
+protocol_id: "02"
+protocol_title: "Client Discovery Initiation"
+notes: |
+  Gate automation for client discovery workflow.
+  Ensures objective alignment, requirement completeness, expectation alignment, and discovery confirmation.
+
+validators:
+  - name: "gate_1_objective_alignment"
+    command: "python3 scripts/validate_gate_02_objectives.py"
+    description: "Validates business objectives, user goals, and success metrics"
+    prerequisite: true
+    
+  - name: "gate_2_requirement_completeness"
+    command: "python3 scripts/validate_gate_02_requirements.py"
+    description: "Validates MVP features, backlog, and technical constraints"
+    prerequisite: false
+    
+  - name: "gate_3_expectation_alignment"
+    command: "python3 scripts/validate_gate_02_expectations.py"
+    description: "Validates timeline, budget, and collaboration plan"
+    prerequisite: false
+    
+  - name: "gate_4_discovery_confirmation"
+    command: "python3 scripts/validate_gate_02_confirmation.py"
+    description: "Validates client approval and artifact archival"
+    prerequisite: false
+
+artifacts:
+  - path: ".artifacts/protocol-02/client-context-notes.md"
+    description: "Business objectives and user goals"
+    status: "pending"
+    
+  - path: ".artifacts/protocol-02/client-discovery-form.md"
+    description: "Structured feature list and requirements"
+    status: "pending"
+    
+  - path: ".artifacts/protocol-02/scope-clarification.md"
+    description: "Technical preferences and constraints"
+    status: "pending"
+    
+  - path: ".artifacts/protocol-02/timeline-discussion.md"
+    description: "Delivery expectations and milestones"
+    status: "pending"
+    
+  - path: ".artifacts/protocol-02/communication-plan.md"
+    description: "Collaboration blueprint and escalation paths"
+    status: "pending"
+    
+  - path: ".artifacts/protocol-02/governance-map.md"
+    description: "Decision governance framework"
+    status: "pending"
+    
+  - path: ".artifacts/protocol-02/discovery-recap.md"
+    description: "Client-approved discovery summary"
+    status: "pending"
+
+quality_thresholds:
+  objective_coverage: 0.95
+  requirement_completeness: 0.9
+  client_approval: true
