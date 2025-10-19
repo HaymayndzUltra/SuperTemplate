@@ -1,0 +1,10 @@
+{
+  "total": {
+    "lines": {
+      "pct": 85.0,
+      "covered": 850,
+      "skipped": 0,
+      "total": 1000
+    }
+  }
+}

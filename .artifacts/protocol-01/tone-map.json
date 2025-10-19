@@ -1,0 +1,18 @@
+{
+  "tone_classification": "Executive-Regulatory Technical",
+  "confidence": 0.92,
+  "communication_style": [
+    "Direct",
+    "Evidence-driven",
+    "Risk-transparent"
+  ],
+  "strategy_recommendations": [
+    "Lead with proven regulatory compliance capabilities and zero-trust delivery examples.",
+    "Frame proposal structure around evidence packs, control validation, and executive reporting cadence.",
+    "Acknowledge known risks with clear mitigation paths and contingency planning."
+  ],
+  "manual_override": true,
+  "manual_reference": "manual-tone-review.md",
+  "analysis_timestamp": "2025-01-18T14:40:00Z",
+  "strategy": "Executive evidence-first briefing"
+}
