@@ -1,0 +1,15 @@
+{
+  "sentiment_score": 0.0,
+  "subjectivity_score": 0.5833333333333334,
+  "tone_classification": "Strategic",
+  "confidence": 0.17,
+  "analysis_timestamp": "2025-01-18T14:32:00Z",
+  "manual_override": {
+    "tone_classification": "Executive-Strategic",
+    "confidence": 0.92,
+    "reviewer": "manual_review",
+    "notes": "Job post emphasizes structured delivery expectations and compliance guardrails; recommend executive-level framing with strategic assurances."
+  },
+  "final_tone_classification": "Executive-Strategic",
+  "final_confidence": 0.92
+}
