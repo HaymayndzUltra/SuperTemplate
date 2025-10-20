@@ -1,9 +1,10 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "04",
-  "validation_timestamp": "2025-10-20T14:54:58.564883Z",
+  "validation_timestamp": "2025-10-20T16:04:44.033321Z",
   "overall_score": 0.7374999999999999,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "Sign-off guidance missing: approvals, reviewers, confirmation"
   ],

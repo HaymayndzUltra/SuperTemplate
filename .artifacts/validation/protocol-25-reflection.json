@@ -1,0 +1,65 @@
+{
+  "validator": "protocol_reflection",
+  "protocol_id": "25",
+  "validation_timestamp": "2025-10-20T16:04:44.617054Z",
+  "overall_score": 0.1,
+  "validation_status": "warning",
+  "documentation_protocol": true,
+  "issues": [
+    "Retrospective guidance not present",
+    "Improvement loops not described",
+    "Knowledge capture not described",
+    "Future planning not mentioned"
+  ],
+  "recommendations": [
+    "Documentation-focused protocol detected; reflection outputs considered advisory."
+  ],
+  "retrospective_analysis": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Retrospective guidance not present"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "continuous_improvement": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Improvement loops not described"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "system_evolution": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "version_history": false,
+      "rationale": false,
+      "impact": true,
+      "rollback": true
+    }
+  },
+  "knowledge_capture": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Knowledge capture not described"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "future_planning": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Future planning not mentioned"
+    ],
+    "recommendations": [],
+    "details": {}
+  }
+}

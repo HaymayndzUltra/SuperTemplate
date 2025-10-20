@@ -1,9 +1,10 @@
 {
   "validator": "master_validator",
   "protocol_id": "21",
-  "validation_timestamp": "2025-10-20T14:54:58.925494Z",
+  "validation_timestamp": "2025-10-20T16:04:44.535293Z",
   "overall_score": 0.5761944444444445,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "validators": {
     "protocol_identity": {
       "status": "warning",

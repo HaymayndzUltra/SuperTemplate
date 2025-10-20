@@ -1,9 +1,10 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "01",
-  "validation_timestamp": "2025-10-20T14:54:58.474991Z",
+  "validation_timestamp": "2025-10-20T16:04:43.925947Z",
   "overall_score": 0.85,
   "validation_status": "warning",
+  "documentation_protocol": false,
   "issues": [
     "Traceability gaps: inputs, outputs"
   ],

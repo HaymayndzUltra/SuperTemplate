@@ -1,9 +1,10 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "04",
-  "validation_timestamp": "2025-10-20T14:54:58.567112Z",
+  "validation_timestamp": "2025-10-20T16:04:44.036146Z",
   "overall_score": 0.425,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",

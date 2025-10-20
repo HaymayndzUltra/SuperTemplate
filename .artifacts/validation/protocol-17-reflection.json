@@ -1,9 +1,10 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "17",
-  "validation_timestamp": "2025-10-20T14:54:58.839773Z",
+  "validation_timestamp": "2025-10-20T16:04:44.417879Z",
   "overall_score": 0.6375,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "Continuous improvement gaps: opportunities, tracking",
     "Knowledge capture gaps: lessons, knowledge_base, sharing",

@@ -1,0 +1,136 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "25",
+  "validation_timestamp": "2025-10-20T16:04:44.619226Z",
+  "overall_score": 0.04332777777777778,
+  "validation_status": "warning",
+  "documentation_protocol": true,
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 0.12911111111111112
+    },
+    "protocol_role": {
+      "status": "warning",
+      "score": 0.0
+    },
+    "protocol_workflow": {
+      "status": "warning",
+      "score": 0.0
+    },
+    "protocol_quality_gates": {
+      "status": "warning",
+      "score": 0.10416666666666666
+    },
+    "protocol_scripts": {
+      "status": "warning",
+      "score": 0.1
+    },
+    "protocol_communication": {
+      "status": "warning",
+      "score": 0.0
+    },
+    "protocol_evidence": {
+      "status": "warning",
+      "score": 0.0
+    },
+    "protocol_handoff": {
+      "status": "warning",
+      "score": 0.0
+    },
+    "protocol_reasoning": {
+      "status": "warning",
+      "score": 0.0
+    },
+    "protocol_reflection": {
+      "status": "warning",
+      "score": 0.1
+    }
+  },
+  "issues": [
+    "Protocol number not found in header",
+    "Protocol name not found or empty",
+    "Protocol version not found (semantic versioning expected)",
+    "Purpose statement not found or too short",
+    "Scope definition not found",
+    "PREREQUISITES section not found",
+    "Input sources not documented",
+    "Output destinations not documented",
+    "Data formats not specified",
+    "Storage locations not documented",
+    "QUALITY GATES section not found",
+    "Required section missing: PREREQUISITES",
+    "Required section missing: AI ROLE AND MISSION",
+    "Required section missing: WORKFLOW",
+    "Required section missing: QUALITY GATES",
+    "Required section missing: COMMUNICATION PROTOCOLS",
+    "Required section missing: HANDOFF CHECKLIST",
+    "Required section missing: EVIDENCE SUMMARY",
+    "AI ROLE AND MISSION section missing",
+    "Mission statement unavailable",
+    "Constraints do not articulate mandatory guardrails or requirements",
+    "No output documentation found",
+    "Behavioral guidance not documented",
+    "WORKFLOW section missing",
+    "Workflow steps missing",
+    "Action markers absent because workflow missing",
+    "No workflow content to evaluate halt conditions",
+    "Evidence tracking missing from workflow and summary",
+    "QUALITY GATES section missing",
+    "Cannot evaluate pass criteria without gate definitions",
+    "No gate documentation to evaluate failure handling",
+    "Insufficient compliance standards referenced",
+    "Insufficient automation commands listed",
+    "Too few documented commands for syntax validation",
+    "Exit code handling not described",
+    "Logging requirements minimal or absent",
+    "Communication status prompts missing",
+    "COMMUNICATION PROTOCOLS section missing",
+    "Error messaging not documented",
+    "Progress tracking communications missing",
+    "Evidence communication cues missing",
+    "EVIDENCE SUMMARY section missing",
+    "Storage structure not documented",
+    "Manifest not documented",
+    "Traceability information missing",
+    "Archival strategy not documented",
+    "HANDOFF CHECKLIST section missing",
+    "Verification steps not documented",
+    "Stakeholder sign-off section missing",
+    "Documentation requirements not described",
+    "Next protocol alignment missing",
+    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Decision logic not documented",
+    "Problem-solving guidance missing",
+    "Learning mechanisms not referenced",
+    "Meta-cognitive guidance missing",
+    "Retrospective guidance not present",
+    "Improvement loops not described",
+    "Knowledge capture not described",
+    "Future planning not mentioned"
+  ],
+  "recommendations": [
+    "Documentation-focused protocol detected; capture missing validation scaffolding as a recommendation.",
+    "Clarify boundaries or situations to avoid for this mission",
+    "Reference workflow steps when stating guardrails to improve clarity",
+    "Documentation-focused protocol detected; treat role guardrail gaps as advisory guidance.",
+    "Documentation-focused protocol detected; workflow automation cues treated as optional guidance.",
+    "Provision config/protocol_gates/25.yaml when automated gating is expected",
+    "Document executable automation commands for gates",
+    "Reference CI/CD workflow integration for gates",
+    "Link compliance checks to automation commands",
+    "Documentation-focused protocol detected; gate automation gaps recorded as recommendations.",
+    "Document end-to-end automation steps for the protocol",
+    "Reference scripts/script-registry.json for governance context",
+    "Map automation hooks back to workflow steps or phases",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Document fallback or retry sequences for failures",
+    "Documentation-focused protocol detected; script integration gaps tracked as recommendations.",
+    "Documentation-focused protocol detected; communication scaffolding treated as guidance.",
+    "Documentation-focused protocol detected; evidence manifest cues tracked as recommendations.",
+    "Documentation-focused protocol detected; handoff expectations recorded as recommendations.",
+    "Documentation-focused protocol detected; reasoning prompts treated as optional guidance.",
+    "Documentation-focused protocol detected; reflection outputs considered advisory."
+  ]
+}

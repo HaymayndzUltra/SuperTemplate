@@ -1,9 +1,10 @@
 {
   "validator": "protocol_quality_gates",
   "protocol_id": "07",
-  "validation_timestamp": "2025-10-20T14:54:58.630375Z",
+  "validation_timestamp": "2025-10-20T16:04:44.121796Z",
   "overall_score": 0.725,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "Insufficient compliance standards referenced"
   ],

@@ -1,0 +1,82 @@
+{
+  "validator": "protocol_quality_gates",
+  "protocol_id": "25",
+  "validation_timestamp": "2025-10-20T16:04:44.610573Z",
+  "overall_score": 0.10416666666666666,
+  "validation_status": "warning",
+  "documentation_protocol": true,
+  "issues": [
+    "QUALITY GATES section missing",
+    "Cannot evaluate pass criteria without gate definitions",
+    "No gate documentation to evaluate failure handling",
+    "Insufficient compliance standards referenced"
+  ],
+  "recommendations": [
+    "Provision config/protocol_gates/25.yaml when automated gating is expected",
+    "Document executable automation commands for gates",
+    "Reference CI/CD workflow integration for gates",
+    "Link compliance checks to automation commands",
+    "Documentation-focused protocol detected; gate automation gaps recorded as recommendations."
+  ],
+  "gate_definitions": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "QUALITY GATES section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "pass_criteria": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Cannot evaluate pass criteria without gate definitions"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "automation": {
+    "score": 0.3333333333333333,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Provision config/protocol_gates/25.yaml when automated gating is expected",
+      "Document executable automation commands for gates",
+      "Reference CI/CD workflow integration for gates"
+    ],
+    "details": {
+      "scripts": false,
+      "ci": false,
+      "automation_labels": true,
+      "script_mentions": 0,
+      "gate_config_path": "/workspace/SuperTemplate/config/protocol_gates/25.yaml",
+      "gate_config_present": false
+    }
+  },
+  "failure_handling": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "No gate documentation to evaluate failure handling"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "compliance_integration": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Insufficient compliance standards referenced"
+    ],
+    "recommendations": [
+      "Link compliance checks to automation commands"
+    ],
+    "details": {
+      "compliance_terms": false,
+      "automation_hooks": false,
+      "evidence": true,
+      "governance": false
+    }
+  }
+}

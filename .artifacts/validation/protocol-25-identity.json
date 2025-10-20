@@ -1,15 +1,14 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "25",
-  "validation_timestamp": "2025-10-20T01:35:57.624186Z",
+  "validation_timestamp": "2025-10-20T16:04:44.603809Z",
   "basic_information": {
-    "score": 0.0,
+    "score": 0.16666666666666666,
     "status": "fail",
     "issues": [
       "Protocol number not found in header",
       "Protocol name not found or empty",
       "Protocol version not found (semantic versioning expected)",
-      "Phase assignment not found or invalid in AGENTS.md",
       "Purpose statement not found or too short",
       "Scope definition not found"
     ],
@@ -17,7 +16,7 @@
       "protocol_number": false,
       "protocol_name": false,
       "protocol_version": false,
-      "phase_assignment": false,
+      "phase_assignment": "Phase 6",
       "purpose_statement": false,
       "scope_definition": false
     }
@@ -84,13 +83,12 @@
       "technical_accuracy": 0.9
     }
   },
-  "overall_score": 0.09577777777777778,
-  "validation_status": "fail",
+  "overall_score": 0.12911111111111112,
+  "validation_status": "warning",
   "issues": [
     "Protocol number not found in header",
     "Protocol name not found or empty",
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
     "Purpose statement not found or too short",
     "Scope definition not found",
     "PREREQUISITES section not found",
@@ -107,5 +105,8 @@
     "Required section missing: HANDOFF CHECKLIST",
     "Required section missing: EVIDENCE SUMMARY"
   ],
-  "recommendations": []
+  "recommendations": [
+    "Documentation-focused protocol detected; capture missing validation scaffolding as a recommendation."
+  ],
+  "documentation_protocol": true
 }

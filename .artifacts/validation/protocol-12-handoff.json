@@ -1,9 +1,10 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "12",
-  "validation_timestamp": "2025-10-20T14:54:58.736532Z",
+  "validation_timestamp": "2025-10-20T16:04:44.265939Z",
   "overall_score": 0.7,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "Limited verification language detected",
     "Sign-off guidance missing: reviewers, confirmation",

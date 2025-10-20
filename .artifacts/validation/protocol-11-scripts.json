@@ -1,9 +1,10 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "11",
-  "validation_timestamp": "2025-10-20T14:54:58.710586Z",
+  "validation_timestamp": "2025-10-20T16:04:44.232530Z",
   "overall_score": 0.6125,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "Referenced command paths not found: scripts/aggregate_evidence_9.py, scripts/generate_artifact_manifest.py, scripts/run_contract_tests.py, scripts/run_protocol_9_gates.py, scripts/validate_environment.py, scripts/validate_prerequisites_9.py",
     "Exit code handling not described"

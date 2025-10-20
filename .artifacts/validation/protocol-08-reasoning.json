@@ -1,9 +1,10 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "08",
-  "validation_timestamp": "2025-10-20T14:54:58.658253Z",
+  "validation_timestamp": "2025-10-20T16:04:44.158931Z",
   "overall_score": 0.25,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "Workflow section missing; cannot evaluate reasoning patterns",
     "Decision points insufficiently described",

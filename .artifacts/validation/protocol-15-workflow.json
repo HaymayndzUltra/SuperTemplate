@@ -1,9 +1,10 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "15",
-  "validation_timestamp": "2025-10-20T14:54:58.788343Z",
+  "validation_timestamp": "2025-10-20T16:04:44.341304Z",
   "overall_score": 0.1,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "WORKFLOW section missing",
     "Workflow steps missing",

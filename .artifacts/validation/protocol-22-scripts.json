@@ -1,9 +1,10 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "22",
-  "validation_timestamp": "2025-10-20T14:54:58.933222Z",
+  "validation_timestamp": "2025-10-20T16:04:44.545337Z",
   "overall_score": 0.6625,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "Referenced command paths not found: scripts/aggregate_evidence_5.py, scripts/run_protocol_5_gates.py, scripts/validate_gate_5_action_plan.py, scripts/validate_gate_5_integration.py, scripts/validate_gate_5_participation.py, scripts/validate_prerequisites_5.py",
     "Exit code handling not described"

@@ -1,9 +1,10 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "05",
-  "validation_timestamp": "2025-10-20T14:54:58.597648Z",
+  "validation_timestamp": "2025-10-20T16:04:44.079326Z",
   "overall_score": 0.3875,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "Retrospective analysis not documented",
     "Continuous improvement gaps: opportunities",

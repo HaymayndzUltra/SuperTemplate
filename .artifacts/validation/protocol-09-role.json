@@ -1,9 +1,10 @@
 {
   "validator": "protocol_role",
   "protocol_id": "09",
-  "validation_timestamp": "2025-10-20T14:54:58.668523Z",
+  "validation_timestamp": "2025-10-20T16:04:44.173661Z",
   "overall_score": 0.7083333333333333,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",

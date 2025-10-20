@@ -1,9 +1,10 @@
 {
   "validator": "protocol_role",
   "protocol_id": "10",
-  "validation_timestamp": "2025-10-20T14:54:58.688270Z",
+  "validation_timestamp": "2025-10-20T16:04:44.200080Z",
   "overall_score": 0.8083333333333333,
   "validation_status": "warning",
+  "documentation_protocol": false,
   "issues": [
     "Domain expertise keywords missing",
     "Value proposition not captured"

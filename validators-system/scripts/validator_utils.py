@@ -112,6 +112,7 @@ def relax_for_documentation_protocol(
 
     if result.get("validation_status") == "fail":
         result["validation_status"] = "warning"
+    result["documentation_protocol"] = True
     if note not in result.get("recommendations", []):
         result.setdefault("recommendations", []).append(note)
 
@@ -144,6 +145,7 @@ def build_base_result(validator_key: str, protocol_id: str) -> Dict[str, Any]:
         "validation_timestamp": current_timestamp(),
         "overall_score": 0.0,
         "validation_status": "fail",
+        "documentation_protocol": False,
         "issues": [],
         "recommendations": [],
     }

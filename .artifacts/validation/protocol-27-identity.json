@@ -1,22 +1,21 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "27",
-  "validation_timestamp": "2025-10-20T01:35:57.630306Z",
+  "validation_timestamp": "2025-10-20T16:04:44.635876Z",
   "basic_information": {
-    "score": 0.16666666666666666,
+    "score": 0.3333333333333333,
     "status": "fail",
     "issues": [
       "Protocol number not found in header",
       "Protocol name not found or empty",
       "Protocol version not found (semantic versioning expected)",
-      "Phase assignment not found or invalid in AGENTS.md",
       "Scope definition not found"
     ],
     "elements_found": {
       "protocol_number": false,
       "protocol_name": false,
       "protocol_version": false,
-      "phase_assignment": false,
+      "phase_assignment": "Phase 6",
       "purpose_statement": true,
       "scope_definition": false
     }
@@ -77,13 +76,12 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.15333333333333332,
-  "validation_status": "fail",
+  "overall_score": 0.18666666666666668,
+  "validation_status": "warning",
   "issues": [
     "Protocol number not found in header",
     "Protocol name not found or empty",
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
     "Scope definition not found",
     "PREREQUISITES section not found",
     "INTEGRATION POINTS section not found",
@@ -98,5 +96,8 @@
     "Required section missing: HANDOFF CHECKLIST",
     "Required section missing: EVIDENCE SUMMARY"
   ],
-  "recommendations": []
+  "recommendations": [
+    "Documentation-focused protocol detected; capture missing validation scaffolding as a recommendation."
+  ],
+  "documentation_protocol": true
 }

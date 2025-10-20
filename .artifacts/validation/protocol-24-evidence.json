@@ -1,0 +1,63 @@
+{
+  "validator": "protocol_evidence",
+  "protocol_id": "24",
+  "validation_timestamp": "2025-10-20T16:04:44.597423Z",
+  "overall_score": 0.0,
+  "validation_status": "warning",
+  "documentation_protocol": true,
+  "issues": [
+    "EVIDENCE SUMMARY section missing",
+    "Storage structure not documented",
+    "Manifest not documented",
+    "Traceability information missing",
+    "Archival strategy not documented"
+  ],
+  "recommendations": [
+    "Documentation-focused protocol detected; evidence manifest cues tracked as recommendations."
+  ],
+  "artifact_generation": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "EVIDENCE SUMMARY section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "storage_structure": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Storage structure not documented"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "manifest_completeness": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Manifest not documented"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "traceability": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Traceability information missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "archival": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Archival strategy not documented"
+    ],
+    "recommendations": [],
+    "details": {}
+  }
+}

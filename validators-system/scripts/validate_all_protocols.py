@@ -91,6 +91,9 @@ class MasterProtocolValidator:
 
         combined["overall_score"] = sum(scores) / len(scores) if scores else 0.0
         combined["validation_status"] = self._resolve_status(statuses)
+        combined["documentation_protocol"] = any(
+            result.get("documentation_protocol") for result in results.values()
+        )
         combined.pop("issues", None)
         combined.pop("recommendations", None)
         combined["issues"] = [
@@ -139,6 +142,7 @@ class MasterProtocolValidator:
                     "protocol_id": r.get("protocol_id"),
                     "status": r.get("validation_status"),
                     "score": r.get("overall_score"),
+                    "documentation_protocol": r.get("documentation_protocol", False),
                 }
                 for r in protocol_results
             ],

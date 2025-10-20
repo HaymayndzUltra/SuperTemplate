@@ -1,20 +1,19 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "26",
-  "validation_timestamp": "2025-10-20T01:35:57.627064Z",
+  "validation_timestamp": "2025-10-20T16:04:44.619713Z",
   "basic_information": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.6666666666666666,
+    "status": "warning",
     "issues": [
       "Protocol number not found in header",
-      "Phase assignment not found or invalid in AGENTS.md",
       "Scope definition not found"
     ],
     "elements_found": {
       "protocol_number": false,
       "protocol_name": "Client Discovery",
       "protocol_version": true,
-      "phase_assignment": false,
+      "phase_assignment": "Phase 6",
       "purpose_statement": true,
       "scope_definition": false
     }
@@ -75,11 +74,10 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.202,
-  "validation_status": "fail",
+  "overall_score": 0.23533333333333334,
+  "validation_status": "warning",
   "issues": [
     "Protocol number not found in header",
-    "Phase assignment not found or invalid in AGENTS.md",
     "Scope definition not found",
     "PREREQUISITES section not found",
     "INTEGRATION POINTS section not found",
@@ -94,5 +92,8 @@
     "Required section missing: HANDOFF CHECKLIST",
     "Required section missing: EVIDENCE SUMMARY"
   ],
-  "recommendations": []
+  "recommendations": [
+    "Documentation-focused protocol detected; capture missing validation scaffolding as a recommendation."
+  ],
+  "documentation_protocol": true
 }

@@ -1,9 +1,10 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "15",
-  "validation_timestamp": "2025-10-20T14:54:58.793361Z",
+  "validation_timestamp": "2025-10-20T16:04:44.348815Z",
   "overall_score": 0.7,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "Protocol evidence directory not referenced",
     "Traceability gaps: inputs, outputs"

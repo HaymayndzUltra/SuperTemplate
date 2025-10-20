@@ -1016,6 +1016,7 @@ python3 scripts/validate_all_protocols.py --all
 {
   "protocol_id": "01",
   "validation_timestamp": "2025-10-20T08:00:00Z",
+  "documentation_protocol": false,
   "validators": {
     "protocol_identity": {"score": 0.995, "status": "pass"},
     "ai_role": {"score": 0.93, "status": "pass"},
@@ -1032,6 +1033,8 @@ python3 scripts/validate_all_protocols.py --all
   "validation_status": "pass"
 }
 ```
+
+> **Documentation Flag:** When a documentation-only protocol (24-27) is validated, the orchestrator sets `"documentation_protocol": true` on the master record and on master summary entries so downstream tooling can filter or score them separately.
 
 ---
 

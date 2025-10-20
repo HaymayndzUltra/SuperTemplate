@@ -1,9 +1,10 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "04",
-  "validation_timestamp": "2025-10-20T14:54:58.554562Z",
+  "validation_timestamp": "2025-10-20T16:04:44.018479Z",
   "overall_score": 0.9,
   "validation_status": "pass",
+  "documentation_protocol": false,
   "issues": [
     "Several workflow steps omit explicit action prompts"
   ],

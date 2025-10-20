@@ -1,9 +1,10 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "12",
-  "validation_timestamp": "2025-10-20T14:54:58.733353Z",
+  "validation_timestamp": "2025-10-20T16:04:44.261937Z",
   "overall_score": 0.675,
   "validation_status": "fail",
+  "documentation_protocol": false,
   "issues": [
     "Missing user interaction prompts: clarification",
     "Limited progress terminology in communications"

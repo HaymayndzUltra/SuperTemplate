@@ -1,0 +1,76 @@
+{
+  "validator": "protocol_role",
+  "protocol_id": "27",
+  "validation_timestamp": "2025-10-20T16:04:44.639867Z",
+  "overall_score": 0.0,
+  "validation_status": "warning",
+  "documentation_protocol": true,
+  "issues": [
+    "AI ROLE AND MISSION section missing",
+    "Mission statement unavailable",
+    "Constraints do not articulate mandatory guardrails or requirements",
+    "No output documentation found",
+    "Behavioral guidance not documented"
+  ],
+  "recommendations": [
+    "Clarify boundaries or situations to avoid for this mission",
+    "Reference workflow steps when stating guardrails to improve clarity",
+    "Documentation-focused protocol detected; treat role guardrail gaps as advisory guidance."
+  ],
+  "role_definition": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "AI ROLE AND MISSION section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "mission_statement": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Mission statement unavailable"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "constraints_guidelines": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Constraints do not articulate mandatory guardrails or requirements"
+    ],
+    "recommendations": [
+      "Clarify boundaries or situations to avoid for this mission",
+      "Reference workflow steps when stating guardrails to improve clarity"
+    ],
+    "details": {
+      "guardrails": false,
+      "boundaries": false,
+      "workflow_alignment": false,
+      "guardrail_count": 0,
+      "boundary_count": 0,
+      "workflow_links": 0,
+      "optional_guidance": 0
+    }
+  },
+  "output_expectations": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "No output documentation found"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "behavioral_guidance": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Behavioral guidance not documented"
+    ],
+    "recommendations": [],
+    "details": {}
+  }
+}
