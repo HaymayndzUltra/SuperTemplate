@@ -18,6 +18,7 @@ from validator_utils import (
     documentation_protocol_recommendation,
     is_documentation_protocol,
     resolve_protocol_ids,
+    status_icon,
 )
 
 class ProtocolIdentityValidator:
@@ -665,7 +666,8 @@ def main():
         with open(output_file, 'w') as f:
             json.dump(result, f, indent=2)
         
-        print(f"✅ Validation complete for Protocol {args.protocol}")
+        icon = status_icon(result.get("validation_status"))
+        print(f"{icon} Validation complete for Protocol {args.protocol}")
         print(f"   Status: {result['validation_status'].upper()}")
         print(f"   Score: {result['overall_score']:.3f}")
         print(f"   Output: {output_file}")
@@ -683,8 +685,8 @@ def main():
             with open(output_file, 'w') as f:
                 json.dump(result, f, indent=2)
             
-            status_icon = "✅" if result["validation_status"] == "pass" else "⚠️" if result["validation_status"] == "warning" else "❌"
-            print(f"{status_icon} Protocol {protocol_id}: {result['validation_status'].upper()} (score: {result['overall_score']:.3f})")
+            icon = status_icon(result.get("validation_status"))
+            print(f"{icon} Protocol {protocol_id}: {result['validation_status'].upper()} (score: {result['overall_score']:.3f})")
     
     if args.report or args.all:
         # Generate summary reports

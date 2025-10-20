@@ -17,6 +17,7 @@ if str(CURRENT_DIR) not in sys.path:
 from validator_utils import (  # noqa: E402
     build_base_result,
     resolve_protocol_ids,
+    status_icon,
     write_json,
 )
 
@@ -183,16 +184,26 @@ def run_cli(args: argparse.Namespace) -> int:
         combined = orchestrator.aggregate_protocol_result(args.protocol, validator_outputs)
         output_path = orchestrator.save_master_result(combined)
         protocol_results.append(combined)
-        print(f"✅ Master validation complete for Protocol {args.protocol} -> {output_path}")
+        icon = status_icon(combined.get("validation_status"))
+        score = combined.get("overall_score")
+        status_text = combined.get("validation_status", "").upper()
+        score_text = (
+            f" (score: {score:.3f})" if isinstance(score, (int, float)) else ""
+        )
+        print(
+            f"{icon} Master validation complete for Protocol {args.protocol} -> {output_path}{score_text}"
+        )
+        if status_text:
+            print(f"   Status: {status_text}")
     elif args.all:
         for protocol_id in resolve_protocol_ids(include_docs=args.include_docs):
             validator_outputs = orchestrator.validate_protocol(protocol_id)
             combined = orchestrator.aggregate_protocol_result(protocol_id, validator_outputs)
             orchestrator.save_master_result(combined)
             protocol_results.append(combined)
-            status_icon = "✅" if combined["validation_status"] == "pass" else "⚠️" if combined["validation_status"] == "warning" else "❌"
+            icon = status_icon(combined.get("validation_status"))
             print(
-                f"{status_icon} Protocol {protocol_id}: {combined['validation_status'].upper()} (score: {combined['overall_score']:.3f})"
+                f"{icon} Protocol {protocol_id}: {combined['validation_status'].upper()} (score: {combined['overall_score']:.3f})"
             )
     else:
         raise SystemExit("Either --protocol or --all must be supplied")

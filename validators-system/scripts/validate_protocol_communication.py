@@ -23,6 +23,7 @@ from validator_utils import (
     is_documentation_protocol,
     read_protocol_content,
     resolve_protocol_ids,
+    status_icon,
     write_json,
 )
 
@@ -253,15 +254,25 @@ def run_cli(args: argparse.Namespace) -> int:
         result = validator.validate_protocol(args.protocol)
         results.append(result)
         output_path = validator.save_result(result)
-        print(f"✅ Communication validation complete for Protocol {args.protocol} -> {output_path}")
+        status = result.get("validation_status")
+        icon = status_icon(status)
+        score = result.get("overall_score")
+        score_text = (
+            f" (score: {score:.3f})" if isinstance(score, (int, float)) else ""
+        )
+        print(
+            f"{icon} Communication validation complete for Protocol {args.protocol} -> {output_path}{score_text}"
+        )
+        if status:
+            print(f"   Status: {status.upper()}")
     elif args.all:
         for protocol_id in resolve_protocol_ids(include_docs=args.include_docs):
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
-            status_icon = "✅" if result["validation_status"] == "pass" else "⚠️" if result["validation_status"] == "warning" else "❌"
+            icon = status_icon(result.get("validation_status"))
             print(
-                f"{status_icon} Protocol {protocol_id}: {result['validation_status'].upper()} (score: {result['overall_score']:.3f})"
+                f"{icon} Protocol {protocol_id}: {result['validation_status'].upper()} (score: {result['overall_score']:.3f})"
             )
     else:
         raise SystemExit("Either --protocol or --all must be supplied")

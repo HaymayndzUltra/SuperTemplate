@@ -9,6 +9,20 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
+STATUS_ICONS = {
+    "pass": "✅",
+    "warning": "⚠️",
+    "fail": "❌",
+}
+
+
+def status_icon(status: Optional[str]) -> str:
+    """Return a console icon that matches a validator status."""
+
+    if not status:
+        return "❓"
+    return STATUS_ICONS.get(status.lower(), "❓")
+
 DEFAULT_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(1, 24)]
 DOCUMENTATION_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(24, 28)]
 
