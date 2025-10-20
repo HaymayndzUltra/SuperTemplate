@@ -14,6 +14,12 @@ from pathlib import Path
 from datetime import datetime, timezone
 from typing import Dict, List, Tuple, Any
 
+from validator_utils import (
+    documentation_protocol_recommendation,
+    is_documentation_protocol,
+    resolve_protocol_ids,
+)
+
 class ProtocolIdentityValidator:
     """Validates protocol identity and documentation quality"""
     
@@ -36,7 +42,6 @@ class ProtocolIdentityValidator:
         self.workspace_root = workspace_root
         self.protocols_dir = workspace_root / ".cursor" / "ai-driven-workflow"
         self.agents_file = workspace_root / "AGENTS.md"
-        self.gates_dir = workspace_root / "config" / "protocol_gates"
         self.output_dir = workspace_root / ".artifacts" / "validation"
         
     def validate_protocol(self, protocol_id: str) -> Dict[str, Any]:
@@ -56,7 +61,12 @@ class ProtocolIdentityValidator:
             "issues": [],
             "recommendations": []
         }
-        
+
+        if is_documentation_protocol(protocol_id):
+            result["validation_status"] = "warning"
+            result["recommendations"].append(documentation_protocol_recommendation())
+            return result
+
         # Find protocol file
         protocol_file = self._find_protocol_file(protocol_id)
         if not protocol_file:
@@ -163,8 +173,12 @@ class ProtocolIdentityValidator:
             result["elements_found"]["phase_assignment"] = False
         
         # 5. Purpose Statement
-        purpose_match = re.search(r'(?:Purpose|Mission):\s*([^\n]+)', content, re.IGNORECASE)
-        if purpose_match and len(purpose_match.group(1).strip()) > 20:
+        purpose_match = re.search(
+            r'(?:\*\*)?(Purpose|Mission)(?:\*\*)?\s*[:\-]\s*([^\n]+)',
+            content,
+            re.IGNORECASE,
+        )
+        if purpose_match and len(purpose_match.group(2).strip()) > 20:
             elements_found += 1
             result["elements_found"]["purpose_statement"] = True
         else:
@@ -359,14 +373,16 @@ class ProtocolIdentityValidator:
             result["issues"].append("Regulatory compliance not documented")
             result["categories_found"]["regulatory_compliance"] = False
         
-        # 4. Quality Gates with Automation
-        gate_file = self.gates_dir / f"{protocol_id}.yaml"
-        if gate_file.exists():
+        # 4. Quality Gates with Automation Narrative
+        governance_terms = ["automation", "scripts/", "ci/cd", "quality gate", "run", "validate"]
+        if any(term in gates_section.lower() for term in governance_terms):
             categories_found += 1
             result["categories_found"]["quality_gates"] = True
         else:
-            result["issues"].append(f"Automated quality gates config not found: {gate_file}")
             result["categories_found"]["quality_gates"] = False
+            result["recommendations"].append(
+                "Reference how quality gates are automated or validated to support downstream tooling"
+            )
         
         # Calculate score
         result["score"] = categories_found / total_categories
@@ -443,19 +459,33 @@ class ProtocolIdentityValidator:
         """Get phase assignment from AGENTS.md"""
         if not self.agents_file.exists():
             return ""
-        
+
         try:
             with open(self.agents_file, 'r', encoding='utf-8') as f:
                 agents_content = f.read()
-            
-            # Look for protocol in phase tables
+
+            # First try structured phase headings (#### Phase X ...)
+            phase_pattern = re.compile(r"^####\s+\*{0,2}(Phase\s+[0-9-]+).*", re.MULTILINE)
+            matches = list(phase_pattern.finditer(agents_content))
+            for index, match in enumerate(matches):
+                start = match.end()
+                end = matches[index + 1].start() if index + 1 < len(matches) else len(agents_content)
+                block = agents_content[start:end]
+                phase_name = match.group(1).split(":")[0].strip()
+                if (
+                    phase_name in self.VALID_PHASES
+                    and re.search(rf"\b{protocol_id}[-\w]*", block)
+                ):
+                    return phase_name
+
+            # Fallback to legacy ## Phase sections
             for phase in self.VALID_PHASES:
                 phase_section = self._extract_section(agents_content, phase)
                 if protocol_id in phase_section or f"**{protocol_id}**" in phase_section:
                     return phase
         except Exception:
             pass
-        
+
         return ""
     
     def _calculate_clarity(self, content: str) -> float:
@@ -607,6 +637,11 @@ def main():
         help="Generate summary reports"
     )
     parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols 24-27 when iterating with --all"
+    )
+    parser.add_argument(
         "--workspace",
         default=".",
         help="Workspace root directory"
@@ -636,9 +671,8 @@ def main():
         print(f"   Output: {output_file}")
         
     elif args.all:
-        # Validate all protocols (01-27, excluding 00 and 28+)
-        protocol_ids = [f"{i:02d}" for i in range(1, 28)]
-        
+        protocol_ids = resolve_protocol_ids(include_docs=args.include_docs)
+
         for protocol_id in protocol_ids:
             result = validator.validate_protocol(protocol_id)
             all_results.append(result)

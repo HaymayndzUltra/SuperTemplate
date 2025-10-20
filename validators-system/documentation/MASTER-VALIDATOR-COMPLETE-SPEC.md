@@ -25,7 +25,7 @@
 ## SYSTEM OVERVIEW
 
 ### **Purpose**
-Validate all 28 protocols across 10 dimensions to ensure production readiness.
+Validate all workflow protocols (01-23) across 10 dimensions to ensure production readiness. Documentation protocols (24-27) are opt-in and produce guidance-only warnings when explicitly included.
 
 ### **Architecture**
 ```yaml
@@ -70,6 +70,8 @@ Pass Criteria:
   - 3+ missing: FAIL
 ```
 
+**Update:** Phase lookups now parse nested `#### Phase ...` headings in `AGENTS.md`, and bolded statements such as `**Purpose**:` satisfy the purpose extraction requirement.
+
 #### **1.2 Prerequisites (20%)**
 ```yaml
 Validates:
@@ -110,6 +112,8 @@ Pass Criteria:
   - Missing 1 standard: WARNING
   - No compliance: FAIL
 ```
+
+**Update:** Gate automation coverage is evaluated from the documented narrative; missing `config/protocol_gates/*.yaml` files now trigger recommendations rather than hard failures.
 
 #### **1.5 Documentation Quality (20%)**
 ```yaml
@@ -205,19 +209,21 @@ Pass Criteria:
 #### **2.3 Constraints & Guidelines (20%)**
 ```yaml
 Validates:
-  - Critical Constraints: [CRITICAL] markers
-  - Must-Follow Rules: [MUST] markers
-  - Guidelines: [GUIDELINE] markers
-  - Prohibitions: What NOT to do
+  - Enforceable guardrails: [CRITICAL]/[MUST] phrasing or equivalent language
+  - Scope boundaries: What's included/excluded relative to the mission
+  - Workflow references: Where constraints apply across steps/phases
+  - Optional guidance: [OPTIONAL]/[GUIDELINE]/"should" statements captured as recommendations
 
 Example:
   "🚫 [CRITICAL] Never fabricate experience or deliverables."
 
 Pass Criteria:
-  - Has critical constraints: PASS
-  - Has guidelines only: WARNING
-  - No constraints: FAIL
+  - Guardrails + boundaries + workflow context: PASS
+  - Missing one dimension: WARNING
+  - Missing two or more: FAIL
 ```
+
+**Update:** `[OPTIONAL]` markers and "never" phrasing are treated as advisory cues; their absence yields recommendations rather than automatic failures.
 
 #### **2.4 Output Expectations (15%)**
 ```yaml
@@ -303,16 +309,18 @@ Pass Criteria:
 #### **3.3 Action Markers (15%)**
 ```yaml
 Validates:
-  - [CRITICAL] markers: Non-negotiable actions
-  - [MUST] markers: Required actions
-  - [GUIDELINE] markers: Best practices
-  - [OPTIONAL] markers: Optional actions
+  - Enforcement cues: [CRITICAL]/[MUST] or equivalent language anchoring required actions
+  - Guardrail phrasing: "do not", halt/stop language for safety
+  - Workflow alignment: References to steps/phases/mission context
+  - Optional guidance: [GUIDELINE]/[OPTIONAL]/"should" statements for flexibility
 
 Pass Criteria:
-  - Consistent marker usage: PASS
-  - Some markers: WARNING
-  - No markers: FAIL
+  - Enforcement + guardrails + workflow context: PASS
+  - Missing one element: WARNING
+  - Missing two or more: FAIL
 ```
+
+**Update:** `[OPTIONAL]` markers enhance recommendations but are no longer required for a passing score; the validator prioritises clarity and mission alignment instead.
 
 #### **3.4 Halt Conditions (20%)**
 ```yaml
@@ -380,7 +388,7 @@ Example:
 Where to Find:
   - Section: ## QUALITY GATES
   - Lines: 133-168 in Protocol 01
-  - Config: config/protocol_gates/01.yaml
+  - Optional templates: config/protocol_gates/01.yaml
 
 Pass Criteria:
   - All gates defined: PASS
@@ -405,16 +413,18 @@ Pass Criteria:
 #### **4.3 Automation (20%)**
 ```yaml
 Validates:
-  - Script Existence: Validation scripts present
-  - Script Registration: In script-registry.json
-  - Command Syntax: Executable commands
-  - CI/CD Integration: Pipeline configuration
+  - Script Commands: Documented python/bash invocations per gate
+  - Automation Language: Narrative describing how gates are executed
+  - Optional CI/CD Context: Pipeline or scheduling references
+  - Optional Gate Config: YAML templates when specification requires them
 
 Pass Criteria:
-  - All gates automated: PASS
-  - Some automated: WARNING
-  - No automation: FAIL
+  - Commands + automation narrative: PASS
+  - Commands documented but missing optional context: WARNING
+  - No executable commands: FAIL
 ```
+
+**Update:** Missing `config/protocol_gates/{id}.yaml` files now generate warnings with remediation guidance instead of immediate failures.
 
 #### **4.4 Failure Handling (15%)**
 ```yaml
@@ -480,6 +490,8 @@ Pass Criteria:
   - No references: FAIL
 ```
 
+**Update:** Command inventory now validates that referenced script files exist on disk; missing files surface as issues alongside recommendations to restore automation coverage.
+
 #### **5.2 Script Existence (25%)**
 ```yaml
 Validates:
@@ -516,6 +528,8 @@ Pass Criteria:
   - None registered: FAIL
 ```
 
+**Update:** Documented commands are cross-checked against `scripts/script-registry.json`; unregistered commands raise issues, while missing registry prose is reported as informational guidance.
+
 #### **5.4 Command Syntax (20%)**
 ```yaml
 Validates:
@@ -529,6 +543,8 @@ Pass Criteria:
   - Some invalid: WARNING
   - No commands: FAIL
 ```
+
+**Update:** Execution context heuristics treat environment/dependency requirements as mandatory while CI/CD pipelines, scheduling, and permissions contribute recommendations instead of failures when omitted.
 
 #### **5.5 Error Handling (15%)**
 ```yaml
@@ -658,10 +674,10 @@ Validate evidence artifact generation, storage structure, manifest completeness,
 #### **7.1 Artifact Generation (30%)**
 ```yaml
 Validates:
-  - Artifact List: All expected files
-  - Artifact Format: JSON, MD, YAML
-  - Artifact Content: Non-empty, valid
-  - Artifact Timestamps: Creation time
+  - Evidence Table: Rows covering artifacts, locations, consumers
+  - Column Coverage: Purpose + consumer columns populated
+  - Format Diversity: Multiple artifact extensions (.json, .md, .yaml, etc.)
+  - Metrics Table: Targets/actuals captured when provided
 
 Where to Find:
   - Section: ## EVIDENCE SUMMARY
@@ -669,10 +685,12 @@ Where to Find:
   - Files: .artifacts/protocol-XX/
 
 Pass Criteria:
-  - All generated: PASS
-  - Some missing: WARNING
-  - None generated: FAIL
+  - Artifact table + column coverage present: PASS
+  - Table present but missing one dimension: WARNING
+  - No artifact table: FAIL
 ```
+
+**Update:** The validator reads Markdown tables directly—protocols with complete artifact tables and metrics rows now earn full credit even without explicit manifest keywords.
 
 #### **7.2 Storage Structure (20%)**
 ```yaml
@@ -691,16 +709,18 @@ Pass Criteria:
 #### **7.3 Manifest Completeness (20%)**
 ```yaml
 Validates:
-  - Manifest File: evidence-manifest.json
-  - Artifact Inventory: All files listed
-  - Metadata: Size, timestamp, hash
-  - Dependencies: Input/output links
+  - Manifest Narrative: Mentions of manifests/inventories when promised
+  - Artifact Inventory: References to `.artifacts/...` outputs
+  - Metadata: Size, timestamp, checksum cues
+  - Dependencies: Input/output links or downstream consumers
 
 Pass Criteria:
-  - Complete manifest: PASS
-  - Partial manifest: WARNING
-  - No manifest: FAIL
+  - Artifact references + dependency links: PASS
+  - Artifact references only: WARNING
+  - No artifact references: FAIL
 ```
+
+**Update:** Manifest details become advisory unless the protocol explicitly promises a manifest—missing manifest language now triggers recommendations instead of automatic failures.
 
 #### **7.4 Traceability (15%)**
 ```yaml
@@ -729,6 +749,8 @@ Pass Criteria:
   - Some archived: WARNING
   - No archival: FAIL
 ```
+
+**Update:** Archival checks are advisory unless the protocol commits to an archival strategy—absent cues yield recommendations instead of failures.
 
 ### **Script**
 ```bash

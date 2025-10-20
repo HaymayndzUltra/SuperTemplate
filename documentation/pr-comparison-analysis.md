@@ -45,6 +45,26 @@ This report compares repository state in `work` (current branch) against four ex
 - Reinforces missing automation families and governance assets not yet delivered locally.
 - Introduces requirement for regression harnesses that our repository does not currently implement.
 
+## PR #48 – "Refresh master validation summary after validator updates"
+- Introduces first-class scope guardrails by splitting the protocol id constants and providing helper utilities so tooling can optionally include Protocols 24-27 without breaking default runs.
+- Each validator now short-circuits documentation protocols with a warning, while the script integration validator adds registry alignment heuristics that surface missing files, unregistered commands, and optional execution context checks.
+- The master specification codifies that documentation protocols are opt-in guidance with warning-only output, aligning documentation expectations with the new guardrails.
+
+## PR #49 – "Refresh validation artifacts after full validator run"
+- Refactors script command extraction but regresses support for commands documented with `./scripts/...`, because the new regex only matches `python` and `bash` prefixes, so workflow steps that rely on executable shell scripts disappear from coverage and registry checks.
+- Documentation protocols are downgraded to warnings only after the full validation executes, allowing evidence gaps and failure issues to leak into reports even when automation is meant to be advisory.
+
+## PR #50 – "Align validators with revised scope and heuristics"
+- Sets documentation protocol results to `overall_score = 1.0` while marking the run as a warning, which inflates master averages even though no dimensions were evaluated (the AI role validator exits immediately with the artificial score).
+- Reverts several heuristic improvements from PR #48 (e.g. registry weighting and optional execution context checks) to the pre-guardrail scoring, so governance insights are weaker than the earlier revision.
+
+## PR #51 – "feat: refine protocol validators and update audit outputs"
+- Keeps the reduced protocol id list but never applies a documentation short-circuit, so enabling `--include-docs` still runs the full checklist and fails on narrative-only files.
+- Also rewires the identity validator to look inside `.cursor/ai-driven-workflow/AGENTS.md`, meaning it may miss the root governance declarations that the current branch still relies on during phase detection.
+
+### Recommendation
+PR #48 is the only revision that delivers the requested guardrails without introducing new regressions: it confines automation to Protocols 01-23 by default, reports documentation scopes as advisory warnings, and strengthens heuristic scoring. PRs #49-#51 each introduce blockers (lost `./scripts` coverage, inflated documentation scores, or missing guardrails), so the merged state now aligns with PR #48.
+
 ## Cross-PR Observations
 1. **Automation Inventory Drift** – Reported counts of missing scripts vary (baseline: 47; PR #29/#30: 160; PR #31: 160 of 205 references). Without automated inventory generation, we cannot adjudicate the true deficit.
 2. **Evidence Artefact Governance** – All PRs call for aggregated evidence manifests and governance outputs, yet only PR #31 proposes generators. Current branch has none.
