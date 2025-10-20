@@ -1,2 +1,0 @@
-.cursor/ai-driven-workflow/review-protocols/architecture-review.md
-.cursor/ai-driven-workflow/review-protocols/code-review.md

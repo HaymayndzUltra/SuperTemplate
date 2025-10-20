@@ -1,7 +1,7 @@
 # Meta-Instruction Analysis Generator: System Instructions
 
 ## PURPOSE
-This document provides **complete system instructions** for AI agents to generate Meta-Instruction Analysis documents for any protocol, rule, or file. The output must be **identical in structure** to existing analysis files in `/meta-analysis/session-*/analysis-*.md`.
+This document provides **complete system instructions** for AI agents to generate Meta-Instruction Analysis documents for any protocol, rule, or file. The output must be **identical in structure** to existing analysis files in `/meta-analysis/protocols/analysis-*.md`.
 
 ## INPUT REQUIREMENTS
 
@@ -17,7 +17,7 @@ This document provides **complete system instructions** for AI agents to generat
 
 ## ANALYSIS METHODOLOGY PROTOCOL
 
-### 4-Layer Extraction Framework
+### 5-Layer Extraction Framework
 
 #### Layer 1: System-Level Decisions
 **Objective**: Extract macro-level architectural decisions and foundational principles
@@ -48,19 +48,36 @@ This document provides **complete system instructions** for AI agents to generat
 - Behavioral constraints and control flows
 
 #### Layer 3: Procedural Logic
-**Objective**: Extract concrete algorithmic steps and execution procedures
+**Objective**: Extract concrete algorithmic steps, execution procedures, evidence management, and automation
 
 **Extraction Targets**:
 - Concrete algorithmic steps
 - Tool invocations and automation scripts
 - Data flow and transformation logic
 - Sequential execution requirements
+- **Evidence & Traceability**:
+  - Traceability matrices (upstream dependencies, downstream consumers)
+  - Evidence manifest schemas
+  - Archival procedures and retention policies
+  - Verification chains with checksums and timestamps
+  - Quality metrics tracking (baseline, current, status, trend)
+- **Automation Depth**:
+  - Script registry references
+  - Detailed script documentation (exit codes, logs, output formats, owners)
+  - CI/CD integration workflows
+  - Script execution context (environment, permissions, output capture)
+  - Manual fallback procedures
 
 **Evidence Requirements**:
 - Line references to specific procedures
 - Tool/command invocations
 - Data flow descriptions
 - Sequential step definitions
+- Traceability matrix specifications
+- Evidence manifest schemas
+- Script registry references and documentation
+- CI/CD workflow definitions
+- Manual fallback procedures
 
 #### Layer 4: Communication Grammar
 **Objective**: Extract narrative structures and communication patterns
@@ -75,6 +92,30 @@ This document provides **complete system instructions** for AI agents to generat
 - Line references to communication templates
 - Example dialogs and prompts
 - Announcement formats and structures
+
+#### Layer 5: Cognitive & Learning Framework
+**Objective**: Extract reasoning patterns, decision logic, learning mechanisms, and system evolution
+
+**Extraction Targets**:
+- **Reasoning Patterns**: Primary, secondary, tertiary reasoning approaches
+- **Decision Logic**: Decision points with criteria, conditions, and outcomes
+- **Root Cause Analysis**: Frameworks for diagnosing failures and blockers
+- **Learning Mechanisms**: Feedback loops, improvement tracking, knowledge base integration
+- **Adaptation Mechanisms**: Template customization, threshold tuning, dynamic adjustments
+- **Meta-Cognition**: Self-awareness protocols, process monitoring, self-correction triggers
+- **Retrospectives**: Retrospective guidance, continuous improvement opportunities
+- **System Evolution**: Version history, rationale for changes, impact assessment, rollback procedures
+- **Knowledge Capture**: Lessons learned repositories, knowledge sharing mechanisms
+- **Future Planning**: Roadmaps, priorities, resource requirements, timelines
+
+**Evidence Requirements**:
+- Line references to reasoning pattern definitions
+- Decision point specifications with criteria and outcomes
+- Learning mechanism implementations
+- Improvement tracking systems and metrics
+- Version history with impact assessments
+- Knowledge base structures and update cadences
+- Retrospective templates and schedules
 
 ## OUTPUT TEMPLATE SPECIFICATION
 
@@ -101,6 +142,11 @@ This document provides **complete system instructions** for AI agents to generat
 **Step N:** [Communication Pattern Title] (ref. L<start>-L<end>)
 - Reasoning: [Explain which part of source establishes this pattern]
 - Meta-heuristic: [Abstract communication principle this represents]
+
+### Layer 5: Cognitive & Learning Framework
+**Step N:** [Reasoning/Learning Pattern Title] (ref. L<start>-L<end>)
+- Reasoning: [Explain which part of source establishes this cognitive pattern]
+- Meta-heuristic: [Abstract cognitive/learning principle this represents]
 
 ## META-ARCHITECTURE DIAGRAM
 ```
@@ -130,6 +176,9 @@ System: <Protocol Name> (L<start>)
 - **Executor:** [Which sections/steps perform execution]
 - **Validator:** [Which sections/steps perform validation]
 - **Auditor:** [Which sections/steps perform auditing/governance]
+- **Reasoner:** [Which sections/steps perform decision-making and pattern recognition]
+- **Learner:** [Which sections/steps perform retrospectives and knowledge capture]
+- **Adapter:** [Which sections/steps implement self-correction and evolution]
 
 ## INFERENCE SUMMARY
 [3-5 sentence synthesis describing the meta-framework type]
@@ -166,13 +215,27 @@ System: <Protocol Name> (L<start>)
 
 3. **Layer 3 Extraction**:
    - Scan for concrete procedures, tool calls, algorithms
-   - Extract sequential execution steps
+   - Extract sequential execution steps (note: protocols use STEP not PHASE in workflows)
    - Identify data flow patterns
+   - Extract traceability matrices and evidence manifest schemas
+   - Scan for automation hooks, script registry references, CI/CD workflows
+   - Identify manual fallback procedures
 
 4. **Layer 4 Extraction**:
    - Scan for communication templates, narrative structures
    - Extract user-facing prompts and dialogs
    - Identify announcement formats
+
+5. **Layer 5 Extraction**:
+   - Scan for "REASONING & COGNITIVE PROCESS" section
+   - Extract reasoning patterns (primary, secondary, tertiary)
+   - Identify decision points with criteria and outcomes
+   - Scan for "REFLECTION & LEARNING" section
+   - Extract retrospective guidance and improvement opportunities
+   - Identify learning mechanisms (feedback loops, improvement tracking)
+   - Extract meta-cognition protocols (self-awareness, self-correction)
+   - Identify system evolution tracking (version history, impact assessment)
+   - Extract knowledge capture mechanisms and future planning
 
 ### Phase 3: Subsystem Mapping
 1. **Group related steps** - Cluster steps into logical subsystems
@@ -196,7 +259,7 @@ System: <Protocol Name> (L<start>)
 
 ### Structural Compliance
 - [ ] All 5 sections present (Phase Map, Diagram, Commentary, Inference, Output Instructions)
-- [ ] Layer 1-4 hierarchy maintained in Phase Map
+- [ ] Layer 1-5 hierarchy maintained in Phase Map
 - [ ] ASCII diagram uses exact indentation (├── └──)
 - [ ] All major assertions include line references
 - [ ] Heading hierarchy preserved (H1, H2, H3, H4)
@@ -220,7 +283,7 @@ System: <Protocol Name> (L<start>)
 ### AI Agent Invocation
 1. **User provides**: `source_file_path` + `brief_description` (optional)
 2. **AI reads source file** completely
-3. **AI executes 4-layer extraction** algorithm
+3. **AI executes 5-layer extraction** algorithm
 4. **AI populates output template** with extracted content
 5. **AI validates against acceptance criteria**
 6. **AI delivers complete markdown document**
@@ -233,7 +296,7 @@ System: <Protocol Name> (L<start>)
   - `analysis-2-ai-collaboration-guidelines.md`
 
 ### Integration Points
-- **Session Management**: Output files organized in `/meta-analysis/session-NN/`
+- **Session Management**: Output files organized in `/meta-analysis/protocols/*.md`
 - **Evidence Tracing**: Line references enable source verification
 - **Downstream Consumption**: Structured format enables automated rule synthesis
 - **Quality Gates**: Acceptance criteria enforce consistency across all generated analyses
@@ -290,7 +353,7 @@ Before delivering any Meta-Instruction Analysis:
 
 ### Pre-Delivery Validation
 - [ ] Source file read completely
-- [ ] All 4 layers extracted with evidence
+- [ ] All 5 layers extracted with evidence
 - [ ] Subsystems logically grouped
 - [ ] ASCII diagram properly formatted
 - [ ] All line references accurate

@@ -1,2 +1,0 @@
-.cursor/ai-driven-workflow/4-quality-audit.md
-.cursor/ai-driven-workflow/5-implementation-retrospective.md
