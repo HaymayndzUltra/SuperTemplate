@@ -1,0 +1,92 @@
+{
+  "validator": "protocol_role",
+  "protocol_id": "08",
+  "validation_timestamp": "2025-10-20T14:50:20.393634Z",
+  "overall_score": 0.5925,
+  "validation_status": "fail",
+  "issues": [
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Success criteria absent from mission",
+    "Value proposition not captured",
+    "Constraints do not reference mission/workflow clarity",
+    "Output structure missing (sections or tables)"
+  ],
+  "recommendations": [
+    "Structure constraints with numbered or bolded instructions"
+  ],
+  "role_definition": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Domain expertise keywords missing",
+      "Behavioral traits not articulated"
+    ],
+    "recommendations": [],
+    "details": {
+      "role_title": true,
+      "role_description": true,
+      "domain_expertise": false,
+      "behavioral_traits": false
+    }
+  },
+  "mission_statement": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Success criteria absent from mission",
+      "Value proposition not captured"
+    ],
+    "recommendations": [],
+    "details": {
+      "mission_clarity": true,
+      "scope_boundaries": true,
+      "success_criteria": false,
+      "value_proposition": false
+    }
+  },
+  "constraints_guidelines": {
+    "score": 0.39999999999999997,
+    "status": "fail",
+    "issues": [
+      "Constraints do not reference mission/workflow clarity"
+    ],
+    "recommendations": [
+      "Structure constraints with numbered or bolded instructions"
+    ],
+    "details": {
+      "alignment_mentions": 1,
+      "critical_markers": 1,
+      "must_markers": 0,
+      "optional_markers": 0,
+      "safety_language": 1,
+      "structured_format": false
+    }
+  },
+  "output_expectations": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Output structure missing (sections or tables)"
+    ],
+    "recommendations": [],
+    "details": {
+      "format": true,
+      "structure": false,
+      "location": true,
+      "validation": true
+    }
+  },
+  "behavioral_guidance": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "communication_style": true,
+      "decision_making": true,
+      "error_handling": true,
+      "user_interaction": true
+    }
+  }
+}

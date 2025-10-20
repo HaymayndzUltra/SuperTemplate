@@ -1,0 +1,90 @@
+{
+  "validator": "protocol_handoff",
+  "protocol_id": "08",
+  "validation_timestamp": "2025-10-20T14:50:20.399934Z",
+  "overall_score": 0.65,
+  "validation_status": "fail",
+  "issues": [
+    "Limited verification language detected",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Documentation expectations under-specified"
+  ],
+  "recommendations": [],
+  "checklist_completeness": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "item_count": 7,
+      "items": true,
+      "categories": true,
+      "dependencies": true,
+      "status_markers": false
+    }
+  },
+  "verification_procedures": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Limited verification language detected"
+    ],
+    "recommendations": [],
+    "details": {
+      "term_counts": {
+        "validate": 1,
+        "ensure": 0,
+        "confirm": 0,
+        "verify": 0,
+        "gate": 1
+      },
+      "verification_terms": false,
+      "qa_involvement": true,
+      "automation_reference": true,
+      "evidence_reference": true
+    }
+  },
+  "stakeholder_signoff": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Sign-off guidance missing: approvals, reviewers, confirmation"
+    ],
+    "recommendations": [],
+    "details": {
+      "approvals": false,
+      "reviewers": false,
+      "evidence_reference": true,
+      "confirmation": false
+    }
+  },
+  "documentation_requirements": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Documentation expectations under-specified"
+    ],
+    "recommendations": [],
+    "details": {
+      "terms": [
+        "log"
+      ],
+      "doc_terms": false,
+      "storage": true,
+      "reviewer_docs": true,
+      "format": true
+    }
+  },
+  "next_protocol_alignment": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "ready_statements": true,
+      "next_commands": true,
+      "dependencies": true,
+      "continuation": false
+    }
+  }
+}

@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from validator_utils import (
-    DEFAULT_PROTOCOL_IDS,
     DimensionEvaluation,
     aggregate_dimension_metrics,
     build_base_result,
@@ -21,6 +20,7 @@ from validator_utils import (
     generate_summary,
     get_protocol_file,
     read_protocol_content,
+    resolve_protocol_ids,
     write_json,
 )
 
@@ -144,22 +144,50 @@ class ProtocolWorkflowValidator:
             dim.issues.append("Action markers absent because workflow missing")
             return dim
 
+        lower = section.lower()
         counts = {
             "critical": section.count("[CRITICAL]"),
-            "must": section.count("[MUST]"),
-            "guideline": section.count("[GUIDELINE]"),
-            "optional": section.count("[OPTIONAL]"),
+            "must": section.count("[MUST]") + lower.count(" must "),
+            "guideline": section.count("[GUIDELINE]") + section.count("[SHOULD]") + lower.count("should"),
+            "optional": section.count("[OPTIONAL]") + lower.count("never") + lower.count("do not"),
         }
 
-        checks = {key: value > 0 for key, value in counts.items()}
-        dim.details = {**counts, "markers_present": checks}
-        dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        alignment_terms = ["mission", "workflow", "handoff", "evidence", "automation", "client"]
+        alignment_mentions = sum(1 for term in alignment_terms if term in lower)
+        enforceable = (counts["critical"] + counts["must"]) > 0
+        structured = bool(
+            re.search(r"\*\*Action\*\*|\*\*Output\*\*|\d+\.\s|^-\s", section, flags=re.MULTILINE)
+        )
+        guidance = counts["guideline"] + counts["optional"] > 0
 
-        missing = [name for name, ok in checks.items() if not ok]
-        if missing:
-            dim.issues.append(f"Missing action markers: {', '.join(missing)}")
-            dim.recommendations.append("Include CRITICAL/MUST/GUIDELINE/OPTIONAL markers across workflow actions")
+        score = 0.0
+        if enforceable:
+            score += 0.35
+        if structured:
+            score += 0.3
+        if alignment_mentions >= 2:
+            score += 0.3
+        if guidance:
+            score = min(1.0, score + 0.05)
+
+        dim.score = score
+        dim.status = "pass" if score >= 0.85 else "warning" if score >= 0.65 else "fail"
+        dim.details = {
+            **counts,
+            "alignment_mentions": alignment_mentions,
+            "enforceable_markers": enforceable,
+            "structured_actions": structured,
+            "optional_guidance": guidance,
+        }
+
+        if not enforceable:
+            dim.issues.append("Workflow lacks enforceable markers such as [MUST] or [CRITICAL]")
+        if alignment_mentions < 2:
+            dim.issues.append("Action markers do not reference mission/workflow context")
+        if not structured:
+            dim.recommendations.append("Format steps with numbered or bolded Action/Output labels")
+        if not guidance:
+            dim.recommendations.append("Optional guidance (e.g., [OPTIONAL], 'never') can clarify edge cases")
 
         return dim
 
@@ -256,7 +284,7 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Workflow validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        for protocol_id in resolve_protocol_ids(include_docs=args.include_docs):
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -282,6 +310,11 @@ def main() -> None:
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) when running --all",
+    )
 
     args = parser.parse_args()
     exit_code = run_cli(args)

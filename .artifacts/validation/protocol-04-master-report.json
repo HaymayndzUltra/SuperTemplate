@@ -1,0 +1,86 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "04",
+  "validation_timestamp": "2025-10-20T14:50:20.340512Z",
+  "overall_score": 0.7346666666666667,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 0.8833333333333334
+    },
+    "protocol_role": {
+      "status": "fail",
+      "score": 0.6875
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 0.9500000000000001
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.725
+    },
+    "protocol_scripts": {
+      "status": "warning",
+      "score": 0.8133333333333334
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.75
+    },
+    "protocol_evidence": {
+      "status": "warning",
+      "score": 0.825
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.7374999999999999
+    },
+    "protocol_reasoning": {
+      "status": "fail",
+      "score": 0.425
+    },
+    "protocol_reflection": {
+      "status": "fail",
+      "score": 0.5499999999999999
+    }
+  },
+  "issues": [
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Scope definition not found",
+    "Industry standards not documented",
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Mission lacks scope boundaries or guardrails",
+    "Success criteria absent from mission",
+    "Value proposition not captured",
+    "Insufficient compliance standards referenced",
+    "Unregistered automation commands: scripts/aggregate_evidence_00.py, scripts/run_protocol_00_gates.py, scripts/validate_prerequisites_00.py, scripts/validate_scaffold.py",
+    "Missing user interaction prompts: clarification, feedback",
+    "Limited progress terminology in communications",
+    "Traceability gaps: inputs, outputs",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
+    "Self-awareness statements missing",
+    "Continuous improvement gaps: opportunities",
+    "Knowledge capture gaps: lessons, knowledge_base, sharing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Include quantitative metrics for gate evaluation",
+    "Gate configuration file missing: /workspace/SuperTemplate/config/protocol_gates/04.yaml. Treat as warning unless specification requires it.",
+    "Identify notification path for gate failures",
+    "Document waiver/override policies",
+    "Describe when automation runs (schedule or trigger)",
+    "Clarify access, permissions, or secrets needed for automation",
+    "Document how command outputs are captured",
+    "Add metadata (timestamps, hashes) to the manifest description",
+    "Note upstream/downstream dependencies tracked in the manifest",
+    "Optional: describe archival or retention strategy when commitments exist",
+    "Include root-cause analysis guidance"
+  ]
+}

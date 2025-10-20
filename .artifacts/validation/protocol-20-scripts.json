@@ -1,0 +1,114 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "20",
+  "validation_timestamp": "2025-10-20T14:50:20.600394Z",
+  "overall_score": 0.6858333333333333,
+  "validation_status": "fail",
+  "issues": [
+    "Unregistered automation commands: scripts/aggregate_evidence_17.py, scripts/run_protocol_17_gates.py, scripts/validate_gate_17_deliverables.py, scripts/validate_gate_17_governance.py, scripts/validate_gate_17_handover.py",
+    "Automation environment/dependency expectations missing",
+    "Exit code handling not described"
+  ],
+  "recommendations": [
+    "Reference the script registry prose to guide operators",
+    "Describe when automation runs (schedule or trigger)",
+    "Clarify access, permissions, or secrets needed for automation",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "script_count": 6,
+      "shell_count": 0,
+      "commands": [
+        "python scripts/validate_prerequisites_17.py",
+        "python scripts/validate_gate_17_deliverables.py",
+        "python scripts/validate_gate_17_handover.py",
+        "python scripts/validate_gate_17_governance.py",
+        "python scripts/aggregate_evidence_17.py",
+        "python scripts/run_protocol_17_gates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.6666666666666666,
+    "status": "warning",
+    "issues": [
+      "Unregistered automation commands: scripts/aggregate_evidence_17.py, scripts/run_protocol_17_gates.py, scripts/validate_gate_17_deliverables.py, scripts/validate_gate_17_governance.py, scripts/validate_gate_17_handover.py"
+    ],
+    "recommendations": [
+      "Reference the script registry prose to guide operators"
+    ],
+    "details": {
+      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "workflow_mapping": true,
+      "commands_registered": false,
+      "registry_reference": false,
+      "commands": [
+        "scripts/aggregate_evidence_17.py",
+        "scripts/run_protocol_17_gates.py",
+        "scripts/validate_gate_17_deliverables.py",
+        "scripts/validate_gate_17_governance.py",
+        "scripts/validate_gate_17_handover.py",
+        "scripts/validate_prerequisites_17.py"
+      ],
+      "unregistered": [
+        "scripts/aggregate_evidence_17.py",
+        "scripts/run_protocol_17_gates.py",
+        "scripts/validate_gate_17_deliverables.py",
+        "scripts/validate_gate_17_governance.py",
+        "scripts/validate_gate_17_handover.py",
+        "scripts/validate_prerequisites_17.py"
+      ]
+    }
+  },
+  "execution_context": {
+    "score": 0.45,
+    "status": "fail",
+    "issues": [
+      "Automation environment/dependency expectations missing"
+    ],
+    "recommendations": [
+      "Describe when automation runs (schedule or trigger)",
+      "Clarify access, permissions, or secrets needed for automation"
+    ],
+    "details": {
+      "environment": false,
+      "ci_context": true,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 7,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
+    "recommendations": [],
+    "details": {
+      "exit_codes": false,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

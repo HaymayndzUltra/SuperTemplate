@@ -4,13 +4,13 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional, Set
 
 from validator_utils import (
-    DEFAULT_PROTOCOL_IDS,
     DimensionEvaluation,
     aggregate_dimension_metrics,
     build_base_result,
@@ -21,6 +21,7 @@ from validator_utils import (
     generate_summary,
     get_protocol_file,
     read_protocol_content,
+    resolve_protocol_ids,
     write_json,
 )
 
@@ -41,6 +42,9 @@ class ProtocolScriptIntegrationValidator:
         self.workspace_root = workspace_root
         self.output_dir = workspace_root / ".artifacts" / "validation"
         self.registry_file = workspace_root / "scripts" / "script-registry.json"
+        self._registry_paths: Set[str] = set()
+        self._registry_loaded = False
+        self._registry_error: Optional[str] = None
 
     def validate_protocol(self, protocol_id: str) -> Dict[str, Any]:
         result = build_base_result(self.KEY, protocol_id)
@@ -103,6 +107,38 @@ class ProtocolScriptIntegrationValidator:
 
         return dim
 
+    def _load_registry_paths(self) -> Set[str]:
+        if self._registry_loaded:
+            return self._registry_paths
+
+        self._registry_loaded = True
+        if not self.registry_file.exists():
+            self._registry_paths = set()
+            return self._registry_paths
+
+        try:
+            data = json.loads(self.registry_file.read_text(encoding="utf-8"))
+        except Exception as exc:
+            self._registry_error = str(exc)
+            self._registry_paths = set()
+            return self._registry_paths
+
+        entries: Set[str] = set()
+
+        def collect(value: Any) -> None:
+            if isinstance(value, str):
+                entries.add(value)
+            elif isinstance(value, list):
+                for item in value:
+                    collect(item)
+            elif isinstance(value, dict):
+                for item in value.values():
+                    collect(item)
+
+        collect(data)
+        self._registry_paths = entries
+        return self._registry_paths
+
     def _evaluate_registry_alignment(self, automation_section: str, workflow_section: str) -> DimensionEvaluation:
         dim = DimensionEvaluation("registry_alignment", weight=0.2)
         combined = "\n".join(filter(None, [automation_section, workflow_section]))
@@ -114,24 +150,41 @@ class ProtocolScriptIntegrationValidator:
         mention_present = any(term in combined.lower() for term in mentions)
         has_registry_file = self.registry_file.exists()
         cross_links = combined.lower().count("scripts/") >= 3 and "workflow" in combined.lower()
+        registry_paths = self._load_registry_paths()
+        commands = {match.strip("` ") for match in re.findall(r"scripts/[\w_\-/]+(?:\.py|\.sh)", combined)}
+        unregistered = sorted(cmd for cmd in commands if cmd not in registry_paths)
 
         checks = {
-            "registry_reference": mention_present,
             "registry_file": has_registry_file,
             "workflow_mapping": cross_links,
-            "ownership": any(term in combined.lower() for term in ["owner", "responsible", "team"]),
+            "commands_registered": not unregistered and bool(commands),
         }
 
-        dim.details = {**checks, "registry_file": str(self.registry_file)}
-        dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.details = {
+            **checks,
+            "registry_reference": mention_present,
+            "commands": sorted(commands)[:10],
+            "unregistered": unregistered,
+            "registry_file": str(self.registry_file),
+        }
+        true_count = sum(1 for value in checks.values() if value)
+        dim.score = true_count / len(checks) if checks else 0.0
+        dim.status = self._status_from_counts(true_count, len(checks))
 
-        if not mention_present:
-            dim.issues.append("Script registry reference missing")
+        if unregistered:
+            dim.issues.append(
+                "Unregistered automation commands: " + ", ".join(unregistered[:5])
+            )
         if not has_registry_file:
             dim.issues.append(f"Registry file not found: {self.registry_file}")
+        if self._registry_error:
+            dim.issues.append(f"Failed to read script registry: {self._registry_error}")
+        if not mention_present:
+            dim.recommendations.append("Reference the script registry prose to guide operators")
         if not cross_links:
             dim.recommendations.append("Map automation hooks back to workflow steps")
+        if commands and not unregistered and not mention_present:
+            dim.recommendations.append("Add a short note on where commands are registered for traceability")
 
         return dim
 
@@ -146,23 +199,31 @@ class ProtocolScriptIntegrationValidator:
         scheduling = any(term in section.lower() for term in ["cron", "schedule", "trigger", "event"])
         permissions = any(term in section.lower() for term in ["permission", "token", "secrets", "access"])
 
-        checks = {
+        optional_flags = {
             "ci_context": ci_context,
-            "environment": environment,
             "scheduling": scheduling,
             "permissions": permissions,
         }
 
-        dim.details = checks
-        dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.details = {"environment": environment, **optional_flags}
 
-        if not ci_context:
-            dim.issues.append("CI/CD execution context not defined")
         if not environment:
-            dim.recommendations.append("Document environment/dependency expectations")
-        if not permissions:
-            dim.recommendations.append("Clarify access and credential requirements")
+            dim.score = 0.45
+            dim.status = "fail"
+            dim.issues.append("Automation environment/dependency expectations missing")
+        else:
+            optional_present = sum(1 for value in optional_flags.values() if value)
+            dim.score = min(1.0, 0.85 + 0.05 * optional_present)
+            dim.status = "pass" if dim.score >= 0.85 else "warning"
+
+        for flag, present in optional_flags.items():
+            if not present:
+                if flag == "ci_context":
+                    dim.recommendations.append("Document CI/CD context or trigger for automation")
+                elif flag == "scheduling":
+                    dim.recommendations.append("Describe when automation runs (schedule or trigger)")
+                elif flag == "permissions":
+                    dim.recommendations.append("Clarify access, permissions, or secrets needed for automation")
 
         return dim
 
@@ -258,7 +319,7 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Script integration validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        for protocol_id in resolve_protocol_ids(include_docs=args.include_docs):
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -284,6 +345,11 @@ def main() -> None:
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) when running --all",
+    )
 
     args = parser.parse_args()
     exit_code = run_cli(args)

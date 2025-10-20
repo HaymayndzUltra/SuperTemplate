@@ -1,0 +1,79 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "01",
+  "validation_timestamp": "2025-10-20T14:50:20.279676Z",
+  "overall_score": 0.7685833333333333,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "pass",
+      "score": 0.9666666666666666
+    },
+    "protocol_role": {
+      "status": "warning",
+      "score": 0.875
+    },
+    "protocol_workflow": {
+      "status": "warning",
+      "score": 0.8500000000000001
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.825
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.5691666666666667
+    },
+    "protocol_communication": {
+      "status": "warning",
+      "score": 0.8875
+    },
+    "protocol_evidence": {
+      "status": "pass",
+      "score": 0.925
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.7374999999999999
+    },
+    "protocol_reasoning": {
+      "status": "fail",
+      "score": 0.525
+    },
+    "protocol_reflection": {
+      "status": "fail",
+      "score": 0.525
+    }
+  },
+  "issues": [
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Mission lacks scope boundaries or guardrails",
+    "Success criteria absent from mission",
+    "Unregistered automation commands: scripts/run_protocol_01_gates.py, scripts/validate_prerequisites_01.py, scripts/validate_proposal_structure.py",
+    "Automation environment/dependency expectations missing",
+    "Exit code handling not described",
+    "Missing user interaction prompts: clarification",
+    "Traceability gaps: inputs, outputs",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
+    "Self-awareness statements missing",
+    "Continuous improvement gaps: opportunities, tracking",
+    "Knowledge capture gaps: lessons, sharing"
+  ],
+  "recommendations": [
+    "Add rollback or retry guidance for failure scenarios",
+    "Document evidence manifests or registries",
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Identify notification path for gate failures",
+    "Document waiver/override policies",
+    "Reference the script registry prose to guide operators",
+    "Map automation hooks back to workflow steps",
+    "Describe when automation runs (schedule or trigger)",
+    "Clarify access, permissions, or secrets needed for automation",
+    "Document how command outputs are captured",
+    "Optional: include manifest/index details when available",
+    "Optional: describe archival or retention strategy when commitments exist",
+    "Document rollback or recovery approach for changes"
+  ]
+}

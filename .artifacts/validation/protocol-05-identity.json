@@ -1,7 +1,7 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "05",
-  "validation_timestamp": "2025-10-20T01:35:57.559395Z",
+  "validation_timestamp": "2025-10-20T14:50:20.340798Z",
   "basic_information": {
     "score": 0.5,
     "status": "fail",
@@ -41,17 +41,16 @@
     }
   },
   "compliance_standards": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
-      "Regulatory compliance not documented",
-      "Automated quality gates config not found: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/config/protocol_gates/05.yaml"
+      "Regulatory compliance not documented"
     ],
     "categories_found": {
       "industry_standards": true,
       "security_requirements": true,
       "regulatory_compliance": false,
-      "quality_gates": false
+      "quality_automation": true
     }
   },
   "documentation_quality": {
@@ -78,14 +77,13 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.7911111111111111,
-  "validation_status": "fail",
+  "overall_score": 0.8411111111111111,
+  "validation_status": "warning",
   "issues": [
     "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
     "Purpose statement not found or too short",
     "Regulatory compliance not documented",
-    "Automated quality gates config not found: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/config/protocol_gates/05.yaml",
     "Required section missing: WORKFLOW"
   ],
   "recommendations": []

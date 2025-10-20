@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from validator_utils import (
-    DEFAULT_PROTOCOL_IDS,
     DimensionEvaluation,
     aggregate_dimension_metrics,
     build_base_result,
@@ -21,6 +20,7 @@ from validator_utils import (
     generate_summary,
     get_protocol_file,
     read_protocol_content,
+    resolve_protocol_ids,
     write_json,
 )
 
@@ -249,7 +249,7 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Communication validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        for protocol_id in resolve_protocol_ids(include_docs=args.include_docs):
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -275,6 +275,11 @@ def main() -> None:
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) when running --all",
+    )
 
     args = parser.parse_args()
     exit_code = run_cli(args)

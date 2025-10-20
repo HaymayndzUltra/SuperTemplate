@@ -1,0 +1,96 @@
+{
+  "validator": "protocol_evidence",
+  "protocol_id": "19",
+  "validation_timestamp": "2025-10-20T14:50:20.586399Z",
+  "overall_score": 0.775,
+  "validation_status": "fail",
+  "issues": [
+    "Traceability gaps: inputs, outputs"
+  ],
+  "recommendations": [
+    "Document storage permissions or access requirements",
+    "Add metadata (timestamps, hashes) to the manifest description",
+    "Optional: describe archival or retention strategy when commitments exist"
+  ],
+  "artifact_generation": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "rows": 8,
+      "columns": [
+        "artifact",
+        "location",
+        "purpose",
+        "consumer"
+      ],
+      "artifact_rows": 4,
+      "metric_rows": 7,
+      "table_present": true,
+      "artifact_column": true,
+      "metrics_column": true,
+      "row_coverage": true,
+      "artifact_references": true
+    }
+  },
+  "storage_structure": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document storage permissions or access requirements"
+    ],
+    "details": {
+      "directories": [
+        ".artifacts/protocol-19/",
+        ".artifacts/protocol-19/",
+        ".artifacts/protocol-19/",
+        ".artifacts/protocol-19/"
+      ],
+      "protocol_directory": true,
+      "subdirectories": true,
+      "permissions": false,
+      "naming": false
+    }
+  },
+  "manifest_completeness": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Add metadata (timestamps, hashes) to the manifest description"
+    ],
+    "details": {
+      "manifest_reference": true,
+      "metadata": false,
+      "dependencies": true,
+      "coverage": true
+    }
+  },
+  "traceability": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Traceability gaps: inputs, outputs"
+    ],
+    "recommendations": [],
+    "details": {
+      "inputs": false,
+      "outputs": false,
+      "transformations": true,
+      "audit": true
+    }
+  },
+  "archival": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [
+      "Optional: describe archival or retention strategy when commitments exist"
+    ],
+    "details": {
+      "archival_expected": false
+    }
+  }
+}

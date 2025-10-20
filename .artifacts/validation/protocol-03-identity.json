@@ -1,7 +1,7 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "03",
-  "validation_timestamp": "2025-10-20T01:35:57.552514Z",
+  "validation_timestamp": "2025-10-20T14:50:20.297761Z",
   "basic_information": {
     "score": 0.5,
     "status": "fail",
@@ -50,7 +50,7 @@
       "industry_standards": false,
       "security_requirements": true,
       "regulatory_compliance": true,
-      "quality_gates": true
+      "quality_automation": true
     }
   },
   "documentation_quality": {

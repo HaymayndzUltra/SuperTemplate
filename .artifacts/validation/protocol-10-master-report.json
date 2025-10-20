@@ -1,0 +1,97 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "10",
+  "validation_timestamp": "2025-10-20T14:50:20.438808Z",
+  "overall_score": 0.6107777777777778,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 0.8411111111111111
+    },
+    "protocol_role": {
+      "status": "warning",
+      "score": 0.835
+    },
+    "protocol_workflow": {
+      "status": "fail",
+      "score": 0.15000000000000002
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.825
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.6691666666666667
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.6875
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.725
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.6875
+    },
+    "protocol_reasoning": {
+      "status": "fail",
+      "score": 0.3
+    },
+    "protocol_reflection": {
+      "status": "fail",
+      "score": 0.3875
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Purpose statement not found or too short",
+    "Industry standards not documented",
+    "Required section missing: WORKFLOW",
+    "Domain expertise keywords missing",
+    "Value proposition not captured",
+    "WORKFLOW section missing",
+    "Workflow steps missing",
+    "Action markers absent because workflow missing",
+    "No workflow content to evaluate halt conditions",
+    "Insufficient compliance standards referenced",
+    "Unregistered automation commands: scripts/aggregate_evidence_3.py, scripts/run_protocol_3_gates.py, scripts/validate_preflight.py, scripts/validate_prerequisites_3.py, scripts/validate_quality_gate.py",
+    "Automation environment/dependency expectations missing",
+    "Exit code handling not described",
+    "Missing user interaction prompts: clarification, feedback",
+    "Limited progress terminology in communications",
+    "Traceability gaps: inputs, outputs",
+    "Limited verification language detected",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: feedback, improvement_tracking, adaptation",
+    "Self-awareness statements missing",
+    "Retrospective analysis not documented",
+    "Continuous improvement gaps: opportunities",
+    "Knowledge capture gaps: lessons, sharing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Structure constraints with numbered or bolded instructions",
+    "Include quantitative metrics for gate evaluation",
+    "Gate configuration file missing: /workspace/SuperTemplate/config/protocol_gates/10.yaml. Treat as warning unless specification requires it.",
+    "Identify notification path for gate failures",
+    "Reference the script registry prose to guide operators",
+    "Map automation hooks back to workflow steps",
+    "Describe when automation runs (schedule or trigger)",
+    "Clarify access, permissions, or secrets needed for automation",
+    "Document how command outputs are captured",
+    "Add time or effort estimates to communication prompts",
+    "Document storage permissions or access requirements",
+    "Add metadata (timestamps, hashes) to the manifest description",
+    "Note upstream/downstream dependencies tracked in the manifest",
+    "Optional: describe archival or retention strategy when commitments exist",
+    "Include root-cause analysis guidance",
+    "Document rollback or recovery approach for changes"
+  ]
+}

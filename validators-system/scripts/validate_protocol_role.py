@@ -4,12 +4,12 @@
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
 from validator_utils import (
-    DEFAULT_PROTOCOL_IDS,
     DimensionEvaluation,
     aggregate_dimension_metrics,
     build_base_result,
@@ -20,6 +20,7 @@ from validator_utils import (
     generate_summary,
     get_protocol_file,
     read_protocol_content,
+    resolve_protocol_ids,
     write_json,
 )
 
@@ -150,30 +151,47 @@ class ProtocolRoleValidator:
             dim.issues.append("Constraints section missing")
             return dim
 
+        lower = section.lower()
         critical = section.count("[CRITICAL]")
-        must = section.count("[MUST]")
-        guideline = section.count("[GUIDELINE]")
-        prohibition = section.lower().count("never") + section.lower().count("do not")
+        must = section.count("[MUST]") + lower.count(" must ")
+        optional = section.count("[GUIDELINE]") + section.count("[OPTIONAL]")
+        safety_language = lower.count("never") + lower.count("do not") + lower.count("avoid")
 
-        checks = {
-            "critical_constraints": critical > 0,
-            "must_rules": must > 0,
-            "guidelines": guideline > 0,
-            "prohibitions": prohibition > 0,
+        clarity_terms = ["mission", "workflow", "handoff", "evidence", "deliverable", "scope"]
+        clarity_mentions = sum(1 for term in clarity_terms if term in lower)
+        alignment = clarity_mentions >= 2
+        enforceable = (critical + must) > 0
+        structured = bool(re.search(r"\*\*Action\*\*|\d+\.\s|^-\s", section, flags=re.MULTILINE))
+
+        score = 0.0
+        if alignment:
+            score += 0.4
+        if enforceable:
+            score += 0.35
+        if structured:
+            score += 0.25
+        if optional or safety_language:
+            score = min(1.0, score + 0.05)
+
+        dim.score = score
+        dim.status = "pass" if score >= 0.85 else "warning" if score >= 0.65 else "fail"
+        dim.details = {
+            "alignment_mentions": clarity_mentions,
+            "critical_markers": critical,
+            "must_markers": must,
+            "optional_markers": optional,
+            "safety_language": safety_language,
+            "structured_format": structured,
         }
 
-        dim.details = {**checks, "critical_count": critical, "must_count": must, "guideline_count": guideline}
-        dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
-
-        if not checks["critical_constraints"]:
-            dim.issues.append("No [CRITICAL] constraints defined")
-        if not checks["must_rules"]:
-            dim.issues.append("[MUST] rules missing for enforceable guidance")
-        if not checks["guidelines"]:
-            dim.recommendations.append("Add [GUIDELINE] markers for recommended practices")
-        if not checks["prohibitions"]:
-            dim.recommendations.append("Document explicit prohibitions or guardrails")
+        if not alignment:
+            dim.issues.append("Constraints do not reference mission/workflow clarity")
+        if not enforceable:
+            dim.issues.append("Missing enforceable markers (e.g., [MUST], [CRITICAL])")
+        if not structured:
+            dim.recommendations.append("Structure constraints with numbered or bolded instructions")
+        if optional == 0 and safety_language == 0:
+            dim.recommendations.append("Consider adding optional guidance or 'never' clauses for edge cases")
 
         return dim
 
@@ -268,7 +286,7 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Role validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        for protocol_id in resolve_protocol_ids(include_docs=args.include_docs):
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -294,6 +312,11 @@ def main() -> None:
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) when running --all",
+    )
 
     args = parser.parse_args()
     exit_code = run_cli(args)

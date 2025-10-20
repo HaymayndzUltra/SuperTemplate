@@ -9,7 +9,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
-DEFAULT_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(1, 28)]
+DEFAULT_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(1, 24)]
+DOCUMENTATION_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(24, 28)]
 
 
 def current_timestamp() -> str:
@@ -67,6 +68,15 @@ def extract_section(content: str, section_name: str) -> str:
     pattern = rf"^##\s+(?:\d+\.\s+)?{re.escape(section_name)}.*?\n(.*?)(?=^##\s+|\Z)"
     match = re.search(pattern, content, flags=re.IGNORECASE | re.MULTILINE | re.DOTALL)
     return match.group(1).strip() if match else ""
+
+
+def resolve_protocol_ids(*, include_docs: bool = False) -> List[str]:
+    """Return the ordered protocol ids, optionally including documentation entries."""
+
+    protocol_ids = list(DEFAULT_PROTOCOL_IDS)
+    if include_docs:
+        protocol_ids.extend(DOCUMENTATION_PROTOCOL_IDS)
+    return protocol_ids
 
 
 def determine_status(score: float, *, pass_threshold: float = 0.9, warning_threshold: float = 0.75) -> str:

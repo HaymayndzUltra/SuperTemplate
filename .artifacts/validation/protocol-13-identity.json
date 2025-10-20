@@ -1,7 +1,7 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "13",
-  "validation_timestamp": "2025-10-20T01:35:57.587058Z",
+  "validation_timestamp": "2025-10-20T14:50:20.474348Z",
   "basic_information": {
     "score": 0.5,
     "status": "fail",
@@ -41,19 +41,18 @@
     }
   },
   "compliance_standards": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
     "issues": [
       "Industry standards not documented",
       "Security requirements not documented",
-      "Regulatory compliance not documented",
-      "Automated quality gates config not found: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/config/protocol_gates/13.yaml"
+      "Regulatory compliance not documented"
     ],
     "categories_found": {
       "industry_standards": false,
       "security_requirements": false,
       "regulatory_compliance": false,
-      "quality_gates": false
+      "quality_automation": true
     }
   },
   "documentation_quality": {
@@ -80,7 +79,7 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.6911111111111111,
+  "overall_score": 0.7411111111111112,
   "validation_status": "fail",
   "issues": [
     "Protocol version not found (semantic versioning expected)",
@@ -89,7 +88,6 @@
     "Industry standards not documented",
     "Security requirements not documented",
     "Regulatory compliance not documented",
-    "Automated quality gates config not found: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/config/protocol_gates/13.yaml",
     "Required section missing: WORKFLOW"
   ],
   "recommendations": []
