@@ -4,3 +4,4 @@ textstat>=0.7.3
 textblob>=0.17.1
 pathlib2>=2.3.7
 requests>=2.31.0
+PyYAML>=6.0
