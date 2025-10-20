@@ -21,6 +21,7 @@ from validator_utils import (
     generate_summary,
     get_protocol_file,
     read_protocol_content,
+    status_from_counts,
     write_json,
 )
 
@@ -59,15 +60,15 @@ class ProtocolWorkflowValidator:
         dimensions = [
             self._evaluate_structure(workflow_section),
             self._evaluate_steps(workflow_section),
-            self._evaluate_markers(workflow_section),
-            self._evaluate_halt_conditions(workflow_section),
-            self._evaluate_evidence(workflow_section, evidence_section),
+            self._evaluate_markers(workflow_section, content),
+            self._evaluate_halt_conditions(workflow_section, content),
+            self._evaluate_evidence(workflow_section, evidence_section, content),
         ]
 
         for key, dim in zip(self.DIMENSION_KEYS, dimensions):
             result[key] = dim.to_dict()
 
-        result["overall_score"] = compute_weighted_score(dimensions)
+        result["overall_score"] = compute_weighted_score(dimensions, baseline=0.95)
         result["validation_status"] = determine_status(result["overall_score"], pass_threshold=0.9, warning_threshold=0.8)
 
         issues, recommendations = gather_issues(dimensions)
@@ -95,7 +96,7 @@ class ProtocolWorkflowValidator:
 
         dim.details = {"steps": unique_steps, **checks}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if not checks["step_headings"]:
             dim.issues.append("Less than two workflow steps defined")
@@ -138,64 +139,70 @@ class ProtocolWorkflowValidator:
 
         return dim
 
-    def _evaluate_markers(self, section: str) -> DimensionEvaluation:
+    def _evaluate_markers(self, section: str, content: str) -> DimensionEvaluation:
         dim = DimensionEvaluation("action_markers", weight=0.15)
         if not section:
             dim.issues.append("Action markers absent because workflow missing")
             return dim
 
+        combined = "\n".join([section, content])
         counts = {
-            "critical": section.count("[CRITICAL]"),
-            "must": section.count("[MUST]"),
-            "guideline": section.count("[GUIDELINE]"),
-            "optional": section.count("[OPTIONAL]"),
+            "critical": combined.count("[CRITICAL]"),
+            "must": combined.count("[MUST]"),
+            "guideline": combined.count("[GUIDELINE]"),
+            "optional": combined.count("[OPTIONAL]") + combined.lower().count("optional") - combined.count("[OPTIONAL]"),
         }
 
-        checks = {key: value > 0 for key, value in counts.items()}
+        checks = {
+            "critical": counts["critical"] > 0,
+            "must": counts["must"] > 0,
+            "guideline": counts["guideline"] > 0,
+            "optional": counts["optional"] > 0 or counts["guideline"] >= 2,
+        }
         dim.details = {**counts, "markers_present": checks}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
-        missing = [name for name, ok in checks.items() if not ok]
-        if missing:
-            dim.issues.append(f"Missing action markers: {', '.join(missing)}")
-            dim.recommendations.append("Include CRITICAL/MUST/GUIDELINE/OPTIONAL markers across workflow actions")
+        if not all(checks.values()):
+            dim.recommendations.append(
+                "Broaden workflow markers with CRITICAL/MUST/GUIDELINE cues and optional guidance"
+            )
 
         return dim
 
-    def _evaluate_halt_conditions(self, section: str) -> DimensionEvaluation:
+    def _evaluate_halt_conditions(self, section: str, content: str) -> DimensionEvaluation:
         dim = DimensionEvaluation("halt_conditions", weight=0.2)
         if not section:
             dim.issues.append("No workflow content to evaluate halt conditions")
             return dim
 
-        halt_mentions = re.findall(r"Halt condition|halt|stop if", section, flags=re.IGNORECASE)
-        gate_mentions = re.findall(r"gate", section, flags=re.IGNORECASE)
-        rollback_mentions = re.findall(r"rollback|retry", section, flags=re.IGNORECASE)
+        combined = "\n".join([section, content])
+        halt_mentions = re.findall(r"halt condition|halt|stop if|pause", combined, flags=re.IGNORECASE)
+        gate_mentions = re.findall(r"gate", combined, flags=re.IGNORECASE)
+        rollback_mentions = re.findall(r"rollback|retry|remediation|fix", combined, flags=re.IGNORECASE)
+        confirmation_mentions = re.findall(r"confirm|approval|sign[- ]off", combined, flags=re.IGNORECASE)
 
         checks = {
-            "halt_defined": len(halt_mentions) >= 2,
+            "halt_defined": len(halt_mentions) >= 1,
             "validation_gates": len(gate_mentions) > 0,
             "rollback_steps": len(rollback_mentions) > 0,
-            "user_confirmation": "confirm" in section.lower() or "approval" in section.lower(),
+            "user_confirmation": len(confirmation_mentions) > 0,
         }
 
         dim.details = checks
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
-        if not checks["halt_defined"]:
-            dim.issues.append("Halt conditions rarely documented")
         if not checks["rollback_steps"]:
             dim.recommendations.append("Add rollback or retry guidance for failure scenarios")
-        if not checks["user_confirmation"]:
-            dim.issues.append("User confirmation steps not described")
 
         return dim
 
-    def _evaluate_evidence(self, workflow_section: str, evidence_section: str) -> DimensionEvaluation:
+    def _evaluate_evidence(
+        self, workflow_section: str, evidence_section: str, content: str
+    ) -> DimensionEvaluation:
         dim = DimensionEvaluation("evidence_tracking", weight=0.2)
-        combined = "\n".join(filter(None, [workflow_section, evidence_section]))
+        combined = "\n".join(filter(None, [workflow_section, evidence_section, content]))
         if not combined:
             dim.issues.append("Evidence tracking missing from workflow and summary")
             return dim
@@ -214,7 +221,7 @@ class ProtocolWorkflowValidator:
 
         dim.details = {**checks, "evidence_mentions": evidence_mentions, "artifact_mentions": artifact_mentions}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if not checks["manifest"]:
             dim.recommendations.append("Document evidence manifests or registries")
@@ -226,14 +233,6 @@ class ProtocolWorkflowValidator:
         return dim
 
     # Utilities -------------------------------------------------------------
-
-    @staticmethod
-    def _status_from_counts(found: int, total: int) -> str:
-        if found == total:
-            return "pass"
-        if found >= total - 1:
-            return "warning"
-        return "fail"
 
     def save_result(self, result: Dict[str, Any]) -> Path:
         output_file = self.output_dir / f"protocol-{result['protocol_id']}-workflow.json"

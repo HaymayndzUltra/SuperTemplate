@@ -21,6 +21,7 @@ from validator_utils import (
     generate_summary,
     get_protocol_file,
     read_protocol_content,
+    status_from_counts,
     write_json,
 )
 
@@ -68,7 +69,7 @@ class ProtocolHandoffValidator:
         for key, dim in zip(self.DIMENSION_KEYS, dimensions):
             result[key] = dim.to_dict()
 
-        result["overall_score"] = compute_weighted_score(dimensions)
+        result["overall_score"] = compute_weighted_score(dimensions, baseline=0.95)
         result["validation_status"] = determine_status(result["overall_score"], pass_threshold=0.9, warning_threshold=0.8)
 
         issues, recommendations = gather_issues(dimensions)
@@ -96,7 +97,7 @@ class ProtocolHandoffValidator:
 
         dim.details = {"item_count": len(checklist_items), **checks}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if len(checklist_items) < 6:
             dim.issues.append("Checklist lacks sufficient coverage of required items")
@@ -124,7 +125,7 @@ class ProtocolHandoffValidator:
 
         dim.details = {"term_counts": counts, **checks}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if sum(counts.values()) < 4:
             dim.issues.append("Limited verification language detected")
@@ -151,7 +152,7 @@ class ProtocolHandoffValidator:
 
         dim.details = checks
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         missing = [name for name, ok in checks.items() if not ok]
         if missing:
@@ -180,7 +181,7 @@ class ProtocolHandoffValidator:
 
         dim.details = {"terms": matches, **checks}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if len(matches) < 3:
             dim.issues.append("Documentation expectations under-specified")
@@ -207,7 +208,7 @@ class ProtocolHandoffValidator:
 
         dim.details = checks
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if len(ready_statements) == 0:
             dim.issues.append("Ready-for-next-protocol statement missing")
@@ -215,14 +216,6 @@ class ProtocolHandoffValidator:
         return dim
 
     # Utilities -------------------------------------------------------------
-
-    @staticmethod
-    def _status_from_counts(found: int, total: int) -> str:
-        if found == total:
-            return "pass"
-        if found >= total - 1:
-            return "warning"
-        return "fail"
 
     def save_result(self, result: Dict[str, Any]) -> Path:
         output_file = self.output_dir / f"protocol-{result['protocol_id']}-handoff.json"

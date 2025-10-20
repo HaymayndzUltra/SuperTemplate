@@ -1,0 +1,76 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "04",
+  "validation_timestamp": "2025-10-20T13:33:17.671924Z",
+  "overall_score": 0.9866875,
+  "validation_status": "pass",
+  "validators": {
+    "protocol_identity": {
+      "status": "pass",
+      "score": 0.9974999999999999
+    },
+    "protocol_role": {
+      "status": "pass",
+      "score": 0.990625
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "protocol_quality_gates": {
+      "status": "pass",
+      "score": 0.989375
+    },
+    "protocol_scripts": {
+      "status": "pass",
+      "score": 0.99
+    },
+    "protocol_communication": {
+      "status": "pass",
+      "score": 0.9875
+    },
+    "protocol_evidence": {
+      "status": "pass",
+      "score": 0.97625
+    },
+    "protocol_handoff": {
+      "status": "pass",
+      "score": 0.986875
+    },
+    "protocol_reasoning": {
+      "status": "pass",
+      "score": 0.97125
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.9774999999999999
+    }
+  },
+  "issues": [
+    "Industry standards not documented",
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Value proposition not captured",
+    "Gate configuration file missing: /workspace/SuperTemplate/config/protocol_gates/04.yaml",
+    "Missing user interaction prompts: clarification, feedback",
+    "Limited progress terminology in communications",
+    "Traceability gaps: inputs, outputs",
+    "Archival strategy missing components: compression, retention, retrieval, cleanup",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
+    "Self-awareness statements missing",
+    "Continuous improvement gaps: opportunities",
+    "Knowledge capture gaps: lessons, knowledge_base, sharing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Include quantitative metrics for gate evaluation",
+    "Reference at least one compliance framework",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Include root-cause analysis guidance"
+  ]
+}

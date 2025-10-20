@@ -1,0 +1,87 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "11",
+  "validation_timestamp": "2025-10-20T13:33:17.860799Z",
+  "overall_score": 0.9875,
+  "validation_status": "pass",
+  "issues": [
+    "Script registry reference missing"
+  ],
+  "recommendations": [
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "script_count": 6,
+      "shell_count": 0,
+      "commands": [
+        "python scripts/validate_prerequisites_9.py",
+        "python scripts/validate_environment.py",
+        "python scripts/run_contract_tests.py",
+        "python scripts/generate_artifact_manifest.py",
+        "python scripts/aggregate_evidence_9.py",
+        "python scripts/run_protocol_9_gates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Script registry reference missing"
+    ],
+    "recommendations": [],
+    "details": {
+      "registry_reference": false,
+      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "workflow_mapping": true,
+      "ownership": true
+    }
+  },
+  "execution_context": {
+    "score": 0.5,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": true,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 7,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

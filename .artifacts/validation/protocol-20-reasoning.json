@@ -1,0 +1,87 @@
+{
+  "validator": "protocol_reasoning",
+  "protocol_id": "20",
+  "validation_timestamp": "2025-10-20T13:33:18.167860Z",
+  "overall_score": 0.96875,
+  "validation_status": "pass",
+  "issues": [
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: improvement_tracking, knowledge_base, adaptation",
+    "Self-awareness statements missing"
+  ],
+  "recommendations": [
+    "Include root-cause analysis guidance"
+  ],
+  "reasoning_patterns": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Reasoning patterns not explicitly named"
+    ],
+    "recommendations": [],
+    "details": {
+      "matches": [],
+      "pattern_terms": false,
+      "explanations": false,
+      "improvement": false,
+      "example_references": true
+    }
+  },
+  "decision_trees": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Decision points insufficiently described"
+    ],
+    "recommendations": [],
+    "details": {
+      "decision_points": false,
+      "criteria": true,
+      "outcomes": true,
+      "logging": true
+    }
+  },
+  "problem_solving_logic": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Include root-cause analysis guidance"
+    ],
+    "details": {
+      "problem_identification": false,
+      "root_cause": false,
+      "solutions": false,
+      "validation": true
+    }
+  },
+  "learning_mechanisms": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Learning mechanisms incomplete: improvement_tracking, knowledge_base, adaptation"
+    ],
+    "recommendations": [],
+    "details": {
+      "feedback": true,
+      "improvement_tracking": false,
+      "knowledge_base": false,
+      "adaptation": false
+    }
+  },
+  "meta_cognition": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Self-awareness statements missing"
+    ],
+    "recommendations": [],
+    "details": {
+      "awareness": false,
+      "monitoring": true,
+      "correction": false,
+      "improvement": false
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "01",
+  "validation_timestamp": "2025-10-20T13:33:17.577518Z",
+  "overall_score": 0.9879374999999999,
+  "validation_status": "pass",
+  "validators": {
+    "protocol_identity": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "protocol_role": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 0.9975
+    },
+    "protocol_quality_gates": {
+      "status": "pass",
+      "score": 0.995
+    },
+    "protocol_scripts": {
+      "status": "pass",
+      "score": 0.975625
+    },
+    "protocol_communication": {
+      "status": "pass",
+      "score": 0.994375
+    },
+    "protocol_evidence": {
+      "status": "pass",
+      "score": 0.9775
+    },
+    "protocol_handoff": {
+      "status": "pass",
+      "score": 0.986875
+    },
+    "protocol_reasoning": {
+      "status": "pass",
+      "score": 0.97625
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.97625
+    }
+  },
+  "issues": [
+    "Script registry reference missing",
+    "Exit code handling not described",
+    "Missing user interaction prompts: clarification",
+    "Evidence manifest file not mentioned",
+    "Traceability gaps: inputs, outputs",
+    "Archival strategy missing components: compression, retention, retrieval, cleanup",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
+    "Self-awareness statements missing",
+    "Continuous improvement gaps: opportunities, tracking",
+    "Knowledge capture gaps: lessons, sharing"
+  ],
+  "recommendations": [
+    "Document evidence manifests or registries",
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Map automation hooks back to workflow steps",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Document rollback or recovery approach for changes"
+  ]
+}

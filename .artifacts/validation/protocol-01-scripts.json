@@ -1,0 +1,99 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "01",
+  "validation_timestamp": "2025-10-20T13:33:17.551553Z",
+  "overall_score": 0.975625,
+  "validation_status": "pass",
+  "issues": [
+    "Script registry reference missing",
+    "Exit code handling not described"
+  ],
+  "recommendations": [
+    "Map automation hooks back to workflow steps",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "script_count": 14,
+      "shell_count": 0,
+      "commands": [
+        "python3 scripts/validate_prerequisites_01.py",
+        "python3 scripts/check_hipaa.py",
+        "python3 scripts/enforce_gates.py",
+        "python3 scripts/validate_compliance_assets.py",
+        "python3 scripts/validate_proposal_structure.py",
+        "python3 scripts/validate_proposal.py",
+        "python3 scripts/aggregate_evidence_01.py",
+        "python3 scripts/check_hipaa.py",
+        "python3 scripts/enforce_gates.py",
+        "python3 scripts/validate_compliance_assets.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Script registry reference missing"
+    ],
+    "recommendations": [
+      "Map automation hooks back to workflow steps"
+    ],
+    "details": {
+      "registry_reference": false,
+      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "workflow_mapping": false,
+      "ownership": false
+    }
+  },
+  "execution_context": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 15,
+      "flag_usage": false,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
+    "recommendations": [],
+    "details": {
+      "exit_codes": false,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

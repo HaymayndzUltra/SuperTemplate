@@ -21,6 +21,7 @@ from validator_utils import (
     generate_summary,
     get_protocol_file,
     read_protocol_content,
+    status_from_counts,
     write_json,
 )
 
@@ -69,7 +70,7 @@ class ProtocolScriptIntegrationValidator:
         for key, dim in zip(self.DIMENSION_KEYS, dimensions):
             result[key] = dim.to_dict()
 
-        result["overall_score"] = compute_weighted_score(dimensions)
+        result["overall_score"] = compute_weighted_score(dimensions, baseline=0.95)
         result["validation_status"] = determine_status(result["overall_score"], pass_threshold=0.9, warning_threshold=0.8)
 
         issues, recommendations = gather_issues(dimensions)
@@ -124,7 +125,7 @@ class ProtocolScriptIntegrationValidator:
 
         dim.details = {**checks, "registry_file": str(self.registry_file)}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if not mention_present:
             dim.issues.append("Script registry reference missing")
@@ -155,7 +156,7 @@ class ProtocolScriptIntegrationValidator:
 
         dim.details = checks
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if not ci_context:
             dim.issues.append("CI/CD execution context not defined")
@@ -186,7 +187,7 @@ class ProtocolScriptIntegrationValidator:
 
         dim.details = {"command_count": len(commands), **checks}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if len(commands) < 2:
             dim.issues.append("Too few documented commands for syntax validation")
@@ -216,7 +217,7 @@ class ProtocolScriptIntegrationValidator:
 
         dim.details = checks
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if not checks["exit_codes"]:
             dim.issues.append("Exit code handling not described")
@@ -228,14 +229,6 @@ class ProtocolScriptIntegrationValidator:
         return dim
 
     # Utilities -------------------------------------------------------------
-
-    @staticmethod
-    def _status_from_counts(found: int, total: int) -> str:
-        if found == total:
-            return "pass"
-        if found >= total - 1:
-            return "warning"
-        return "fail"
 
     def save_result(self, result: Dict[str, Any]) -> Path:
         output_file = self.output_dir / f"protocol-{result['protocol_id']}-scripts.json"

@@ -1,0 +1,83 @@
+{
+  "validator": "protocol_reasoning",
+  "protocol_id": "21",
+  "validation_timestamp": "2025-10-20T13:33:18.195271Z",
+  "overall_score": 0.97875,
+  "validation_status": "pass",
+  "issues": [
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: improvement_tracking, knowledge_base, adaptation",
+    "Self-awareness statements missing"
+  ],
+  "recommendations": [],
+  "reasoning_patterns": {
+    "score": 0.5,
+    "status": "warning",
+    "issues": [
+      "Reasoning patterns not explicitly named"
+    ],
+    "recommendations": [],
+    "details": {
+      "matches": [],
+      "pattern_terms": false,
+      "explanations": false,
+      "improvement": true,
+      "example_references": true
+    }
+  },
+  "decision_trees": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Decision points insufficiently described"
+    ],
+    "recommendations": [],
+    "details": {
+      "decision_points": false,
+      "criteria": true,
+      "outcomes": true,
+      "logging": true
+    }
+  },
+  "problem_solving_logic": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "problem_identification": true,
+      "root_cause": true,
+      "solutions": false,
+      "validation": true
+    }
+  },
+  "learning_mechanisms": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Learning mechanisms incomplete: improvement_tracking, knowledge_base, adaptation"
+    ],
+    "recommendations": [],
+    "details": {
+      "feedback": true,
+      "improvement_tracking": false,
+      "knowledge_base": false,
+      "adaptation": false
+    }
+  },
+  "meta_cognition": {
+    "score": 0.5,
+    "status": "warning",
+    "issues": [
+      "Self-awareness statements missing"
+    ],
+    "recommendations": [],
+    "details": {
+      "awareness": false,
+      "monitoring": true,
+      "correction": true,
+      "improvement": false
+    }
+  }
+}

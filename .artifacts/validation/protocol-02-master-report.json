@@ -1,0 +1,83 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "02",
+  "validation_timestamp": "2025-10-20T13:33:17.609072Z",
+  "overall_score": 0.9853958333333332,
+  "validation_status": "pass",
+  "validators": {
+    "protocol_identity": {
+      "status": "pass",
+      "score": 0.9958333333333333
+    },
+    "protocol_role": {
+      "status": "pass",
+      "score": 0.98875
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 0.9975
+    },
+    "protocol_quality_gates": {
+      "status": "pass",
+      "score": 0.99
+    },
+    "protocol_scripts": {
+      "status": "pass",
+      "score": 0.980625
+    },
+    "protocol_communication": {
+      "status": "pass",
+      "score": 0.98875
+    },
+    "protocol_evidence": {
+      "status": "pass",
+      "score": 0.97125
+    },
+    "protocol_handoff": {
+      "status": "pass",
+      "score": 0.986875
+    },
+    "protocol_reasoning": {
+      "status": "pass",
+      "score": 0.975
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.979375
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Industry standards not documented",
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Success criteria absent from mission",
+    "Output structure missing (sections or tables)",
+    "Script registry reference missing",
+    "Exit code handling not described",
+    "Missing user interaction prompts: feedback",
+    "Limited progress terminology in communications",
+    "Evidence manifest file not mentioned",
+    "Traceability gaps: inputs, outputs",
+    "Archival strategy missing components: compression, retention, retrieval, cleanup",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Reasoning patterns not explicitly named",
+    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
+    "Self-awareness statements missing",
+    "Continuous improvement gaps: opportunities, tracking",
+    "Knowledge capture gaps: lessons, knowledge_base, sharing"
+  ],
+  "recommendations": [
+    "Document evidence manifests or registries",
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Include quantitative metrics for gate evaluation",
+    "Reference at least one compliance framework",
+    "Map automation hooks back to workflow steps",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Document storage permissions or access requirements",
+    "Include root-cause analysis guidance",
+    "Document rollback or recovery approach for changes"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "12",
+  "validation_timestamp": "2025-10-20T13:33:17.913814Z",
+  "overall_score": 0.9861458333333333,
+  "validation_status": "pass",
+  "validators": {
+    "protocol_identity": {
+      "status": "pass",
+      "score": 0.9958333333333333
+    },
+    "protocol_role": {
+      "status": "pass",
+      "score": 0.990625
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "protocol_quality_gates": {
+      "status": "pass",
+      "score": 0.9924999999999999
+    },
+    "protocol_scripts": {
+      "status": "pass",
+      "score": 0.983125
+    },
+    "protocol_communication": {
+      "status": "pass",
+      "score": 0.98875
+    },
+    "protocol_evidence": {
+      "status": "pass",
+      "score": 0.968125
+    },
+    "protocol_handoff": {
+      "status": "pass",
+      "score": 0.9875
+    },
+    "protocol_reasoning": {
+      "status": "pass",
+      "score": 0.973125
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.9818749999999999
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Industry standards not documented",
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Value proposition not captured",
+    "Gate configuration file missing: /workspace/SuperTemplate/config/protocol_gates/12.yaml",
+    "Exit code handling not described",
+    "Missing user interaction prompts: clarification",
+    "Protocol evidence directory not referenced",
+    "Evidence manifest file not mentioned",
+    "Traceability gaps: inputs, outputs",
+    "Archival strategy missing components: retention, retrieval, cleanup",
+    "Sign-off guidance missing: reviewers, confirmation",
+    "Documentation expectations under-specified",
+    "Reasoning patterns not explicitly named",
+    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
+    "Self-awareness statements missing",
+    "Continuous improvement gaps: opportunities, plans, tracking",
+    "Knowledge capture gaps: lessons, knowledge_base"
+  ],
+  "recommendations": [
+    "Include quantitative metrics for gate evaluation",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Include root-cause analysis guidance",
+    "Document rollback or recovery approach for changes"
+  ]
+}

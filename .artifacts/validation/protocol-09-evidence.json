@@ -1,0 +1,87 @@
+{
+  "validator": "protocol_evidence",
+  "protocol_id": "09",
+  "validation_timestamp": "2025-10-20T13:33:17.809132Z",
+  "overall_score": 0.9768749999999999,
+  "validation_status": "pass",
+  "issues": [
+    "Evidence manifest file not mentioned",
+    "Traceability gaps: inputs, outputs",
+    "Archival strategy missing components: retention, retrieval, cleanup"
+  ],
+  "recommendations": [],
+  "artifact_generation": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "rows": 6,
+      "table_rows": true,
+      "json_artifacts": true,
+      "markdown_artifacts": true,
+      "yaml_artifacts": false
+    }
+  },
+  "storage_structure": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "directories": [
+        ".artifacts/protocol-09/",
+        ".artifacts/protocol-09/",
+        ".artifacts/protocol-09/",
+        ".artifacts/protocol-09/",
+        ".artifacts/protocol-09/"
+      ],
+      "protocol_directory": true,
+      "subdirectories": true,
+      "permissions": true,
+      "naming": false
+    }
+  },
+  "manifest_completeness": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Evidence manifest file not mentioned"
+    ],
+    "recommendations": [],
+    "details": {
+      "manifest_reference": false,
+      "metadata": false,
+      "dependencies": false,
+      "coverage": true
+    }
+  },
+  "traceability": {
+    "score": 0.5,
+    "status": "warning",
+    "issues": [
+      "Traceability gaps: inputs, outputs"
+    ],
+    "recommendations": [],
+    "details": {
+      "inputs": false,
+      "outputs": false,
+      "transformations": true,
+      "audit": true
+    }
+  },
+  "archival": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Archival strategy missing components: retention, retrieval, cleanup"
+    ],
+    "recommendations": [],
+    "details": {
+      "compression": true,
+      "retention": false,
+      "retrieval": false,
+      "cleanup": false
+    }
+  }
+}

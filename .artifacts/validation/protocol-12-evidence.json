@@ -1,0 +1,84 @@
+{
+  "validator": "protocol_evidence",
+  "protocol_id": "12",
+  "validation_timestamp": "2025-10-20T13:33:17.896074Z",
+  "overall_score": 0.968125,
+  "validation_status": "pass",
+  "issues": [
+    "Protocol evidence directory not referenced",
+    "Evidence manifest file not mentioned",
+    "Traceability gaps: inputs, outputs",
+    "Archival strategy missing components: retention, retrieval, cleanup"
+  ],
+  "recommendations": [],
+  "artifact_generation": {
+    "score": 0.5,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "rows": 4,
+      "table_rows": true,
+      "json_artifacts": true,
+      "markdown_artifacts": false,
+      "yaml_artifacts": false
+    }
+  },
+  "storage_structure": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Protocol evidence directory not referenced"
+    ],
+    "recommendations": [],
+    "details": {
+      "directories": [],
+      "protocol_directory": false,
+      "subdirectories": false,
+      "permissions": true,
+      "naming": false
+    }
+  },
+  "manifest_completeness": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Evidence manifest file not mentioned"
+    ],
+    "recommendations": [],
+    "details": {
+      "manifest_reference": false,
+      "metadata": false,
+      "dependencies": false,
+      "coverage": true
+    }
+  },
+  "traceability": {
+    "score": 0.5,
+    "status": "warning",
+    "issues": [
+      "Traceability gaps: inputs, outputs"
+    ],
+    "recommendations": [],
+    "details": {
+      "inputs": false,
+      "outputs": false,
+      "transformations": true,
+      "audit": true
+    }
+  },
+  "archival": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Archival strategy missing components: retention, retrieval, cleanup"
+    ],
+    "recommendations": [],
+    "details": {
+      "compression": true,
+      "retention": false,
+      "retrieval": false,
+      "cleanup": false
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "26",
+  "validation_timestamp": "2025-10-20T13:33:18.343944Z",
+  "overall_score": 0.9564113888888889,
+  "validation_status": "pass",
+  "validators": {
+    "protocol_identity": {
+      "status": "pass",
+      "score": 0.9659888888888889
+    },
+    "protocol_role": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 0.955
+    },
+    "protocol_quality_gates": {
+      "status": "pass",
+      "score": 0.979375
+    },
+    "protocol_scripts": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_communication": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_evidence": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_handoff": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_reasoning": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.96375
+    }
+  },
+  "issues": [
+    "Protocol number not found in header",
+    "Phase assignment not found in protocol metadata",
+    "Scope definition not found",
+    "PREREQUISITES section not found",
+    "INTEGRATION POINTS section not found",
+    "Industry standards not documented",
+    "Automated quality gates config not found: /workspace/SuperTemplate/config/protocol_gates/26.yaml",
+    "Required section missing: PREREQUISITES",
+    "Required section missing: AI ROLE AND MISSION",
+    "Required section missing: WORKFLOW",
+    "Required section missing: INTEGRATION POINTS",
+    "Required section missing: COMMUNICATION PROTOCOLS",
+    "Required section missing: HANDOFF CHECKLIST",
+    "Required section missing: EVIDENCE SUMMARY",
+    "AI ROLE AND MISSION section missing",
+    "Mission statement unavailable",
+    "No [CRITICAL] constraints defined",
+    "[MUST] rules missing for enforceable guidance",
+    "No output documentation found",
+    "Behavioral guidance not documented",
+    "WORKFLOW section missing",
+    "Workflow steps missing",
+    "Action markers absent because workflow missing",
+    "No workflow content to evaluate halt conditions",
+    "Downstream consumer mapping missing",
+    "No gate headings defined",
+    "Gate configuration file missing: /workspace/SuperTemplate/config/protocol_gates/26.yaml",
+    "AUTOMATION HOOKS section missing",
+    "Unable to evaluate registry alignment without documentation",
+    "Automation context missing",
+    "No automation commands available for syntax validation",
+    "Error handling not documented",
+    "Communication status prompts missing",
+    "COMMUNICATION PROTOCOLS section missing",
+    "Error messaging not documented",
+    "Progress tracking communications missing",
+    "Evidence communication cues missing",
+    "EVIDENCE SUMMARY section missing",
+    "Storage structure not documented",
+    "Manifest not documented",
+    "Traceability information missing",
+    "Archival strategy not documented",
+    "HANDOFF CHECKLIST section missing",
+    "Verification steps not documented",
+    "Stakeholder sign-off section missing",
+    "Documentation requirements not described",
+    "Next protocol alignment missing",
+    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Decision points insufficiently described",
+    "Learning mechanisms not referenced",
+    "Self-awareness statements missing",
+    "Retrospective guidance not present",
+    "Continuous improvement gaps: opportunities, tracking",
+    "Knowledge capture gaps: lessons, knowledge_base, storage, sharing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Add [GUIDELINE] markers for recommended practices",
+    "Document explicit prohibitions or guardrails",
+    "Document evidence manifests or registries",
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Document executable automation commands for gates",
+    "Document waiver/override policies",
+    "Reference at least one compliance framework",
+    "Include root-cause analysis guidance",
+    "Document rollback or recovery approach for changes"
+  ]
+}

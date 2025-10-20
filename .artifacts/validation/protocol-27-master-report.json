@@ -1,0 +1,118 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "27",
+  "validation_timestamp": "2025-10-20T13:33:18.362498Z",
+  "overall_score": 0.9529,
+  "validation_status": "pass",
+  "validators": {
+    "protocol_identity": {
+      "status": "pass",
+      "score": 0.969
+    },
+    "protocol_role": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 0.955
+    },
+    "protocol_quality_gates": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_scripts": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_communication": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_evidence": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_handoff": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_reasoning": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.955
+    }
+  },
+  "issues": [
+    "Protocol number not found in header",
+    "Protocol name not found or empty",
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found in protocol metadata",
+    "Scope definition not found",
+    "PREREQUISITES section not found",
+    "Input sources not documented",
+    "Industry standards not documented",
+    "Security requirements not documented",
+    "Regulatory compliance not documented",
+    "Required section missing: PREREQUISITES",
+    "Required section missing: AI ROLE AND MISSION",
+    "Required section missing: WORKFLOW",
+    "Required section missing: COMMUNICATION PROTOCOLS",
+    "Required section missing: HANDOFF CHECKLIST",
+    "Required section missing: EVIDENCE SUMMARY",
+    "AI ROLE AND MISSION section missing",
+    "Mission statement unavailable",
+    "No [CRITICAL] constraints defined",
+    "[MUST] rules missing for enforceable guidance",
+    "No output documentation found",
+    "Behavioral guidance not documented",
+    "WORKFLOW section missing",
+    "Workflow steps missing",
+    "Action markers absent because workflow missing",
+    "No workflow content to evaluate halt conditions",
+    "Downstream consumer mapping missing",
+    "QUALITY GATES section missing",
+    "Cannot evaluate pass criteria without gate definitions",
+    "No automation references found",
+    "No gate documentation to evaluate failure handling",
+    "Compliance expectations not described",
+    "AUTOMATION HOOKS section missing",
+    "Unable to evaluate registry alignment without documentation",
+    "Automation context missing",
+    "No automation commands available for syntax validation",
+    "Error handling not documented",
+    "Communication status prompts missing",
+    "COMMUNICATION PROTOCOLS section missing",
+    "Error messaging not documented",
+    "Progress tracking communications missing",
+    "Evidence communication cues missing",
+    "EVIDENCE SUMMARY section missing",
+    "Storage structure not documented",
+    "Manifest not documented",
+    "Traceability information missing",
+    "Archival strategy not documented",
+    "HANDOFF CHECKLIST section missing",
+    "Verification steps not documented",
+    "Stakeholder sign-off section missing",
+    "Documentation requirements not described",
+    "Next protocol alignment missing",
+    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Decision logic not documented",
+    "Problem-solving guidance missing",
+    "Learning mechanisms not referenced",
+    "Meta-cognitive guidance missing",
+    "Retrospective guidance not present",
+    "Improvement loops not described",
+    "Knowledge capture not described",
+    "Future planning not mentioned"
+  ],
+  "recommendations": [
+    "Add [GUIDELINE] markers for recommended practices",
+    "Document explicit prohibitions or guardrails",
+    "Document evidence manifests or registries",
+    "Document rollback or recovery approach for changes"
+  ]
+}

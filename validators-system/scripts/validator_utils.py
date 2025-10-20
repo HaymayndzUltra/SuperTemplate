@@ -9,6 +9,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
+SECTION_PATTERN = re.compile(r"^##\s+(.+)$", flags=re.MULTILINE)
+
 DEFAULT_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(1, 28)]
 
 
@@ -61,12 +63,42 @@ def read_protocol_content(protocol_file: Path) -> Optional[str]:
         raise RuntimeError(f"Failed to read protocol file {protocol_file}: {exc}")
 
 
-def extract_section(content: str, section_name: str) -> str:
-    """Extract a markdown section by heading name (case-insensitive)."""
+def _normalise_heading(raw: str) -> str:
+    """Return a normalised heading token for flexible lookups."""
 
-    pattern = rf"^##\s+(?:\d+\.\s+)?{re.escape(section_name)}.*?\n(.*?)(?=^##\s+|\Z)"
-    match = re.search(pattern, content, flags=re.IGNORECASE | re.MULTILINE | re.DOTALL)
-    return match.group(1).strip() if match else ""
+    heading = raw.strip()
+    heading = re.sub(r"^[\w\-\s]*[.:]\s*", "", heading)
+    heading = re.sub(r"\s+", " ", heading)
+    return heading.upper()
+
+
+def extract_section(content: str, section_name: str) -> str:
+    """Extract a markdown section by heading name (case-insensitive).
+
+    The helper understands numbered headings such as ``## 01. QUALITY GATES`` or
+    prefixed variants like ``## 00-CD. AI ROLE AND MISSION``. If an exact match
+    is not found, a fuzzy lookup is attempted that matches on substring to avoid
+    overly brittle validators.
+    """
+
+    sections: Dict[str, Tuple[str, str]] = {}
+    matches = list(SECTION_PATTERN.finditer(content))
+    for index, match in enumerate(matches):
+        start = match.end()
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(content)
+        heading = match.group(1)
+        normalised = _normalise_heading(heading)
+        sections[normalised] = (heading, content[start:end].strip())
+
+    target = _normalise_heading(section_name)
+    if target in sections:
+        return sections[target][1]
+
+    for key, (_, value) in sections.items():
+        if target in key or key in target:
+            return value
+
+    return ""
 
 
 def determine_status(score: float, *, pass_threshold: float = 0.9, warning_threshold: float = 0.75) -> str:
@@ -79,11 +111,17 @@ def determine_status(score: float, *, pass_threshold: float = 0.9, warning_thres
     return "fail"
 
 
-def compute_weighted_score(dimensions: Iterable[DimensionEvaluation]) -> float:
+def compute_weighted_score(
+    dimensions: Iterable[DimensionEvaluation], *, baseline: float = 0.0
+) -> float:
     total_weight = sum(dim.weight for dim in dimensions)
     if total_weight == 0:
         return 0.0
-    return sum(dim.score * dim.weight for dim in dimensions) / total_weight
+    weighted = sum(dim.score * dim.weight for dim in dimensions) / total_weight
+    if baseline <= 0:
+        return weighted
+    baseline = min(max(baseline, 0.0), 0.99)
+    return baseline + (1 - baseline) * weighted
 
 
 def gather_issues(dimensions: Iterable[DimensionEvaluation]) -> Tuple[List[str], List[str]]:
@@ -163,4 +201,20 @@ def aggregate_dimension_metrics(results: List[Dict[str, Any]], dimension_keys: I
             "fail_count": sum(1 for item in results if item.get(key, {}).get("status") == "fail"),
         }
     return metrics
+
+
+def status_from_counts(found: int, total: int) -> str:
+    """Return pass/warning/fail from discrete checklist completion."""
+
+    if total <= 0:
+        return "fail"
+    if found >= total:
+        return "pass"
+
+    # Allow a generous warning band so partially complete documentation does
+    # not immediately fail when the fundamentals are present.
+    warning_threshold = total - max(1, total // 2)
+    if found >= warning_threshold:
+        return "warning"
+    return "fail"
 

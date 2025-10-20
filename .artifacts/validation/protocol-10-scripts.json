@@ -1,0 +1,90 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "10",
+  "validation_timestamp": "2025-10-20T13:33:17.833014Z",
+  "overall_score": 0.985,
+  "validation_status": "pass",
+  "issues": [
+    "Script registry reference missing"
+  ],
+  "recommendations": [
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "script_count": 7,
+      "shell_count": 0,
+      "commands": [
+        "python scripts/validate_prerequisites_3.py",
+        "python scripts/validate_preflight.py",
+        "python scripts/validate_subtask_compliance.py",
+        "python scripts/validate_quality_gate.py",
+        "python scripts/validate_session_closeout.py",
+        "python scripts/aggregate_evidence_3.py",
+        "python scripts/run_protocol_3_gates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.5,
+    "status": "warning",
+    "issues": [
+      "Script registry reference missing"
+    ],
+    "recommendations": [],
+    "details": {
+      "registry_reference": false,
+      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "workflow_mapping": true,
+      "ownership": false
+    }
+  },
+  "execution_context": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 8,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": true,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

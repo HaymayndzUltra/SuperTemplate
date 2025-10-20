@@ -1,0 +1,76 @@
+{
+  "validator": "protocol_role",
+  "protocol_id": "27",
+  "validation_timestamp": "2025-10-20T13:33:18.353387Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "issues": [
+    "AI ROLE AND MISSION section missing",
+    "Mission statement unavailable",
+    "No [CRITICAL] constraints defined",
+    "[MUST] rules missing for enforceable guidance",
+    "No output documentation found",
+    "Behavioral guidance not documented"
+  ],
+  "recommendations": [
+    "Add [GUIDELINE] markers for recommended practices",
+    "Document explicit prohibitions or guardrails"
+  ],
+  "role_definition": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "AI ROLE AND MISSION section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "mission_statement": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Mission statement unavailable"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "constraints_guidelines": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "No [CRITICAL] constraints defined",
+      "[MUST] rules missing for enforceable guidance"
+    ],
+    "recommendations": [
+      "Add [GUIDELINE] markers for recommended practices",
+      "Document explicit prohibitions or guardrails"
+    ],
+    "details": {
+      "critical_constraints": false,
+      "must_rules": false,
+      "guidelines": false,
+      "prohibitions": false,
+      "critical_count": 0,
+      "must_count": 0,
+      "guideline_count": 0
+    }
+  },
+  "output_expectations": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "No output documentation found"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "behavioral_guidance": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Behavioral guidance not documented"
+    ],
+    "recommendations": [],
+    "details": {}
+  }
+}

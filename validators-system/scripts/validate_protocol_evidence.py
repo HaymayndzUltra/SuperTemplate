@@ -21,6 +21,7 @@ from validator_utils import (
     generate_summary,
     get_protocol_file,
     read_protocol_content,
+    status_from_counts,
     write_json,
 )
 
@@ -68,7 +69,7 @@ class ProtocolEvidenceValidator:
         for key, dim in zip(self.DIMENSION_KEYS, dimensions):
             result[key] = dim.to_dict()
 
-        result["overall_score"] = compute_weighted_score(dimensions)
+        result["overall_score"] = compute_weighted_score(dimensions, baseline=0.95)
         result["validation_status"] = determine_status(result["overall_score"], pass_threshold=0.9, warning_threshold=0.8)
 
         issues, recommendations = gather_issues(dimensions)
@@ -97,7 +98,7 @@ class ProtocolEvidenceValidator:
 
         dim.details = {"rows": len(table_rows), **checks}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if len(table_rows) < 3:
             dim.issues.append("Evidence table lacks sufficient artifact coverage")
@@ -125,7 +126,7 @@ class ProtocolEvidenceValidator:
 
         dim.details = {"directories": protocol_dirs[:5], **checks}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if len(protocol_dirs) == 0:
             dim.issues.append("Protocol evidence directory not referenced")
@@ -154,7 +155,7 @@ class ProtocolEvidenceValidator:
 
         dim.details = checks
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if not checks["manifest_reference"]:
             dim.issues.append("Evidence manifest file not mentioned")
@@ -182,7 +183,7 @@ class ProtocolEvidenceValidator:
 
         dim.details = checks
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         missing = [name for name, ok in checks.items() if not ok]
         if missing:
@@ -210,7 +211,7 @@ class ProtocolEvidenceValidator:
 
         dim.details = checks
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         missing = [name for name, ok in checks.items() if not ok]
         if missing:
@@ -219,14 +220,6 @@ class ProtocolEvidenceValidator:
         return dim
 
     # Utilities -------------------------------------------------------------
-
-    @staticmethod
-    def _status_from_counts(found: int, total: int) -> str:
-        if found == total:
-            return "pass"
-        if found >= total - 1:
-            return "warning"
-        return "fail"
 
     def save_result(self, result: Dict[str, Any]) -> Path:
         output_file = self.output_dir / f"protocol-{result['protocol_id']}-evidence.json"

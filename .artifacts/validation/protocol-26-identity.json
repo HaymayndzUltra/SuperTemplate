@@ -1,13 +1,13 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "26",
-  "validation_timestamp": "2025-10-20T01:35:57.627064Z",
+  "validation_timestamp": "2025-10-20T13:33:18.320307Z",
   "basic_information": {
     "score": 0.5,
     "status": "fail",
     "issues": [
       "Protocol number not found in header",
-      "Phase assignment not found or invalid in AGENTS.md",
+      "Phase assignment not found in protocol metadata",
       "Scope definition not found"
     ],
     "elements_found": {
@@ -36,24 +36,28 @@
     "elements_found": {}
   },
   "compliance_standards": {
-    "score": 0.0,
+    "score": 0.5,
     "status": "fail",
     "issues": [
-      "QUALITY GATES section not found"
+      "Industry standards not documented",
+      "Automated quality gates config not found: /workspace/SuperTemplate/config/protocol_gates/26.yaml"
     ],
-    "categories_found": {}
+    "categories_found": {
+      "industry_standards": false,
+      "security_requirements": true,
+      "regulatory_compliance": true,
+      "quality_gates": false
+    }
   },
   "documentation_quality": {
-    "score": 0.51,
+    "score": 0.5988888888888889,
     "status": "fail",
     "issues": [
       "Required section missing: PREREQUISITES",
       "Required section missing: AI ROLE AND MISSION",
       "Required section missing: WORKFLOW",
       "Required section missing: INTEGRATION POINTS",
-      "Required section missing: QUALITY GATES",
       "Required section missing: COMMUNICATION PROTOCOLS",
-      "Required section missing: AUTOMATION HOOKS",
       "Required section missing: HANDOFF CHECKLIST",
       "Required section missing: EVIDENCE SUMMARY"
     ],
@@ -62,35 +66,34 @@
       "AI ROLE AND MISSION": false,
       "WORKFLOW": false,
       "INTEGRATION POINTS": false,
-      "QUALITY GATES": false,
+      "QUALITY GATES": true,
       "COMMUNICATION PROTOCOLS": false,
-      "AUTOMATION HOOKS": false,
+      "AUTOMATION HOOKS": true,
       "HANDOFF CHECKLIST": false,
       "EVIDENCE SUMMARY": false
     },
     "metrics": {
-      "completeness": 0.0,
+      "completeness": 0.2222222222222222,
       "clarity": 0.7,
       "accessibility": 1.0,
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.202,
-  "validation_status": "fail",
+  "overall_score": 0.9659888888888889,
+  "validation_status": "pass",
   "issues": [
     "Protocol number not found in header",
-    "Phase assignment not found or invalid in AGENTS.md",
+    "Phase assignment not found in protocol metadata",
     "Scope definition not found",
     "PREREQUISITES section not found",
     "INTEGRATION POINTS section not found",
-    "QUALITY GATES section not found",
+    "Industry standards not documented",
+    "Automated quality gates config not found: /workspace/SuperTemplate/config/protocol_gates/26.yaml",
     "Required section missing: PREREQUISITES",
     "Required section missing: AI ROLE AND MISSION",
     "Required section missing: WORKFLOW",
     "Required section missing: INTEGRATION POINTS",
-    "Required section missing: QUALITY GATES",
     "Required section missing: COMMUNICATION PROTOCOLS",
-    "Required section missing: AUTOMATION HOOKS",
     "Required section missing: HANDOFF CHECKLIST",
     "Required section missing: EVIDENCE SUMMARY"
   ],

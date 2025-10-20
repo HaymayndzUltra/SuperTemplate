@@ -1,0 +1,80 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "18",
+  "validation_timestamp": "2025-10-20T13:33:18.116672Z",
+  "overall_score": 0.9873958333333333,
+  "validation_status": "pass",
+  "validators": {
+    "protocol_identity": {
+      "status": "pass",
+      "score": 0.9958333333333333
+    },
+    "protocol_role": {
+      "status": "pass",
+      "score": 0.991875
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "protocol_quality_gates": {
+      "status": "pass",
+      "score": 0.9875
+    },
+    "protocol_scripts": {
+      "status": "pass",
+      "score": 0.985625
+    },
+    "protocol_communication": {
+      "status": "pass",
+      "score": 0.984375
+    },
+    "protocol_evidence": {
+      "status": "pass",
+      "score": 0.97
+    },
+    "protocol_handoff": {
+      "status": "pass",
+      "score": 0.986875
+    },
+    "protocol_reasoning": {
+      "status": "pass",
+      "score": 0.9818749999999999
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.99
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Industry standards not documented",
+    "Domain expertise keywords missing",
+    "Value proposition not captured",
+    "Gate configuration file missing: /workspace/SuperTemplate/config/protocol_gates/18.yaml",
+    "Script registry reference missing",
+    "Exit code handling not described",
+    "Missing user interaction prompts: clarification, decision_points, feedback",
+    "Protocol evidence directory not referenced",
+    "Evidence manifest file not mentioned",
+    "Traceability gaps: inputs, outputs",
+    "Archival strategy missing components: compression, retention, retrieval, cleanup",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: knowledge_base, adaptation",
+    "Knowledge capture gaps: lessons, knowledge_base",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Outline decision-making expectations",
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Include quantitative metrics for gate evaluation",
+    "Document waiver/override policies",
+    "Reference at least one compliance framework",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Document storage permissions or access requirements"
+  ]
+}

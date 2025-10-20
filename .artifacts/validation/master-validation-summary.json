@@ -1,0 +1,208 @@
+{
+  "validator": "master_validator",
+  "validation_timestamp": "2025-10-20T13:33:18.362808Z",
+  "total_protocols": 27,
+  "pass_count": 27,
+  "warning_count": 0,
+  "fail_count": 0,
+  "average_score": 0.9828033950617283,
+  "protocols": [
+    {
+      "protocol_id": "01",
+      "status": "pass",
+      "score": 0.9879374999999999
+    },
+    {
+      "protocol_id": "02",
+      "status": "pass",
+      "score": 0.9853958333333332
+    },
+    {
+      "protocol_id": "03",
+      "status": "pass",
+      "score": 0.9850208333333332
+    },
+    {
+      "protocol_id": "04",
+      "status": "pass",
+      "score": 0.9866875
+    },
+    {
+      "protocol_id": "05",
+      "status": "pass",
+      "score": 0.9867083333333333
+    },
+    {
+      "protocol_id": "06",
+      "status": "pass",
+      "score": 0.9839583333333334
+    },
+    {
+      "protocol_id": "07",
+      "status": "pass",
+      "score": 0.9863958333333332
+    },
+    {
+      "protocol_id": "08",
+      "status": "pass",
+      "score": 0.9853958333333332
+    },
+    {
+      "protocol_id": "09",
+      "status": "pass",
+      "score": 0.9847083333333334
+    },
+    {
+      "protocol_id": "10",
+      "status": "pass",
+      "score": 0.9867291666666667
+    },
+    {
+      "protocol_id": "11",
+      "status": "pass",
+      "score": 0.9854583333333334
+    },
+    {
+      "protocol_id": "12",
+      "status": "pass",
+      "score": 0.9861458333333333
+    },
+    {
+      "protocol_id": "13",
+      "status": "pass",
+      "score": 0.9872083333333332
+    },
+    {
+      "protocol_id": "14",
+      "status": "pass",
+      "score": 0.9861458333333333
+    },
+    {
+      "protocol_id": "15",
+      "status": "pass",
+      "score": 0.9862708333333334
+    },
+    {
+      "protocol_id": "16",
+      "status": "pass",
+      "score": 0.9868333333333335
+    },
+    {
+      "protocol_id": "17",
+      "status": "pass",
+      "score": 0.9875624999999999
+    },
+    {
+      "protocol_id": "18",
+      "status": "pass",
+      "score": 0.9873958333333333
+    },
+    {
+      "protocol_id": "19",
+      "status": "pass",
+      "score": 0.9889583333333334
+    },
+    {
+      "protocol_id": "20",
+      "status": "pass",
+      "score": 0.9866458333333334
+    },
+    {
+      "protocol_id": "21",
+      "status": "pass",
+      "score": 0.9878958333333333
+    },
+    {
+      "protocol_id": "22",
+      "status": "pass",
+      "score": 0.9868333333333335
+    },
+    {
+      "protocol_id": "23",
+      "status": "pass",
+      "score": 0.9862083333333332
+    },
+    {
+      "protocol_id": "24",
+      "status": "pass",
+      "score": 0.9846875
+    },
+    {
+      "protocol_id": "25",
+      "status": "pass",
+      "score": 0.9531927777777778
+    },
+    {
+      "protocol_id": "26",
+      "status": "pass",
+      "score": 0.9564113888888889
+    },
+    {
+      "protocol_id": "27",
+      "status": "pass",
+      "score": 0.9529
+    }
+  ],
+  "validators": {
+    "protocol_identity": {
+      "average_score": 0.9918456790123457,
+      "pass_count": 27,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "protocol_role": {
+      "average_score": 0.9863657407407408,
+      "pass_count": 27,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "protocol_workflow": {
+      "average_score": 0.9940354938271605,
+      "pass_count": 27,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "protocol_quality_gates": {
+      "average_score": 0.9868287037037037,
+      "pass_count": 27,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "protocol_scripts": {
+      "average_score": 0.9807407407407408,
+      "pass_count": 27,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "protocol_communication": {
+      "average_score": 0.9834953703703704,
+      "pass_count": 27,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "protocol_evidence": {
+      "average_score": 0.9719212962962963,
+      "pass_count": 27,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "protocol_handoff": {
+      "average_score": 0.9823148148148149,
+      "pass_count": 27,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "protocol_reasoning": {
+      "average_score": 0.9712037037037037,
+      "pass_count": 27,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "protocol_reflection": {
+      "average_score": 0.9792824074074075,
+      "pass_count": 27,
+      "warning_count": 0,
+      "fail_count": 0
+    }
+  }
+}

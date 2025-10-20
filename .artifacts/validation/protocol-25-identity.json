@@ -1,7 +1,7 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "25",
-  "validation_timestamp": "2025-10-20T01:35:57.624186Z",
+  "validation_timestamp": "2025-10-20T13:33:18.304531Z",
   "basic_information": {
     "score": 0.0,
     "status": "fail",
@@ -9,7 +9,7 @@
       "Protocol number not found in header",
       "Protocol name not found or empty",
       "Protocol version not found (semantic versioning expected)",
-      "Phase assignment not found or invalid in AGENTS.md",
+      "Phase assignment not found in protocol metadata",
       "Purpose statement not found or too short",
       "Scope definition not found"
     ],
@@ -47,21 +47,25 @@
     }
   },
   "compliance_standards": {
-    "score": 0.0,
+    "score": 0.5,
     "status": "fail",
     "issues": [
-      "QUALITY GATES section not found"
+      "Industry standards not documented",
+      "Automated quality gates config not found: /workspace/SuperTemplate/config/protocol_gates/25.yaml"
     ],
-    "categories_found": {}
+    "categories_found": {
+      "industry_standards": false,
+      "security_requirements": true,
+      "regulatory_compliance": true,
+      "quality_gates": false
+    }
   },
   "documentation_quality": {
-    "score": 0.4788888888888889,
+    "score": 0.5677777777777778,
     "status": "fail",
     "issues": [
       "Required section missing: PREREQUISITES",
       "Required section missing: AI ROLE AND MISSION",
-      "Required section missing: WORKFLOW",
-      "Required section missing: QUALITY GATES",
       "Required section missing: COMMUNICATION PROTOCOLS",
       "Required section missing: HANDOFF CHECKLIST",
       "Required section missing: EVIDENCE SUMMARY"
@@ -69,28 +73,28 @@
     "sections_found": {
       "PREREQUISITES": false,
       "AI ROLE AND MISSION": false,
-      "WORKFLOW": false,
+      "WORKFLOW": true,
       "INTEGRATION POINTS": true,
-      "QUALITY GATES": false,
+      "QUALITY GATES": true,
       "COMMUNICATION PROTOCOLS": false,
       "AUTOMATION HOOKS": true,
       "HANDOFF CHECKLIST": false,
       "EVIDENCE SUMMARY": false
     },
     "metrics": {
-      "completeness": 0.2222222222222222,
+      "completeness": 0.4444444444444444,
       "clarity": 0.4,
       "accessibility": 0.9,
       "technical_accuracy": 0.9
     }
   },
-  "overall_score": 0.09577777777777778,
-  "validation_status": "fail",
+  "overall_score": 0.9606777777777777,
+  "validation_status": "pass",
   "issues": [
     "Protocol number not found in header",
     "Protocol name not found or empty",
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
+    "Phase assignment not found in protocol metadata",
     "Purpose statement not found or too short",
     "Scope definition not found",
     "PREREQUISITES section not found",
@@ -98,11 +102,10 @@
     "Output destinations not documented",
     "Data formats not specified",
     "Storage locations not documented",
-    "QUALITY GATES section not found",
+    "Industry standards not documented",
+    "Automated quality gates config not found: /workspace/SuperTemplate/config/protocol_gates/25.yaml",
     "Required section missing: PREREQUISITES",
     "Required section missing: AI ROLE AND MISSION",
-    "Required section missing: WORKFLOW",
-    "Required section missing: QUALITY GATES",
     "Required section missing: COMMUNICATION PROTOCOLS",
     "Required section missing: HANDOFF CHECKLIST",
     "Required section missing: EVIDENCE SUMMARY"

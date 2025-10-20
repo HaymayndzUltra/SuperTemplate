@@ -1,0 +1,78 @@
+{
+  "validator": "protocol_quality_gates",
+  "protocol_id": "25",
+  "validation_timestamp": "2025-10-20T13:33:18.314841Z",
+  "overall_score": 0.9562499999999999,
+  "validation_status": "pass",
+  "issues": [
+    "QUALITY GATES section missing",
+    "Cannot evaluate pass criteria without gate definitions",
+    "Gate configuration file missing: /workspace/SuperTemplate/config/protocol_gates/25.yaml",
+    "No gate documentation to evaluate failure handling"
+  ],
+  "recommendations": [
+    "Document executable automation commands for gates",
+    "Reference CI/CD workflow integration for gates",
+    "Reference at least one compliance framework"
+  ],
+  "gate_definitions": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "QUALITY GATES section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "pass_criteria": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Cannot evaluate pass criteria without gate definitions"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "automation": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Gate configuration file missing: /workspace/SuperTemplate/config/protocol_gates/25.yaml"
+    ],
+    "recommendations": [
+      "Document executable automation commands for gates",
+      "Reference CI/CD workflow integration for gates"
+    ],
+    "details": {
+      "scripts": false,
+      "ci": false,
+      "gate_config": false,
+      "automation_labels": true,
+      "script_mentions": 0,
+      "gate_config_path": "/workspace/SuperTemplate/config/protocol_gates/25.yaml"
+    }
+  },
+  "failure_handling": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "No gate documentation to evaluate failure handling"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "compliance_integration": {
+    "score": 0.5,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Reference at least one compliance framework"
+    ],
+    "details": {
+      "compliance_terms": false,
+      "automation_hooks": true,
+      "evidence": true,
+      "governance": false
+    }
+  }
+}

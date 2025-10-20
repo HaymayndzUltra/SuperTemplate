@@ -1,0 +1,89 @@
+{
+  "validator": "protocol_reasoning",
+  "protocol_id": "24",
+  "validation_timestamp": "2025-10-20T13:33:18.292542Z",
+  "overall_score": 0.9718749999999999,
+  "validation_status": "pass",
+  "issues": [
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: feedback, improvement_tracking, adaptation",
+    "Self-awareness statements missing"
+  ],
+  "recommendations": [
+    "Include root-cause analysis guidance"
+  ],
+  "reasoning_patterns": {
+    "score": 0.5,
+    "status": "warning",
+    "issues": [
+      "Reasoning patterns not explicitly named"
+    ],
+    "recommendations": [],
+    "details": {
+      "matches": [
+        "heuristic"
+      ],
+      "pattern_terms": false,
+      "explanations": false,
+      "improvement": true,
+      "example_references": true
+    }
+  },
+  "decision_trees": {
+    "score": 0.5,
+    "status": "warning",
+    "issues": [
+      "Decision points insufficiently described"
+    ],
+    "recommendations": [],
+    "details": {
+      "decision_points": false,
+      "criteria": true,
+      "outcomes": false,
+      "logging": true
+    }
+  },
+  "problem_solving_logic": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Include root-cause analysis guidance"
+    ],
+    "details": {
+      "problem_identification": true,
+      "root_cause": false,
+      "solutions": true,
+      "validation": true
+    }
+  },
+  "learning_mechanisms": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Learning mechanisms incomplete: feedback, improvement_tracking, adaptation"
+    ],
+    "recommendations": [],
+    "details": {
+      "feedback": false,
+      "improvement_tracking": false,
+      "knowledge_base": true,
+      "adaptation": false
+    }
+  },
+  "meta_cognition": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Self-awareness statements missing"
+    ],
+    "recommendations": [],
+    "details": {
+      "awareness": false,
+      "monitoring": false,
+      "correction": false,
+      "improvement": false
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "validator": "protocol_workflow",
+  "protocol_id": "25",
+  "validation_timestamp": "2025-10-20T13:33:18.314199Z",
+  "overall_score": 0.9524999999999999,
+  "validation_status": "pass",
+  "issues": [
+    "WORKFLOW section missing",
+    "Workflow steps missing",
+    "Action markers absent because workflow missing",
+    "No workflow content to evaluate halt conditions",
+    "Evidence storage paths under-specified",
+    "Downstream consumer mapping missing"
+  ],
+  "recommendations": [
+    "Document evidence manifests or registries"
+  ],
+  "workflow_structure": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "WORKFLOW section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "step_definitions": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Workflow steps missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "action_markers": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Action markers absent because workflow missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "halt_conditions": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "No workflow content to evaluate halt conditions"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "evidence_tracking": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Evidence storage paths under-specified",
+      "Downstream consumer mapping missing"
+    ],
+    "recommendations": [
+      "Document evidence manifests or registries"
+    ],
+    "details": {
+      "evidence_tags": true,
+      "artifact_locations": false,
+      "manifest": false,
+      "downstream_trace": false,
+      "evidence_mentions": 32,
+      "artifact_mentions": 0
+    }
+  }
+}

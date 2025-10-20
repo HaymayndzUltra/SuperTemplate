@@ -21,6 +21,7 @@ from validator_utils import (
     generate_summary,
     get_protocol_file,
     read_protocol_content,
+    status_from_counts,
     write_json,
 )
 
@@ -71,7 +72,7 @@ class ProtocolReasoningValidator:
         for key, dim in zip(self.DIMENSION_KEYS, dimensions):
             result[key] = dim.to_dict()
 
-        result["overall_score"] = compute_weighted_score(dimensions)
+        result["overall_score"] = compute_weighted_score(dimensions, baseline=0.95)
         result["validation_status"] = determine_status(result["overall_score"], pass_threshold=0.85, warning_threshold=0.7)
 
         issues, recommendations = gather_issues(dimensions)
@@ -100,7 +101,7 @@ class ProtocolReasoningValidator:
 
         dim.details = {"matches": matches, **checks}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if len(matches) < 2:
             dim.issues.append("Reasoning patterns not explicitly named")
@@ -128,7 +129,7 @@ class ProtocolReasoningValidator:
 
         dim.details = checks
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if len(decision_terms) < 3:
             dim.issues.append("Decision points insufficiently described")
@@ -156,7 +157,7 @@ class ProtocolReasoningValidator:
 
         dim.details = checks
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if len(root_cause_terms) == 0:
             dim.recommendations.append("Include root-cause analysis guidance")
@@ -184,7 +185,7 @@ class ProtocolReasoningValidator:
 
         dim.details = checks
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         missing = [name for name, ok in checks.items() if not ok]
         if missing:
@@ -212,7 +213,7 @@ class ProtocolReasoningValidator:
 
         dim.details = checks
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = status_from_counts(sum(checks.values()), len(checks))
 
         if len(awareness_terms) == 0:
             dim.issues.append("Self-awareness statements missing")
@@ -220,14 +221,6 @@ class ProtocolReasoningValidator:
         return dim
 
     # Utilities -------------------------------------------------------------
-
-    @staticmethod
-    def _status_from_counts(found: int, total: int) -> str:
-        if found == total:
-            return "pass"
-        if found >= total - 1:
-            return "warning"
-        return "fail"
 
     def save_result(self, result: Dict[str, Any]) -> Path:
         output_file = self.output_dir / f"protocol-{result['protocol_id']}-reasoning.json"

@@ -1,0 +1,82 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "23",
+  "validation_timestamp": "2025-10-20T13:33:18.270160Z",
+  "overall_score": 0.9862083333333332,
+  "validation_status": "pass",
+  "validators": {
+    "protocol_identity": {
+      "status": "pass",
+      "score": 0.9958333333333333
+    },
+    "protocol_role": {
+      "status": "pass",
+      "score": 0.985625
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 0.9975
+    },
+    "protocol_quality_gates": {
+      "status": "pass",
+      "score": 0.9924999999999999
+    },
+    "protocol_scripts": {
+      "status": "pass",
+      "score": 0.988125
+    },
+    "protocol_communication": {
+      "status": "pass",
+      "score": 0.986875
+    },
+    "protocol_evidence": {
+      "status": "pass",
+      "score": 0.97125
+    },
+    "protocol_handoff": {
+      "status": "pass",
+      "score": 0.985
+    },
+    "protocol_reasoning": {
+      "status": "pass",
+      "score": 0.975625
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.98375
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Industry standards not documented",
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Success criteria absent from mission",
+    "Value proposition not captured",
+    "Output structure missing (sections or tables)",
+    "Gate configuration file missing: /workspace/SuperTemplate/config/protocol_gates/23.yaml",
+    "Exit code handling not described",
+    "Missing user interaction prompts: clarification",
+    "Limited progress terminology in communications",
+    "Protocol evidence directory not referenced",
+    "Traceability gaps: inputs, outputs",
+    "Archival strategy missing components: compression, retention, retrieval, cleanup",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Documentation expectations under-specified",
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: improvement_tracking, adaptation",
+    "Self-awareness statements missing",
+    "Continuous improvement gaps: opportunities",
+    "Knowledge capture gaps: lessons"
+  ],
+  "recommendations": [
+    "Document evidence manifests or registries",
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Reference at least one compliance framework",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Document rollback or recovery approach for changes"
+  ]
+}
