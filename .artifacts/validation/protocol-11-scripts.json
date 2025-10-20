@@ -1,0 +1,106 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "11",
+  "validation_timestamp": "2025-10-20T14:54:58.710586Z",
+  "overall_score": 0.6125,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/aggregate_evidence_9.py, scripts/generate_artifact_manifest.py, scripts/run_contract_tests.py, scripts/run_protocol_9_gates.py, scripts/validate_environment.py, scripts/validate_prerequisites_9.py",
+    "Exit code handling not described"
+  ],
+  "recommendations": [
+    "Reference scripts/script-registry.json for governance context",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/aggregate_evidence_9.py, scripts/generate_artifact_manifest.py, scripts/run_contract_tests.py, scripts/run_protocol_9_gates.py, scripts/validate_environment.py, scripts/validate_prerequisites_9.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 7,
+      "commands": [
+        "bash\n# Prerequisite validation",
+        "python scripts/validate_prerequisites_9.py",
+        "python scripts/validate_environment.py --env integration --output .artifacts/protocol-15/environment-validation-report.json",
+        "python scripts/run_contract_tests.py --env integration --output .artifacts/protocol-15/contract-validation-results.json",
+        "python scripts/generate_artifact_manifest.py --input .artifacts/protocol-15/ --output .artifacts/protocol-15/integration-evidence-manifest.json",
+        "python scripts/aggregate_evidence_9.py --output .artifacts/protocol-15/",
+        "python scripts/run_protocol_9_gates.py"
+      ],
+      "missing_scripts": [
+        "scripts/validate_prerequisites_9.py",
+        "scripts/validate_environment.py",
+        "scripts/run_contract_tests.py",
+        "scripts/generate_artifact_manifest.py",
+        "scripts/aggregate_evidence_9.py",
+        "scripts/run_protocol_9_gates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Reference scripts/script-registry.json for governance context"
+    ],
+    "details": {
+      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": false,
+      "workflow_mapping": true,
+      "ownership": false,
+      "total_commands": 7,
+      "registered_commands": 0,
+      "registration_ratio": 0.0,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": true,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 7,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
+    "recommendations": [],
+    "details": {
+      "exit_codes": false,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

@@ -20,6 +20,8 @@ from validator_utils import (
     gather_issues,
     generate_summary,
     get_protocol_file,
+    include_documentation_protocols,
+    relax_for_documentation_protocol,
     read_protocol_content,
     write_json,
 )
@@ -77,6 +79,12 @@ class ProtocolReasoningValidator:
         issues, recommendations = gather_issues(dimensions)
         result["issues"].extend(issues)
         result["recommendations"].extend(recommendations)
+
+        relax_for_documentation_protocol(
+            protocol_id,
+            result,
+            note="Documentation-focused protocol detected; reasoning prompts treated as optional guidance.",
+        )
 
         return result
 
@@ -250,7 +258,10 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Reasoning validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        protocol_ids = include_documentation_protocols(
+            DEFAULT_PROTOCOL_IDS, include_docs=args.include_docs
+        )
+        for protocol_id in protocol_ids:
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -274,6 +285,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Validate cognitive reasoning coverage for AI workflow protocols")
     parser.add_argument("--protocol", help="Protocol ID to validate (e.g., '01')")
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) when running with --all",
+    )
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
 

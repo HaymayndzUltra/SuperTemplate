@@ -1,0 +1,108 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "02",
+  "validation_timestamp": "2025-10-20T14:54:58.516237Z",
+  "overall_score": 0.5392857142857143,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/validate_discovery_expectations.py, scripts/validate_discovery_objectives.py, scripts/validate_discovery_scope.py, scripts/validate_prerequisites_02.py",
+    "Exit code handling not described",
+    "Logging requirements minimal or absent"
+  ],
+  "recommendations": [
+    "Reference scripts/script-registry.json for governance context",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/validate_discovery_expectations.py, scripts/validate_discovery_objectives.py, scripts/validate_discovery_scope.py, scripts/validate_prerequisites_02.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 7,
+      "commands": [
+        "bash\n# Prerequisite validation",
+        "python scripts/validate_prerequisites_02.py",
+        "python scripts/validate_discovery_objectives.py --input .artifacts/protocol-02/client-context-notes.md",
+        "python scripts/validate_discovery_scope.py --form .artifacts/protocol-02/client-discovery-form.md",
+        "python scripts/validate_discovery_expectations.py --recap .artifacts/protocol-02/discovery-recap.md",
+        "python scripts/aggregate_evidence_02.py --output .artifacts/protocol-02/",
+        "python3 scripts/run_protocol_gates.py"
+      ],
+      "missing_scripts": [
+        "scripts/validate_prerequisites_02.py",
+        "scripts/validate_discovery_objectives.py",
+        "scripts/validate_discovery_scope.py",
+        "scripts/validate_discovery_expectations.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.3214285714285714,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Reference scripts/script-registry.json for governance context"
+    ],
+    "details": {
+      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": false,
+      "workflow_mapping": true,
+      "ownership": false,
+      "total_commands": 7,
+      "registered_commands": 2,
+      "registration_ratio": 0.2857142857142857,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 7,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Exit code handling not described",
+      "Logging requirements minimal or absent"
+    ],
+    "recommendations": [],
+    "details": {
+      "exit_codes": false,
+      "fallback": true,
+      "logging": false,
+      "manual_paths": true
+    }
+  }
+}
