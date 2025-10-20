@@ -1,0 +1,86 @@
+{
+  "validator": "protocol_reflection",
+  "protocol_id": "05",
+  "validation_timestamp": "2025-10-20T14:54:58.597648Z",
+  "overall_score": 0.3875,
+  "validation_status": "fail",
+  "issues": [
+    "Retrospective analysis not documented",
+    "Continuous improvement gaps: opportunities",
+    "Knowledge capture gaps: lessons, sharing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Document rollback or recovery approach for changes"
+  ],
+  "retrospective_analysis": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Retrospective analysis not documented"
+    ],
+    "recommendations": [],
+    "details": {
+      "review": false,
+      "performance": false,
+      "issues": false,
+      "success": true
+    }
+  },
+  "continuous_improvement": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Continuous improvement gaps: opportunities"
+    ],
+    "recommendations": [],
+    "details": {
+      "opportunities": false,
+      "plans": true,
+      "tracking": true,
+      "evidence": true
+    }
+  },
+  "system_evolution": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document rollback or recovery approach for changes"
+    ],
+    "details": {
+      "version_history": false,
+      "rationale": false,
+      "impact": true,
+      "rollback": false
+    }
+  },
+  "knowledge_capture": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Knowledge capture gaps: lessons, sharing"
+    ],
+    "recommendations": [],
+    "details": {
+      "lessons": false,
+      "knowledge_base": true,
+      "storage": true,
+      "sharing": false
+    }
+  },
+  "future_planning": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Roadmap or future direction not documented"
+    ],
+    "recommendations": [],
+    "details": {
+      "roadmap": false,
+      "priorities": false,
+      "resources": false,
+      "timeline": false
+    }
+  }
+}

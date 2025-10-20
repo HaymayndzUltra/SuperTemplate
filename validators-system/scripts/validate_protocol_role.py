@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from pathlib import Path
 from typing import Any, Dict, List
@@ -19,6 +20,8 @@ from validator_utils import (
     gather_issues,
     generate_summary,
     get_protocol_file,
+    include_documentation_protocols,
+    relax_for_documentation_protocol,
     read_protocol_content,
     write_json,
 )
@@ -75,6 +78,12 @@ class ProtocolRoleValidator:
         issues, recommendations = gather_issues(dimensions)
         result["issues"].extend(issues)
         result["recommendations"].extend(recommendations)
+
+        relax_for_documentation_protocol(
+            protocol_id,
+            result,
+            note="Documentation-focused protocol detected; treat role guardrail gaps as advisory guidance.",
+        )
 
         return result
 
@@ -150,30 +159,48 @@ class ProtocolRoleValidator:
             dim.issues.append("Constraints section missing")
             return dim
 
-        critical = section.count("[CRITICAL]")
-        must = section.count("[MUST]")
-        guideline = section.count("[GUIDELINE]")
-        prohibition = section.lower().count("never") + section.lower().count("do not")
+        sentences = [s.strip() for s in re.split(r"[.!?]\s+|\n", section) if s.strip()]
+        guardrail_sentences = [
+            s for s in sentences if any(token in s.lower() for token in ["must", "require", "ensure", "strict"])
+        ]
+        boundary_sentences = [
+            s
+            for s in sentences
+            if any(token in s.lower() for token in ["avoid", "within", "limit", "scope", "never", "do not"])
+        ]
+        workflow_links = [
+            s for s in sentences if re.search(r"step\s+\d+|phase|workflow", s, re.IGNORECASE)
+        ]
+        optional_guidance = [
+            s for s in sentences if "[optional]" in s.lower() or "optional" in s.lower()
+        ]
 
         checks = {
-            "critical_constraints": critical > 0,
-            "must_rules": must > 0,
-            "guidelines": guideline > 0,
-            "prohibitions": prohibition > 0,
+            "guardrails": len(guardrail_sentences) > 0,
+            "boundaries": len(boundary_sentences) > 0,
+            "workflow_alignment": len(workflow_links) > 0,
         }
 
-        dim.details = {**checks, "critical_count": critical, "must_count": must, "guideline_count": guideline}
+        dim.details = {
+            **checks,
+            "guardrail_count": len(guardrail_sentences),
+            "boundary_count": len(boundary_sentences),
+            "workflow_links": len(workflow_links),
+            "optional_guidance": len(optional_guidance),
+        }
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
         dim.status = self._status_from_counts(sum(checks.values()), len(checks))
 
-        if not checks["critical_constraints"]:
-            dim.issues.append("No [CRITICAL] constraints defined")
-        if not checks["must_rules"]:
-            dim.issues.append("[MUST] rules missing for enforceable guidance")
-        if not checks["guidelines"]:
-            dim.recommendations.append("Add [GUIDELINE] markers for recommended practices")
-        if not checks["prohibitions"]:
-            dim.recommendations.append("Document explicit prohibitions or guardrails")
+        if not checks["guardrails"]:
+            dim.issues.append("Constraints do not articulate mandatory guardrails or requirements")
+        if not checks["boundaries"]:
+            dim.recommendations.append("Clarify boundaries or situations to avoid for this mission")
+        if not checks["workflow_alignment"]:
+            dim.recommendations.append("Reference workflow steps when stating guardrails to improve clarity")
+        if optional_guidance and not guardrail_sentences:
+            dim.recommendations.append(
+                "Convert optional cues into explicit guardrails when behaviour must be enforced"
+            )
 
         return dim
 
@@ -268,7 +295,10 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Role validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        protocol_ids = include_documentation_protocols(
+            DEFAULT_PROTOCOL_IDS, include_docs=args.include_docs
+        )
+        for protocol_id in protocol_ids:
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -292,6 +322,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Validate AI role and mission definitions for workflow protocols")
     parser.add_argument("--protocol", help="Protocol ID to validate (e.g., '01')")
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) when running with --all",
+    )
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
 

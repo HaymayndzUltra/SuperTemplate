@@ -1,0 +1,91 @@
+{
+  "validator": "protocol_role",
+  "protocol_id": "03",
+  "validation_timestamp": "2025-10-20T14:54:58.532865Z",
+  "overall_score": 0.6416666666666666,
+  "validation_status": "fail",
+  "issues": [
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Success criteria absent from mission",
+    "Constraints do not articulate mandatory guardrails or requirements",
+    "Output structure missing (sections or tables)"
+  ],
+  "recommendations": [
+    "Reference workflow steps when stating guardrails to improve clarity"
+  ],
+  "role_definition": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Domain expertise keywords missing",
+      "Behavioral traits not articulated"
+    ],
+    "recommendations": [],
+    "details": {
+      "role_title": true,
+      "role_description": true,
+      "domain_expertise": false,
+      "behavioral_traits": false
+    }
+  },
+  "mission_statement": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Success criteria absent from mission"
+    ],
+    "recommendations": [],
+    "details": {
+      "mission_clarity": true,
+      "scope_boundaries": true,
+      "success_criteria": false,
+      "value_proposition": true
+    }
+  },
+  "constraints_guidelines": {
+    "score": 0.3333333333333333,
+    "status": "fail",
+    "issues": [
+      "Constraints do not articulate mandatory guardrails or requirements"
+    ],
+    "recommendations": [
+      "Reference workflow steps when stating guardrails to improve clarity"
+    ],
+    "details": {
+      "guardrails": false,
+      "boundaries": true,
+      "workflow_alignment": false,
+      "guardrail_count": 0,
+      "boundary_count": 1,
+      "workflow_links": 0,
+      "optional_guidance": 0
+    }
+  },
+  "output_expectations": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Output structure missing (sections or tables)"
+    ],
+    "recommendations": [],
+    "details": {
+      "format": true,
+      "structure": false,
+      "location": true,
+      "validation": true
+    }
+  },
+  "behavioral_guidance": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "communication_style": true,
+      "decision_making": true,
+      "error_handling": true,
+      "user_interaction": true
+    }
+  }
+}

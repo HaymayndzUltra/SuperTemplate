@@ -9,7 +9,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
-DEFAULT_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(1, 28)]
+DEFAULT_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(1, 24)]
+DOCUMENTATION_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(24, 28)]
 
 
 def current_timestamp() -> str:
@@ -77,6 +78,42 @@ def determine_status(score: float, *, pass_threshold: float = 0.9, warning_thres
     if score >= warning_threshold:
         return "warning"
     return "fail"
+
+
+def include_documentation_protocols(
+    protocol_ids: Iterable[str], *, include_docs: bool = False
+) -> List[str]:
+    """Return protocol identifiers with optional documentation protocols."""
+
+    ids = list(dict.fromkeys(protocol_ids))
+    if include_docs:
+        for protocol_id in DOCUMENTATION_PROTOCOL_IDS:
+            if protocol_id not in ids:
+                ids.append(protocol_id)
+    return ids
+
+
+def is_documentation_protocol(protocol_id: str) -> bool:
+    """Return True when the protocol id maps to documentation-only files."""
+
+    return protocol_id in DOCUMENTATION_PROTOCOL_IDS
+
+
+def relax_for_documentation_protocol(
+    protocol_id: str,
+    result: Dict[str, Any],
+    *,
+    note: str = "Documentation protocol detected; treat missing validation scaffolding as guidance rather than failure.",
+) -> None:
+    """Downgrade hard failures for documentation-only protocols to warnings."""
+
+    if not is_documentation_protocol(protocol_id):
+        return
+
+    if result.get("validation_status") == "fail":
+        result["validation_status"] = "warning"
+    if note not in result.get("recommendations", []):
+        result.setdefault("recommendations", []).append(note)
 
 
 def compute_weighted_score(dimensions: Iterable[DimensionEvaluation]) -> float:

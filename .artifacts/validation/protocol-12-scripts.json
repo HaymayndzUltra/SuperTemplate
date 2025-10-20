@@ -1,0 +1,108 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "12",
+  "validation_timestamp": "2025-10-20T14:54:58.731874Z",
+  "overall_score": 0.525,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/aggregate_evidence_4.py, scripts/run_protocol_4_gates.py, scripts/validate_gate_4_pre_audit.py, scripts/validate_gate_4_reporting.py, scripts/validate_prerequisites_4.py",
+    "Exit code handling not described",
+    "Logging requirements minimal or absent"
+  ],
+  "recommendations": [
+    "Reference scripts/script-registry.json for governance context",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/aggregate_evidence_4.py, scripts/run_protocol_4_gates.py, scripts/validate_gate_4_pre_audit.py, scripts/validate_gate_4_reporting.py, scripts/validate_prerequisites_4.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 6,
+      "commands": [
+        "bash\n# Prerequisite validation",
+        "python scripts/validate_prerequisites_4.py",
+        "python scripts/validate_gate_4_pre_audit.py --threshold 0.80",
+        "python scripts/validate_gate_4_reporting.py --threshold 0.95",
+        "python scripts/aggregate_evidence_4.py --output .artifacts/quality-audit/",
+        "python scripts/run_protocol_4_gates.py"
+      ],
+      "missing_scripts": [
+        "scripts/validate_prerequisites_4.py",
+        "scripts/validate_gate_4_pre_audit.py",
+        "scripts/validate_gate_4_reporting.py",
+        "scripts/aggregate_evidence_4.py",
+        "scripts/run_protocol_4_gates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Reference scripts/script-registry.json for governance context"
+    ],
+    "details": {
+      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": false,
+      "workflow_mapping": true,
+      "ownership": false,
+      "total_commands": 6,
+      "registered_commands": 0,
+      "registration_ratio": 0.0,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 6,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Exit code handling not described",
+      "Logging requirements minimal or absent"
+    ],
+    "recommendations": [],
+    "details": {
+      "exit_codes": false,
+      "fallback": true,
+      "logging": false,
+      "manual_paths": true
+    }
+  }
+}
