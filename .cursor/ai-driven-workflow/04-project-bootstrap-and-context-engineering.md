@@ -5,6 +5,10 @@
 
 # PROTOCOL 04: PROJECT BOOTSTRAP AND CONTEXT ENGINEERING (GOVERNANCE COMPLIANT)
 
+**Version**: v2.0.0  
+**Phase**: Phase 0: Foundation & Discovery  
+**Purpose**: Bootstrap project with context engineering, environment setup, and tooling configuration
+
 ## PREREQUISITES
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
@@ -32,7 +36,7 @@ You are an **AI Codebase Analyst & Context Architect**. Your mission is to conve
 
 ---
 
-## 00. PROJECT BOOTSTRAP WORKFLOW
+## WORKFLOW
 
 ### STEP 1: Brief Intake and Verification
 

@@ -1,0 +1,111 @@
+{
+  "validator": "protocol_identity",
+  "protocol_id": "25",
+  "validation_timestamp": "2025-10-20T01:35:57.624186Z",
+  "basic_information": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Protocol number not found in header",
+      "Protocol name not found or empty",
+      "Protocol version not found (semantic versioning expected)",
+      "Phase assignment not found or invalid in AGENTS.md",
+      "Purpose statement not found or too short",
+      "Scope definition not found"
+    ],
+    "elements_found": {
+      "protocol_number": false,
+      "protocol_name": false,
+      "protocol_version": false,
+      "phase_assignment": false,
+      "purpose_statement": false,
+      "scope_definition": false
+    }
+  },
+  "prerequisites": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "PREREQUISITES section not found"
+    ],
+    "categories_found": {}
+  },
+  "integration_points": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Input sources not documented",
+      "Output destinations not documented",
+      "Data formats not specified",
+      "Storage locations not documented"
+    ],
+    "elements_found": {
+      "input_sources": false,
+      "output_destinations": false,
+      "data_formats": false,
+      "storage_locations": false
+    }
+  },
+  "compliance_standards": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "QUALITY GATES section not found"
+    ],
+    "categories_found": {}
+  },
+  "documentation_quality": {
+    "score": 0.4788888888888889,
+    "status": "fail",
+    "issues": [
+      "Required section missing: PREREQUISITES",
+      "Required section missing: AI ROLE AND MISSION",
+      "Required section missing: WORKFLOW",
+      "Required section missing: QUALITY GATES",
+      "Required section missing: COMMUNICATION PROTOCOLS",
+      "Required section missing: HANDOFF CHECKLIST",
+      "Required section missing: EVIDENCE SUMMARY"
+    ],
+    "sections_found": {
+      "PREREQUISITES": false,
+      "AI ROLE AND MISSION": false,
+      "WORKFLOW": false,
+      "INTEGRATION POINTS": true,
+      "QUALITY GATES": false,
+      "COMMUNICATION PROTOCOLS": false,
+      "AUTOMATION HOOKS": true,
+      "HANDOFF CHECKLIST": false,
+      "EVIDENCE SUMMARY": false
+    },
+    "metrics": {
+      "completeness": 0.2222222222222222,
+      "clarity": 0.4,
+      "accessibility": 0.9,
+      "technical_accuracy": 0.9
+    }
+  },
+  "overall_score": 0.09577777777777778,
+  "validation_status": "fail",
+  "issues": [
+    "Protocol number not found in header",
+    "Protocol name not found or empty",
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Purpose statement not found or too short",
+    "Scope definition not found",
+    "PREREQUISITES section not found",
+    "Input sources not documented",
+    "Output destinations not documented",
+    "Data formats not specified",
+    "Storage locations not documented",
+    "QUALITY GATES section not found",
+    "Required section missing: PREREQUISITES",
+    "Required section missing: AI ROLE AND MISSION",
+    "Required section missing: WORKFLOW",
+    "Required section missing: QUALITY GATES",
+    "Required section missing: COMMUNICATION PROTOCOLS",
+    "Required section missing: HANDOFF CHECKLIST",
+    "Required section missing: EVIDENCE SUMMARY"
+  ],
+  "recommendations": []
+}

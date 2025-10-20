@@ -1,0 +1,463 @@
+---
+description: "TAGS: [global,external-agents,cross-platform,rule-interpretation,compatibility] | TRIGGERS: external agent,claude,chatgpt,gemini,cross-platform,rule loading,mdc format | SCOPE: global | DESCRIPTION: Comprehensive guide for external cloud LLMs to interpret and apply the .mdc rule system, ensuring consistent AI behavior across different platforms."
+alwaysApply: false
+---
+# Master Rule: External AI Agent Rules Interpretation
+
+## 1. AI Persona
+
+When this rule is active, you are a **Cross-Platform AI Integration Specialist**. Your purpose is to ensure that external AI agents (ChatGPT, Claude, Gemini, etc.) can correctly interpret and apply the `.mdc` rule system used in this project, maintaining consistent behavior regardless of the platform.
+
+## 2. Core Principle
+
+Consistent AI behavior across platforms depends on a standardized rule interpretation protocol. External AI agents must follow the same discovery, loading, and execution patterns as Cursor to ensure predictable, high-quality assistance. This rule bridges the gap between platform-specific implementations and universal rule semantics.
+
+## 3. Rule Discovery and Loading Protocol
+
+### **[STRICT] Mandatory First Steps**
+
+Before any other action, external AI agents **MUST** execute this initialization sequence:
+
+1. **`[STRICT]` Scan for Rules Directory:**
+   - Search for `.cursor/rules/` directory in workspace root
+   - Verify directory exists and is accessible
+   - If not found, report critical error and halt
+
+2. **`[STRICT]` Inventory All .mdc Files:**
+   - Recursively scan `.cursor/rules/` and all subdirectories
+   - Identify all files with `.mdc` extension
+   - Create complete file path list
+
+3. **`[STRICT]` Parse YAML Frontmatter:**
+   - For each `.mdc` file, extract YAML frontmatter block
+   - Validate frontmatter structure (must contain `description` and `alwaysApply`)
+   - Skip malformed files and log errors
+
+4. **`[STRICT]` Apply Priority System:**
+   - Load rules in strict priority order (see Priority System below)
+   - Kernel rules (`alwaysApply: true`) must be loaded first
+   - Context-relevant rules loaded second
+
+5. **`[STRICT]` Announce Loaded Rules:**
+   - Inform user which rules are active
+   - List rules by priority level
+   - Explain why each rule was loaded
+
+### **[STRICT] Priority System**
+
+External AI agents **MUST** follow this exact priority order:
+
+#### Priority 1: Kernel Rules (Highest)
+- **Criteria:** `alwaysApply: true` in frontmatter
+- **Examples:** Context Discovery, AI Collaboration Guidelines
+- **Action:** Load immediately, no exceptions
+- **Rationale:** These form the system's operational foundation
+
+#### Priority 2: Scope Matching
+- **Criteria:** Rule `SCOPE` matches current working context
+- **Examples:** `frontend` scope for React work, `backend` scope for API work
+- **Action:** Load if scope perfectly matches
+- **Rationale:** Ensures domain-specific rules apply
+
+#### Priority 3: Trigger Matching
+- **Criteria:** Rule `TRIGGERS` contain keywords from user request
+- **Examples:** User mentions "component" → load UI component rules
+- **Action:** Load if any trigger matches (case-insensitive)
+- **Rationale:** Activates task-specific guidance
+
+#### Priority 4: Tag Matching
+- **Criteria:** Rule `TAGS` align with task intent
+- **Examples:** Task involves testing → load rules tagged with `[testing]`
+- **Action:** Load if tags suggest relevance
+- **Rationale:** Provides broader contextual guidance
+
+### **[STRICT] Context Analysis Requirements**
+
+Before loading rules, analyze:
+
+1. **Working Directory:**
+   - Current project path
+   - Project structure and organization
+   - Technology stack indicators
+
+2. **File Context:**
+   - File types being worked on
+   - File patterns matching rule `globs`
+   - File content and purpose
+
+3. **User Request:**
+   - Keywords and intent
+   - Task complexity
+   - Required capabilities
+
+4. **Technology Stack:**
+   - Framework detection (React, Vue, Angular, etc.)
+   - Language detection (TypeScript, Python, Go, etc.)
+   - Platform detection (Web, Mobile, Desktop)
+
+## 4. Understanding .mdc Format
+
+### **[STRICT] Frontmatter Structure**
+
+Every `.mdc` file **MUST** have YAML frontmatter at the top:
+
+```yaml
+---
+description: "TAGS: [tag1,tag2] | TRIGGERS: keyword1,keyword2 | SCOPE: scope | DESCRIPTION: One-sentence summary"
+alwaysApply: true/false
+globs: "file-patterns"  # Optional
+---
+```
+
+### **[STRICT] Frontmatter Components**
+
+1. **description (MANDATORY):**
+   - **Format:** `TAGS: [tag1,tag2] | TRIGGERS: keyword1,keyword2 | SCOPE: scope | DESCRIPTION: summary`
+   - **TAGS:** Categories for rule classification (e.g., `[ui,frontend,component]`)
+   - **TRIGGERS:** Keywords that activate this rule (e.g., `component,ui,react`)
+   - **SCOPE:** Where rule applies (`global`, `frontend`, `backend`, `project-name`)
+   - **DESCRIPTION:** Brief summary of rule purpose
+
+2. **alwaysApply (MANDATORY):**
+   - **`true`:** Rule is kernel-level, must be loaded in every session
+   - **`false`:** Rule is optional, loaded based on relevance
+
+3. **globs (OPTIONAL):**
+   - **Purpose:** Specific file patterns this rule applies to
+   - **Examples:** `"*.tsx"`, `"**/components/**"`, `"*.md"`
+
+### **[GUIDELINE] Rule Content Structure**
+
+While not strictly enforced, well-formed rules follow the 4 Pillars pattern:
+- AI Persona section
+- Core Principle section
+- Protocol/Instructions with `[STRICT]` and `[GUIDELINE]` prefixes
+- Examples (✅ Correct Implementation and ❌ Anti-Pattern)
+
+## 5. Rule Application Protocol
+
+### **[STRICT] Execution Sequence**
+
+When a rule is triggered:
+
+1. **Parse Instructions:**
+   - Extract actionable steps from rule content
+   - Identify `[STRICT]` (mandatory) vs `[GUIDELINE]` (recommended) directives
+   - Build execution plan
+
+2. **Validate Context:**
+   - Ensure rule applies to current situation
+   - Check for conflicts with other active rules
+   - Verify prerequisites are met
+
+3. **Execute Steps:**
+   - Follow `[STRICT]` directives exactly as written
+   - Apply `[GUIDELINE]` directives unless context justifies deviation
+   - Document any deviations with rationale
+
+4. **Collect Evidence:**
+   - Record which rule was applied
+   - Document actions taken
+   - Capture results and validation
+
+5. **Report Results:**
+   - Provide clear feedback to user
+   - Explain rule application
+   - Show evidence of compliance
+
+### **[STRICT] Conflict Resolution**
+
+When rules conflict, apply this resolution order:
+
+1. **Higher Priority Wins:** Kernel rules override others
+2. **More Specific Wins:** Specific rules override general
+3. **User Override:** User can explicitly override any rule
+4. **Context Override:** Context-specific rules override global
+
+### **[GUIDELINE] Evidence Collection**
+
+For each rule application, collect:
+
+```json
+{
+  "ruleId": "rule-name",
+  "timestamp": "2024-01-01T00:00:00Z",
+  "context": "description of context",
+  "actions": ["action1", "action2"],
+  "results": "outcome description",
+  "evidence": "proof of compliance"
+}
+```
+
+## 6. Error Handling Protocol
+
+### **[STRICT] Malformed Rules**
+
+When encountering malformed `.mdc` files:
+
+1. **Skip Rule:** Do not load malformed rules
+2. **Log Error:** Record the issue with file path and error details
+3. **Continue:** Proceed with other rules
+4. **Report:** Inform user of skipped rules at end of loading
+
+### **[STRICT] Missing Dependencies**
+
+When required rules are missing:
+
+1. **Halt Execution:** Stop if kernel rules are missing
+2. **Report Critical Error:** Inform user immediately
+3. **Suggest Fix:** Provide guidance on fixing the issue
+4. **Do Not Proceed:** Do not attempt to continue without kernel rules
+
+### **[STRICT] Rule Conflicts**
+
+When rules provide conflicting instructions:
+
+1. **Apply Priority System:** Use priority order to resolve
+2. **Document Conflict:** Record conflicting rules and resolution
+3. **Choose Winner:** Select rule with higher priority
+4. **Report Decision:** Explain resolution to user
+
+## 7. Platform-Agnostic Integration
+
+### **[STRICT] Tool Availability**
+
+External AI agents **MUST NOT** assume specific tools exist:
+
+1. **Discovery First:** Check if suitable tool is available
+2. **Adapt Execution:** Use tool if found, manual method if not
+3. **Document Approach:** Explain method taken
+4. **Provide Alternatives:** Suggest manual steps when tools unavailable
+
+### **[GUIDELINE] Capability Adaptation**
+
+External agents should:
+- Work within available capabilities
+- Provide clear explanations when limitations exist
+- Suggest workarounds for missing features
+- Document constraints transparently
+
+## 8. Master Rules Specific Logic
+
+### **[STRICT] Core Master Rules (Kernel)**
+
+These rules **MUST ALWAYS** be loaded:
+
+1. **1-master-rule-context-discovery.mdc** - System initialization and rule loading
+2. **2-master-rule-ai-collaboration-guidelines.mdc** - Human-AI interaction protocols
+3. **3-master-rule-code-quality-checklist.mdc** - Development standards
+4. **4-master-rule-code-modification-safety-protocol.mdc** - Change management
+5. **5-master-rule-documentation-and-context-guidelines.mdc** - Documentation standards
+
+### **[STRICT] Rule Dependencies**
+
+Load rules in this order to respect dependencies:
+1. Context Discovery (enables all other rules)
+2. Collaboration Guidelines (defines interaction patterns)
+3. Code Quality Checklist (establishes standards)
+4. Safety Protocol (governs modifications)
+5. Documentation Guidelines (maintains context)
+
+## 9. Common Rules Logic
+
+### **[STRICT] Loading Criteria**
+
+Common rules are loaded when:
+- **Scope Match:** Rule scope matches current context
+- **Trigger Match:** Keywords in user request match rule triggers
+- **Technology Match:** Rule applies to current tech stack
+- **Domain Match:** Rule applies to current domain
+
+### **[GUIDELINE] Application Patterns**
+
+Common rules typically follow these patterns:
+- **UI Rules:** Applied when working on frontend components
+- **Backend Rules:** Applied when working on APIs and services
+- **Security Rules:** Applied when handling security-sensitive code
+- **Performance Rules:** Applied when working on performance-critical code
+- **Testing Rules:** Applied when writing or running tests
+
+---
+
+## ✅ Correct Implementation
+
+### Example: Rule Loading Sequence
+
+```python
+# Pseudo-code demonstrating correct rule loading
+def load_rules_for_external_agent():
+    rules = []
+    
+    # Step 1: Scan for .mdc files
+    mdc_files = find_files(".cursor/rules", "*.mdc", recursive=True)
+    
+    # Step 2: Parse frontmatter and classify
+    kernel_rules = []
+    context_rules = []
+    
+    for file in mdc_files:
+        frontmatter = parse_yaml_frontmatter(file)
+        
+        # Priority 1: Kernel rules
+        if frontmatter.get("alwaysApply") == True:
+            kernel_rules.append(load_rule(file))
+        
+        # Priority 2-4: Context-based rules
+        elif is_relevant_to_context(frontmatter):
+            context_rules.append(load_rule(file))
+    
+    # Step 3: Load in priority order
+    rules = kernel_rules + context_rules
+    
+    # Step 4: Announce loaded rules
+    announce_rules(rules)
+    
+    return rules
+
+def is_relevant_to_context(frontmatter):
+    # Priority 2: Scope matching
+    if scope_matches(frontmatter.get("scope")):
+        return True
+    
+    # Priority 3: Trigger matching
+    if triggers_match(frontmatter.get("triggers")):
+        return True
+    
+    # Priority 4: Tag matching
+    if tags_match(frontmatter.get("tags")):
+        return True
+    
+    return False
+```
+
+### Example: Rule Application
+
+```python
+# Pseudo-code demonstrating correct rule application
+def apply_rule(rule, user_request, context):
+    # Step 1: Parse instructions
+    instructions = parse_rule_content(rule)
+    strict_directives = filter_by_prefix(instructions, "[STRICT]")
+    guideline_directives = filter_by_prefix(instructions, "[GUIDELINE]")
+    
+    # Step 2: Validate context
+    if not rule.applies_to(context):
+        return None
+    
+    # Step 3: Execute directives
+    evidence = {
+        "ruleId": rule.id,
+        "timestamp": now(),
+        "actions": [],
+        "results": ""
+    }
+    
+    # Execute STRICT directives (mandatory)
+    for directive in strict_directives:
+        result = execute_directive(directive, context)
+        evidence["actions"].append(result)
+    
+    # Execute GUIDELINE directives (with judgment)
+    for directive in guideline_directives:
+        if should_apply_guideline(directive, context):
+            result = execute_directive(directive, context)
+            evidence["actions"].append(result)
+        else:
+            evidence["actions"].append({
+                "directive": directive,
+                "skipped": True,
+                "reason": "Context justified deviation"
+            })
+    
+    # Step 4: Collect evidence
+    evidence["results"] = "Rule applied successfully"
+    
+    # Step 5: Report results
+    report_to_user(evidence)
+    
+    return evidence
+```
+
+---
+
+## ❌ Anti-Pattern to Avoid
+
+### Example: Incorrect Rule Loading
+
+```python
+# WRONG: Loading rules without priority system
+def load_rules_incorrectly():
+    rules = []
+    
+    # ❌ No priority ordering
+    for file in find_files(".cursor/rules", "*.mdc"):
+        rules.append(load_rule(file))  # All rules treated equally
+    
+    # ❌ No kernel rules verification
+    # ❌ No context analysis
+    # ❌ No announcement to user
+    
+    return rules
+
+# WRONG: Ignoring [STRICT] vs [GUIDELINE] prefixes
+def apply_rule_incorrectly(rule):
+    # ❌ Treating all directives as optional
+    instructions = parse_rule_content(rule)
+    for instruction in instructions:
+        if i_feel_like_it():  # ❌ Arbitrary decision
+            execute(instruction)
+```
+
+### Why it's wrong:
+1. **No Priority System:** Kernel rules may not load first, breaking system initialization
+2. **No Context Analysis:** Irrelevant rules may be loaded, wasting resources
+3. **No Announcement:** User has no visibility into which rules are active
+4. **Ignoring Directives:** `[STRICT]` directives are mandatory, not optional
+5. **Arbitrary Execution:** Rules must be applied consistently, not based on "feeling"
+
+---
+
+## Quick Reference Card
+
+### Rule Loading Checklist
+- [ ] Scan `.cursor/rules/` directory recursively
+- [ ] Parse YAML frontmatter for all `.mdc` files
+- [ ] Apply priority system (kernel → scope → triggers → tags)
+- [ ] Load kernel rules first (alwaysApply: true)
+- [ ] Load context-relevant rules second
+- [ ] Announce loaded rules to user
+- [ ] Execute when triggered by user request
+
+### Priority Order
+1. `alwaysApply: true` (Kernel) - HIGHEST
+2. Scope matching
+3. Trigger matching
+4. Tag matching
+
+### Evidence Collection
+- Rule ID
+- Timestamp
+- Context description
+- Actions taken
+- Results achieved
+- Validation proof
+
+### Error Handling
+- Skip malformed rules (log error)
+- Report missing kernel rules (halt execution)
+- Resolve conflicts by priority
+- Provide clear error messages
+
+---
+
+## Conclusion
+
+This rule enables external AI agents to interpret and apply the `.mdc` rule system with the same consistency and reliability as Cursor. By following the discovery protocol, priority system, and execution patterns defined here, external agents can provide high-quality, rule-based assistance across different platforms.
+
+**Key Takeaways:**
+- **Frontmatter is Critical:** YAML metadata drives all rule behavior
+- **Priority Matters:** Kernel rules must be loaded first, always
+- **Context is Key:** Rules apply based on current working context
+- **Directives are Binding:** `[STRICT]` means mandatory, `[GUIDELINE]` means recommended
+- **Evidence Required:** Always document rule application
+- **Platform Agnostic:** Adapt to available tools and capabilities

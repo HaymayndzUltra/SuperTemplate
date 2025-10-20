@@ -1,0 +1,572 @@
+{
+  "validation_timestamp": "2025-10-20T01:35:57.634693Z",
+  "protocols": [
+    {
+      "protocol_id": "01",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "02",
+      "quality_score": 0.9111111111111112,
+      "metrics": {
+        "completeness": 0.7777777777777778,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": false,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "03",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "04",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "05",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "06",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "07",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "08",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "09",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "10",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "11",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "12",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "13",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "14",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "15",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "16",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "17",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "18",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "19",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "20",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "21",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "22",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "23",
+      "quality_score": 0.9555555555555556,
+      "metrics": {
+        "completeness": 0.8888888888888888,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": true,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": true,
+        "COMMUNICATION PROTOCOLS": true,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": true,
+        "EVIDENCE SUMMARY": true
+      }
+    },
+    {
+      "protocol_id": "24",
+      "quality_score": 0.6444444444444445,
+      "metrics": {
+        "completeness": 0.1111111111111111,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": true,
+        "AI ROLE AND MISSION": false,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": false,
+        "QUALITY GATES": false,
+        "COMMUNICATION PROTOCOLS": false,
+        "AUTOMATION HOOKS": false,
+        "HANDOFF CHECKLIST": false,
+        "EVIDENCE SUMMARY": false
+      }
+    },
+    {
+      "protocol_id": "25",
+      "quality_score": 0.4788888888888889,
+      "metrics": {
+        "completeness": 0.2222222222222222,
+        "clarity": 0.4,
+        "accessibility": 0.9,
+        "technical_accuracy": 0.9
+      },
+      "sections_found": {
+        "PREREQUISITES": false,
+        "AI ROLE AND MISSION": false,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": true,
+        "QUALITY GATES": false,
+        "COMMUNICATION PROTOCOLS": false,
+        "AUTOMATION HOOKS": true,
+        "HANDOFF CHECKLIST": false,
+        "EVIDENCE SUMMARY": false
+      }
+    },
+    {
+      "protocol_id": "26",
+      "quality_score": 0.51,
+      "metrics": {
+        "completeness": 0.0,
+        "clarity": 0.7,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": false,
+        "AI ROLE AND MISSION": false,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": false,
+        "QUALITY GATES": false,
+        "COMMUNICATION PROTOCOLS": false,
+        "AUTOMATION HOOKS": false,
+        "HANDOFF CHECKLIST": false,
+        "EVIDENCE SUMMARY": false
+      }
+    },
+    {
+      "protocol_id": "27",
+      "quality_score": 0.6,
+      "metrics": {
+        "completeness": 0.0,
+        "clarity": 1.0,
+        "accessibility": 1.0,
+        "technical_accuracy": 1.0
+      },
+      "sections_found": {
+        "PREREQUISITES": false,
+        "AI ROLE AND MISSION": false,
+        "WORKFLOW": false,
+        "INTEGRATION POINTS": false,
+        "QUALITY GATES": false,
+        "COMMUNICATION PROTOCOLS": false,
+        "AUTOMATION HOOKS": false,
+        "HANDOFF CHECKLIST": false,
+        "EVIDENCE SUMMARY": false
+      }
+    }
+  ]
+}

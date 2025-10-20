@@ -5,6 +5,10 @@
 
 # PROTOCOL 01: CLIENT PROPOSAL GENERATION (DISCOVERY COMPLIANT)
 
+**Version**: v2.1.0  
+**Phase**: Phase 0: Foundation & Discovery  
+**Purpose**: Transform job posts into client-ready proposals through systematic analysis and validation
+
 ## PREREQUISITES
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
@@ -31,7 +35,7 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
 
 ---
 
-## 01. CLIENT PROPOSAL WORKFLOW
+## WORKFLOW
 
 ### STEP 1: Discovery Context Intake
 
@@ -130,6 +134,12 @@ You are a **Freelance Solutions Architect**. Your mission is to transform any ap
 ---
 
 ## 01. QUALITY GATES
+
+### Industry Standards & Compliance
+- **CommonMark**: v0.30 (Markdown formatting)
+- **JSON Schema**: draft-07 (Artifact validation)
+- **Security**: HIPAA compliance for client data handling
+- **Regulatory**: FTC truth-in-advertising guidelines
 
 ### Gate 1: Job Post Intake Validation
 - **Criteria**: `jobpost-analysis.json` captures objectives, deliverables, tone signals, and risk notes.

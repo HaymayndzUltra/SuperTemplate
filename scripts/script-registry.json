@@ -74,6 +74,8 @@
     "validate-brief": "scripts/validate_brief.py",
     "validate-compliance-assets": "scripts/validate_compliance_assets.py",
     "validate-ai-directives": "scripts/validate_ai_directives.py",
+    "validate-protocol-identity": "scripts/validate_protocol_identity.py",
+    "test-protocol-identity-validator": "scripts/test_protocol_identity_validator.sh",
     "validation-gates": "scripts/validation_gates.py"
   },
   "retrospective": {

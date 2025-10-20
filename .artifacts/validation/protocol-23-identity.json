@@ -1,0 +1,94 @@
+{
+  "validator": "protocol_identity",
+  "protocol_id": "23",
+  "validation_timestamp": "2025-10-20T01:35:57.617922Z",
+  "basic_information": {
+    "score": 0.3333333333333333,
+    "status": "fail",
+    "issues": [
+      "Protocol version not found (semantic versioning expected)",
+      "Phase assignment not found or invalid in AGENTS.md",
+      "Purpose statement not found or too short",
+      "Scope definition not found"
+    ],
+    "elements_found": {
+      "protocol_number": true,
+      "protocol_name": "Quality Audit Orchestrator and Protocol 22: Implementation Retrospective",
+      "protocol_version": false,
+      "phase_assignment": false,
+      "purpose_statement": false,
+      "scope_definition": false
+    }
+  },
+  "prerequisites": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "categories_found": {
+      "required_artifacts": true,
+      "required_approvals": true,
+      "system_state": true
+    }
+  },
+  "integration_points": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "elements_found": {
+      "input_sources": true,
+      "output_destinations": true,
+      "data_formats": true,
+      "storage_locations": true
+    }
+  },
+  "compliance_standards": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Industry standards not documented",
+      "Automated quality gates config not found: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/config/protocol_gates/23.yaml"
+    ],
+    "categories_found": {
+      "industry_standards": false,
+      "security_requirements": true,
+      "regulatory_compliance": true,
+      "quality_gates": false
+    }
+  },
+  "documentation_quality": {
+    "score": 0.9555555555555556,
+    "status": "warning",
+    "issues": [
+      "Required section missing: WORKFLOW"
+    ],
+    "sections_found": {
+      "PREREQUISITES": true,
+      "AI ROLE AND MISSION": true,
+      "WORKFLOW": false,
+      "INTEGRATION POINTS": true,
+      "QUALITY GATES": true,
+      "COMMUNICATION PROTOCOLS": true,
+      "AUTOMATION HOOKS": true,
+      "HANDOFF CHECKLIST": true,
+      "EVIDENCE SUMMARY": true
+    },
+    "metrics": {
+      "completeness": 0.8888888888888888,
+      "clarity": 1.0,
+      "accessibility": 1.0,
+      "technical_accuracy": 1.0
+    }
+  },
+  "overall_score": 0.7577777777777778,
+  "validation_status": "fail",
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Purpose statement not found or too short",
+    "Scope definition not found",
+    "Industry standards not documented",
+    "Automated quality gates config not found: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/config/protocol_gates/23.yaml",
+    "Required section missing: WORKFLOW"
+  ],
+  "recommendations": []
+}
