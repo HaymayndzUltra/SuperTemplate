@@ -1,8 +1,8 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "18",
-  "validation_timestamp": "2025-10-20T14:54:58.855293Z",
-  "overall_score": 0.65,
+  "validation_timestamp": "2025-10-20T16:35:28.102824Z",
+  "overall_score": 0.7,
   "validation_status": "fail",
   "issues": [
     "Protocol evidence directory not referenced",
@@ -29,7 +29,7 @@
     }
   },
   "storage_structure": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
     "issues": [
       "Protocol evidence directory not referenced"
@@ -42,7 +42,7 @@
       "protocol_directory": false,
       "subdirectories": false,
       "permissions": false,
-      "naming": false
+      "naming": true
     }
   },
   "manifest_completeness": {

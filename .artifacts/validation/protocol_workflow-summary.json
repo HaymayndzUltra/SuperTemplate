@@ -1,0 +1,48 @@
+{
+  "validator": "protocol_workflow",
+  "validation_timestamp": "2025-10-20T16:29:29.174360Z",
+  "total_protocols": 1,
+  "pass_count": 0,
+  "warning_count": 1,
+  "fail_count": 0,
+  "average_score": 0.8500000000000001,
+  "protocols": [
+    {
+      "protocol_id": "02",
+      "status": "warning",
+      "score": 0.8500000000000001
+    }
+  ],
+  "dimensions": {
+    "workflow_structure": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "step_definitions": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "action_markers": {
+      "average_score": 0.6666666666666666,
+      "pass_count": 0,
+      "warning_count": 1,
+      "fail_count": 0
+    },
+    "halt_conditions": {
+      "average_score": 0.5,
+      "pass_count": 0,
+      "warning_count": 0,
+      "fail_count": 1
+    },
+    "evidence_tracking": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    }
+  }
+}

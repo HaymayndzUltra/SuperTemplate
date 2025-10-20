@@ -1,28 +1,23 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "15",
-  "validation_timestamp": "2025-10-20T14:54:58.791455Z",
-  "overall_score": 0.55,
+  "validation_timestamp": "2025-10-20T16:35:28.045710Z",
+  "overall_score": 0.7625000000000001,
   "validation_status": "fail",
   "issues": [
-    "Missing user interaction prompts: clarification, decision_points, feedback",
-    "Limited progress terminology in communications"
+    "Missing user interaction prompts: clarification, decision_points, feedback"
   ],
-  "recommendations": [
-    "Add time or effort estimates to communication prompts"
-  ],
+  "recommendations": [],
   "status_announcements": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Add time or effort estimates to communication prompts"
-    ],
+    "recommendations": [],
     "details": {
       "phase_transitions": true,
       "branded_announcements": true,
       "completion_callouts": true,
-      "time_estimates": false
+      "time_estimates": true
     }
   },
   "user_interaction": {
@@ -52,20 +47,20 @@
     }
   },
   "progress_tracking": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Limited progress terminology in communications"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "terms": [
+        "progress",
+        "%",
         "complete"
       ],
-      "progress_terms": false,
-      "timeline": false,
-      "current_activity": false,
-      "next_steps": false
+      "progress_terms": true,
+      "timeline": true,
+      "current_activity": true,
+      "next_steps": true
     }
   },
   "evidence_communication": {

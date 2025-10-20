@@ -1,14 +1,12 @@
 {
   "validator": "protocol_role",
   "protocol_id": "11",
-  "validation_timestamp": "2025-10-20T14:54:58.707109Z",
-  "overall_score": 0.7708333333333333,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-10-20T16:35:27.973229Z",
+  "overall_score": 0.875,
+  "validation_status": "warning",
   "issues": [
     "Domain expertise keywords missing",
-    "Value proposition not captured",
-    "Constraints do not articulate mandatory guardrails or requirements",
-    "Output structure missing (sections or tables)"
+    "Value proposition not captured"
   ],
   "recommendations": [],
   "role_definition": {
@@ -40,32 +38,28 @@
     }
   },
   "constraints_guidelines": {
-    "score": 0.6666666666666666,
-    "status": "warning",
-    "issues": [
-      "Constraints do not articulate mandatory guardrails or requirements"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "guardrails": false,
+      "guardrails": true,
       "boundaries": true,
       "workflow_alignment": true,
-      "guardrail_count": 0,
-      "boundary_count": 1,
-      "workflow_links": 1,
+      "guardrail_count": 10,
+      "boundary_count": 9,
+      "workflow_links": 10,
       "optional_guidance": 0
     }
   },
   "output_expectations": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Output structure missing (sections or tables)"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "format": true,
-      "structure": false,
+      "structure": true,
       "location": true,
       "validation": true
     }

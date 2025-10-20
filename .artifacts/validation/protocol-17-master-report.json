@@ -1,21 +1,21 @@
 {
   "validator": "master_validator",
   "protocol_id": "17",
-  "validation_timestamp": "2025-10-20T14:54:58.844098Z",
-  "overall_score": 0.6007777777777779,
+  "validation_timestamp": "2025-10-20T16:35:28.094381Z",
+  "overall_score": 0.7595833333333334,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8911111111111112
+      "score": 0.9333333333333332
     },
     "protocol_role": {
-      "status": "fail",
-      "score": 0.7041666666666666
+      "status": "warning",
+      "score": 0.8374999999999999
     },
     "protocol_workflow": {
-      "status": "fail",
-      "score": 0.15000000000000002
+      "status": "pass",
+      "score": 0.9000000000000001
     },
     "protocol_quality_gates": {
       "status": "fail",
@@ -23,58 +23,49 @@
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.5625
+      "score": 0.6125
     },
     "protocol_communication": {
       "status": "fail",
-      "score": 0.5875
+      "score": 0.7625000000000001
     },
     "protocol_evidence": {
       "status": "fail",
-      "score": 0.6
+      "score": 0.6875
     },
     "protocol_handoff": {
       "status": "fail",
-      "score": 0.6875
+      "score": 0.7375
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.3625
+      "score": 0.525
     },
     "protocol_reflection": {
-      "status": "fail",
-      "score": 0.6375
+      "status": "warning",
+      "score": 0.775
     }
   },
   "issues": [
-    "Purpose statement not found or too short",
     "Industry standards not documented",
-    "Required section missing: WORKFLOW",
     "Domain expertise keywords missing",
     "Value proposition not captured",
-    "Constraints do not articulate mandatory guardrails or requirements",
-    "WORKFLOW section missing",
-    "Workflow steps missing",
-    "Action markers absent because workflow missing",
-    "No workflow content to evaluate halt conditions",
+    "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_13.py, scripts/run_protocol_13_gates.py, scripts/validate_gate_13_resolution.py, scripts/validate_gate_13_severity.py, scripts/validate_prerequisites_13.py",
     "Exit code handling not described",
     "Missing user interaction prompts: clarification, decision_points, feedback",
-    "Limited progress terminology in communications",
     "Protocol evidence directory not referenced",
-    "Traceability gaps: inputs, outputs",
-    "Limited verification language detected",
+    "Traceability gaps: inputs",
     "Sign-off guidance missing: approvals, reviewers, confirmation",
-    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Reasoning patterns not explicitly named",
     "Learning mechanisms incomplete: improvement_tracking, adaptation",
     "Self-awareness statements missing",
-    "Continuous improvement gaps: opportunities, tracking",
+    "Continuous improvement gaps: opportunities",
     "Knowledge capture gaps: lessons, knowledge_base, sharing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
-    "Reference workflow steps when stating guardrails to improve clarity",
     "Outline decision-making expectations",
     "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/17.yaml when automated gating is expected",
@@ -83,8 +74,6 @@
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",
-    "Add time or effort estimates to communication prompts",
-    "Document storage permissions or access requirements",
     "Link artifacts to their inputs/outputs inside the manifest",
     "Optionally outline archival format, retention, retrieval, and cleanup steps"
   ]

@@ -1,8 +1,8 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "14",
-  "validation_timestamp": "2025-10-20T14:54:58.779109Z",
-  "overall_score": 0.225,
+  "validation_timestamp": "2025-10-20T16:35:28.034691Z",
+  "overall_score": 0.375,
   "validation_status": "fail",
   "issues": [
     "Retrospective analysis not documented",
@@ -40,14 +40,14 @@
     }
   },
   "system_evolution": {
-    "score": 0.25,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
-      "version_history": false,
-      "rationale": false,
-      "impact": false,
+      "version_history": true,
+      "rationale": true,
+      "impact": true,
       "rollback": true
     }
   },

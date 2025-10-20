@@ -1,38 +1,38 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "17",
-  "validation_timestamp": "2025-10-20T14:54:58.839773Z",
-  "overall_score": 0.6375,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-10-20T16:35:28.089910Z",
+  "overall_score": 0.775,
+  "validation_status": "warning",
   "issues": [
-    "Continuous improvement gaps: opportunities, tracking",
+    "Continuous improvement gaps: opportunities",
     "Knowledge capture gaps: lessons, knowledge_base, sharing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [],
   "retrospective_analysis": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "review": true,
       "performance": true,
-      "issues": false,
+      "issues": true,
       "success": true
     }
   },
   "continuous_improvement": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
-      "Continuous improvement gaps: opportunities, tracking"
+      "Continuous improvement gaps: opportunities"
     ],
     "recommendations": [],
     "details": {
       "opportunities": false,
       "plans": true,
-      "tracking": false,
+      "tracking": true,
       "evidence": true
     }
   },

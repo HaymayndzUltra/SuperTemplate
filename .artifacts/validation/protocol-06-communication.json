@@ -1,8 +1,8 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "06",
-  "validation_timestamp": "2025-10-20T14:54:58.611481Z",
-  "overall_score": 0.675,
+  "validation_timestamp": "2025-10-20T16:35:27.891316Z",
+  "overall_score": 0.7125,
   "validation_status": "fail",
   "issues": [
     "Missing user interaction prompts: clarification, feedback",
@@ -48,7 +48,7 @@
     }
   },
   "progress_tracking": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
     "issues": [
       "Limited progress terminology in communications"
@@ -60,7 +60,7 @@
         "complete"
       ],
       "progress_terms": false,
-      "timeline": false,
+      "timeline": true,
       "current_activity": false,
       "next_steps": false
     }

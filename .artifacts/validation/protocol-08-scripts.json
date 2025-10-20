@@ -1,13 +1,11 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "08",
-  "validation_timestamp": "2025-10-20T14:54:58.651885Z",
-  "overall_score": 0.5861111111111111,
+  "validation_timestamp": "2025-10-20T16:35:27.923700Z",
+  "overall_score": 0.7111111111111111,
   "validation_status": "fail",
   "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_2.py, scripts/run_protocol_2_gates.py, scripts/validate_high_level_tasks.py, scripts/validate_prerequisites_2.py, scripts/validate_rule_index.py, scripts/validate_task_decomposition.py",
-    "Exit code handling not described",
-    "Logging requirements minimal or absent"
+    "Referenced command paths not found: scripts/aggregate_evidence_2.py, scripts/run_protocol_2_gates.py, scripts/validate_high_level_tasks.py, scripts/validate_prerequisites_2.py, scripts/validate_rule_index.py, scripts/validate_task_decomposition.py"
   ],
   "recommendations": [
     "Reference scripts/script-registry.json for governance context",
@@ -46,18 +44,18 @@
     }
   },
   "registry_alignment": {
-    "score": 0.3055555555555556,
+    "score": 0.5555555555555556,
     "status": "fail",
     "issues": [],
     "recommendations": [
       "Reference scripts/script-registry.json for governance context"
     ],
     "details": {
-      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": false,
       "workflow_mapping": true,
-      "ownership": false,
+      "ownership": true,
       "total_commands": 9,
       "registered_commands": 2,
       "registration_ratio": 0.2222222222222222,
@@ -95,17 +93,14 @@
     }
   },
   "error_handling": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Exit code handling not described",
-      "Logging requirements minimal or absent"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "exit_codes": false,
+      "exit_codes": true,
       "fallback": true,
-      "logging": false,
+      "logging": true,
       "manual_paths": true
     }
   }

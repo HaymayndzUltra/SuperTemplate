@@ -1,8 +1,8 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "01",
-  "validation_timestamp": "2025-10-20T14:54:58.469521Z",
-  "overall_score": 0.8875,
+  "validation_timestamp": "2025-10-20T16:35:27.790120Z",
+  "overall_score": 0.8875000000000001,
   "validation_status": "warning",
   "issues": [
     "Missing user interaction prompts: clarification"

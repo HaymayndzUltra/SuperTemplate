@@ -1,33 +1,41 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "17",
-  "validation_timestamp": "2025-10-20T14:54:58.837001Z",
-  "overall_score": 0.3625,
+  "validation_timestamp": "2025-10-20T16:35:28.086662Z",
+  "overall_score": 0.525,
   "validation_status": "fail",
   "issues": [
-    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Reasoning patterns not explicitly named",
     "Learning mechanisms incomplete: improvement_tracking, adaptation",
     "Self-awareness statements missing"
   ],
   "recommendations": [],
   "reasoning_patterns": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
     "issues": [
-      "Workflow section missing; cannot evaluate reasoning patterns"
+      "Reasoning patterns not explicitly named"
     ],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "matches": [
+        "strategy"
+      ],
+      "pattern_terms": false,
+      "explanations": false,
+      "improvement": false,
+      "example_references": true
+    }
   },
   "decision_trees": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "decision_points": true,
       "criteria": true,
-      "outcomes": false,
+      "outcomes": true,
       "logging": true
     }
   },
@@ -58,7 +66,7 @@
     }
   },
   "meta_cognition": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
     "issues": [
       "Self-awareness statements missing"
@@ -66,7 +74,7 @@
     "recommendations": [],
     "details": {
       "awareness": false,
-      "monitoring": false,
+      "monitoring": true,
       "correction": false,
       "improvement": false
     }

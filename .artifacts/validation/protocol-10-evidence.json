@@ -1,14 +1,13 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "10",
-  "validation_timestamp": "2025-10-20T14:54:58.695031Z",
-  "overall_score": 0.65,
+  "validation_timestamp": "2025-10-20T16:35:27.961634Z",
+  "overall_score": 0.7,
   "validation_status": "fail",
   "issues": [
     "Traceability gaps: inputs, outputs"
   ],
   "recommendations": [
-    "Document storage permissions or access requirements",
     "Document timestamps or hashes for manifest entries",
     "Link artifacts to their inputs/outputs inside the manifest",
     "Optionally outline archival format, retention, retrieval, and cleanup steps"
@@ -29,12 +28,10 @@
     }
   },
   "storage_structure": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
-    "recommendations": [
-      "Document storage permissions or access requirements"
-    ],
+    "recommendations": [],
     "details": {
       "directories": [
         ".artifacts/protocol-21/",
@@ -45,7 +42,7 @@
       ],
       "protocol_directory": true,
       "subdirectories": true,
-      "permissions": false,
+      "permissions": true,
       "naming": false
     }
   },

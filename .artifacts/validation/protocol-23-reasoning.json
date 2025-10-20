@@ -1,28 +1,34 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "23",
-  "validation_timestamp": "2025-10-20T14:54:58.958700Z",
-  "overall_score": 0.35000000000000003,
+  "validation_timestamp": "2025-10-20T16:35:28.178085Z",
+  "overall_score": 0.5125000000000001,
   "validation_status": "fail",
   "issues": [
-    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
     "Learning mechanisms incomplete: improvement_tracking, adaptation",
     "Self-awareness statements missing"
   ],
   "recommendations": [],
   "reasoning_patterns": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
     "issues": [
-      "Workflow section missing; cannot evaluate reasoning patterns"
+      "Reasoning patterns not explicitly named"
     ],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "matches": [],
+      "pattern_terms": false,
+      "explanations": false,
+      "improvement": false,
+      "example_references": true
+    }
   },
   "decision_trees": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
       "Decision points insufficiently described"
     ],
@@ -30,7 +36,7 @@
     "details": {
       "decision_points": false,
       "criteria": true,
-      "outcomes": false,
+      "outcomes": true,
       "logging": true
     }
   },
@@ -61,7 +67,7 @@
     }
   },
   "meta_cognition": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
     "issues": [
       "Self-awareness statements missing"
@@ -69,7 +75,7 @@
     "recommendations": [],
     "details": {
       "awareness": false,
-      "monitoring": false,
+      "monitoring": true,
       "correction": false,
       "improvement": false
     }

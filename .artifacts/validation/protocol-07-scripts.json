@@ -1,7 +1,7 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "07",
-  "validation_timestamp": "2025-10-20T14:54:58.632287Z",
+  "validation_timestamp": "2025-10-20T16:35:27.907192Z",
   "overall_score": 0.58125,
   "validation_status": "fail",
   "issues": [
@@ -49,7 +49,7 @@
       "Reference scripts/script-registry.json for governance context"
     ],
     "details": {
-      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": false,
       "workflow_mapping": true,

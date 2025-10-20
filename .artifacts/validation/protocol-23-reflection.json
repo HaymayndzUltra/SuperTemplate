@@ -1,80 +1,73 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "23",
-  "validation_timestamp": "2025-10-20T14:54:58.961025Z",
-  "overall_score": 0.3375,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-10-20T16:35:28.181021Z",
+  "overall_score": 0.8250000000000001,
+  "validation_status": "warning",
   "issues": [
-    "Continuous improvement gaps: opportunities, plans, tracking",
-    "Knowledge capture gaps: lessons, knowledge_base",
-    "Roadmap or future direction not documented"
+    "Continuous improvement gaps: opportunities",
+    "Knowledge capture gaps: lessons"
   ],
-  "recommendations": [
-    "Document rollback or recovery approach for changes"
-  ],
+  "recommendations": [],
   "retrospective_analysis": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "review": true,
-      "performance": false,
-      "issues": false,
+      "performance": true,
+      "issues": true,
       "success": true
     }
   },
   "continuous_improvement": {
-    "score": 0.25,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
-      "Continuous improvement gaps: opportunities, plans, tracking"
+      "Continuous improvement gaps: opportunities"
     ],
     "recommendations": [],
     "details": {
       "opportunities": false,
-      "plans": false,
-      "tracking": false,
+      "plans": true,
+      "tracking": true,
       "evidence": true
     }
   },
   "system_evolution": {
-    "score": 0.25,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document rollback or recovery approach for changes"
-    ],
+    "recommendations": [],
     "details": {
-      "version_history": false,
+      "version_history": true,
       "rationale": true,
-      "impact": false,
-      "rollback": false
+      "impact": true,
+      "rollback": true
     }
   },
   "knowledge_capture": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
-      "Knowledge capture gaps: lessons, knowledge_base"
+      "Knowledge capture gaps: lessons"
     ],
     "recommendations": [],
     "details": {
       "lessons": false,
-      "knowledge_base": false,
+      "knowledge_base": true,
       "storage": true,
       "sharing": true
     }
   },
   "future_planning": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
-    "issues": [
-      "Roadmap or future direction not documented"
-    ],
+    "issues": [],
     "recommendations": [],
     "details": {
-      "roadmap": false,
+      "roadmap": true,
       "priorities": false,
       "resources": false,
       "timeline": false

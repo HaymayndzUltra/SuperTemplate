@@ -1,9 +1,9 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "02",
-  "validation_timestamp": "2025-10-20T14:54:58.517720Z",
-  "overall_score": 0.7375,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-10-20T16:35:27.814752Z",
+  "overall_score": 0.8125,
+  "validation_status": "warning",
   "issues": [
     "Missing user interaction prompts: feedback",
     "Limited progress terminology in communications"
@@ -48,7 +48,7 @@
     }
   },
   "progress_tracking": {
-    "score": 0.25,
+    "score": 0.5,
     "status": "fail",
     "issues": [
       "Limited progress terminology in communications"
@@ -56,22 +56,23 @@
     "recommendations": [],
     "details": {
       "terms": [
+        "%",
         "complete"
       ],
       "progress_terms": false,
       "timeline": true,
-      "current_activity": false,
+      "current_activity": true,
       "next_steps": false
     }
   },
   "evidence_communication": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "artifact_announcements": true,
-      "format": false,
+      "format": true,
       "location": true,
       "validation": true
     }

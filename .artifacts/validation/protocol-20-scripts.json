@@ -1,15 +1,14 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "20",
-  "validation_timestamp": "2025-10-20T14:54:58.895738Z",
-  "overall_score": 0.5625,
+  "validation_timestamp": "2025-10-20T16:35:28.130274Z",
+  "overall_score": 0.6625000000000001,
   "validation_status": "fail",
   "issues": [
     "Referenced command paths not found: scripts/aggregate_evidence_17.py, scripts/run_protocol_17_gates.py, scripts/validate_gate_17_deliverables.py, scripts/validate_gate_17_governance.py, scripts/validate_gate_17_handover.py, scripts/validate_prerequisites_17.py",
     "Exit code handling not described"
   ],
   "recommendations": [
-    "Reference scripts/script-registry.json for governance context",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured"
@@ -43,18 +42,16 @@
     }
   },
   "registry_alignment": {
-    "score": 0.25,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
-    "recommendations": [
-      "Reference scripts/script-registry.json for governance context"
-    ],
+    "recommendations": [],
     "details": {
-      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
       "registry_available": true,
-      "registry_reference": false,
+      "registry_reference": true,
       "workflow_mapping": true,
-      "ownership": false,
+      "ownership": true,
       "total_commands": 7,
       "registered_commands": 0,
       "registration_ratio": 0.0,

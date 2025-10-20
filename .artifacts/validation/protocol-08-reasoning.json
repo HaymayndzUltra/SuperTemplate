@@ -1,11 +1,11 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "08",
-  "validation_timestamp": "2025-10-20T14:54:58.658253Z",
-  "overall_score": 0.25,
+  "validation_timestamp": "2025-10-20T16:35:27.928095Z",
+  "overall_score": 0.36249999999999993,
   "validation_status": "fail",
   "issues": [
-    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
     "Learning mechanisms incomplete: feedback, improvement_tracking, adaptation",
     "Self-awareness statements missing"
@@ -14,13 +14,21 @@
     "Include root-cause analysis guidance"
   ],
   "reasoning_patterns": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
     "issues": [
-      "Workflow section missing; cannot evaluate reasoning patterns"
+      "Reasoning patterns not explicitly named"
     ],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "matches": [
+        "strategy"
+      ],
+      "pattern_terms": false,
+      "explanations": true,
+      "improvement": false,
+      "example_references": false
+    }
   },
   "decision_trees": {
     "score": 0.5,
@@ -37,14 +45,14 @@
     }
   },
   "problem_solving_logic": {
-    "score": 0.25,
+    "score": 0.5,
     "status": "fail",
     "issues": [],
     "recommendations": [
       "Include root-cause analysis guidance"
     ],
     "details": {
-      "problem_identification": false,
+      "problem_identification": true,
       "root_cause": false,
       "solutions": false,
       "validation": true

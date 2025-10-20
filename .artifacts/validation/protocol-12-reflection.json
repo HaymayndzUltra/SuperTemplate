@@ -1,28 +1,23 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "12",
-  "validation_timestamp": "2025-10-20T14:54:58.741243Z",
-  "overall_score": 0.35000000000000003,
+  "validation_timestamp": "2025-10-20T16:35:28.001830Z",
+  "overall_score": 0.6875,
   "validation_status": "fail",
   "issues": [
-    "Retrospective analysis not documented",
     "Continuous improvement gaps: opportunities, plans, tracking",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing"
+    "Knowledge capture gaps: lessons, knowledge_base"
   ],
-  "recommendations": [
-    "Document rollback or recovery approach for changes"
-  ],
+  "recommendations": [],
   "retrospective_analysis": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Retrospective analysis not documented"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "review": false,
-      "performance": false,
-      "issues": false,
+      "review": true,
+      "performance": true,
+      "issues": true,
       "success": true
     }
   },
@@ -41,35 +36,33 @@
     }
   },
   "system_evolution": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document rollback or recovery approach for changes"
-    ],
+    "recommendations": [],
     "details": {
       "version_history": true,
       "rationale": true,
       "impact": true,
-      "rollback": false
+      "rollback": true
     }
   },
   "knowledge_capture": {
-    "score": 0.25,
+    "score": 0.5,
     "status": "fail",
     "issues": [
-      "Knowledge capture gaps: lessons, knowledge_base, sharing"
+      "Knowledge capture gaps: lessons, knowledge_base"
     ],
     "recommendations": [],
     "details": {
       "lessons": false,
       "knowledge_base": false,
       "storage": true,
-      "sharing": false
+      "sharing": true
     }
   },
   "future_planning": {
-    "score": 0.25,
+    "score": 0.5,
     "status": "fail",
     "issues": [],
     "recommendations": [],
@@ -77,7 +70,7 @@
       "roadmap": true,
       "priorities": false,
       "resources": false,
-      "timeline": false
+      "timeline": true
     }
   }
 }

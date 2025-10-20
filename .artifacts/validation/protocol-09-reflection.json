@@ -1,29 +1,24 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "09",
-  "validation_timestamp": "2025-10-20T14:54:58.679934Z",
-  "overall_score": 0.3125,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-10-20T16:35:27.950100Z",
+  "overall_score": 0.725,
+  "validation_status": "warning",
   "issues": [
-    "Retrospective analysis not documented",
     "Continuous improvement gaps: opportunities, tracking",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing",
+    "Knowledge capture gaps: lessons, sharing",
     "Roadmap or future direction not documented"
   ],
-  "recommendations": [
-    "Document rollback or recovery approach for changes"
-  ],
+  "recommendations": [],
   "retrospective_analysis": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Retrospective analysis not documented"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "review": false,
-      "performance": false,
-      "issues": false,
+      "review": true,
+      "performance": true,
+      "issues": true,
       "success": true
     }
   },
@@ -42,29 +37,27 @@
     }
   },
   "system_evolution": {
-    "score": 0.25,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document rollback or recovery approach for changes"
-    ],
+    "recommendations": [],
     "details": {
       "version_history": true,
-      "rationale": false,
-      "impact": false,
-      "rollback": false
+      "rationale": true,
+      "impact": true,
+      "rollback": true
     }
   },
   "knowledge_capture": {
-    "score": 0.25,
+    "score": 0.5,
     "status": "fail",
     "issues": [
-      "Knowledge capture gaps: lessons, knowledge_base, sharing"
+      "Knowledge capture gaps: lessons, sharing"
     ],
     "recommendations": [],
     "details": {
       "lessons": false,
-      "knowledge_base": false,
+      "knowledge_base": true,
       "storage": true,
       "sharing": false
     }

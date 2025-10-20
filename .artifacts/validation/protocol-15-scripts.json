@@ -1,8 +1,8 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "15",
-  "validation_timestamp": "2025-10-20T14:54:58.790476Z",
-  "overall_score": 0.5625,
+  "validation_timestamp": "2025-10-20T16:35:28.044804Z",
+  "overall_score": 0.6696428571428572,
   "validation_status": "fail",
   "issues": [
     "Referenced command paths not found: scripts/aggregate_evidence_11.py, scripts/run_protocol_11_gates.py, scripts/validate_gate_11_launch.py, scripts/validate_gate_11_readiness.py, scripts/validate_prerequisites_11.py",
@@ -22,14 +22,15 @@
     ],
     "recommendations": [],
     "details": {
-      "command_count": 6,
+      "command_count": 7,
       "commands": [
         "bash\n# Prerequisite validation",
         "python scripts/validate_prerequisites_11.py",
         "python scripts/validate_gate_11_readiness.py --checklist .artifacts/deployment/deployment-readiness-checklist.json",
         "python scripts/validate_gate_11_launch.py --validation-threshold 0.95",
         "python scripts/aggregate_evidence_11.py --output .artifacts/deployment/",
-        "python scripts/run_protocol_11_gates.py"
+        "python scripts/run_protocol_11_gates.py",
+        "bash\n     bash scripts/deploy_backend.sh --env production --release ${TAG} --dry-run"
       ],
       "missing_scripts": [
         "scripts/validate_prerequisites_11.py",
@@ -41,21 +42,21 @@
     }
   },
   "registry_alignment": {
-    "score": 0.25,
+    "score": 0.5357142857142857,
     "status": "fail",
     "issues": [],
     "recommendations": [
       "Reference scripts/script-registry.json for governance context"
     ],
     "details": {
-      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": false,
       "workflow_mapping": true,
-      "ownership": false,
-      "total_commands": 6,
-      "registered_commands": 0,
-      "registration_ratio": 0.0,
+      "ownership": true,
+      "total_commands": 7,
+      "registered_commands": 1,
+      "registration_ratio": 0.14285714285714285,
       "unregistered_commands": []
     }
   },
@@ -75,17 +76,17 @@
     }
   },
   "command_syntax": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [
       "Document how command outputs are captured"
     ],
     "details": {
-      "command_count": 6,
+      "command_count": 7,
       "flag_usage": true,
       "output_redirection": false,
-      "parameterization": false,
+      "parameterization": true,
       "documentation": true
     }
   },

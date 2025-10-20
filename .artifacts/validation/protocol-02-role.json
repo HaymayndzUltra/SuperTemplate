@@ -1,19 +1,15 @@
 {
   "validator": "protocol_role",
   "protocol_id": "02",
-  "validation_timestamp": "2025-10-20T14:54:58.512042Z",
-  "overall_score": 0.6416666666666666,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-10-20T16:35:27.809743Z",
+  "overall_score": 0.8125,
+  "validation_status": "warning",
   "issues": [
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",
-    "Success criteria absent from mission",
-    "Constraints do not articulate mandatory guardrails or requirements",
-    "Output structure missing (sections or tables)"
+    "Success criteria absent from mission"
   ],
-  "recommendations": [
-    "Reference workflow steps when stating guardrails to improve clarity"
-  ],
+  "recommendations": [],
   "role_definition": {
     "score": 0.5,
     "status": "fail",
@@ -44,34 +40,28 @@
     }
   },
   "constraints_guidelines": {
-    "score": 0.3333333333333333,
-    "status": "fail",
-    "issues": [
-      "Constraints do not articulate mandatory guardrails or requirements"
-    ],
-    "recommendations": [
-      "Reference workflow steps when stating guardrails to improve clarity"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
     "details": {
-      "guardrails": false,
+      "guardrails": true,
       "boundaries": true,
-      "workflow_alignment": false,
-      "guardrail_count": 0,
-      "boundary_count": 2,
-      "workflow_links": 0,
-      "optional_guidance": 0
+      "workflow_alignment": true,
+      "guardrail_count": 7,
+      "boundary_count": 5,
+      "workflow_links": 10,
+      "optional_guidance": 2
     }
   },
   "output_expectations": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Output structure missing (sections or tables)"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "format": true,
-      "structure": false,
+      "structure": true,
       "location": true,
       "validation": true
     }

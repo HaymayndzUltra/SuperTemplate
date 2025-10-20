@@ -1,0 +1,48 @@
+{
+  "validator": "protocol_reflection",
+  "validation_timestamp": "2025-10-20T16:32:44.562706Z",
+  "total_protocols": 1,
+  "pass_count": 0,
+  "warning_count": 1,
+  "fail_count": 0,
+  "average_score": 0.7375,
+  "protocols": [
+    {
+      "protocol_id": "02",
+      "status": "warning",
+      "score": 0.7375
+    }
+  ],
+  "dimensions": {
+    "retrospective_analysis": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "continuous_improvement": {
+      "average_score": 0.5,
+      "pass_count": 0,
+      "warning_count": 0,
+      "fail_count": 1
+    },
+    "system_evolution": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "knowledge_capture": {
+      "average_score": 0.25,
+      "pass_count": 0,
+      "warning_count": 0,
+      "fail_count": 1
+    },
+    "future_planning": {
+      "average_score": 0.75,
+      "pass_count": 0,
+      "warning_count": 1,
+      "fail_count": 0
+    }
+  }
+}

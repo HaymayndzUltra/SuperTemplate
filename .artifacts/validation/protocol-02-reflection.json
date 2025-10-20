@@ -1,26 +1,25 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "02",
-  "validation_timestamp": "2025-10-20T14:54:58.525020Z",
-  "overall_score": 0.2625,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-10-20T16:35:27.824076Z",
+  "overall_score": 0.7375,
+  "validation_status": "warning",
   "issues": [
-    "Retrospective guidance not present",
     "Continuous improvement gaps: opportunities, tracking",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing",
-    "Roadmap or future direction not documented"
+    "Knowledge capture gaps: lessons, knowledge_base, sharing"
   ],
-  "recommendations": [
-    "Document rollback or recovery approach for changes"
-  ],
+  "recommendations": [],
   "retrospective_analysis": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Retrospective guidance not present"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "review": true,
+      "performance": true,
+      "issues": true,
+      "success": true
+    }
   },
   "continuous_improvement": {
     "score": 0.5,
@@ -37,17 +36,15 @@
     }
   },
   "system_evolution": {
-    "score": 0.25,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document rollback or recovery approach for changes"
-    ],
+    "recommendations": [],
     "details": {
-      "version_history": false,
-      "rationale": false,
+      "version_history": true,
+      "rationale": true,
       "impact": true,
-      "rollback": false
+      "rollback": true
     }
   },
   "knowledge_capture": {
@@ -65,14 +62,12 @@
     }
   },
   "future_planning": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Roadmap or future direction not documented"
-    ],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "roadmap": false,
+      "roadmap": true,
       "priorities": false,
       "resources": true,
       "timeline": true

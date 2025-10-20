@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "04",
-  "validation_timestamp": "2025-10-20T14:54:58.580118Z",
-  "overall_score": 0.7203571428571428,
+  "validation_timestamp": "2025-10-20T16:35:27.864501Z",
+  "overall_score": 0.7303571428571428,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -15,11 +15,11 @@
     },
     "protocol_workflow": {
       "status": "pass",
-      "score": 0.9
+      "score": 0.9000000000000001
     },
     "protocol_quality_gates": {
       "status": "fail",
-      "score": 0.725
+      "score": 0.7249999999999999
     },
     "protocol_scripts": {
       "status": "fail",
@@ -35,7 +35,7 @@
     },
     "protocol_handoff": {
       "status": "fail",
-      "score": 0.7374999999999999
+      "score": 0.7375
     },
     "protocol_reasoning": {
       "status": "fail",
@@ -43,7 +43,7 @@
     },
     "protocol_reflection": {
       "status": "fail",
-      "score": 0.5499999999999999
+      "score": 0.65
     }
   },
   "issues": [

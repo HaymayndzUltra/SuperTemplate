@@ -1,8 +1,8 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "23",
-  "validation_timestamp": "2025-10-20T14:54:58.952822Z",
-  "overall_score": 0.6025,
+  "validation_timestamp": "2025-10-20T16:35:28.173535Z",
+  "overall_score": 0.6499999999999999,
   "validation_status": "fail",
   "issues": [
     "Exit code handling not described"
@@ -19,31 +19,34 @@
     "issues": [],
     "recommendations": [],
     "details": {
-      "command_count": 5,
+      "command_count": 8,
       "commands": [
         "bash\n# Validate coverage and generate report",
         "python3 scripts/validate_script_registry.py \\",
         "python3 scripts/auto_register_scripts.py --dry-run",
         "python3 scripts/auto_register_scripts.py",
-        "python3 scripts/generate_protocol_23_artifacts.py \\"
+        "python3 scripts/generate_protocol_23_artifacts.py \\",
+        "python3 scripts/validate_script_registry.py --min-coverage 95.0 --fail-on-orphans",
+        "python\n     categories = classify_scripts(script_index)",
+        "python3 scripts/generate_protocol_23_artifacts.py --output-dir .artifacts/protocol-23"
       ],
       "missing_scripts": []
     }
   },
   "registry_alignment": {
-    "score": 0.7,
-    "status": "warning",
+    "score": 0.9375,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
-      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": true,
       "workflow_mapping": true,
-      "ownership": false,
-      "total_commands": 5,
-      "registered_commands": 4,
-      "registration_ratio": 0.8,
+      "ownership": true,
+      "total_commands": 8,
+      "registered_commands": 6,
+      "registration_ratio": 0.75,
       "unregistered_commands": []
     }
   },
@@ -71,7 +74,7 @@
       "Document how command outputs are captured"
     ],
     "details": {
-      "command_count": 5,
+      "command_count": 8,
       "flag_usage": true,
       "output_redirection": false,
       "parameterization": false,

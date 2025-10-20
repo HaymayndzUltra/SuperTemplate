@@ -1,101 +1,83 @@
 {
   "validator": "master_validator",
   "protocol_id": "02",
-  "validation_timestamp": "2025-10-20T14:54:58.529525Z",
-  "overall_score": 0.4954841269841269,
+  "validation_timestamp": "2025-10-20T16:35:27.830633Z",
+  "overall_score": 0.6999444444444445,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8488888888888889
+      "score": 0.8911111111111112
     },
     "protocol_role": {
-      "status": "fail",
-      "score": 0.6416666666666666
+      "status": "warning",
+      "score": 0.8125
     },
     "protocol_workflow": {
-      "status": "fail",
-      "score": 0.1
+      "status": "warning",
+      "score": 0.8500000000000001
     },
     "protocol_quality_gates": {
       "status": "fail",
-      "score": 0.725
+      "score": 0.4625
     },
     "protocol_scripts": {
-      "status": "fail",
-      "score": 0.5392857142857143
+      "status": "warning",
+      "score": 0.8083333333333335
     },
     "protocol_communication": {
-      "status": "fail",
-      "score": 0.7375
+      "status": "warning",
+      "score": 0.8125
     },
     "protocol_evidence": {
-      "status": "fail",
-      "score": 0.7625
+      "status": "warning",
+      "score": 0.8125
     },
     "protocol_handoff": {
       "status": "fail",
-      "score": 0.075
+      "score": 0.35
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.2625
+      "score": 0.4625
     },
     "protocol_reflection": {
-      "status": "fail",
-      "score": 0.2625
+      "status": "warning",
+      "score": 0.7375
     }
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Purpose statement not found or too short",
     "Industry standards not documented",
-    "Required section missing: WORKFLOW",
     "Required section missing: HANDOFF CHECKLIST",
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",
     "Success criteria absent from mission",
-    "Constraints do not articulate mandatory guardrails or requirements",
-    "Output structure missing (sections or tables)",
-    "WORKFLOW section missing",
-    "Workflow steps missing",
-    "Action markers absent because workflow missing",
-    "No workflow content to evaluate halt conditions",
+    "Several workflow steps omit explicit action prompts",
+    "No gate headings defined",
+    "Numeric thresholds missing for gates",
+    "Failure handling steps not described",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/validate_discovery_expectations.py, scripts/validate_discovery_objectives.py, scripts/validate_discovery_scope.py, scripts/validate_prerequisites_02.py",
-    "Exit code handling not described",
-    "Logging requirements minimal or absent",
     "Missing user interaction prompts: feedback",
     "Limited progress terminology in communications",
-    "Traceability gaps: inputs, outputs, audit",
+    "Traceability gaps: inputs, outputs",
     "HANDOFF CHECKLIST section missing",
-    "Verification steps not documented",
     "Stakeholder sign-off section missing",
-    "Documentation expectations under-specified",
     "Next protocol alignment missing",
-    "Workflow section missing; cannot evaluate reasoning patterns",
-    "Decision points insufficiently described",
+    "Reasoning patterns not explicitly named",
     "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
     "Self-awareness statements missing",
-    "Retrospective guidance not present",
     "Continuous improvement gaps: opportunities, tracking",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing",
-    "Roadmap or future direction not documented"
+    "Knowledge capture gaps: lessons, knowledge_base, sharing"
   ],
   "recommendations": [
-    "Reference workflow steps when stating guardrails to improve clarity",
-    "Document evidence manifests or registries",
-    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Add rollback or retry guidance for failure scenarios",
     "Include quantitative metrics for gate evaluation",
+    "Identify notification path for gate failures",
     "Document waiver/override policies",
-    "Reference scripts/script-registry.json for governance context",
-    "Document environment/dependency expectations",
-    "Clarify access and credential requirements",
     "Document how command outputs are captured",
-    "Document storage permissions or access requirements",
-    "Optionally reference a manifest file or inventory for quick lookup",
-    "Optionally outline archival format, retention, retrieval, and cleanup steps",
-    "Include root-cause analysis guidance",
-    "Document rollback or recovery approach for changes"
+    "Enhance archival plan with: retrieval",
+    "Include root-cause analysis guidance"
   ]
 }

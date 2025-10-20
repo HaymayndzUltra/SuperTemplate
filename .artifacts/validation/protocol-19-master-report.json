@@ -1,13 +1,13 @@
 {
   "validator": "master_validator",
   "protocol_id": "19",
-  "validation_timestamp": "2025-10-20T14:54:58.888438Z",
-  "overall_score": 0.5686944444444444,
+  "validation_timestamp": "2025-10-20T16:35:28.125194Z",
+  "overall_score": 0.5820277777777777,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8577777777777778
+      "score": 0.8911111111111112
     },
     "protocol_role": {
       "status": "fail",
@@ -19,7 +19,7 @@
     },
     "protocol_quality_gates": {
       "status": "fail",
-      "score": 0.6875
+      "score": 0.6874999999999999
     },
     "protocol_scripts": {
       "status": "fail",
@@ -31,7 +31,7 @@
     },
     "protocol_evidence": {
       "status": "fail",
-      "score": 0.5875
+      "score": 0.5874999999999999
     },
     "protocol_handoff": {
       "status": "fail",
@@ -39,16 +39,15 @@
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.4125
+      "score": 0.41250000000000003
     },
     "protocol_reflection": {
       "status": "fail",
-      "score": 0.5
+      "score": 0.6
     }
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Purpose statement not found or too short",
     "Industry standards not documented",
     "Required section missing: WORKFLOW",
     "Domain expertise keywords missing",
@@ -95,7 +94,6 @@
     "Document storage permissions or access requirements",
     "Document timestamps or hashes for manifest entries",
     "Enhance archival plan with: cleanup, retention, retrieval",
-    "Include root-cause analysis guidance",
-    "Document rollback or recovery approach for changes"
+    "Include root-cause analysis guidance"
   ]
 }

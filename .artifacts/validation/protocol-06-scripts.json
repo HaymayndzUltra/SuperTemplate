@@ -1,13 +1,12 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "06",
-  "validation_timestamp": "2025-10-20T14:54:58.609954Z",
-  "overall_score": 0.6321428571428571,
+  "validation_timestamp": "2025-10-20T16:35:27.890541Z",
+  "overall_score": 0.675,
   "validation_status": "fail",
   "issues": [
     "Referenced command paths not found: scripts/aggregate_evidence_1.py, scripts/run_protocol_1_gates.py, scripts/validate_prd_context.py, scripts/validate_prd_requirements.py, scripts/validate_prerequisites_1.py",
-    "Exit code handling not described",
-    "Logging requirements minimal or absent"
+    "Exit code handling not described"
   ],
   "recommendations": [
     "Reference scripts/script-registry.json for governance context",
@@ -22,7 +21,7 @@
     ],
     "recommendations": [],
     "details": {
-      "command_count": 7,
+      "command_count": 8,
       "commands": [
         "bash\n# Prerequisite validation",
         "python scripts/validate_prerequisites_1.py",
@@ -30,7 +29,8 @@
         "python scripts/validate_prd_requirements.py --dir .artifacts/protocol-06/",
         "python scripts/validate_prd_gate.py --prd .artifacts/protocol-06/prd-{feature}.md --output .artifacts/protocol-06/prd-validation.json",
         "python scripts/aggregate_evidence_1.py --output .artifacts/protocol-06/",
-        "python scripts/run_protocol_1_gates.py"
+        "python scripts/run_protocol_1_gates.py",
+        "python scripts/generate_prd_assets.py --prd .artifacts/protocol-06/prd-{feature}.md --output .artifacts/protocol-06/prd-assets/"
       ],
       "missing_scripts": [
         "scripts/validate_prerequisites_1.py",
@@ -42,21 +42,21 @@
     }
   },
   "registry_alignment": {
-    "score": 0.2857142857142857,
+    "score": 0.3125,
     "status": "fail",
     "issues": [],
     "recommendations": [
       "Reference scripts/script-registry.json for governance context"
     ],
     "details": {
-      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": false,
       "workflow_mapping": true,
       "ownership": false,
-      "total_commands": 7,
-      "registered_commands": 1,
-      "registration_ratio": 0.14285714285714285,
+      "total_commands": 8,
+      "registered_commands": 2,
+      "registration_ratio": 0.25,
       "unregistered_commands": []
     }
   },
@@ -82,7 +82,7 @@
       "Document how command outputs are captured"
     ],
     "details": {
-      "command_count": 7,
+      "command_count": 8,
       "flag_usage": true,
       "output_redirection": false,
       "parameterization": true,
@@ -90,17 +90,16 @@
     }
   },
   "error_handling": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
-      "Exit code handling not described",
-      "Logging requirements minimal or absent"
+      "Exit code handling not described"
     ],
     "recommendations": [],
     "details": {
       "exit_codes": false,
       "fallback": true,
-      "logging": false,
+      "logging": true,
       "manual_paths": true
     }
   }

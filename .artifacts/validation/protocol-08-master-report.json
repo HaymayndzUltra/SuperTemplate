@@ -1,29 +1,29 @@
 {
   "validator": "master_validator",
   "protocol_id": "08",
-  "validation_timestamp": "2025-10-20T14:54:58.664599Z",
-  "overall_score": 0.5385555555555556,
+  "validation_timestamp": "2025-10-20T16:35:27.934822Z",
+  "overall_score": 0.7073611111111111,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8577777777777778
+      "score": 0.9
     },
     "protocol_role": {
       "status": "fail",
-      "score": 0.5791666666666666
+      "score": 0.75
     },
     "protocol_workflow": {
-      "status": "fail",
-      "score": 0.1
+      "status": "warning",
+      "score": 0.8500000000000001
     },
     "protocol_quality_gates": {
       "status": "fail",
-      "score": 0.6875
+      "score": 0.6874999999999999
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.5861111111111111
+      "score": 0.7111111111111111
     },
     "protocol_communication": {
       "status": "fail",
@@ -31,58 +31,46 @@
     },
     "protocol_evidence": {
       "status": "fail",
-      "score": 0.65
+      "score": 0.75
     },
     "protocol_handoff": {
       "status": "fail",
-      "score": 0.65
+      "score": 0.7
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.25
+      "score": 0.36249999999999993
     },
     "protocol_reflection": {
       "status": "fail",
-      "score": 0.35
+      "score": 0.6875
     }
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Purpose statement not found or too short",
     "Industry standards not documented",
-    "Required section missing: WORKFLOW",
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",
     "Success criteria absent from mission",
     "Value proposition not captured",
-    "Constraints do not articulate mandatory guardrails or requirements",
-    "Output structure missing (sections or tables)",
-    "WORKFLOW section missing",
-    "Workflow steps missing",
-    "Action markers absent because workflow missing",
-    "No workflow content to evaluate halt conditions",
+    "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_2.py, scripts/run_protocol_2_gates.py, scripts/validate_high_level_tasks.py, scripts/validate_prerequisites_2.py, scripts/validate_rule_index.py, scripts/validate_task_decomposition.py",
-    "Exit code handling not described",
-    "Logging requirements minimal or absent",
     "Missing user interaction prompts: clarification, feedback",
     "Limited progress terminology in communications",
     "Traceability gaps: inputs, outputs",
-    "Limited verification language detected",
     "Sign-off guidance missing: approvals, reviewers, confirmation",
     "Documentation expectations under-specified",
-    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
     "Learning mechanisms incomplete: feedback, improvement_tracking, adaptation",
     "Self-awareness statements missing",
-    "Retrospective analysis not documented",
     "Continuous improvement gaps: tracking",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing",
+    "Knowledge capture gaps: lessons, knowledge_base",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
-    "Reference workflow steps when stating guardrails to improve clarity",
-    "Document evidence manifests or registries",
+    "Add rollback or retry guidance for failure scenarios",
     "Identify gate types (Prerequisite/Execution/Completion)",
     "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/08.yaml when automated gating is expected",
@@ -92,11 +80,9 @@
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",
-    "Document storage permissions or access requirements",
     "Document timestamps or hashes for manifest entries",
     "Link artifacts to their inputs/outputs inside the manifest",
     "Optionally outline archival format, retention, retrieval, and cleanup steps",
-    "Include root-cause analysis guidance",
-    "Document rollback or recovery approach for changes"
+    "Include root-cause analysis guidance"
   ]
 }

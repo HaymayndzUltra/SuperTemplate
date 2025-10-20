@@ -1,29 +1,23 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "10",
-  "validation_timestamp": "2025-10-20T14:54:58.699527Z",
-  "overall_score": 0.3875,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-10-20T16:35:27.966620Z",
+  "overall_score": 0.7125,
+  "validation_status": "warning",
   "issues": [
-    "Retrospective analysis not documented",
     "Continuous improvement gaps: opportunities",
-    "Knowledge capture gaps: lessons, sharing",
-    "Roadmap or future direction not documented"
+    "Knowledge capture gaps: lessons, sharing"
   ],
-  "recommendations": [
-    "Document rollback or recovery approach for changes"
-  ],
+  "recommendations": [],
   "retrospective_analysis": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Retrospective analysis not documented"
-    ],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "review": false,
+      "review": true,
       "performance": false,
-      "issues": false,
+      "issues": true,
       "success": true
     }
   },
@@ -42,17 +36,15 @@
     }
   },
   "system_evolution": {
-    "score": 0.25,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document rollback or recovery approach for changes"
-    ],
+    "recommendations": [],
     "details": {
       "version_history": true,
-      "rationale": false,
-      "impact": false,
-      "rollback": false
+      "rationale": true,
+      "impact": true,
+      "rollback": true
     }
   },
   "knowledge_capture": {
@@ -70,14 +62,12 @@
     }
   },
   "future_planning": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
-    "issues": [
-      "Roadmap or future direction not documented"
-    ],
+    "issues": [],
     "recommendations": [],
     "details": {
-      "roadmap": false,
+      "roadmap": true,
       "priorities": false,
       "resources": false,
       "timeline": false

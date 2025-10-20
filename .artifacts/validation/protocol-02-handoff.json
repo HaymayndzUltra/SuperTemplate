@@ -1,14 +1,12 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "02",
-  "validation_timestamp": "2025-10-20T14:54:58.521064Z",
-  "overall_score": 0.075,
+  "validation_timestamp": "2025-10-20T16:35:27.819523Z",
+  "overall_score": 0.35,
   "validation_status": "fail",
   "issues": [
     "HANDOFF CHECKLIST section missing",
-    "Verification steps not documented",
     "Stakeholder sign-off section missing",
-    "Documentation expectations under-specified",
     "Next protocol alignment missing"
   ],
   "recommendations": [],
@@ -22,13 +20,23 @@
     "details": {}
   },
   "verification_procedures": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Verification steps not documented"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "term_counts": {
+        "validate": 1,
+        "ensure": 0,
+        "confirm": 7,
+        "verify": 0,
+        "gate": 0
+      },
+      "verification_terms": true,
+      "qa_involvement": true,
+      "automation_reference": true,
+      "evidence_reference": true
+    }
   },
   "stakeholder_signoff": {
     "score": 0.0,
@@ -40,18 +48,18 @@
     "details": {}
   },
   "documentation_requirements": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Documentation expectations under-specified"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "terms": [
-        "notes"
+        "log",
+        "notes",
+        "manifest"
       ],
-      "doc_terms": false,
-      "storage": false,
+      "doc_terms": true,
+      "storage": true,
       "reviewer_docs": true,
       "format": true
     }

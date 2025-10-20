@@ -1,8 +1,8 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "10",
-  "validation_timestamp": "2025-10-20T14:54:58.693641Z",
-  "overall_score": 0.6875,
+  "validation_timestamp": "2025-10-20T16:35:27.960248Z",
+  "overall_score": 0.7374999999999999,
   "validation_status": "fail",
   "issues": [
     "Missing user interaction prompts: clarification, feedback",
@@ -40,13 +40,13 @@
     }
   },
   "error_messaging": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "templates": true,
-      "severity": false,
+      "severity": true,
       "context": true,
       "resolution": true
     }
@@ -60,7 +60,8 @@
     "recommendations": [],
     "details": {
       "terms": [
-        "complete"
+        "complete",
+        "remaining"
       ],
       "progress_terms": false,
       "timeline": true,

@@ -1,15 +1,14 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "12",
-  "validation_timestamp": "2025-10-20T14:54:58.734923Z",
-  "overall_score": 0.5375,
+  "validation_timestamp": "2025-10-20T16:35:27.996136Z",
+  "overall_score": 0.5874999999999999,
   "validation_status": "fail",
   "issues": [
     "Protocol evidence directory not referenced",
     "Traceability gaps: inputs, outputs"
   ],
   "recommendations": [
-    "Document storage permissions or access requirements",
     "Optionally reference a manifest file or inventory for quick lookup",
     "Enhance archival plan with: cleanup, retention, retrieval"
   ],
@@ -29,19 +28,17 @@
     }
   },
   "storage_structure": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
     "issues": [
       "Protocol evidence directory not referenced"
     ],
-    "recommendations": [
-      "Document storage permissions or access requirements"
-    ],
+    "recommendations": [],
     "details": {
       "directories": [],
       "protocol_directory": false,
       "subdirectories": false,
-      "permissions": false,
+      "permissions": true,
       "naming": false
     }
   },

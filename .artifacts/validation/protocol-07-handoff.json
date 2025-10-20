@@ -1,11 +1,10 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "07",
-  "validation_timestamp": "2025-10-20T14:54:58.636441Z",
-  "overall_score": 0.65,
+  "validation_timestamp": "2025-10-20T16:35:27.910566Z",
+  "overall_score": 0.7,
   "validation_status": "fail",
   "issues": [
-    "Limited verification language detected",
     "Sign-off guidance missing: approvals, reviewers, confirmation",
     "Documentation expectations under-specified"
   ],
@@ -24,21 +23,19 @@
     }
   },
   "verification_procedures": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Limited verification language detected"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "term_counts": {
-        "validate": 1,
+        "validate": 3,
         "ensure": 0,
-        "confirm": 0,
-        "verify": 0,
+        "confirm": 1,
+        "verify": 1,
         "gate": 1
       },
-      "verification_terms": false,
+      "verification_terms": true,
       "qa_involvement": true,
       "automation_reference": true,
       "evidence_reference": true

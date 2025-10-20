@@ -1,17 +1,17 @@
 {
   "validator": "master_validator",
   "protocol_id": "14",
-  "validation_timestamp": "2025-10-20T14:54:58.783020Z",
-  "overall_score": 0.5411944444444444,
+  "validation_timestamp": "2025-10-20T16:35:28.038054Z",
+  "overall_score": 0.5595277777777777,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8577777777777778
+      "score": 0.8911111111111112
     },
     "protocol_role": {
       "status": "fail",
-      "score": 0.7041666666666666
+      "score": 0.7041666666666667
     },
     "protocol_workflow": {
       "status": "fail",
@@ -19,7 +19,7 @@
     },
     "protocol_quality_gates": {
       "status": "fail",
-      "score": 0.725
+      "score": 0.7249999999999999
     },
     "protocol_scripts": {
       "status": "fail",
@@ -31,7 +31,7 @@
     },
     "protocol_evidence": {
       "status": "fail",
-      "score": 0.5875
+      "score": 0.5874999999999999
     },
     "protocol_handoff": {
       "status": "fail",
@@ -43,12 +43,11 @@
     },
     "protocol_reflection": {
       "status": "fail",
-      "score": 0.225
+      "score": 0.375
     }
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Purpose statement not found or too short",
     "Industry standards not documented",
     "Required section missing: WORKFLOW",
     "Domain expertise keywords missing",

@@ -1,15 +1,14 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "17",
-  "validation_timestamp": "2025-10-20T14:54:58.833453Z",
-  "overall_score": 0.6,
+  "validation_timestamp": "2025-10-20T16:35:28.083915Z",
+  "overall_score": 0.6875,
   "validation_status": "fail",
   "issues": [
     "Protocol evidence directory not referenced",
-    "Traceability gaps: inputs, outputs"
+    "Traceability gaps: inputs"
   ],
   "recommendations": [
-    "Document storage permissions or access requirements",
     "Link artifacts to their inputs/outputs inside the manifest",
     "Optionally outline archival format, retention, retrieval, and cleanup steps"
   ],
@@ -29,19 +28,17 @@
     }
   },
   "storage_structure": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
     "issues": [
       "Protocol evidence directory not referenced"
     ],
-    "recommendations": [
-      "Document storage permissions or access requirements"
-    ],
+    "recommendations": [],
     "details": {
       "directories": [],
       "protocol_directory": false,
       "subdirectories": false,
-      "permissions": false,
+      "permissions": true,
       "naming": false
     }
   },
@@ -62,15 +59,15 @@
     }
   },
   "traceability": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
-      "Traceability gaps: inputs, outputs"
+      "Traceability gaps: inputs"
     ],
     "recommendations": [],
     "details": {
       "inputs": false,
-      "outputs": false,
+      "outputs": true,
       "transformations": true,
       "audit": true
     }

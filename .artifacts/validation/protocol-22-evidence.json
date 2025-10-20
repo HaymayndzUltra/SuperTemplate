@@ -1,8 +1,8 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "22",
-  "validation_timestamp": "2025-10-20T14:54:58.936122Z",
-  "overall_score": 0.75,
+  "validation_timestamp": "2025-10-20T16:35:28.159304Z",
+  "overall_score": 0.7999999999999999,
   "validation_status": "fail",
   "issues": [
     "Traceability gaps: inputs, outputs"
@@ -28,8 +28,8 @@
     }
   },
   "storage_structure": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [
       "Document storage permissions or access requirements"
@@ -39,12 +39,13 @@
         ".artifacts/protocol-22/",
         ".artifacts/protocol-22/",
         ".artifacts/protocol-22/",
+        ".artifacts/protocol-22/",
         ".artifacts/protocol-22/"
       ],
       "protocol_directory": true,
       "subdirectories": true,
       "permissions": false,
-      "naming": false
+      "naming": true
     }
   },
   "manifest_completeness": {

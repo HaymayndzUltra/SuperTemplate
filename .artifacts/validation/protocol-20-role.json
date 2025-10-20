@@ -1,18 +1,15 @@
 {
   "validator": "protocol_role",
   "protocol_id": "20",
-  "validation_timestamp": "2025-10-20T14:54:58.892635Z",
-  "overall_score": 0.7041666666666666,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-10-20T16:35:28.127595Z",
+  "overall_score": 0.8375,
+  "validation_status": "warning",
   "issues": [
     "Domain expertise keywords missing",
     "Value proposition not captured",
-    "Constraints do not articulate mandatory guardrails or requirements",
     "Output structure missing (sections or tables)"
   ],
-  "recommendations": [
-    "Reference workflow steps when stating guardrails to improve clarity"
-  ],
+  "recommendations": [],
   "role_definition": {
     "score": 0.75,
     "status": "warning",
@@ -42,21 +39,17 @@
     }
   },
   "constraints_guidelines": {
-    "score": 0.3333333333333333,
-    "status": "fail",
-    "issues": [
-      "Constraints do not articulate mandatory guardrails or requirements"
-    ],
-    "recommendations": [
-      "Reference workflow steps when stating guardrails to improve clarity"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
     "details": {
-      "guardrails": false,
+      "guardrails": true,
       "boundaries": true,
-      "workflow_alignment": false,
-      "guardrail_count": 0,
+      "workflow_alignment": true,
+      "guardrail_count": 8,
       "boundary_count": 1,
-      "workflow_links": 0,
+      "workflow_links": 9,
       "optional_guidance": 0
     }
   },

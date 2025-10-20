@@ -1,11 +1,10 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "20",
-  "validation_timestamp": "2025-10-20T14:54:58.896921Z",
-  "overall_score": 0.6125,
+  "validation_timestamp": "2025-10-20T16:35:28.130955Z",
+  "overall_score": 0.75,
   "validation_status": "fail",
   "issues": [
-    "Phase transition announcements missing",
     "Missing user interaction prompts: clarification",
     "Limited progress terminology in communications"
   ],
@@ -13,16 +12,14 @@
     "Add time or effort estimates to communication prompts"
   ],
   "status_announcements": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Phase transition announcements missing"
-    ],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
     "recommendations": [
       "Add time or effort estimates to communication prompts"
     ],
     "details": {
-      "phase_transitions": false,
+      "phase_transitions": true,
       "branded_announcements": true,
       "completion_callouts": true,
       "time_estimates": false
@@ -55,7 +52,7 @@
     }
   },
   "progress_tracking": {
-    "score": 0.0,
+    "score": 0.5,
     "status": "fail",
     "issues": [
       "Limited progress terminology in communications"
@@ -63,11 +60,12 @@
     "recommendations": [],
     "details": {
       "terms": [
+        "%",
         "complete"
       ],
       "progress_terms": false,
-      "timeline": false,
-      "current_activity": false,
+      "timeline": true,
+      "current_activity": true,
       "next_steps": false
     }
   },

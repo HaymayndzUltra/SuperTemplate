@@ -1,8 +1,8 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "22",
-  "validation_timestamp": "2025-10-20T14:54:58.937339Z",
-  "overall_score": 0.65,
+  "validation_timestamp": "2025-10-20T16:35:28.160570Z",
+  "overall_score": 0.6499999999999999,
   "validation_status": "fail",
   "issues": [
     "Limited verification language detected",
@@ -36,7 +36,7 @@
         "ensure": 0,
         "confirm": 0,
         "verify": 0,
-        "gate": 1
+        "gate": 2
       },
       "verification_terms": false,
       "qa_involvement": true,

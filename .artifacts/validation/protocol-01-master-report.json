@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "01",
-  "validation_timestamp": "2025-10-20T14:54:58.507203Z",
-  "overall_score": 0.7570833333333333,
+  "validation_timestamp": "2025-10-20T16:35:27.805020Z",
+  "overall_score": 0.7720833333333333,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -27,7 +27,7 @@
     },
     "protocol_communication": {
       "status": "warning",
-      "score": 0.8875
+      "score": 0.8875000000000001
     },
     "protocol_evidence": {
       "status": "warning",
@@ -35,7 +35,7 @@
     },
     "protocol_handoff": {
       "status": "fail",
-      "score": 0.7374999999999999
+      "score": 0.7375
     },
     "protocol_reasoning": {
       "status": "fail",
@@ -43,7 +43,7 @@
     },
     "protocol_reflection": {
       "status": "fail",
-      "score": 0.525
+      "score": 0.675
     }
   },
   "issues": [
@@ -72,7 +72,6 @@
     "Clarify access and credential requirements",
     "Document how command outputs are captured",
     "Optionally reference a manifest file or inventory for quick lookup",
-    "Optionally outline archival format, retention, retrieval, and cleanup steps",
-    "Document rollback or recovery approach for changes"
+    "Optionally outline archival format, retention, retrieval, and cleanup steps"
   ]
 }

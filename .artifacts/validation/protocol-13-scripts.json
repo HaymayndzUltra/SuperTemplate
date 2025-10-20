@@ -1,11 +1,11 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "13",
-  "validation_timestamp": "2025-10-20T14:54:58.753428Z",
-  "overall_score": 0.6625,
+  "validation_timestamp": "2025-10-20T16:35:28.012588Z",
+  "overall_score": 0.7124999999999999,
   "validation_status": "fail",
   "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/run_protocol_15_gates.py, scripts/validate_gate_15_defects.py, scripts/validate_gate_15_entry.py, scripts/validate_prerequisites_15.py",
+    "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/build_uat_toolkit.py, scripts/generate_release_notes.py, scripts/run_protocol_15_gates.py, scripts/validate_gate_15_defects.py, scripts/validate_gate_15_entry.py, scripts/validate_prerequisites_15.py",
     "Exit code handling not described"
   ],
   "recommendations": [
@@ -16,40 +16,44 @@
     "score": 1.0,
     "status": "pass",
     "issues": [
-      "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/run_protocol_15_gates.py, scripts/validate_gate_15_defects.py, scripts/validate_gate_15_entry.py, scripts/validate_prerequisites_15.py"
+      "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/build_uat_toolkit.py, scripts/generate_release_notes.py, scripts/run_protocol_15_gates.py, scripts/validate_gate_15_defects.py, scripts/validate_gate_15_entry.py, scripts/validate_prerequisites_15.py"
     ],
     "recommendations": [],
     "details": {
-      "command_count": 6,
+      "command_count": 8,
       "commands": [
         "bash\n# Prerequisite validation",
         "python scripts/validate_prerequisites_15.py",
         "python scripts/validate_gate_15_entry.py --checklist .artifacts/uat/uat-entry-checklist.json",
         "python scripts/validate_gate_15_defects.py --register .artifacts/uat/uat-defect-register.csv",
         "python scripts/aggregate_evidence_15.py --output .artifacts/uat/",
-        "python scripts/run_protocol_15_gates.py"
+        "python scripts/run_protocol_15_gates.py",
+        "bash\n     python scripts/build_uat_toolkit.py --scenarios config/uat-scenarios.yaml --output .artifacts/uat/uat-toolkit-manifest.json",
+        "bash\n     python scripts/generate_release_notes.py --source .artifacts/uat/feedback-notebook.md --output .artifacts/uat/release-notes-draft.md"
       ],
       "missing_scripts": [
         "scripts/validate_prerequisites_15.py",
         "scripts/validate_gate_15_entry.py",
         "scripts/validate_gate_15_defects.py",
         "scripts/aggregate_evidence_15.py",
-        "scripts/run_protocol_15_gates.py"
+        "scripts/run_protocol_15_gates.py",
+        "scripts/build_uat_toolkit.py",
+        "scripts/generate_release_notes.py"
       ]
     }
   },
   "registry_alignment": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
-      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": true,
       "workflow_mapping": true,
-      "ownership": false,
-      "total_commands": 6,
+      "ownership": true,
+      "total_commands": 8,
       "registered_commands": 0,
       "registration_ratio": 0.0,
       "unregistered_commands": []
@@ -77,7 +81,7 @@
       "Document how command outputs are captured"
     ],
     "details": {
-      "command_count": 6,
+      "command_count": 8,
       "flag_usage": true,
       "output_redirection": false,
       "parameterization": false,

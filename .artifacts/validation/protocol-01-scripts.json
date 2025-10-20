@@ -1,7 +1,7 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "01",
-  "validation_timestamp": "2025-10-20T14:54:58.466883Z",
+  "validation_timestamp": "2025-10-20T16:35:27.789122Z",
   "overall_score": 0.5458333333333333,
   "validation_status": "fail",
   "issues": [
@@ -51,7 +51,7 @@
       "Register automation commands in scripts/script-registry.json: scripts/validate_proposal_structure.py"
     ],
     "details": {
-      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": false,
       "workflow_mapping": true,

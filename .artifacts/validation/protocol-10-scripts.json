@@ -1,12 +1,11 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "10",
-  "validation_timestamp": "2025-10-20T14:54:58.692366Z",
-  "overall_score": 0.6125,
+  "validation_timestamp": "2025-10-20T16:35:27.959510Z",
+  "overall_score": 0.6555555555555556,
   "validation_status": "fail",
   "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_3.py, scripts/run_protocol_3_gates.py, scripts/validate_preflight.py, scripts/validate_prerequisites_3.py, scripts/validate_quality_gate.py, scripts/validate_session_closeout.py, scripts/validate_subtask_compliance.py",
-    "Exit code handling not described"
+    "Referenced command paths not found: scripts/aggregate_evidence_3.py, scripts/run_protocol_3_gates.py, scripts/validate_preflight.py, scripts/validate_prerequisites_3.py, scripts/validate_quality_gate.py, scripts/validate_session_closeout.py, scripts/validate_subtask_compliance.py"
   ],
   "recommendations": [
     "Reference scripts/script-registry.json for governance context",
@@ -22,7 +21,7 @@
     ],
     "recommendations": [],
     "details": {
-      "command_count": 8,
+      "command_count": 9,
       "commands": [
         "bash\n# Prerequisite validation",
         "python scripts/validate_prerequisites_3.py",
@@ -31,7 +30,8 @@
         "python scripts/validate_quality_gate.py --report .artifacts/protocol-21/quality-reports/{parentID}.json",
         "python scripts/validate_session_closeout.py --manifest .artifacts/protocol-21/execution-artifact-manifest.json",
         "python scripts/aggregate_evidence_3.py --output .artifacts/protocol-21/",
-        "python scripts/run_protocol_3_gates.py"
+        "python scripts/run_protocol_3_gates.py",
+        "python scripts/update_task_state.py --task-file .cursor/tasks/tasks-{feature}.md --task-id {parentID} --status complete --output .artifacts/protocol-21/task-state.json"
       ],
       "missing_scripts": [
         "scripts/validate_prerequisites_3.py",
@@ -45,21 +45,21 @@
     }
   },
   "registry_alignment": {
-    "score": 0.25,
+    "score": 0.2777777777777778,
     "status": "fail",
     "issues": [],
     "recommendations": [
       "Reference scripts/script-registry.json for governance context"
     ],
     "details": {
-      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": false,
       "workflow_mapping": true,
       "ownership": false,
-      "total_commands": 8,
-      "registered_commands": 0,
-      "registration_ratio": 0.0,
+      "total_commands": 9,
+      "registered_commands": 1,
+      "registration_ratio": 0.1111111111111111,
       "unregistered_commands": []
     }
   },
@@ -86,7 +86,7 @@
       "Document how command outputs are captured"
     ],
     "details": {
-      "command_count": 8,
+      "command_count": 9,
       "flag_usage": true,
       "output_redirection": false,
       "parameterization": true,
@@ -94,14 +94,12 @@
     }
   },
   "error_handling": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Exit code handling not described"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "exit_codes": false,
+      "exit_codes": true,
       "fallback": true,
       "logging": true,
       "manual_paths": true

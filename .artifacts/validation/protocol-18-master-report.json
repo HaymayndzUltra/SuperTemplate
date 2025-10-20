@@ -1,21 +1,21 @@
 {
   "validator": "master_validator",
   "protocol_id": "18",
-  "validation_timestamp": "2025-10-20T14:54:58.866666Z",
-  "overall_score": 0.5841111111111111,
+  "validation_timestamp": "2025-10-20T16:35:28.113200Z",
+  "overall_score": 0.7691666666666667,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8244444444444443
+      "score": 0.8666666666666666
     },
     "protocol_role": {
-      "status": "fail",
-      "score": 0.6666666666666666
+      "status": "warning",
+      "score": 0.8374999999999999
     },
     "protocol_workflow": {
-      "status": "fail",
-      "score": 0.1
+      "status": "pass",
+      "score": 0.9000000000000001
     },
     "protocol_quality_gates": {
       "status": "fail",
@@ -23,63 +23,53 @@
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.6125
+      "score": 0.6624999999999999
     },
     "protocol_communication": {
       "status": "fail",
-      "score": 0.55
+      "score": 0.6875
     },
     "protocol_evidence": {
       "status": "fail",
-      "score": 0.65
+      "score": 0.7
     },
     "protocol_handoff": {
       "status": "fail",
-      "score": 0.6875
+      "score": 0.7375
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.375
+      "score": 0.6375
     },
     "protocol_reflection": {
-      "status": "fail",
-      "score": 0.6124999999999999
+      "status": "pass",
+      "score": 0.8999999999999999
     }
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Purpose statement not found or too short",
     "Scope definition not found",
     "Industry standards not documented",
-    "Required section missing: WORKFLOW",
     "Domain expertise keywords missing",
     "Value proposition not captured",
-    "Constraints do not articulate mandatory guardrails or requirements",
-    "Output structure missing (sections or tables)",
-    "WORKFLOW section missing",
-    "Workflow steps missing",
-    "Action markers absent because workflow missing",
-    "No workflow content to evaluate halt conditions",
+    "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_14.py, scripts/run_protocol_14_gates.py, scripts/validate_gate_14_baseline.py, scripts/validate_gate_14_optimization.py, scripts/validate_prerequisites_14.py",
     "Exit code handling not described",
     "Missing user interaction prompts: clarification, decision_points, feedback",
-    "Limited progress terminology in communications",
     "Protocol evidence directory not referenced",
     "Traceability gaps: inputs, outputs",
-    "Limited verification language detected",
     "Sign-off guidance missing: approvals, reviewers, confirmation",
-    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
     "Learning mechanisms incomplete: knowledge_base, adaptation",
-    "Continuous improvement gaps: tracking",
     "Knowledge capture gaps: lessons, knowledge_base",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
-    "Reference workflow steps when stating guardrails to improve clarity",
     "Outline decision-making expectations",
-    "Document evidence manifests or registries",
+    "Optional or cautionary guidance can highlight operator judgement without blocking validation",
+    "Add rollback or retry guidance for failure scenarios",
     "Identify gate types (Prerequisite/Execution/Completion)",
     "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/18.yaml when automated gating is expected",
@@ -89,7 +79,6 @@
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",
-    "Add time or effort estimates to communication prompts",
     "Document storage permissions or access requirements",
     "Optionally reference a manifest file or inventory for quick lookup",
     "Optionally outline archival format, retention, retrieval, and cleanup steps"

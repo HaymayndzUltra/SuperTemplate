@@ -1,27 +1,22 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "05",
-  "validation_timestamp": "2025-10-20T14:54:58.597648Z",
-  "overall_score": 0.3875,
+  "validation_timestamp": "2025-10-20T16:35:27.880143Z",
+  "overall_score": 0.6750000000000002,
   "validation_status": "fail",
   "issues": [
-    "Retrospective analysis not documented",
     "Continuous improvement gaps: opportunities",
-    "Knowledge capture gaps: lessons, sharing",
+    "Knowledge capture gaps: lessons",
     "Roadmap or future direction not documented"
   ],
-  "recommendations": [
-    "Document rollback or recovery approach for changes"
-  ],
+  "recommendations": [],
   "retrospective_analysis": {
-    "score": 0.25,
+    "score": 0.5,
     "status": "fail",
-    "issues": [
-      "Retrospective analysis not documented"
-    ],
+    "issues": [],
     "recommendations": [],
     "details": {
-      "review": false,
+      "review": true,
       "performance": false,
       "issues": false,
       "success": true
@@ -42,35 +37,33 @@
     }
   },
   "system_evolution": {
-    "score": 0.25,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document rollback or recovery approach for changes"
-    ],
+    "recommendations": [],
     "details": {
-      "version_history": false,
-      "rationale": false,
+      "version_history": true,
+      "rationale": true,
       "impact": true,
-      "rollback": false
+      "rollback": true
     }
   },
   "knowledge_capture": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
-      "Knowledge capture gaps: lessons, sharing"
+      "Knowledge capture gaps: lessons"
     ],
     "recommendations": [],
     "details": {
       "lessons": false,
       "knowledge_base": true,
       "storage": true,
-      "sharing": false
+      "sharing": true
     }
   },
   "future_planning": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
     "issues": [
       "Roadmap or future direction not documented"
@@ -79,7 +72,7 @@
     "details": {
       "roadmap": false,
       "priorities": false,
-      "resources": false,
+      "resources": true,
       "timeline": false
     }
   }

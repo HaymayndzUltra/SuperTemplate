@@ -1,8 +1,8 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "09",
-  "validation_timestamp": "2025-10-20T14:54:58.671670Z",
-  "overall_score": 0.63125,
+  "validation_timestamp": "2025-10-20T16:35:27.941809Z",
+  "overall_score": 0.6347222222222222,
   "validation_status": "fail",
   "issues": [
     "Referenced command paths not found: scripts/aggregate_evidence_7.py, scripts/package_environment_assets.py, scripts/run_protocol_7_gates.py, scripts/validate_prerequisites_7.py",
@@ -21,7 +21,7 @@
     ],
     "recommendations": [],
     "details": {
-      "command_count": 8,
+      "command_count": 9,
       "commands": [
         "bash\n# Prerequisite validation",
         "python scripts/validate_prerequisites_7.py",
@@ -30,7 +30,8 @@
         "bash scripts/install_and_test.sh --smoke",
         "python scripts/package_environment_assets.py --output .artifacts/protocol-09/environment-onboarding.zip",
         "python scripts/aggregate_evidence_7.py --output .artifacts/protocol-09/",
-        "python scripts/run_protocol_7_gates.py"
+        "python scripts/run_protocol_7_gates.py",
+        "bash scripts/setup.sh --non-interactive"
       ],
       "missing_scripts": [
         "scripts/validate_prerequisites_7.py",
@@ -41,21 +42,21 @@
     }
   },
   "registry_alignment": {
-    "score": 0.34375,
+    "score": 0.3611111111111111,
     "status": "fail",
     "issues": [],
     "recommendations": [
       "Reference scripts/script-registry.json for governance context"
     ],
     "details": {
-      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": false,
       "workflow_mapping": true,
       "ownership": false,
-      "total_commands": 8,
-      "registered_commands": 3,
-      "registration_ratio": 0.375,
+      "total_commands": 9,
+      "registered_commands": 4,
+      "registration_ratio": 0.4444444444444444,
       "unregistered_commands": []
     }
   },
@@ -81,7 +82,7 @@
       "Document how command outputs are captured"
     ],
     "details": {
-      "command_count": 8,
+      "command_count": 9,
       "flag_usage": true,
       "output_redirection": false,
       "parameterization": false,

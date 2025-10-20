@@ -1,8 +1,8 @@
 {
   "validator": "protocol_quality_gates",
   "protocol_id": "06",
-  "validation_timestamp": "2025-10-20T14:54:58.608478Z",
-  "overall_score": 0.65,
+  "validation_timestamp": "2025-10-20T16:35:27.889803Z",
+  "overall_score": 0.6499999999999999,
   "validation_status": "fail",
   "issues": [
     "Insufficient compliance standards referenced"
@@ -59,7 +59,7 @@
       "ci": true,
       "automation_labels": true,
       "script_mentions": 9,
-      "gate_config_path": "/workspace/SuperTemplate/config/protocol_gates/06.yaml",
+      "gate_config_path": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/config/protocol_gates/06.yaml",
       "gate_config_present": false
     }
   },

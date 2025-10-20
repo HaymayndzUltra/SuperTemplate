@@ -1,21 +1,21 @@
 {
   "validator": "master_validator",
   "protocol_id": "10",
-  "validation_timestamp": "2025-10-20T14:54:58.703142Z",
-  "overall_score": 0.5966111111111111,
+  "validation_timestamp": "2025-10-20T16:35:27.970732Z",
+  "overall_score": 0.7497222222222223,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8577777777777778
+      "score": 0.9
     },
     "protocol_role": {
       "status": "warning",
-      "score": 0.8083333333333333
+      "score": 0.875
     },
     "protocol_workflow": {
-      "status": "fail",
-      "score": 0.15000000000000002
+      "status": "warning",
+      "score": 0.8791666666666667
     },
     "protocol_quality_gates": {
       "status": "fail",
@@ -23,59 +23,50 @@
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.6125
+      "score": 0.6555555555555556
     },
     "protocol_communication": {
       "status": "fail",
-      "score": 0.6875
+      "score": 0.7374999999999999
     },
     "protocol_evidence": {
       "status": "fail",
-      "score": 0.65
+      "score": 0.7
     },
     "protocol_handoff": {
       "status": "fail",
-      "score": 0.6875
+      "score": 0.7375
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.3
+      "score": 0.475
     },
     "protocol_reflection": {
-      "status": "fail",
-      "score": 0.3875
+      "status": "warning",
+      "score": 0.7125
     }
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Purpose statement not found or too short",
     "Industry standards not documented",
-    "Required section missing: WORKFLOW",
     "Domain expertise keywords missing",
     "Value proposition not captured",
-    "WORKFLOW section missing",
-    "Workflow steps missing",
-    "Action markers absent because workflow missing",
-    "No workflow content to evaluate halt conditions",
+    "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_3.py, scripts/run_protocol_3_gates.py, scripts/validate_preflight.py, scripts/validate_prerequisites_3.py, scripts/validate_quality_gate.py, scripts/validate_session_closeout.py, scripts/validate_subtask_compliance.py",
-    "Exit code handling not described",
     "Missing user interaction prompts: clarification, feedback",
     "Limited progress terminology in communications",
     "Traceability gaps: inputs, outputs",
-    "Limited verification language detected",
     "Sign-off guidance missing: approvals, reviewers, confirmation",
-    "Workflow section missing; cannot evaluate reasoning patterns",
-    "Decision points insufficiently described",
+    "Reasoning patterns not explicitly named",
     "Learning mechanisms incomplete: feedback, improvement_tracking, adaptation",
     "Self-awareness statements missing",
-    "Retrospective analysis not documented",
     "Continuous improvement gaps: opportunities",
-    "Knowledge capture gaps: lessons, sharing",
-    "Roadmap or future direction not documented"
+    "Knowledge capture gaps: lessons, sharing"
   ],
   "recommendations": [
-    "Reference workflow steps when stating guardrails to improve clarity",
+    "Document communication prompts per step",
+    "Add rollback or retry guidance for failure scenarios",
     "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/10.yaml when automated gating is expected",
     "Identify notification path for gate failures",
@@ -84,11 +75,9 @@
     "Clarify access and credential requirements",
     "Document how command outputs are captured",
     "Add time or effort estimates to communication prompts",
-    "Document storage permissions or access requirements",
     "Document timestamps or hashes for manifest entries",
     "Link artifacts to their inputs/outputs inside the manifest",
     "Optionally outline archival format, retention, retrieval, and cleanup steps",
-    "Include root-cause analysis guidance",
-    "Document rollback or recovery approach for changes"
+    "Include root-cause analysis guidance"
   ]
 }

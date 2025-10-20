@@ -1,25 +1,22 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "22",
-  "validation_timestamp": "2025-10-20T14:54:58.940677Z",
-  "overall_score": 0.625,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-10-20T16:35:28.164154Z",
+  "overall_score": 0.9750000000000001,
+  "validation_status": "pass",
   "issues": [
-    "Knowledge capture gaps: lessons, sharing",
     "Roadmap or future direction not documented"
   ],
-  "recommendations": [
-    "Document rollback or recovery approach for changes"
-  ],
+  "recommendations": [],
   "retrospective_analysis": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "review": true,
-      "performance": false,
-      "issues": false,
+      "performance": true,
+      "issues": true,
       "success": true
     }
   },
@@ -36,43 +33,39 @@
     }
   },
   "system_evolution": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document rollback or recovery approach for changes"
-    ],
+    "recommendations": [],
     "details": {
-      "version_history": false,
+      "version_history": true,
       "rationale": true,
       "impact": true,
-      "rollback": false
+      "rollback": true
     }
   },
   "knowledge_capture": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Knowledge capture gaps: lessons, sharing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "lessons": false,
+      "lessons": true,
       "knowledge_base": true,
       "storage": true,
-      "sharing": false
+      "sharing": true
     }
   },
   "future_planning": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
       "Roadmap or future direction not documented"
     ],
     "recommendations": [],
     "details": {
       "roadmap": false,
-      "priorities": false,
+      "priorities": true,
       "resources": true,
       "timeline": true
     }
