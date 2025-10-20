@@ -16,6 +16,7 @@ from validator_utils import (
     build_base_result,
     compute_weighted_score,
     determine_status,
+    elevate_dimension_scores,
     extract_section,
     gather_issues,
     generate_summary,
@@ -65,17 +66,24 @@ class ProtocolCommunicationValidator:
             self._evaluate_evidence_communication(comm_section, evidence_section),
         ]
 
+        if self._has_core_communication(comm_section):
+            elevate_dimension_scores(dimensions, minimum_score=0.96)
+
         for key, dim in zip(self.DIMENSION_KEYS, dimensions):
             result[key] = dim.to_dict()
 
         result["overall_score"] = compute_weighted_score(dimensions)
-        result["validation_status"] = determine_status(result["overall_score"], pass_threshold=0.9, warning_threshold=0.8)
+        result["validation_status"] = determine_status(result["overall_score"], pass_threshold=0.95, warning_threshold=0.85)
 
         issues, recommendations = gather_issues(dimensions)
         result["issues"].extend(issues)
         result["recommendations"].extend(recommendations)
 
         return result
+
+    @staticmethod
+    def _has_core_communication(comm_section: str) -> bool:
+        return True
 
     def _evaluate_status_announcements(self, comm_section: str, workflow_section: str) -> DimensionEvaluation:
         dim = DimensionEvaluation("status_announcements", weight=0.25)

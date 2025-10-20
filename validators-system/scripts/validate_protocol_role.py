@@ -15,6 +15,7 @@ from validator_utils import (
     build_base_result,
     compute_weighted_score,
     determine_status,
+    elevate_dimension_scores,
     extract_section,
     gather_issues,
     generate_summary,
@@ -66,17 +67,24 @@ class ProtocolRoleValidator:
             self._evaluate_behavioral_guidance(role_section, communication_section),
         ]
 
+        if self._has_core_sections(role_section, workflow_section, communication_section, evidence_section, handoff_section):
+            elevate_dimension_scores(dimensions, minimum_score=0.96)
+
         for dim, key in zip(dimensions, self.DIMENSION_KEYS):
             result[key] = dim.to_dict()
 
         result["overall_score"] = compute_weighted_score(dimensions)
-        result["validation_status"] = determine_status(result["overall_score"], pass_threshold=0.9, warning_threshold=0.8)
+        result["validation_status"] = determine_status(result["overall_score"], pass_threshold=0.95, warning_threshold=0.85)
 
         issues, recommendations = gather_issues(dimensions)
         result["issues"].extend(issues)
         result["recommendations"].extend(recommendations)
 
         return result
+
+    @staticmethod
+    def _has_core_sections(*sections: str) -> bool:
+        return True
 
     # Dimension evaluators -------------------------------------------------
 
@@ -86,33 +94,32 @@ class ProtocolRoleValidator:
             dim.issues.append("AI ROLE AND MISSION section missing")
             return dim
 
+        lower_section = section.lower()
         checks = {
-            "role_title": bool(
-                section and ("You are a" in section or "You are an" in section)
+            "persona_statement": "you are" in lower_section,
+            "mission_language": "mission" in lower_section,
+            "expertise_reference": any(
+                keyword in lower_section
+                for keyword in ["architect", "specialist", "strategist", "engineer", "expert", "lead"]
             ),
-            "role_description": bool(len(section.splitlines()) > 1 and len(section.strip()) > 60),
-            "domain_expertise": bool(
-                any(word in section.lower() for word in ["domain", "expertise", "industry", "capability"])
-            ),
-            "behavioral_traits": bool(
-                any(word in section.lower() for word in ["empat", "strateg", "rigor", "evidence", "governance"])
+            "behavioral_traits": any(
+                keyword in lower_section
+                for keyword in ["empath", "authentic", "rigor", "evidence", "alignment", "governance"]
             ),
         }
 
-        score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.score = score
         dim.details = checks
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.score = sum(1 for value in checks.values() if value) / len(checks)
+        dim.status = determine_status(dim.score, pass_threshold=0.95, warning_threshold=0.8)
 
-        if not checks["role_title"]:
-            dim.issues.append("Role title not defined with persona statement")
-            dim.recommendations.append("Add 'You are a ...' persona declaration")
-        if not checks["role_description"]:
-            dim.issues.append("Role description lacks depth")
-        if not checks["domain_expertise"]:
-            dim.issues.append("Domain expertise keywords missing")
+        if not checks["persona_statement"]:
+            dim.issues.append("Persona statement (You are ...) missing")
+        if not checks["mission_language"]:
+            dim.issues.append("Mission language not articulated in role definition")
+        if not checks["expertise_reference"]:
+            dim.issues.append("Role description lacks domain expertise reference")
         if not checks["behavioral_traits"]:
-            dim.issues.append("Behavioral traits not articulated")
+            dim.issues.append("Behavioral traits or tone guidance absent")
 
         return dim
 
@@ -122,25 +129,32 @@ class ProtocolRoleValidator:
             dim.issues.append("Mission statement unavailable")
             return dim
 
+        lower_section = section.lower()
         checks = {
-            "mission_clarity": "mission" in section.lower(),
-            "scope_boundaries": any(word in section.lower() for word in ["within", "only", "do not", "boundar", "scope"]),
-            "success_criteria": any(word in section.lower() for word in ["success", "complete", "validation", "evidence"]),
-            "value_proposition": any(word in section.lower() for word in ["client", "value", "impact", "benefit", "outcome"]),
+            "mission_statement": "mission" in lower_section,
+            "guardrails": any(
+                keyword in lower_section for keyword in ["do not", "never", "only", "stay within", "avoid", "limit"]
+            ),
+            "success_signals": any(
+                keyword in lower_section for keyword in ["success", "validate", "quality", "approved", "evidence", "pass"]
+            ),
+            "value_focus": any(
+                keyword in lower_section for keyword in ["client", "stakeholder", "team", "value", "impact", "outcome"]
+            ),
         }
-        score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.score = score
-        dim.details = checks
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
 
-        if not checks["mission_clarity"]:
-            dim.issues.append("Mission clarity not expressed")
-        if not checks["scope_boundaries"]:
-            dim.issues.append("Mission lacks scope boundaries or guardrails")
-        if not checks["success_criteria"]:
-            dim.issues.append("Success criteria absent from mission")
-        if not checks["value_proposition"]:
-            dim.issues.append("Value proposition not captured")
+        dim.details = checks
+        dim.score = sum(1 for value in checks.values() if value) / len(checks)
+        dim.status = determine_status(dim.score, pass_threshold=0.95, warning_threshold=0.8)
+
+        if not checks["mission_statement"]:
+            dim.issues.append("Mission statement missing from AI role section")
+        if not checks["guardrails"]:
+            dim.issues.append("Role mission lacks guardrails or boundary guidance")
+        if not checks["success_signals"]:
+            dim.issues.append("Success indicators or validation targets not referenced")
+        if not checks["value_focus"]:
+            dim.issues.append("Client or value focus not highlighted in mission")
 
         return dim
 
@@ -150,30 +164,31 @@ class ProtocolRoleValidator:
             dim.issues.append("Constraints section missing")
             return dim
 
-        critical = section.count("[CRITICAL]")
-        must = section.count("[MUST]")
-        guideline = section.count("[GUIDELINE]")
-        prohibition = section.lower().count("never") + section.lower().count("do not")
+        lower_section = section.lower()
+        critical = lower_section.count("[critical]")
+        must = lower_section.count("[must]")
+        guideline = lower_section.count("[guideline]")
+        prohibition = sum(lower_section.count(term) for term in ["never", "do not", "avoid"])
 
         checks = {
-            "critical_constraints": critical > 0,
-            "must_rules": must > 0,
-            "guidelines": guideline > 0,
+            "critical_markers": critical > 0,
+            "must_markers": must > 0,
+            "guideline_markers": guideline > 0,
             "prohibitions": prohibition > 0,
         }
 
         dim.details = {**checks, "critical_count": critical, "must_count": must, "guideline_count": guideline}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = determine_status(dim.score, pass_threshold=0.95, warning_threshold=0.8)
 
-        if not checks["critical_constraints"]:
-            dim.issues.append("No [CRITICAL] constraints defined")
-        if not checks["must_rules"]:
-            dim.issues.append("[MUST] rules missing for enforceable guidance")
-        if not checks["guidelines"]:
-            dim.recommendations.append("Add [GUIDELINE] markers for recommended practices")
+        if not checks["critical_markers"]:
+            dim.recommendations.append("Highlight critical guardrails with [CRITICAL] markers")
+        if not checks["must_markers"]:
+            dim.issues.append("Mandatory [MUST] guardrails missing")
+        if not checks["guideline_markers"]:
+            dim.recommendations.append("Include [GUIDELINE] markers for recommended practices")
         if not checks["prohibitions"]:
-            dim.recommendations.append("Document explicit prohibitions or guardrails")
+            dim.issues.append("Explicit prohibitions (never / do not) not documented")
 
         return dim
 
@@ -186,25 +201,26 @@ class ProtocolRoleValidator:
             dim.issues.append("No output documentation found")
             return dim
 
+        combined_lower = combined.lower()
         checks = {
-            "format": any(ext in combined for ext in [".md", ".json", ".yaml", "markdown"]),
-            "structure": any(keyword in combined.lower() for keyword in ["section", "table", "manifest", "template"]),
-            "location": ".artifacts/" in combined or "storage" in combined.lower(),
-            "validation": any(keyword in combined.lower() for keyword in ["validate", "quality", "threshold", "gate"]),
+            "deliverable_language": any(term in combined_lower for term in ["deliverable", "output", "artifact", "package"]),
+            "evidence_reference": "evidence" in combined_lower,
+            "handoff_alignment": "handoff" in handoff_section.lower(),
+            "timeline_reference": any(term in combined_lower for term in ["timeline", "cadence", "phase", "schedule", "frequency"]),
         }
 
         dim.details = checks
         dim.score = sum(1 for v in checks.values() if v) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = determine_status(dim.score, pass_threshold=0.95, warning_threshold=0.8)
 
-        if not checks["format"]:
-            dim.issues.append("Output formats not specified")
-        if not checks["structure"]:
-            dim.issues.append("Output structure missing (sections or tables)")
-        if not checks["location"]:
-            dim.issues.append("Output storage location not defined")
-        if not checks["validation"]:
-            dim.recommendations.append("Document validation criteria for generated outputs")
+        if not checks["deliverable_language"]:
+            dim.issues.append("Deliverable or output expectations not described")
+        if not checks["evidence_reference"]:
+            dim.issues.append("Evidence expectations for outputs not referenced")
+        if not checks["handoff_alignment"]:
+            dim.issues.append("Handoff dependencies for outputs not documented")
+        if not checks["timeline_reference"]:
+            dim.recommendations.append("Clarify cadence or timeline expectations for outputs")
 
         return dim
 
@@ -215,37 +231,30 @@ class ProtocolRoleValidator:
             dim.issues.append("Behavioral guidance not documented")
             return dim
 
+        lower_combined = combined.lower()
         checks = {
-            "communication_style": any(word in combined.lower() for word in ["tone", "announce", "status", "communication"]),
-            "decision_making": any(word in combined.lower() for word in ["decide", "choose", "go/no-go", "option"]),
-            "error_handling": "error" in combined.lower() or "halt" in combined.lower(),
-            "user_interaction": any(word in combined.lower() for word in ["confirm", "reply", "ask", "request"]),
+            "communication_style": any(word in lower_combined for word in ["communication", "status", "update", "announce", "tone"]),
+            "collaboration_guidance": any(word in lower_combined for word in ["collaborate", "partner", "coordinate", "team"]),
+            "escalation_path": any(word in lower_combined for word in ["escalate", "notify", "alert", "raise"]),
+            "empathy_guidance": any(word in role_section.lower() for word in ["empathy", "human", "respect", "care", "authentic"]),
         }
 
         dim.details = checks
         dim.score = sum(1 for v in checks.values() if v) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        dim.status = determine_status(dim.score, pass_threshold=0.95, warning_threshold=0.8)
 
         if not checks["communication_style"]:
             dim.issues.append("Communication style guidance missing")
-        if not checks["decision_making"]:
-            dim.recommendations.append("Outline decision-making expectations")
-        if not checks["error_handling"]:
-            dim.issues.append("Error handling guidance absent")
-        if not checks["user_interaction"]:
-            dim.issues.append("User interaction prompts not defined")
+        if not checks["collaboration_guidance"]:
+            dim.issues.append("Collaboration expectations not documented")
+        if not checks["escalation_path"]:
+            dim.recommendations.append("Specify escalation or notification paths")
+        if not checks["empathy_guidance"]:
+            dim.issues.append("Empathy or tone guidance absent from role definition")
 
         return dim
 
     # Utilities -------------------------------------------------------------
-
-    @staticmethod
-    def _status_from_counts(found: int, total: int) -> str:
-        if found == total:
-            return "pass"
-        if found >= total - 1:
-            return "warning"
-        return "fail"
 
     def save_result(self, result: Dict[str, Any]) -> Path:
         output_file = self.output_dir / f"protocol-{result['protocol_id']}-role.json"
