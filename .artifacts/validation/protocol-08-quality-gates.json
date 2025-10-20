@@ -1,0 +1,96 @@
+{
+  "validator": "protocol_quality_gates",
+  "protocol_id": "08",
+  "validation_timestamp": "2025-10-20T14:54:58.650206Z",
+  "overall_score": 0.6875,
+  "validation_status": "fail",
+  "issues": [
+    "Insufficient compliance standards referenced"
+  ],
+  "recommendations": [
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Include quantitative metrics for gate evaluation",
+    "Provision config/protocol_gates/08.yaml when automated gating is expected",
+    "Identify notification path for gate failures",
+    "Document waiver/override policies"
+  ],
+  "gate_definitions": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Identify gate types (Prerequisite/Execution/Completion)"
+    ],
+    "details": {
+      "gates": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "gate_count": true,
+      "descriptions": true,
+      "types": false,
+      "naming": true
+    }
+  },
+  "pass_criteria": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Include quantitative metrics for gate evaluation"
+    ],
+    "details": {
+      "thresholds": true,
+      "boolean": true,
+      "metrics": false,
+      "evidence_links": true
+    }
+  },
+  "automation": {
+    "score": 1.0,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Provision config/protocol_gates/08.yaml when automated gating is expected"
+    ],
+    "details": {
+      "scripts": true,
+      "ci": true,
+      "automation_labels": true,
+      "script_mentions": 12,
+      "gate_config_path": "/workspace/SuperTemplate/config/protocol_gates/08.yaml",
+      "gate_config_present": false
+    }
+  },
+  "failure_handling": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Identify notification path for gate failures",
+      "Document waiver/override policies"
+    ],
+    "details": {
+      "failure_actions": true,
+      "rollback": false,
+      "notification": false,
+      "waivers": false
+    }
+  },
+  "compliance_integration": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Insufficient compliance standards referenced"
+    ],
+    "recommendations": [],
+    "details": {
+      "compliance_terms": false,
+      "automation_hooks": true,
+      "evidence": true,
+      "governance": false
+    }
+  }
+}

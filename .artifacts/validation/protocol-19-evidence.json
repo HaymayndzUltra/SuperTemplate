@@ -1,0 +1,96 @@
+{
+  "validator": "protocol_evidence",
+  "protocol_id": "19",
+  "validation_timestamp": "2025-10-20T14:54:58.878034Z",
+  "overall_score": 0.5875,
+  "validation_status": "fail",
+  "issues": [
+    "Traceability gaps: inputs, outputs"
+  ],
+  "recommendations": [
+    "Document storage permissions or access requirements",
+    "Document timestamps or hashes for manifest entries",
+    "Enhance archival plan with: cleanup, retention, retrieval"
+  ],
+  "artifact_generation": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "table_present": true,
+      "artifact_column": true,
+      "metrics_column": false,
+      "row_coverage": true,
+      "table_rows": 9,
+      "artifact_mentions": 4,
+      "metric_mentions": 2
+    }
+  },
+  "storage_structure": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document storage permissions or access requirements"
+    ],
+    "details": {
+      "directories": [
+        ".artifacts/protocol-19/",
+        ".artifacts/protocol-19/",
+        ".artifacts/protocol-19/",
+        ".artifacts/protocol-19/"
+      ],
+      "protocol_directory": true,
+      "subdirectories": true,
+      "permissions": false,
+      "naming": false
+    }
+  },
+  "manifest_completeness": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Document timestamps or hashes for manifest entries"
+    ],
+    "details": {
+      "manifest_reference": true,
+      "metadata": false,
+      "dependencies": true,
+      "coverage": true,
+      "metadata_mentions": 0,
+      "dependency_mentions": 1
+    }
+  },
+  "traceability": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Traceability gaps: inputs, outputs"
+    ],
+    "recommendations": [],
+    "details": {
+      "inputs": false,
+      "outputs": false,
+      "transformations": true,
+      "audit": true
+    }
+  },
+  "archival": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Enhance archival plan with: cleanup, retention, retrieval"
+    ],
+    "details": {
+      "compression": true,
+      "retention": false,
+      "retrieval": false,
+      "cleanup": false,
+      "compression_mentions": 1,
+      "retention_mentions": 0
+    }
+  }
+}

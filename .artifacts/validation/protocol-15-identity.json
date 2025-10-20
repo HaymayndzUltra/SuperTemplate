@@ -1,20 +1,19 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "15",
-  "validation_timestamp": "2025-10-20T01:35:57.593403Z",
+  "validation_timestamp": "2025-10-20T14:54:58.783304Z",
   "basic_information": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.6666666666666666,
+    "status": "warning",
     "issues": [
       "Protocol version not found (semantic versioning expected)",
-      "Phase assignment not found or invalid in AGENTS.md",
       "Purpose statement not found or too short"
     ],
     "elements_found": {
       "protocol_number": true,
       "protocol_name": "**[MASTER RAY\u2122 | PROTOCOL COMPLETE]** Ready for Protocol 19: Monitoring & Observability",
       "protocol_version": false,
-      "phase_assignment": false,
+      "phase_assignment": "Phase 5",
       "purpose_statement": false,
       "scope_definition": true
     }
@@ -41,18 +40,16 @@
     }
   },
   "compliance_standards": {
-    "score": 0.25,
+    "score": 0.3333333333333333,
     "status": "fail",
     "issues": [
       "Industry standards not documented",
-      "Regulatory compliance not documented",
-      "Automated quality gates config not found: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/config/protocol_gates/15.yaml"
+      "Regulatory compliance not documented"
     ],
     "categories_found": {
       "industry_standards": false,
       "security_requirements": true,
-      "regulatory_compliance": false,
-      "quality_gates": false
+      "regulatory_compliance": false
     }
   },
   "documentation_quality": {
@@ -79,15 +76,13 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.7411111111111112,
+  "overall_score": 0.7911111111111111,
   "validation_status": "fail",
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
     "Purpose statement not found or too short",
     "Industry standards not documented",
     "Regulatory compliance not documented",
-    "Automated quality gates config not found: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/config/protocol_gates/15.yaml",
     "Required section missing: WORKFLOW"
   ],
   "recommendations": []

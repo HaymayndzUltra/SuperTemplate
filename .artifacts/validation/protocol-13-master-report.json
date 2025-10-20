@@ -1,0 +1,97 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "13",
+  "validation_timestamp": "2025-10-20T14:54:58.764454Z",
+  "overall_score": 0.5695277777777779,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "fail",
+      "score": 0.7244444444444444
+    },
+    "protocol_role": {
+      "status": "fail",
+      "score": 0.7083333333333333
+    },
+    "protocol_workflow": {
+      "status": "fail",
+      "score": 0.1
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.7875
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.6625
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.675
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.5375
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.75
+    },
+    "protocol_reasoning": {
+      "status": "fail",
+      "score": 0.35000000000000003
+    },
+    "protocol_reflection": {
+      "status": "fail",
+      "score": 0.4
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Purpose statement not found or too short",
+    "Industry standards not documented",
+    "Security requirements not documented",
+    "Regulatory compliance not documented",
+    "Required section missing: WORKFLOW",
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Value proposition not captured",
+    "Output structure missing (sections or tables)",
+    "WORKFLOW section missing",
+    "Workflow steps missing",
+    "Action markers absent because workflow missing",
+    "No workflow content to evaluate halt conditions",
+    "Insufficient compliance standards referenced",
+    "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/run_protocol_15_gates.py, scripts/validate_gate_15_defects.py, scripts/validate_gate_15_entry.py, scripts/validate_prerequisites_15.py",
+    "Exit code handling not described",
+    "Missing user interaction prompts: clarification",
+    "Limited progress terminology in communications",
+    "Protocol evidence directory not referenced",
+    "Traceability gaps: inputs, outputs",
+    "Limited verification language detected",
+    "Sign-off guidance missing: confirmation",
+    "Documentation expectations under-specified",
+    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: improvement_tracking, knowledge_base, adaptation",
+    "Self-awareness statements missing",
+    "Retrospective analysis not documented",
+    "Continuous improvement gaps: opportunities",
+    "Knowledge capture gaps: lessons, knowledge_base, sharing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Reference workflow steps when stating guardrails to improve clarity",
+    "Document evidence manifests or registries",
+    "Include quantitative metrics for gate evaluation",
+    "Provision config/protocol_gates/13.yaml when automated gating is expected",
+    "Document environment/dependency expectations",
+    "Document how command outputs are captured",
+    "Add time or effort estimates to communication prompts",
+    "Document storage permissions or access requirements",
+    "Optionally reference a manifest file or inventory for quick lookup",
+    "Enhance archival plan with: cleanup, retention, retrieval",
+    "Include root-cause analysis guidance",
+    "Document rollback or recovery approach for changes"
+  ]
+}

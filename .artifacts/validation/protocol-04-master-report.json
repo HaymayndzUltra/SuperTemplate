@@ -1,0 +1,86 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "04",
+  "validation_timestamp": "2025-10-20T14:54:58.580118Z",
+  "overall_score": 0.7203571428571428,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 0.9
+    },
+    "protocol_role": {
+      "status": "fail",
+      "score": 0.6875
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 0.9
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.725
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.7785714285714286
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.75
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.75
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.7374999999999999
+    },
+    "protocol_reasoning": {
+      "status": "fail",
+      "score": 0.425
+    },
+    "protocol_reflection": {
+      "status": "fail",
+      "score": 0.5499999999999999
+    }
+  },
+  "issues": [
+    "Scope definition not found",
+    "Industry standards not documented",
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Mission lacks scope boundaries or guardrails",
+    "Success criteria absent from mission",
+    "Value proposition not captured",
+    "Several workflow steps omit explicit action prompts",
+    "Insufficient compliance standards referenced",
+    "Referenced command paths not found: scripts/aggregate_evidence_00.py, scripts/run_protocol_00_gates.py, scripts/validate_prerequisites_00.py, scripts/validate_scaffold.py",
+    "Missing user interaction prompts: clarification, feedback",
+    "Limited progress terminology in communications",
+    "Traceability gaps: inputs, outputs",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
+    "Self-awareness statements missing",
+    "Continuous improvement gaps: opportunities",
+    "Knowledge capture gaps: lessons, knowledge_base, sharing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Optional or cautionary guidance can highlight operator judgement without blocking validation",
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Include quantitative metrics for gate evaluation",
+    "Provision config/protocol_gates/04.yaml when automated gating is expected",
+    "Identify notification path for gate failures",
+    "Document waiver/override policies",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Document timestamps or hashes for manifest entries",
+    "Link artifacts to their inputs/outputs inside the manifest",
+    "Optionally outline archival format, retention, retrieval, and cleanup steps",
+    "Include root-cause analysis guidance"
+  ]
+}

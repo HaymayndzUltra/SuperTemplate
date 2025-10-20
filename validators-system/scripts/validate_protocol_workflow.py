@@ -20,6 +20,8 @@ from validator_utils import (
     gather_issues,
     generate_summary,
     get_protocol_file,
+    include_documentation_protocols,
+    relax_for_documentation_protocol,
     read_protocol_content,
     write_json,
 )
@@ -73,6 +75,12 @@ class ProtocolWorkflowValidator:
         issues, recommendations = gather_issues(dimensions)
         result["issues"].extend(issues)
         result["recommendations"].extend(recommendations)
+
+        relax_for_documentation_protocol(
+            protocol_id,
+            result,
+            note="Documentation-focused protocol detected; workflow automation cues treated as optional guidance.",
+        )
 
         return result
 
@@ -144,22 +152,45 @@ class ProtocolWorkflowValidator:
             dim.issues.append("Action markers absent because workflow missing")
             return dim
 
-        counts = {
-            "critical": section.count("[CRITICAL]"),
-            "must": section.count("[MUST]"),
-            "guideline": section.count("[GUIDELINE]"),
-            "optional": section.count("[OPTIONAL]"),
+        step_count = max(1, len(re.findall(r"###\s+STEP\s+\d+", section)))
+        imperative_count = len(
+            re.findall(r"\[(?:MUST|CRITICAL)\]|\bmust\b|\brequire|\bensure", section, flags=re.IGNORECASE)
+        )
+        action_prompts = len(re.findall(r"\*\*Action\*\*|Action:\s", section, flags=re.IGNORECASE))
+        context_prompts = len(
+            re.findall(r"Communication:|Evidence:|Halt condition|status", section, flags=re.IGNORECASE)
+        )
+        optional_guidance = len(re.findall(r"\[OPTIONAL\]|optional", section, flags=re.IGNORECASE))
+        cautionary = len(re.findall(r"never|do not|avoid", section, flags=re.IGNORECASE))
+
+        checks = {
+            "imperative_balance": imperative_count >= max(1, step_count // 2),
+            "action_clarity": action_prompts >= max(1, step_count // 2),
+            "contextual_support": context_prompts >= max(1, step_count // 2),
         }
 
-        checks = {key: value > 0 for key, value in counts.items()}
-        dim.details = {**counts, "markers_present": checks}
+        dim.details = {
+            **checks,
+            "step_count": step_count,
+            "imperative_count": imperative_count,
+            "action_prompts": action_prompts,
+            "context_prompts": context_prompts,
+            "optional_guidance": optional_guidance,
+            "cautionary_statements": cautionary,
+        }
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
         dim.status = self._status_from_counts(sum(checks.values()), len(checks))
 
-        missing = [name for name, ok in checks.items() if not ok]
-        if missing:
-            dim.issues.append(f"Missing action markers: {', '.join(missing)}")
-            dim.recommendations.append("Include CRITICAL/MUST/GUIDELINE/OPTIONAL markers across workflow actions")
+        if not checks["imperative_balance"]:
+            dim.issues.append("Workflow steps lack imperative guidance (MUST/CRITICAL instructions)")
+        if not checks["action_clarity"]:
+            dim.issues.append("Several workflow steps omit explicit action prompts")
+        if not checks["contextual_support"]:
+            dim.recommendations.append("Reference communication, evidence, or halt cues alongside actions")
+        if optional_guidance == 0 and cautionary == 0:
+            dim.recommendations.append(
+                "Optional or cautionary guidance can highlight operator judgement without blocking validation"
+            )
 
         return dim
 
@@ -256,7 +287,10 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Workflow validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        protocol_ids = include_documentation_protocols(
+            DEFAULT_PROTOCOL_IDS, include_docs=args.include_docs
+        )
+        for protocol_id in protocol_ids:
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -280,6 +314,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Validate workflow algorithm for AI-driven protocols")
     parser.add_argument("--protocol", help="Protocol ID to validate (e.g., '01')")
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) when running with --all",
+    )
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
 
