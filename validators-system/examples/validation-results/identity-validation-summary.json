@@ -1,0 +1,145 @@
+{
+  "validation_timestamp": "2025-10-20T01:35:57.633467Z",
+  "total_protocols": 27,
+  "pass_count": 0,
+  "warning_count": 4,
+  "fail_count": 23,
+  "average_score": 0.6895061728395062,
+  "protocols": [
+    {
+      "protocol_id": "01",
+      "status": "warning",
+      "score": 0.8411111111111111
+    },
+    {
+      "protocol_id": "02",
+      "status": "warning",
+      "score": 0.8322222222222223
+    },
+    {
+      "protocol_id": "03",
+      "status": "warning",
+      "score": 0.8411111111111111
+    },
+    {
+      "protocol_id": "04",
+      "status": "fail",
+      "score": 0.7577777777777778
+    },
+    {
+      "protocol_id": "05",
+      "status": "fail",
+      "score": 0.7911111111111111
+    },
+    {
+      "protocol_id": "06",
+      "status": "fail",
+      "score": 0.7411111111111112
+    },
+    {
+      "protocol_id": "07",
+      "status": "fail",
+      "score": 0.7911111111111111
+    },
+    {
+      "protocol_id": "08",
+      "status": "fail",
+      "score": 0.7911111111111111
+    },
+    {
+      "protocol_id": "09",
+      "status": "fail",
+      "score": 0.7577777777777778
+    },
+    {
+      "protocol_id": "10",
+      "status": "fail",
+      "score": 0.7911111111111111
+    },
+    {
+      "protocol_id": "11",
+      "status": "fail",
+      "score": 0.6911111111111111
+    },
+    {
+      "protocol_id": "12",
+      "status": "fail",
+      "score": 0.7911111111111111
+    },
+    {
+      "protocol_id": "13",
+      "status": "fail",
+      "score": 0.6911111111111111
+    },
+    {
+      "protocol_id": "14",
+      "status": "fail",
+      "score": 0.7911111111111111
+    },
+    {
+      "protocol_id": "15",
+      "status": "fail",
+      "score": 0.7411111111111112
+    },
+    {
+      "protocol_id": "16",
+      "status": "fail",
+      "score": 0.7577777777777778
+    },
+    {
+      "protocol_id": "17",
+      "status": "warning",
+      "score": 0.8244444444444443
+    },
+    {
+      "protocol_id": "18",
+      "status": "fail",
+      "score": 0.7577777777777778
+    },
+    {
+      "protocol_id": "19",
+      "status": "fail",
+      "score": 0.7911111111111111
+    },
+    {
+      "protocol_id": "20",
+      "status": "fail",
+      "score": 0.7577777777777778
+    },
+    {
+      "protocol_id": "21",
+      "status": "fail",
+      "score": 0.7911111111111111
+    },
+    {
+      "protocol_id": "22",
+      "status": "fail",
+      "score": 0.6911111111111111
+    },
+    {
+      "protocol_id": "23",
+      "status": "fail",
+      "score": 0.7577777777777778
+    },
+    {
+      "protocol_id": "24",
+      "status": "fail",
+      "score": 0.39555555555555555
+    },
+    {
+      "protocol_id": "25",
+      "status": "fail",
+      "score": 0.09577777777777778
+    },
+    {
+      "protocol_id": "26",
+      "status": "fail",
+      "score": 0.202
+    },
+    {
+      "protocol_id": "27",
+      "status": "fail",
+      "score": 0.15333333333333332
+    }
+  ]
+}

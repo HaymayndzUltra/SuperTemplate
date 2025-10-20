@@ -1,0 +1,255 @@
+{
+  "validation_timestamp": "2025-10-20T01:35:57.633809Z",
+  "protocols": [
+    {
+      "protocol_id": "01",
+      "compliance_score": 0.75,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": true
+      }
+    },
+    {
+      "protocol_id": "02",
+      "compliance_score": 0.75,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": true
+      }
+    },
+    {
+      "protocol_id": "03",
+      "compliance_score": 0.75,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": true
+      }
+    },
+    {
+      "protocol_id": "04",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "05",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": true,
+        "security_requirements": true,
+        "regulatory_compliance": false,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "06",
+      "compliance_score": 0.25,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": false,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "07",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "08",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "09",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "10",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "11",
+      "compliance_score": 0.0,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": false,
+        "regulatory_compliance": false,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "12",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "13",
+      "compliance_score": 0.0,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": false,
+        "regulatory_compliance": false,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "14",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "15",
+      "compliance_score": 0.25,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": false,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "16",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "17",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "18",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "19",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "20",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "21",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "22",
+      "compliance_score": 0.0,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": false,
+        "regulatory_compliance": false,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "23",
+      "compliance_score": 0.5,
+      "categories": {
+        "industry_standards": false,
+        "security_requirements": true,
+        "regulatory_compliance": true,
+        "quality_gates": false
+      }
+    },
+    {
+      "protocol_id": "24",
+      "compliance_score": 0.0,
+      "categories": {}
+    },
+    {
+      "protocol_id": "25",
+      "compliance_score": 0.0,
+      "categories": {}
+    },
+    {
+      "protocol_id": "26",
+      "compliance_score": 0.0,
+      "categories": {}
+    },
+    {
+      "protocol_id": "27",
+      "compliance_score": 0.0,
+      "categories": {}
+    }
+  ]
+}

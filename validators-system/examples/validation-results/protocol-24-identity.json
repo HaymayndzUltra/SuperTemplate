@@ -1,0 +1,99 @@
+{
+  "validator": "protocol_identity",
+  "protocol_id": "24",
+  "validation_timestamp": "2025-10-20T01:35:57.621239Z",
+  "basic_information": {
+    "score": 0.3333333333333333,
+    "status": "fail",
+    "issues": [
+      "Protocol number not found in header",
+      "Protocol version not found (semantic versioning expected)",
+      "Phase assignment not found or invalid in AGENTS.md",
+      "Purpose statement not found or too short"
+    ],
+    "elements_found": {
+      "protocol_number": false,
+      "protocol_name": "Project Brief Creation.\"",
+      "protocol_version": false,
+      "phase_assignment": false,
+      "purpose_statement": false,
+      "scope_definition": true
+    }
+  },
+  "prerequisites": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "categories_found": {
+      "required_artifacts": true,
+      "required_approvals": true,
+      "system_state": true
+    }
+  },
+  "integration_points": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "INTEGRATION POINTS section not found"
+    ],
+    "elements_found": {}
+  },
+  "compliance_standards": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "QUALITY GATES section not found"
+    ],
+    "categories_found": {}
+  },
+  "documentation_quality": {
+    "score": 0.6444444444444445,
+    "status": "fail",
+    "issues": [
+      "Required section missing: AI ROLE AND MISSION",
+      "Required section missing: WORKFLOW",
+      "Required section missing: INTEGRATION POINTS",
+      "Required section missing: QUALITY GATES",
+      "Required section missing: COMMUNICATION PROTOCOLS",
+      "Required section missing: AUTOMATION HOOKS",
+      "Required section missing: HANDOFF CHECKLIST",
+      "Required section missing: EVIDENCE SUMMARY"
+    ],
+    "sections_found": {
+      "PREREQUISITES": true,
+      "AI ROLE AND MISSION": false,
+      "WORKFLOW": false,
+      "INTEGRATION POINTS": false,
+      "QUALITY GATES": false,
+      "COMMUNICATION PROTOCOLS": false,
+      "AUTOMATION HOOKS": false,
+      "HANDOFF CHECKLIST": false,
+      "EVIDENCE SUMMARY": false
+    },
+    "metrics": {
+      "completeness": 0.1111111111111111,
+      "clarity": 1.0,
+      "accessibility": 1.0,
+      "technical_accuracy": 1.0
+    }
+  },
+  "overall_score": 0.39555555555555555,
+  "validation_status": "fail",
+  "issues": [
+    "Protocol number not found in header",
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Purpose statement not found or too short",
+    "INTEGRATION POINTS section not found",
+    "QUALITY GATES section not found",
+    "Required section missing: AI ROLE AND MISSION",
+    "Required section missing: WORKFLOW",
+    "Required section missing: INTEGRATION POINTS",
+    "Required section missing: QUALITY GATES",
+    "Required section missing: COMMUNICATION PROTOCOLS",
+    "Required section missing: AUTOMATION HOOKS",
+    "Required section missing: HANDOFF CHECKLIST",
+    "Required section missing: EVIDENCE SUMMARY"
+  ],
+  "recommendations": []
+}

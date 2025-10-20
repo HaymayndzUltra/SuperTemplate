@@ -1,0 +1,260 @@
+{
+  "validation_timestamp": "2025-10-20T01:35:57.634228Z",
+  "protocols": [
+    {
+      "protocol_id": "01",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "02",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "03",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "04",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "05",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "06",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "07",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "08",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "09",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "10",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "11",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "12",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "13",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "14",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "15",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "16",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "17",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "18",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "19",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "20",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "21",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "22",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "23",
+      "integration_score": 1.0,
+      "elements": {
+        "input_sources": true,
+        "output_destinations": true,
+        "data_formats": true,
+        "storage_locations": true
+      }
+    },
+    {
+      "protocol_id": "24",
+      "integration_score": 0.0,
+      "elements": {}
+    },
+    {
+      "protocol_id": "25",
+      "integration_score": 0.0,
+      "elements": {
+        "input_sources": false,
+        "output_destinations": false,
+        "data_formats": false,
+        "storage_locations": false
+      }
+    },
+    {
+      "protocol_id": "26",
+      "integration_score": 0.0,
+      "elements": {}
+    },
+    {
+      "protocol_id": "27",
+      "integration_score": 0.0,
+      "elements": {}
+    }
+  ]
+}
