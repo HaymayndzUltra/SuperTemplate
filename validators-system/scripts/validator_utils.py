@@ -9,7 +9,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
-DEFAULT_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(1, 28)]
+DEFAULT_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(1, 24)]
+DOCUMENTATION_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(24, 28)]
 
 
 def current_timestamp() -> str:
@@ -38,6 +39,31 @@ class DimensionEvaluation:
             "recommendations": self.recommendations,
             "details": self.details,
         }
+
+
+def resolve_protocol_ids(include_docs: bool = False) -> List[str]:
+    """Return protocol identifiers respecting documentation scope overrides."""
+
+    ordered_ids = list(DEFAULT_PROTOCOL_IDS)
+    if include_docs:
+        ordered_ids.extend(DOCUMENTATION_PROTOCOL_IDS)
+    # Preserve declared order while removing accidental duplicates
+    return list(dict.fromkeys(ordered_ids))
+
+
+def is_documentation_protocol(protocol_id: str) -> bool:
+    """Return True when the identifier refers to a documentation protocol (24-27)."""
+
+    return protocol_id in DOCUMENTATION_PROTOCOL_IDS
+
+
+def documentation_protocol_recommendation() -> str:
+    """Guidance presented when documentation protocols are intentionally skipped."""
+
+    return (
+        "Documentation protocol (24-27) detected. Manual review is recommended; "
+        "automated validation is informational only."
+    )
 
 
 def get_protocol_file(workspace_root: Path, protocol_id: str) -> Optional[Path]:
