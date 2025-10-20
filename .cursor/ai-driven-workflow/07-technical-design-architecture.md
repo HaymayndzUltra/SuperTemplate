@@ -418,6 +418,24 @@ Before declaring protocol complete, validate:
 | `design-validation-report.json` | `.artifacts/protocol-07/` | Compliance validation proof | Protocol 09 |
 | `task-generation-input.json` | `.artifacts/protocol-07/` | Task generation dataset | Protocol 08 |
 
+
+### Traceability Matrix
+
+**Upstream Dependencies:**
+- Input artifacts inherit from: [list predecessor protocols]
+- Configuration dependencies: [list config files or environment requirements]
+- External dependencies: [list third-party systems or APIs]
+
+**Downstream Consumers:**
+- Output artifacts consumed by: [list successor protocols]
+- Shared artifacts: [list artifacts used by multiple protocols]
+- Archive requirements: [list retention policies]
+
+**Verification Chain:**
+- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
+- Verification procedure: [describe validation process]
+- Audit trail: All artifact modifications logged in protocol execution log
+
 ### Quality Metrics:
 | Metric | Target | Actual | Status |
 |--------|--------|--------|--------|

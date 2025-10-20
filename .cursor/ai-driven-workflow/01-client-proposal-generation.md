@@ -457,6 +457,24 @@ Before declaring protocol complete, validate:
 | `proposal-summary.json` | `.artifacts/protocol-01/` | Key highlights for brief creation | Protocol 03 |
 | `proposal-validation-report.json` | `.artifacts/protocol-01/` | Validation evidence | Protocol 02 |
 
+
+### Traceability Matrix
+
+**Upstream Dependencies:**
+- Input artifacts inherit from: [list predecessor protocols]
+- Configuration dependencies: [list config files or environment requirements]
+- External dependencies: [list third-party systems or APIs]
+
+**Downstream Consumers:**
+- Output artifacts consumed by: [list successor protocols]
+- Shared artifacts: [list artifacts used by multiple protocols]
+- Archive requirements: [list retention policies]
+
+**Verification Chain:**
+- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
+- Verification procedure: [describe validation process]
+- Audit trail: All artifact modifications logged in protocol execution log
+
 ### Quality Metrics:
 | Metric | Target | Actual | Status |
 |--------|--------|--------|--------|

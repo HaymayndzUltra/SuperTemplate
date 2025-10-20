@@ -1,8 +1,8 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "12",
-  "validation_timestamp": "2025-10-20T16:43:20.068173Z",
-  "overall_score": 0.5874999999999999,
+  "validation_timestamp": "2025-10-20T16:47:08.804985Z",
+  "overall_score": 0.6249999999999999,
   "validation_status": "fail",
   "issues": [
     "Protocol evidence directory not referenced",
@@ -10,7 +10,7 @@
   ],
   "recommendations": [
     "Optionally reference a manifest file or inventory for quick lookup",
-    "Enhance archival plan with: cleanup, retention, retrieval"
+    "Enhance archival plan with: cleanup, retrieval"
   ],
   "artifact_generation": {
     "score": 0.75,
@@ -51,8 +51,8 @@
     ],
     "details": {
       "manifest_reference": false,
-      "metadata": 0,
-      "dependencies": 0,
+      "metadata": 2,
+      "dependencies": 2,
       "coverage": 2
     }
   },
@@ -71,19 +71,19 @@
     }
   },
   "archival": {
-    "score": 0.25,
+    "score": 0.5,
     "status": "fail",
     "issues": [],
     "recommendations": [
-      "Enhance archival plan with: cleanup, retention, retrieval"
+      "Enhance archival plan with: cleanup, retrieval"
     ],
     "details": {
       "compression": true,
-      "retention": false,
+      "retention": true,
       "retrieval": false,
       "cleanup": false,
-      "compression_mentions": 1,
-      "retention_mentions": 0
+      "compression_mentions": 2,
+      "retention_mentions": 1
     }
   }
 }

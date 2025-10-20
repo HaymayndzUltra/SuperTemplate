@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "18",
-  "validation_timestamp": "2025-10-20T16:43:20.194634Z",
-  "overall_score": 0.7929166666666667,
+  "validation_timestamp": "2025-10-20T16:47:08.940225Z",
+  "overall_score": 0.7854166666666668,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -31,7 +31,7 @@
     },
     "protocol_evidence": {
       "status": "fail",
-      "score": 0.7
+      "score": 0.6249999999999999
     },
     "protocol_handoff": {
       "status": "fail",
@@ -77,6 +77,6 @@
     "Document how command outputs are captured",
     "Document storage permissions or access requirements",
     "Optionally reference a manifest file or inventory for quick lookup",
-    "Optionally outline archival format, retention, retrieval, and cleanup steps"
+    "Enhance archival plan with: cleanup, retrieval"
   ]
 }

@@ -304,6 +304,24 @@ Before declaring protocol complete, validate:
 | `risk-register.md` | `.artifacts/protocol-00-CD/` | Risk catalogue | Protocols 01 & 1 |
 | `discovery-brief.md` | `.artifacts/protocol-00-CD/` | Primary discovery deliverable | Protocol 03 |
 
+
+### Traceability Matrix
+
+**Upstream Dependencies:**
+- Input artifacts inherit from: [list predecessor protocols]
+- Configuration dependencies: [list config files or environment requirements]
+- External dependencies: [list third-party systems or APIs]
+
+**Downstream Consumers:**
+- Output artifacts consumed by: [list successor protocols]
+- Shared artifacts: [list artifacts used by multiple protocols]
+- Archive requirements: [list retention policies]
+
+**Verification Chain:**
+- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
+- Verification procedure: [describe validation process]
+- Audit trail: All artifact modifications logged in protocol execution log
+
 ### Quality Metrics:
 | Metric | Target | Actual | Status |
 |--------|--------|--------|--------|

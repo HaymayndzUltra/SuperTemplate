@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "23",
-  "validation_timestamp": "2025-10-20T16:43:20.284044Z",
-  "overall_score": 0.7675000000000001,
+  "validation_timestamp": "2025-10-20T16:47:09.034820Z",
+  "overall_score": 0.7699999999999999,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -31,7 +31,7 @@
     },
     "protocol_evidence": {
       "status": "fail",
-      "score": 0.6499999999999999
+      "score": 0.6749999999999998
     },
     "protocol_handoff": {
       "status": "fail",
@@ -78,8 +78,6 @@
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",
-    "Document timestamps or hashes for manifest entries",
-    "Link artifacts to their inputs/outputs inside the manifest",
-    "Optionally outline archival format, retention, retrieval, and cleanup steps"
+    "Enhance archival plan with: cleanup, retrieval"
   ]
 }

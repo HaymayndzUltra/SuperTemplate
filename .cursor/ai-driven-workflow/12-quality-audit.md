@@ -447,6 +447,24 @@ Before declaring protocol complete, validate:
 | `QUALITY-AUDIT-PACKAGE.zip` | `.artifacts/quality-audit/` | Formal audit deliverables | Protocol 20 |
 | `quality-audit-summary.json` | `.cursor/context-kit/` | Snapshot for future contexts | Protocol 22 |
 
+
+### Traceability Matrix
+
+**Upstream Dependencies:**
+- Input artifacts inherit from: [list predecessor protocols]
+- Configuration dependencies: [list config files or environment requirements]
+- External dependencies: [list third-party systems or APIs]
+
+**Downstream Consumers:**
+- Output artifacts consumed by: [list successor protocols]
+- Shared artifacts: [list artifacts used by multiple protocols]
+- Archive requirements: [list retention policies]
+
+**Verification Chain:**
+- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
+- Verification procedure: [describe validation process]
+- Audit trail: All artifact modifications logged in protocol execution log
+
 ### Quality Metrics:
 | Metric | Target | Actual | Status |
 |--------|--------|--------|--------|

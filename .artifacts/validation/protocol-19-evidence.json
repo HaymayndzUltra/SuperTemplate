@@ -1,15 +1,14 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "19",
-  "validation_timestamp": "2025-10-20T16:43:20.202667Z",
-  "overall_score": 0.6874999999999999,
+  "validation_timestamp": "2025-10-20T16:47:08.948869Z",
+  "overall_score": 0.7749999999999999,
   "validation_status": "fail",
   "issues": [
     "Traceability gaps: inputs, outputs"
   ],
   "recommendations": [
-    "Document timestamps or hashes for manifest entries",
-    "Enhance archival plan with: cleanup, retention, retrieval"
+    "Enhance archival plan with: cleanup, retrieval"
   ],
   "artifact_generation": {
     "score": 0.75,
@@ -46,19 +45,17 @@
     }
   },
   "manifest_completeness": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document timestamps or hashes for manifest entries"
-    ],
+    "recommendations": [],
     "details": {
       "manifest_reference": true,
-      "metadata": false,
+      "metadata": true,
       "dependencies": true,
       "coverage": true,
-      "metadata_mentions": 0,
-      "dependency_mentions": 1
+      "metadata_mentions": 2,
+      "dependency_mentions": 3
     }
   },
   "traceability": {
@@ -76,19 +73,19 @@
     }
   },
   "archival": {
-    "score": 0.25,
+    "score": 0.5,
     "status": "fail",
     "issues": [],
     "recommendations": [
-      "Enhance archival plan with: cleanup, retention, retrieval"
+      "Enhance archival plan with: cleanup, retrieval"
     ],
     "details": {
       "compression": true,
-      "retention": false,
+      "retention": true,
       "retrieval": false,
       "cleanup": false,
-      "compression_mentions": 1,
-      "retention_mentions": 0
+      "compression_mentions": 2,
+      "retention_mentions": 1
     }
   }
 }

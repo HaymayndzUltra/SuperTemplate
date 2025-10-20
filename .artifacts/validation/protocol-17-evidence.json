@@ -1,16 +1,15 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "17",
-  "validation_timestamp": "2025-10-20T16:43:20.164384Z",
-  "overall_score": 0.6875,
+  "validation_timestamp": "2025-10-20T16:47:08.908020Z",
+  "overall_score": 0.6624999999999999,
   "validation_status": "fail",
   "issues": [
     "Protocol evidence directory not referenced",
     "Traceability gaps: inputs"
   ],
   "recommendations": [
-    "Link artifacts to their inputs/outputs inside the manifest",
-    "Optionally outline archival format, retention, retrieval, and cleanup steps"
+    "Enhance archival plan with: cleanup, retrieval"
   ],
   "artifact_generation": {
     "score": 0.75,
@@ -43,19 +42,17 @@
     }
   },
   "manifest_completeness": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Link artifacts to their inputs/outputs inside the manifest"
-    ],
+    "recommendations": [],
     "details": {
       "manifest_reference": true,
       "metadata": true,
-      "dependencies": false,
+      "dependencies": true,
       "coverage": true,
-      "metadata_mentions": 1,
-      "dependency_mentions": 0
+      "metadata_mentions": 3,
+      "dependency_mentions": 2
     }
   },
   "traceability": {
@@ -73,14 +70,19 @@
     }
   },
   "archival": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.5,
+    "status": "fail",
     "issues": [],
     "recommendations": [
-      "Optionally outline archival format, retention, retrieval, and cleanup steps"
+      "Enhance archival plan with: cleanup, retrieval"
     ],
     "details": {
-      "archival_reference": false
+      "compression": true,
+      "retention": true,
+      "retrieval": false,
+      "cleanup": false,
+      "compression_mentions": 1,
+      "retention_mentions": 1
     }
   }
 }

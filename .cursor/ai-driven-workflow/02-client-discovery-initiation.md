@@ -1078,6 +1078,24 @@ Before declaring protocol complete, validate:
 | `gate3-validation.json` | `.artifacts/protocol-02/` | Gate 3 validation results | Protocol 04, CI/CD | Automation |
 | `evidence-manifest.json` | `.artifacts/protocol-02/` | Complete evidence package | Protocol 03, 20, 22 | Protocol Orchestrator |
 
+
+### Traceability Matrix
+
+**Upstream Dependencies:**
+- Input artifacts inherit from: [list predecessor protocols]
+- Configuration dependencies: [list config files or environment requirements]
+- External dependencies: [list third-party systems or APIs]
+
+**Downstream Consumers:**
+- Output artifacts consumed by: [list successor protocols]
+- Shared artifacts: [list artifacts used by multiple protocols]
+- Archive requirements: [list retention policies]
+
+**Verification Chain:**
+- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
+- Verification procedure: [describe validation process]
+- Audit trail: All artifact modifications logged in protocol execution log
+
 ### Archival and Traceability
 
 **Evidence Manifest Schema:**

@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "10",
-  "validation_timestamp": "2025-10-20T16:43:20.040853Z",
-  "overall_score": 0.8084722222222223,
+  "validation_timestamp": "2025-10-20T16:47:08.777698Z",
+  "overall_score": 0.8109722222222221,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -31,7 +31,7 @@
     },
     "protocol_evidence": {
       "status": "fail",
-      "score": 0.7
+      "score": 0.7249999999999999
     },
     "protocol_handoff": {
       "status": "fail",
@@ -71,9 +71,7 @@
     "Clarify access and credential requirements",
     "Document how command outputs are captured",
     "Add time or effort estimates to communication prompts",
-    "Document timestamps or hashes for manifest entries",
-    "Link artifacts to their inputs/outputs inside the manifest",
-    "Optionally outline archival format, retention, retrieval, and cleanup steps",
+    "Enhance archival plan with: cleanup, retrieval",
     "Include root-cause analysis guidance"
   ]
 }
