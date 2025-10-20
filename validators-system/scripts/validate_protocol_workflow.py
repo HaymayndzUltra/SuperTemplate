@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from validator_utils import (
-    DEFAULT_PROTOCOL_IDS,
     DimensionEvaluation,
     aggregate_dimension_metrics,
     build_base_result,
@@ -20,6 +19,8 @@ from validator_utils import (
     gather_issues,
     generate_summary,
     get_protocol_file,
+    get_protocol_id_list,
+    is_documentation_protocol,
     read_protocol_content,
     write_json,
 )
@@ -46,6 +47,14 @@ class ProtocolWorkflowValidator:
         protocol_file = get_protocol_file(self.workspace_root, protocol_id)
         if not protocol_file:
             result["issues"].append(f"Protocol file not found for ID {protocol_id}")
+            return result
+
+        if is_documentation_protocol(protocol_id):
+            result["overall_score"] = 1.0
+            result["validation_status"] = "warning"
+            result["recommendations"].append(
+                "Documentation protocols (24-27) capture references; workflow validation skipped."
+            )
             return result
 
         content = read_protocol_content(protocol_file)
@@ -144,22 +153,35 @@ class ProtocolWorkflowValidator:
             dim.issues.append("Action markers absent because workflow missing")
             return dim
 
+        lower_section = section.lower()
         counts = {
             "critical": section.count("[CRITICAL]"),
             "must": section.count("[MUST]"),
             "guideline": section.count("[GUIDELINE]"),
             "optional": section.count("[OPTIONAL]"),
+            "cautionary": lower_section.count("never") + lower_section.count("do not"),
         }
 
-        checks = {key: value > 0 for key, value in counts.items()}
+        action_clarity = any(token in lower_section for token in ["**action:**", "action:", "automation:", "handoff:"])
+        enforceable = (counts["critical"] + counts["must"]) > 0
+        guidance_present = counts["guideline"] > 0 or counts["optional"] > 0 or counts["cautionary"] > 0
+
+        checks = {
+            "enforceable_markers": enforceable,
+            "action_clarity": action_clarity,
+            "guidance_present": guidance_present,
+        }
+
         dim.details = {**counts, "markers_present": checks}
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
         dim.status = self._status_from_counts(sum(checks.values()), len(checks))
 
-        missing = [name for name, ok in checks.items() if not ok]
-        if missing:
-            dim.issues.append(f"Missing action markers: {', '.join(missing)}")
-            dim.recommendations.append("Include CRITICAL/MUST/GUIDELINE/OPTIONAL markers across workflow actions")
+        if not enforceable:
+            dim.issues.append("Add [CRITICAL] or [MUST] markers to enforce key steps")
+        if not action_clarity:
+            dim.issues.append("Workflow steps should include explicit action markers")
+        if not guidance_present:
+            dim.recommendations.append("Incorporate GUIDELINE/OPTIONAL/never cues as optional guidance")
 
         return dim
 
@@ -256,7 +278,8 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Workflow validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        protocol_ids = get_protocol_id_list(include_docs=args.include_docs)
+        for protocol_id in protocol_ids:
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -282,6 +305,11 @@ def main() -> None:
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) during --all runs",
+    )
 
     args = parser.parse_args()
     exit_code = run_cli(args)

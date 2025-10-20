@@ -1,0 +1,11 @@
+{
+  "validator": "protocol_evidence",
+  "protocol_id": "24",
+  "validation_timestamp": "2025-10-20T14:51:57.766627Z",
+  "overall_score": 1.0,
+  "validation_status": "warning",
+  "issues": [],
+  "recommendations": [
+    "Documentation protocols (24-27) provide references; evidence validation skipped."
+  ]
+}

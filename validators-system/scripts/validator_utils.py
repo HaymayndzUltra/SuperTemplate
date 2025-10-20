@@ -9,7 +9,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
-DEFAULT_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(1, 28)]
+DEFAULT_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(1, 24)]
+DOC_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(24, 28)]
+ALL_PROTOCOL_IDS: List[str] = DEFAULT_PROTOCOL_IDS + DOC_PROTOCOL_IDS
 
 
 def current_timestamp() -> str:
@@ -110,6 +112,18 @@ def build_base_result(validator_key: str, protocol_id: str) -> Dict[str, Any]:
         "issues": [],
         "recommendations": [],
     }
+
+
+def get_protocol_id_list(*, include_docs: bool = False) -> List[str]:
+    """Return the default protocol ids, optionally including documentation protocols."""
+
+    return DEFAULT_PROTOCOL_IDS + (DOC_PROTOCOL_IDS if include_docs else [])
+
+
+def is_documentation_protocol(protocol_id: str) -> bool:
+    """Return True when the identifier refers to a documentation-only protocol."""
+
+    return protocol_id in DOC_PROTOCOL_IDS
 
 
 def generate_summary(

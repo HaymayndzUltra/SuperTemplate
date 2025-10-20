@@ -1,0 +1,90 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "17",
+  "validation_timestamp": "2025-10-20T14:55:27.871716Z",
+  "overall_score": 0.6226111111111111,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 0.8911111111111112
+    },
+    "protocol_role": {
+      "status": "warning",
+      "score": 0.8375
+    },
+    "protocol_workflow": {
+      "status": "fail",
+      "score": 0.15000000000000002
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.825
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.5891666666666666
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.5875
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.6583333333333333
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.6875
+    },
+    "protocol_reasoning": {
+      "status": "fail",
+      "score": 0.3625
+    },
+    "protocol_reflection": {
+      "status": "fail",
+      "score": 0.6375
+    }
+  },
+  "issues": [
+    "Purpose statement not found or too short",
+    "Industry standards not documented",
+    "Required section missing: WORKFLOW",
+    "Domain expertise keywords missing",
+    "Value proposition not captured",
+    "WORKFLOW section missing",
+    "Workflow steps missing",
+    "Action markers absent because workflow missing",
+    "No workflow content to evaluate halt conditions",
+    "Insufficient compliance standards referenced",
+    "Unregistered automation commands detected: scripts/aggregate_evidence_13.py, scripts/run_protocol_13_gates.py, scripts/validate_gate_13_resolution.py, scripts/validate_gate_13_severity.py, scripts/validate_prerequisites_13.py",
+    "Document environment/dependency expectations",
+    "Exit code handling not described",
+    "Missing user interaction prompts: clarification, decision_points, feedback",
+    "Limited progress terminology in communications",
+    "Protocol evidence directory not referenced",
+    "Manifest details missing components: dependencies",
+    "Traceability gaps: inputs, outputs",
+    "Limited verification language detected",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Learning mechanisms incomplete: improvement_tracking, adaptation",
+    "Self-awareness statements missing",
+    "Continuous improvement gaps: opportunities, tracking",
+    "Knowledge capture gaps: lessons, knowledge_base, sharing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Outline decision-making expectations",
+    "Include quantitative metrics for gate evaluation",
+    "Gate configuration file not found (optional until specified): /workspace/SuperTemplate/config/protocol_gates/17.yaml",
+    "Document waiver/override policies",
+    "Reference the script registry or governance source for automation mapping",
+    "Outline scheduling or trigger conditions for automation (optional)",
+    "Clarify access and credential requirements (optional)",
+    "Document how command outputs are captured",
+    "Add time or effort estimates to communication prompts",
+    "Document storage permissions or access requirements",
+    "Optional: describe archival or retention strategy when committed"
+  ]
+}

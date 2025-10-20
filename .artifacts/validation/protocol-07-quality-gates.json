@@ -1,0 +1,94 @@
+{
+  "validator": "protocol_quality_gates",
+  "protocol_id": "07",
+  "validation_timestamp": "2025-10-20T14:55:27.587679Z",
+  "overall_score": 0.725,
+  "validation_status": "fail",
+  "issues": [
+    "Insufficient compliance standards referenced"
+  ],
+  "recommendations": [
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Include quantitative metrics for gate evaluation",
+    "Gate configuration file not found (optional until specified): /workspace/SuperTemplate/config/protocol_gates/07.yaml",
+    "Identify notification path for gate failures"
+  ],
+  "gate_definitions": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Identify gate types (Prerequisite/Execution/Completion)"
+    ],
+    "details": {
+      "gates": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "gate_count": true,
+      "descriptions": true,
+      "types": false,
+      "naming": true
+    }
+  },
+  "pass_criteria": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Include quantitative metrics for gate evaluation"
+    ],
+    "details": {
+      "thresholds": true,
+      "boolean": true,
+      "metrics": false,
+      "evidence_links": true
+    }
+  },
+  "automation": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [
+      "Gate configuration file not found (optional until specified): /workspace/SuperTemplate/config/protocol_gates/07.yaml"
+    ],
+    "details": {
+      "scripts": true,
+      "ci": true,
+      "automation_labels": true,
+      "script_mentions": 11,
+      "gate_config_path": "/workspace/SuperTemplate/config/protocol_gates/07.yaml",
+      "gate_config_present": false
+    }
+  },
+  "failure_handling": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Identify notification path for gate failures"
+    ],
+    "details": {
+      "failure_actions": true,
+      "rollback": false,
+      "notification": false,
+      "waivers": true
+    }
+  },
+  "compliance_integration": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Insufficient compliance standards referenced"
+    ],
+    "recommendations": [],
+    "details": {
+      "compliance_terms": false,
+      "automation_hooks": true,
+      "evidence": true,
+      "governance": false
+    }
+  }
+}

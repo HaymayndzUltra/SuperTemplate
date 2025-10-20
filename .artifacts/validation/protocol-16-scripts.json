@@ -1,0 +1,111 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "16",
+  "validation_timestamp": "2025-10-20T14:55:27.832028Z",
+  "overall_score": 0.6158333333333333,
+  "validation_status": "fail",
+  "issues": [
+    "Unregistered automation commands detected: scripts/aggregate_evidence_12.py, scripts/run_protocol_12_gates.py, scripts/validate_gate_12_handoff.py, scripts/validate_gate_12_instrumentation.py, scripts/validate_prerequisites_12.py",
+    "Document environment/dependency expectations",
+    "Exit code handling not described"
+  ],
+  "recommendations": [
+    "Reference the script registry or governance source for automation mapping",
+    "Clarify access and credential requirements (optional)",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Unregistered automation commands detected: scripts/aggregate_evidence_12.py, scripts/run_protocol_12_gates.py, scripts/validate_gate_12_handoff.py, scripts/validate_gate_12_instrumentation.py, scripts/validate_prerequisites_12.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "script_count": 5,
+      "shell_count": 0,
+      "commands": [
+        "python scripts/validate_prerequisites_12.py",
+        "python scripts/validate_gate_12_instrumentation.py",
+        "python scripts/validate_gate_12_handoff.py",
+        "python scripts/aggregate_evidence_12.py",
+        "python scripts/run_protocol_12_gates.py"
+      ],
+      "command_paths": [
+        "scripts/aggregate_evidence_12.py",
+        "scripts/run_protocol_12_gates.py",
+        "scripts/validate_gate_12_handoff.py",
+        "scripts/validate_gate_12_instrumentation.py",
+        "scripts/validate_prerequisites_12.py"
+      ],
+      "unregistered_commands": [
+        "scripts/aggregate_evidence_12.py",
+        "scripts/run_protocol_12_gates.py",
+        "scripts/validate_gate_12_handoff.py",
+        "scripts/validate_gate_12_instrumentation.py",
+        "scripts/validate_prerequisites_12.py"
+      ],
+      "registry_entries_checked": 119
+    }
+  },
+  "registry_alignment": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Reference the script registry or governance source for automation mapping"
+    ],
+    "details": {
+      "registry_reference": false,
+      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "workflow_mapping": true,
+      "ownership": false,
+      "registered_entries": 119
+    }
+  },
+  "execution_context": {
+    "score": 0.26666666666666666,
+    "status": "fail",
+    "issues": [
+      "Document environment/dependency expectations"
+    ],
+    "recommendations": [
+      "Clarify access and credential requirements (optional)"
+    ],
+    "details": {
+      "environment": false,
+      "ci_context": true,
+      "scheduling": true,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 6,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
+    "recommendations": [],
+    "details": {
+      "exit_codes": false,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

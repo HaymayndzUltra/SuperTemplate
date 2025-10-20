@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from validator_utils import (
-    DEFAULT_PROTOCOL_IDS,
     DimensionEvaluation,
     aggregate_dimension_metrics,
     build_base_result,
@@ -20,6 +19,8 @@ from validator_utils import (
     gather_issues,
     generate_summary,
     get_protocol_file,
+    get_protocol_id_list,
+    is_documentation_protocol,
     read_protocol_content,
     write_json,
 )
@@ -46,6 +47,14 @@ class ProtocolReflectionValidator:
         protocol_file = get_protocol_file(self.workspace_root, protocol_id)
         if not protocol_file:
             result["issues"].append(f"Protocol file not found for ID {protocol_id}")
+            return result
+
+        if is_documentation_protocol(protocol_id):
+            result["overall_score"] = 1.0
+            result["validation_status"] = "warning"
+            result["recommendations"].append(
+                "Documentation protocols (24-27) provide references; reflection validation skipped."
+            )
             return result
 
         content = read_protocol_content(protocol_file)
@@ -249,7 +258,8 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Reflection validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        protocol_ids = get_protocol_id_list(include_docs=args.include_docs)
+        for protocol_id in protocol_ids:
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -275,6 +285,11 @@ def main() -> None:
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) during --all runs",
+    )
 
     args = parser.parse_args()
     exit_code = run_cli(args)

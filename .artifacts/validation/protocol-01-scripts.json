@@ -1,0 +1,123 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "01",
+  "validation_timestamp": "2025-10-20T14:55:27.398719Z",
+  "overall_score": 0.48916666666666664,
+  "validation_status": "fail",
+  "issues": [
+    "Unregistered automation commands detected: scripts/run_protocol_01_gates.py, scripts/validate_prerequisites_01.py, scripts/validate_proposal_structure.py",
+    "Document environment/dependency expectations",
+    "Exit code handling not described"
+  ],
+  "recommendations": [
+    "Reference the script registry or governance source for automation mapping",
+    "Map automation hooks back to workflow steps",
+    "Outline scheduling or trigger conditions for automation (optional)",
+    "Clarify access and credential requirements (optional)",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Unregistered automation commands detected: scripts/run_protocol_01_gates.py, scripts/validate_prerequisites_01.py, scripts/validate_proposal_structure.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "script_count": 14,
+      "shell_count": 0,
+      "commands": [
+        "python3 scripts/validate_prerequisites_01.py",
+        "python3 scripts/check_hipaa.py",
+        "python3 scripts/enforce_gates.py",
+        "python3 scripts/validate_compliance_assets.py",
+        "python3 scripts/validate_proposal_structure.py",
+        "python3 scripts/validate_proposal.py",
+        "python3 scripts/aggregate_evidence_01.py",
+        "python3 scripts/check_hipaa.py",
+        "python3 scripts/enforce_gates.py",
+        "python3 scripts/validate_compliance_assets.py"
+      ],
+      "command_paths": [
+        "scripts/aggregate_evidence_01.py",
+        "scripts/analyze_jobpost.py",
+        "scripts/check_hipaa.py",
+        "scripts/enforce_gates.py",
+        "scripts/run_protocol_01_gates.py",
+        "scripts/tone_mapper.py",
+        "scripts/validate_compliance_assets.py",
+        "scripts/validate_prerequisites_01.py",
+        "scripts/validate_proposal.py",
+        "scripts/validate_proposal_structure.py"
+      ],
+      "unregistered_commands": [
+        "scripts/run_protocol_01_gates.py",
+        "scripts/validate_prerequisites_01.py",
+        "scripts/validate_proposal_structure.py"
+      ],
+      "registry_entries_checked": 119
+    }
+  },
+  "registry_alignment": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Reference the script registry or governance source for automation mapping",
+      "Map automation hooks back to workflow steps"
+    ],
+    "details": {
+      "registry_reference": false,
+      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "workflow_mapping": false,
+      "ownership": false,
+      "registered_entries": 119
+    }
+  },
+  "execution_context": {
+    "score": 0.13333333333333333,
+    "status": "fail",
+    "issues": [
+      "Document environment/dependency expectations"
+    ],
+    "recommendations": [
+      "Outline scheduling or trigger conditions for automation (optional)",
+      "Clarify access and credential requirements (optional)"
+    ],
+    "details": {
+      "environment": false,
+      "ci_context": true,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 15,
+      "flag_usage": false,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
+    "recommendations": [],
+    "details": {
+      "exit_codes": false,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

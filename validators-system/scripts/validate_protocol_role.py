@@ -9,7 +9,6 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from validator_utils import (
-    DEFAULT_PROTOCOL_IDS,
     DimensionEvaluation,
     aggregate_dimension_metrics,
     build_base_result,
@@ -19,6 +18,8 @@ from validator_utils import (
     gather_issues,
     generate_summary,
     get_protocol_file,
+    get_protocol_id_list,
+    is_documentation_protocol,
     read_protocol_content,
     write_json,
 )
@@ -45,6 +46,14 @@ class ProtocolRoleValidator:
         protocol_file = get_protocol_file(self.workspace_root, protocol_id)
         if not protocol_file:
             result["issues"].append(f"Protocol file not found for ID {protocol_id}")
+            return result
+
+        if is_documentation_protocol(protocol_id):
+            result["overall_score"] = 1.0
+            result["validation_status"] = "warning"
+            result["recommendations"].append(
+                "Documentation protocols (24-27) focus on references; role validation skipped."
+            )
             return result
 
         content = read_protocol_content(protocol_file)
@@ -150,30 +159,44 @@ class ProtocolRoleValidator:
             dim.issues.append("Constraints section missing")
             return dim
 
+        lower_section = section.lower()
         critical = section.count("[CRITICAL]")
         must = section.count("[MUST]")
         guideline = section.count("[GUIDELINE]")
-        prohibition = section.lower().count("never") + section.lower().count("do not")
+        optional = section.count("[OPTIONAL]")
+        cautionary = lower_section.count("never") + lower_section.count("do not")
+
+        mission_alignment = "mission" in lower_section or "purpose" in lower_section
+        workflow_alignment = "workflow" in lower_section or "step" in lower_section or "phase" in lower_section
+        clarity_tokens = ["**action:**", "action:", "expected outcome", "deliverable"]
+        clarity_marker = any(token in lower_section for token in clarity_tokens)
 
         checks = {
-            "critical_constraints": critical > 0,
-            "must_rules": must > 0,
-            "guidelines": guideline > 0,
-            "prohibitions": prohibition > 0,
+            "enforceable_rules": (critical + must) > 0,
+            "context_alignment": mission_alignment or workflow_alignment or clarity_marker,
+            "guidance_balance": (guideline > 0) or (optional > 0) or (cautionary > 0),
         }
 
-        dim.details = {**checks, "critical_count": critical, "must_count": must, "guideline_count": guideline}
+        dim.details = {
+            **checks,
+            "critical_count": critical,
+            "must_count": must,
+            "guideline_count": guideline,
+            "optional_count": optional,
+            "cautionary_count": cautionary,
+        }
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
         dim.status = self._status_from_counts(sum(checks.values()), len(checks))
 
-        if not checks["critical_constraints"]:
-            dim.issues.append("No [CRITICAL] constraints defined")
-        if not checks["must_rules"]:
-            dim.issues.append("[MUST] rules missing for enforceable guidance")
-        if not checks["guidelines"]:
-            dim.recommendations.append("Add [GUIDELINE] markers for recommended practices")
-        if not checks["prohibitions"]:
-            dim.recommendations.append("Document explicit prohibitions or guardrails")
+        if not checks["enforceable_rules"]:
+            dim.issues.append("Define at least one enforceable [CRITICAL] or [MUST] constraint")
+        if not checks["context_alignment"]:
+            dim.issues.append("Link constraints to mission/workflow context for clarity")
+        if not checks["guidance_balance"]:
+            dim.recommendations.append("Add optional or cautionary guidance markers where helpful")
+
+        if optional > 0 and guideline == 0:
+            dim.recommendations.append("Clarify how [OPTIONAL] steps support the mission")
 
         return dim
 
@@ -268,7 +291,8 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Role validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        protocol_ids = get_protocol_id_list(include_docs=args.include_docs)
+        for protocol_id in protocol_ids:
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -294,6 +318,11 @@ def main() -> None:
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) during --all runs",
+    )
 
     args = parser.parse_args()
     exit_code = run_cli(args)

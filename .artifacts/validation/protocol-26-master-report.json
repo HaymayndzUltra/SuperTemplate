@@ -1,0 +1,62 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "26",
+  "validation_timestamp": "2025-10-20T14:51:57.774085Z",
+  "overall_score": 1.0,
+  "validation_status": "warning",
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 1.0
+    },
+    "protocol_role": {
+      "status": "warning",
+      "score": 1.0
+    },
+    "protocol_workflow": {
+      "status": "warning",
+      "score": 1.0
+    },
+    "protocol_quality_gates": {
+      "status": "warning",
+      "score": 1.0
+    },
+    "protocol_scripts": {
+      "status": "warning",
+      "score": 1.0
+    },
+    "protocol_communication": {
+      "status": "warning",
+      "score": 1.0
+    },
+    "protocol_evidence": {
+      "status": "warning",
+      "score": 1.0
+    },
+    "protocol_handoff": {
+      "status": "warning",
+      "score": 1.0
+    },
+    "protocol_reasoning": {
+      "status": "warning",
+      "score": 1.0
+    },
+    "protocol_reflection": {
+      "status": "warning",
+      "score": 1.0
+    }
+  },
+  "issues": [],
+  "recommendations": [
+    "Documentation protocols (24-27) are informational references; identity validation is skipped.",
+    "Documentation protocols (24-27) focus on references; role validation skipped.",
+    "Documentation protocols (24-27) capture references; workflow validation skipped.",
+    "Documentation protocols (24-27) describe references; quality gate validation skipped.",
+    "Documentation protocols (24-27) capture references; script integration validation skipped.",
+    "Documentation protocols (24-27) focus on references; communication validation skipped.",
+    "Documentation protocols (24-27) provide references; evidence validation skipped.",
+    "Documentation protocols (24-27) provide references; handoff validation skipped.",
+    "Documentation protocols (24-27) provide references; reasoning validation skipped.",
+    "Documentation protocols (24-27) provide references; reflection validation skipped."
+  ]
+}

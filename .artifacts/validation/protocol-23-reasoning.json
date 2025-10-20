@@ -1,0 +1,77 @@
+{
+  "validator": "protocol_reasoning",
+  "protocol_id": "23",
+  "validation_timestamp": "2025-10-20T14:55:28.041061Z",
+  "overall_score": 0.35000000000000003,
+  "validation_status": "fail",
+  "issues": [
+    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: improvement_tracking, adaptation",
+    "Self-awareness statements missing"
+  ],
+  "recommendations": [],
+  "reasoning_patterns": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Workflow section missing; cannot evaluate reasoning patterns"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "decision_trees": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Decision points insufficiently described"
+    ],
+    "recommendations": [],
+    "details": {
+      "decision_points": false,
+      "criteria": true,
+      "outcomes": false,
+      "logging": true
+    }
+  },
+  "problem_solving_logic": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "problem_identification": true,
+      "root_cause": true,
+      "solutions": false,
+      "validation": true
+    }
+  },
+  "learning_mechanisms": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Learning mechanisms incomplete: improvement_tracking, adaptation"
+    ],
+    "recommendations": [],
+    "details": {
+      "feedback": true,
+      "improvement_tracking": false,
+      "knowledge_base": true,
+      "adaptation": false
+    }
+  },
+  "meta_cognition": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Self-awareness statements missing"
+    ],
+    "recommendations": [],
+    "details": {
+      "awareness": false,
+      "monitoring": false,
+      "correction": false,
+      "improvement": false
+    }
+  }
+}

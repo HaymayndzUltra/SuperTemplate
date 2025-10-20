@@ -1,0 +1,88 @@
+{
+  "validator": "protocol_evidence",
+  "protocol_id": "08",
+  "validation_timestamp": "2025-10-20T14:55:27.618284Z",
+  "overall_score": 0.6916666666666667,
+  "validation_status": "fail",
+  "issues": [
+    "Manifest details missing components: metadata, dependencies",
+    "Traceability gaps: inputs, outputs"
+  ],
+  "recommendations": [
+    "Document storage permissions or access requirements",
+    "Optional: describe archival or retention strategy when committed"
+  ],
+  "artifact_generation": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "table_rows": 13,
+      "artifact_rows": 5,
+      "table_present": true,
+      "artifacts_listed": true,
+      "metrics_documented": true,
+      "formats_referenced": true
+    }
+  },
+  "storage_structure": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document storage permissions or access requirements"
+    ],
+    "details": {
+      "directories": [
+        ".artifacts/protocol-08/",
+        ".artifacts/protocol-08/",
+        ".artifacts/protocol-08/",
+        ".artifacts/protocol-08/",
+        ".artifacts/protocol-08/"
+      ],
+      "protocol_directory": true,
+      "subdirectories": true,
+      "permissions": false,
+      "naming": false
+    }
+  },
+  "manifest_completeness": {
+    "score": 0.3333333333333333,
+    "status": "fail",
+    "issues": [
+      "Manifest details missing components: metadata, dependencies"
+    ],
+    "recommendations": [],
+    "details": {
+      "manifest_promised": true,
+      "metadata_mentions": 0,
+      "dependency_mentions": 0
+    }
+  },
+  "traceability": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Traceability gaps: inputs, outputs"
+    ],
+    "recommendations": [],
+    "details": {
+      "inputs": false,
+      "outputs": false,
+      "transformations": true,
+      "audit": true
+    }
+  },
+  "archival": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [
+      "Optional: describe archival or retention strategy when committed"
+    ],
+    "details": {
+      "archival_promised": false
+    }
+  }
+}

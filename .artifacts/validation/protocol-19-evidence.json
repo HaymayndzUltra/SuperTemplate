@@ -1,0 +1,87 @@
+{
+  "validator": "protocol_evidence",
+  "protocol_id": "19",
+  "validation_timestamp": "2025-10-20T14:55:27.919040Z",
+  "overall_score": 0.7583333333333333,
+  "validation_status": "fail",
+  "issues": [
+    "Manifest details missing components: metadata",
+    "Traceability gaps: inputs, outputs"
+  ],
+  "recommendations": [
+    "Document storage permissions or access requirements",
+    "Optional: describe archival or retention strategy when committed"
+  ],
+  "artifact_generation": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "table_rows": 11,
+      "artifact_rows": 4,
+      "table_present": true,
+      "artifacts_listed": true,
+      "metrics_documented": true,
+      "formats_referenced": true
+    }
+  },
+  "storage_structure": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document storage permissions or access requirements"
+    ],
+    "details": {
+      "directories": [
+        ".artifacts/protocol-19/",
+        ".artifacts/protocol-19/",
+        ".artifacts/protocol-19/",
+        ".artifacts/protocol-19/"
+      ],
+      "protocol_directory": true,
+      "subdirectories": true,
+      "permissions": false,
+      "naming": false
+    }
+  },
+  "manifest_completeness": {
+    "score": 0.6666666666666666,
+    "status": "warning",
+    "issues": [
+      "Manifest details missing components: metadata"
+    ],
+    "recommendations": [],
+    "details": {
+      "manifest_promised": true,
+      "metadata_mentions": 0,
+      "dependency_mentions": 1
+    }
+  },
+  "traceability": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Traceability gaps: inputs, outputs"
+    ],
+    "recommendations": [],
+    "details": {
+      "inputs": false,
+      "outputs": false,
+      "transformations": true,
+      "audit": true
+    }
+  },
+  "archival": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [
+      "Optional: describe archival or retention strategy when committed"
+    ],
+    "details": {
+      "archival_promised": false
+    }
+  }
+}

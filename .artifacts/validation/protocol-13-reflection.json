@@ -1,0 +1,86 @@
+{
+  "validator": "protocol_reflection",
+  "protocol_id": "13",
+  "validation_timestamp": "2025-10-20T14:55:27.751759Z",
+  "overall_score": 0.4,
+  "validation_status": "fail",
+  "issues": [
+    "Retrospective analysis not documented",
+    "Continuous improvement gaps: opportunities",
+    "Knowledge capture gaps: lessons, knowledge_base, sharing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Document rollback or recovery approach for changes"
+  ],
+  "retrospective_analysis": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Retrospective analysis not documented"
+    ],
+    "recommendations": [],
+    "details": {
+      "review": false,
+      "performance": false,
+      "issues": false,
+      "success": true
+    }
+  },
+  "continuous_improvement": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Continuous improvement gaps: opportunities"
+    ],
+    "recommendations": [],
+    "details": {
+      "opportunities": false,
+      "plans": true,
+      "tracking": true,
+      "evidence": true
+    }
+  },
+  "system_evolution": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document rollback or recovery approach for changes"
+    ],
+    "details": {
+      "version_history": false,
+      "rationale": false,
+      "impact": true,
+      "rollback": false
+    }
+  },
+  "knowledge_capture": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Knowledge capture gaps: lessons, knowledge_base, sharing"
+    ],
+    "recommendations": [],
+    "details": {
+      "lessons": false,
+      "knowledge_base": false,
+      "storage": true,
+      "sharing": false
+    }
+  },
+  "future_planning": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Roadmap or future direction not documented"
+    ],
+    "recommendations": [],
+    "details": {
+      "roadmap": false,
+      "priorities": false,
+      "resources": true,
+      "timeline": true
+    }
+  }
+}

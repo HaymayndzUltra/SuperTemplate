@@ -15,8 +15,8 @@ if str(CURRENT_DIR) not in sys.path:
     sys.path.append(str(CURRENT_DIR))
 
 from validator_utils import (  # noqa: E402
-    DEFAULT_PROTOCOL_IDS,
     build_base_result,
+    get_protocol_id_list,
     write_json,
 )
 
@@ -185,7 +185,8 @@ def run_cli(args: argparse.Namespace) -> int:
         protocol_results.append(combined)
         print(f"✅ Master validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        protocol_ids = get_protocol_id_list(include_docs=args.include_docs)
+        for protocol_id in protocol_ids:
             validator_outputs = orchestrator.validate_protocol(protocol_id)
             combined = orchestrator.aggregate_protocol_result(protocol_id, validator_outputs)
             orchestrator.save_master_result(combined)
@@ -210,6 +211,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run all protocol validators and aggregate results")
     parser.add_argument("--protocol", help="Protocol ID to validate (e.g., '01')")
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) in validation runs",
+    )
     parser.add_argument("--report", action="store_true", help="Generate master summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
 

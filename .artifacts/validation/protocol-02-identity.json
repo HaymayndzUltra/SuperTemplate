@@ -1,20 +1,19 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "02",
-  "validation_timestamp": "2025-10-20T01:35:57.549642Z",
+  "validation_timestamp": "2025-10-20T14:55:27.436848Z",
   "basic_information": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.6666666666666666,
+    "status": "warning",
     "issues": [
       "Protocol version not found (semantic versioning expected)",
-      "Phase assignment not found or invalid in AGENTS.md",
       "Purpose statement not found or too short"
     ],
     "elements_found": {
       "protocol_number": true,
       "protocol_name": "CLIENT DISCOVERY INITIATION",
       "protocol_version": false,
-      "phase_assignment": false,
+      "phase_assignment": "Phase 0",
       "purpose_statement": false,
       "scope_definition": true
     }
@@ -41,7 +40,7 @@
     }
   },
   "compliance_standards": {
-    "score": 0.75,
+    "score": 0.6666666666666666,
     "status": "warning",
     "issues": [
       "Industry standards not documented"
@@ -49,8 +48,7 @@
     "categories_found": {
       "industry_standards": false,
       "security_requirements": true,
-      "regulatory_compliance": true,
-      "quality_gates": true
+      "regulatory_compliance": true
     }
   },
   "documentation_quality": {
@@ -78,11 +76,10 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.8322222222222223,
+  "overall_score": 0.8488888888888889,
   "validation_status": "warning",
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
     "Purpose statement not found or too short",
     "Industry standards not documented",
     "Required section missing: WORKFLOW",

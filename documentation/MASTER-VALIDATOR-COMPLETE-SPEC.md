@@ -25,11 +25,12 @@
 ## SYSTEM OVERVIEW
 
 ### **Purpose**
-Validate all 28 protocols across 10 dimensions to ensure production readiness.
+Validate the 23 workflow protocols (01-23) across 10 dimensions by default, with documentation suites (24-27) available via opt-in runs.
 
 ### **Architecture**
 ```yaml
-Input: 28 protocol files (.cursor/ai-driven-workflow/*.md)
+Input: 23 core protocol files (.cursor/ai-driven-workflow/01-23-*.md)
+Optional Input: Documentation protocols 24-27 when explicitly requested
 Process: 10 independent validators
 Output: Validation reports (.artifacts/validation/)
 Orchestration: Master validator script
@@ -37,10 +38,11 @@ Orchestration: Master validator script
 
 ### **Success Criteria**
 ```yaml
-Overall Target: ≥95% score across all validators
+Overall Target: ≥95% score across all validators (core scope)
 Per-Validator Target: ≥90% score
 Critical Validators (1-4): ≥95% score
 Advanced Validators (9-10): ≥85% score
+Optional Documentation Runs: Recorded as warnings unless documentation-specific gaps are detected
 ```
 
 ---
@@ -61,7 +63,7 @@ Validates:
   - Protocol Name: Full descriptive name
   - Protocol Version: Semantic versioning (v1.0.0)
   - Phase: Phase 0, 1-2, 3, 4, 5, 6
-  - Purpose: One-sentence mission
+  - Purpose: One-sentence mission (supports **Purpose** or Mission: markers)
   - Scope: What's included/excluded
 
 Pass Criteria:
@@ -103,12 +105,14 @@ Validates:
   - Industry Standards (CommonMark, JSON Schema)
   - Security (HIPAA, SOC2, GDPR)
   - Regulatory (FDA, FTC)
-  - Quality Gates (internal standards)
+  - Quality Gate narrative (automation config ownership lives in Validator 4)
 
 Pass Criteria:
   - All documented + automated: PASS
   - Missing 1 standard: WARNING
   - No compliance: FAIL
+Notes:
+  - Gate YAML presence is evaluated by Validator 4; Identity focuses on documented expectations only.
 ```
 
 #### **1.5 Documentation Quality (20%)**
@@ -205,18 +209,17 @@ Pass Criteria:
 #### **2.3 Constraints & Guidelines (20%)**
 ```yaml
 Validates:
-  - Critical Constraints: [CRITICAL] markers
-  - Must-Follow Rules: [MUST] markers
-  - Guidelines: [GUIDELINE] markers
-  - Prohibitions: What NOT to do
+  - Enforceable Rules: [CRITICAL]/[MUST] guardrails
+  - Context Alignment: References back to mission, workflow, or handoffs
+  - Guidance Markers: [GUIDELINE], [OPTIONAL], and cautionary "never" phrasing
 
 Example:
   "🚫 [CRITICAL] Never fabricate experience or deliverables."
 
 Pass Criteria:
-  - Has critical constraints: PASS
-  - Has guidelines only: WARNING
-  - No constraints: FAIL
+  - Enforceable rules + context alignment: PASS
+  - Enforceable rules but thin guidance: WARNING
+  - No enforceable rules: FAIL
 ```
 
 #### **2.4 Output Expectations (15%)**
@@ -303,15 +306,14 @@ Pass Criteria:
 #### **3.3 Action Markers (15%)**
 ```yaml
 Validates:
-  - [CRITICAL] markers: Non-negotiable actions
-  - [MUST] markers: Required actions
-  - [GUIDELINE] markers: Best practices
-  - [OPTIONAL] markers: Optional actions
+  - Enforceable markers: [CRITICAL] / [MUST]
+  - Action clarity: Explicit **Action:** or automation cues per step
+  - Guidance coverage: [GUIDELINE], [OPTIONAL], or "never" warnings
 
 Pass Criteria:
-  - Consistent marker usage: PASS
-  - Some markers: WARNING
-  - No markers: FAIL
+  - Enforceable markers + clarity + guidance: PASS
+  - Enforceable markers but missing clarity/guidance: WARNING
+  - No enforceable markers: FAIL
 ```
 
 #### **3.4 Halt Conditions (20%)**
@@ -406,14 +408,14 @@ Pass Criteria:
 ```yaml
 Validates:
   - Script Existence: Validation scripts present
-  - Script Registration: In script-registry.json
+  - Gate Config Reference: config/protocol_gates/<id>.yaml when the protocol promises automation
   - Command Syntax: Executable commands
-  - CI/CD Integration: Pipeline configuration
+  - CI/CD Integration: Pipeline configuration (optional recommendation)
 
 Pass Criteria:
-  - All gates automated: PASS
-  - Some automated: WARNING
-  - No automation: FAIL
+  - Commands + promised configs documented: PASS
+  - Commands documented but optional references missing: WARNING
+  - No automation commands: FAIL
 ```
 
 #### **4.4 Failure Handling (15%)**
@@ -461,59 +463,46 @@ Validate script references, existence, registration, execution permissions, and 
 
 ### **5 Validation Dimensions**
 
-#### **5.1 Script References (20%)**
+#### **5.1 Script Inventory (25%)**
 ```yaml
 Validates:
-  - Script Names: Referenced in protocol
-  - Script Paths: Correct file locations
-  - Script Purpose: What each script does
-  - Script Dependencies: Required libraries
-
-Where to Find:
-  - Section: ## PREREQUISITES (System State)
-  - Section: ## AUTOMATION HOOKS
-  - Lines: 23-26, 212-260 in Protocol 01
+  - Documented automation commands (python/bash)
+  - Command paths pointing to scripts/
+  - Registry membership for each command
+  - Minimum coverage (≥3 commands)
 
 Pass Criteria:
-  - All scripts referenced: PASS
-  - Some missing: WARNING
-  - No references: FAIL
+  - ≥3 commands and all registered: PASS
+  - Commands present but some unregistered: WARNING
+  - No automation commands: FAIL
 ```
 
-#### **5.2 Script Existence (25%)**
+#### **5.2 Registry Alignment (20%)**
 ```yaml
 Validates:
-  - File Exists: Script file present
-  - File Readable: Correct permissions
-  - File Executable: Can be run
-  - File Size: Not empty
-
-Validation:
-  - Check: os.path.exists(script_path)
-  - Check: os.access(script_path, os.X_OK)
+  - References to script-registry governance
+  - Mapping commands back to workflow steps
+  - Ownership/maintenance cues
+  - Registry file availability and parse success
 
 Pass Criteria:
-  - All exist + executable: PASS
-  - Some missing: WARNING
-  - None exist: FAIL
+  - Registry referenced + file present: PASS
+  - Commands valid but registry prose missing: WARNING (informational guidance)
+  - Registry file missing or unreadable: FAIL
 ```
 
-#### **5.3 Script Registration (20%)**
+#### **5.3 Execution Context (20%)**
 ```yaml
 Validates:
-  - Registry Entry: In script-registry.json
-  - Script Metadata: Name, purpose, version
-  - Script Category: Analysis, validation, etc.
-  - Script Status: Active, deprecated
-
-Registry Location:
-  - scripts/script-registry.json
-  - .artifacts/scripts/script-index.json
+  - Environment/dependency requirements
+  - CI/CD or workflow context (optional recommendation)
+  - Scheduling/trigger guidance (optional)
+  - Permissions/secrets handling (optional)
 
 Pass Criteria:
-  - All registered: PASS
-  - Some unregistered: WARNING
-  - None registered: FAIL
+  - Environment documented (optional items covered where relevant): PASS
+  - Environment missing but optional context present: WARNING
+  - No environment guidance: FAIL
 ```
 
 #### **5.4 Command Syntax (20%)**
@@ -658,10 +647,10 @@ Validate evidence artifact generation, storage structure, manifest completeness,
 #### **7.1 Artifact Generation (30%)**
 ```yaml
 Validates:
-  - Artifact List: All expected files
-  - Artifact Format: JSON, MD, YAML
-  - Artifact Content: Non-empty, valid
-  - Artifact Timestamps: Creation time
+  - Evidence table listing artifacts with storage paths
+  - Metric/score columns for each artifact
+  - File format references (JSON, MD, YAML, CSV)
+  - Coverage (≥2 artifact rows)
 
 Where to Find:
   - Section: ## EVIDENCE SUMMARY
@@ -669,9 +658,9 @@ Where to Find:
   - Files: .artifacts/protocol-XX/
 
 Pass Criteria:
-  - All generated: PASS
-  - Some missing: WARNING
-  - None generated: FAIL
+  - Table present with ≥2 artifacts + metrics: PASS
+  - Table present but sparse/metrics missing: WARNING
+  - No evidence table: FAIL
 ```
 
 #### **7.2 Storage Structure (20%)**
@@ -691,15 +680,14 @@ Pass Criteria:
 #### **7.3 Manifest Completeness (20%)**
 ```yaml
 Validates:
-  - Manifest File: evidence-manifest.json
-  - Artifact Inventory: All files listed
+  - Manifest commitments (when protocol promises manifest coverage)
   - Metadata: Size, timestamp, hash
   - Dependencies: Input/output links
 
 Pass Criteria:
-  - Complete manifest: PASS
-  - Partial manifest: WARNING
-  - No manifest: FAIL
+  - Promised manifest documented with metadata: PASS
+  - Manifest promised but incomplete: WARNING/FAIL (depending on gaps)
+  - Manifest not promised: PASS with recommendation
 ```
 
 #### **7.4 Traceability (15%)**
@@ -719,15 +707,13 @@ Pass Criteria:
 #### **7.5 Archival (15%)**
 ```yaml
 Validates:
-  - Compression: .zip packages
-  - Retention: Storage duration
-  - Retrieval: Access procedures
-  - Cleanup: Deletion policies
+  - Archival strategy when protocol describes retention/cleanup
+  - Compression, retention, retrieval, cleanup details
 
 Pass Criteria:
-  - All archived: PASS
-  - Some archived: WARNING
-  - No archival: FAIL
+  - Promised archival strategy documented: PASS
+  - Archival promised but missing pieces: WARNING/FAIL (depending on severity)
+  - No archival promise: PASS with recommendation
 ```
 
 ### **Script**
@@ -1012,6 +998,8 @@ Run all 10 validators in sequence and generate comprehensive report.
 ```bash
 python3 scripts/validate_all_protocols.py --protocol 01
 python3 scripts/validate_all_protocols.py --all
+# Include documentation protocols on demand
+python3 scripts/validate_all_protocols.py --all --include-docs
 ```
 
 ### **Output**

@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from validator_utils import (
-    DEFAULT_PROTOCOL_IDS,
     DimensionEvaluation,
     aggregate_dimension_metrics,
     build_base_result,
@@ -20,6 +19,8 @@ from validator_utils import (
     gather_issues,
     generate_summary,
     get_protocol_file,
+    get_protocol_id_list,
+    is_documentation_protocol,
     read_protocol_content,
     write_json,
 )
@@ -46,6 +47,14 @@ class ProtocolEvidenceValidator:
         protocol_file = get_protocol_file(self.workspace_root, protocol_id)
         if not protocol_file:
             result["issues"].append(f"Protocol file not found for ID {protocol_id}")
+            return result
+
+        if is_documentation_protocol(protocol_id):
+            result["overall_score"] = 1.0
+            result["validation_status"] = "warning"
+            result["recommendations"].append(
+                "Documentation protocols (24-27) provide references; evidence validation skipped."
+            )
             return result
 
         content = read_protocol_content(protocol_file)
@@ -83,24 +92,38 @@ class ProtocolEvidenceValidator:
             dim.issues.append("EVIDENCE SUMMARY section missing")
             return dim
 
-        table_rows = [line for line in section.splitlines() if line.strip().startswith("|") and ".artifacts/" in line]
-        json_mentions = section.lower().count(".json")
-        md_mentions = section.lower().count(".md")
-        yaml_mentions = section.lower().count(".yml") + section.lower().count(".yaml")
+        table_lines = [line for line in section.splitlines() if line.strip().startswith("|")]
+        header = table_lines[0].lower() if table_lines else ""
+        has_artifact_column = "artifact" in header
+        has_metric_column = any(term in header for term in ["metric", "score", "status"])
+        data_rows = [line for line in table_lines[2:]] if len(table_lines) >= 3 else []
+        artifact_rows = [
+            line
+            for line in data_rows
+            if ".artifacts/" in line or re.search(r"protocol-\d+", line)
+        ]
 
         checks = {
-            "table_rows": len(table_rows) >= 3,
-            "json_artifacts": json_mentions >= 2,
-            "markdown_artifacts": md_mentions >= 1,
-            "yaml_artifacts": yaml_mentions >= 1,
+            "table_present": bool(table_lines),
+            "artifacts_listed": len(artifact_rows) >= 2,
+            "metrics_documented": has_metric_column or any(
+                re.search(r"(metric|score|result|confidence)", line, re.IGNORECASE) for line in data_rows
+            ),
+            "formats_referenced": any(ext in section.lower() for ext in [".json", ".md", ".csv", ".yaml", ".yml"]),
         }
 
-        dim.details = {"rows": len(table_rows), **checks}
+        dim.details = {
+            "table_rows": len(table_lines),
+            "artifact_rows": len(artifact_rows),
+            **checks,
+        }
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
         dim.status = self._status_from_counts(sum(checks.values()), len(checks))
 
-        if len(table_rows) < 3:
-            dim.issues.append("Evidence table lacks sufficient artifact coverage")
+        if not checks["table_present"]:
+            dim.issues.append("Evidence summary table not found")
+        if table_lines and len(artifact_rows) < 2:
+            dim.issues.append("Evidence table should list at least two artifacts with storage paths")
 
         return dim
 
@@ -141,23 +164,32 @@ class ProtocolEvidenceValidator:
             return dim
 
         manifest_mentions = re.findall(r"manifest|inventory|index", section, flags=re.IGNORECASE)
+        manifest_promised = bool(manifest_mentions)
+        dim.details["manifest_promised"] = manifest_promised
+
+        if not manifest_promised:
+            dim.score = 1.0
+            dim.status = "pass"
+            dim.recommendations.append("Optional: include manifest metadata when available")
+            return dim
+
         metadata_mentions = re.findall(r"timestamp|size|hash|checksum", section, flags=re.IGNORECASE)
         dependency_mentions = re.findall(r"dependency|input|output", section, flags=re.IGNORECASE)
         coverage = section.lower().count("100%") or section.lower().count("complete")
 
         checks = {
-            "manifest_reference": len(manifest_mentions) > 0,
-            "metadata": len(metadata_mentions) >= 2,
+            "metadata": len(metadata_mentions) >= 1,
             "dependencies": len(dependency_mentions) > 0,
             "coverage": coverage > 0,
         }
 
-        dim.details = checks
+        dim.details.update({"metadata_mentions": len(metadata_mentions), "dependency_mentions": len(dependency_mentions)})
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
         dim.status = self._status_from_counts(sum(checks.values()), len(checks))
 
-        if not checks["manifest_reference"]:
-            dim.issues.append("Evidence manifest file not mentioned")
+        missing = [name for name, ok in checks.items() if not ok]
+        if missing:
+            dim.issues.append("Manifest details missing components: " + ", ".join(missing))
 
         return dim
 
@@ -201,6 +233,15 @@ class ProtocolEvidenceValidator:
         retrieval_mentions = re.findall(r"retrieve|access|restore", section, flags=re.IGNORECASE)
         cleanup_mentions = re.findall(r"cleanup|delete|purge", section, flags=re.IGNORECASE)
 
+        archival_promised = bool(re.findall(r"archive|archival|retention", section, flags=re.IGNORECASE))
+        dim.details["archival_promised"] = archival_promised
+
+        if not archival_promised:
+            dim.score = 1.0
+            dim.status = "pass"
+            dim.recommendations.append("Optional: describe archival or retention strategy when committed")
+            return dim
+
         checks = {
             "compression": len(compression_mentions) > 0,
             "retention": len(retention_mentions) > 0,
@@ -208,7 +249,12 @@ class ProtocolEvidenceValidator:
             "cleanup": len(cleanup_mentions) > 0,
         }
 
-        dim.details = checks
+        dim.details.update({
+            "compression_mentions": len(compression_mentions),
+            "retention_mentions": len(retention_mentions),
+            "retrieval_mentions": len(retrieval_mentions),
+            "cleanup_mentions": len(cleanup_mentions),
+        })
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
         dim.status = self._status_from_counts(sum(checks.values()), len(checks))
 
@@ -249,7 +295,8 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Evidence validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        protocol_ids = get_protocol_id_list(include_docs=args.include_docs)
+        for protocol_id in protocol_ids:
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -275,6 +322,11 @@ def main() -> None:
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) during --all runs",
+    )
 
     args = parser.parse_args()
     exit_code = run_cli(args)

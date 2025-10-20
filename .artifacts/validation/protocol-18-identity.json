@@ -1,13 +1,12 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "18",
-  "validation_timestamp": "2025-10-20T01:35:57.602468Z",
+  "validation_timestamp": "2025-10-20T14:55:27.872144Z",
   "basic_information": {
-    "score": 0.3333333333333333,
+    "score": 0.5,
     "status": "fail",
     "issues": [
       "Protocol version not found (semantic versioning expected)",
-      "Phase assignment not found or invalid in AGENTS.md",
       "Purpose statement not found or too short",
       "Scope definition not found"
     ],
@@ -15,7 +14,7 @@
       "protocol_number": true,
       "protocol_name": "**[MASTER RAY\u2122 | PROTOCOL COMPLETE]** Ready for Protocol 22: Implementation Retrospective",
       "protocol_version": false,
-      "phase_assignment": false,
+      "phase_assignment": "Phase 5",
       "purpose_statement": false,
       "scope_definition": false
     }
@@ -42,17 +41,15 @@
     }
   },
   "compliance_standards": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.6666666666666666,
+    "status": "warning",
     "issues": [
-      "Industry standards not documented",
-      "Automated quality gates config not found: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/config/protocol_gates/18.yaml"
+      "Industry standards not documented"
     ],
     "categories_found": {
       "industry_standards": false,
       "security_requirements": true,
-      "regulatory_compliance": true,
-      "quality_gates": false
+      "regulatory_compliance": true
     }
   },
   "documentation_quality": {
@@ -79,15 +76,13 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.7577777777777778,
-  "validation_status": "fail",
+  "overall_score": 0.8244444444444443,
+  "validation_status": "warning",
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
     "Purpose statement not found or too short",
     "Scope definition not found",
     "Industry standards not documented",
-    "Automated quality gates config not found: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/config/protocol_gates/18.yaml",
     "Required section missing: WORKFLOW"
   ],
   "recommendations": []

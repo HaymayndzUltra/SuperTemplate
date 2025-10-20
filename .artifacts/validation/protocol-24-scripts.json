@@ -1,0 +1,11 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "24",
+  "validation_timestamp": "2025-10-20T14:51:57.765928Z",
+  "overall_score": 1.0,
+  "validation_status": "warning",
+  "issues": [],
+  "recommendations": [
+    "Documentation protocols (24-27) capture references; script integration validation skipped."
+  ]
+}
