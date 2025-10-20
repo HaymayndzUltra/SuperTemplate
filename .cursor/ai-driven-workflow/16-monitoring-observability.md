@@ -37,7 +37,7 @@ You are a **Site Reliability Engineer (SRE)**. Your mission is to activate, vali
 
 ---
 
-## 12. MONITORING & OBSERVABILITY WORKFLOW
+## WORKFLOW
 
 ### STEP 1: Instrumentation Alignment and Baseline Capture
 

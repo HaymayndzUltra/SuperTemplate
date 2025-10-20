@@ -1,21 +1,21 @@
 {
   "validator": "master_validator",
   "protocol_id": "14",
-  "validation_timestamp": "2025-10-20T16:38:32.743340Z",
-  "overall_score": 0.6507777777777778,
+  "validation_timestamp": "2025-10-20T16:43:20.118655Z",
+  "overall_score": 0.7962500000000001,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8911111111111112
+      "score": 0.9
     },
     "protocol_role": {
-      "status": "fail",
-      "score": 0.7416666666666667
+      "status": "warning",
+      "score": 0.875
     },
     "protocol_workflow": {
-      "status": "fail",
-      "score": 0.1
+      "status": "pass",
+      "score": 0.9000000000000001
     },
     "protocol_quality_gates": {
       "status": "fail",
@@ -27,54 +27,45 @@
     },
     "protocol_communication": {
       "status": "fail",
-      "score": 0.675
+      "score": 0.775
     },
     "protocol_evidence": {
       "status": "fail",
-      "score": 0.5874999999999999
+      "score": 0.6374999999999998
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.75
+      "status": "warning",
+      "score": 0.8
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.4875
+      "score": 0.6625000000000001
     },
     "protocol_reflection": {
-      "status": "warning",
-      "score": 0.8125000000000001
+      "status": "pass",
+      "score": 0.9500000000000001
     }
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
     "Industry standards not documented",
-    "Required section missing: WORKFLOW",
     "Domain expertise keywords missing",
     "Value proposition not captured",
-    "Constraints do not articulate mandatory guardrails or requirements",
-    "WORKFLOW section missing",
-    "Workflow steps missing",
-    "Action markers absent because workflow missing",
-    "No workflow content to evaluate halt conditions",
+    "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
-    "Referenced command paths not found: scripts/aggregate_evidence_10.py, scripts/run_protocol_10_gates.py, scripts/validate_gate_10_intake.py, scripts/validate_gate_10_readiness.py, scripts/validate_prerequisites_10.py",
+    "Referenced command paths not found: scripts/aggregate_evidence_10.py, scripts/refresh_staging_data.py, scripts/run_protocol_10_gates.py, scripts/update_deployment_checklist.py, scripts/validate_gate_10_intake.py, scripts/validate_gate_10_readiness.py, scripts/validate_prerequisites_10.py",
     "Missing user interaction prompts: clarification",
-    "Limited progress terminology in communications",
     "Protocol evidence directory not referenced",
     "Traceability gaps: inputs, outputs",
-    "Limited verification language detected",
     "Sign-off guidance missing: confirmation",
     "Documentation expectations under-specified",
-    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
     "Self-awareness statements missing",
-    "Continuous improvement gaps: plans",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
-    "Reference workflow steps when stating guardrails to improve clarity",
-    "Document evidence manifests or registries",
+    "Optional or cautionary guidance can highlight operator judgement without blocking validation",
     "Identify gate types (Prerequisite/Execution/Completion)",
     "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/14.yaml when automated gating is expected",
@@ -83,7 +74,6 @@
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",
-    "Add time or effort estimates to communication prompts",
     "Optionally reference a manifest file or inventory for quick lookup",
     "Enhance archival plan with: cleanup, retention, retrieval",
     "Include root-cause analysis guidance"

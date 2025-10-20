@@ -1,13 +1,10 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "19",
-  "validation_timestamp": "2025-10-20T16:38:32.828506Z",
-  "overall_score": 0.8125000000000001,
-  "validation_status": "warning",
-  "issues": [
-    "Continuous improvement gaps: plans",
-    "Roadmap or future direction not documented"
-  ],
+  "validation_timestamp": "2025-10-20T16:43:20.208956Z",
+  "overall_score": 0.9000000000000001,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [],
   "retrospective_analysis": {
     "score": 0.75,
@@ -22,15 +19,13 @@
     }
   },
   "continuous_improvement": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Continuous improvement gaps: plans"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "opportunities": true,
-      "plans": false,
+      "plans": true,
       "tracking": true,
       "evidence": true
     }
@@ -60,14 +55,12 @@
     }
   },
   "future_planning": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Roadmap or future direction not documented"
-    ],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "roadmap": false,
+      "roadmap": true,
       "priorities": false,
       "resources": true,
       "timeline": true

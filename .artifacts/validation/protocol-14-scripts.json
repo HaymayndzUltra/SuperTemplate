@@ -1,11 +1,11 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "14",
-  "validation_timestamp": "2025-10-20T16:38:32.733820Z",
+  "validation_timestamp": "2025-10-20T16:43:20.105220Z",
   "overall_score": 0.7000000000000001,
   "validation_status": "fail",
   "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_10.py, scripts/run_protocol_10_gates.py, scripts/validate_gate_10_intake.py, scripts/validate_gate_10_readiness.py, scripts/validate_prerequisites_10.py"
+    "Referenced command paths not found: scripts/aggregate_evidence_10.py, scripts/refresh_staging_data.py, scripts/run_protocol_10_gates.py, scripts/update_deployment_checklist.py, scripts/validate_gate_10_intake.py, scripts/validate_gate_10_readiness.py, scripts/validate_prerequisites_10.py"
   ],
   "recommendations": [
     "Document environment/dependency expectations",
@@ -16,25 +16,29 @@
     "score": 1.0,
     "status": "pass",
     "issues": [
-      "Referenced command paths not found: scripts/aggregate_evidence_10.py, scripts/run_protocol_10_gates.py, scripts/validate_gate_10_intake.py, scripts/validate_gate_10_readiness.py, scripts/validate_prerequisites_10.py"
+      "Referenced command paths not found: scripts/aggregate_evidence_10.py, scripts/refresh_staging_data.py, scripts/run_protocol_10_gates.py, scripts/update_deployment_checklist.py, scripts/validate_gate_10_intake.py, scripts/validate_gate_10_readiness.py, scripts/validate_prerequisites_10.py"
     ],
     "recommendations": [],
     "details": {
-      "command_count": 6,
+      "command_count": 8,
       "commands": [
         "bash\n# Prerequisite validation",
         "python scripts/validate_prerequisites_10.py",
         "python scripts/validate_gate_10_intake.py --drift-threshold low",
         "python scripts/validate_gate_10_readiness.py --threshold 0.95",
         "python scripts/aggregate_evidence_10.py --output .artifacts/pre-deployment/",
-        "python scripts/run_protocol_10_gates.py"
+        "python scripts/run_protocol_10_gates.py",
+        "bash\n     python scripts/refresh_staging_data.py --env staging --output .artifacts/pre-deployment/staging-data-refresh.md",
+        "bash\n     python scripts/update_deployment_checklist.py --source .artifacts/pre-deployment/staging-deployment-run.log --output .artifacts/pre-deployment/deployment-checklist.md"
       ],
       "missing_scripts": [
         "scripts/validate_prerequisites_10.py",
         "scripts/validate_gate_10_intake.py",
         "scripts/validate_gate_10_readiness.py",
         "scripts/aggregate_evidence_10.py",
-        "scripts/run_protocol_10_gates.py"
+        "scripts/run_protocol_10_gates.py",
+        "scripts/refresh_staging_data.py",
+        "scripts/update_deployment_checklist.py"
       ]
     }
   },
@@ -49,7 +53,7 @@
       "registry_reference": true,
       "workflow_mapping": true,
       "ownership": true,
-      "total_commands": 6,
+      "total_commands": 8,
       "registered_commands": 0,
       "registration_ratio": 0.0,
       "unregistered_commands": []
@@ -78,7 +82,7 @@
       "Document how command outputs are captured"
     ],
     "details": {
-      "command_count": 6,
+      "command_count": 8,
       "flag_usage": true,
       "output_redirection": false,
       "parameterization": false,

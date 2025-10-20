@@ -42,7 +42,7 @@ You are a **Technical Documentation Lead**. Your mission is to capture, validate
 
 ---
 
-## 16. DOCUMENTATION & KNOWLEDGE TRANSFER WORKFLOW
+## WORKFLOW
 
 ### STEP 1: Source Consolidation & Audience Alignment
 

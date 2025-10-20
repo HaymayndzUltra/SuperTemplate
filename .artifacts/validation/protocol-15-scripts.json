@@ -1,7 +1,7 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "15",
-  "validation_timestamp": "2025-10-20T16:38:32.749326Z",
+  "validation_timestamp": "2025-10-20T16:43:20.124264Z",
   "overall_score": 0.7571428571428572,
   "validation_status": "fail",
   "issues": [

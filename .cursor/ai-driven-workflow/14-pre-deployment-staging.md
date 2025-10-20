@@ -37,7 +37,7 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 
 ---
 
-## 10. PRE-DEPLOYMENT VALIDATION WORKFLOW
+## WORKFLOW
 
 ### STEP 1: Intake Validation and Staging Alignment
 

@@ -1,19 +1,16 @@
 {
   "validator": "protocol_role",
   "protocol_id": "19",
-  "validation_timestamp": "2025-10-20T16:38:32.821171Z",
-  "overall_score": 0.6166666666666667,
+  "validation_timestamp": "2025-10-20T16:43:20.197106Z",
+  "overall_score": 0.75,
   "validation_status": "fail",
   "issues": [
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",
     "Mission lacks scope boundaries or guardrails",
-    "Value proposition not captured",
-    "Constraints do not articulate mandatory guardrails or requirements"
+    "Value proposition not captured"
   ],
-  "recommendations": [
-    "Reference workflow steps when stating guardrails to improve clarity"
-  ],
+  "recommendations": [],
   "role_definition": {
     "score": 0.5,
     "status": "fail",
@@ -45,21 +42,17 @@
     }
   },
   "constraints_guidelines": {
-    "score": 0.3333333333333333,
-    "status": "fail",
-    "issues": [
-      "Constraints do not articulate mandatory guardrails or requirements"
-    ],
-    "recommendations": [
-      "Reference workflow steps when stating guardrails to improve clarity"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
     "details": {
-      "guardrails": false,
+      "guardrails": true,
       "boundaries": true,
-      "workflow_alignment": false,
-      "guardrail_count": 0,
+      "workflow_alignment": true,
+      "guardrail_count": 13,
       "boundary_count": 1,
-      "workflow_links": 0,
+      "workflow_links": 12,
       "optional_guidance": 0
     }
   },

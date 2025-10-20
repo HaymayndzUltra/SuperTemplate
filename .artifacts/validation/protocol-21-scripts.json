@@ -1,11 +1,11 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "21",
-  "validation_timestamp": "2025-10-20T16:38:32.854161Z",
+  "validation_timestamp": "2025-10-20T16:43:20.236303Z",
   "overall_score": 0.7000000000000001,
   "validation_status": "fail",
   "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_18.py, scripts/run_protocol_18_gates.py, scripts/validate_gate_18_approvals.py, scripts/validate_gate_18_backlog.py, scripts/validate_gate_18_governance.py, scripts/validate_prerequisites_18.py"
+    "Referenced command paths not found: scripts/aggregate_evidence_18.py, scripts/discover_automation_candidates.py, scripts/run_protocol_18_gates.py, scripts/validate_gate_18_approvals.py, scripts/validate_gate_18_backlog.py, scripts/validate_gate_18_governance.py, scripts/validate_prerequisites_18.py"
   ],
   "recommendations": [
     "Document environment/dependency expectations",
@@ -16,11 +16,11 @@
     "score": 1.0,
     "status": "pass",
     "issues": [
-      "Referenced command paths not found: scripts/aggregate_evidence_18.py, scripts/run_protocol_18_gates.py, scripts/validate_gate_18_approvals.py, scripts/validate_gate_18_backlog.py, scripts/validate_gate_18_governance.py, scripts/validate_prerequisites_18.py"
+      "Referenced command paths not found: scripts/aggregate_evidence_18.py, scripts/discover_automation_candidates.py, scripts/run_protocol_18_gates.py, scripts/validate_gate_18_approvals.py, scripts/validate_gate_18_backlog.py, scripts/validate_gate_18_governance.py, scripts/validate_prerequisites_18.py"
     ],
     "recommendations": [],
     "details": {
-      "command_count": 7,
+      "command_count": 9,
       "commands": [
         "bash\n# Prerequisite validation",
         "python scripts/validate_prerequisites_18.py",
@@ -28,7 +28,9 @@
         "python scripts/validate_gate_18_approvals.py --log .artifacts/protocol-21/approval-log.csv",
         "python scripts/validate_gate_18_governance.py --checklist .artifacts/protocol-21/governance-cadence-checklist.json",
         "python scripts/aggregate_evidence_18.py --output .artifacts/protocol-21/",
-        "python scripts/run_protocol_18_gates.py"
+        "python scripts/run_protocol_18_gates.py",
+        "python\n     from maintenance.forecast import forecast_ticket_volume",
+        "bash\n     python scripts/discover_automation_candidates.py --input .artifacts/protocol-21/maintenance-backlog.csv \\"
       ],
       "missing_scripts": [
         "scripts/validate_prerequisites_18.py",
@@ -36,7 +38,8 @@
         "scripts/validate_gate_18_approvals.py",
         "scripts/validate_gate_18_governance.py",
         "scripts/aggregate_evidence_18.py",
-        "scripts/run_protocol_18_gates.py"
+        "scripts/run_protocol_18_gates.py",
+        "scripts/discover_automation_candidates.py"
       ]
     }
   },
@@ -51,7 +54,7 @@
       "registry_reference": true,
       "workflow_mapping": true,
       "ownership": true,
-      "total_commands": 7,
+      "total_commands": 9,
       "registered_commands": 0,
       "registration_ratio": 0.0,
       "unregistered_commands": []
@@ -80,7 +83,7 @@
       "Document how command outputs are captured"
     ],
     "details": {
-      "command_count": 7,
+      "command_count": 9,
       "flag_usage": true,
       "output_redirection": false,
       "parameterization": false,

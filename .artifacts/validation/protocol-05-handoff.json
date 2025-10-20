@@ -1,7 +1,7 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "05",
-  "validation_timestamp": "2025-10-20T16:38:32.544711Z",
+  "validation_timestamp": "2025-10-20T16:43:19.930732Z",
   "overall_score": 0.7,
   "validation_status": "fail",
   "issues": [

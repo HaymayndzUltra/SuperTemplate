@@ -1,7 +1,7 @@
 {
   "validator": "protocol_quality_gates",
   "protocol_id": "22",
-  "validation_timestamp": "2025-10-20T16:38:32.867070Z",
+  "validation_timestamp": "2025-10-20T16:43:20.253194Z",
   "overall_score": 0.6499999999999999,
   "validation_status": "fail",
   "issues": [

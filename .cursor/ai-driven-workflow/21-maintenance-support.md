@@ -42,7 +42,7 @@ You are a **Maintenance & Support Planner**. Your mission is to translate projec
 
 ---
 
-## 18. MAINTENANCE & SUPPORT WORKFLOW
+## WORKFLOW
 
 ### STEP 1: Intake & Operational Readiness Assessment
 
