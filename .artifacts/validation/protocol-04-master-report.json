@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "04",
-  "validation_timestamp": "2025-10-20T16:35:27.864501Z",
-  "overall_score": 0.7303571428571428,
+  "validation_timestamp": "2025-10-20T16:38:32.531188Z",
+  "overall_score": 0.7791071428571428,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -39,11 +39,11 @@
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.425
+      "score": 0.6125
     },
     "protocol_reflection": {
-      "status": "fail",
-      "score": 0.65
+      "status": "pass",
+      "score": 0.9500000000000001
     }
   },
   "issues": [
@@ -63,10 +63,7 @@
     "Sign-off guidance missing: approvals, reviewers, confirmation",
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
-    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
     "Self-awareness statements missing",
-    "Continuous improvement gaps: opportunities",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [

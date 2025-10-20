@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "18",
-  "validation_timestamp": "2025-10-20T16:35:28.113200Z",
-  "overall_score": 0.7691666666666667,
+  "validation_timestamp": "2025-10-20T16:38:32.818271Z",
+  "overall_score": 0.7929166666666667,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -23,7 +23,7 @@
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.6624999999999999
+      "score": 0.75
     },
     "protocol_communication": {
       "status": "fail",
@@ -38,12 +38,12 @@
       "score": 0.7375
     },
     "protocol_reasoning": {
-      "status": "fail",
-      "score": 0.6375
+      "status": "warning",
+      "score": 0.7125
     },
     "protocol_reflection": {
       "status": "pass",
-      "score": 0.8999999999999999
+      "score": 0.9750000000000001
     }
   },
   "issues": [
@@ -55,15 +55,12 @@
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_14.py, scripts/run_protocol_14_gates.py, scripts/validate_gate_14_baseline.py, scripts/validate_gate_14_optimization.py, scripts/validate_prerequisites_14.py",
-    "Exit code handling not described",
     "Missing user interaction prompts: clarification, decision_points, feedback",
     "Protocol evidence directory not referenced",
     "Traceability gaps: inputs, outputs",
     "Sign-off guidance missing: approvals, reviewers, confirmation",
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
-    "Learning mechanisms incomplete: knowledge_base, adaptation",
-    "Knowledge capture gaps: lessons, knowledge_base",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
@@ -75,7 +72,6 @@
     "Provision config/protocol_gates/18.yaml when automated gating is expected",
     "Identify notification path for gate failures",
     "Document waiver/override policies",
-    "Reference scripts/script-registry.json for governance context",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",

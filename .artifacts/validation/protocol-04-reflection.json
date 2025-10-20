@@ -1,36 +1,32 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "04",
-  "validation_timestamp": "2025-10-20T16:35:27.859933Z",
-  "overall_score": 0.65,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-10-20T16:38:32.526182Z",
+  "overall_score": 0.9500000000000001,
+  "validation_status": "pass",
   "issues": [
-    "Continuous improvement gaps: opportunities",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [],
   "retrospective_analysis": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "review": true,
-      "performance": false,
+      "performance": true,
       "issues": true,
       "success": true
     }
   },
   "continuous_improvement": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Continuous improvement gaps: opportunities"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "opportunities": false,
+      "opportunities": true,
       "plans": true,
       "tracking": true,
       "evidence": true
@@ -49,21 +45,19 @@
     }
   },
   "knowledge_capture": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Knowledge capture gaps: lessons, knowledge_base, sharing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "lessons": false,
-      "knowledge_base": false,
+      "lessons": true,
+      "knowledge_base": true,
       "storage": true,
-      "sharing": false
+      "sharing": true
     }
   },
   "future_planning": {
-    "score": 0.0,
+    "score": 0.5,
     "status": "fail",
     "issues": [
       "Roadmap or future direction not documented"
@@ -72,8 +66,8 @@
     "details": {
       "roadmap": false,
       "priorities": false,
-      "resources": false,
-      "timeline": false
+      "resources": true,
+      "timeline": true
     }
   }
 }

@@ -1,12 +1,11 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "05",
-  "validation_timestamp": "2025-10-20T16:35:27.870885Z",
-  "overall_score": 0.6761363636363635,
+  "validation_timestamp": "2025-10-20T16:38:32.538846Z",
+  "overall_score": 0.7136363636363636,
   "validation_status": "fail",
   "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_0.py, scripts/run_protocol_0_gates.py, scripts/validate_prerequisites_0.py, scripts/validate_principles.py, scripts/validate_repo_mapping.py, scripts/validate_rule_metadata.py",
-    "Exit code handling not described"
+    "Referenced command paths not found: scripts/aggregate_evidence_0.py, scripts/run_protocol_0_gates.py, scripts/validate_prerequisites_0.py, scripts/validate_principles.py, scripts/validate_repo_mapping.py, scripts/validate_rule_metadata.py"
   ],
   "recommendations": [
     "Document environment/dependency expectations",
@@ -92,14 +91,12 @@
     }
   },
   "error_handling": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Exit code handling not described"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "exit_codes": false,
+      "exit_codes": true,
       "fallback": true,
       "logging": true,
       "manual_paths": true

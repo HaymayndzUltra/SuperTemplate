@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "01",
-  "validation_timestamp": "2025-10-20T16:35:27.805020Z",
-  "overall_score": 0.7720833333333333,
+  "validation_timestamp": "2025-10-20T16:38:32.461109Z",
+  "overall_score": 0.8458333333333332,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -18,12 +18,12 @@
       "score": 0.8
     },
     "protocol_quality_gates": {
-      "status": "fail",
-      "score": 0.825
+      "status": "warning",
+      "score": 0.8624999999999999
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.5458333333333333
+      "score": 0.6833333333333333
     },
     "protocol_communication": {
       "status": "warning",
@@ -38,12 +38,12 @@
       "score": 0.7375
     },
     "protocol_reasoning": {
-      "status": "fail",
-      "score": 0.525
+      "status": "warning",
+      "score": 0.7875000000000001
     },
     "protocol_reflection": {
-      "status": "fail",
-      "score": 0.675
+      "status": "pass",
+      "score": 0.9750000000000001
     }
   },
   "issues": [
@@ -51,14 +51,10 @@
     "Success criteria absent from mission",
     "Several workflow steps omit explicit action prompts",
     "Referenced command paths not found: scripts/run_protocol_01_gates.py, scripts/validate_prerequisites_01.py",
-    "Exit code handling not described",
     "Missing user interaction prompts: clarification",
     "Traceability gaps: inputs, outputs",
     "Sign-off guidance missing: approvals, reviewers, confirmation",
-    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
-    "Self-awareness statements missing",
-    "Continuous improvement gaps: opportunities, tracking",
-    "Knowledge capture gaps: lessons, sharing"
+    "Self-awareness statements missing"
   ],
   "recommendations": [
     "Add rollback or retry guidance for failure scenarios",
@@ -66,7 +62,6 @@
     "Identify gate types (Prerequisite/Execution/Completion)",
     "Identify notification path for gate failures",
     "Document waiver/override policies",
-    "Reference scripts/script-registry.json for governance context",
     "Register automation commands in scripts/script-registry.json: scripts/validate_proposal_structure.py",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",

@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "02",
-  "validation_timestamp": "2025-10-20T16:35:27.830633Z",
-  "overall_score": 0.6999444444444445,
+  "validation_timestamp": "2025-10-20T16:38:32.492145Z",
+  "overall_score": 0.7499444444444444,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -38,12 +38,12 @@
       "score": 0.35
     },
     "protocol_reasoning": {
-      "status": "fail",
-      "score": 0.4625
+      "status": "warning",
+      "score": 0.7250000000000001
     },
     "protocol_reflection": {
-      "status": "warning",
-      "score": 0.7375
+      "status": "pass",
+      "score": 0.9750000000000001
     }
   },
   "issues": [
@@ -66,10 +66,7 @@
     "Stakeholder sign-off section missing",
     "Next protocol alignment missing",
     "Reasoning patterns not explicitly named",
-    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
-    "Self-awareness statements missing",
-    "Continuous improvement gaps: opportunities, tracking",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing"
+    "Self-awareness statements missing"
   ],
   "recommendations": [
     "Add rollback or retry guidance for failure scenarios",

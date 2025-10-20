@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "21",
-  "validation_timestamp": "2025-10-20T16:35:28.152122Z",
-  "overall_score": 0.5895277777777779,
+  "validation_timestamp": "2025-10-20T16:38:32.862456Z",
+  "overall_score": 0.6420277777777779,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -11,7 +11,7 @@
     },
     "protocol_role": {
       "status": "fail",
-      "score": 0.5791666666666666
+      "score": 0.6166666666666667
     },
     "protocol_workflow": {
       "status": "fail",
@@ -23,7 +23,7 @@
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.6125
+      "score": 0.7000000000000001
     },
     "protocol_communication": {
       "status": "fail",
@@ -39,11 +39,11 @@
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.25
+      "score": 0.43749999999999994
     },
     "protocol_reflection": {
-      "status": "fail",
-      "score": 0.6875
+      "status": "pass",
+      "score": 0.9000000000000001
     }
   },
   "issues": [
@@ -55,14 +55,12 @@
     "Success criteria absent from mission",
     "Value proposition not captured",
     "Constraints do not articulate mandatory guardrails or requirements",
-    "Output structure missing (sections or tables)",
     "WORKFLOW section missing",
     "Workflow steps missing",
     "Action markers absent because workflow missing",
     "No workflow content to evaluate halt conditions",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_18.py, scripts/run_protocol_18_gates.py, scripts/validate_gate_18_approvals.py, scripts/validate_gate_18_backlog.py, scripts/validate_gate_18_governance.py, scripts/validate_prerequisites_18.py",
-    "Exit code handling not described",
     "Phase transition announcements missing",
     "Missing user interaction prompts: clarification",
     "Limited progress terminology in communications",
@@ -72,10 +70,7 @@
     "Documentation expectations under-specified",
     "Workflow section missing; cannot evaluate reasoning patterns",
     "Decision points insufficiently described",
-    "Learning mechanisms incomplete: improvement_tracking, knowledge_base, adaptation",
     "Self-awareness statements missing",
-    "Continuous improvement gaps: opportunities",
-    "Knowledge capture gaps: knowledge_base, sharing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
@@ -85,7 +80,6 @@
     "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/21.yaml when automated gating is expected",
     "Document waiver/override policies",
-    "Reference scripts/script-registry.json for governance context",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",

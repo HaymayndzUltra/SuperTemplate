@@ -1,7 +1,7 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "01",
-  "validation_timestamp": "2025-10-20T16:35:27.792182Z",
+  "validation_timestamp": "2025-10-20T16:38:32.446692Z",
   "overall_score": 0.85,
   "validation_status": "warning",
   "issues": [
@@ -23,7 +23,7 @@
       "row_coverage": true,
       "table_rows": 10,
       "artifact_mentions": 5,
-      "metric_mentions": 2
+      "metric_mentions": 3
     }
   },
   "storage_structure": {

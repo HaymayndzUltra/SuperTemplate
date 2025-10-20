@@ -1,41 +1,34 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "03",
-  "validation_timestamp": "2025-10-20T16:35:27.842434Z",
-  "overall_score": 0.6125,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-10-20T16:38:32.506467Z",
+  "overall_score": 0.9500000000000001,
+  "validation_status": "pass",
   "issues": [
-    "Retrospective analysis not documented",
-    "Continuous improvement gaps: opportunities, tracking",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [],
   "retrospective_analysis": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Retrospective analysis not documented"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "review": false,
+      "review": true,
       "performance": true,
       "issues": true,
       "success": true
     }
   },
   "continuous_improvement": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Continuous improvement gaps: opportunities, tracking"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "opportunities": false,
+      "opportunities": true,
       "plans": true,
-      "tracking": false,
+      "tracking": true,
       "evidence": true
     }
   },
@@ -52,21 +45,19 @@
     }
   },
   "knowledge_capture": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Knowledge capture gaps: lessons, knowledge_base, sharing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "lessons": false,
-      "knowledge_base": false,
+      "lessons": true,
+      "knowledge_base": true,
       "storage": true,
-      "sharing": false
+      "sharing": true
     }
   },
   "future_planning": {
-    "score": 0.25,
+    "score": 0.5,
     "status": "fail",
     "issues": [
       "Roadmap or future direction not documented"
@@ -75,7 +66,7 @@
     "details": {
       "roadmap": false,
       "priorities": false,
-      "resources": false,
+      "resources": true,
       "timeline": true
     }
   }

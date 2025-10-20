@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "06",
-  "validation_timestamp": "2025-10-20T16:35:27.902212Z",
-  "overall_score": 0.6908333333333334,
+  "validation_timestamp": "2025-10-20T16:38:32.592186Z",
+  "overall_score": 0.7645833333333334,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -19,11 +19,11 @@
     },
     "protocol_quality_gates": {
       "status": "fail",
-      "score": 0.6499999999999999
+      "score": 0.6874999999999999
     },
     "protocol_scripts": {
-      "status": "fail",
-      "score": 0.675
+      "status": "warning",
+      "score": 0.8125
     },
     "protocol_communication": {
       "status": "fail",
@@ -39,11 +39,11 @@
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.2875
+      "score": 0.55
     },
     "protocol_reflection": {
-      "status": "fail",
-      "score": 0.65
+      "status": "pass",
+      "score": 0.9500000000000001
     }
   },
   "issues": [
@@ -57,7 +57,6 @@
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_1.py, scripts/run_protocol_1_gates.py, scripts/validate_prd_context.py, scripts/validate_prd_requirements.py, scripts/validate_prerequisites_1.py",
-    "Exit code handling not described",
     "Missing user interaction prompts: clarification, feedback",
     "Limited progress terminology in communications",
     "Traceability gaps: inputs, outputs",
@@ -65,11 +64,7 @@
     "Documentation expectations under-specified",
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
-    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
     "Self-awareness statements missing",
-    "Retrospective analysis not documented",
-    "Continuous improvement gaps: opportunities, tracking",
-    "Knowledge capture gaps: lessons, sharing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
@@ -81,7 +76,6 @@
     "Provision config/protocol_gates/06.yaml when automated gating is expected",
     "Identify notification path for gate failures",
     "Link compliance checks to automation commands",
-    "Reference scripts/script-registry.json for governance context",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",
     "Optionally reference a manifest file or inventory for quick lookup",

@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "10",
-  "validation_timestamp": "2025-10-20T16:35:27.970732Z",
-  "overall_score": 0.7497222222222223,
+  "validation_timestamp": "2025-10-20T16:38:32.668619Z",
+  "overall_score": 0.8084722222222223,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -18,12 +18,12 @@
       "score": 0.8791666666666667
     },
     "protocol_quality_gates": {
-      "status": "fail",
-      "score": 0.825
+      "status": "warning",
+      "score": 0.8625
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.6555555555555556
+      "score": 0.7555555555555556
     },
     "protocol_communication": {
       "status": "fail",
@@ -39,11 +39,11 @@
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.475
+      "score": 0.6625000000000001
     },
     "protocol_reflection": {
-      "status": "warning",
-      "score": 0.7125
+      "status": "pass",
+      "score": 0.9750000000000001
     }
   },
   "issues": [
@@ -59,10 +59,7 @@
     "Traceability gaps: inputs, outputs",
     "Sign-off guidance missing: approvals, reviewers, confirmation",
     "Reasoning patterns not explicitly named",
-    "Learning mechanisms incomplete: feedback, improvement_tracking, adaptation",
-    "Self-awareness statements missing",
-    "Continuous improvement gaps: opportunities",
-    "Knowledge capture gaps: lessons, sharing"
+    "Self-awareness statements missing"
   ],
   "recommendations": [
     "Document communication prompts per step",
@@ -70,7 +67,6 @@
     "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/10.yaml when automated gating is expected",
     "Identify notification path for gate failures",
-    "Reference scripts/script-registry.json for governance context",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",

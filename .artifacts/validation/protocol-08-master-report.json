@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "08",
-  "validation_timestamp": "2025-10-20T16:35:27.934822Z",
-  "overall_score": 0.7073611111111111,
+  "validation_timestamp": "2025-10-20T16:38:32.631475Z",
+  "overall_score": 0.7611111111111111,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -19,11 +19,11 @@
     },
     "protocol_quality_gates": {
       "status": "fail",
-      "score": 0.6874999999999999
+      "score": 0.7249999999999999
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.7111111111111111
+      "score": 0.7611111111111112
     },
     "protocol_communication": {
       "status": "fail",
@@ -39,11 +39,11 @@
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.36249999999999993
+      "score": 0.55
     },
     "protocol_reflection": {
-      "status": "fail",
-      "score": 0.6875
+      "status": "pass",
+      "score": 0.9500000000000001
     }
   },
   "issues": [
@@ -63,10 +63,7 @@
     "Documentation expectations under-specified",
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
-    "Learning mechanisms incomplete: feedback, improvement_tracking, adaptation",
     "Self-awareness statements missing",
-    "Continuous improvement gaps: tracking",
-    "Knowledge capture gaps: lessons, knowledge_base",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
@@ -76,7 +73,6 @@
     "Provision config/protocol_gates/08.yaml when automated gating is expected",
     "Identify notification path for gate failures",
     "Document waiver/override policies",
-    "Reference scripts/script-registry.json for governance context",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",

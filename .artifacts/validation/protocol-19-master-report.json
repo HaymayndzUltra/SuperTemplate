@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "19",
-  "validation_timestamp": "2025-10-20T16:35:28.125194Z",
-  "overall_score": 0.5820277777777777,
+  "validation_timestamp": "2025-10-20T16:38:32.832020Z",
+  "overall_score": 0.6320277777777777,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -11,7 +11,7 @@
     },
     "protocol_role": {
       "status": "fail",
-      "score": 0.5791666666666666
+      "score": 0.6166666666666667
     },
     "protocol_workflow": {
       "status": "fail",
@@ -19,11 +19,11 @@
     },
     "protocol_quality_gates": {
       "status": "fail",
-      "score": 0.6874999999999999
+      "score": 0.7249999999999999
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.6125
+      "score": 0.75
     },
     "protocol_communication": {
       "status": "fail",
@@ -39,11 +39,11 @@
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.41250000000000003
+      "score": 0.4875
     },
     "protocol_reflection": {
-      "status": "fail",
-      "score": 0.6
+      "status": "warning",
+      "score": 0.8125000000000001
     }
   },
   "issues": [
@@ -55,14 +55,12 @@
     "Mission lacks scope boundaries or guardrails",
     "Value proposition not captured",
     "Constraints do not articulate mandatory guardrails or requirements",
-    "Output structure missing (sections or tables)",
     "WORKFLOW section missing",
     "Workflow steps missing",
     "Action markers absent because workflow missing",
     "No workflow content to evaluate halt conditions",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_16.py, scripts/run_protocol_16_gates.py, scripts/validate_gate_16_completeness.py, scripts/validate_gate_16_enablement.py, scripts/validate_gate_16_publication.py, scripts/validate_prerequisites_16.py",
-    "Exit code handling not described",
     "Phase transition announcements missing",
     "Missing user interaction prompts: clarification",
     "Limited progress terminology in communications",
@@ -72,11 +70,8 @@
     "Documentation expectations under-specified",
     "Workflow section missing; cannot evaluate reasoning patterns",
     "Decision points insufficiently described",
-    "Learning mechanisms incomplete: adaptation",
     "Self-awareness statements missing",
-    "Retrospective analysis not documented",
     "Continuous improvement gaps: plans",
-    "Knowledge capture gaps: lessons",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
@@ -87,7 +82,6 @@
     "Provision config/protocol_gates/19.yaml when automated gating is expected",
     "Identify notification path for gate failures",
     "Document waiver/override policies",
-    "Reference scripts/script-registry.json for governance context",
     "Document environment/dependency expectations",
     "Document how command outputs are captured",
     "Add time or effort estimates to communication prompts",

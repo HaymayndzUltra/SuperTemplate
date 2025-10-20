@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "13",
-  "validation_timestamp": "2025-10-20T16:35:28.025492Z",
-  "overall_score": 0.7504166666666667,
+  "validation_timestamp": "2025-10-20T16:38:32.729257Z",
+  "overall_score": 0.7954166666666665,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -19,11 +19,11 @@
     },
     "protocol_quality_gates": {
       "status": "fail",
-      "score": 0.7875
+      "score": 0.825
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.7124999999999999
+      "score": 0.75
     },
     "protocol_communication": {
       "status": "warning",
@@ -38,12 +38,12 @@
       "score": 0.8
     },
     "protocol_reasoning": {
-      "status": "fail",
-      "score": 0.6125
+      "status": "warning",
+      "score": 0.7250000000000001
     },
     "protocol_reflection": {
-      "status": "warning",
-      "score": 0.7125000000000001
+      "status": "pass",
+      "score": 0.9750000000000001
     }
   },
   "issues": [
@@ -57,7 +57,6 @@
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/build_uat_toolkit.py, scripts/generate_release_notes.py, scripts/run_protocol_15_gates.py, scripts/validate_gate_15_defects.py, scripts/validate_gate_15_entry.py, scripts/validate_prerequisites_15.py",
-    "Exit code handling not described",
     "Missing user interaction prompts: clarification",
     "Limited progress terminology in communications",
     "Protocol evidence directory not referenced",
@@ -66,10 +65,7 @@
     "Documentation expectations under-specified",
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
-    "Learning mechanisms incomplete: improvement_tracking, knowledge_base, adaptation",
     "Self-awareness statements missing",
-    "Retrospective analysis not documented",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [

@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "23",
-  "validation_timestamp": "2025-10-20T16:35:28.185448Z",
-  "overall_score": 0.73,
+  "validation_timestamp": "2025-10-20T16:38:32.899198Z",
+  "overall_score": 0.7675000000000001,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -11,7 +11,7 @@
     },
     "protocol_role": {
       "status": "fail",
-      "score": 0.7125
+      "score": 0.75
     },
     "protocol_workflow": {
       "status": "warning",
@@ -23,7 +23,7 @@
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.6499999999999999
+      "score": 0.6875
     },
     "protocol_communication": {
       "status": "fail",
@@ -39,11 +39,11 @@
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.5125000000000001
+      "score": 0.6625000000000001
     },
     "protocol_reflection": {
-      "status": "warning",
-      "score": 0.8250000000000001
+      "status": "pass",
+      "score": 0.9750000000000001
     }
   },
   "issues": [
@@ -54,10 +54,8 @@
     "Behavioral traits not articulated",
     "Success criteria absent from mission",
     "Value proposition not captured",
-    "Output structure missing (sections or tables)",
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
-    "Exit code handling not described",
     "Missing user interaction prompts: clarification",
     "Limited progress terminology in communications",
     "Protocol evidence directory not referenced",
@@ -66,10 +64,7 @@
     "Documentation expectations under-specified",
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
-    "Learning mechanisms incomplete: improvement_tracking, adaptation",
-    "Self-awareness statements missing",
-    "Continuous improvement gaps: opportunities",
-    "Knowledge capture gaps: lessons"
+    "Self-awareness statements missing"
   ],
   "recommendations": [
     "Optional or cautionary guidance can highlight operator judgement without blocking validation",

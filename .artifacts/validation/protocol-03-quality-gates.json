@@ -1,8 +1,8 @@
 {
   "validator": "protocol_quality_gates",
   "protocol_id": "03",
-  "validation_timestamp": "2025-10-20T16:35:27.834755Z",
-  "overall_score": 0.7874999999999999,
+  "validation_timestamp": "2025-10-20T16:38:32.497316Z",
+  "overall_score": 0.825,
   "validation_status": "fail",
   "issues": [
     "Insufficient compliance standards referenced"
@@ -71,8 +71,8 @@
     }
   },
   "compliance_integration": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
       "Insufficient compliance standards referenced"
     ],
@@ -81,7 +81,7 @@
       "compliance_terms": false,
       "automation_hooks": true,
       "evidence": true,
-      "governance": false
+      "governance": true
     }
   }
 }

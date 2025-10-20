@@ -1,12 +1,10 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "23",
-  "validation_timestamp": "2025-10-20T16:35:28.173535Z",
-  "overall_score": 0.6499999999999999,
+  "validation_timestamp": "2025-10-20T16:38:32.885901Z",
+  "overall_score": 0.6875,
   "validation_status": "fail",
-  "issues": [
-    "Exit code handling not described"
-  ],
+  "issues": [],
   "recommendations": [
     "Describe CI/CD context (workflow name, runner, or trigger)",
     "Document environment/dependency expectations",
@@ -82,14 +80,12 @@
     }
   },
   "error_handling": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Exit code handling not described"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "exit_codes": false,
+      "exit_codes": true,
       "fallback": true,
       "logging": true,
       "manual_paths": true

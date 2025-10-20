@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "20",
-  "validation_timestamp": "2025-10-20T16:35:28.141008Z",
-  "overall_score": 0.7391666666666667,
+  "validation_timestamp": "2025-10-20T16:38:32.849764Z",
+  "overall_score": 0.7754166666666668,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -11,7 +11,7 @@
     },
     "protocol_role": {
       "status": "warning",
-      "score": 0.8375
+      "score": 0.875
     },
     "protocol_workflow": {
       "status": "warning",
@@ -23,7 +23,7 @@
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.6625000000000001
+      "score": 0.7000000000000001
     },
     "protocol_communication": {
       "status": "fail",
@@ -39,11 +39,11 @@
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.37499999999999994
+      "score": 0.5625
     },
     "protocol_reflection": {
       "status": "pass",
-      "score": 0.8500000000000001
+      "score": 0.9500000000000001
     }
   },
   "issues": [
@@ -52,11 +52,9 @@
     "Industry standards not documented",
     "Domain expertise keywords missing",
     "Value proposition not captured",
-    "Output structure missing (sections or tables)",
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_17.py, scripts/run_protocol_17_gates.py, scripts/validate_gate_17_deliverables.py, scripts/validate_gate_17_governance.py, scripts/validate_gate_17_handover.py, scripts/validate_prerequisites_17.py",
-    "Exit code handling not described",
     "Missing user interaction prompts: clarification",
     "Limited progress terminology in communications",
     "Traceability gaps: inputs, outputs",
@@ -64,10 +62,7 @@
     "Documentation expectations under-specified",
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
-    "Learning mechanisms incomplete: improvement_tracking, knowledge_base, adaptation",
     "Self-awareness statements missing",
-    "Continuous improvement gaps: opportunities",
-    "Knowledge capture gaps: sharing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [

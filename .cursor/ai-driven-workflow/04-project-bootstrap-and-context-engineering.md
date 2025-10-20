@@ -346,6 +346,10 @@ Maintain lessons learned with structure:
 
 ## 00. AUTOMATION HOOKS
 
+
+**Registry Reference:** See `scripts/script-registry.json` for complete script inventory, ownership, and governance context.
+
+
 ### Validation Scripts:
 ```bash
 # Prerequisite validation
@@ -383,6 +387,17 @@ When automation is unavailable, execute manual validation:
 
 ## 00. HANDOFF CHECKLIST
 
+
+
+### Continuous Improvement Validation:
+- [ ] Execution feedback collected and logged
+- [ ] Lessons learned documented in protocol artifacts
+- [ ] Quality metrics captured for improvement tracking
+- [ ] Knowledge base updated with new patterns or insights
+- [ ] Protocol adaptation opportunities identified and logged
+- [ ] Retrospective scheduled (if required for this protocol phase)
+
+
 ### Pre-Handoff Validation:
 Before declaring protocol complete, validate:
 
@@ -410,6 +425,19 @@ Before declaring protocol complete, validate:
 ---
 
 ## 00. EVIDENCE SUMMARY
+
+
+
+### Learning and Improvement Mechanisms
+
+**Feedback Collection:** All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+
+**Improvement Tracking:** Protocol execution metrics monitored quarterly. Template evolution logged with before/after comparisons. Knowledge base updated after every 5 executions.
+
+**Knowledge Integration:** Execution patterns cataloged in institutional knowledge base. Best practices documented and shared across teams. Common blockers maintained with proven resolutions.
+
+**Adaptation:** Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
+
 
 ### Generated Artifacts:
 | Artifact | Location | Purpose | Consumer |

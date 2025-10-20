@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "03",
-  "validation_timestamp": "2025-10-20T16:35:27.846307Z",
-  "overall_score": 0.7119642857142857,
+  "validation_timestamp": "2025-10-20T16:38:32.511183Z",
+  "overall_score": 0.7844642857142857,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -19,11 +19,11 @@
     },
     "protocol_quality_gates": {
       "status": "fail",
-      "score": 0.7874999999999999
+      "score": 0.825
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.6196428571428572
+      "score": 0.7071428571428572
     },
     "protocol_communication": {
       "status": "fail",
@@ -39,11 +39,11 @@
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.3375
+      "score": 0.6000000000000001
     },
     "protocol_reflection": {
-      "status": "fail",
-      "score": 0.6125
+      "status": "pass",
+      "score": 0.9500000000000001
     }
   },
   "issues": [
@@ -55,18 +55,13 @@
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/run_protocol_01_gates.py, scripts/validate_brief_structure.py, scripts/validate_discovery_inputs.py, scripts/validate_prerequisites_01.py, scripts/verify_brief_approvals.py",
-    "Exit code handling not described",
     "Missing user interaction prompts: clarification, feedback",
     "Limited progress terminology in communications",
     "Traceability gaps: inputs, outputs",
     "Sign-off guidance missing: approvals, reviewers, confirmation",
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
-    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
     "Self-awareness statements missing",
-    "Retrospective analysis not documented",
-    "Continuous improvement gaps: opportunities, tracking",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [

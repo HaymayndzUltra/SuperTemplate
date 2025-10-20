@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "05",
-  "validation_timestamp": "2025-10-20T16:35:27.885610Z",
-  "overall_score": 0.7413636363636363,
+  "validation_timestamp": "2025-10-20T16:38:32.558294Z",
+  "overall_score": 0.7838636363636364,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -23,7 +23,7 @@
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.6761363636363635
+      "score": 0.7136363636363636
     },
     "protocol_communication": {
       "status": "fail",
@@ -38,12 +38,12 @@
       "score": 0.7
     },
     "protocol_reasoning": {
-      "status": "fail",
-      "score": 0.5499999999999999
+      "status": "warning",
+      "score": 0.7375
     },
     "protocol_reflection": {
-      "status": "fail",
-      "score": 0.6750000000000002
+      "status": "pass",
+      "score": 0.8750000000000001
     }
   },
   "issues": [
@@ -55,17 +55,13 @@
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_0.py, scripts/run_protocol_0_gates.py, scripts/validate_prerequisites_0.py, scripts/validate_principles.py, scripts/validate_repo_mapping.py, scripts/validate_rule_metadata.py",
-    "Exit code handling not described",
     "Missing user interaction prompts: clarification, feedback",
     "Limited progress terminology in communications",
     "Traceability gaps: inputs, outputs",
     "Sign-off guidance missing: approvals, reviewers, confirmation",
     "Documentation expectations under-specified",
     "Reasoning patterns not explicitly named",
-    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
     "Self-awareness statements missing",
-    "Continuous improvement gaps: opportunities",
-    "Knowledge capture gaps: lessons",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [

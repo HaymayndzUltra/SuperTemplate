@@ -1,15 +1,13 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "18",
-  "validation_timestamp": "2025-10-20T16:35:28.099919Z",
-  "overall_score": 0.6624999999999999,
+  "validation_timestamp": "2025-10-20T16:38:32.803534Z",
+  "overall_score": 0.75,
   "validation_status": "fail",
   "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_14.py, scripts/run_protocol_14_gates.py, scripts/validate_gate_14_baseline.py, scripts/validate_gate_14_optimization.py, scripts/validate_prerequisites_14.py",
-    "Exit code handling not described"
+    "Referenced command paths not found: scripts/aggregate_evidence_14.py, scripts/run_protocol_14_gates.py, scripts/validate_gate_14_baseline.py, scripts/validate_gate_14_optimization.py, scripts/validate_prerequisites_14.py"
   ],
   "recommendations": [
-    "Reference scripts/script-registry.json for governance context",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured"
@@ -41,16 +39,14 @@
     }
   },
   "registry_alignment": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
-    "recommendations": [
-      "Reference scripts/script-registry.json for governance context"
-    ],
+    "recommendations": [],
     "details": {
       "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
       "registry_available": true,
-      "registry_reference": false,
+      "registry_reference": true,
       "workflow_mapping": true,
       "ownership": true,
       "total_commands": 6,
@@ -90,14 +86,12 @@
     }
   },
   "error_handling": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Exit code handling not described"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "exit_codes": false,
+      "exit_codes": true,
       "fallback": true,
       "logging": true,
       "manual_paths": true

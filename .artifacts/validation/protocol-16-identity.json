@@ -1,7 +1,7 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "16",
-  "validation_timestamp": "2025-10-20T16:35:28.059943Z",
+  "validation_timestamp": "2025-10-20T16:38:32.764068Z",
   "basic_information": {
     "score": 0.6666666666666666,
     "status": "warning",

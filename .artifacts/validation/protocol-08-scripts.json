@@ -1,14 +1,13 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "08",
-  "validation_timestamp": "2025-10-20T16:35:27.923700Z",
-  "overall_score": 0.7111111111111111,
+  "validation_timestamp": "2025-10-20T16:38:32.618685Z",
+  "overall_score": 0.7611111111111112,
   "validation_status": "fail",
   "issues": [
     "Referenced command paths not found: scripts/aggregate_evidence_2.py, scripts/run_protocol_2_gates.py, scripts/validate_high_level_tasks.py, scripts/validate_prerequisites_2.py, scripts/validate_rule_index.py, scripts/validate_task_decomposition.py"
   ],
   "recommendations": [
-    "Reference scripts/script-registry.json for governance context",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured"
@@ -44,16 +43,14 @@
     }
   },
   "registry_alignment": {
-    "score": 0.5555555555555556,
-    "status": "fail",
+    "score": 0.8055555555555556,
+    "status": "warning",
     "issues": [],
-    "recommendations": [
-      "Reference scripts/script-registry.json for governance context"
-    ],
+    "recommendations": [],
     "details": {
       "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
       "registry_available": true,
-      "registry_reference": false,
+      "registry_reference": true,
       "workflow_mapping": true,
       "ownership": true,
       "total_commands": 9,

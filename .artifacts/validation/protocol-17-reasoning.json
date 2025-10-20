@@ -1,12 +1,11 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "17",
-  "validation_timestamp": "2025-10-20T16:35:28.086662Z",
-  "overall_score": 0.525,
+  "validation_timestamp": "2025-10-20T16:38:32.788620Z",
+  "overall_score": 0.675,
   "validation_status": "fail",
   "issues": [
     "Reasoning patterns not explicitly named",
-    "Learning mechanisms incomplete: improvement_tracking, adaptation",
     "Self-awareness statements missing"
   ],
   "recommendations": [],
@@ -52,22 +51,20 @@
     }
   },
   "learning_mechanisms": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Learning mechanisms incomplete: improvement_tracking, adaptation"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "feedback": true,
-      "improvement_tracking": false,
+      "improvement_tracking": true,
       "knowledge_base": true,
-      "adaptation": false
+      "adaptation": true
     }
   },
   "meta_cognition": {
-    "score": 0.25,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
       "Self-awareness statements missing"
     ],
@@ -75,8 +72,8 @@
     "details": {
       "awareness": false,
       "monitoring": true,
-      "correction": false,
-      "improvement": false
+      "correction": true,
+      "improvement": true
     }
   }
 }

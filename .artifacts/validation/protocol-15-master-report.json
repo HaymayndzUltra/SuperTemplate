@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "15",
-  "validation_timestamp": "2025-10-20T16:35:28.059746Z",
-  "overall_score": 0.7627976190476191,
+  "validation_timestamp": "2025-10-20T16:38:32.763894Z",
+  "overall_score": 0.8015476190476191,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -18,12 +18,12 @@
       "score": 0.95
     },
     "protocol_quality_gates": {
-      "status": "fail",
-      "score": 0.825
+      "status": "warning",
+      "score": 0.8625
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.6696428571428572
+      "score": 0.7571428571428572
     },
     "protocol_communication": {
       "status": "fail",
@@ -39,11 +39,11 @@
     },
     "protocol_reasoning": {
       "status": "fail",
-      "score": 0.5
+      "score": 0.6875
     },
     "protocol_reflection": {
       "status": "pass",
-      "score": 0.875
+      "score": 0.9500000000000001
     }
   },
   "issues": [
@@ -56,15 +56,12 @@
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_11.py, scripts/run_protocol_11_gates.py, scripts/validate_gate_11_launch.py, scripts/validate_gate_11_readiness.py, scripts/validate_prerequisites_11.py",
-    "Exit code handling not described",
     "Missing user interaction prompts: clarification, decision_points, feedback",
     "Protocol evidence directory not referenced",
     "Traceability gaps: inputs, outputs",
     "Sign-off guidance missing: approvals, reviewers, confirmation",
     "Reasoning patterns not explicitly named",
-    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
     "Self-awareness statements missing",
-    "Knowledge capture gaps: lessons, sharing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
@@ -72,7 +69,6 @@
     "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/15.yaml when automated gating is expected",
     "Document waiver/override policies",
-    "Reference scripts/script-registry.json for governance context",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",

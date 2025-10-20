@@ -1,24 +1,20 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "11",
-  "validation_timestamp": "2025-10-20T16:35:27.983532Z",
-  "overall_score": 0.7125000000000001,
-  "validation_status": "warning",
+  "validation_timestamp": "2025-10-20T16:38:32.683427Z",
+  "overall_score": 0.8750000000000001,
+  "validation_status": "pass",
   "issues": [
-    "Retrospective analysis not documented",
-    "Knowledge capture gaps: lessons",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [],
   "retrospective_analysis": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Retrospective analysis not documented"
-    ],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "review": false,
+      "review": true,
       "performance": true,
       "issues": false,
       "success": true
@@ -49,21 +45,19 @@
     }
   },
   "knowledge_capture": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Knowledge capture gaps: lessons"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "lessons": false,
+      "lessons": true,
       "knowledge_base": true,
       "storage": true,
       "sharing": true
     }
   },
   "future_planning": {
-    "score": 0.0,
+    "score": 0.5,
     "status": "fail",
     "issues": [
       "Roadmap or future direction not documented"
@@ -72,8 +66,8 @@
     "details": {
       "roadmap": false,
       "priorities": false,
-      "resources": false,
-      "timeline": false
+      "resources": true,
+      "timeline": true
     }
   }
 }
