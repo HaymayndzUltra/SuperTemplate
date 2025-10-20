@@ -1,0 +1,85 @@
+{
+  "validator": "protocol_role",
+  "protocol_id": "04",
+  "validation_timestamp": "2025-10-20T16:47:08.640805Z",
+  "overall_score": 0.6875,
+  "validation_status": "fail",
+  "issues": [
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Mission lacks scope boundaries or guardrails",
+    "Success criteria absent from mission",
+    "Value proposition not captured"
+  ],
+  "recommendations": [],
+  "role_definition": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Domain expertise keywords missing",
+      "Behavioral traits not articulated"
+    ],
+    "recommendations": [],
+    "details": {
+      "role_title": true,
+      "role_description": true,
+      "domain_expertise": false,
+      "behavioral_traits": false
+    }
+  },
+  "mission_statement": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Mission lacks scope boundaries or guardrails",
+      "Success criteria absent from mission",
+      "Value proposition not captured"
+    ],
+    "recommendations": [],
+    "details": {
+      "mission_clarity": true,
+      "scope_boundaries": false,
+      "success_criteria": false,
+      "value_proposition": false
+    }
+  },
+  "constraints_guidelines": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "guardrails": true,
+      "boundaries": true,
+      "workflow_alignment": true,
+      "guardrail_count": 12,
+      "boundary_count": 1,
+      "workflow_links": 12,
+      "optional_guidance": 0
+    }
+  },
+  "output_expectations": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "format": true,
+      "structure": true,
+      "location": true,
+      "validation": true
+    }
+  },
+  "behavioral_guidance": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "communication_style": true,
+      "decision_making": true,
+      "error_handling": true,
+      "user_interaction": true
+    }
+  }
+}

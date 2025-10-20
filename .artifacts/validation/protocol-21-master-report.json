@@ -1,0 +1,83 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "21",
+  "validation_timestamp": "2025-10-20T16:47:08.997406Z",
+  "overall_score": 0.79,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 0.9
+    },
+    "protocol_role": {
+      "status": "fail",
+      "score": 0.75
+    },
+    "protocol_workflow": {
+      "status": "warning",
+      "score": 0.8
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.7625
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.7000000000000001
+    },
+    "protocol_communication": {
+      "status": "warning",
+      "score": 0.8125
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.7749999999999999
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.7
+    },
+    "protocol_reasoning": {
+      "status": "warning",
+      "score": 0.7250000000000001
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.9750000000000001
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Industry standards not documented",
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Success criteria absent from mission",
+    "Value proposition not captured",
+    "Several workflow steps omit explicit action prompts",
+    "Insufficient compliance standards referenced",
+    "Referenced command paths not found: scripts/aggregate_evidence_18.py, scripts/discover_automation_candidates.py, scripts/run_protocol_18_gates.py, scripts/validate_gate_18_approvals.py, scripts/validate_gate_18_backlog.py, scripts/validate_gate_18_governance.py, scripts/validate_prerequisites_18.py",
+    "Missing user interaction prompts: clarification",
+    "Limited progress terminology in communications",
+    "Traceability gaps: inputs, outputs",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Documentation expectations under-specified",
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Self-awareness statements missing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Optional or cautionary guidance can highlight operator judgement without blocking validation",
+    "Add rollback or retry guidance for failure scenarios",
+    "Document evidence manifests or registries",
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Include quantitative metrics for gate evaluation",
+    "Provision config/protocol_gates/21.yaml when automated gating is expected",
+    "Document waiver/override policies",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Optionally reference a manifest file or inventory for quick lookup",
+    "Enhance archival plan with: cleanup, retrieval"
+  ]
+}

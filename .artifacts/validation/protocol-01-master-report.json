@@ -1,0 +1,72 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "01",
+  "validation_timestamp": "2025-10-20T16:47:08.592897Z",
+  "overall_score": 0.8383333333333333,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "protocol_role": {
+      "status": "warning",
+      "score": 0.875
+    },
+    "protocol_workflow": {
+      "status": "warning",
+      "score": 0.8
+    },
+    "protocol_quality_gates": {
+      "status": "warning",
+      "score": 0.8624999999999999
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.6833333333333333
+    },
+    "protocol_communication": {
+      "status": "warning",
+      "score": 0.8875000000000001
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.7749999999999999
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.7375
+    },
+    "protocol_reasoning": {
+      "status": "warning",
+      "score": 0.7875000000000001
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.9750000000000001
+    }
+  },
+  "issues": [
+    "Mission lacks scope boundaries or guardrails",
+    "Success criteria absent from mission",
+    "Several workflow steps omit explicit action prompts",
+    "Referenced command paths not found: scripts/run_protocol_01_gates.py, scripts/validate_prerequisites_01.py",
+    "Missing user interaction prompts: clarification",
+    "Traceability gaps: inputs, outputs",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Self-awareness statements missing"
+  ],
+  "recommendations": [
+    "Add rollback or retry guidance for failure scenarios",
+    "Document evidence manifests or registries",
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Identify notification path for gate failures",
+    "Document waiver/override policies",
+    "Register automation commands in scripts/script-registry.json: scripts/validate_proposal_structure.py",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Optionally reference a manifest file or inventory for quick lookup",
+    "Enhance archival plan with: cleanup, retrieval"
+  ]
+}

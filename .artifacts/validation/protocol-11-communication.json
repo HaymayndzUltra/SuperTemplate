@@ -1,0 +1,80 @@
+{
+  "validator": "protocol_communication",
+  "protocol_id": "11",
+  "validation_timestamp": "2025-10-20T16:47:08.783951Z",
+  "overall_score": 0.675,
+  "validation_status": "fail",
+  "issues": [
+    "Missing user interaction prompts: confirmation, clarification",
+    "Limited progress terminology in communications"
+  ],
+  "recommendations": [],
+  "status_announcements": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "phase_transitions": true,
+      "branded_announcements": true,
+      "completion_callouts": true,
+      "time_estimates": true
+    }
+  },
+  "user_interaction": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Missing user interaction prompts: confirmation, clarification"
+    ],
+    "recommendations": [],
+    "details": {
+      "confirmation": false,
+      "clarification": false,
+      "decision_points": true,
+      "feedback": true
+    }
+  },
+  "error_messaging": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "templates": true,
+      "severity": false,
+      "context": true,
+      "resolution": true
+    }
+  },
+  "progress_tracking": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Limited progress terminology in communications"
+    ],
+    "recommendations": [],
+    "details": {
+      "terms": [
+        "progress",
+        "complete"
+      ],
+      "progress_terms": false,
+      "timeline": false,
+      "current_activity": false,
+      "next_steps": false
+    }
+  },
+  "evidence_communication": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "artifact_announcements": true,
+      "format": true,
+      "location": true,
+      "validation": true
+    }
+  }
+}

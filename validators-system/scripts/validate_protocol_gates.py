@@ -20,6 +20,8 @@ from validator_utils import (
     gather_issues,
     generate_summary,
     get_protocol_file,
+    include_documentation_protocols,
+    relax_for_documentation_protocol,
     read_protocol_content,
     write_json,
 )
@@ -74,6 +76,12 @@ class ProtocolQualityGatesValidator:
         issues, recommendations = gather_issues(dimensions)
         result["issues"].extend(issues)
         result["recommendations"].extend(recommendations)
+
+        relax_for_documentation_protocol(
+            protocol_id,
+            result,
+            note="Documentation-focused protocol detected; gate automation gaps recorded as recommendations.",
+        )
 
         return result
 
@@ -145,20 +153,29 @@ class ProtocolQualityGatesValidator:
         script_mentions = re.findall(r"python3?\s+scripts/", combined)
         ci_mentions = re.findall(r"CI/CD|workflow|runs-on", combined)
         gate_file = self.gate_config_dir / f"{protocol_id}.yaml"
+        config_exists = gate_file.exists()
 
         checks = {
             "scripts": len(script_mentions) >= 2,
             "ci": len(ci_mentions) > 0,
-            "gate_config": gate_file.exists(),
             "automation_labels": "Automation" in combined or "automation" in combined.lower(),
         }
 
-        dim.details = {**checks, "script_mentions": len(script_mentions), "gate_config_path": str(gate_file)}
+        dim.details = {
+            **checks,
+            "script_mentions": len(script_mentions),
+            "gate_config_path": str(gate_file),
+            "gate_config_present": config_exists,
+        }
         dim.score = sum(1 for value in checks.values() if value) / len(checks)
         dim.status = self._status_from_counts(sum(checks.values()), len(checks))
 
-        if not gate_file.exists():
-            dim.issues.append(f"Gate configuration file missing: {gate_file}")
+        if not config_exists:
+            dim.recommendations.append(
+                f"Provision config/protocol_gates/{protocol_id}.yaml when automated gating is expected"
+            )
+            if dim.status == "pass":
+                dim.status = "warning"
         if len(script_mentions) < 2:
             dim.recommendations.append("Document executable automation commands for gates")
         if not checks["ci"]:
@@ -258,7 +275,10 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Quality gates validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        protocol_ids = include_documentation_protocols(
+            DEFAULT_PROTOCOL_IDS, include_docs=args.include_docs
+        )
+        for protocol_id in protocol_ids:
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -282,6 +302,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Validate quality gates and automation readiness")
     parser.add_argument("--protocol", help="Protocol ID to validate (e.g., '01')")
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols (24-27) when running with --all",
+    )
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
 

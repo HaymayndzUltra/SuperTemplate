@@ -1,0 +1,69 @@
+{
+  "validator": "protocol_reflection",
+  "protocol_id": "19",
+  "validation_timestamp": "2025-10-20T16:47:08.955748Z",
+  "overall_score": 0.9000000000000001,
+  "validation_status": "pass",
+  "issues": [],
+  "recommendations": [],
+  "retrospective_analysis": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "review": true,
+      "performance": true,
+      "issues": false,
+      "success": true
+    }
+  },
+  "continuous_improvement": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "opportunities": true,
+      "plans": true,
+      "tracking": true,
+      "evidence": true
+    }
+  },
+  "system_evolution": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "version_history": true,
+      "rationale": true,
+      "impact": true,
+      "rollback": true
+    }
+  },
+  "knowledge_capture": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "lessons": true,
+      "knowledge_base": true,
+      "storage": true,
+      "sharing": true
+    }
+  },
+  "future_planning": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "roadmap": true,
+      "priorities": false,
+      "resources": true,
+      "timeline": true
+    }
+  }
+}

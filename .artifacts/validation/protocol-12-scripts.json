@@ -1,0 +1,106 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "12",
+  "validation_timestamp": "2025-10-20T16:47:08.802454Z",
+  "overall_score": 0.7000000000000001,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/aggregate_evidence_4.py, scripts/collect_change_context.py, scripts/run_comprehensive_review.py, scripts/run_protocol_4_gates.py, scripts/validate_gate_4_pre_audit.py, scripts/validate_gate_4_reporting.py, scripts/validate_prerequisites_4.py"
+  ],
+  "recommendations": [
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/aggregate_evidence_4.py, scripts/collect_change_context.py, scripts/run_comprehensive_review.py, scripts/run_protocol_4_gates.py, scripts/validate_gate_4_pre_audit.py, scripts/validate_gate_4_reporting.py, scripts/validate_prerequisites_4.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 10,
+      "commands": [
+        "bash\n# Prerequisite validation",
+        "python scripts/validate_prerequisites_4.py",
+        "python scripts/validate_gate_4_pre_audit.py --threshold 0.80",
+        "python scripts/validate_gate_4_reporting.py --threshold 0.95",
+        "python scripts/aggregate_evidence_4.py --output .artifacts/quality-audit/",
+        "python scripts/run_protocol_4_gates.py",
+        "bash\n     python scripts/collect_change_context.py --since main --output .artifacts/quality-audit/change-context.json",
+        "python\n     selected = router.resolve(mode)",
+        "bash\n     python scripts/run_comprehensive_review.py --output .artifacts/quality-audit/comprehensive-trace.json",
+        "python\n     save_summary(findings, path=\".cursor/context-kit/quality-audit-summary.json\")"
+      ],
+      "missing_scripts": [
+        "scripts/validate_prerequisites_4.py",
+        "scripts/validate_gate_4_pre_audit.py",
+        "scripts/validate_gate_4_reporting.py",
+        "scripts/aggregate_evidence_4.py",
+        "scripts/run_protocol_4_gates.py",
+        "scripts/collect_change_context.py",
+        "scripts/run_comprehensive_review.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 10,
+      "registered_commands": 0,
+      "registration_ratio": 0.0,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 10,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

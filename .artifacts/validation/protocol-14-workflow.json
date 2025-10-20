@@ -1,0 +1,90 @@
+{
+  "validator": "protocol_workflow",
+  "protocol_id": "14",
+  "validation_timestamp": "2025-10-20T16:47:08.841623Z",
+  "overall_score": 0.9000000000000001,
+  "validation_status": "pass",
+  "issues": [
+    "Several workflow steps omit explicit action prompts"
+  ],
+  "recommendations": [
+    "Optional or cautionary guidance can highlight operator judgement without blocking validation"
+  ],
+  "workflow_structure": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "steps": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "section_present": true,
+      "step_headings": true,
+      "sequential": true,
+      "completeness": true
+    }
+  },
+  "step_definitions": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "steps": 4,
+      "action_coverage": 1.0,
+      "communication_coverage": 1.0,
+      "evidence_coverage": 1.0
+    }
+  },
+  "action_markers": {
+    "score": 0.6666666666666666,
+    "status": "warning",
+    "issues": [
+      "Several workflow steps omit explicit action prompts"
+    ],
+    "recommendations": [
+      "Optional or cautionary guidance can highlight operator judgement without blocking validation"
+    ],
+    "details": {
+      "imperative_balance": true,
+      "action_clarity": false,
+      "contextual_support": true,
+      "step_count": 4,
+      "imperative_count": 11,
+      "action_prompts": 0,
+      "context_prompts": 26,
+      "optional_guidance": 0,
+      "cautionary_statements": 0
+    }
+  },
+  "halt_conditions": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "halt_defined": true,
+      "validation_gates": false,
+      "rollback_steps": true,
+      "user_confirmation": true
+    }
+  },
+  "evidence_tracking": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "evidence_tags": true,
+      "artifact_locations": true,
+      "manifest": true,
+      "downstream_trace": true,
+      "evidence_mentions": 10,
+      "artifact_mentions": 16
+    }
+  }
+}

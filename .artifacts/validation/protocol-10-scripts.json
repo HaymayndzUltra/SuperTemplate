@@ -1,0 +1,105 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "10",
+  "validation_timestamp": "2025-10-20T16:47:08.764402Z",
+  "overall_score": 0.7555555555555556,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/aggregate_evidence_3.py, scripts/run_protocol_3_gates.py, scripts/validate_preflight.py, scripts/validate_prerequisites_3.py, scripts/validate_quality_gate.py, scripts/validate_session_closeout.py, scripts/validate_subtask_compliance.py"
+  ],
+  "recommendations": [
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/aggregate_evidence_3.py, scripts/run_protocol_3_gates.py, scripts/validate_preflight.py, scripts/validate_prerequisites_3.py, scripts/validate_quality_gate.py, scripts/validate_session_closeout.py, scripts/validate_subtask_compliance.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 9,
+      "commands": [
+        "bash\n# Prerequisite validation",
+        "python scripts/validate_prerequisites_3.py",
+        "python scripts/validate_preflight.py --input .artifacts/protocol-21/preflight-checklist.json",
+        "python scripts/validate_subtask_compliance.py --task-file .cursor/tasks/tasks-{feature}.md",
+        "python scripts/validate_quality_gate.py --report .artifacts/protocol-21/quality-reports/{parentID}.json",
+        "python scripts/validate_session_closeout.py --manifest .artifacts/protocol-21/execution-artifact-manifest.json",
+        "python scripts/aggregate_evidence_3.py --output .artifacts/protocol-21/",
+        "python scripts/run_protocol_3_gates.py",
+        "python scripts/update_task_state.py --task-file .cursor/tasks/tasks-{feature}.md --task-id {parentID} --status complete --output .artifacts/protocol-21/task-state.json"
+      ],
+      "missing_scripts": [
+        "scripts/validate_prerequisites_3.py",
+        "scripts/validate_preflight.py",
+        "scripts/validate_subtask_compliance.py",
+        "scripts/validate_quality_gate.py",
+        "scripts/validate_session_closeout.py",
+        "scripts/aggregate_evidence_3.py",
+        "scripts/run_protocol_3_gates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.7777777777777778,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 9,
+      "registered_commands": 1,
+      "registration_ratio": 0.1111111111111111,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 9,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": true,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

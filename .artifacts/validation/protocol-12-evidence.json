@@ -1,0 +1,89 @@
+{
+  "validator": "protocol_evidence",
+  "protocol_id": "12",
+  "validation_timestamp": "2025-10-20T16:47:08.804985Z",
+  "overall_score": 0.6249999999999999,
+  "validation_status": "fail",
+  "issues": [
+    "Protocol evidence directory not referenced",
+    "Traceability gaps: inputs, outputs"
+  ],
+  "recommendations": [
+    "Optionally reference a manifest file or inventory for quick lookup",
+    "Enhance archival plan with: cleanup, retrieval"
+  ],
+  "artifact_generation": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "table_present": true,
+      "artifact_column": true,
+      "metrics_column": false,
+      "row_coverage": true,
+      "table_rows": 10,
+      "artifact_mentions": 4,
+      "metric_mentions": 5
+    }
+  },
+  "storage_structure": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Protocol evidence directory not referenced"
+    ],
+    "recommendations": [],
+    "details": {
+      "directories": [],
+      "protocol_directory": false,
+      "subdirectories": false,
+      "permissions": true,
+      "naming": false
+    }
+  },
+  "manifest_completeness": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [
+      "Optionally reference a manifest file or inventory for quick lookup"
+    ],
+    "details": {
+      "manifest_reference": false,
+      "metadata": 2,
+      "dependencies": 2,
+      "coverage": 2
+    }
+  },
+  "traceability": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Traceability gaps: inputs, outputs"
+    ],
+    "recommendations": [],
+    "details": {
+      "inputs": false,
+      "outputs": false,
+      "transformations": true,
+      "audit": true
+    }
+  },
+  "archival": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Enhance archival plan with: cleanup, retrieval"
+    ],
+    "details": {
+      "compression": true,
+      "retention": true,
+      "retrieval": false,
+      "cleanup": false,
+      "compression_mentions": 2,
+      "retention_mentions": 1
+    }
+  }
+}

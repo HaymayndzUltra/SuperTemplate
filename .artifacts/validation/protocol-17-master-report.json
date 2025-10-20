@@ -1,0 +1,74 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "17",
+  "validation_timestamp": "2025-10-20T16:47:08.919518Z",
+  "overall_score": 0.8020833333333333,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    "protocol_role": {
+      "status": "warning",
+      "score": 0.8374999999999999
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 0.9000000000000001
+    },
+    "protocol_quality_gates": {
+      "status": "warning",
+      "score": 0.8625
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.7000000000000001
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.7625000000000001
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.6624999999999999
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.7375
+    },
+    "protocol_reasoning": {
+      "status": "fail",
+      "score": 0.675
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.9500000000000001
+    }
+  },
+  "issues": [
+    "Industry standards not documented",
+    "Domain expertise keywords missing",
+    "Value proposition not captured",
+    "Several workflow steps omit explicit action prompts",
+    "Insufficient compliance standards referenced",
+    "Referenced command paths not found: scripts/aggregate_evidence_13.py, scripts/run_protocol_13_gates.py, scripts/validate_gate_13_resolution.py, scripts/validate_gate_13_severity.py, scripts/validate_prerequisites_13.py",
+    "Missing user interaction prompts: clarification, decision_points, feedback",
+    "Protocol evidence directory not referenced",
+    "Traceability gaps: inputs",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Reasoning patterns not explicitly named",
+    "Self-awareness statements missing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Outline decision-making expectations",
+    "Include quantitative metrics for gate evaluation",
+    "Provision config/protocol_gates/17.yaml when automated gating is expected",
+    "Document waiver/override policies",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Enhance archival plan with: cleanup, retrieval"
+  ]
+}

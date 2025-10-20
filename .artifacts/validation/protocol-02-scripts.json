@@ -1,0 +1,98 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "02",
+  "validation_timestamp": "2025-10-20T16:47:08.601313Z",
+  "overall_score": 0.8083333333333335,
+  "validation_status": "warning",
+  "issues": [
+    "Referenced command paths not found: scripts/validate_discovery_expectations.py, scripts/validate_discovery_objectives.py, scripts/validate_discovery_scope.py, scripts/validate_prerequisites_02.py"
+  ],
+  "recommendations": [
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/validate_discovery_expectations.py, scripts/validate_discovery_objectives.py, scripts/validate_discovery_scope.py, scripts/validate_prerequisites_02.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 12,
+      "commands": [
+        "bash\n# Validate business objectives and success criteria",
+        "python scripts/validate_discovery_objectives.py \\",
+        "bash\n# Validate feature prioritization and scope clarity",
+        "python scripts/validate_discovery_scope.py \\",
+        "bash\n# Validate timeline, budget, and collaboration agreements",
+        "python scripts/validate_discovery_expectations.py \\",
+        "bash\n# Aggregate all discovery artifacts into evidence package",
+        "python scripts/aggregate_evidence_02.py \\",
+        "bash\n# Validate all prerequisites before starting discovery",
+        "python scripts/validate_prerequisites_02.py \\"
+      ],
+      "missing_scripts": [
+        "scripts/validate_discovery_objectives.py",
+        "scripts/validate_discovery_scope.py",
+        "scripts/validate_discovery_expectations.py",
+        "scripts/validate_prerequisites_02.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.7916666666666667,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 12,
+      "registered_commands": 2,
+      "registration_ratio": 0.16666666666666666,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "ci_context": true,
+      "environment": true,
+      "scheduling": true,
+      "permissions": true
+    }
+  },
+  "command_syntax": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 12,
+      "flag_usage": false,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

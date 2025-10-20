@@ -1,0 +1,104 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "19",
+  "validation_timestamp": "2025-10-20T16:47:08.946303Z",
+  "overall_score": 0.75,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/aggregate_evidence_16.py, scripts/check_doc_style.py, scripts/export_sequence_diagrams.py, scripts/run_protocol_16_gates.py, scripts/validate_gate_16_completeness.py, scripts/validate_gate_16_enablement.py, scripts/validate_gate_16_publication.py, scripts/validate_prerequisites_16.py"
+  ],
+  "recommendations": [
+    "Document environment/dependency expectations",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/aggregate_evidence_16.py, scripts/check_doc_style.py, scripts/export_sequence_diagrams.py, scripts/run_protocol_16_gates.py, scripts/validate_gate_16_completeness.py, scripts/validate_gate_16_enablement.py, scripts/validate_gate_16_publication.py, scripts/validate_prerequisites_16.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 9,
+      "commands": [
+        "bash\n# Prerequisite validation",
+        "python scripts/validate_prerequisites_16.py",
+        "python scripts/validate_gate_16_completeness.py --tracker .artifacts/protocol-19/review-tracker.csv",
+        "python scripts/validate_gate_16_enablement.py --summary .artifacts/protocol-19/enablement-summary.md",
+        "python scripts/validate_gate_16_publication.py --manifest .artifacts/protocol-19/publication-manifest.json",
+        "python scripts/aggregate_evidence_16.py --output .artifacts/protocol-19/",
+        "python scripts/run_protocol_16_gates.py",
+        "bash\n     python scripts/export_sequence_diagrams.py --source architecture-decision-log.json --output docs/media/",
+        "bash\n     python scripts/check_doc_style.py --input docs/ --output .artifacts/protocol-19/style-audit.json"
+      ],
+      "missing_scripts": [
+        "scripts/validate_prerequisites_16.py",
+        "scripts/validate_gate_16_completeness.py",
+        "scripts/validate_gate_16_enablement.py",
+        "scripts/validate_gate_16_publication.py",
+        "scripts/aggregate_evidence_16.py",
+        "scripts/run_protocol_16_gates.py",
+        "scripts/export_sequence_diagrams.py",
+        "scripts/check_doc_style.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 9,
+      "registered_commands": 0,
+      "registration_ratio": 0.0,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": true
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 9,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}
