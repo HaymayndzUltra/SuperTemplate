@@ -5,6 +5,7 @@
   "overall_score": 0.5392857142857143,
   "validation_status": "fail",
   "documentation_protocol": false,
+  "documentation_protocol": false,
   "issues": [
     "Referenced command paths not found: scripts/validate_discovery_expectations.py, scripts/validate_discovery_objectives.py, scripts/validate_discovery_scope.py, scripts/validate_prerequisites_02.py",
     "Exit code handling not described",

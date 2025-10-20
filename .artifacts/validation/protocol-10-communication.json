@@ -5,6 +5,7 @@
   "overall_score": 0.6875,
   "validation_status": "fail",
   "documentation_protocol": false,
+  "documentation_protocol": false,
   "issues": [
     "Missing user interaction prompts: clarification, feedback",
     "Limited progress terminology in communications"

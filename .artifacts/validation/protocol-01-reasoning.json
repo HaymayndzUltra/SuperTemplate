@@ -5,6 +5,7 @@
   "overall_score": 0.525,
   "validation_status": "fail",
   "documentation_protocol": false,
+  "documentation_protocol": false,
   "issues": [
     "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
     "Self-awareness statements missing"

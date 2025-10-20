@@ -5,6 +5,7 @@
   "overall_score": 0.8875,
   "validation_status": "warning",
   "documentation_protocol": false,
+  "documentation_protocol": false,
   "issues": [
     "Missing user interaction prompts: clarification"
   ],

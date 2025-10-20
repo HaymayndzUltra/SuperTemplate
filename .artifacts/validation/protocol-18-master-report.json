@@ -5,6 +5,7 @@
   "overall_score": 0.5841111111111111,
   "validation_status": "fail",
   "documentation_protocol": false,
+  "documentation_protocol": false,
   "validators": {
     "protocol_identity": {
       "status": "warning",

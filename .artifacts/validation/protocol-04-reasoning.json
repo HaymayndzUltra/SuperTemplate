@@ -5,6 +5,7 @@
   "overall_score": 0.425,
   "validation_status": "fail",
   "documentation_protocol": false,
+  "documentation_protocol": false,
   "issues": [
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",

@@ -5,6 +5,7 @@
   "overall_score": 0.5861111111111111,
   "validation_status": "fail",
   "documentation_protocol": false,
+  "documentation_protocol": false,
   "issues": [
     "Referenced command paths not found: scripts/aggregate_evidence_2.py, scripts/run_protocol_2_gates.py, scripts/validate_high_level_tasks.py, scripts/validate_prerequisites_2.py, scripts/validate_rule_index.py, scripts/validate_task_decomposition.py",
     "Exit code handling not described",

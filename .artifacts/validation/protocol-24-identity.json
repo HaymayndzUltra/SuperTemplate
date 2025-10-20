@@ -8,7 +8,6 @@
     "issues": [
       "Protocol number not found in header",
       "Protocol version not found (semantic versioning expected)",
-      "Purpose statement not found or too short"
     ],
     "elements_found": {
       "protocol_number": false,
@@ -81,7 +80,6 @@
   "issues": [
     "Protocol number not found in header",
     "Protocol version not found (semantic versioning expected)",
-    "Purpose statement not found or too short",
     "INTEGRATION POINTS section not found",
     "QUALITY GATES section not found",
     "Required section missing: AI ROLE AND MISSION",
@@ -94,6 +92,9 @@
     "Required section missing: EVIDENCE SUMMARY"
   ],
   "recommendations": [
+    "Documentation-focused protocol detected; capture missing validation scaffolding as a recommendation."
+  ],
+  "documentation_protocol": true
     "Documentation-focused protocol detected; capture missing validation scaffolding as a recommendation."
   ],
   "documentation_protocol": true

@@ -5,6 +5,7 @@
   "overall_score": 0.75,
   "validation_status": "fail",
   "documentation_protocol": false,
+  "documentation_protocol": false,
   "issues": [
     "Limited verification language detected",
     "Sign-off guidance missing: confirmation",

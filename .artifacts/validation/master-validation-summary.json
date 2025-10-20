@@ -12,69 +12,116 @@
       "status": "fail",
       "score": 0.7570833333333333,
       "documentation_protocol": false
-    },
-    {
-      "protocol_id": "02",
-      "status": "fail",
       "score": 0.4954841269841269,
       "documentation_protocol": false
     },
     {
-      "protocol_id": "03",
-      "status": "fail",
       "score": 0.5494087301587302,
       "documentation_protocol": false
-    },
-    {
-      "protocol_id": "04",
       "status": "fail",
       "score": 0.7203571428571428,
       "documentation_protocol": false
-    },
-    {
-      "protocol_id": "05",
-      "status": "fail",
       "score": 0.5697361111111111,
       "documentation_protocol": false
     },
     {
-      "protocol_id": "06",
-      "status": "fail",
       "score": 0.5444087301587301,
       "documentation_protocol": false
-    },
-    {
-      "protocol_id": "07",
       "status": "fail",
       "score": 0.5859861111111111,
       "documentation_protocol": false
-    },
-    {
-      "protocol_id": "08",
-      "status": "fail",
       "score": 0.5385555555555556,
       "documentation_protocol": false
     },
     {
-      "protocol_id": "09",
-      "status": "fail",
       "score": 0.5526527777777778,
       "documentation_protocol": false
-    },
-    {
-      "protocol_id": "10",
       "status": "fail",
       "score": 0.5966111111111111,
       "documentation_protocol": false
-    },
-    {
-      "protocol_id": "11",
-      "status": "fail",
       "score": 0.5720277777777778,
       "documentation_protocol": false
     },
     {
-      "protocol_id": "12",
+      "score": 0.5461944444444444,
+      "documentation_protocol": false
+      "status": "fail",
+      "score": 0.5695277777777779,
+      "documentation_protocol": false
+      "score": 0.5411944444444444,
+      "documentation_protocol": false
+    },
+    {
+      "score": 0.5495277777777778,
+      "documentation_protocol": false
+      "status": "fail",
+      "score": 0.5466111111111112,
+      "documentation_protocol": false
+      "score": 0.6007777777777779,
+      "documentation_protocol": false
+    },
+    {
+      "score": 0.5841111111111111,
+      "documentation_protocol": false
+      "status": "fail",
+      "score": 0.5686944444444444,
+      "documentation_protocol": false
+      "score": 0.5728611111111112,
+      "documentation_protocol": false
+    },
+    {
+      "score": 0.5761944444444445,
+      "documentation_protocol": false
+      "status": "fail",
+      "score": 0.5707777777777777,
+      "documentation_protocol": false
+      "score": 0.5464444444444444,
+      "documentation_protocol": false
+    },
+    {
+      "protocol_id": "24",
+      "status": "warning",
+      "score": 0.05288888888888889,
+      "documentation_protocol": true
+    },
+    {
+      "protocol_id": "25",
+      "status": "warning",
+      "score": 0.04332777777777778,
+      "documentation_protocol": true
+    },
+    {
+      "protocol_id": "26",
+      "status": "warning",
+      "score": 0.038533333333333336,
+      "documentation_protocol": true
+    },
+    {
+      "protocol_id": "27",
+      "status": "warning",
+      "score": 0.028666666666666667,
+      "documentation_protocol": true
+      "average_score": 0.7488065843621399,
+      "warning_count": 21,
+      "average_score": 0.5753086419753086,
+      "warning_count": 6,
+      "average_score": 0.14814814814814814,
+      "warning_count": 5,
+    },
+      "average_score": 0.6486111111111111,
+      "warning_count": 6,
+      "average_score": 0.5138087889476778,
+      "warning_count": 4,
+      "average_score": 0.563888888888889,
+      "warning_count": 5,
+      "average_score": 0.5731481481481482,
+      "warning_count": 6,
+      "average_score": 0.5606481481481481,
+      "warning_count": 4,
+      "average_score": 0.2574074074074074,
+      "warning_count": 4,
+      "average_score": 0.3800925925925926,
+      "warning_count": 4,
       "status": "fail",
       "score": 0.5461944444444444,
       "documentation_protocol": false

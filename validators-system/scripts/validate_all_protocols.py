@@ -94,6 +94,10 @@ class MasterProtocolValidator:
         combined["documentation_protocol"] = any(
             result.get("documentation_protocol") for result in results.values()
         )
+                    "documentation_protocol": r.get("documentation_protocol", False),
+        combined["documentation_protocol"] = any(
+            result.get("documentation_protocol") for result in results.values()
+        )
         combined.pop("issues", None)
         combined.pop("recommendations", None)
         combined["issues"] = [

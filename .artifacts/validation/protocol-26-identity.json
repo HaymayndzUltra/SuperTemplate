@@ -7,7 +7,6 @@
     "status": "warning",
     "issues": [
       "Protocol number not found in header",
-      "Scope definition not found"
     ],
     "elements_found": {
       "protocol_number": false,
@@ -78,7 +77,6 @@
   "validation_status": "warning",
   "issues": [
     "Protocol number not found in header",
-    "Scope definition not found",
     "PREREQUISITES section not found",
     "INTEGRATION POINTS section not found",
     "QUALITY GATES section not found",
@@ -93,6 +91,9 @@
     "Required section missing: EVIDENCE SUMMARY"
   ],
   "recommendations": [
+    "Documentation-focused protocol detected; capture missing validation scaffolding as a recommendation."
+  ],
+  "documentation_protocol": true
     "Documentation-focused protocol detected; capture missing validation scaffolding as a recommendation."
   ],
   "documentation_protocol": true

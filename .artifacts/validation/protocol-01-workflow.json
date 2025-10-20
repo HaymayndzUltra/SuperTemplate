@@ -5,6 +5,7 @@
   "overall_score": 0.8,
   "validation_status": "warning",
   "documentation_protocol": false,
+  "documentation_protocol": false,
   "issues": [
     "Several workflow steps omit explicit action prompts"
   ],

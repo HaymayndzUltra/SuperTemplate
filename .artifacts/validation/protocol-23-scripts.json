@@ -5,6 +5,7 @@
   "overall_score": 0.6025,
   "validation_status": "fail",
   "documentation_protocol": false,
+  "documentation_protocol": false,
   "issues": [
     "Exit code handling not described"
   ],

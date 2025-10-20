@@ -113,6 +113,8 @@ def relax_for_documentation_protocol(
     if result.get("validation_status") == "fail":
         result["validation_status"] = "warning"
     result["documentation_protocol"] = True
+        "documentation_protocol": False,
+    result["documentation_protocol"] = True
     if note not in result.get("recommendations", []):
         result.setdefault("recommendations", []).append(note)
 

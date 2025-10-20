@@ -9,7 +9,6 @@
       "Protocol number not found in header",
       "Protocol name not found or empty",
       "Protocol version not found (semantic versioning expected)",
-      "Scope definition not found"
     ],
     "elements_found": {
       "protocol_number": false,
@@ -82,7 +81,6 @@
     "Protocol number not found in header",
     "Protocol name not found or empty",
     "Protocol version not found (semantic versioning expected)",
-    "Scope definition not found",
     "PREREQUISITES section not found",
     "INTEGRATION POINTS section not found",
     "QUALITY GATES section not found",
@@ -97,6 +95,9 @@
     "Required section missing: EVIDENCE SUMMARY"
   ],
   "recommendations": [
+    "Documentation-focused protocol detected; capture missing validation scaffolding as a recommendation."
+  ],
+  "documentation_protocol": true
     "Documentation-focused protocol detected; capture missing validation scaffolding as a recommendation."
   ],
   "documentation_protocol": true
