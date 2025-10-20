@@ -1,0 +1,60 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "26",
+  "validation_timestamp": "2025-10-20T13:23:05.160050Z",
+  "overall_score": 0.0,
+  "validation_status": "fail",
+  "issues": [
+    "AUTOMATION HOOKS section missing",
+    "Unable to evaluate registry alignment without documentation",
+    "Automation context missing",
+    "No automation commands available for syntax validation",
+    "Error handling not documented"
+  ],
+  "recommendations": [],
+  "script_inventory": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "AUTOMATION HOOKS section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "registry_alignment": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Unable to evaluate registry alignment without documentation"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "execution_context": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Automation context missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "command_syntax": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "No automation commands available for syntax validation"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "error_handling": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Error handling not documented"
+    ],
+    "recommendations": [],
+    "details": {}
+  }
+}

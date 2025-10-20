@@ -1,0 +1,90 @@
+{
+  "validator": "protocol_workflow",
+  "protocol_id": "16",
+  "validation_timestamp": "2025-10-20T13:34:08.139522Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "issues": [],
+  "recommendations": [
+    "Add optional and escalation markers where helpful to guide operators",
+    "Add rollback or retry guidance for failure scenarios"
+  ],
+  "workflow_structure": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "steps": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "section_present": true,
+      "step_headings": true,
+      "sequential": true,
+      "completeness": true
+    }
+  },
+  "step_definitions": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "steps": 4,
+      "action_coverage": 1.0,
+      "communication_coverage": 1.0,
+      "evidence_coverage": 1.0
+    }
+  },
+  "action_markers": {
+    "score": 0.65,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Add optional and escalation markers where helpful to guide operators"
+    ],
+    "details": {
+      "critical": 0,
+      "must": 8,
+      "guideline": 4,
+      "optional": 0,
+      "markers_present": {
+        "critical": false,
+        "must": true,
+        "guideline": true,
+        "optional": false
+      }
+    }
+  },
+  "halt_conditions": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Add rollback or retry guidance for failure scenarios"
+    ],
+    "details": {
+      "halt_defined": true,
+      "validation_gates": false,
+      "rollback_steps": false,
+      "user_confirmation": true
+    }
+  },
+  "evidence_tracking": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "evidence_tags": true,
+      "artifact_locations": true,
+      "manifest": true,
+      "downstream_trace": true,
+      "evidence_mentions": 10,
+      "artifact_mentions": 14
+    }
+  }
+}

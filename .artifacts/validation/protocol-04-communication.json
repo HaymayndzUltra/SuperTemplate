@@ -1,0 +1,77 @@
+{
+  "validator": "protocol_communication",
+  "protocol_id": "04",
+  "validation_timestamp": "2025-10-20T13:34:07.760846Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "issues": [
+    "Missing user interaction prompts: clarification, feedback"
+  ],
+  "recommendations": [],
+  "status_announcements": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "phase_transitions": true,
+      "branded_announcements": true,
+      "completion_callouts": true,
+      "time_estimates": true
+    }
+  },
+  "user_interaction": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Missing user interaction prompts: clarification, feedback"
+    ],
+    "recommendations": [],
+    "details": {
+      "confirmation": true,
+      "clarification": false,
+      "decision_points": true,
+      "feedback": false
+    }
+  },
+  "error_messaging": {
+    "score": 0.8,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "templates": true,
+      "severity": false,
+      "context": true,
+      "resolution": true
+    }
+  },
+  "progress_tracking": {
+    "score": 0.8,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "terms": [
+        "complete",
+        "next steps"
+      ],
+      "progress_terms": true,
+      "timeline": true,
+      "current_activity": false,
+      "next_steps": true
+    }
+  },
+  "evidence_communication": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "artifact_announcements": true,
+      "format": true,
+      "location": true,
+      "validation": true
+    }
+  }
+}

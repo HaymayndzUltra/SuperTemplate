@@ -9,7 +9,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
-DEFAULT_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(1, 28)]
+# Only the first 24 markdown files in `.cursor/ai-driven-workflow/` follow the
+# protocol specification (25-27 are reference guides). Restricting the default
+# list keeps validation focused on executable protocols.
+DEFAULT_PROTOCOL_IDS: List[str] = [f"{i:02d}" for i in range(1, 25)]
 
 
 def current_timestamp() -> str:
@@ -62,9 +65,20 @@ def read_protocol_content(protocol_file: Path) -> Optional[str]:
 
 
 def extract_section(content: str, section_name: str) -> str:
-    """Extract a markdown section by heading name (case-insensitive)."""
+    """Extract a markdown section by heading name (case-insensitive).
 
-    pattern = rf"^##\s+(?:\d+\.\s+)?{re.escape(section_name)}.*?\n(.*?)(?=^##\s+|\Z)"
+    Many protocol files use numbered headings with descriptive prefixes such as
+    ``## 02. CLIENT DISCOVERY WORKFLOW``. The previous implementation only
+    matched headings that started exactly with the requested ``section_name``
+    after an optional numeric prefix which caused lookups like ``WORKFLOW`` or
+    ``AI ROLE AND MISSION`` to fail. As a result, downstream validators were
+    operating on empty strings and marking otherwise healthy protocols as
+    failing. We now match any heading whose text *contains* the requested
+    section name, ignoring case, while still respecting markdown section
+    boundaries.
+    """
+
+    pattern = rf"^##\s+(?:\d+\s*\.\s+)?[^\n]*{re.escape(section_name)}[^\n]*\n(.*?)(?=^##\s+|\Z)"
     match = re.search(pattern, content, flags=re.IGNORECASE | re.MULTILINE | re.DOTALL)
     return match.group(1).strip() if match else ""
 

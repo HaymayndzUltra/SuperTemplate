@@ -1,0 +1,88 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "12",
+  "validation_timestamp": "2025-10-20T13:34:07.999349Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "issues": [],
+  "recommendations": [
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "script_count": 5,
+      "shell_count": 0,
+      "commands": [
+        "python scripts/validate_prerequisites_4.py",
+        "python scripts/validate_gate_4_pre_audit.py",
+        "python scripts/validate_gate_4_reporting.py",
+        "python scripts/aggregate_evidence_4.py",
+        "python scripts/run_protocol_4_gates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.8999999999999999,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_reference": true,
+      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "workflow_mapping": true,
+      "ownership": false,
+      "base": 0.6
+    }
+  },
+  "execution_context": {
+    "score": 0.65,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false,
+      "base": 0.5
+    }
+  },
+  "command_syntax": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 6,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true,
+      "base": 0.5
+    }
+  },
+  "error_handling": {
+    "score": 0.85,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": false,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true,
+      "base": 0.55
+    }
+  }
+}

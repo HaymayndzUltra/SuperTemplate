@@ -1,0 +1,80 @@
+{
+  "validator": "protocol_reasoning",
+  "protocol_id": "22",
+  "validation_timestamp": "2025-10-20T13:34:08.331100Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "issues": [
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: feedback, knowledge_base, adaptation"
+  ],
+  "recommendations": [],
+  "reasoning_patterns": {
+    "score": 0.45,
+    "status": "fail",
+    "issues": [
+      "Reasoning patterns not explicitly named"
+    ],
+    "recommendations": [],
+    "details": {
+      "matches": [],
+      "pattern_terms": false,
+      "explanations": false,
+      "improvement": true,
+      "example_references": true
+    }
+  },
+  "decision_trees": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Decision points insufficiently described"
+    ],
+    "recommendations": [],
+    "details": {
+      "decision_points": true,
+      "criteria": true,
+      "outcomes": true,
+      "logging": true
+    }
+  },
+  "problem_solving_logic": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "problem_identification": false,
+      "root_cause": true,
+      "solutions": false,
+      "validation": true
+    }
+  },
+  "learning_mechanisms": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Learning mechanisms incomplete: feedback, knowledge_base, adaptation"
+    ],
+    "recommendations": [],
+    "details": {
+      "feedback": false,
+      "improvement_tracking": true,
+      "knowledge_base": false,
+      "adaptation": false
+    }
+  },
+  "meta_cognition": {
+    "score": 0.8,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "awareness": true,
+      "monitoring": true,
+      "correction": false,
+      "improvement": true
+    }
+  }
+}

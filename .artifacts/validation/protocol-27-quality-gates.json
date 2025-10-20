@@ -1,0 +1,60 @@
+{
+  "validator": "protocol_quality_gates",
+  "protocol_id": "27",
+  "validation_timestamp": "2025-10-20T13:23:05.171080Z",
+  "overall_score": 0.0,
+  "validation_status": "fail",
+  "issues": [
+    "QUALITY GATES section missing",
+    "Cannot evaluate pass criteria without gate definitions",
+    "No automation references found",
+    "No gate documentation to evaluate failure handling",
+    "Compliance expectations not described"
+  ],
+  "recommendations": [],
+  "gate_definitions": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "QUALITY GATES section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "pass_criteria": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Cannot evaluate pass criteria without gate definitions"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "automation": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "No automation references found"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "failure_handling": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "No gate documentation to evaluate failure handling"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "compliance_integration": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Compliance expectations not described"
+    ],
+    "recommendations": [],
+    "details": {}
+  }
+}

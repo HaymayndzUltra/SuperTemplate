@@ -1,0 +1,127 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "25",
+  "validation_timestamp": "2025-10-20T13:23:05.153807Z",
+  "overall_score": 0.043327777777777784,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "fail",
+      "score": 0.09577777777777778
+    },
+    "protocol_role": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_workflow": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.0875
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.15000000000000002
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_reasoning": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_reflection": {
+      "status": "fail",
+      "score": 0.1
+    }
+  },
+  "issues": [
+    "Protocol number not found in header",
+    "Protocol name not found or empty",
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Purpose statement not found or too short",
+    "Scope definition not found",
+    "PREREQUISITES section not found",
+    "Input sources not documented",
+    "Output destinations not documented",
+    "Data formats not specified",
+    "Storage locations not documented",
+    "QUALITY GATES section not found",
+    "Required section missing: PREREQUISITES",
+    "Required section missing: AI ROLE AND MISSION",
+    "Required section missing: WORKFLOW",
+    "Required section missing: QUALITY GATES",
+    "Required section missing: COMMUNICATION PROTOCOLS",
+    "Required section missing: HANDOFF CHECKLIST",
+    "Required section missing: EVIDENCE SUMMARY",
+    "AI ROLE AND MISSION section missing",
+    "Mission statement unavailable",
+    "No [CRITICAL] constraints defined",
+    "[MUST] rules missing for enforceable guidance",
+    "No output documentation found",
+    "Behavioral guidance not documented",
+    "WORKFLOW section missing",
+    "Workflow steps missing",
+    "Action markers absent because workflow missing",
+    "No workflow content to evaluate halt conditions",
+    "Evidence tracking missing from workflow and summary",
+    "QUALITY GATES section missing",
+    "Cannot evaluate pass criteria without gate definitions",
+    "Gate configuration file missing: /workspace/SuperTemplate/config/protocol_gates/25.yaml",
+    "No gate documentation to evaluate failure handling",
+    "Insufficient compliance standards referenced",
+    "Insufficient automation commands listed",
+    "Script registry reference missing",
+    "Too few documented commands for syntax validation",
+    "Exit code handling not described",
+    "Logging requirements minimal or absent",
+    "Communication status prompts missing",
+    "COMMUNICATION PROTOCOLS section missing",
+    "Error messaging not documented",
+    "Progress tracking communications missing",
+    "Evidence communication cues missing",
+    "EVIDENCE SUMMARY section missing",
+    "Storage structure not documented",
+    "Manifest not documented",
+    "Traceability information missing",
+    "Archival strategy not documented",
+    "HANDOFF CHECKLIST section missing",
+    "Verification steps not documented",
+    "Stakeholder sign-off section missing",
+    "Documentation requirements not described",
+    "Next protocol alignment missing",
+    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Decision logic not documented",
+    "Problem-solving guidance missing",
+    "Learning mechanisms not referenced",
+    "Meta-cognitive guidance missing",
+    "Retrospective guidance not present",
+    "Improvement loops not described",
+    "Knowledge capture not described",
+    "Future planning not mentioned"
+  ],
+  "recommendations": [
+    "Add [GUIDELINE] markers for recommended practices",
+    "Document explicit prohibitions or guardrails",
+    "Document executable automation commands for gates",
+    "Reference CI/CD workflow integration for gates",
+    "Link compliance checks to automation commands",
+    "Document end-to-end automation steps for the protocol",
+    "Map automation hooks back to workflow steps",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Document fallback or retry sequences for failures"
+  ]
+}

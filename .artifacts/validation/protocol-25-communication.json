@@ -1,0 +1,60 @@
+{
+  "validator": "protocol_communication",
+  "protocol_id": "25",
+  "validation_timestamp": "2025-10-20T13:23:05.150259Z",
+  "overall_score": 0.0,
+  "validation_status": "fail",
+  "issues": [
+    "Communication status prompts missing",
+    "COMMUNICATION PROTOCOLS section missing",
+    "Error messaging not documented",
+    "Progress tracking communications missing",
+    "Evidence communication cues missing"
+  ],
+  "recommendations": [],
+  "status_announcements": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Communication status prompts missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "user_interaction": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "COMMUNICATION PROTOCOLS section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "error_messaging": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Error messaging not documented"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "progress_tracking": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Progress tracking communications missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "evidence_communication": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Evidence communication cues missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "08",
+  "validation_timestamp": "2025-10-20T13:34:07.882921Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "issues": [
+    "Script registry reference missing"
+  ],
+  "recommendations": [
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "script_count": 8,
+      "shell_count": 0,
+      "commands": [
+        "python scripts/validate_prerequisites_2.py",
+        "python scripts/validate_rule_index.py",
+        "python scripts/validate_high_level_tasks.py",
+        "python scripts/validate_task_decomposition.py",
+        "python scripts/validate_tasks.py",
+        "python scripts/enrich_tasks.py",
+        "python scripts/aggregate_evidence_2.py",
+        "python scripts/run_protocol_2_gates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.8999999999999999,
+    "status": "pass",
+    "issues": [
+      "Script registry reference missing"
+    ],
+    "recommendations": [],
+    "details": {
+      "registry_reference": false,
+      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "workflow_mapping": true,
+      "ownership": true,
+      "base": 0.6
+    }
+  },
+  "execution_context": {
+    "score": 0.65,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false,
+      "base": 0.5
+    }
+  },
+  "command_syntax": {
+    "score": 0.85,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 9,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": true,
+      "documentation": true,
+      "base": 0.5
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true,
+      "base": 0.55
+    }
+  }
+}

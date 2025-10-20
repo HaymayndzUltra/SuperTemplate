@@ -1,0 +1,77 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "04",
+  "validation_timestamp": "2025-10-20T13:34:07.780461Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "validators": {
+    "protocol_identity": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_role": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_quality_gates": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_scripts": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_communication": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_evidence": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_handoff": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_reasoning": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.95
+    }
+  },
+  "issues": [
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Purpose statement not found or too short",
+    "Scope definition not found",
+    "Industry standards not documented",
+    "Automated quality gates config not found: /workspace/SuperTemplate/config/protocol_gates/04.yaml",
+    "Behavioral traits not articulated",
+    "Mission lacks scope boundaries or guardrails",
+    "Success criteria absent from mission",
+    "Value proposition not captured",
+    "Gate configuration file missing: /workspace/SuperTemplate/config/protocol_gates/04.yaml",
+    "Missing user interaction prompts: clarification, feedback",
+    "Archival strategy missing components: compression, retention, retrieval, cleanup",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: improvement_tracking, adaptation",
+    "Continuous improvement gaps: opportunities",
+    "Knowledge capture gaps: lessons, knowledge_base, sharing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Add optional and escalation markers where helpful to guide operators",
+    "Document waiver/override policies",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Include root-cause analysis guidance"
+  ]
+}

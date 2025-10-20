@@ -1,0 +1,79 @@
+{
+  "validator": "protocol_role",
+  "protocol_id": "02",
+  "validation_timestamp": "2025-10-20T13:34:07.699554Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "issues": [
+    "Behavioral traits not articulated",
+    "Output structure missing (sections or tables)"
+  ],
+  "recommendations": [],
+  "role_definition": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Behavioral traits not articulated"
+    ],
+    "recommendations": [],
+    "details": {
+      "role_title": true,
+      "role_description": true,
+      "domain_expertise": true,
+      "behavioral_traits": false
+    }
+  },
+  "mission_statement": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "mission_clarity": true,
+      "scope_boundaries": true,
+      "success_criteria": true,
+      "value_proposition": true
+    }
+  },
+  "constraints_guidelines": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "critical_constraints": true,
+      "must_rules": true,
+      "guidelines": true,
+      "prohibitions": true,
+      "critical_count": 1,
+      "must_count": 6,
+      "guideline_count": 4
+    }
+  },
+  "output_expectations": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Output structure missing (sections or tables)"
+    ],
+    "recommendations": [],
+    "details": {
+      "format": true,
+      "structure": false,
+      "location": true,
+      "validation": true
+    }
+  },
+  "behavioral_guidance": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "communication_style": true,
+      "decision_making": true,
+      "error_handling": true,
+      "user_interaction": true
+    }
+  }
+}

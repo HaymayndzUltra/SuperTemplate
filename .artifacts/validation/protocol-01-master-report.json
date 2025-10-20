@@ -1,0 +1,72 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "01",
+  "validation_timestamp": "2025-10-20T13:34:07.694993Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "validators": {
+    "protocol_identity": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_role": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_workflow": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_quality_gates": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_scripts": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_communication": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_evidence": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_handoff": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_reasoning": {
+      "status": "pass",
+      "score": 0.95
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.95
+    }
+  },
+  "issues": [
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Purpose statement not found or too short",
+    "Mission lacks scope boundaries or guardrails",
+    "Script registry reference missing",
+    "Missing user interaction prompts: clarification",
+    "Archival strategy missing components: compression, retention, retrieval, cleanup",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
+    "Continuous improvement gaps: opportunities, tracking",
+    "Knowledge capture gaps: lessons, sharing"
+  ],
+  "recommendations": [
+    "Add optional and escalation markers where helpful to guide operators",
+    "Add rollback or retry guidance for failure scenarios",
+    "Document evidence manifests or registries",
+    "Document waiver/override policies",
+    "Map automation hooks back to workflow steps",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Document rollback or recovery approach for changes"
+  ]
+}

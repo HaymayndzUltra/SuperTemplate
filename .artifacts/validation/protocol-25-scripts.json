@@ -1,0 +1,100 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "25",
+  "validation_timestamp": "2025-10-20T13:23:05.149536Z",
+  "overall_score": 0.15000000000000002,
+  "validation_status": "fail",
+  "issues": [
+    "Insufficient automation commands listed",
+    "Script registry reference missing",
+    "Too few documented commands for syntax validation",
+    "Exit code handling not described",
+    "Logging requirements minimal or absent"
+  ],
+  "recommendations": [
+    "Document end-to-end automation steps for the protocol",
+    "Map automation hooks back to workflow steps",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Document fallback or retry sequences for failures"
+  ],
+  "script_inventory": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Insufficient automation commands listed"
+    ],
+    "recommendations": [
+      "Document end-to-end automation steps for the protocol"
+    ],
+    "details": {
+      "script_count": 0,
+      "shell_count": 0,
+      "commands": []
+    }
+  },
+  "registry_alignment": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Script registry reference missing"
+    ],
+    "recommendations": [
+      "Map automation hooks back to workflow steps"
+    ],
+    "details": {
+      "registry_reference": false,
+      "registry_file": "/workspace/SuperTemplate/scripts/script-registry.json",
+      "workflow_mapping": false,
+      "ownership": false
+    }
+  },
+  "execution_context": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": true,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Too few documented commands for syntax validation"
+    ],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 0,
+      "flag_usage": false,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": false
+    }
+  },
+  "error_handling": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Exit code handling not described",
+      "Logging requirements minimal or absent"
+    ],
+    "recommendations": [
+      "Document fallback or retry sequences for failures"
+    ],
+    "details": {
+      "exit_codes": false,
+      "fallback": false,
+      "logging": false,
+      "manual_paths": false
+    }
+  }
+}

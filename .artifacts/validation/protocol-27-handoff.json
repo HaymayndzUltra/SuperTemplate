@@ -1,0 +1,60 @@
+{
+  "validator": "protocol_handoff",
+  "protocol_id": "27",
+  "validation_timestamp": "2025-10-20T13:23:05.173484Z",
+  "overall_score": 0.0,
+  "validation_status": "fail",
+  "issues": [
+    "HANDOFF CHECKLIST section missing",
+    "Verification steps not documented",
+    "Stakeholder sign-off section missing",
+    "Documentation requirements not described",
+    "Next protocol alignment missing"
+  ],
+  "recommendations": [],
+  "checklist_completeness": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "HANDOFF CHECKLIST section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "verification_procedures": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Verification steps not documented"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "stakeholder_signoff": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Stakeholder sign-off section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "documentation_requirements": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Documentation requirements not described"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "next_protocol_alignment": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Next protocol alignment missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  }
+}

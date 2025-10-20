@@ -1,0 +1,119 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "26",
+  "validation_timestamp": "2025-10-20T13:23:05.166173Z",
+  "overall_score": 0.10270000000000001,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "fail",
+      "score": 0.202
+    },
+    "protocol_role": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_workflow": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.55
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_reasoning": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_reflection": {
+      "status": "fail",
+      "score": 0.275
+    }
+  },
+  "issues": [
+    "Protocol number not found in header",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Scope definition not found",
+    "PREREQUISITES section not found",
+    "INTEGRATION POINTS section not found",
+    "QUALITY GATES section not found",
+    "Required section missing: PREREQUISITES",
+    "Required section missing: AI ROLE AND MISSION",
+    "Required section missing: WORKFLOW",
+    "Required section missing: INTEGRATION POINTS",
+    "Required section missing: QUALITY GATES",
+    "Required section missing: COMMUNICATION PROTOCOLS",
+    "Required section missing: AUTOMATION HOOKS",
+    "Required section missing: HANDOFF CHECKLIST",
+    "Required section missing: EVIDENCE SUMMARY",
+    "AI ROLE AND MISSION section missing",
+    "Mission statement unavailable",
+    "No [CRITICAL] constraints defined",
+    "[MUST] rules missing for enforceable guidance",
+    "No output documentation found",
+    "Behavioral guidance not documented",
+    "WORKFLOW section missing",
+    "Workflow steps missing",
+    "Action markers absent because workflow missing",
+    "No workflow content to evaluate halt conditions",
+    "Evidence tracking missing from workflow and summary",
+    "No gate headings defined",
+    "Gate configuration file missing: /workspace/SuperTemplate/config/protocol_gates/26.yaml",
+    "Failure handling steps not described",
+    "Insufficient compliance standards referenced",
+    "AUTOMATION HOOKS section missing",
+    "Unable to evaluate registry alignment without documentation",
+    "Automation context missing",
+    "No automation commands available for syntax validation",
+    "Error handling not documented",
+    "Communication status prompts missing",
+    "COMMUNICATION PROTOCOLS section missing",
+    "Error messaging not documented",
+    "Progress tracking communications missing",
+    "Evidence communication cues missing",
+    "EVIDENCE SUMMARY section missing",
+    "Storage structure not documented",
+    "Manifest not documented",
+    "Traceability information missing",
+    "Archival strategy not documented",
+    "HANDOFF CHECKLIST section missing",
+    "Verification steps not documented",
+    "Stakeholder sign-off section missing",
+    "Documentation requirements not described",
+    "Next protocol alignment missing",
+    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Decision points insufficiently described",
+    "Learning mechanisms not referenced",
+    "Self-awareness statements missing",
+    "Retrospective guidance not present",
+    "Continuous improvement gaps: opportunities, tracking",
+    "Knowledge capture gaps: lessons, knowledge_base, storage, sharing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Add [GUIDELINE] markers for recommended practices",
+    "Document explicit prohibitions or guardrails",
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Document executable automation commands for gates",
+    "Identify notification path for gate failures",
+    "Document waiver/override policies",
+    "Include root-cause analysis guidance",
+    "Document rollback or recovery approach for changes"
+  ]
+}

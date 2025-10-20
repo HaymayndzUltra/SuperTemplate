@@ -1,0 +1,86 @@
+{
+  "validator": "protocol_reflection",
+  "protocol_id": "06",
+  "validation_timestamp": "2025-10-20T13:34:07.841644Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "issues": [
+    "Retrospective analysis not documented",
+    "Continuous improvement gaps: opportunities, tracking",
+    "Knowledge capture gaps: lessons, sharing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Document rollback or recovery approach for changes"
+  ],
+  "retrospective_analysis": {
+    "score": 0.7,
+    "status": "warning",
+    "issues": [
+      "Retrospective analysis not documented"
+    ],
+    "recommendations": [],
+    "details": {
+      "review": false,
+      "performance": true,
+      "issues": true,
+      "success": true
+    }
+  },
+  "continuous_improvement": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Continuous improvement gaps: opportunities, tracking"
+    ],
+    "recommendations": [],
+    "details": {
+      "opportunities": false,
+      "plans": true,
+      "tracking": false,
+      "evidence": true
+    }
+  },
+  "system_evolution": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document rollback or recovery approach for changes"
+    ],
+    "details": {
+      "version_history": false,
+      "rationale": true,
+      "impact": false,
+      "rollback": false
+    }
+  },
+  "knowledge_capture": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Knowledge capture gaps: lessons, sharing"
+    ],
+    "recommendations": [],
+    "details": {
+      "lessons": false,
+      "knowledge_base": true,
+      "storage": true,
+      "sharing": false
+    }
+  },
+  "future_planning": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Roadmap or future direction not documented"
+    ],
+    "recommendations": [],
+    "details": {
+      "roadmap": false,
+      "priorities": false,
+      "resources": false,
+      "timeline": true
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "validator": "protocol_evidence",
+  "protocol_id": "04",
+  "validation_timestamp": "2025-10-20T13:34:07.764191Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "issues": [
+    "Archival strategy missing components: compression, retention, retrieval, cleanup"
+  ],
+  "recommendations": [],
+  "artifact_generation": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "rows": 5,
+      "table_rows": true,
+      "artifact_diversity": true,
+      "location_column": true,
+      "consumer_column": true
+    }
+  },
+  "storage_structure": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "directories": [
+        ".artifacts/protocol-04/",
+        ".artifacts/protocol-04/",
+        ".artifacts/protocol-04/",
+        ".artifacts/protocol-04/",
+        ".artifacts/protocol-04/"
+      ],
+      "protocol_directory": true,
+      "subdirectories": true,
+      "permissions": true,
+      "naming": true
+    }
+  },
+  "manifest_completeness": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "manifest_reference": true,
+      "metadata": true,
+      "dependencies": true,
+      "coverage": true
+    }
+  },
+  "traceability": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "inputs": true,
+      "outputs": true,
+      "transformations": true,
+      "audit": true
+    }
+  },
+  "archival": {
+    "score": 0,
+    "status": "fail",
+    "issues": [
+      "Archival strategy missing components: compression, retention, retrieval, cleanup"
+    ],
+    "recommendations": [],
+    "details": {
+      "compression": false,
+      "retention": false,
+      "retrieval": false,
+      "cleanup": false
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "validator": "protocol_role",
+  "protocol_id": "05",
+  "validation_timestamp": "2025-10-20T13:34:07.786813Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "issues": [
+    "Success criteria absent from mission",
+    "Value proposition not captured"
+  ],
+  "recommendations": [],
+  "role_definition": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "role_title": true,
+      "role_description": true,
+      "domain_expertise": true,
+      "behavioral_traits": true
+    }
+  },
+  "mission_statement": {
+    "score": 0.55,
+    "status": "fail",
+    "issues": [
+      "Success criteria absent from mission",
+      "Value proposition not captured"
+    ],
+    "recommendations": [],
+    "details": {
+      "mission_clarity": true,
+      "scope_boundaries": true,
+      "success_criteria": false,
+      "value_proposition": false
+    }
+  },
+  "constraints_guidelines": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "critical_constraints": true,
+      "must_rules": true,
+      "guidelines": true,
+      "prohibitions": true,
+      "critical_count": 1,
+      "must_count": 15,
+      "guideline_count": 5
+    }
+  },
+  "output_expectations": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "format": true,
+      "structure": true,
+      "location": true,
+      "validation": true
+    }
+  },
+  "behavioral_guidance": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "communication_style": true,
+      "decision_making": true,
+      "error_handling": true,
+      "user_interaction": true
+    }
+  }
+}
