@@ -8,11 +8,10 @@ Specification: documentation/validator-01-complete-spec.md
 import os
 import sys
 import json
-import yaml
 import re
 import argparse
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, List, Tuple, Any
 
 class ProtocolIdentityValidator:
@@ -46,7 +45,7 @@ class ProtocolIdentityValidator:
         result = {
             "validator": "protocol_identity",
             "protocol_id": protocol_id,
-            "validation_timestamp": datetime.utcnow().isoformat() + "Z",
+            "validation_timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
             "basic_information": {},
             "prerequisites": {},
             "integration_points": {},
@@ -521,7 +520,7 @@ class ProtocolIdentityValidator:
         
         # 1. Identity Summary
         identity_summary = {
-            "validation_timestamp": datetime.utcnow().isoformat() + "Z",
+            "validation_timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
             "total_protocols": len(all_results),
             "pass_count": sum(1 for r in all_results if r["validation_status"] == "pass"),
             "warning_count": sum(1 for r in all_results if r["validation_status"] == "warning"),
@@ -542,7 +541,7 @@ class ProtocolIdentityValidator:
         
         # 2. Compliance Matrix
         compliance_matrix = {
-            "validation_timestamp": datetime.utcnow().isoformat() + "Z",
+            "validation_timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
             "protocols": [
                 {
                     "protocol_id": r["protocol_id"],
@@ -558,7 +557,7 @@ class ProtocolIdentityValidator:
         
         # 3. Integration Map
         integration_map = {
-            "validation_timestamp": datetime.utcnow().isoformat() + "Z",
+            "validation_timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
             "protocols": [
                 {
                     "protocol_id": r["protocol_id"],
@@ -574,7 +573,7 @@ class ProtocolIdentityValidator:
         
         # 4. Quality Report
         quality_report = {
-            "validation_timestamp": datetime.utcnow().isoformat() + "Z",
+            "validation_timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
             "protocols": [
                 {
                     "protocol_id": r["protocol_id"],
