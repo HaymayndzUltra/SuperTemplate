@@ -4,22 +4,25 @@
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
 from validator_utils import (
-    DEFAULT_PROTOCOL_IDS,
     DimensionEvaluation,
     aggregate_dimension_metrics,
     build_base_result,
     compute_weighted_score,
     determine_status,
+    documentation_protocol_recommendation,
     extract_section,
     gather_issues,
     generate_summary,
     get_protocol_file,
+    is_documentation_protocol,
     read_protocol_content,
+    resolve_protocol_ids,
     write_json,
 )
 
@@ -42,6 +45,10 @@ class ProtocolRoleValidator:
 
     def validate_protocol(self, protocol_id: str) -> Dict[str, Any]:
         result = build_base_result(self.KEY, protocol_id)
+        if is_documentation_protocol(protocol_id):
+            result["validation_status"] = "warning"
+            result["recommendations"].append(documentation_protocol_recommendation())
+            return result
         protocol_file = get_protocol_file(self.workspace_root, protocol_id)
         if not protocol_file:
             result["issues"].append(f"Protocol file not found for ID {protocol_id}")
@@ -150,30 +157,43 @@ class ProtocolRoleValidator:
             dim.issues.append("Constraints section missing")
             return dim
 
-        critical = section.count("[CRITICAL]")
-        must = section.count("[MUST]")
-        guideline = section.count("[GUIDELINE]")
-        prohibition = section.lower().count("never") + section.lower().count("do not")
+        enforcement = bool(
+            re.search(r"\[CRITICAL]|\[MUST]|\bmust\b|\brequired\b|\benforce", section, flags=re.IGNORECASE)
+        )
+        boundary_language = bool(
+            re.search(r"scope|within|limit|boundary|exclusive|avoid", section, flags=re.IGNORECASE)
+        )
+        workflow_alignment = bool(
+            re.search(r"workflow|step|phase|mission", section, flags=re.IGNORECASE)
+        )
+        optional_guidance = bool(
+            re.search(r"\[OPTIONAL]|\[GUIDELINE]|optional|should|fallback|never", section, flags=re.IGNORECASE)
+        )
 
         checks = {
-            "critical_constraints": critical > 0,
-            "must_rules": must > 0,
-            "guidelines": guideline > 0,
-            "prohibitions": prohibition > 0,
+            "enforcement": enforcement,
+            "scope_boundaries": boundary_language,
+            "workflow_alignment": workflow_alignment,
         }
 
-        dim.details = {**checks, "critical_count": critical, "must_count": must, "guideline_count": guideline}
-        dim.score = sum(1 for value in checks.values() if value) / len(checks)
-        dim.status = self._status_from_counts(sum(checks.values()), len(checks))
+        optional_score = 1.0 if optional_guidance else 0.0
+        core_score = sum(1 for value in checks.values() if value) / len(checks)
+        dim.score = min(1.0, 0.8 * core_score + 0.2 * optional_score)
+        dim.status = determine_status(dim.score, pass_threshold=0.9, warning_threshold=0.75)
 
-        if not checks["critical_constraints"]:
-            dim.issues.append("No [CRITICAL] constraints defined")
-        if not checks["must_rules"]:
-            dim.issues.append("[MUST] rules missing for enforceable guidance")
-        if not checks["guidelines"]:
-            dim.recommendations.append("Add [GUIDELINE] markers for recommended practices")
-        if not checks["prohibitions"]:
-            dim.recommendations.append("Document explicit prohibitions or guardrails")
+        dim.details = {
+            **checks,
+            "optional_guidance": optional_guidance,
+        }
+
+        if not enforcement:
+            dim.issues.append("Call out non-negotiable constraints using [MUST] or similar language")
+        if not boundary_language:
+            dim.recommendations.append("Clarify scope boundaries or guardrails for the mission")
+        if not workflow_alignment:
+            dim.recommendations.append("Reference workflow steps when describing constraints for context")
+        if not optional_guidance:
+            dim.recommendations.append("Optional guidance (e.g., [OPTIONAL], 'should') can highlight flexible paths")
 
         return dim
 
@@ -268,7 +288,7 @@ def run_cli(args: argparse.Namespace) -> int:
         output_path = validator.save_result(result)
         print(f"✅ Role validation complete for Protocol {args.protocol} -> {output_path}")
     elif args.all:
-        for protocol_id in DEFAULT_PROTOCOL_IDS:
+        for protocol_id in resolve_protocol_ids(include_docs=args.include_docs):
             result = validator.validate_protocol(protocol_id)
             results.append(result)
             validator.save_result(result)
@@ -293,6 +313,11 @@ def main() -> None:
     parser.add_argument("--protocol", help="Protocol ID to validate (e.g., '01')")
     parser.add_argument("--all", action="store_true", help="Validate all protocols")
     parser.add_argument("--report", action="store_true", help="Generate summary report")
+    parser.add_argument(
+        "--include-docs",
+        action="store_true",
+        help="Include documentation protocols 24-27 in iteration",
+    )
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
 
     args = parser.parse_args()
