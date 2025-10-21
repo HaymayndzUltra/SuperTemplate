@@ -1,69 +1,206 @@
 {
-  "word_count": 958,
-  "sentence_count": 55,
-  "tech_stack": [
-    "Kubernetes",
-    "AWS"
+  "metadata": {
+    "protocol": "01",
+    "version": "2.1.0",
+    "timestamp": "2025-10-21T03:17:00Z",
+    "source": "JOB-POST.md",
+    "completeness_score": 0.98
+  },
+  "client_profile": {
+    "company": "Aurelius Ledger Networks",
+    "industry": "Financial Services - Cross-border B2B Payments",
+    "client_type": "Regulated Financial Institution Network",
+    "market_segment": "Tier 1-3 banks, high-volume fintechs, sovereign wealth funds"
+  },
+  "engagement_context": {
+    "duration": "8 weeks",
+    "budget_range": "$240,000 - $320,000",
+    "payment_structure": "Milestone-based, evidence-backed deliverables",
+    "engagement_type": "Expert consulting - MVP delivery",
+    "urgency": "High - Production-ready MVP required"
+  },
+  "objectives": {
+    "primary_goal": "Deliver production-ready, compliance-audited MVP of zero-trust payments orchestration layer",
+    "key_requirements": [
+      "Quantum-resistant architecture (post-quantum cryptography)",
+      "Regulator-auditable compliance framework",
+      "Multi-region resilience (4 continents)",
+      "Executable architecture with verified controls",
+      "Operational runbooks for internal teams"
+    ],
+    "business_outcomes": [
+      "Real-time FX netting, settlement, and reconciliation",
+      "Post-quantum cryptographic handshakes (CRYSTALS-Kyber + Dilithium)",
+      "Dynamic least-privilege policies",
+      "End-to-end evidence trails for multiple regulators"
+    ]
+  },
+  "technical_scope": {
+    "platform": {
+      "infrastructure": "Kubernetes (GKE + Anthos)",
+      "regions": ["us-east1", "eu-west1", "ap-southeast1"],
+      "service_mesh": "Istio with mTLS, SPIRE identity, gateway-API",
+      "eventing": "Kafka (Confluent), dual clusters per region",
+      "databases": ["CockroachDB (regional survivability)", "AWS QLDB (settlement logs)"],
+      "edge": "Cloudflare Workers, YubiHSM2 hardware tokens"
+    },
+    "languages": ["Rust (transaction engine)", "Go (policy microservices)", "Python (analytics)"],
+    "observability": "OpenTelemetry + Prometheus + Grafana (ISO 27001 bound)",
+    "cicd": "GitHub Actions, in-toto provenance, Sigstore, Terraform + Pulumi hybrid"
+  },
+  "compliance_requirements": {
+    "critical": [
+      "FIPS 140-3 validated libraries for all crypto modules",
+      "Post-quantum suites with forced downgrade detection",
+      "Zero standing credentials (SPIFFE, HashiCorp Vault, CloudHSM)",
+      "Multi-region data sovereignty (EU, APAC, US data pinning)",
+      "SWIFT CSP attestation pack",
+      "MAS TRM 2023 addenda compliance",
+      "FedLine security requirements"
+    ],
+    "regulatory_frameworks": [
+      "SWIFT CSP",
+      "PSD2 RTS",
+      "FedLine",
+      "MAS TRM",
+      "ISO 27001",
+      "SOC2",
+      "PCI DSS"
+    ],
+    "data_sovereignty": {
+      "eu_west1": "EU data pinned",
+      "ap_southeast1": "APAC data pinned",
+      "us_east1": "US data pinned",
+      "cross_border": "Documented SCC workflows required"
+    }
+  },
+  "functional_deliverables": [
+    "Policy-driven orchestration engine with dynamic risk scoring",
+    "FX netting microservice with deterministic reconciliation",
+    "Partner onboarding workflow with PQ key exchange",
+    "Real-time compliance engine (sanctions list integration)",
+    "Zero-trust access plane with JIT secrets and approval workflows"
   ],
-  "timeline": "Not specified",
-  "budget": "$240\u2013320k",
-  "readability_score": 9.706196091644244,
-  "grade_level": 15.19717654986523,
-  "goal_summary": "We need an eight-week expert engagement to deliver a production-ready, compliance-audited MVP of a zero-trust payments orchestration layer that is quantum-resistant, regulator-auditable, and resilient across four continents. The outcome must include executable architecture, verified controls, and runbooks that internal teams can operate without external assistance.",
-  "objectives": [
-    "Launch a pilot-ready orchestration service that:",
-    "Handles real-time FX netting, settlement, and reconciliation with dual-ledger traceability.",
-    "Implements post-quantum cryptographic handshakes (CRYSTALS-Kyber + Dilithium) for interbank API sessions.",
-    "Enforces dynamic least-privilege policies across all microservices and partner integrations.",
-    "Provides end-to-end evidence trails for SWIFT CSP, PSD2 RTS, FedLine, and MAS TRM auditors."
-  ],
-  "deliverables": [
-    "Protocolized architecture dossier (threat model, trust boundaries, PQ crypto migration plan, data residency matrix).",
-    "Terraform/Pulumi stack definitions with drift detection and compliance guardrails.",
-    "Zero-trust policy pack (OPA/Rego + Cedar) with automated test fixtures.",
-    "Runbooks: quantum failback, SWIFT CSP audit prep, MAS TRM incident escalation, PQ key rotation.",
-    "Evidence manifest: Sigstore attestations, in-toto metadata, FedLine checklist coverage, policy drift dashboards.",
-    "Integration test suite proving multi-region failover, sanction rule accuracy, and policy enforcement."
-  ],
-  "risks": [
-    "Clearing partners only accept classic TLS 1.2 today; we must bridge while enforcing PQ viability.",
-    "Hardware security modules have 6-week lead times; need interim secure enclave strategy.",
-    "Interbank partners reside on-prem with strict firewall rules; must provide zero-trust gateways without exposing core mesh.",
-    "Upcoming MAS TRM update may tighten key rotation; expect mid-engagement requirement changes."
-  ],
-  "compliance_requirements": [
-    "All crypto modules must leverage FIPS 140-3 validated libraries; post-quantum suites run behind feature flags with forced downgrade detection.",
-    "Zero standing credentials; adopt SPIFFE identities, HashiCorp Vault, and CloudHSM-backed signing for key material.",
-    "Multi-region data sovereignty: EU data pinned to eu-west1, APAC data to ap-southeast1, US data to us-east1; cross-border transfers require documented SCC workflows.",
-    "SWIFT CSP attestation pack: logging, transaction replay prevention, segregation of duties, and RBAC evidence.",
-    "Regulatory change window: MAS TRM 2023 addenda and FedLine security requirements must be reflected in controls catalogue."
-  ],
-  "performance_targets": [
-    "P99 round-trip settlement < 900 ms (excluding external clearing times) with circuit breakers and graceful degradation.",
-    "Automated failover between primary and DR regions within 45 seconds, zero data loss.",
-    "Real-time policy evaluation latency < 30 ms under 5k TPS sustained load."
-  ],
+  "performance_requirements": {
+    "p99_settlement_latency": "< 900ms",
+    "failover_time": "< 45 seconds (zero data loss)",
+    "policy_evaluation_latency": "< 30ms @ 5k TPS",
+    "availability": "Multi-region automated failover"
+  },
+  "deliverables": {
+    "architecture": "Protocolized architecture dossier (threat model, trust boundaries, PQ migration plan, data residency matrix)",
+    "infrastructure": "Terraform/Pulumi stack with drift detection and compliance guardrails",
+    "policies": "Zero-trust policy pack (OPA/Rego + Cedar) with automated test fixtures",
+    "runbooks": [
+      "Quantum failback procedures",
+      "SWIFT CSP audit prep",
+      "MAS TRM incident escalation",
+      "PQ key rotation"
+    ],
+    "evidence": "Sigstore attestations, in-toto metadata, FedLine checklist, policy drift dashboards",
+    "testing": "Integration test suite (multi-region failover, sanction rules, policy enforcement)"
+  },
   "acceptance_criteria": [
-    "Post-quantum handshake fallback fires alarms within 200 ms and records evidence for regulators.",
-    "Least-privilege enforcement confirmed via automated attack simulations (chaos & breach exercises) with audit logs attached.",
-    "Data residency validated through synthetic flow tests; any cross-border transfer emits SCC workflow tickets.",
-    "FX reconciliation demonstrates penny-perfect accuracy across three currencies and survives region failover tests.",
-    "Operational SRE drills (game days) prove recovery procedures for PQ certificate compromise and Kafka partition loss."
+    "PQ handshake fallback alarms within 200ms with regulator evidence",
+    "Least-privilege enforcement via automated attack simulations",
+    "Data residency validation through synthetic flow tests",
+    "FX reconciliation penny-perfect accuracy across 3 currencies",
+    "Operational SRE drills proving recovery procedures"
   ],
-  "submission_requirements": [
-    "Concise proposal referencing this scope, highlighting verifiable zero-trust + financial compliance delivery.",
-    "Outline of workflow/protocols, quality gates, and evidence packages.",
-    "Explicit risk acceptance matrix (what will and will not be assumed within eight weeks).",
-    "Links to two proof artifacts: PQ cryptography adoption, regulated payment runbook, or zero-trust implementation.",
-    "Availability with timezone overlap across New York, Frankfurt, and Singapore."
+  "risks_and_constraints": [
+    {
+      "risk": "Legacy clearing partners only support TLS 1.2",
+      "impact": "Must bridge classic TLS while enforcing PQ viability",
+      "severity": "High"
+    },
+    {
+      "risk": "Hardware security modules 6-week lead time",
+      "impact": "Need interim secure enclave strategy",
+      "severity": "Medium"
+    },
+    {
+      "risk": "On-prem interbank partners with strict firewall rules",
+      "impact": "Zero-trust gateways required without exposing core mesh",
+      "severity": "High"
+    },
+    {
+      "risk": "MAS TRM update may tighten key rotation mid-engagement",
+      "impact": "Requirement changes expected during delivery",
+      "severity": "Medium"
+    }
   ],
-  "tone_signals": [
-    "Zero-trust architecture depth, PQ migration viability, and regional compliance coverage.",
-    "Operational rigor: automation-first approach, incident readiness, observability maturity.",
-    "Evidence discipline: traceability, attestations, regulator audit packages.",
-    "Risk transparency: clarity on assumptions, blockers, and mitigation pathways.",
-    "Communication: direct, regulator-ready documentation tone, alignment with executive steering committee."
-  ],
-  "source_excerpt": "JOB-POST.md \u2014 Principal Zero-Trust Payments Architect (Global, Post-Quantum Readiness)\nCompany\n\nAurelius Ledger Networks \u2014 Cross-border B2B payments network serving regulated financial institutions (Tier 1\u20133 banks, high-volume fintechs, and sovereign wealth funds).\n\nGoal (Why we\u2019re hiring)\n\nWe need an eight-week expert engagement to deliver a production-ready, compliance-audited MVP of a zero-trust payments orchestration layer that is quantum-resistant, regulator-auditable, and resilient across four continents. The outcome must include executable architecture, verified controls, and runbooks t",
-  "analysis_timestamp": "2025-01-18T14:30:00Z"
+  "tone_signals": {
+    "communication_style": "Direct, technical, regulator-ready",
+    "key_phrases": [
+      "no fluff",
+      "evidence-backed",
+      "verifiable",
+      "regulator-auditable",
+      "operational rigor",
+      "automation-first"
+    ],
+    "expectations": [
+      "Concise proposal referencing scope",
+      "Verifiable zero-trust + financial compliance delivery",
+      "Explicit risk acceptance matrix",
+      "Proof artifacts (2 required)",
+      "Timezone overlap (NY, Frankfurt, Singapore)"
+    ],
+    "decision_criteria": [
+      "Zero-trust architecture depth",
+      "PQ migration viability",
+      "Regional compliance coverage",
+      "Operational rigor and automation",
+      "Evidence discipline and traceability",
+      "Risk transparency",
+      "Communication quality"
+    ]
+  },
+  "submission_requirements": {
+    "proposal_format": "Concise, scope-referenced",
+    "required_elements": [
+      "Workflow/protocols outline",
+      "Quality gates definition",
+      "Evidence packages description",
+      "Risk acceptance matrix",
+      "2 proof artifacts (PQ crypto, regulated payments, or zero-trust)"
+    ],
+    "availability": "Timezone overlap: New York, Frankfurt, Singapore"
+  },
+  "evaluation_rubric": {
+    "technical_depth": {
+      "zero_trust_architecture": "High weight",
+      "pq_migration_viability": "High weight",
+      "regional_compliance": "High weight"
+    },
+    "operational_excellence": {
+      "automation_first": "High weight",
+      "incident_readiness": "High weight",
+      "observability_maturity": "High weight"
+    },
+    "evidence_discipline": {
+      "traceability": "Critical",
+      "attestations": "Critical",
+      "regulator_audit_packages": "Critical"
+    },
+    "risk_management": {
+      "assumption_clarity": "High weight",
+      "blocker_identification": "High weight",
+      "mitigation_pathways": "High weight"
+    },
+    "communication": {
+      "directness": "High weight",
+      "regulator_ready_tone": "High weight",
+      "executive_alignment": "High weight"
+    }
+  },
+  "differentiator_opportunities": [
+    "Zero-trust architecture expertise in financial services",
+    "Post-quantum cryptography implementation experience",
+    "Multi-region compliance framework delivery",
+    "Evidence-based delivery methodology",
+    "Regulator-ready documentation expertise",
+    "Operational runbook creation for complex systems",
+    "Automation-first approach with quality gates"
+  ]
 }

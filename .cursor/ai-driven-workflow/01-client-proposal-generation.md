@@ -3,150 +3,255 @@
 © 2025 - All Rights Reserved
 ---
 
-# PROTOCOL 01: CLIENT PROPOSAL GENERATION (DISCOVERY COMPLIANT)
+# PROTOCOL 01: CLIENT PROPOSAL GENERATION
 
-**Purpose:** Execute CLIENT PROPOSAL GENERATION workflow with quality validation and evidence generation.
+**What this does:** Turn job posts into winning proposals that get you hired.
 
-**Version**: v2.1.0  
-**Phase**: Phase 0: Foundation & Discovery  
-**Purpose**: Transform job posts into client-ready proposals through systematic analysis and validation
+**Time**: 30-60 minutes  
+**Goal**: Write proposals that show you understand the client's needs and can deliver
 
-## PREREQUISITES
-**[STRICT]** List all required artifacts, approvals, and system states before execution.
+## WHAT YOU NEED
 
-### Required Artifacts
-- [ ] `JOB-POST.md` from Protocol 04-client-discovery (source job description)
-- [ ] `.cursor/context-kit/project-profile.json` (baseline project profile, if available)
-
-### Required Approvals
-- [ ] Discovery lead confirmation that the opportunity aligns with service offering
-
-### System State Requirements
-- [ ] Access to `scripts/analyze_jobpost.py`, `scripts/tone_mapper.py`, and `scripts/validate_proposal.py`
-- [ ] Access to real validation scripts: `scripts/check_hipaa.py`, `scripts/enforce_gates.py`, `scripts/validate_compliance_assets.py`
-- [ ] Local environment with JSON processing utilities, markdown renderer, and Python dependencies
-- [ ] `gates_config.yaml` configured with real validation thresholds
+- [ ] `JOB-POST.md` - The job description
+- [ ] Your portfolio/past work examples
+- [ ] 30-60 minutes of focused time
 
 ---
 
-## 01. AI ROLE AND MISSION
+## THE GOAL
 
-You are a **Freelance Solutions Architect**. Your mission is to transform any approved client job post into a truthful, human-centric proposal that demonstrates domain expertise, empathy, and alignment with validated capabilities.
+Write a proposal that:
+- ✅ Shows you read and understood their job post
+- ✅ Proves you can do the work (with real examples)
+- ✅ Sounds human, not like a template
+- ✅ Gets read in 60 seconds (clients skim, not read)
 
-**🚫 [CRITICAL] Never fabricate experience, deliverables, or guarantees beyond what discovery confirmed.**
-
----
-
-## WORKFLOW
-
-### STEP 1: Discovery Context Intake
-
-1. **`[MUST]` Analyze the Job Post:**
-   * **Action:** Parse `JOB-POST.md` to extract objectives, deliverables, tone signals, risks, and key terms; store structured data in `.artifacts/protocol-01/jobpost-analysis.json`.
-   * **Communication:** 
-     > "[MASTER RAY™ | PHASE 1 START] - Analyzing client opportunity to capture goals, tone, and success criteria."
-   * **Halt condition:** Stop and request clarification if the job post is missing, empty, or fails parsing.
-   * **Evidence:** `.artifacts/protocol-01/jobpost-analysis.json`
-
-2. **`[GUIDELINE]` Review Existing Discovery Notes:**
-   * **Action:** Cross-reference `.cursor/context-kit/project-profile.json` for prior engagements, preferred tooling, and risk flags.
-   * **Example:**
-     ```json
-     {
-       "client_preferences": ["async updates", "weekly demos"],
-       "prior_stack": ["Next.js", "PostgreSQL"]
-     }
-     ```
-
-### STEP 2: Tone and Strategy Mapping
-
-1. **`[MUST]` Classify Tone and Proposal Strategy:**
-   * **Action:** Run tone detection on the job analysis to determine communication style (e.g., technical, executive, urgent) and select matching proposal framing heuristics.
-   * **Communication:** 
-     > "[PHASE 2] - Mapping client tone and aligning delivery strategy for authenticity."
-   * **Halt condition:** Pause if tone confidence < 0.8 and await manual classification.
-   * **Evidence:** `.artifacts/protocol-01/tone-map.json`
-
-2. **`[GUIDELINE]` Curate Differentiators:**
-   * **Action:** Identify 2-3 validated strengths relevant to the client scenario (case studies, reusable assets, domain familiarity) using discovery notes.
-   * **Example:**
-     ```markdown
-     - Delivered HIPAA-compliant data pipeline in 6 weeks (similar compliance scope).
-     - Existing CI/CD accelerators reduce initial setup by 40%.
-     ```
-
-### STEP 3: Proposal Drafting and Humanization
-
-1. **`[MUST]` Generate Structured Proposal Draft:**
-   * **Action:** Author `PROPOSAL.md` with sections: Greeting, Understanding, Proposed Approach, Deliverables & Timeline, Collaboration Model, Next Steps.
-   * **Communication:** 
-     > "[MASTER RAY™ | PHASE 3 START] - Drafting proposal with aligned scope and collaboration plan."
-   * **Halt condition:** Pause if any required section lacks content or conflicts with confirmed capabilities.
-   * **Evidence:** `.artifacts/protocol-01/PROPOSAL.md`
-
-2. **`[MUST]` Apply Humanization Filters:**
-   * **Action:** Inject narrative variation, empathetic acknowledgements, and paraphrased client language to avoid robotic tone.
-   * **Communication:** 
-     > "[RAY AUTOMATION] - Applying humanization filters and empathy checkpoints."
-   * **Evidence:** `.artifacts/protocol-01/humanization-log.json`
-
-3. **`[GUIDELINE]` Include Optional Value Adds:**
-   * **Action:** Add optional call-to-action elements such as complimentary discovery workshop or roadmap sketch when allowed by capability matrix.
-   * **Example:**
-     ```markdown
-     ### Optional Discovery Workshop
-     - Outcome: Align backlog to business KPIs
-     - Duration: 90 minutes (no-charge)
-     ```
-
-### STEP 4: Validation and Approval Prep
-
-1. **`[MUST]` Execute Proposal Validation Suite:**
-   * **Action:** Verify grammar, factual accuracy, empathy token coverage, and readability ≥ 90%; ensure differentiators trace back to verified evidence.
-   * **Communication:** 
-     > "[MASTER RAY™ | PHASE 4 START] - Running proposal validation to confirm clarity and authenticity."
-   * **Halt condition:** Await reviewer confirmation if validation highlights discrepancies.
-   * **Evidence:** `.artifacts/protocol-01/proposal-validation-report.json`
-
-2. **`[GUIDELINE]` Prepare Reviewer Summary:**
-   * **Action:** Summarize major proposal choices, risks, and pending client questions in `.artifacts/protocol-01/reviewer-brief.md`.
-   * **Example:**
-     ```markdown
-     **Key Decisions**
-     - Proposed phased MVP delivery (4 weeks)
-     - Highlighted reusable analytics accelerator
-     ```
+**🚫 RULE: Only mention experience you actually have. Don't lie.**
 
 ---
 
+## 3-STEP PROCESS
 
-## REFLECTION & LEARNING
+### STEP 1: Understand the Job (5-10 minutes)
 
-### Retrospective Guidance
+**Read the job post and answer:**
+1. What do they actually need? (be specific)
+2. What tech/tools are mentioned?
+3. What's their timeline?
+4. What's their budget range?
+5. Are they technical or non-technical?
+6. What problems are they trying to solve?
 
-After completing protocol execution (successful or halted), conduct retrospective:
+**Red flags to watch for:**
+- ❌ Vague requirements ("build a website")
+- ❌ Unrealistic budget ($500 for "Uber clone")
+- ❌ Impossible timeline ("2 weeks for full app")
+- ❌ Too many buzzwords (listing every tech stack)
 
-**Timing:** Within 24-48 hours of completion
+**If job post is vague:** Ask clarifying questions in your proposal
 
-**Participants:** Protocol executor, downstream consumers, stakeholders
+### STEP 2: Match Their Style (5 minutes)
 
-**Agenda:**
-1. **What went well:**
-   - Which steps executed smoothly and efficiently?
-   - Which quality gates were well-calibrated?
-   - Which artifacts provided high value to downstream protocols?
+**Figure out how they communicate:**
 
-2. **What went poorly:**
-   - Which steps encountered blockers or delays?
-   - Which quality gates were too strict or too lenient?
-   - Which artifacts required rework or clarification?
+**Technical Client** (mentions specific tech, detailed requirements):
+- Use technical terms
+- Show code/architecture knowledge
+- Focus on implementation details
 
-3. **Action items:**
-   - Protocol template updates needed?
-   - Quality gate threshold adjustments?
-   - New automation opportunities?
+**Business Client** (focuses on outcomes, ROI, deadlines):
+- Use simple language
+- Focus on results and timeline
+- Emphasize reliability and communication
 
-**Output:** Retrospective report stored in protocol execution artifacts
+**Startup Founder** (fast-paced, budget-conscious):
+- Be direct and concise
+- Show you can move fast
+- Flexible pricing/milestones
+
+**Enterprise** (formal, compliance-focused):
+- Professional tone
+- Mention security/compliance
+- Structured approach
+
+**Find your edge (pick 1-2):**
+- Similar project you've done
+- Relevant experience in their industry
+- Tools/code you already have
+- Specific problem you can solve
+
+### STEP 3: Write the Proposal (20-30 minutes)
+
+## PROPOSAL STRUCTURE (Keep it short!)
+
+### 1. HOOK (First 100 words - CRITICAL)
+
+**Template:**
+```markdown
+Hi [Name],
+
+I see you need [specific thing from job post]. I've done this before:
+[1 relevant example with result/metric].
+
+**What you'll get** ([X] weeks):
+✅ [Deliverable 1]
+✅ [Deliverable 2]
+✅ [Deliverable 3]
+
+**Timeline:** [X weeks]
+**Investment:** $[amount] ([X] milestones)
+```
+
+**Why this works:**
+- Shows you read their post
+- Proves you can do it
+- Clear deliverables
+- Upfront pricing
+
+### 2. APPROACH (100-150 words)
+
+**What to include:**
+- How you'll tackle their specific problem
+- Your process (keep it simple)
+- Communication plan (daily/weekly updates)
+- Tools you'll use
+
+**Example:**
+```markdown
+**My Approach:**
+
+Week 1: [What you'll do]
+Week 2: [What you'll do]
+Week 3: [What you'll do]
+
+**How we'll work:**
+- Daily async updates (Slack/Discord)
+- Weekly 30-min sync
+- Shared GitHub repo
+- You review and approve each milestone
+```
+
+### 3. WHY YOU (50-100 words)
+
+**Pick 1-2 differentiators:**
+- Relevant past project (with link/screenshot)
+- Specific expertise they need
+- Tools/code you already have
+- Fast turnaround capability
+
+**Example:**
+```markdown
+**Why me:**
+- Built similar fintech app last month (see attached)
+- Expert in React + Node (5 years)
+- Can start immediately
+```
+
+### 4. PRICING (Clear breakdown)
+
+**Calculate realistic pricing:**
+
+```
+Step 1: Estimate hours
+- Simple: 15-20 hrs/week
+- Moderate: 20-30 hrs/week  
+- Complex: 30-40 hrs/week
+
+Step 2: Pick your rate
+- Junior: $25-50/hr
+- Mid: $50-100/hr
+- Senior: $100-200/hr
+
+Step 3: Calculate
+Total = Hours × Rate
+
+Step 4: Break into milestones
+```
+
+**Present it clearly:**
+```markdown
+**Investment:** $4,500 (3 milestones)
+- Milestone 1: [Deliverable] - $1,500
+- Milestone 2: [Deliverable] - $1,500  
+- Milestone 3: [Deliverable] - $1,500
+
+Payment after each milestone approval.
+```
+
+### 5. CALL TO ACTION (20-30 words)
+
+```markdown
+Available for a quick call this week to discuss details.
+
+[Your Name]
+[Portfolio Link]
+[Calendar Link]
+```
+
+### 6. OPTIONAL: Attachments (Max 2)
+
+**Only include if relevant:**
+- Case study (1 page)
+- Sample work (screenshot/link)
+- Quick mockup/diagram
+
+**Don't attach:**
+- Long PDFs
+- Generic portfolios
+- Certificates/resumes
+
+## FINAL CHECKLIST (5 minutes)
+
+**Before sending:**
+- [ ] No typos or grammar errors
+- [ ] Used their name/company name correctly
+- [ ] Mentioned specific details from their job post
+- [ ] Pricing is realistic (not inflated)
+- [ ] Timeline is achievable
+- [ ] Only mentioned work you can actually do
+- [ ] Sounds like you, not a template
+- [ ] Total length: 250-400 words (readable in 60 seconds)
+- [ ] Has clear call-to-action
+
+**Red flags to remove:**
+- ❌ "I am expert" (show, don't tell)
+- ❌ Generic phrases ("I can help you")
+- ❌ Too long (>500 words)
+- ❌ No specific examples
+- ❌ Vague timeline ("ASAP")
+- ❌ No clear pricing
+
+---
+
+## REAL-WORLD EXAMPLES
+
+### Example 1: FinBoost (Technical Client)
+
+**Job Post:** "Pre-launch audit for gamified fintech app. React/TypeScript + Express/Postgres. Need DB migration, testing, QA."
+
+**Winning Proposal (300 words):**
+
+**When:** Within 1-2 days
+
+**Who:** You, your team, anyone who helped
+
+**What to review:**
+1. **What worked:**
+   - Which parts went smoothly?
+   - Which quality checks were helpful?
+   - Which files/outputs were most useful?
+
+2. **What didn't work:**
+   - Where did you get stuck?
+   - Which quality checks were annoying or useless?
+   - What needed to be redone?
+
+3. **What to fix:**
+   - Update the protocol template?
+   - Adjust quality thresholds?
+   - Add new automation?
+
+**Save notes:** Store in protocol artifacts folder
 
 ### Continuous Improvement Opportunities
 
@@ -237,50 +342,76 @@ Maintain lessons learned with structure:
 
 ---
 
-## 01. INTEGRATION POINTS
+## HOW THIS CONNECTS TO OTHER PROTOCOLS
 
-### Inputs From:
-- **Protocol 04**: `JOB-POST.md` - Source description and requirements for the opportunity.
-- **Protocol 02**: `discovery-brief.md` - Prior discovery intelligence and capability confirmation.
+### What You Need (Inputs):
+- **From Protocol 04**: `JOB-POST.md` - The job description
+- **From Protocol 02**: `discovery-brief.md` - Notes from previous client interactions (if any)
 
-### Outputs To:
-- **Protocol 02**: `PROPOSAL.md` - Primary proposal delivered for client outreach.
-- **Protocol 03**: `proposal-summary.json` - Structured highlights feeding project brief creation.
+### What You Create (Outputs):
+- **For Protocol 02**: `PROPOSAL.md` - The actual proposal to send
+- **For Protocol 03**: `proposal-summary.json` - Summary for project brief
 
-### Artifact Storage Locations:
-- `.artifacts/protocol-01/` - Primary evidence storage
-- `.cursor/context-kit/` - Context and configuration artifacts
+### Where Files Go:
+- `.artifacts/protocol-01/` - All proposal files
+- `.cursor/context-kit/` - Your project notes and config
 
 ---
 
-## 01. QUALITY GATES
+## QUALITY CHECKS (GATES)
 
-### Industry Standards & Compliance
-- **CommonMark**: v0.30 (Markdown formatting)
-- **JSON Schema**: draft-07 (Artifact validation)
-- **Security**: HIPAA compliance for client data handling
-- **Regulatory**: FTC truth-in-advertising guidelines
+### Standards We Follow
+- **Markdown**: CommonMark v0.30 (standard formatting)
+- **JSON**: draft-07 schema (for validation)
+- **Security**: HIPAA-compliant (if handling client data)
+- **Legal**: FTC truth-in-advertising (don't lie in proposals)
 
-### Gate 1: Job Post Intake Validation
-- **Criteria**: `jobpost-analysis.json` captures objectives, deliverables, tone signals, and risk notes.
-- **Evidence**: `.artifacts/protocol-01/jobpost-analysis.json`
-- **Pass Threshold**: Completeness score ≥ 0.9 from analyzer script.
-- **Failure Handling**: Request clarified job information, rerun analysis, document issue in reviewer brief.
-- **Automation**: `python3 scripts/analyze_jobpost.py --input JOB-POST.md --output .artifacts/protocol-01/jobpost-analysis.json`
+### Check 1: Did We Extract Everything from Job Post?
+- **What to check**: Did `jobpost-analysis.json` capture all the important stuff?
+  - Goals/objectives
+  - What they want delivered
+  - How they communicate
+  - Risks/problems
+- **Pass if**: Analysis is 90%+ complete
+- **If it fails**: Ask client for missing info, run analysis again, note the gap
+- **Run**: `python3 scripts/analyze_jobpost.py --input JOB-POST.md --output .artifacts/protocol-01/jobpost-analysis.json`
 
-### Gate 2: Tone Strategy Confidence
-- **Criteria**: Tone classification confidence ≥ 0.8 with mapped strategy labels.
-- **Evidence**: `.artifacts/protocol-01/tone-map.json`
-- **Pass Threshold**: `confidence` field ≥ 0.8 and `strategy` populated.
-- **Failure Handling**: Perform manual tone review with stakeholder, update tone map, rerun gate.
-- **Automation**: `python3 scripts/tone_mapper.py --input .artifacts/protocol-01/jobpost-analysis.json --output .artifacts/protocol-01/tone-map.json`
+### Check 2: Are We Confident About Their Tone?
+- **What to check**: Did we correctly detect how they communicate?
+- **Pass if**: Confidence score ≥ 80% and we picked a strategy
+- **If it fails**: Manually review the job post, update tone map, run check again
+- **Run**: `python3 scripts/tone_mapper.py --input .artifacts/protocol-01/jobpost-analysis.json --output .artifacts/protocol-01/tone-map.json`
 
-### Gate 3: Proposal Structure Integrity
-- **Criteria**: `PROPOSAL.md` includes all mandatory sections with ≥ 120 words each and empathy tokens logged.
-- **Evidence**: `.artifacts/protocol-01/PROPOSAL.md`, `.artifacts/protocol-01/humanization-log.json`
-- **Pass Threshold**: Structure validator score ≥ 0.95.
-- **Failure Handling**: Revise missing sections, re-run humanization, revalidate.
-- **Automation**: `python3 scripts/validate_proposal_structure.py --input .artifacts/protocol-01/PROPOSAL.md`
+### Check 3: Is the Proposal Complete?
+- **What to check**: Does `PROPOSAL.md` have all required sections?
+  - Each section has ≥ 120 words
+  - Sounds human (empathy tokens logged)
+- **Pass if**: Structure score ≥ 95%
+- **If it fails**: Fill in missing sections, make it sound more human, check again
+- **Run**: `python3 scripts/validate_proposal_structure.py --input .artifacts/protocol-01/PROPOSAL.md`
+
+### Check 3.5: Is the Pricing Realistic?
+- **What to check**: Is your pricing based on real work hours and market rates?
+- **Pass if**:
+  - Hourly rate ≤ $400 for solo work
+  - Hourly rate ≤ $600 for team work
+  - Total price is 80-120% of market rate
+  - Pricing matches your actual skill level
+- **If it fails**: Recalculate based on realistic hours/week, adjust scope, or explain why you're charging premium
+- **Run**: `python3 scripts/validate_pricing.py --input .artifacts/protocol-01/pricing-analysis.json --proposal .artifacts/protocol-01/PROPOSAL.md`
+- **How it works**:
+  ```python
+  # Calculate effective hourly rate
+  effective_rate = total_price / (weeks * 40)
+  
+  # Flag if unrealistic
+  if effective_rate > 400 and engagement_type == "solo":
+      raise ValidationError("Hourly rate exceeds $400 for solo work")
+  
+  # Warn if job post budget seems inflated
+  if job_post_budget > (calculated_price * 2):
+      warn("Job post budget may be inflated - use calculated price")
+  ```
 
 ### Gate 4: Real Compliance Validation
 - **Criteria**: HIPAA compliance check passes, quality gates enforce real thresholds.
@@ -453,6 +584,7 @@ Before declaring protocol complete, validate:
 |----------|----------|---------|----------|
 | `jobpost-analysis.json` | `.artifacts/protocol-01/` | Parsed objectives, tone, risks | Protocol 02 |
 | `tone-map.json` | `.artifacts/protocol-01/` | Tone classification & strategy mapping | Protocol 02 |
+| `pricing-analysis.json` | `.artifacts/protocol-01/` | Pricing calculation and validation | Protocol 02 |
 | `PROPOSAL.md` | `.artifacts/protocol-01/` | Client-facing proposal | Protocol 02 |
 | `proposal-summary.json` | `.artifacts/protocol-01/` | Key highlights for brief creation | Protocol 03 |
 | `proposal-validation-report.json` | `.artifacts/protocol-01/` | Validation evidence | Protocol 02 |
@@ -608,3 +740,369 @@ At each major execution checkpoint, generate awareness statement:
 - **Template review cadence:** Scheduled protocol enhancement cycles
 - **Gate calibration:** Periodic adjustment of pass criteria
 - **Tool evaluation:** Assessment of automation effectiveness
+
+
+---
+
+## INTEGRATION POINTS
+
+### Protocol Inputs
+**Source:** JOB-POST.md from client or platform
+**Format:** Markdown/JSON
+**Location:** .artifacts/protocol-00/
+**Required Fields:**
+- Required field 1
+- Required field 2
+- Required field 3
+
+**Validation:**
+- Input completeness check
+- Format validation
+- Business rule validation
+
+### Protocol Outputs
+**Destination:** Protocol 02: Client Discovery Initiation
+**Format:** Markdown/JSON
+**Location:** .artifacts/protocol-01/
+**Delivered Artifacts:**
+- PROPOSAL.md
+- jobpost-analysis.json
+- humanization-log.json
+
+**Validation:**
+- Output completeness check
+- Quality gate validation
+- Schema compliance
+
+---
+
+## EVIDENCE ARTIFACTS
+
+### Artifact Inventory
+
+| Artifact | Purpose | Format | Location | Validation | Metrics |
+|----------|---------|--------|----------|------------|---------|
+| PROPOSAL.md | Purpose of PROPOSAL.md | MD | .artifacts/protocol-01/PROPOSAL.md | Automated validation | Coverage: 95%, Quality: A |
+| jobpost-analysis.json | Purpose of jobpost-analysis.json | JSON | .artifacts/protocol-01/jobpost-analysis.json | Automated validation | Coverage: 95%, Quality: A |
+| humanization-log.json | Purpose of humanization-log.json | JSON | .artifacts/protocol-01/humanization-log.json | Automated validation | Coverage: 95%, Quality: A |
+
+### Metrics Definitions
+- **Coverage:** Percentage of requirements addressed
+- **Quality Score:** Automated quality assessment (A/B/C/D/F)
+- **Completeness:** Percentage of required fields populated
+- **Validation Status:** Pass/Warning/Fail
+
+---
+
+## EVIDENCE ARCHIVAL
+
+### Archival Strategy
+**Retention Period:** 90 days
+**Compression:** tar.gz format
+**Location:** `.artifacts/archive/protocol-01/`
+
+### Retrieval Procedure
+1. **Locate Evidence:**
+   ```bash
+   ls -la .artifacts/protocol-01/
+   ```
+
+2. **Verify Manifest:**
+   ```bash
+   python3 scripts/verify_evidence_manifest.py --protocol 01
+   ```
+
+3. **Extract Required Evidence:**
+   ```bash
+   python3 scripts/extract_evidence.py \
+     --protocol 01 \
+     --artifacts {ARTIFACT_LIST} \
+     --output ./evidence-export/
+   ```
+
+4. **Validate Integrity:**
+   ```bash
+   python3 scripts/validate_evidence_integrity.py \
+     --manifest .artifacts/protocol-01/evidence-manifest.json
+   ```
+
+### Cleanup Procedure
+1. **Identify Archival Candidates:**
+   ```bash
+   python3 scripts/identify_archival_candidates.py \
+     --age-days {RETENTION_DAYS} \
+     --protocol 01
+   ```
+
+2. **Create Archive:**
+   ```bash
+   python3 scripts/archive_evidence.py \
+     --protocol 01 \
+     --output .artifacts/archive/protocol-01-$(date +%Y%m%d).tar.gz
+   ```
+
+3. **Verify Archive:**
+   ```bash
+   tar -tzf .artifacts/archive/protocol-01-*.tar.gz
+   ```
+
+4. **Update Manifest:**
+   ```bash
+   python3 scripts/update_archival_manifest.py \
+     --protocol 01 \
+     --archive-path .artifacts/archive/protocol-01-*.tar.gz
+   ```
+
+5. **Remove Originals (after verification):**
+   ```bash
+   python3 scripts/cleanup_archived_evidence.py \
+     --protocol 01 \
+     --verify-archive \
+     --dry-run  # Remove flag when ready
+   ```
+
+### Emergency Recovery
+```bash
+# Restore from archive
+python3 scripts/restore_evidence.py \
+  --archive .artifacts/archive/protocol-01-{DATE}.tar.gz \
+  --destination .artifacts/protocol-01/
+```
+
+
+
+---
+
+## HANDOFF CHECKLIST
+
+### Pre-Handoff Verification
+
+#### Completion Criteria
+- [ ] All workflow steps executed successfully
+- [ ] All artifacts generated and validated
+- [ ] Quality gates passed (scores >= thresholds)
+- [ ] Evidence archived in `.artifacts/protocol-01/`
+- [ ] Documentation updated and reviewed
+- [ ] Stakeholder approvals obtained
+- [ ] No blocking issues or risks
+
+#### Quality Metrics
+- [ ] **Overall Protocol Score:** >= 85%
+- [ ] **Code Quality:** >= B+
+- [ ] **Test Coverage:** >= 80%
+- [ ] **Documentation Completeness:** >= 90%
+- [ ] **Security Scan:** No critical vulnerabilities
+
+### Deliverables Checklist
+
+#### Primary Artifacts
+- [ ] **PROPOSAL.md**
+  - Location: .artifacts/protocol-01/PROPOSAL.md
+  - Validation: Automated schema validation
+  - Status: ☐ Generated ☐ Validated ☐ Approved
+
+- [ ] **jobpost-analysis.json**
+  - Location: .artifacts/protocol-01/jobpost-analysis.json
+  - Validation: Automated schema validation
+  - Status: ☐ Generated ☐ Validated ☐ Approved
+
+- [ ] **humanization-log.json**
+  - Location: .artifacts/protocol-01/humanization-log.json
+  - Validation: Automated schema validation
+  - Status: ☐ Generated ☐ Validated ☐ Approved
+
+#### Supporting Documentation
+- [ ] **Evidence Manifest:** `.artifacts/protocol-01/evidence-manifest.json`
+- [ ] **Validation Report:** `.artifacts/protocol-01/validation-report.json`
+- [ ] **Gate Results:** `.artifacts/protocol-01/gate-results.json`
+- [ ] **Execution Log:** `.artifacts/protocol-01/execution-log.txt`
+- [ ] **Handoff Summary:** `.artifacts/protocol-01/handoff-summary.md`
+
+#### Evidence Package
+- [ ] All artifacts present in designated locations
+- [ ] Manifest file complete and valid
+- [ ] Archive created (if required)
+- [ ] Integrity checksums verified
+
+### Stakeholder Sign-Off
+
+#### Required Approvals
+
+**Technical Lead**
+- **Approver:** TBD
+- **Approval Criteria:**
+  - Technical implementation meets requirements
+  - Code quality standards met
+  - Architecture decisions documented
+  - No unresolved technical debt
+- **Sign-off Date:** ____________
+- **Status:** ☐ Approved ☐ Conditional ☐ Rejected
+- **Comments:** _________________________________
+
+**Product Owner**
+- **Approver:** TBD
+- **Approval Criteria:**
+  - Business requirements satisfied
+  - Acceptance criteria met
+  - Deliverables align with roadmap
+  - Stakeholder expectations managed
+- **Sign-off Date:** ____________
+- **Status:** ☐ Approved ☐ Conditional ☐ Rejected
+- **Comments:** _________________________________
+
+**Quality Assurance**
+- **Approver:** TBD
+- **Approval Criteria:**
+  - All quality gates passed
+  - Testing coverage adequate
+  - Known issues documented
+  - Regression risks assessed
+- **Sign-off Date:** ____________
+- **Status:** ☐ Approved ☐ Conditional ☐ Rejected
+- **Comments:** _________________________________
+
+**Compliance/Security** (if applicable)
+- **Approver:** TBD
+- **Approval Criteria:**
+  - Security requirements met
+  - Compliance standards satisfied
+  - Audit trail complete
+  - Risk assessment documented
+- **Sign-off Date:** ____________
+- **Status:** ☐ Approved ☐ Conditional ☐ Rejected
+- **Comments:** _________________________________
+
+#### Sign-off Process
+1. **Review Preparation:**
+   ```bash
+   python3 scripts/prepare_handoff_review.py --protocol 01
+   ```
+
+2. **Distribute Review Package:**
+   - Send evidence manifest to all approvers
+   - Provide access to artifacts
+   - Schedule review meeting (if needed)
+
+3. **Collect Approvals:**
+   - Document sign-offs in handoff manifest
+   - Address conditional approvals
+   - Resolve any rejections before proceeding
+
+4. **Generate Handoff Report:**
+   ```bash
+   python3 scripts/generate_handoff_report.py \
+     --protocol 01 \
+     --output .artifacts/protocol-01/handoff-report.pdf
+   ```
+
+### Next Protocol Alignment
+
+#### Successor Protocol
+**Next Protocol:** Protocol 02 - Client Discovery Initiation
+**Phase:** Phase 0
+**Estimated Start:** TBD
+
+#### Prerequisites for Next Phase
+**Required Inputs:**
+- [ ] **Input 1:** Available at .artifacts/protocol-01/
+- [ ] **Input 2:** Available at .artifacts/protocol-01/
+- [ ] **Input 3:** Available at .artifacts/protocol-01/
+
+**System State Requirements:**
+- [ ] System state requirement 1
+- [ ] System state requirement 2
+- [ ] System state requirement 3
+
+**Approval Requirements:**
+- [ ] All sign-offs from current protocol obtained
+- [ ] Next protocol prerequisites validated
+- [ ] Resource allocation confirmed
+
+#### Handoff Artifacts
+**Manifest Files:**
+- `.artifacts/protocol-01/handoff-manifest.json`
+- `.artifacts/protocol-01/evidence-summary.json`
+- `.artifacts/protocol-01/transition-checklist.json`
+
+**Validation Command:**
+```bash
+python3 scripts/validate_protocol_handoff.py \
+  --from-protocol 01 \
+  --to-protocol 02 \
+  --verify-prerequisites
+```
+
+#### Transition Process
+1. **Initialize Next Protocol:**
+   ```bash
+   python3 scripts/initialize_protocol.py \
+     --protocol 02 \
+     --previous-protocol 01
+   ```
+
+2. **Transfer Context:**
+   ```bash
+   python3 scripts/transfer_protocol_context.py \
+     --from 01 \
+     --to 02
+   ```
+
+3. **Validate Readiness:**
+   ```bash
+   python3 scripts/validate_protocol_readiness.py \
+     --protocol 02
+   ```
+
+4. **Begin Next Protocol:**
+   - Notify stakeholders of transition
+   - Update project status
+   - Start next protocol execution
+
+### Issues and Risks
+
+#### Known Issues
+| Issue ID | Description | Severity | Mitigation | Owner |
+|----------|-------------|----------|------------|-------|
+| ISS-001 | Issue description | Low | Mitigation plan | TBD |
+
+#### Risks Transferred to Next Protocol
+| Risk ID | Description | Probability | Impact | Mitigation Plan |
+|---------|-------------|-------------|--------|-----------------|
+| RSK-001 | Issue description | Low | Medium | Risk mitigation plan |
+
+#### Open Items
+- [ ] Open item 1 - Owner: TBD - Due: TBD
+- [ ] Open item 2 - Owner: TBD - Due: TBD
+
+### Handoff Meeting (Optional)
+
+**Date:** TBD
+**Attendees:** TBD
+**Agenda:**
+1. Protocol execution summary
+2. Deliverables review
+3. Quality metrics review
+4. Issues and risks discussion
+5. Next protocol preparation
+6. Q&A
+
+**Meeting Notes:** TBD
+
+### Final Verification
+
+**Handoff Coordinator:** TBD
+**Handoff Date:** TBD
+**Overall Status:** ☐ COMPLETE ☐ INCOMPLETE ☐ BLOCKED
+
+**Verification Command:**
+```bash
+python3 scripts/verify_handoff_complete.py \
+  --protocol 01 \
+  --generate-report
+```
+
+**Sign-off Statement:**
+> I certify that Protocol 01 has been completed according to requirements, all deliverables have been validated, stakeholder approvals have been obtained, and the protocol is ready for handoff to Protocol 02.
+
+**Coordinator Signature:** ___________________ **Date:** __________
+

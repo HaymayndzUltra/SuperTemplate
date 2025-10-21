@@ -1,5 +1,5 @@
 {
-  "validation_timestamp": "2025-10-20T01:35:57.634228Z",
+  "validation_timestamp": "2025-10-20T18:58:55.113564Z",
   "protocols": [
     {
       "protocol_id": "01",
@@ -230,31 +230,6 @@
         "data_formats": true,
         "storage_locations": true
       }
-    },
-    {
-      "protocol_id": "24",
-      "integration_score": 0.0,
-      "elements": {}
-    },
-    {
-      "protocol_id": "25",
-      "integration_score": 0.0,
-      "elements": {
-        "input_sources": false,
-        "output_destinations": false,
-        "data_formats": false,
-        "storage_locations": false
-      }
-    },
-    {
-      "protocol_id": "26",
-      "integration_score": 0.0,
-      "elements": {}
-    },
-    {
-      "protocol_id": "27",
-      "integration_score": 0.0,
-      "elements": {}
     }
   ]
 }
