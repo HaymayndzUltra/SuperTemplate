@@ -93,13 +93,13 @@
 
 ## Circular Dependencies (Temporal Impossibilities)
 
-### 1. Protocol 11 → Protocol 19/21 (Integration Testing → Future Protocols)
+### 1. Protocol 11 → Protocol 21 (Integration Testing → Future Protocols)
 **Gap Type**: Circular dependency / Forward reference  
 **Involved Protocols**: Protocol 11  
 **Severity**: **CRITICAL**  
 **Evidence**: `.cursor/ai-driven-workflow/11-integration-testing.md:13-17`  
-**Description**: Protocol 11 prerequisites reference "Protocol 21 (if previously generated)" and "Protocol 19" artifacts, but these protocols execute much later (Phase 6: Closure). Integration testing (Phase 3) cannot depend on maintenance and documentation artifacts that don't exist yet.  
-**Suggested Fix**: Remove Protocol 19 and 21 from Protocol 11 prerequisites. Integration testing should only depend on Protocols 07 and 09.
+**Description**: Protocol 11 prerequisites reference "Protocol 21 (if previously generated)" artifacts, but this protocol executes much later (Phase 6: Closure). Integration testing (Phase 3) cannot depend on maintenance outputs that don't exist yet.
+**Suggested Fix**: Remove Protocol 21 artifacts from Protocol 11 prerequisites so integration testing relies only on Protocols 07 and 09.
 
 ### 2. Protocol 12 → Protocol 15/21/23 (Quality Audit → Future Protocols)
 **Gap Type**: Circular dependency / Forward reference  
@@ -117,13 +117,13 @@
 **Description**: Protocol 13 prerequisites reference Protocol 19 (Documentation), Protocol 15 (Deployment), and Protocol 21 (Maintenance)—protocols that execute later in the lifecycle.  
 **Suggested Fix**: Remove Protocol 19, 15, 21 from Protocol 13 prerequisites. UAT should depend on Protocol 12 (Quality Audit) outputs.
 
-### 4. Protocol 14 → Protocol 19/15/21 (Pre-Deployment → Future Protocols)
+### 4. Protocol 14 → Protocol 19/15/20/21 (Pre-Deployment → Future Protocols)
 **Gap Type**: Circular dependency / Forward reference  
 **Involved Protocols**: Protocol 14  
 **Severity**: **CRITICAL**  
 **Evidence**: `.cursor/ai-driven-workflow/14-pre-deployment-staging.md:14-17`  
-**Description**: Protocol 14 prerequisites reference Protocol 19, 15 (circular: pre-deployment cannot depend on deployment), and 21.  
-**Suggested Fix**: Remove Protocol 19, 15, 21 from Protocol 14 prerequisites. Pre-deployment should depend on Protocol 13 (UAT) outputs.
+**Description**: Protocol 14 prerequisites reference Protocols 19, 15 (circular: pre-deployment cannot depend on deployment), 20, and 21.
+**Suggested Fix**: Remove Protocols 19, 15, 20, and 21 from Protocol 14 prerequisites. Pre-deployment should depend on Protocol 13 (UAT) outputs.
 
 ### 5. Protocol 15 → Protocol 21 (Deployment → Maintenance)
 **Gap Type**: Circular dependency  
@@ -188,7 +188,7 @@
 **Gap Type**: Missing SDLC phases  
 **Involved Protocols**: Overall workflow  
 **Severity**: **LOW**  
-**Evidence**: Task requirements specify standard workflow: "Client Discovery → Requirements → Architecture Design → Environment Setup → Implementation → Testing → Deployment → Monitoring → Maintenance → Closure"  
+**Evidence**: `validation-summary.md:6-33`
 **Description**: The 23-protocol workflow covers the standard SDLC phases but uses non-standard naming:
 - ✅ Client Discovery: P01-P02 
 - ✅ Requirements: P03, P06
