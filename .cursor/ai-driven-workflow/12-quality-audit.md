@@ -11,14 +11,14 @@
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
 ### Required Artifacts
-- [ ] `.artifacts/integration/integration-evidence-bundle.zip` from Protocol 15 – consolidated integration and regression results
-- [ ] `.artifacts/pre-deployment/intake-validation-report.json` from Protocol 21 – upstream readiness snapshot
-- [ ] `.cursor/context-kit/script-compliance.json` from Protocol 23 – automation governance posture
+- [ ] `INTEGRATION-EVIDENCE.zip` from Protocol 11 – consolidated integration and regression results
+- [ ] `integration-signoff.json` from Protocol 11 – upstream readiness snapshot
 - [ ] Latest Git diff summary produced by `scripts/collect_change_context.py`
+- [ ] `TECHNICAL-DESIGN.md` from Protocol 07 – architecture baseline for compliance checks
 
 ### Required Approvals
-- [ ] Quality gate sign-off from Protocol 15 Integration Lead
-- [ ] Security waiver or approval referenced in Protocol 21 task closure notes (if applicable)
+- [ ] Integration validation sign-off from Protocol 11 Integration Lead
+- [ ] Security waiver or approval (if applicable)
 - [ ] Product Owner acknowledgement that scope matches PRD acceptance criteria (Protocol 06)
 
 ### System State Requirements
@@ -254,10 +254,9 @@ Maintain lessons learned with structure:
 ## 4. INTEGRATION POINTS
 
 ### Inputs From:
-- **Protocol 21**: `task-validation-report.json` – links between resolved tasks and covered requirements
-- **Protocol 23**: `script-compliance.json` – automation readiness posture feeding audit scope
-- **Protocol 15**: `integration-evidence-bundle.zip` – regression and integration proof set
-- **Protocol 21**: `intake-validation-report.json` – upstream readiness confirmation when re-running audits post-staging fixes
+- **Protocol 11**: `INTEGRATION-EVIDENCE.zip` – regression and integration proof set
+- **Protocol 11**: `integration-signoff.json` – upstream readiness confirmation
+- **Protocol 07**: `TECHNICAL-DESIGN.md` – architecture baseline for compliance checks
 
 ### Outputs To:
 - **Protocol 20**: `QUALITY-AUDIT-PACKAGE.zip` – formal audit deliverables for UAT entry gate
@@ -408,8 +407,8 @@ Before declaring protocol complete, validate:
 - [ ] All automation hooks executed successfully
 - [ ] Communication log complete
 
-### Handoff to Protocol 20:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 20: User Acceptance Testing Coordination
+### Handoff to Protocol 13:
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 13: User Acceptance Testing Coordination
 
 **Evidence Package:**
 - `QUALITY-AUDIT-PACKAGE.zip` - Consolidated audit artifacts

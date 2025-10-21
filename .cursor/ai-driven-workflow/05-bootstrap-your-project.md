@@ -438,11 +438,15 @@ Before declaring protocol complete, validate:
 - [ ] All automation hooks executed successfully
 - [ ] Communication log complete
 
-### Handoff to Protocol 04-CD:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 04-CD: Client Discovery (Alternate)
+### Handoff to Protocol 02 or 24:
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 02 (Standard Discovery) or Protocol 24 (Alternate Track)
+
+**Decision Point**: See `documentation/protocol-branching-guide.md` to choose between:
+- **Protocol 02**: Standard comprehensive discovery (waterfall, new clients, formal process)
+- **Protocol 24**: Alternate quick discovery (agile, existing clients, lean process)
 
 **Evidence Package:**
-- `architecture-principles.md` - Canonical conventions for alternate discovery track
+- `architecture-principles.md` - Canonical conventions for discovery
 - `template-inventory.md` - Available accelerators for discovery-led customization
 
 **Execution:**

@@ -409,8 +409,8 @@ Before declaring protocol complete, validate:
 - [ ] All automation hooks executed successfully
 - [ ] Communication log complete
 
-### Handoff to Protocol 20:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 20: Incident Response & Rollback
+### Handoff to Protocol 17:
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 17: Incident Response & Rollback
 
 **Evidence Package:**
 - `MONITORING-PACKAGE.zip` - Monitoring configuration and validation bundle

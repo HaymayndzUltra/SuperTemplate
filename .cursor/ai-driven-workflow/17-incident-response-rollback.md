@@ -11,10 +11,10 @@
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
 ### Required Artifacts
-- [ ] `MONITORING-PACKAGE.zip` from Protocol 19 – monitoring configuration and validation evidence
-- [ ] `alert-test-results.json` from Protocol 19 – alert routing baseline
+- [ ] `MONITORING-PACKAGE.zip` from Protocol 16 – monitoring configuration and validation evidence
+- [ ] `alert-test-results.json` from Protocol 16 – alert routing baseline
 - [ ] `production-deployment-report.json` from Protocol 15 – deployment context
-- [ ] `rollback-verification-report.json` from Protocol 21 – rollback rehearsal evidence
+- [ ] `rollback-verification-report.json` from Protocol 14 – rollback rehearsal evidence
 - [ ] `incident-playbook.md` (if available) from `.cursor/context-kit/`
 
 ### Required Approvals
@@ -415,8 +415,8 @@ Before declaring protocol complete, validate:
 - [ ] All automation hooks executed successfully
 - [ ] Communication log complete
 
-### Handoff to Protocol 21 & 5:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 21: Performance Optimization & Tuning and Protocol 22: Implementation Retrospective
+### Handoff to Protocol 18:
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 18: Performance Optimization & Tuning
 
 **Evidence Package:**
 - `INCIDENT-REPORT.md` - Incident summary for retrospective

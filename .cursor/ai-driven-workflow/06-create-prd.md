@@ -11,9 +11,7 @@
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
 ### Required Artifacts
-- [ ] `PROJECT-BRIEF.md` from Protocol 03 (approved project brief)
-- [ ] `discovery-brief.md` and `evidence-map.json` from Protocol 04-CD (traceable discovery signals)
-- [ ] `architecture-principles.md` from Protocol 05 (governance context)
+- [ ] `architecture-principles.md` from Protocol 05 (transitively includes PROJECT-BRIEF.md from P03 and discovery artifacts from P04)
 
 ### Required Approvals
 - [ ] Product owner authorization to begin PRD drafting
@@ -385,8 +383,8 @@ Before declaring protocol complete, validate:
 - [ ] All automation hooks executed successfully
 - [ ] Communication log complete
 
-### Handoff to Protocol 06:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 06: Technical Design & Architecture
+### Handoff to Protocol 07:
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 07: Technical Design & Architecture
 
 **Evidence Package:**
 - `prd-{feature}.md` - Comprehensive PRD for design translation

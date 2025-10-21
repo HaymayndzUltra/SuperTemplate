@@ -256,10 +256,9 @@ Maintain lessons learned with structure:
 ## 10. INTEGRATION POINTS
 
 ### Inputs From:
-- **Protocol 19**: `QUALITY-AUDIT-PACKAGE.zip`, readiness recommendation – informs release gate
-- **Protocol 23**: `script-compliance.json` – assures automation readiness
-- **Protocol 15**: `integration-evidence-bundle.zip` – verifies integrated functionality
-- **Protocol 20**: `UAT-CLOSURE-PACKAGE.zip`, `uat-approval-record.json` – confirms user acceptance
+- **Protocol 12**: `QUALITY-AUDIT-PACKAGE.zip`, readiness recommendation – informs release gate
+- **Protocol 11**: `integration-evidence-bundle.zip` – verifies integrated functionality
+- **Protocol 13**: `UAT-CLOSURE-PACKAGE.zip`, `uat-approval-record.json` – confirms user acceptance
 
 ### Outputs To:
 - **Protocol 15**: `PRE-DEPLOYMENT-PACKAGE.zip`, `readiness-approval.json`, `deployment-checklist.md`

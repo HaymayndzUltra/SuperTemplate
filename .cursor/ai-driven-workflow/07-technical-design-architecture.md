@@ -11,9 +11,7 @@
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
 ### Required Artifacts
-- [ ] `PROJECT-BRIEF.md` and `project-brief-validation-report.json` from Protocol 03
-- [ ] `prd-{feature}.md`, `technical-specs.md`, and `prd-validation.json` from Protocol 06
-- [ ] `risk-register.md` and `assumptions-v1.md` from Protocol 04-CD
+- [ ] `prd-{feature}.md`, `technical-specs.md`, and `prd-validation.json` from Protocol 06 (transitively includes PROJECT-BRIEF.md from P03 and risk artifacts from P04)
 
 ### Required Approvals
 - [ ] Product and engineering leadership approval to begin architecture design

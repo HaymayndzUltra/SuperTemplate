@@ -11,9 +11,9 @@
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
 ### Required Artifacts
-- [ ] `MONITORING-PACKAGE.zip` from Protocol 19 – monitoring dashboards and alert configuration
-- [ ] `INCIDENT-REPORT.md` from Protocol 20 – recent incident context impacting performance
-- [ ] `performance-intake-backlog.json` from Protocol 22 (if existing) – outstanding performance actions
+- [ ] `MONITORING-PACKAGE.zip` from Protocol 16 – monitoring dashboards and alert configuration
+- [ ] `INCIDENT-REPORT.md` from Protocol 17 (if available) – recent incident context impacting performance
+- [ ] `performance-intake-backlog.json` from previous cycles (if available) – outstanding performance actions
 - [ ] `baseline-metrics.json` from previous optimization cycles (if available)
 - [ ] Latest deployment notes `DEPLOYMENT-REPORT.md` from Protocol 15
 

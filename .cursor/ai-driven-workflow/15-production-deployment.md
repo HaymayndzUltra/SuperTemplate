@@ -11,10 +11,10 @@
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
 ### Required Artifacts
-- [ ] `PRE-DEPLOYMENT-PACKAGE.zip` from Protocol 21 – readiness evidence bundle
-- [ ] `readiness-approval.json` from Protocol 21 – stakeholder go decision
-- [ ] `rollback-verification-report.json` from Protocol 21 – validated rollback plan
-- [ ] `UAT-CLOSURE-PACKAGE.zip` from Protocol 20 – customer acceptance proof
+- [ ] `PRE-DEPLOYMENT-PACKAGE.zip` from Protocol 14 – readiness evidence bundle
+- [ ] `readiness-approval.json` from Protocol 14 – stakeholder go decision
+- [ ] `rollback-verification-report.json` from Protocol 14 – validated rollback plan
+- [ ] `UAT-CLOSURE-PACKAGE.zip` from Protocol 13 – customer acceptance proof
 - [ ] Latest release manifest `.artifacts/pre-deployment/deployment-checklist.md`
 
 ### Required Approvals
@@ -414,8 +414,8 @@ Before declaring protocol complete, validate:
 - [ ] All automation hooks executed successfully
 - [ ] Communication log complete
 
-### Handoff to Protocol 19:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 19: Monitoring & Observability
+### Handoff to Protocol 16:
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 16: Monitoring & Observability
 
 **Evidence Package:**
 - `DEPLOYMENT-REPORT.md` - Comprehensive deployment summary
