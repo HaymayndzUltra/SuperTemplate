@@ -1,0 +1,210 @@
+[
+  {
+    "id": "00",
+    "title": "generate-rules",
+    "declared_phase": "Phase 0 (Foundation)",
+    "listed_dependencies": [],
+    "evidence": ".cursor/ai-driven-workflow/00-generate-rules.md:1-10"
+  },
+  {
+    "id": "01",
+    "title": "client-proposal-generation",
+    "declared_phase": "Phase 0 (Foundation & Discovery)",
+    "listed_dependencies": [],
+    "evidence": ".cursor/ai-driven-workflow/01-client-proposal-generation.md:6-10"
+  },
+  {
+    "id": "02",
+    "title": "client-discovery-initiation",
+    "declared_phase": "Phase 0 (Foundation & Discovery)",
+    "listed_dependencies": ["Protocol 01"],
+    "evidence": ".cursor/ai-driven-workflow/02-client-discovery-initiation.md:6-17"
+  },
+  {
+    "id": "03",
+    "title": "project-brief-creation",
+    "declared_phase": "Phase 0 (Foundation & Discovery)",
+    "listed_dependencies": ["Protocol 01", "Protocol 02"],
+    "evidence": ".cursor/ai-driven-workflow/03-project-brief-creation.md:6-18"
+  },
+  {
+    "id": "04",
+    "title": "project-bootstrap-and-context-engineering",
+    "declared_phase": "Phase 0 (Foundation & Discovery)",
+    "listed_dependencies": ["Protocol 03"],
+    "evidence": ".cursor/ai-driven-workflow/04-project-bootstrap-and-context-engineering.md:6-21"
+  },
+  {
+    "id": "05",
+    "title": "bootstrap-your-project",
+    "declared_phase": "Phase 0 (Foundation & Discovery)",
+    "listed_dependencies": ["Protocol 04"],
+    "evidence": ".cursor/ai-driven-workflow/05-bootstrap-your-project.md:6-16"
+  },
+  {
+    "id": "06",
+    "title": "create-prd",
+    "declared_phase": "Phase 1-2 (Planning & Design)",
+    "listed_dependencies": ["Protocol 03", "Protocol 04", "Protocol 05"],
+    "evidence": ".cursor/ai-driven-workflow/06-create-prd.md:6-16"
+  },
+  {
+    "id": "07",
+    "title": "technical-design-architecture",
+    "declared_phase": "Phase 1-2 (Planning & Design)",
+    "listed_dependencies": ["Protocol 03", "Protocol 06", "Protocol 04"],
+    "evidence": ".cursor/ai-driven-workflow/07-technical-design-architecture.md:6-15"
+  },
+  {
+    "id": "08",
+    "title": "generate-tasks",
+    "declared_phase": "Phase 1-2 (Planning & Design)",
+    "listed_dependencies": ["Protocol 07", "Protocol 06"],
+    "evidence": ".cursor/ai-driven-workflow/08-generate-tasks.md:6-16"
+  },
+  {
+    "id": "09",
+    "title": "environment-setup-validation",
+    "declared_phase": "Phase 1-2 (Planning & Design)",
+    "listed_dependencies": ["Protocol 07", "Protocol 08", "Protocol 04"],
+    "evidence": ".cursor/ai-driven-workflow/09-environment-setup-validation.md:6-17"
+  },
+  {
+    "id": "10",
+    "title": "process-tasks",
+    "declared_phase": "Phase 3 (Development)",
+    "listed_dependencies": ["Protocol 08", "Protocol 09"],
+    "evidence": ".cursor/ai-driven-workflow/10-process-tasks.md:6-16"
+  },
+  {
+    "id": "11",
+    "title": "integration-testing",
+    "declared_phase": "Phase 3 (Development)",
+    "listed_dependencies": ["Protocol 07", "Protocol 09"],
+    "evidence": ".cursor/ai-driven-workflow/11-integration-testing.md:6-17",
+    "gap_note": "UNVERIFIED: Prerequisites reference Protocol 21 (future protocol), suggesting dependency inversion"
+  },
+  {
+    "id": "12",
+    "title": "quality-audit",
+    "declared_phase": "Phase 4 (Quality & Testing)",
+    "listed_dependencies": ["Protocol 23"],
+    "evidence": ".cursor/ai-driven-workflow/12-quality-audit.md:6-17",
+    "gap_note": "UNVERIFIED: Prerequisites reference Protocol 15 and 21 (future protocols), circular dependency"
+  },
+  {
+    "id": "13",
+    "title": "uat-coordination",
+    "declared_phase": "Phase 4 (Quality & Testing)",
+    "listed_dependencies": [],
+    "evidence": ".cursor/ai-driven-workflow/13-uat-coordination.md:6-17",
+    "gap_note": "UNVERIFIED: Prerequisites reference Protocol 19, 15, 21 (future protocols), dependency inversion"
+  },
+  {
+    "id": "14",
+    "title": "pre-deployment-staging",
+    "declared_phase": "Phase 4 (Quality & Testing)",
+    "listed_dependencies": [],
+    "evidence": ".cursor/ai-driven-workflow/14-pre-deployment-staging.md:6-17",
+    "gap_note": "UNVERIFIED: Prerequisites reference Protocol 19, 15 (future protocols), dependency inversion"
+  },
+  {
+    "id": "15",
+    "title": "production-deployment",
+    "declared_phase": "Phase 5 (Deployment & Operations)",
+    "listed_dependencies": [],
+    "evidence": ".cursor/ai-driven-workflow/15-production-deployment.md:6-17",
+    "gap_note": "UNVERIFIED: Prerequisites reference Protocol 21 (future protocol), circular dependency"
+  },
+  {
+    "id": "16",
+    "title": "monitoring-observability",
+    "declared_phase": "Phase 5 (Deployment & Operations)",
+    "listed_dependencies": ["Protocol 15"],
+    "evidence": ".cursor/ai-driven-workflow/16-monitoring-observability.md:6-17"
+  },
+  {
+    "id": "17",
+    "title": "incident-response-rollback",
+    "declared_phase": "Phase 5 (Deployment & Operations)",
+    "listed_dependencies": ["Protocol 15"],
+    "evidence": ".cursor/ai-driven-workflow/17-incident-response-rollback.md:6-17",
+    "gap_note": "UNVERIFIED: Prerequisites reference Protocol 19 (future protocol), dependency inversion"
+  },
+  {
+    "id": "18",
+    "title": "performance-optimization",
+    "declared_phase": "Phase 5 (Deployment & Operations)",
+    "listed_dependencies": ["Protocol 15"],
+    "evidence": ".cursor/ai-driven-workflow/18-performance-optimization.md:6-17",
+    "gap_note": "UNVERIFIED: Prerequisites reference Protocol 19, 20, 22 (future protocols), dependency inversion"
+  },
+  {
+    "id": "19",
+    "title": "documentation-knowledge-transfer",
+    "declared_phase": "Phase 6 (Closure & Maintenance)",
+    "listed_dependencies": ["Protocol 06", "Protocol 07"],
+    "evidence": ".cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md:6-17",
+    "gap_note": "UNVERIFIED: Prerequisites reference Protocol 21, suggesting circular dependency"
+  },
+  {
+    "id": "20",
+    "title": "project-closure",
+    "declared_phase": "Phase 6 (Closure & Maintenance)",
+    "listed_dependencies": ["Protocol 19"],
+    "evidence": ".cursor/ai-driven-workflow/20-project-closure.md:6-17"
+  },
+  {
+    "id": "21",
+    "title": "maintenance-support",
+    "declared_phase": "Phase 6 (Closure & Maintenance)",
+    "listed_dependencies": ["Protocol 20"],
+    "evidence": ".cursor/ai-driven-workflow/21-maintenance-support.md:6-17"
+  },
+  {
+    "id": "22",
+    "title": "implementation-retrospective",
+    "declared_phase": "Phase 6 (Closure & Maintenance)",
+    "listed_dependencies": ["Protocol 21"],
+    "evidence": ".cursor/ai-driven-workflow/22-implementation-retrospective.md:6-17"
+  },
+  {
+    "id": "23",
+    "title": "script-governance-protocol",
+    "declared_phase": "Phase 6 (Closure & Maintenance)",
+    "listed_dependencies": ["Protocol 19"],
+    "evidence": ".cursor/ai-driven-workflow/23-script-governance-protocol.md:6-17"
+  },
+  {
+    "id": "24",
+    "title": "client-discovery-ALTERNATE-TRACK",
+    "declared_phase": "Supporting (Alternate Track)",
+    "listed_dependencies": ["Protocol 05", "Protocol 03"],
+    "evidence": ".cursor/ai-driven-workflow/24-client-discovery-ALTERNATE-TRACK.md:1-10",
+    "note": "Excluded from validation scope per task requirements"
+  },
+  {
+    "id": "25",
+    "title": "protocol-integration-map-DOCUMENTATION",
+    "declared_phase": "Supporting (Documentation)",
+    "listed_dependencies": [],
+    "evidence": ".cursor/ai-driven-workflow/25-protocol-integration-map-DOCUMENTATION.md:1-10",
+    "note": "Excluded from validation scope per task requirements"
+  },
+  {
+    "id": "26",
+    "title": "integration-guide-DOCUMENTATION",
+    "declared_phase": "Supporting (Documentation)",
+    "listed_dependencies": [],
+    "evidence": ".cursor/ai-driven-workflow/26-integration-guide-DOCUMENTATION.md:1-10",
+    "note": "Excluded from validation scope per task requirements"
+  },
+  {
+    "id": "27",
+    "title": "validation-guide-DOCUMENTATION",
+    "declared_phase": "Supporting (Documentation)",
+    "listed_dependencies": [],
+    "evidence": ".cursor/ai-driven-workflow/27-validation-guide-DOCUMENTATION.md:1-10",
+    "note": "Excluded from validation scope per task requirements"
+  }
+]

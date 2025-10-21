@@ -1,0 +1,776 @@
+{
+  "00": {
+    "file": "00-generate-rules.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 0",
+    "prerequisites": [],
+    "outputs": [],
+    "next_protocols": []
+  },
+  "01": {
+    "file": "01-client-proposal-generation.md",
+    "title": "CLIENT PROPOSAL GENERATION",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "04",
+        "evidence": "01-client-proposal-generation.md:348-348"
+      },
+      {
+        "protocol": "02",
+        "evidence": "01-client-proposal-generation.md:349-349"
+      }
+    ],
+    "outputs": [
+      {
+        "protocol": "02",
+        "evidence": "01-client-proposal-generation.md:352-352"
+      },
+      {
+        "protocol": "03",
+        "evidence": "01-client-proposal-generation.md:353-353"
+      }
+    ],
+    "next_protocols": [
+      {
+        "protocol": "02",
+        "evidence": "01-client-proposal-generation.md:453-453"
+      },
+      {
+        "protocol": "01",
+        "evidence": "01-client-proposal-generation.md:978-978"
+      }
+    ]
+  },
+  "02": {
+    "file": "02-client-discovery-initiation.md",
+    "title": "CLIENT DISCOVERY INITIATION (PROJECT-SCOPING COMPLIANT)",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "01",
+        "evidence": "02-client-discovery-initiation.md:14-14"
+      },
+      {
+        "protocol": "03",
+        "evidence": "02-client-discovery-initiation.md:232-232"
+      },
+      {
+        "protocol": "02",
+        "evidence": "02-client-discovery-initiation.md:563-563"
+      }
+    ],
+    "outputs": [
+      {
+        "protocol": "03",
+        "evidence": "02-client-discovery-initiation.md:591-591"
+      }
+    ],
+    "next_protocols": [
+      {
+        "protocol": "03",
+        "evidence": "02-client-discovery-initiation.md:179-179"
+      }
+    ]
+  },
+  "03": {
+    "file": "03-project-brief-creation.md",
+    "title": "PROJECT BRIEF CREATION (PROJECT-SCOPING COMPLIANT)",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "02",
+        "evidence": "03-project-brief-creation.md:14-14"
+      },
+      {
+        "protocol": "01",
+        "evidence": "03-project-brief-creation.md:17-17"
+      },
+      {
+        "protocol": "06",
+        "evidence": "03-project-brief-creation.md:240-240"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "04",
+        "evidence": "03-project-brief-creation.md:376-376"
+      }
+    ]
+  },
+  "04": {
+    "file": "04-project-bootstrap-and-context-engineering.md",
+    "title": "PROJECT BOOTSTRAP AND CONTEXT ENGINEERING (GOVERNANCE COMPLIANT)",
+    "declared_phase": "Phase 0",
+    "prerequisites": [
+      {
+        "protocol": "03",
+        "evidence": "04-project-bootstrap-and-context-engineering.md:18-18"
+      },
+      {
+        "protocol": "05",
+        "evidence": "04-project-bootstrap-and-context-engineering.md:266-266"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "05",
+        "evidence": "04-project-bootstrap-and-context-engineering.md:412-412"
+      }
+    ]
+  },
+  "05": {
+    "file": "05-bootstrap-your-project.md",
+    "title": "BOOTSTRAP YOUR PROJECT (LEGACY ALIGNMENT COMPLIANT)",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "04",
+        "evidence": "05-bootstrap-your-project.md:14-14"
+      },
+      {
+        "protocol": "08",
+        "evidence": "05-bootstrap-your-project.md:294-294"
+      }
+    ],
+    "outputs": [
+      {
+        "protocol": "04",
+        "evidence": "05-bootstrap-your-project.md:290-290"
+      }
+    ],
+    "next_protocols": [
+      {
+        "protocol": "04",
+        "evidence": "05-bootstrap-your-project.md:441-441"
+      }
+    ]
+  },
+  "06": {
+    "file": "06-create-prd.md",
+    "title": "IMPLEMENTATION-READY PRD CREATION (PLANNING COMPLIANT)",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "03",
+        "evidence": "06-create-prd.md:14-14"
+      },
+      {
+        "protocol": "04",
+        "evidence": "06-create-prd.md:15-15"
+      },
+      {
+        "protocol": "05",
+        "evidence": "06-create-prd.md:16-16"
+      },
+      {
+        "protocol": "06",
+        "evidence": "06-create-prd.md:250-250"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "06",
+        "evidence": "06-create-prd.md:305-305"
+      }
+    ]
+  },
+  "07": {
+    "file": "07-technical-design-architecture.md",
+    "title": "TECHNICAL DESIGN & ARCHITECTURE (ARCHITECTURE COMPLIANT)",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "03",
+        "evidence": "07-technical-design-architecture.md:14-14"
+      },
+      {
+        "protocol": "06",
+        "evidence": "07-technical-design-architecture.md:15-15"
+      },
+      {
+        "protocol": "04",
+        "evidence": "07-technical-design-architecture.md:16-16"
+      },
+      {
+        "protocol": "08",
+        "evidence": "07-technical-design-architecture.md:101-101"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "08",
+        "evidence": "07-technical-design-architecture.md:381-381"
+      }
+    ]
+  },
+  "08": {
+    "file": "08-generate-tasks.md",
+    "title": "TECHNICAL TASK GENERATION (PLANNING COMPLIANT)",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "07",
+        "evidence": "08-generate-tasks.md:14-14"
+      },
+      {
+        "protocol": "06",
+        "evidence": "08-generate-tasks.md:15-15"
+      }
+    ],
+    "outputs": [
+      {
+        "protocol": "21",
+        "evidence": "08-generate-tasks.md:106-106"
+      }
+    ],
+    "next_protocols": [
+      {
+        "protocol": "09",
+        "evidence": "08-generate-tasks.md:381-381"
+      }
+    ]
+  },
+  "09": {
+    "file": "09-environment-setup-validation.md",
+    "title": "ENVIRONMENT SETUP & VALIDATION (DEVOPS COMPLIANT)",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "07",
+        "evidence": "09-environment-setup-validation.md:14-14"
+      },
+      {
+        "protocol": "08",
+        "evidence": "09-environment-setup-validation.md:15-15"
+      },
+      {
+        "protocol": "04",
+        "evidence": "09-environment-setup-validation.md:16-16"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "21",
+        "evidence": "09-environment-setup-validation.md:377-377"
+      }
+    ]
+  },
+  "10": {
+    "file": "10-process-tasks.md",
+    "title": "CONTROLLED TASK EXECUTION (DELIVERY COMPLIANT)",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "08",
+        "evidence": "10-process-tasks.md:14-14"
+      },
+      {
+        "protocol": "09",
+        "evidence": "10-process-tasks.md:15-15"
+      },
+      {
+        "protocol": "19",
+        "evidence": "10-process-tasks.md:236-236"
+      }
+    ],
+    "outputs": [
+      {
+        "protocol": "09",
+        "evidence": "10-process-tasks.md:49-49"
+      }
+    ],
+    "next_protocols": [
+      {
+        "protocol": "15",
+        "evidence": "10-process-tasks.md:381-381"
+      }
+    ]
+  },
+  "11": {
+    "file": "11-integration-testing.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "21",
+        "evidence": "11-integration-testing.md:14-14"
+      },
+      {
+        "protocol": "07",
+        "evidence": "11-integration-testing.md:15-15"
+      },
+      {
+        "protocol": "09",
+        "evidence": "11-integration-testing.md:16-16"
+      },
+      {
+        "protocol": "19",
+        "evidence": "11-integration-testing.md:233-233"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "19",
+        "evidence": "11-integration-testing.md:301-301"
+      }
+    ]
+  },
+  "12": {
+    "file": "12-quality-audit.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "15",
+        "evidence": "12-quality-audit.md:14-14"
+      },
+      {
+        "protocol": "21",
+        "evidence": "12-quality-audit.md:15-15"
+      },
+      {
+        "protocol": "23",
+        "evidence": "12-quality-audit.md:16-16"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "20",
+        "evidence": "12-quality-audit.md:326-326"
+      }
+    ]
+  },
+  "13": {
+    "file": "13-uat-coordination.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "19",
+        "evidence": "13-uat-coordination.md:14-14"
+      },
+      {
+        "protocol": "15",
+        "evidence": "13-uat-coordination.md:15-15"
+      },
+      {
+        "protocol": "21",
+        "evidence": "13-uat-coordination.md:16-16"
+      },
+      {
+        "protocol": "20",
+        "evidence": "13-uat-coordination.md:449-449"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "21",
+        "evidence": "13-uat-coordination.md:331-331"
+      },
+      {
+        "protocol": "15",
+        "evidence": "13-uat-coordination.md:417-417"
+      }
+    ]
+  },
+  "14": {
+    "file": "14-pre-deployment-staging.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "19",
+        "evidence": "14-pre-deployment-staging.md:14-14"
+      },
+      {
+        "protocol": "15",
+        "evidence": "14-pre-deployment-staging.md:15-15"
+      },
+      {
+        "protocol": "20",
+        "evidence": "14-pre-deployment-staging.md:16-16"
+      },
+      {
+        "protocol": "21",
+        "evidence": "14-pre-deployment-staging.md:446-446"
+      }
+    ],
+    "outputs": [
+      {
+        "protocol": "19",
+        "evidence": "14-pre-deployment-staging.md:82-82"
+      }
+    ],
+    "next_protocols": [
+      {
+        "protocol": "15",
+        "evidence": "14-pre-deployment-staging.md:413-413"
+      }
+    ]
+  },
+  "15": {
+    "file": "15-production-deployment.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "21",
+        "evidence": "15-production-deployment.md:14-14"
+      },
+      {
+        "protocol": "20",
+        "evidence": "15-production-deployment.md:17-17"
+      },
+      {
+        "protocol": "22",
+        "evidence": "15-production-deployment.md:274-274"
+      },
+      {
+        "protocol": "15",
+        "evidence": "15-production-deployment.md:450-450"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "19",
+        "evidence": "15-production-deployment.md:310-310"
+      }
+    ]
+  },
+  "16": {
+    "file": "16-monitoring-observability.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "15",
+        "evidence": "16-monitoring-observability.md:14-14"
+      },
+      {
+        "protocol": "21",
+        "evidence": "16-monitoring-observability.md:17-17"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "20",
+        "evidence": "16-monitoring-observability.md:412-412"
+      }
+    ]
+  },
+  "17": {
+    "file": "17-incident-response-rollback.md",
+    "title": "INCIDENT RESPONSE & ROLLBACK (OPERATIONS RESILIENCE COMPLIANT)",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "19",
+        "evidence": "17-incident-response-rollback.md:14-14"
+      },
+      {
+        "protocol": "15",
+        "evidence": "17-incident-response-rollback.md:16-16"
+      },
+      {
+        "protocol": "21",
+        "evidence": "17-incident-response-rollback.md:17-17"
+      }
+    ],
+    "outputs": [
+      {
+        "protocol": "22",
+        "evidence": "17-incident-response-rollback.md:133-133"
+      }
+    ],
+    "next_protocols": [
+      {
+        "protocol": "21",
+        "evidence": "17-incident-response-rollback.md:418-418"
+      },
+      {
+        "protocol": "22",
+        "evidence": "17-incident-response-rollback.md:419-419"
+      }
+    ]
+  },
+  "18": {
+    "file": "18-performance-optimization.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "19",
+        "evidence": "18-performance-optimization.md:14-14"
+      },
+      {
+        "protocol": "20",
+        "evidence": "18-performance-optimization.md:15-15"
+      },
+      {
+        "protocol": "22",
+        "evidence": "18-performance-optimization.md:16-16"
+      },
+      {
+        "protocol": "15",
+        "evidence": "18-performance-optimization.md:18-18"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "22",
+        "evidence": "18-performance-optimization.md:328-328"
+      }
+    ]
+  },
+  "19": {
+    "file": "19-documentation-knowledge-transfer.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "06",
+        "evidence": "19-documentation-knowledge-transfer.md:14-14"
+      },
+      {
+        "protocol": "07",
+        "evidence": "19-documentation-knowledge-transfer.md:15-15"
+      },
+      {
+        "protocol": "21",
+        "evidence": "19-documentation-knowledge-transfer.md:16-16"
+      },
+      {
+        "protocol": "15",
+        "evidence": "19-documentation-knowledge-transfer.md:17-17"
+      },
+      {
+        "protocol": "19",
+        "evidence": "19-documentation-knowledge-transfer.md:18-18"
+      },
+      {
+        "protocol": "20",
+        "evidence": "19-documentation-knowledge-transfer.md:21-21"
+      }
+    ],
+    "outputs": [
+      {
+        "protocol": "19",
+        "evidence": "19-documentation-knowledge-transfer.md:52-52"
+      }
+    ],
+    "next_protocols": [
+      {
+        "protocol": "20",
+        "evidence": "19-documentation-knowledge-transfer.md:334-334"
+      }
+    ]
+  },
+  "20": {
+    "file": "20-project-closure.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "19",
+        "evidence": "20-project-closure.md:14-14"
+      },
+      {
+        "protocol": "15",
+        "evidence": "20-project-closure.md:17-17"
+      },
+      {
+        "protocol": "20",
+        "evidence": "20-project-closure.md:19-19"
+      },
+      {
+        "protocol": "21",
+        "evidence": "20-project-closure.md:20-20"
+      },
+      {
+        "protocol": "22",
+        "evidence": "20-project-closure.md:253-253"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "21",
+        "evidence": "20-project-closure.md:388-388"
+      }
+    ]
+  },
+  "21": {
+    "file": "21-maintenance-support.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "20",
+        "evidence": "21-maintenance-support.md:14-14"
+      },
+      {
+        "protocol": "19",
+        "evidence": "21-maintenance-support.md:16-16"
+      },
+      {
+        "protocol": "21",
+        "evidence": "21-maintenance-support.md:19-19"
+      },
+      {
+        "protocol": "22",
+        "evidence": "21-maintenance-support.md:257-257"
+      },
+      {
+        "protocol": "23",
+        "evidence": "21-maintenance-support.md:259-259"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "22",
+        "evidence": "21-maintenance-support.md:309-309"
+      }
+    ]
+  },
+  "22": {
+    "file": "22-implementation-retrospective.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "21",
+        "evidence": "22-implementation-retrospective.md:14-14"
+      },
+      {
+        "protocol": "20",
+        "evidence": "22-implementation-retrospective.md:16-16"
+      },
+      {
+        "protocol": "19",
+        "evidence": "22-implementation-retrospective.md:17-17"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "23",
+        "evidence": "22-implementation-retrospective.md:387-387"
+      }
+    ]
+  },
+  "23": {
+    "file": "23-script-governance-protocol.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "19",
+        "evidence": "23-script-governance-protocol.md:14-14"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "19",
+        "evidence": "23-script-governance-protocol.md:432-432"
+      },
+      {
+        "protocol": "22",
+        "evidence": "23-script-governance-protocol.md:433-433"
+      }
+    ]
+  },
+  "24": {
+    "file": "24-client-discovery-ALTERNATE-TRACK.md",
+    "title": "CLIENT DISCOVERY (DISCOVERY COMPLIANT)",
+    "declared_phase": "Phase 1",
+    "prerequisites": [
+      {
+        "protocol": "05",
+        "evidence": "24-client-discovery-ALTERNATE-TRACK.md:13-13"
+      },
+      {
+        "protocol": "03",
+        "evidence": "24-client-discovery-ALTERNATE-TRACK.md:148-148"
+      }
+    ],
+    "outputs": [],
+    "next_protocols": [
+      {
+        "protocol": "03",
+        "evidence": "24-client-discovery-ALTERNATE-TRACK.md:211-211"
+      }
+    ]
+  },
+  "25": {
+    "file": "25-protocol-integration-map-DOCUMENTATION.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 0",
+    "prerequisites": [],
+    "outputs": [],
+    "next_protocols": []
+  },
+  "26": {
+    "file": "26-integration-guide-DOCUMENTATION.md",
+    "title": "Client Discovery",
+    "declared_phase": "Phase 5",
+    "prerequisites": [
+      {
+        "protocol": "06",
+        "evidence": "26-integration-guide-DOCUMENTATION.md:186-186"
+      },
+      {
+        "protocol": "08",
+        "evidence": "26-integration-guide-DOCUMENTATION.md:194-194"
+      },
+      {
+        "protocol": "21",
+        "evidence": "26-integration-guide-DOCUMENTATION.md:202-202"
+      },
+      {
+        "protocol": "22",
+        "evidence": "26-integration-guide-DOCUMENTATION.md:206-206"
+      },
+      {
+        "protocol": "19",
+        "evidence": "26-integration-guide-DOCUMENTATION.md:210-210"
+      },
+      {
+        "protocol": "05",
+        "evidence": "26-integration-guide-DOCUMENTATION.md:218-218"
+      }
+    ],
+    "outputs": [
+      {
+        "protocol": "06",
+        "evidence": "26-integration-guide-DOCUMENTATION.md:47-47"
+      },
+      {
+        "protocol": "08",
+        "evidence": "26-integration-guide-DOCUMENTATION.md:78-78"
+      }
+    ],
+    "next_protocols": []
+  },
+  "27": {
+    "file": "27-validation-guide-DOCUMENTATION.md",
+    "title": "UNVERIFIED",
+    "declared_phase": "Phase 1",
+    "prerequisites": [],
+    "outputs": [],
+    "next_protocols": []
+  }
+}
