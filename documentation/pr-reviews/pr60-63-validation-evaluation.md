@@ -99,13 +99,13 @@
 ## 9. Implementation Plan & Acceptance Criteria
 
 1. **Enforce evidence-format linting**
-   - Add automated checks rejecting citations that do not follow `F:.cursor/...†Lx-Ly` format in future verification reports.
-   - **Acceptance:** CI job fails when a report includes non-compliant citations; reports that pass contain only verifiable paths.【F:documentation/pr-reviews/pr60-63-validation-evaluation.md†L117-L123】【F:documentation/pr-reviews/pr60-63-validation-evaluation.md†L135-L141】
+   - Add automated checks rejecting citations that do not follow `F:.cursor/...†Lx-Ly` format in future verification reports by shipping `scripts/check_evidence_citations.py`.【F:scripts/check_evidence_citations.py†L1-L149】
+   - **Acceptance:** CI job (or local pre-publish run) fails when a report includes non-compliant citations; reports that pass contain only verifiable paths when validated via `python scripts/check_evidence_citations.py`.【F:documentation/pr-reviews/pr60-63-validation-evaluation.md†L117-L123】【F:scripts/check_evidence_citations.py†L121-L149】
 2. **Augment verification templates**
-   - Extend the report template to require (a) Protocol 01-23 inventory table, (b) dependency matrix extract, and (c) remediation actions tagged with effort estimates.
-   - **Acceptance:** Next verification cycle delivers all six completeness components with explicit effort sizing per remediation item.【F:documentation/pr-reviews/pr60-63-validation-evaluation.md†L115-L149】
+   - Extend the report template to require (a) Protocol 01-23 inventory table, (b) dependency matrix extract, and (c) remediation actions tagged with effort estimates.【F:documentation/protocol-validation-pr-review.md†L1-L86】
+   - **Acceptance:** Next verification cycle delivers all six completeness components with explicit effort sizing per remediation item using the published template.【F:documentation/protocol-validation-pr-review.md†L1-L86】
 3. **Update dependency documentation**
-   - Correct `find-missing.md`, `validation-summary.md`, and `dependency-map.mermaid` to remove the false P11→P19 linkage and add the missing P14→P20 edge.
+   - Correct `find-missing.md`, `validation-summary.md`, and `dependency-map.mermaid` to remove the false P11→P19 linkage and add the missing P14→P20 edge.【F:.cursor/commands/find-missing.md†L1-L120】【F:validation-summary.md†L30-L118】【F:dependency-map.mermaid†L70-L80】
    - **Acceptance:** Post-update artefacts show P11 referencing only Protocol 21 and P14 including Protocol 20, aligning reports and source files.【F:.cursor/ai-driven-workflow/11-integration-testing.md†L10-L18】【F:.cursor/ai-driven-workflow/14-pre-deployment-staging.md†L13-L17】
 
 ---

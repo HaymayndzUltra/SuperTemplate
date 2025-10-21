@@ -71,7 +71,8 @@ graph TD
   P13 -."UNVERIFIED: Broken handoff".-> P14
   P19 -."CIRCULAR: Future protocol".-> P14
   P15 -."CIRCULAR: Future protocol".-> P14
-  
+  P14 -."CIRCULAR: Future protocol".-> P20
+
   P14 --> P15
   P15 --> P16
   P15 --> P17

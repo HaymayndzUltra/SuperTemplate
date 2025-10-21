@@ -35,10 +35,10 @@ The 23-protocol mainline workflow demonstrates **complete SDLC coverage** with *
 
 | # | Gap Type | Location | Severity | Evidence | Suggested Fix |
 |---|----------|----------|----------|----------|---------------|
-| 1 | **Circular dependency** | P11 → P19/21 | **CRITICAL** | `.cursor/ai-driven-workflow/11-integration-testing.md:13-17` | Remove P19, P21 from P11 prerequisites |
+| 1 | **Circular dependency** | P11 → P21 | **CRITICAL** | `.cursor/ai-driven-workflow/11-integration-testing.md:13-17` | Remove Protocol 21 dependency from P11 prerequisites or mark optional guidance |
 | 2 | **Circular dependency** | P12 → P15/21/23 | **CRITICAL** | `.cursor/ai-driven-workflow/12-quality-audit.md:14-17` | Remove P15, P21, P23 from P12 prerequisites |
 | 3 | **Circular dependency** | P13 → P19/15/21 | **CRITICAL** | `.cursor/ai-driven-workflow/13-uat-coordination.md:14-17` | Remove P19, P15, P21 from P13 prerequisites |
-| 4 | **Circular dependency** | P14 → P19/15/21 | **CRITICAL** | `.cursor/ai-driven-workflow/14-pre-deployment-staging.md:14-17` | Remove P19, P15, P21 from P14 prerequisites |
+| 4 | **Circular dependency** | P14 → P19/15/20/21 | **CRITICAL** | `.cursor/ai-driven-workflow/14-pre-deployment-staging.md:14-17` | Remove P19, P15, P20, P21 from P14 prerequisites |
 | 5 | **Circular dependency** | P15 → P21 | **HIGH** | `.cursor/ai-driven-workflow/15-production-deployment.md:14-17` | Remove P21 from P15 prerequisites |
 | 6 | **Incorrect handoff** | P10 → P15 (should be P11) | **HIGH** | `.cursor/ai-driven-workflow/10-process-tasks.md:381-382` | Correct handoff from "P15" to "P11" |
 | 7 | **Incorrect handoff** | P11 → P19 (should be P12) | **HIGH** | `.cursor/ai-driven-workflow/11-integration-testing.md:385-386` | Correct handoff from "P19" to "P12" |
@@ -95,21 +95,21 @@ LOW (3):       ███ Unclear branching, clarity issues
 
 ### Circular Dependencies Detected
 
-#### Critical Cycle: Protocols 11 ↔ 19 ↔ 21
-- **Protocol 11** (Integration Testing) depends on **Protocol 19** (Documentation) and **Protocol 21** (Maintenance)
+#### Critical Cycle: Protocols 11, 19, and 21
+- **Protocol 11** (Integration Testing) references **Protocol 21** for optional artifacts (`integration-scope-matrix.json`, `execution-artifact-manifest.json`)
 - **Protocol 19** depends on **Protocol 21**
 - **Protocol 21** depends on **Protocol 19, 20, 22, 23**
 - **Protocol 22** (Retrospective) depends on **Protocol 21**
 - **Protocol 23** (Script Governance) depends on **Protocol 19, 22**
 
-**Impact**: Integration testing cannot execute because it depends on protocols that run after deployment closure.
+**Impact**: Integration testing may stall if maintenance artifacts are unavailable; documentation and maintenance remain mutually dependent.
 
 **Evidence**:
 - `.cursor/ai-driven-workflow/11-integration-testing.md:104-114`
 - `.cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md:12-22`
 - `.cursor/ai-driven-workflow/21-maintenance-support.md:14-21`
 
-**Recommended Fix**: Remove forward dependencies from Protocol 11 or mark as documentation-only references.
+**Recommended Fix**: Remove Protocol 21 as a prerequisite for Protocol 11 or explicitly mark it as post-execution guidance while decoupling the Protocol 19↔21 circular dependency.
 
 ### Orphan Protocols
 
