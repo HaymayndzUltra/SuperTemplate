@@ -56,6 +56,7 @@ graph TD
   P10 --> P11
   P07 --> P11
   P09 --> P11
+  P21 -."CIRCULAR: Future protocol".-> P11
   
   %% PHASE 3-4 GAP: Missing transition from Protocol 11
   P11 -."UNVERIFIED: No clear next protocol".-> P12
@@ -71,6 +72,7 @@ graph TD
   P13 -."UNVERIFIED: Broken handoff".-> P14
   P19 -."CIRCULAR: Future protocol".-> P14
   P15 -."CIRCULAR: Future protocol".-> P14
+  P20 -."CIRCULAR: Future protocol".-> P14
   
   P14 --> P15
   P15 --> P16

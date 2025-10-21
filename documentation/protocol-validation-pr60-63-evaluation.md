@@ -96,12 +96,15 @@ PR #61 captures the broadest set of correct gap findings without introducing fal
 1. **Fix catalogue evidence gaps**
    - Replace the non-file SDLC coverage citation in `.cursor/commands/find-missing.md` with a verifiable artefact path or annotate it as unverifiable.【F:.cursor/commands/find-missing.md†L187-L205】
    - **Acceptance:** Every gap entry cites an existing repository file and line span.
+   - **Status:** ✅ `.cursor/commands/find-missing.md` now references `validation-summary.md:6-33` for SDLC coverage, and all gap entries cite real files.
 2. **Correct dependency documentation**
    - Update gap listings to remove the P11→P19 overstatement and add the missing P14→P20 dependency; align the Mermaid map accordingly.【F:.cursor/ai-driven-workflow/11-integration-testing.md†L13-L18】【F:.cursor/ai-driven-workflow/14-pre-deployment-staging.md†L13-L18】【F:dependency-map.mermaid†L60-L74】
    - **Acceptance:** Gap summaries and diagrams reflect the actual prerequisites with totals remaining 5/3/9/4.
+   - **Status:** ✅ Gap tables and `.cursor/commands/find-missing.md` reference P11→P21 only, include the P14→P20 circular dependency, and `dependency-map.mermaid` carries the corrected edges.
 3. **Enforce verification report structure**
    - Require future verification reports to include the six completeness components (inventory, dependency matrix, evidence log with file:line paths, SDLC coverage summary, severity table, remediation actions with effort estimates).
    - **Acceptance:** Next AI-generated report contains all six components and achieves ≥90 % evidence validation during spot checks.
+   - **Status:** ✅ `validation-summary.md` now documents the mandatory six-component structure and ≥90 % evidence validation threshold for future reports.
 
 ## Appendix
 ### A1. PR #60 Severity Commentary

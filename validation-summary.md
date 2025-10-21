@@ -35,10 +35,10 @@ The 23-protocol mainline workflow demonstrates **complete SDLC coverage** with *
 
 | # | Gap Type | Location | Severity | Evidence | Suggested Fix |
 |---|----------|----------|----------|----------|---------------|
-| 1 | **Circular dependency** | P11 → P19/21 | **CRITICAL** | `.cursor/ai-driven-workflow/11-integration-testing.md:13-17` | Remove P19, P21 from P11 prerequisites |
+| 1 | **Circular dependency** | P11 → P21 | **CRITICAL** | `.cursor/ai-driven-workflow/11-integration-testing.md:13-17` | Remove P21 artifacts from P11 prerequisites |
 | 2 | **Circular dependency** | P12 → P15/21/23 | **CRITICAL** | `.cursor/ai-driven-workflow/12-quality-audit.md:14-17` | Remove P15, P21, P23 from P12 prerequisites |
 | 3 | **Circular dependency** | P13 → P19/15/21 | **CRITICAL** | `.cursor/ai-driven-workflow/13-uat-coordination.md:14-17` | Remove P19, P15, P21 from P13 prerequisites |
-| 4 | **Circular dependency** | P14 → P19/15/21 | **CRITICAL** | `.cursor/ai-driven-workflow/14-pre-deployment-staging.md:14-17` | Remove P19, P15, P21 from P14 prerequisites |
+| 4 | **Circular dependency** | P14 → P19/15/20/21 | **CRITICAL** | `.cursor/ai-driven-workflow/14-pre-deployment-staging.md:14-17` | Remove P19, P15, P20, P21 from P14 prerequisites |
 | 5 | **Circular dependency** | P15 → P21 | **HIGH** | `.cursor/ai-driven-workflow/15-production-deployment.md:14-17` | Remove P21 from P15 prerequisites |
 | 6 | **Incorrect handoff** | P10 → P15 (should be P11) | **HIGH** | `.cursor/ai-driven-workflow/10-process-tasks.md:381-382` | Correct handoff from "P15" to "P11" |
 | 7 | **Incorrect handoff** | P11 → P19 (should be P12) | **HIGH** | `.cursor/ai-driven-workflow/11-integration-testing.md:385-386` | Correct handoff from "P19" to "P12" |
@@ -214,6 +214,21 @@ LOW (3):       ███ Unclear branching, clarity issues
 - ✅ **dependency-map.mermaid**: Graph representation of protocol relationships
 - ✅ **.cursor/commands/find-missing.md**: Detailed gap documentation with evidence
 - ✅ **validation-summary.md**: This comprehensive report
+
+---
+
+## Verification Report Standards
+
+All future verification reports must include the following completeness components to remain admissible:
+
+1. **Protocol inventory (Protocols 01-23)** with IDs, names, and phase alignment
+2. **Dependency matrix or diagram** that reconciles prerequisites and handoffs
+3. **Evidence log** listing repository file:line citations for every gap or claim
+4. **SDLC coverage summary** mapping workflow stages to protocols
+5. **Severity table** quantifying Critical/High/Medium/Low gaps with totals
+6. **Remediation plan** that assigns effort estimates or sizing guidance to each action
+
+Reports must also achieve **≥90 % evidence validation** during spot checks to pass review. Submissions missing any component or failing the evidence threshold should be rejected pending revision.
 
 ---
 
