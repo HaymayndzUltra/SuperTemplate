@@ -17,13 +17,13 @@ The 23-protocol mainline workflow demonstrates **complete SDLC coverage** with *
 ### Key Findings
 - ✅ **Complete SDLC Coverage**: All standard workflow phases covered (Client Discovery → Closure)
 - ✅ **28 protocols identified** across `.cursor/ai-driven-workflow/` (23 mainline + 5 supporting/alternate)
-- ❌ **21 gaps documented** across 4 categories
+- ❌ **24 gaps documented** across 4 categories
   - **10 incorrect handoff targets** (e.g., P10→P15 should be P10→P11)
-  - **7 circular dependencies** creating temporal impossibilities
+  - **10 circular dependencies** creating temporal impossibilities (including self-referential prerequisites)
   - **1 duplicate coverage** issue (P02 vs P24)
   - **3 undefined input** issues
 - ❌ **Phase 4 Critical Issues**: Quality/Testing phase (P11-P14) has 7 critical/high severity gaps
-- ❌ **5 CRITICAL severity gaps**: All circular dependencies in Protocols 11-15
+- ❌ **8 CRITICAL severity gaps**: Circular dependencies and self-referential prerequisites in Protocols 11-15, 19, 21
 - ⚠️ **Protocol titles extracted** for all protocols (no "unverified" entries)
 - ⚠️ **Handoff numbering errors** suggest copy-paste mistakes or outdated documentation
 
@@ -46,18 +46,18 @@ The 23-protocol mainline workflow demonstrates **complete SDLC coverage** with *
 | 9 | **Circular dependency** | P17/18 → P19 | **MEDIUM** | `.cursor/ai-driven-workflow/17-incident-response-rollback.md:14-17` | Remove P19 from P17, P18 prerequisites |
 | 10 | **Incorrect handoff** | P06 → P06 (should be P07) | **MEDIUM** | `.cursor/ai-driven-workflow/06-create-prd.md:388-389` | Correct self-referencing handoff |
 
-### Complete Gap Inventory (21 Total)
+### Complete Gap Inventory (24 Total)
 
-See `.cursor/commands/find-missing.md` for detailed documentation of all 21 gaps including:
+See `.cursor/commands/find-missing.md` for detailed documentation of all 24 gaps including:
 - **10 incorrect handoff targets** (Missing Transitions)
-- **7 circular dependencies** (Temporal Impossibilities)
+- **10 circular dependencies** (Temporal Impossibilities + Self-referential Prerequisites)
 - **1 duplicate coverage** issue
 - **3 undefined input** issues
 
 ### Gap Distribution by Severity
 
 ```
-CRITICAL (5):  █████ All circular dependencies in P11-P15
+CRITICAL (8):  ████████ Circular dependencies and self-referential prerequisites
 HIGH (4):      ████ Incorrect handoffs breaking workflow sequence
 MEDIUM (9):    █████████ Documentation errors, minor circular deps
 LOW (3):       ███ Unclear branching, clarity issues
@@ -228,7 +228,26 @@ All future verification reports must include the following completeness componen
 5. **Severity table** quantifying Critical/High/Medium/Low gaps with totals
 6. **Remediation plan** that assigns effort estimates or sizing guidance to each action
 
-Reports must also achieve **≥90 % evidence validation** during spot checks to pass review. Submissions missing any component or failing the evidence threshold should be rejected pending revision.
+Reports must also achieve **≥90 % evidence validation** during spot checks to pass review. Submissions missing any component or failing the evidence threshold should be rejected pending revision.
+
+---
+
+## Automated Evidence Validation
+
+An automated evidence citation validator is available at `scripts/validate_evidence_citations.py`:
+
+```bash
+# Validate a single report
+python3 scripts/validate_evidence_citations.py documentation/my-report.md
+
+# CI/CD Integration
+# Evidence validation runs automatically on PRs via .github/workflows/evidence-validation.yml
+```
+
+**Validation Criteria:**
+- At least 1 valid `.cursor/...:line` citation per gap/finding
+- ≥60% citation validation rate (files must exist)
+- Citations must use format: `` `.cursor/ai-driven-workflow/XX-protocol.md:line` ``
 
 ---
 

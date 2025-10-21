@@ -13,14 +13,14 @@
 ### Required Artifacts
 - [ ] `FINAL-PRD.md` from Protocol 06 – authoritative product requirements
 - [ ] `architecture-decision-log.json` from Protocol 07 – consolidated architecture reasoning
-- [ ] `SPRINT-IMPLEMENTATION-NOTES.md` from Protocol 21 – development insights and caveats
-- [ ] `INTEGRATION-VALIDATION-REPORT.zip` from Protocol 15 – cross-system validation evidence
-- [ ] `QUALITY-AUDIT-PACKAGE.zip` from Protocol 19 – audit findings and recommendations
+- [ ] `SPRINT-IMPLEMENTATION-NOTES.md` from Protocol 10 – development insights and caveats
+- [ ] `INTEGRATION-VALIDATION-REPORT.zip` from Protocol 11 – cross-system validation evidence
+- [ ] `QUALITY-AUDIT-PACKAGE.zip` from Protocol 12 – audit findings and recommendations
 - [ ] `PRODUCTION-DEPLOYMENT-REPORT.json` from Protocol 15 – release outcomes and approvals
-- [ ] `OBSERVABILITY-BASELINE.md` from Protocol 19 – monitoring dashboards and metrics
-- [ ] `INCIDENT-POSTMORTEMS/` from Protocol 20 – recent incident analyses
-- [ ] `PERFORMANCE-INSIGHTS.md` from Protocol 21 – optimization results and targets
-- [ ] `UAT-FEEDBACK.csv` from Protocol 20 – stakeholder feedback and outstanding actions
+- [ ] `OBSERVABILITY-BASELINE.md` from Protocol 16 – monitoring dashboards and metrics
+- [ ] `INCIDENT-POSTMORTEMS/` from Protocol 17 – recent incident analyses (if available)
+- [ ] `PERFORMANCE-INSIGHTS.md` from Protocol 18 – optimization results and targets (if available)
+- [ ] `UAT-FEEDBACK.csv` from Protocol 13 – stakeholder feedback and outstanding actions
 
 ### Required Approvals
 - [ ] Product Owner sign-off confirming scope completeness

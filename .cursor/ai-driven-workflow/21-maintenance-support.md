@@ -15,9 +15,9 @@
 - [ ] `operational-handover-record.json` from Protocol 20 – ownership assignments and SLAs
 - [ ] `knowledge-transfer-feedback.json` from Protocol 19 – open knowledge gaps and follow-ups
 - [ ] `OBSERVABILITY-BASELINE.md` from Protocol 19 – monitoring dashboards and alert thresholds
-- [ ] `INCIDENT-POSTMORTEMS/` from Protocol 20 – outstanding corrective actions
-- [ ] `PERFORMANCE-IMPROVEMENT-BACKLOG.json` from Protocol 21 – optimization work queue
-- [ ] `TECH-DEBT-REGISTER.md` from Protocol 21 – backlog of technical debt items
+- [ ] `INCIDENT-POSTMORTEMS/` from Protocol 17 – outstanding corrective actions (if available)
+- [ ] `PERFORMANCE-IMPROVEMENT-BACKLOG.json` (initialize as empty template) – optimization work queue to be populated
+- [ ] `TECH-DEBT-REGISTER.md` from Protocol 10 – backlog of technical debt items identified during development
 - [ ] `SECURITY-RISK-LOG.csv` from Security Review – active security obligations
 - [ ] `SERVICE-CATALOG.xlsx` from Operations – service inventory and dependencies
 

@@ -1,0 +1,79 @@
+name: Evidence Citation Validation
+
+on:
+  pull_request:
+    paths:
+      - 'documentation/**/*validation*.md'
+      - 'documentation/**/*verification*.md'
+      - 'documentation/**/*evaluation*.md'
+      - '.artifacts/protocol-*/evidence-manifest.json'
+
+jobs:
+  validate-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Find validation reports
+        id: find_reports
+        run: |
+          # Find all validation/verification/evaluation reports in documentation/
+          reports=$(find documentation/ -type f -name "*validation*.md" -o -name "*verification*.md" -o -name "*evaluation*.md" | head -10)
+          echo "Reports found:"
+          echo "$reports"
+          echo "reports<<EOF" >> $GITHUB_OUTPUT
+          echo "$reports" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Validate evidence citations
+        run: |
+          reports="${{ steps.find_reports.outputs.reports }}"
+          failed=0
+          
+          if [ -z "$reports" ]; then
+            echo "ℹ️  No validation reports found to check"
+            exit 0
+          fi
+          
+          echo "📊 Validating evidence citations in reports..."
+          echo ""
+          
+          while IFS= read -r report; do
+            if [ -n "$report" ] && [ -f "$report" ]; then
+              echo "Checking: $report"
+              if python3 scripts/validate_evidence_citations.py "$report"; then
+                echo "✅ $report passed"
+              else
+                echo "❌ $report failed"
+                failed=$((failed + 1))
+              fi
+              echo ""
+            fi
+          done <<< "$reports"
+          
+          if [ $failed -gt 0 ]; then
+            echo ""
+            echo "❌ Evidence validation failed for $failed report(s)"
+            echo "Reports must include valid .cursor/...:line citations for all findings"
+            exit 1
+          fi
+          
+          echo "✅ All reports meet evidence standards"
+      
+      - name: Comment on PR
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ **Evidence Validation Failed**\n\nVerification reports must include valid `.cursor/...:line` citations for all findings.\n\nSee the [Evidence Standards Guide](../blob/main/documentation/validation-guide.md) for requirements.'
+            })

@@ -145,9 +145,33 @@
 **Gap Type**: Circular dependency  
 **Involved Protocols**: Protocol 19  
 **Severity**: **MEDIUM**  
-**Evidence**: `.cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md:17`  
+**Evidence**: `.cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md:16-17`  
 **Description**: Protocol 19 prerequisites reference Protocol 21 "SPRINT-IMPLEMENTATION-NOTES.md" creating a circular dependency where documentation depends on maintenance which depends on documentation.  
 **Suggested Fix**: Remove Protocol 21 from Protocol 19 prerequisites. Documentation should gather implementation notes from development phase (Protocols 10-11), not from future maintenance.
+
+### 8. Protocol 19 Self-Referential Prerequisites
+**Gap Type**: Self-dependency / Circular reference  
+**Involved Protocols**: Protocol 19  
+**Severity**: **CRITICAL**  
+**Evidence**: `.cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md:18,20`  
+**Description**: Protocol 19 prerequisites reference its own outputs: "QUALITY-AUDIT-PACKAGE.zip from Protocol 19" and "OBSERVABILITY-BASELINE.md from Protocol 19". A protocol cannot depend on artifacts it hasn't generated yet.  
+**Suggested Fix**: Remove self-referential Protocol 19 artifacts from prerequisites. These should come from Protocol 16 (Monitoring) and Protocol 12 (Quality Audit).
+
+### 9. Protocol 21 Self-Referential Prerequisites
+**Gap Type**: Self-dependency / Circular reference  
+**Involved Protocols**: Protocol 21  
+**Severity**: **CRITICAL**  
+**Evidence**: `.cursor/ai-driven-workflow/21-maintenance-support.md:19-20`  
+**Description**: Protocol 21 prerequisites reference its own outputs: "PERFORMANCE-IMPROVEMENT-BACKLOG.json from Protocol 21" and "TECH-DEBT-REGISTER.md from Protocol 21". A protocol cannot depend on artifacts it generates during its own execution.  
+**Suggested Fix**: Remove self-referential Protocol 21 artifacts from prerequisites. These should be initialized as empty/template files or come from earlier protocols.
+
+### 10. Protocol 14 → Protocol 20 Circular Dependency
+**Gap Type**: Circular dependency / Forward reference  
+**Involved Protocols**: Protocol 14  
+**Severity**: **CRITICAL**  
+**Evidence**: `.cursor/ai-driven-workflow/14-pre-deployment-staging.md:16`  
+**Description**: Protocol 14 prerequisites reference "UAT-CLOSURE-PACKAGE.zip from Protocol 20" but Protocol 20 is Project Closure which occurs after deployment. Pre-deployment staging (Phase 4) cannot depend on project closure (Phase 6) artifacts.  
+**Suggested Fix**: Remove Protocol 20 from Protocol 14 prerequisites. Pre-deployment should depend only on Protocol 13 (UAT) outputs.
 
 ---
 
@@ -217,13 +241,13 @@
 | Gap Category | Count | Critical | High | Medium | Low |
 |--------------|-------|----------|------|--------|-----|
 | **Missing Transitions (Incorrect Handoffs)** | 10 | 1 | 3 | 5 | 1 |
-| **Circular Dependencies** | 7 | 4 | 1 | 2 | 0 |
+| **Circular Dependencies** | 10 | 7 | 1 | 2 | 0 |
 | **Duplicate Coverage** | 1 | 0 | 0 | 1 | 0 |
 | **Undefined Inputs** | 3 | 0 | 0 | 1 | 2 |
-| **Total Gaps Identified** | **21** | **5** | **4** | **9** | **3** |
+| **Total Gaps Identified** | **24** | **8** | **4** | **9** | **3** |
 
 ### Severity Breakdown
-- **CRITICAL** (5): Circular dependencies creating temporal impossibilities
+- **CRITICAL** (8): Circular dependencies creating temporal impossibilities, including self-referential prerequisites
 - **HIGH** (4): Incorrect handoff targets breaking workflow sequence  
 - **MEDIUM** (9): Documentation errors, unclear transitions, minor circular dependencies
 - **LOW** (3): Unclear branching, documentation clarity issues

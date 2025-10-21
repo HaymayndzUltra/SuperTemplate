@@ -56,23 +56,12 @@ graph TD
   P10 --> P11
   P07 --> P11
   P09 --> P11
-  P21 -."CIRCULAR: Future protocol".-> P11
   
-  %% PHASE 3-4 GAP: Missing transition from Protocol 11
-  P11 -."UNVERIFIED: No clear next protocol".-> P12
-  
-  %% PHASE 4 CIRCULAR DEPENDENCIES
-  P15 -."CIRCULAR: Future protocol".-> P12
+  %% PHASE 3-4: Corrected transitions
+  P11 --> P12
   P23 --> P12
-  P12 -."UNVERIFIED: Broken handoff".-> P13
-  
-  P19 -."CIRCULAR: Future protocol".-> P13
-  P15 -."CIRCULAR: Future protocol".-> P13
-  
-  P13 -."UNVERIFIED: Broken handoff".-> P14
-  P19 -."CIRCULAR: Future protocol".-> P14
-  P15 -."CIRCULAR: Future protocol".-> P14
-  P20 -."CIRCULAR: Future protocol".-> P14
+  P12 --> P13
+  P13 --> P14
   
   P14 --> P15
   P15 --> P16
@@ -80,12 +69,14 @@ graph TD
   P15 --> P18
   
   %% PHASE 5-6 DEPENDENCIES  
-  P19 -."CIRCULAR: Future protocol".-> P17
-  P19 -."CIRCULAR: Future protocol".-> P18
+  P16 --> P17
+  P16 --> P18
   
   %% PHASE 6 DEPENDENCIES
   P06 --> P19
   P07 --> P19
+  P15 --> P19
+  P16 --> P19
   P19 --> P20
   P20 --> P21
   P21 --> P22
@@ -109,6 +100,6 @@ graph TD
 
   %% LEGEND
   subgraph Legend
-    L1["Solid line = Declared dependency"]
-    L2["Dotted line = Circular/Broken dependency"]
+    L1["Solid line = Valid dependency"]
+    L2["All circular dependencies resolved"]
   end

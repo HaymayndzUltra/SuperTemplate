@@ -1,115 +1,67 @@
-# Protocol Analysis & Validation Tool
+---
+title: "Protocol Verification Meta-Instructions (v2)"
+version: "2025-10-21"
+checksum_required: true
+---
 
-## Purpose
-Analyze a single protocol file from the AI-Driven Workflow System to verify:
-- Instruction clarity and completeness
-- Artifact input/output consistency
-- Gate logic and halting conditions
-- Integration with adjacent protocols
+## 0. Execution Controls
+1. Abort on missing inputs, malformed Markdown, or unreadable artifacts.
+2. Record `execution_id`, timestamp, tool versions; include in report.
 
-## Required Inputs
-Before starting, confirm you have:
-1. **Protocol File Path** (e.g., `.cursor/ai-driven-workflow/02-client-discovery-initiation.md`)
-2. **Expected Input Artifacts** (list file paths this protocol should consume)
-3. **Expected Output Artifacts** (list file paths this protocol should produce)
+## 1. Required Inputs
+- `protocol_path`
+- `expected_inputs[]`
+- `expected_outputs[]`
+- `workspace_root`
+- Optional: `prev_protocol_path`, `next_protocol_path`
 
-**Optional Inputs**:
-- Previous protocol file path (for flow validation)
-- Next protocol file path (for flow validation)
+## 2. Multi-Layer Validation
+### 2.1 Syntactic Pass
+- Parse Markdown via AST.
+- Check numbering, heading hierarchy, fenced blocks.
+- Emit `syntax_checks` entries with pass/fail and evidence.
 
-## Analysis Procedure
+### 2.2 Semantic Pass
+- For each instruction: extract verb/actor/object, classify (`Action|Decision|Validation|Documentation`), rate clarity with rubric and justification.
+- For artifacts: cross-reference expected lists, verify existence, capture `sha256`, size, schema compliance.
+- For gates: classify (`AI_AUTOMATED|HUMAN_APPROVAL|CONDITIONAL_BRANCH`), require measurable criterion, log parsed metric.
 
-### Step 1: Protocol Structure Verification
-Read the target protocol file and extract:
-- Protocol ID/number
-- All instruction steps (numbered or bulleted)
-- All artifact references (inputs and outputs)
-- All decision gates (approval points, conditional logic)
+### 2.3 Contextual Pass
+- Compare adjacent protocol artifacts for format alignment.
+- Reconcile instructions with `config/protocol_gates/XX.yaml`.
+- Check consistency against `.artifacts/scripts/script-index.json`.
 
-**If the protocol file doesn't exist or is malformed, STOP and report the error.**
+## 3. Deviation Detection
+- Maintain `issues` array with severity (`critical|major|minor`), evidence, remediation hint.
+- Auto-raise `critical` when syntactic or artifact checks fail.
 
-### Step 2: Instruction Clarity Assessment
-For each instruction step:
-- Quote the exact text
-- Classify as: [Action | Decision | Validation | Documentation]
-- Rate clarity (1-5 scale):
-  - **5**: Actionable, specific, measurable
-  - **3**: Understandable but vague (e.g., "ensure quality")
-  - **1**: Ambiguous or missing critical details
-- Flag issues: undefined terms, missing prerequisites, circular references
-
-### Step 3: Artifact Consistency Check
-For each artifact mentioned in the protocol:
-- Verify it appears in the provided input/output lists
-- Check if the artifact path exists in the workspace (use file search)
-- Identify orphaned artifacts (referenced but not produced/consumed)
-- Note schema mismatches (if artifact templates exist)
-
-### Step 4: Gate Logic Validation
-For each decision point:
-- Classify gate type:
-  - **AI-Automated**: Scriptable validation (e.g., "run linter")
-  - **Human-Approval**: Requires stakeholder sign-off
-  - **Conditional-Branch**: If/else logic based on prior state
-- Verify halting criteria are measurable (e.g., "all tests pass" vs. "code is good")
-- Check if gate references actual artifacts or metrics
-
-### Step 5: Flow Integration (if adjacent protocols provided)
-- Compare previous protocol's output artifacts to current protocol's input artifacts
-- Compare current protocol's output artifacts to next protocol's input artifacts
-- Flag format incompatibilities (e.g., JSON vs. Markdown)
-
-### Step 6: Generate Report
-Output analysis in this JSON structure:
-
+## 4. JSON Output Schema
 ```json
 {
-  "protocol_id": "<extracted from file or 'UNKNOWN'>",
-  "file_path": "<actual path analyzed>",
-  "structure_valid": true|false,
-  "step_analysis": [
-    {
-      "step_number": 1,
-      "instruction_text": "<exact quote>",
-      "type": "Action|Decision|Validation|Documentation",
-      "clarity_score": 1-5,
-      "issues": ["Undefined term: 'quality gate'", "Missing prerequisite: API key setup"]
-    }
-  ],
-  "artifact_verification": {
-    "inputs": [
-      {"name": "job-post.md", "status": "verified|missing|undefined", "path": "<actual path or null>"}
-    ],
-    "outputs": [
-      {"name": "proposal.md", "status": "verified|missing|undefined", "path": "<actual path or null>"}
-    ],
-    "orphaned": ["artifact referenced but not in input/output lists"]
+  "execution_id": "<uuid>",
+  "protocol_id": "<string>",
+  "file_path": "<string>",
+  "syntax_checks": [...],
+  "step_analysis": [...],
+  "artifact_verification": {...},
+  "gate_analysis": [...],
+  "context_alignment": {
+    "previous_protocol": {...},
+    "next_protocol": {...},
+    "gate_config": {...},
+    "script_registry": {...}
   },
-  "gates": [
-    {
-      "step_number": 3,
-      "type": "Human-Approval",
-      "criteria_explicit": true,
-      "criteria_text": "<exact quote of success condition>",
-      "issues": ["Criteria references undefined metric 'stakeholder satisfaction'"]
-    }
-  ],
-  "flow_validation": {
-    "previous_protocol": {
-      "compatible": true|false|"not_provided",
-      "issues": ["Output 'brief.json' expected but previous protocol produces 'brief.md'"]
-    },
-    "next_protocol": {
-      "compatible": true|false|"not_provided",
-      "issues": []
-    }
-  },
-  "critical_issues": [
-    "Step 4 references non-existent artifact 'risk-matrix.csv'",
-    "Gate at step 7 has no measurable success criteria"
-  ],
-  "recommendations": [
-    "Add explicit artifact schema for 'proposal.md' in protocol header",
-    "Replace 'ensure quality' with 'run validation script X and verify exit code 0'"
+  "issues": [...],
+  "recommendations": [...],
+  "evidence_manifest": [
+    {"type": "file_hash", "path": "<rel_path>", "sha256": "<hash>"}
   ]
 }
+
+5. Compliance Guardrails
+Reject run if JSON fails schema (documentation/sample-manifests/protocol-verification.schema.json).
+Compute checksum diff versus prior execution; include machine-readable delta.
+Persist report into documentation/pr-reviews/<execution_id>.json and append summary to documentation/MASTER-VALIDATOR-COMPLETE-SPEC.md.
+6. Post-Execution Duties
+Summarize critical issues with remediation order.
+Trigger telemetry via scripts/emit_gate_violation.py when blockers appear.

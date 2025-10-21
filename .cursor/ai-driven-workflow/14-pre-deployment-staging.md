@@ -11,15 +11,15 @@
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
 ### Required Artifacts
-- [ ] `QUALITY-AUDIT-PACKAGE.zip` from Protocol 19 – audit readiness evidence
-- [ ] `integration-evidence-bundle.zip` from Protocol 15 – integration validation summary
-- [ ] `UAT-CLOSURE-PACKAGE.zip` from Protocol 20 – stakeholder acceptance proof (if available)
+- [ ] `QUALITY-AUDIT-PACKAGE.zip` from Protocol 12 – audit readiness evidence
+- [ ] `integration-evidence-bundle.zip` from Protocol 11 – integration validation summary
+- [ ] `UAT-CLOSURE-PACKAGE.zip` from Protocol 13 – stakeholder acceptance proof
 - [ ] `.artifacts/pre-deployment/release-manifest.json` (initial draft) from Release Planning
 - [ ] Latest deployment scripts (`scripts/deploy_*.sh`, `scripts/rollback_*.sh`) from repository
 
 ### Required Approvals
-- [ ] Quality Audit readiness recommendation signed by Senior Quality Engineer (Protocol 19)
-- [ ] Product Owner confirmation that release scope is fixed (Protocol 06/15)
+- [ ] Quality Audit readiness recommendation signed by Senior Quality Engineer (Protocol 12)
+- [ ] Product Owner confirmation that release scope is fixed (Protocol 06)
 - [ ] Security and compliance lead clearance for staging deployment rehearsals
 
 ### System State Requirements
@@ -42,7 +42,7 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 ### STEP 1: Intake Validation and Staging Alignment
 
 1. **`[MUST]` Confirm Upstream Approvals:**
-   * **Action:** Validate required artifacts and approvals from Protocols 4, 9, and 15 before staging rehearsal begins.
+   * **Action:** Validate required artifacts and approvals from Protocols 11, 12, and 13 before staging rehearsal begins.
    * **Communication:** 
      > "[MASTER RAY™ | PHASE 1 START] - Validating upstream approvals and artifact completeness..."
    * **Halt condition:** Stop if any prerequisite artifact missing or expired.
