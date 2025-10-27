@@ -1,0 +1,12 @@
+{
+  "upgrade_id": "UPG09",
+  "name": "Meta-Cognition Loop",
+  "goal": "Introduce cross-phase reflection after major protocols to detect redundancies and contradictions.",
+  "layers": ["reasoning", "governance"],
+  "touchpoints": ["P20","P22"],
+  "dependencies": ["UPG02","UPG06"],
+  "expected_outcomes": [
+    {"metric": "redundancy_detection_precision", "target": 0.9}
+  ],
+  "risks": {"cycle_risk": "low", "gate_regression_risk": "low", "perf_risk": "low"}
+}

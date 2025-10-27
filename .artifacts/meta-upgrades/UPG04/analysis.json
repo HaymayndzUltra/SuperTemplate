@@ -1,0 +1,7 @@
+{
+  "scores": {"intent_match": 0.97, "dependency_satisfaction": 0.95, "gate_compatibility": 0.96, "governance_coherence": 0.98, "performance_risk_penalty": 0.06},
+  "alignment_score": 0.35*0.97 + 0.25*0.95 + 0.2*0.96 + 0.2*0.98 - 0.06,
+  "findings": ["Ledger enables auditable reasoning without altering protocol order."],
+  "conflicts": [],
+  "remediation_options": ["Sample low-signal decisions to control overhead, maintain ≥95% coverage."]
+}

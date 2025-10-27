@@ -1,0 +1,6 @@
+{
+  "decision": "Accept",
+  "alignment_score": 0.35*0.92 + 0.25*0.88 + 0.2*0.95 + 0.2*0.96 - 0.03,
+  "evidence_refs": ["../UPG05/intent.json","../UPG05/analysis.json","../pop/pop-activation-check.json"],
+  "change_impact": {"affected_protocols": ["P12","P20","P23"], "gates_changed": [], "risk_mitigation": ["Observer until S0–S4 green"]}
+}

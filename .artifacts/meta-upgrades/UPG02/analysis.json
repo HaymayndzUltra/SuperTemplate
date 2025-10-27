@@ -1,0 +1,7 @@
+{
+  "scores": {"intent_match": 0.98, "dependency_satisfaction": 0.95, "gate_compatibility": 0.95, "governance_coherence": 0.97, "performance_risk_penalty": 0.02},
+  "alignment_score": 0.35*0.98 + 0.25*0.95 + 0.2*0.95 + 0.2*0.97 - 0.02,
+  "findings": ["DNA schema aligns with all protocols; enables traceability."],
+  "conflicts": [],
+  "remediation_options": ["Stage rollout by phase to minimize churn."]
+}

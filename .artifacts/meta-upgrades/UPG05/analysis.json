@@ -1,0 +1,7 @@
+{
+  "scores": {"intent_match": 0.92, "dependency_satisfaction": 0.88, "gate_compatibility": 0.95, "governance_coherence": 0.96, "performance_risk_penalty": 0.03},
+  "alignment_score": 0.35*0.92 + 0.25*0.88 + 0.2*0.95 + 0.2*0.96 - 0.03,
+  "findings": ["POP in Observer mode poses no risk; Controller activation gated."],
+  "conflicts": [],
+  "remediation_options": ["Delay Controller until S0–S4 activation criteria satisfied."]
+}

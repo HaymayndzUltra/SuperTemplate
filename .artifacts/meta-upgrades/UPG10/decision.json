@@ -1,0 +1,6 @@
+{
+  "decision": "Accept",
+  "alignment_score": 0.35*0.88 + 0.25*0.9 + 0.2*0.94 + 0.2*0.96 - 0.03,
+  "evidence_refs": ["../UPG10/intent.json","../UPG10/analysis.json"],
+  "change_impact": {"affected_protocols": ["P12","P19","P22","P23"], "gates_changed": [], "risk_mitigation": ["keep read-only until POP Controller"]}
+}

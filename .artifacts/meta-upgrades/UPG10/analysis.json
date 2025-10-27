@@ -1,0 +1,7 @@
+{
+  "scores": {"intent_match": 0.88, "dependency_satisfaction": 0.9, "gate_compatibility": 0.94, "governance_coherence": 0.96, "performance_risk_penalty": 0.03},
+  "alignment_score": 0.35*0.88 + 0.25*0.9 + 0.2*0.94 + 0.2*0.96 - 0.03,
+  "findings": ["Fabric engine aggregates reasoning graph for cycle corroboration."],
+  "conflicts": [],
+  "remediation_options": ["Keep read-only until POP Controller; verify no spurious edges."]
+}

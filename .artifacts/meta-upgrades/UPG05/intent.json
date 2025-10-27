@@ -1,0 +1,12 @@
+{
+  "upgrade_id": "UPG05",
+  "name": "Protocol-of-Protocols (POP)",
+  "goal": "Provide a governance controller to detect cycles, gate skips, and version drift; start in Observer mode.",
+  "layers": ["governance"],
+  "touchpoints": ["P12","P20","P23"],
+  "dependencies": ["UPG02","UPG04","UPG03","UPG08"],
+  "expected_outcomes": [
+    {"metric": "observer_false_positive_rate", "target": 0.0}
+  ],
+  "risks": {"cycle_risk": "low", "gate_regression_risk": "low", "perf_risk": "low"}
+}
