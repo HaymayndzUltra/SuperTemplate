@@ -1,0 +1,12 @@
+{
+  "upgrade_id": "UPG10",
+  "name": "Reasoning Fabric Engine",
+  "goal": "Build a global read-only reasoning graph unifying DNA, Ledger, and governance edges for cycle detection corroboration.",
+  "layers": ["reasoning", "governance", "automation"],
+  "touchpoints": ["P12","P19","P22","P23"],
+  "dependencies": ["UPG02","UPG04","UPG05"],
+  "expected_outcomes": [
+    {"metric": "spurious_edge_rate", "target": 0.0}
+  ],
+  "risks": {"cycle_risk": "low", "gate_regression_risk": "low", "perf_risk": "low"}
+}

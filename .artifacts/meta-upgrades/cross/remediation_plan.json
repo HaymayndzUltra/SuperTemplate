@@ -1,0 +1,7 @@
+{
+  "remediations": [
+    {"upgrade": "UPG03", "action": "Ensure router selection precedes PEL; cap retries", "owners": ["protocol-router","pel-owner"], "status": "planned"},
+    {"upgrade": "UPG07", "action": "Route sandbox proposals to P22 for prioritization", "owners": ["pop-owner","retrospective-facilitator"], "status": "planned"},
+    {"upgrade": "UPG09", "action": "Bind meta-cognition outputs as P22 augments to avoid duplication", "owners": ["retrospective-facilitator"], "status": "planned"}
+  ]
+}

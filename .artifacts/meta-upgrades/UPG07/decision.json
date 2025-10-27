@@ -1,0 +1,6 @@
+{
+  "decision": "Adapt",
+  "alignment_score": 0.35*0.85 + 0.25*0.84 + 0.2*0.9 + 0.2*0.93 - 0.03,
+  "evidence_refs": ["../UPG07/intent.json","../UPG07/analysis.json"],
+  "change_impact": {"affected_protocols": ["P08","P10","P12","P21","P22"], "gates_changed": [], "risk_mitigation": ["route via P22 prioritization before promotion"]}
+}

@@ -1,0 +1,12 @@
+{
+  "upgrade_id": "UPG08",
+  "name": "Temporal Reasoning Layer",
+  "goal": "Make gates and handoffs time-aware with SLAs and escalation policies.",
+  "layers": ["validation", "governance"],
+  "touchpoints": ["P02","P11","P12","P14","P15"],
+  "dependencies": [],
+  "expected_outcomes": [
+    {"metric": "sla_enforcement_rate", "target": 1.0}
+  ],
+  "risks": {"cycle_risk": "low", "gate_regression_risk": "low", "perf_risk": "medium"}
+}

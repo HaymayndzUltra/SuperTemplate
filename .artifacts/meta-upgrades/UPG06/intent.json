@@ -1,0 +1,12 @@
+{
+  "upgrade_id": "UPG06",
+  "name": "Cognitive Telemetry Dashboard",
+  "goal": "Expose deterministic metrics by reading Ledger, DNA, PEL, and POP (read-only).",
+  "layers": ["automation", "governance"],
+  "touchpoints": ["P12","P15","P16","P18","P19","P21","P22","P23"],
+  "dependencies": ["UPG04","UPG02","UPG03","UPG05"],
+  "expected_outcomes": [
+    {"metric": "overhead_runtime", "target": 0.05}
+  ],
+  "risks": {"cycle_risk": "low", "gate_regression_risk": "low", "perf_risk": "low"}
+}

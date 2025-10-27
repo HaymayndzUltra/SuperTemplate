@@ -1,0 +1,6 @@
+{
+  "method": "Bipartite graph overlay (upgrades→protocols) does not alter protocol DAG",
+  "protocol_cycles_detected": false,
+  "upgrade_induced_cycles": false,
+  "notes": "Upgrades add validation/governance overlays only; no protocol dependency rewrites."
+}

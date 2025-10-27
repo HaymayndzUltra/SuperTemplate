@@ -1,0 +1,15 @@
+{
+  "mode": "observer",
+  "activation_criteria": {
+    "dna_coverage": ">=90% protocols emit valid DNA",
+    "pik_pass_rate": ">=95% self-check pass on seeded cases",
+    "pel_conflicts": "no critical conflicts for 3 consecutive runs",
+    "ledger_coverage": ">=95% decision points covered"
+  },
+  "status": {
+    "dna_coverage": null,
+    "pik_pass_rate": null,
+    "pel_conflicts": null,
+    "ledger_coverage": null
+  }
+}

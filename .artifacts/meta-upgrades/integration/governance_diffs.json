@@ -1,0 +1,5 @@
+{
+  "quality_gates_unchanged_or_stricter": true,
+  "changed_gates": [],
+  "rationale": "All upgrades layer stricter evidence collection/coordination; no weakening detected."
+}

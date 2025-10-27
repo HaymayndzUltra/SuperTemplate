@@ -1,0 +1,8 @@
+{
+  "required": [
+    ".cursor/rules/master-rules/1-master-rule-context-discovery.mdc",
+    ".cursor/rules/master-rules/2-master-rule-ai-collaboration-guidelines.mdc"
+  ],
+  "present": true,
+  "checked_at": "${ISO8601}"
+}

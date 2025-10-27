@@ -1,0 +1,12 @@
+{
+  "upgrade_id": "UPG07",
+  "name": "Adaptive Protocol Mutation",
+  "goal": "Propose sandboxed protocol mutations; enforce gates via POP before promotion (no code edits).",
+  "layers": ["governance", "reasoning"],
+  "touchpoints": ["P08","P10","P12","P21","P22"],
+  "dependencies": ["UPG05"],
+  "expected_outcomes": [
+    {"metric": "gate_regressions_in_sandbox", "target": 0}
+  ],
+  "risks": {"cycle_risk": "low", "gate_regression_risk": "low", "perf_risk": "low"}
+}
