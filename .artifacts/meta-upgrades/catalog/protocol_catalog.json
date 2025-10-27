@@ -1,0 +1,932 @@
+{
+  "00": {
+    "file": ".cursor/ai-driven-workflow/00-generate-rules.md",
+    "title": "",
+    "objectives": [],
+    "dependencies": [
+      "- Conflicting signals (e.g., multiple frameworks): prefer source code analysis > `PROJECT-BRIEF.md` > dependency manifests"
+    ],
+    "gates": [],
+    "handoffs": [],
+    "invariants": []
+  },
+  "01": {
+    "file": ".cursor/ai-driven-workflow/01-client-proposal-generation.md",
+    "title": "PROTOCOL 01: CLIENT PROPOSAL GENERATION",
+    "objectives": [
+      "- Goals/objectives",
+      "> Criteria: Objectives and tone not fully captured.",
+      "| `jobpost-analysis.json` | `.artifacts/protocol-01/` | Parsed objectives, tone, risks | Protocol 02 |"
+    ],
+    "dependencies": [
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Monitor quality gate pass rates and execution velocity",
+      "## QUALITY CHECKS (GATES)",
+      "### Gate 4: Real Compliance Validation",
+      "- **Criteria**: HIPAA compliance check passes, quality gates enforce real thresholds.",
+      "- **Automation**: `python3 scripts/check_hipaa.py && python3 scripts/enforce_gates.py`",
+      "### Gate 5: Final Validation & Approval Readiness",
+      "- **Pass Threshold**: Validation script returns status `pass` and all real gates pass.",
+      "[RAY GATE FAILED: Job Post Intake Validation]",
+      "> \"Quality gate 'Job Post Intake Validation' failed.",
+      "> 2. Request gate waiver with justification"
+    ],
+    "handoffs": [
+      "## 01. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 02:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff",
+      "## HANDOFF CHECKLIST",
+      "### Pre-Handoff Verification",
+      "- [ ] **Handoff Summary:** `.artifacts/protocol-01/handoff-summary.md`",
+      "python3 scripts/prepare_handoff_review.py --protocol 01",
+      "- Document sign-offs in handoff manifest",
+      "4. **Generate Handoff Report:**"
+    ],
+    "invariants": []
+  },
+  "02": {
+    "file": ".cursor/ai-driven-workflow/02-client-discovery-initiation.md",
+    "title": "PROTOCOL 02: CLIENT DISCOVERY INITIATION (PROJECT-SCOPING COMPLIANT)",
+    "objectives": [
+      "> \"[MASTER RAY\u2122 | PHASE 1 START] - Reviewing accepted proposal and client reply to align objectives.\"",
+      "### Gate 1: Objective Alignment Gate",
+      "- **Criteria**: Business objectives, user goals, and success metrics documented and approved.",
+      "- **Pass Threshold**: Coverage score \u2265 95% across objectives, users, and KPIs.",
+      "- **Failure Handling**: Re-engage client, fill missing objectives, document delays.",
+      "- **Automation**: `python scripts/validate_discovery_objectives.py --input .artifacts/protocol-02/client-context-notes.md`",
+      "[MASTER RAY\u2122 | PHASE 1 START] - \"Analyzing proposal acceptance and clarifying business objectives.\"",
+      "#### Gate 1: Objective Alignment",
+      "# Validate business objectives and success criteria",
+      "python scripts/validate_discovery_objectives.py \\"
+    ],
+    "dependencies": [
+      "- name: Install dependencies",
+      "- Dependencies: `pyyaml`, `jsonschema`, `pydantic` (see `requirements.txt`)",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]"
+    ],
+    "gates": [
+      "- Track pattern effectiveness via gate pass rates and client satisfaction",
+      "- All 4 quality gates passed \u2192 Proceed",
+      "- 3/4 gates passed + documented waivers \u2192 Conditional proceed with monitoring",
+      "- <3 gates passed \u2192 Halt, schedule additional discovery session",
+      "When discovery blockers or quality gate failures occur:",
+      "1. **Identify Symptom:** What immediate issue prevented progress? (e.g., \"Gate 2 failed - incomplete integration requirements\")",
+      "**Blocker:** Gate 2 failure",
+      "5. **Validate Fix:** Re-run quality gate, confirm resolution",
+      "**Feedback Loop 2: Quality Gate Performance**",
+      "- **Collection:** Automated gate results stored in `.artifacts/protocol-02/gate-history.json`"
+    ],
+    "handoffs": [
+      "- **Proceed:** Execute handoff to Protocol 03",
+      "**Self-Awareness:** I acknowledge this gate failure blocks Protocol 03 handoff. I am proposing Option A (re-engage client for missing integration details) because [rationale].",
+      "- Did any artifacts require rework after handoff to Protocol 03?",
+      "## 02 . HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 03:",
+      "### Downstream Handoff Verification",
+      "# Run downstream handoff verification",
+      "python scripts/validate_protocol_handoffs.py \\",
+      "--output .artifacts/protocol-02/handoff-verification.json"
+    ],
+    "invariants": []
+  },
+  "03": {
+    "file": ".cursor/ai-driven-workflow/03-project-brief-creation.md",
+    "title": "PROTOCOL 03: PROJECT BRIEF CREATION (PROJECT-SCOPING COMPLIANT)",
+    "objectives": [
+      "* **Action:** Generate `PROJECT-BRIEF.md` with sections: Executive Summary, Business Objectives, Functional Scope, Technical Architecture Baseline, Delivery Plan, Communication Plan, Risks & Assumptions.",
+      "Slide 1: Objectives & Success Metrics"
+    ],
+    "dependencies": [
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 01. QUALITY GATES",
+      "### Gate 1: Discovery Evidence Verification",
+      "### Gate 2: Structural Integrity",
+      "### Gate 3: Approval Compliance",
+      "- **Failure Handling**: Escalate to account lead, reconcile feedback, update record, rerun gate.",
+      "[RAY GATE FAILED: Structural Integrity]"
+    ],
+    "handoffs": [
+      "## 01. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 04:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "04": {
+    "file": ".cursor/ai-driven-workflow/04-project-bootstrap-and-context-engineering.md",
+    "title": "PROTOCOL 04: PROJECT BOOTSTRAP AND CONTEXT ENGINEERING (GOVERNANCE COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "* **Action:** Produce `technical-baseline.json` summarizing stacks, services, and integration dependencies gleaned from the brief.",
+      "> \"[PHASE 2] - Validating local environment and dependencies.\"",
+      "* **Halt condition:** Stop if doctor script reports missing dependencies.",
+      "- Dependencies on other work",
+      "- **Failure Handling**: Remediate missing dependencies or rule errors, document fixes, rerun gate.",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 00. QUALITY GATES",
+      "### Gate 1: Brief Validation Gate",
+      "### Gate 2: Environment & Rule Integrity Gate",
+      "- **Failure Handling**: Remediate missing dependencies or rule errors, document fixes, rerun gate.",
+      "### Gate 3: Scaffold Validation Gate",
+      "### Gate 4: Context Validation Gate"
+    ],
+    "handoffs": [
+      "## 00. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 05:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "05": {
+    "file": ".cursor/ai-driven-workflow/05-bootstrap-your-project.md",
+    "title": "PROTOCOL 05: BOOTSTRAP YOUR PROJECT (LEGACY ALIGNMENT COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 0. QUALITY GATES",
+      "### Gate 1: Governance Activation Gate",
+      "### Gate 2: Repository Mapping Gate",
+      "### Gate 3: Principle Validation Gate",
+      "- **Failure Handling**: Address feedback, update findings, rerun gate.",
+      "### Gate 4: Governance Alignment Gate"
+    ],
+    "handoffs": [
+      "## 0. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 02 or 24:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "06": {
+    "file": ".cursor/ai-driven-workflow/06-create-prd.md",
+    "title": "PROTOCOL 06: IMPLEMENTATION-READY PRD CREATION (PLANNING COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "### STEP 3: Risk, Dependency, and Validation Planning",
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- [ ] Availability of automation scripts `generate_prd_assets.py` and `validate_prd_gate.py`",
+      "* **Action:** Aggregate risks, assumptions, and mitigations from discovery into `risk-assumption-log.md`; include new items identified during elaboration.",
+      "* **Action:** Execute `python scripts/validate_prd_gate.py --prd .artifacts/protocol-06/prd-{feature}.md --output .artifacts/protocol-06/prd-validation.json` ensuring completeness and alignment.",
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 1. QUALITY GATES",
+      "### Gate 1: Context Alignment Gate",
+      "- **Failure Handling**: Re-engage stakeholders, update documents, rerun gate."
+    ],
+    "handoffs": [
+      "## 1. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 07:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "07": {
+    "file": ".cursor/ai-driven-workflow/07-technical-design-architecture.md",
+    "title": "PROTOCOL 07: TECHNICAL DESIGN & ARCHITECTURE (ARCHITECTURE COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "* **Action:** Export component responsibilities, interfaces, and dependencies into `task-generation-input.json` for Protocol 08.",
+      "- Dependencies on other work",
+      "- **Protocol 09**: `design-validation-report.json`, `architecture-boundaries.json` - Environment setup dependencies.",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 6. QUALITY GATES",
+      "### Gate 1: Source Alignment Gate",
+      "### Gate 2: Architecture Integrity Gate",
+      "- **Failure Handling**: Reassess decomposition, update ADRs, rerun gate.",
+      "### Gate 3: Design Validation Gate",
+      "- **Criteria**: Compliance validation passes with no critical issues, risks mitigated, assumptions addressed."
+    ],
+    "handoffs": [
+      "### STEP 4: Approval & Handoff Preparation",
+      "### Gate 4: Approval & Handoff Gate",
+      "- **Automation**: `python scripts/validate_design_handoff.py --input .artifacts/protocol-07/task-generation-input.json`",
+      "python scripts/validate_design_handoff.py --input .artifacts/protocol-07/task-generation-input.json",
+      "## 6. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 08:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "08": {
+    "file": ".cursor/ai-driven-workflow/08-generate-tasks.md",
+    "title": "PROTOCOL 08: TECHNICAL TASK GENERATION (PLANNING COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "You are a **Technical Lead**. Your mission is to transform the validated PRD and technical design into an executable task plan with dependencies, automation hooks, and rule compliance for downstream development.",
+      "* **Action:** Initialize `tasks-{feature}.md` under `.cursor/tasks/` with sections for high-level tasks, dependencies, and automation metadata.",
+      "* **Action:** Produce MVP-focused tasks with numbering, WHY statements, complexity tags, and dependency annotations referencing other tasks.",
+      "* **Action:** Produce `task-execution-summary.md` highlighting dependencies, automation, and readiness for Protocol 21.",
+      "- Dependencies on other work",
+      "- **Criteria**: High-level tasks documented with WHY, complexity, dependencies; stakeholder approval logged.",
+      "- **Pass Threshold**: Approval status recorded and dependencies resolved.",
+      "[MASTER RAY\u2122 | PHASE 2 START] - \"Drafting high-level task structure with dependencies and WHY context.\"",
+      "> \"High-level tasks prepared with WHY context and dependencies. Evidence ready:",
+      "**Upstream Dependencies:**"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 2. QUALITY GATES",
+      "### Gate 1: Context Preparation Gate",
+      "- **Failure Handling**: Rebuild index, verify metadata completeness, rerun gate.",
+      "### Gate 2: High-Level Task Approval Gate",
+      "- **Failure Handling**: Revise tasks per feedback, re-seek approval, rerun gate.",
+      "### Gate 3: Decomposition Integrity Gate"
+    ],
+    "handoffs": [
+      "## 2. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 09:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "09": {
+    "file": ".cursor/ai-driven-workflow/09-environment-setup-validation.md",
+    "title": "PROTOCOL 09: ENVIRONMENT SETUP & VALIDATION (DEVOPS COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "* **Action:** Log environment risks (e.g., license limits, dependency volatility) in `environment-risk-log.md`.",
+      "2. **`[MUST]` Provision Scaffold & Dependencies:**",
+      "* **Action:** Clone repository, install dependencies, and execute bootstrap scripts (e.g., `bash scripts/setup.sh --non-interactive`); document in `provision-log.md`.",
+      "- Dependencies on other work",
+      "- **Pass Threshold**: Diagnostics status `pass` and dependency installs successful.",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 7. QUALITY GATES",
+      "### Gate 1: Requirements Confirmation Gate",
+      "### Gate 2: Tooling Health Gate",
+      "### Gate 3: Validation Suite Gate",
+      "- **Failure Handling**: Investigate failing tests, adjust configs, rerun suite.",
+      "### Gate 4: Onboarding Package Gate"
+    ],
+    "handoffs": [
+      "### STEP 4: Documentation & Handoff",
+      "## 7. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 10:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "10": {
+    "file": ".cursor/ai-driven-workflow/10-process-tasks.md",
+    "title": "PROTOCOL 10: CONTROLLED TASK EXECUTION (DELIVERY COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- [ ] QA lead acknowledgement of quality gate responsibilities",
+      "You are an **AI Paired Developer**. Your mission is to execute the approved task plan with strict adherence to governance rules, quality gates, and evidence capture until all parent tasks are complete.",
+      "**\ud83d\udeab [CRITICAL] Do not modify tasks outside the authorized task file or skip quality gates; progress must remain auditable.**",
+      "3. **`[GUIDELINE]` Note Quality Gate Plan:**",
+      "1. **`[MUST]` Run Comprehensive Quality Gate:**",
+      "> \"[RAY QUALITY GATE] Running comprehensive audit for parent task {ID}.\"",
+      "* **Action:** Update `execution-session-log.md` with completed subtasks, quality gate status, CI outcomes, and approvals.",
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?"
+    ],
+    "handoffs": [
+      "## 3. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 11:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "11": {
+    "file": ".cursor/ai-driven-workflow/11-integration-testing.md",
+    "title": "PROTOCOL 11 : INTEGRATION TESTING & SYSTEM VALIDATION (QUALITY COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "* **Action:** Consolidate completed features, architectural interfaces, and dependencies from Protocols 3 and 6; produce `integration-scope-matrix.json` if not already created.",
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 9. QUALITY GATES",
+      "### Gate 1: Scope Alignment Gate",
+      "### Gate 2: Contract Assurance Gate",
+      "### Gate 3: Execution Integrity Gate",
+      "### Gate 4: Sign-Off & Handoff Gate",
+      "[RAY GATE FAILED: Execution Integrity Gate]"
+    ],
+    "handoffs": [
+      "### Gate 4: Sign-Off & Handoff Gate",
+      "> Approve handoff to Protocol 19?\"",
+      "## 9. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 12:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "12": {
+    "file": ".cursor/ai-driven-workflow/12-quality-audit.md",
+    "title": "PROTOCOL 12 : QUALITY AUDIT ORCHESTRATOR (QUALITY ASSURANCE COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "* **Evidence:** `.artifacts/quality-audit/protocol-manifest.json` with hash, version, and dependencies.",
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "2. **`[MUST]` Aggregate Coverage Metrics:**",
+      "* **Action:** Produce decision record (`go`, `go-with-risks`, `no-go`) referencing gate scores and mitigations.",
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "- **Protocol 20**: `QUALITY-AUDIT-PACKAGE.zip` \u2013 formal audit deliverables for UAT entry gate",
+      "## 4. QUALITY GATES",
+      "### Gate 1: Pre-Audit Automation Gate",
+      "### Gate 2: Routing Integrity Gate"
+    ],
+    "handoffs": [
+      "### STEP 4: Unified Reporting and Handoff Preparation",
+      "## 4. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 13:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "13": {
+    "file": ".cursor/ai-driven-workflow/13-uat-coordination.md",
+    "title": "PROTOCOL 13 : USER ACCEPTANCE TESTING (UAT) COORDINATION (CUSTOMER VALIDATION COMPLIANT)",
+    "objectives": [
+      "- [ ] Product Owner confirmation that UAT objectives align with PRD acceptance criteria (Protocol 06)",
+      "* **Action:** Brief participants on objectives, scope, acceptance criteria, communication channels, and support expectations."
+    ],
+    "dependencies": [
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 15. QUALITY GATES",
+      "### Gate 1: UAT Entry Gate",
+      "- **Automation**: `python scripts/validate_gate_15_entry.py --checklist .artifacts/uat/uat-entry-checklist.json`",
+      "### Gate 2: Execution Integrity Gate",
+      "- **Automation**: `python scripts/validate_gate_15_execution.py --scenarios config/uat-scenarios.yaml`",
+      "### Gate 3: Defect Resolution Gate"
+    ],
+    "handoffs": [
+      "### STEP 4: Acceptance, Documentation, and Handoff",
+      "> \"[PHASE 4] Compiling UAT closure package for deployment handoff...\"",
+      "3. **`[GUIDELINE]` Deliver Deployment Handoff Brief:**",
+      "## UAT Handoff Summary",
+      "- **Criteria**: Sign-off record complete; closure package compiled; deployment handoff brief delivered.",
+      "- **Evidence**: `uat-approval-record.json`, `uat-closure-manifest.json`, `handoff-brief.md`.",
+      "- **Failure Handling**: Escalate missing approvals; regenerate package; update brief before release handoff.",
+      "> Please review and confirm readiness to proceed to Protocol 21/11 handoff.\"",
+      "## 15. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:"
+    ],
+    "invariants": []
+  },
+  "14": {
+    "file": ".cursor/ai-driven-workflow/14-pre-deployment-staging.md",
+    "title": "PROTOCOL 14 : PRE-DEPLOYMENT VALIDATION & STAGING READINESS (RELEASE COMPLIANT)",
+    "objectives": [
+      "* **Halt condition:** Stop if rollback fails or exceeds recovery time objective."
+    ],
+    "dependencies": [
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "- **Protocol 12**: `QUALITY-AUDIT-PACKAGE.zip`, readiness recommendation \u2013 informs release gate",
+      "## 10. QUALITY GATES",
+      "### Gate 1: Intake Confirmation Gate",
+      "- **Automation**: `python scripts/validate_gate_10_intake.py --drift-threshold low`",
+      "### Gate 2: Deployment Rehearsal Gate",
+      "- **Automation**: `python scripts/validate_gate_10_rehearsal.py --coverage 0.90`"
+    ],
+    "handoffs": [
+      "### STEP 4: Final Readiness Review and Handoff",
+      "## 10. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 15:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "15": {
+    "file": ".cursor/ai-driven-workflow/15-production-deployment.md",
+    "title": "PROTOCOL 15 : PRODUCTION DEPLOYMENT & RELEASE MANAGEMENT (RELIABILITY COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "> \"[APPROVAL REQUEST] All readiness gates passed. Approve production deployment? (yes/no)\"",
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 11. QUALITY GATES",
+      "### Gate 1: Readiness Confirmation Gate",
+      "- **Automation**: `python scripts/validate_gate_11_readiness.py --checklist .artifacts/deployment/deployment-readiness-checklist.json`",
+      "### Gate 2: Approval & Change Freeze Gate",
+      "- **Automation**: `python scripts/validate_gate_11_freeze.py --stakeholders config/release-approvers.yaml`"
+    ],
+    "handoffs": [
+      "* **Halt condition:** Delay handoff until report and attachments complete.",
+      "- **Failure Handling**: Extend monitoring window; escalate to Protocol 19/13; update report before handoff.",
+      "## 11. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 16:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "16": {
+    "file": ".cursor/ai-driven-workflow/16-monitoring-observability.md",
+    "title": "PROTOCOL 16 : POST-DEPLOYMENT MONITORING & OBSERVABILITY (SRE COMPLIANT)",
+    "objectives": [
+      "You are a **Site Reliability Engineer (SRE)**. Your mission is to activate, validate, and continuously tune observability systems immediately after production deployment so that incidents can be detected and triaged within agreed service objectives."
+    ],
+    "dependencies": [
+      "> \"[PHASE 1] Validating instrumentation coverage across services and dependencies...\"",
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 12. QUALITY GATES",
+      "### Gate 1: Instrumentation Coverage Gate",
+      "- **Automation**: `python scripts/validate_gate_12_instrumentation.py --threshold 0.95`",
+      "### Gate 2: Alert Validation Gate",
+      "- **Automation**: `python scripts/validate_gate_12_alerts.py --sla 5`",
+      "### Gate 3: Observability Assurance Gate"
+    ],
+    "handoffs": [
+      "### STEP 4: Handoff and Improvement Loop",
+      "### Gate 4: Monitoring Handoff Gate",
+      "- **Automation**: `python scripts/validate_gate_12_handoff.py --threshold 0.95`",
+      "python scripts/validate_gate_12_handoff.py --threshold 0.95",
+      "## 12. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 17:",
+      "| `MONITORING-PACKAGE.zip` | `.artifacts/monitoring/` | Handoff deliverable | Protocol 20 |",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "17": {
+    "file": ".cursor/ai-driven-workflow/17-incident-response-rollback.md",
+    "title": "PROTOCOL 17: INCIDENT RESPONSE & ROLLBACK (OPERATIONS RESILIENCE COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "* **Halt condition:** Pause if mitigation options unclear or dependencies unknown.",
+      "> \"[PHASE 2] Validating rollback readiness and dependencies...\"",
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 13. QUALITY GATES",
+      "### Gate 1: Severity Alignment Gate",
+      "- **Automation**: `python scripts/validate_gate_13_severity.py --sla 5`",
+      "### Gate 2: Mitigation Readiness Gate",
+      "- **Automation**: `python scripts/validate_gate_13_mitigation.py`",
+      "### Gate 3: Recovery Validation Gate"
+    ],
+    "handoffs": [
+      "### STEP 4: Resolution, Documentation, and Handoff",
+      "## 13. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 18:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "18": {
+    "file": ".cursor/ai-driven-workflow/18-performance-optimization.md",
+    "title": "PROTOCOL 18 : PERFORMANCE OPTIMIZATION & TUNING (PERFORMANCE COMPLIANT)",
+    "objectives": [
+      "- [ ] Product Owner prioritization of performance objectives for this cycle",
+      "You are a **Performance Engineer**. Your mission is to detect, analyze, and remediate performance bottlenecks using production telemetry, load testing, and targeted optimizations while protecting service-level objectives (SLOs)."
+    ],
+    "dependencies": [
+      "* **Halt condition:** Pause if plan lacks approvals or dependencies unresolved.",
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "* **Action:** Aggregate monitoring dashboards (Protocol 19), incident timelines (Protocol 20), and deployment notes (Protocol 15) to identify performance pain points.",
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 14. QUALITY GATES",
+      "### Gate 1: Baseline Validation Gate",
+      "- **Automation**: `python scripts/validate_gate_14_baseline.py --threshold 0.95`",
+      "### Gate 2: Diagnostic Coverage Gate",
+      "- **Automation**: `python scripts/validate_gate_14_diagnostics.py --coverage 0.90`"
+    ],
+    "handoffs": [
+      "### STEP 4: Governance, Communication, and Handoff",
+      "> Approve SLO updates and handoff to Protocol 22?\"",
+      "## 14. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 22:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "19": {
+    "file": ".cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md",
+    "title": "PROTOCOL 19 : DOCUMENTATION & KNOWLEDGE TRANSFER (KNOWLEDGE MANAGEMENT COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "You are a **Technical Documentation Lead**. Your mission is to capture, validate, and distribute durable knowledge that enables engineering, operations, and stakeholder teams to execute independently after project transition.",
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "* **Action:** Aggregate feedback, outstanding gaps, and future updates for maintenance planning.",
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 16. QUALITY GATES",
+      "### Gate 1: Documentation Completeness",
+      "- **Failure Handling**: Reassign outstanding reviewers, address feedback, rerun gate.",
+      "- **Automation**: `python scripts/validate_gate_16_completeness.py --tracker .artifacts/protocol-19/review-tracker.csv`",
+      "### Gate 2: Knowledge Transfer Readiness"
+    ],
+    "handoffs": [
+      "## 16. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 20:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "20": {
+    "file": ".cursor/ai-driven-workflow/20-project-closure.md",
+    "title": "PROTOCOL 20 : PROJECT CLOSURE & HANDOVER (PROGRAM GOVERNANCE COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 17. QUALITY GATES",
+      "### Gate 1: Deliverable Completion Assurance",
+      "- **Failure Handling**: Escalate incomplete deliverables, assign remediation plan, re-run gate.",
+      "- **Automation**: `python scripts/validate_gate_17_deliverables.py --audit .artifacts/protocol-20/deliverable-audit-log.csv`",
+      "### Gate 2: Operational Handover Readiness",
+      "- **Automation**: `python scripts/validate_gate_17_handover.py --record .artifacts/protocol-20/operational-handover-record.json`"
+    ],
+    "handoffs": [
+      "## 17. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 21:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "21": {
+    "file": ".cursor/ai-driven-workflow/21-maintenance-support.md",
+    "title": "PROTOCOL 21 : CONTINUOUS MAINTENANCE & SUPPORT PLANNING (SERVICE RELIABILITY COMPLIANT)",
+    "objectives": [
+      "- [ ] Service level objective dashboards accessible for ongoing measurement"
+    ],
+    "dependencies": [
+      "- [ ] `SERVICE-CATALOG.xlsx` from Operations \u2013 service inventory and dependencies",
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 18. QUALITY GATES",
+      "### Gate 1: Maintenance Backlog Integrity",
+      "- **Failure Handling**: Escalate missing assignments, update backlog, rerun gate.",
+      "- **Automation**: `python scripts/validate_gate_18_backlog.py --input .artifacts/protocol-21/maintenance-backlog.csv`",
+      "### Gate 2: Stakeholder Approval Confirmation",
+      "- **Automation**: `python scripts/validate_gate_18_approvals.py --log .artifacts/protocol-21/approval-log.csv`"
+    ],
+    "handoffs": [
+      "## 18. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 22:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "22": {
+    "file": ".cursor/ai-driven-workflow/22-implementation-retrospective.md",
+    "title": "PROTOCOL 22 : IMPLEMENTATION RETROSPECTIVE (CONTINUOUS IMPROVEMENT COMPLIANT)",
+    "objectives": [
+      "- [ ] Product Owner confirmation of retrospective scope and objectives"
+    ],
+    "dependencies": [
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "- [ ] Executive Sponsor commitment to participate or delegate",
+      "1. **`[MUST]` Aggregate Cross-Protocol Insights:**",
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 5. QUALITY GATES",
+      "### Gate 1: Participation & Coverage",
+      "- **Failure Handling**: Schedule follow-up session, collect missing input, rerun gate.",
+      "- **Automation**: `python scripts/validate_gate_5_participation.py --notes .artifacts/protocol-22/session-notes.md`"
+    ],
+    "handoffs": [
+      "## 5. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 23:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "23": {
+    "file": ".cursor/ai-driven-workflow/23-script-governance-protocol.md",
+    "title": "PROTOCOL 23 : SCRIPT GOVERNANCE (AUTOMATION QUALITY COMPLIANT)",
+    "objectives": [],
+    "dependencies": [
+      "- **Cursor-independent guide**: `documentation/cursor-independent-guide.md`",
+      "- Dependencies on other work",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]",
+      "- External dependencies: [list third-party systems or APIs]",
+      "- **Downstream protocol feedback:** Capture issues reported by dependent protocols"
+    ],
+    "gates": [
+      "* **Evidence:** `.artifacts/scripts/static-analysis-report.json` aggregated by tool and script.",
+      "4. **`[GUIDELINE]` Extend Protocol 19 Gates:**",
+      "* **Action:** Map relevant Protocol 19 quality gate expectations to scripts to ensure consistency.",
+      "- Gate Alignment: Pre-Audit Automation \u2192 Scripts: run_protocol_4_pre_audit.py",
+      "- Which quality gates were well-calibrated?",
+      "- Which quality gates were too strict or too lenient?",
+      "- Quality gate threshold adjustments?",
+      "- Monitor quality gate pass rates and execution velocity",
+      "## 8. QUALITY GATES",
+      "### Gate 1: Inventory Accuracy Gate"
+    ],
+    "handoffs": [
+      "## 8. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 12 & 22:",
+      "- Apply quality gates to ensure artifact completeness before downstream handoff"
+    ],
+    "invariants": []
+  },
+  "24": {
+    "file": ".cursor/ai-driven-workflow/24-client-discovery-ALTERNATE-TRACK.md",
+    "title": "PROTOCOL 00-CD: CLIENT DISCOVERY (DISCOVERY COMPLIANT)",
+    "objectives": [
+      "* **Action:** Parse intake for objectives, target users, deliverables, constraints, and success metrics; quote original text.",
+      "> \"[PHASE 2] - Extracting objectives, deliverables, and constraints with traceable evidence.\"",
+      "* **Action:** Assemble `discovery-brief.md` summarizing objectives, scope, assumptions, risks, dependencies, and next steps.",
+      "- **Criteria**: Evidence map includes objectives, users, deliverables, constraints, success metrics with source quotes."
+    ],
+    "dependencies": [
+      "### STEP 4: Risks, Dependencies, and Prioritization",
+      "2. **`[MUST]` Map Dependencies:**",
+      "* **Action:** Identify required accesses, data sources, integrations, and approvals; assign owners and due dates in `dependency-map.json`.",
+      "* **Evidence:** `.artifacts/protocol-00-CD/dependency-map.json`",
+      "* **Action:** Assemble `discovery-brief.md` summarizing objectives, scope, assumptions, risks, dependencies, and next steps.",
+      "- **Criteria**: Discovery brief aligns with evidence, risk register populated, dependencies assigned owners.",
+      "- **Evidence**: `discovery-brief.md`, `risk-register.md`, `dependency-map.json`, `traceability-index.json`",
+      "[MASTER RAY\u2122 | PHASE 4 START] - \"Documenting risks and dependency map.\"",
+      "**Upstream Dependencies:**",
+      "- Configuration dependencies: [list config files or environment requirements]"
+    ],
+    "gates": [
+      "## 00-CD. QUALITY GATES",
+      "### Gate 1: Intake Completeness Gate",
+      "### Gate 2: Signal Traceability Gate",
+      "### Gate 3: Clarification Package Gate",
+      "- **Failure Handling**: Refine questions for clarity, reassess assumptions, rerun gate.",
+      "### Gate 4: Discovery Brief Gate",
+      "[RAY GATE FAILED: Signal Traceability Gate]",
+      "> \"Quality gate 'Signal Traceability' failed.",
+      "> 2. Request gate waiver with justification",
+      "# Quality gate automation"
+    ],
+    "handoffs": [
+      "- [ ] Confirmation that implementation teams are on standby for validated brief handoff",
+      "### STEP 5: Discovery Synthesis and Handoff Prep",
+      "## 00-CD. HANDOFF CHECKLIST",
+      "### Pre-Handoff Validation:",
+      "### Handoff to Protocol 03:"
+    ],
+    "invariants": []
+  },
+  "25": {
+    "file": ".cursor/ai-driven-workflow/25-protocol-integration-map-DOCUMENTATION.md",
+    "title": "PROTOCOL INTEGRATION MAP",
+    "objectives": [],
+    "dependencies": [
+      "- Cross-protocol dependencies must be clear"
+    ],
+    "gates": [
+      "- **Quality Audit \u2192 UAT**: Quality gates must pass before user testing",
+      "### Quality Gates Integration",
+      "Quality gates ensure smooth handoffs between protocols:",
+      "- **Gate 1**: Discovery completeness \u2192 Brief creation",
+      "- **Gate 2**: Brief clarity \u2192 PRD creation",
+      "- **Gate 3**: PRD completeness \u2192 Architecture design",
+      "- **Gate 4**: Architecture feasibility \u2192 Task generation",
+      "- **Gate 5**: Task clarity \u2192 Environment setup",
+      "- **Gate 6**: Environment validation \u2192 Task execution",
+      "- **Gate 7**: Code quality \u2192 Integration testing"
+    ],
+    "handoffs": [
+      "Quality gates ensure smooth handoffs between protocols:",
+      "- **Quality Gate Validation**: Automated validation at each handoff",
+      "- Protocol handoffs must be seamless"
+    ],
+    "invariants": []
+  },
+  "26": {
+    "file": ".cursor/ai-driven-workflow/26-integration-guide-DOCUMENTATION.md",
+    "title": "Dev-Workflow Script Integration Guide",
+    "objectives": [],
+    "dependencies": [
+      "3. Check Python path and dependencies"
+    ],
+    "gates": [
+      "Protocol 06 (PRD)        \u2192 validate_prd_gate.py, generate_prd_assets.py",
+      "Protocol 19 (Quality)   \u2192 run_workflow.py, aggregate_coverage.py",
+      "Protocol 22 (Retrospective) \u2192 rules_audit_quick.py, evidence_report.py (aggregate mode)",
+      "**Gate:** Automation validation complete before client validation",
+      "**Gate:** Rules normalized and audited before PRD creation",
+      "2. **PRD Validation Gate** (`validate_prd_gate.py`)",
+      "**Gate:** Assets generated and PRD validation \u226585",
+      "**Gate:** Tasks validated and enriched before execution",
+      "**Gate:** Task state synced and evidence captured per task",
+      "2. **Coverage Aggregation** (`aggregate_coverage.py`)"
+    ],
+    "handoffs": [],
+    "invariants": []
+  },
+  "27": {
+    "file": ".cursor/ai-driven-workflow/27-validation-guide-DOCUMENTATION.md",
+    "title": "Validation Guide",
+    "objectives": [
+      "| Discovery \u2192 Bootstrap | 00 | 0 | `brief.md` | project-overview, objectives, deliverables |"
+    ],
+    "dependencies": [
+      "- Script dependencies",
+      "| Dependencies | Required packages available | Import testing |",
+      "3. Check Python path and dependencies"
+    ],
+    "gates": [
+      "| Gate Criteria | Pass/fail thresholds inconsistent | Content analysis |",
+      "\"fix\": \"Update script path to scripts/validate_prd_gate.py\"",
+      "#### Issue 2: Validation Gate Failure",
+      "**Symptom:** `[GATE FAILED] Automation Validation Complete`",
+      "2. Review gate criteria and thresholds",
+      "### Quality Gates"
+    ],
+    "handoffs": [],
+    "invariants": []
+  }
+}
