@@ -1,0 +1,19 @@
+{
+  "schedule": [
+    {"stage": "S0", "name": "Causal Ledger", "upgrade": "UPG04", "depends_on": [], "mode": "append-only, mock IDs", "notes": "Capture decision points non-intrusively."},
+    {"stage": "S1", "name": "Reasoning DNA Schema", "upgrade": "UPG02", "depends_on": ["S0"], "mode": "emit reasoning_dna.json per protocol", "notes": "Schema validate only."},
+    {"stage": "S2", "name": "Protocol Intelligence Kernel", "upgrade": "UPG01", "depends_on": ["S0","S1"], "mode": "self_check: halt_on_violation honored", "notes": "Local checks only."},
+    {"stage": "S3", "name": "Protocol Exchange Layer", "upgrade": "UPG03", "depends_on": ["S0","S1","S2"], "mode": "simulate handoffs, bounded retries", "notes": "No writes to protocols."},
+    {"stage": "S4", "name": "Temporal Reasoning Layer", "upgrade": "UPG08", "depends_on": ["S1","S3"], "mode": "time-aware validations", "notes": "Generate alerts only."},
+    {"stage": "S5", "name": "Protocol-of-Protocols (POP) - Observer", "upgrade": "UPG05", "depends_on": ["S0","S1","S2","S3","S4"], "mode": "observer", "notes": "Detect cycles, gate skips, drift; no enforcement."},
+    {"stage": "S6", "name": "Cognitive Telemetry Dashboard", "upgrade": "UPG06", "depends_on": ["S0","S1","S3","S5"], "mode": "read-only dashboards", "notes": "Overhead ≤5%."},
+    {"stage": "S7", "name": "Adaptive Protocol Mutation", "upgrade": "UPG07", "depends_on": ["S5"], "mode": "sandbox only", "notes": "POP gate required; A/B evaluate"},
+    {"stage": "S8", "name": "Meta-Cognition Loop", "upgrade": "UPG09", "depends_on": ["S0","S1"], "mode": "post-protocol reflections", "notes": "Precision target ≥0.9"},
+    {"stage": "S9", "name": "Reasoning Fabric Engine", "upgrade": "UPG10", "depends_on": ["S0","S1","S5"], "mode": "global read-only graph", "notes": "Enable POP cycle corroboration."}
+  ],
+  "constraints": {
+    "no_new_circular_dependencies": true,
+    "quality_gates_unchanged_or_stricter": true,
+    "evidence_required_for_decisions": true
+  }
+}

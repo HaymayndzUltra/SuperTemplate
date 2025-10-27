@@ -1,0 +1,20 @@
+{
+  "scores": {
+    "intent_match": 0.86,
+    "dependency_satisfaction": 0.90,
+    "gate_compatibility": 0.94,
+    "governance_coherence": 0.94,
+    "performance_risk_penalty": 0.03,
+    "alignment_score": 0.872
+  },
+  "findings": [
+    "Reflection can use DNA + Ledger to detect redundancies and contradictions.",
+    "Outputs inform Protocol 22 and governance tuning."
+  ],
+  "conflicts": [
+    "None; ensure precision validated before making recommendations binding."
+  ],
+  "remediation_options": [
+    "Pilot on post-major phases only; require 0.9 precision before broader use."
+  ]
+}

@@ -1,0 +1,6 @@
+- Generate UPG01–UPG10 analysis.json with alignment scoring per MVI-01 formula
+- Write alignment.md citing relevant protocol sections for each upgrade
+- Decide Accept/Adapt/Reject per thresholds; add evidence_refs and change_impact
+- Create simulation artifacts: cross/causal_replay.md, cross/governance_diffs.json
+- Update acceptance_matrix.csv with scores and decisions
+- Re-run POP observer 3 cycles; update pop-activation-check.json

@@ -1,0 +1,17 @@
+{
+  "mode": "observer",
+  "activation_criteria": {
+    "dna_coverage": ">= 0.90 across protocols",
+    "pik_self_check_pass_rate": ">= 0.95",
+    "pel_conflict_free_runs": ">= 3 consecutive",
+    "ledger_decision_coverage": ">= 0.95"
+  },
+  "current_evidence": {
+    "dna_coverage": null,
+    "pik_self_check_pass_rate": null,
+    "pel_conflict_free_runs": null,
+    "ledger_decision_coverage": null
+  },
+  "status": "pending",
+  "notes": "POP will not enforce until all criteria met; observer findings must show 0 false positives over 3 runs."
+}

@@ -1,0 +1,11 @@
+upgrade_id,alignment_score,decision,notes
+UPG01,,PENDING,"Requires analysis.json; accept if ≥0.85 and no gate weakening"
+UPG02,,PENDING,"Accept if schema coverage ≥0.90 and metrics resolvable"
+UPG03,,PENDING,"Accept if no deadlocks, bounded retries, no cycles"
+UPG04,,PENDING,"Accept if ≥0.95 decision coverage and exact replay"
+UPG05,,PENDING,"Observer only; Controller activation gated by Section 5"
+UPG06,,PENDING,"Read-only metrics; overhead ≤5%"
+UPG07,,PENDING,"Sandbox only; 0 gate regressions; POP-gated"
+UPG08,,PENDING,"Temporal SLAs enforced; correct escalations"
+UPG09,,PENDING,"Reflection precision ≥0.9"
+UPG10,,PENDING,"Read-only fabric; corroborates POP cycle detection"}

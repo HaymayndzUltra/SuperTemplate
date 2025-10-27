@@ -1,0 +1,12 @@
+{
+  "upgrade_id": "UPG06",
+  "goal": "Provide a read-only dashboard that visualizes DNA, Ledger, PEL, and POP metrics with ≤5% runtime overhead.",
+  "layers": ["automation", "governance"],
+  "touchpoints": ["Read-Ledger","Read-DNA","Read-PEL","Read-POP"],
+  "dependencies": ["UPG04","UPG02","UPG03","UPG05"],
+  "expected_outcomes": [
+    {"metric":"dashboard_overhead_pct","target":0.05},
+    {"metric":"metrics_determinism","target":true}
+  ],
+  "risks": {"cycle_risk":"none","gate_regression_risk":"none","perf_risk":"low"}
+}

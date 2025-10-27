@@ -1,0 +1,8 @@
+{
+  "remediations": [
+    {"conflict": "PEL vs Temporal", "strategy": "Define SLA budget token; PEL consumes tokens, Temporal enforces ceilings."},
+    {"conflict": "POP vs Adaptive Mutation", "strategy": "Mutation proposals require POP observer green; promotion only after POP Controller activation criteria met."},
+    {"conflict": "Fabric vs POP", "strategy": "POP checks must be corroborated by Fabric edges; discrepancies flagged for manual review."},
+    {"conflict": "PIK vs Protocol Gates", "strategy": "PIK emits advisory-only findings; no gate changes allowed under MVI-01."}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "scores": {
+    "intent_match": 0.84,
+    "dependency_satisfaction": 0.88,
+    "gate_compatibility": 0.97,
+    "governance_coherence": 0.95,
+    "performance_risk_penalty": 0.03,
+    "alignment_score": 0.868
+  },
+  "findings": [
+    "Global read-only graph aggregates reasoning and governance edges.",
+    "Enables POP cycle corroboration without enforcement."
+  ],
+  "conflicts": [
+    "Potential discrepancy between local POP and global Fabric; require corroboration."
+  ],
+  "remediation_options": [
+    "Flag discrepancies for manual review; do not enforce until corroborated."
+  ]
+}

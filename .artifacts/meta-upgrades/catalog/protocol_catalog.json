@@ -1,0 +1,554 @@
+{
+  "protocols_root": ".cursor/ai-driven-workflow",
+  "protocols_range": ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],
+  "generated_by": "MVI-01",
+  "protocols": [
+    {
+      "id": "01",
+      "name": "CLIENT PROPOSAL GENERATION",
+      "purpose": "Turn job posts into winning proposals that get you hired.",
+      "inputs_from": ["04", "02"],
+      "outputs_to": ["02", "03"],
+      "prerequisites": {
+        "artifacts": ["JOB-POST.md"],
+        "approvals": [],
+        "system_state": []
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Job Post Intake Validation", "pass_threshold": ">= 90%"},
+        {"id": "2", "name": "Tone Confidence", "pass_threshold": ">= 80%"},
+        {"id": "3", "name": "Proposal Structure", "pass_threshold": ">= 95%"},
+        {"id": "4", "name": "Compliance Validation", "pass_threshold": "All pass"},
+        {"id": "5", "name": "Final Validation & Approval", "pass_threshold": "Pass"}
+      ],
+      "handoffs_to": ["02"],
+      "invariants": ["Only mention experience you actually have. Don't lie."],
+      "automation_hooks": [
+        "scripts/analyze_jobpost.py",
+        "scripts/tone_mapper.py",
+        "scripts/validate_proposal_structure.py",
+        "scripts/validate_proposal.py"
+      ]
+    },
+    {
+      "id": "02",
+      "name": "CLIENT DISCOVERY INITIATION",
+      "purpose": "Structured client discovery to validate scope, requirements, and expectations.",
+      "inputs_from": ["01", "04"],
+      "outputs_to": ["03", "04"],
+      "prerequisites": {
+        "artifacts": ["PROPOSAL.md", "proposal-summary.json", "client-reply.md"],
+        "approvals": ["Business development lead"],
+        "system_state": ["Scheduled communication channel", "Access to discovery templates"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Objective Alignment", "pass_threshold": ">= 95% coverage"},
+        {"id": "2", "name": "Requirement Completeness", "pass_threshold": ">= 0.9 score"},
+        {"id": "3", "name": "Expectation Alignment", "pass_threshold": "Client approval flag recorded"},
+        {"id": "4", "name": "Discovery Confirmation", "pass_threshold": "Approval timestamp + transcripts"}
+      ],
+      "handoffs_to": ["03"],
+      "invariants": ["Do not advance to planning deliverables until every discovery question is answered and validated with the client."],
+      "automation_hooks": [
+        "scripts/validate_discovery_objectives.py",
+        "scripts/validate_discovery_scope.py",
+        "scripts/validate_discovery_expectations.py",
+        "scripts/check_client_confirmation.py"
+      ]
+    },
+    {
+      "id": "03",
+      "name": "PROJECT BRIEF CREATION",
+      "purpose": "Convert validated discovery intelligence into an implementation-ready Project Brief.",
+      "inputs_from": ["01", "02"],
+      "outputs_to": ["04", "06"],
+      "prerequisites": {
+        "artifacts": ["client-discovery-form.md", "scope-clarification.md", "communication-plan.md", "timeline-discussion.md", "PROPOSAL.md"],
+        "approvals": ["Client confirmation in discovery-recap.md", "Internal SA sign-off"],
+        "system_state": ["Access to brief templates", "Automation scripts available"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Discovery Evidence Verification", "pass_threshold": ">= 0.95"},
+        {"id": "2", "name": "Structural Integrity", "pass_threshold": "Coverage = 100%"},
+        {"id": "3", "name": "Approval Compliance", "pass_threshold": "Client + internal approved"}
+      ],
+      "handoffs_to": ["04"],
+      "invariants": ["Do not finalize the brief without recorded client approval and reconciliation against discovery scope."],
+      "automation_hooks": [
+        "scripts/validate_discovery_inputs.py",
+        "scripts/validate_brief_structure.py",
+        "scripts/verify_brief_approvals.py"
+      ]
+    },
+    {
+      "id": "04",
+      "name": "PROJECT BOOTSTRAP AND CONTEXT ENGINEERING",
+      "purpose": "Bootstrap governed scaffold, validate environment baseline, and initialize context kit.",
+      "inputs_from": ["03"],
+      "outputs_to": ["05"],
+      "prerequisites": {
+        "artifacts": ["PROJECT-BRIEF.md", "project-brief-validation-report.json", "BRIEF-APPROVAL-RECORD.json"],
+        "approvals": ["Delivery lead", "DevOps confirmation"],
+        "system_state": ["Access to scripts/", "Write permissions to .cursor and .artifacts", "doctor.py success"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Brief Validation Gate", "pass_threshold": ">= 0.95"},
+        {"id": "2", "name": "Environment & Rule Integrity", "pass_threshold": "doctor=0 and audit ≤ Medium"},
+        {"id": "3", "name": "Scaffold Validation", "pass_threshold": ">= 98%"},
+        {"id": "4", "name": "Context Validation", "pass_threshold": "Workflow pass + docs updated"}
+      ],
+      "handoffs_to": ["05"],
+      "invariants": ["Never modify existing production application code or delete repository assets outside governed directories."],
+      "automation_hooks": [
+        "scripts/validate_brief.py",
+        "scripts/rules_audit_quick.py",
+        "scripts/validate_scaffold.py",
+        "scripts/validate_workflows.py"
+      ]
+    },
+    {
+      "id": "05",
+      "name": "BOOTSTRAP YOUR PROJECT (Legacy Alignment)",
+      "purpose": "Align legacy bootstrap with governed scaffold and configure AI governance tooling.",
+      "inputs_from": ["04", "03"],
+      "outputs_to": ["02", "24"],
+      "prerequisites": {
+        "artifacts": ["governance-status.md", "bootstrap-manifest.json"],
+        "approvals": ["PO approval", "Eng lead confirmation"],
+        "system_state": ["Shell access for rule normalization", "Read-only prod code"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Governance Activation", "pass_threshold": "valid YAML frontmatter"},
+        {"id": "2", "name": "Repository Mapping", "pass_threshold": "User approval + ≥90% stack detection"},
+        {"id": "3", "name": "Principle Validation", "pass_threshold": "User confirmation; <3 critical questions"},
+        {"id": "4", "name": "Governance Alignment", "pass_threshold": "Audit ≤ Medium + docs approvals"}
+      ],
+      "handoffs_to": ["02", "24"],
+      "invariants": ["Do not edit or delete production application files; all modifications remain within governed directories."],
+      "automation_hooks": [
+        "scripts/validate_rule_metadata.py",
+        "scripts/validate_repo_mapping.py",
+        "scripts/validate_principles.py",
+        "scripts/rules_audit_quick.py"
+      ]
+    },
+    {
+      "id": "06",
+      "name": "IMPLEMENTATION-READY PRD CREATION",
+      "purpose": "Create PRD with user stories, functional/technical specs, risks, and validation plan.",
+      "inputs_from": ["03", "05"],
+      "outputs_to": ["07", "08"],
+      "prerequisites": {
+        "artifacts": ["architecture-principles.md"],
+        "approvals": ["PO authorization", "Tech lead constraints"],
+        "system_state": ["PRD templates", "generate_prd_assets.py", "validate_prd_gate.py"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Context Alignment", "pass_threshold": "stakeholder confirmed"},
+        {"id": "2", "name": "Requirements Completeness", "pass_threshold": ">= 95% + traceability"},
+        {"id": "3", "name": "Validation Readiness", "pass_threshold": ">= 85/100"}
+      ],
+      "handoffs_to": ["07"],
+      "invariants": ["Do not write production code; deliver documentation only."],
+      "automation_hooks": [
+        "scripts/validate_prd_context.py",
+        "scripts/validate_prd_requirements.py",
+        "scripts/validate_prd_gate.py"
+      ]
+    },
+    {
+      "id": "07",
+      "name": "TECHNICAL DESIGN & ARCHITECTURE",
+      "purpose": "Transform PRD into validated technical architecture (boundaries, ADRs, design).",
+      "inputs_from": ["03", "06"],
+      "outputs_to": ["08", "09"],
+      "prerequisites": {
+        "artifacts": ["prd-{feature}.md", "technical-specs.md", "prd-validation.json"],
+        "approvals": ["Product & engineering leadership", "Security/compliance availability"],
+        "system_state": ["Architecture templates", "diagram tooling", "plan_from_brief.py"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Source Alignment", "pass_threshold": "status=pass"},
+        {"id": "2", "name": "Architecture Integrity", "pass_threshold": "core components mapped"},
+        {"id": "3", "name": "Design Validation", "pass_threshold": "no critical issues"},
+        {"id": "4", "name": "Approval & Handoff", "pass_threshold": "approved + outputs delivered"}
+      ],
+      "handoffs_to": ["08"],
+      "invariants": ["Do not introduce components/integrations that lack grounding in the brief or PRD."],
+      "automation_hooks": [
+        "scripts/plan_from_brief.py",
+        "scripts/validate_workflow_integration.py",
+        "scripts/validate_design_handoff.py"
+      ]
+    },
+    {
+      "id": "08",
+      "name": "TECHNICAL TASK GENERATION",
+      "purpose": "Transform validated PRD/design into executable task plan with dependencies and automation hooks.",
+      "inputs_from": ["07", "06", "05"],
+      "outputs_to": ["09", "21"],
+      "prerequisites": {
+        "artifacts": ["TECHNICAL-DESIGN.md", "task-generation-input.json", "prd-{feature}.md"],
+        "approvals": ["Design approval", "PO acknowledgement"],
+        "system_state": ["Search tools", "validate_tasks.py", "enrich_tasks.py"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Context Preparation", "pass_threshold": "Rule index ≥95%"},
+        {"id": "2", "name": "High-Level Task Approval", "pass_threshold": "Stakeholder approval"},
+        {"id": "3", "name": "Decomposition Integrity", "pass_threshold": "100% subtasks mapped to rules"},
+        {"id": "4", "name": "Task Validation", "pass_threshold": "status=pass & ≥90% enriched"}
+      ],
+      "handoffs_to": ["09", "21"],
+      "invariants": ["Do not author production code; produce structured task documentation only."],
+      "automation_hooks": [
+        "scripts/validate_rule_index.py",
+        "scripts/validate_high_level_tasks.py",
+        "scripts/validate_task_decomposition.py",
+        "scripts/validate_tasks.py",
+        "scripts/enrich_tasks.py"
+      ]
+    },
+    {
+      "id": "09",
+      "name": "ENVIRONMENT SETUP & VALIDATION",
+      "purpose": "Provision, validate, and document consistent development environment aligned with design.",
+      "inputs_from": ["07", "08", "04"],
+      "outputs_to": ["10", "15"],
+      "prerequisites": {
+        "artifacts": ["TECHNICAL-DESIGN.md", "tasks-{feature}.md", "bootstrap-manifest.json"],
+        "approvals": ["DevOps lead", "Security team"],
+        "system_state": ["Credentials", "clean workstation/container", "doctor.py", "validation suites"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Requirements Confirmation", "pass_threshold": ">=95%"},
+        {"id": "2", "name": "Tooling Health", "pass_threshold": "doctor pass + installs OK"},
+        {"id": "3", "name": "Validation Suite", "pass_threshold": "All required checks pass"},
+        {"id": "4", "name": "Onboarding Package", "pass_threshold": "Approved & distributed"}
+      ],
+      "handoffs_to": ["10"],
+      "invariants": ["Do not declare the environment ready until validation passes on a clean baseline and credentials are verified."],
+      "automation_hooks": [
+        "scripts/doctor.py",
+        "scripts/scaffold_phase_artifacts.py",
+        "scripts/package_environment_assets.py"
+      ]
+    },
+    {
+      "id": "10",
+      "name": "CONTROLLED TASK EXECUTION",
+      "purpose": "Execute approved task plan with governance, quality gates, and evidence capture.",
+      "inputs_from": ["08", "09"],
+      "outputs_to": ["11", "19", "15"],
+      "prerequisites": {
+        "artifacts": ["tasks-{feature}.md", "task-validation.json", "ENVIRONMENT-README.md"],
+        "approvals": ["Engineering lead", "QA lead"],
+        "system_state": ["Validated environment", "CI/CD tooling"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Preflight Confirmation", "pass_threshold": "Human confirmation + diagnostics"},
+        {"id": "2", "name": "Subtask Compliance", "pass_threshold": "100% subtasks with rule refs + evidence"},
+        {"id": "3", "name": "Parent Task Quality", "pass_threshold": "Audit PASS + CI success"},
+        {"id": "4", "name": "Session Closure", "pass_threshold": "Manifest updated + next brief"}
+      ],
+      "handoffs_to": ["11"],
+      "invariants": ["Do not modify tasks outside the authorized task file or skip quality gates; progress must remain auditable."],
+      "automation_hooks": [
+        "scripts/validate_preflight.py",
+        "scripts/validate_subtask_compliance.py",
+        "scripts/validate_quality_gate.py",
+        "scripts/validate_session_closeout.py"
+      ]
+    },
+    {
+      "id": "11",
+      "name": "INTEGRATION TESTING & SYSTEM VALIDATION",
+      "purpose": "Validate cross-service workflows, interfaces, and data flows using production-like conditions.",
+      "inputs_from": ["10", "07", "09"],
+      "outputs_to": ["12", "14", "16"],
+      "prerequisites": {
+        "artifacts": ["TECHNICAL-DESIGN.md", "validation-suite-report.json", "execution-artifact-manifest.json"],
+        "approvals": ["Quality orchestrator", "Environment owner"],
+        "system_state": ["Integration env credentials", "observability tooling"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Scope Alignment", "pass_threshold": "All services accounted; parity confirmed"},
+        {"id": "2", "name": "Contract Assurance", "pass_threshold": "All critical contracts pass"},
+        {"id": "3", "name": "Execution Integrity", "pass_threshold": "No open critical defects"},
+        {"id": "4", "name": "Sign-Off & Handoff", "pass_threshold": "Approved + packaged"}
+      ],
+      "handoffs_to": ["12"],
+      "invariants": ["Do not grant integration readiness unless all critical paths and contracts pass with evidence logged."],
+      "automation_hooks": [
+        "scripts/validate_environment.py",
+        "scripts/run_contract_tests.py",
+        "pytest -m integration"
+      ]
+    },
+    {
+      "id": "12",
+      "name": "QUALITY AUDIT ORCHESTRATOR",
+      "purpose": "Orchestrate correct review protocol, execute pre-audit automation, consolidate audit record.",
+      "inputs_from": ["11", "07"],
+      "outputs_to": ["20", "21", "22"],
+      "prerequisites": {
+        "artifacts": ["INTEGRATION-EVIDENCE.zip", "integration-signoff.json", "TECHNICAL-DESIGN.md"],
+        "approvals": ["Integration Lead sign-off", "Security waiver/approval", "PO acknowledgement"],
+        "system_state": ["CI workflows configured", "access to review-protocols/"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Pre-Audit Automation", "pass_threshold": "Coverage ≥ 80%, zero blocking CI"},
+        {"id": "2", "name": "Routing Integrity", "pass_threshold": "Manifest checksum true"},
+        {"id": "3", "name": "Execution Completion", "pass_threshold": "100% required checks executed"},
+        {"id": "4", "name": "Unified Reporting", "pass_threshold": "Manifest ≥ 95%, approvals logged"}
+      ],
+      "handoffs_to": ["13"],
+      "invariants": ["DO NOT bypass pre-audit automation or deliver reports without executing the selected specialized protocol end-to-end."],
+      "automation_hooks": [
+        "scripts/run_protocol_4_pre_audit.py",
+        "scripts/validate_router_mapping.py",
+        "scripts/validate_gate_4_reporting.py"
+      ]
+    },
+    {
+      "id": "13",
+      "name": "USER ACCEPTANCE TESTING (UAT) COORDINATION",
+      "purpose": "Orchestrate customer-facing validation cycles to confirm business requirements are met.",
+      "inputs_from": ["12", "11", "10"],
+      "outputs_to": ["14", "21", "22", "15"],
+      "prerequisites": {
+        "artifacts": ["QUALITY-AUDIT-PACKAGE.zip", "INTEGRATION-EVIDENCE.zip", "readiness-recommendation.md", "release-notes-draft.md"],
+        "approvals": ["PO alignment with PRD", "Quality Audit readiness", "Staging access"],
+        "system_state": ["UAT/staging env synchronized", "comms configured"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "UAT Entry", "pass_threshold": "Checklist 100%"},
+        {"id": "2", "name": "Execution Integrity", "pass_threshold": "≥95% scenarios executed"},
+        {"id": "3", "name": "Defect Resolution", "pass_threshold": "0 blockers; critical ≤1 with waiver"},
+        {"id": "4", "name": "Acceptance", "pass_threshold": "All signatures + checksum verified"}
+      ],
+      "handoffs_to": ["14"],
+      "invariants": ["DO NOT declare UAT complete without recorded stakeholder approvals, resolved blocking feedback, and updated release documentation."],
+      "automation_hooks": [
+        "scripts/validate_gate_15_entry.py",
+        "scripts/validate_gate_15_defects.py"
+      ]
+    },
+    {
+      "id": "14",
+      "name": "PRE-DEPLOYMENT VALIDATION & STAGING READINESS",
+      "purpose": "Validate staging parity, rehearse deployment & rollback, document readiness.",
+      "inputs_from": ["12", "11", "13"],
+      "outputs_to": ["15", "19", "20", "21"],
+      "prerequisites": {
+        "artifacts": ["QUALITY-AUDIT-PACKAGE.zip", "integration-evidence-bundle.zip", "UAT-CLOSURE-PACKAGE.zip"],
+        "approvals": ["QA readiness", "PO scope fixed", "Security compliance"],
+        "system_state": ["Staging mirrors prod", "deployment credentials"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Intake Confirmation", "pass_threshold": "Drift ≤ low"},
+        {"id": "2", "name": "Deployment Rehearsal", "pass_threshold": "0 blocking errors; coverage ≥ 90%"},
+        {"id": "3", "name": "Rollback & Security", "pass_threshold": "RTO ≤ target; 0 blocking findings"},
+        {"id": "4", "name": "Readiness Approval", "pass_threshold": "Manifest ≥ 95%; approvals 100%"}
+      ],
+      "handoffs_to": ["15"],
+      "invariants": ["DO NOT issue production go/no-go package without staging parity and successful deployment+rollback rehearsals with evidence."],
+      "automation_hooks": [
+        "scripts/validate_gate_10_intake.py",
+        "scripts/validate_gate_10_readiness.py"
+      ]
+    },
+    {
+      "id": "15",
+      "name": "PRODUCTION DEPLOYMENT & RELEASE MANAGEMENT",
+      "purpose": "Orchestrate production deployments with zero unplanned downtime and full auditability.",
+      "inputs_from": ["14", "13"],
+      "outputs_to": ["16", "20", "22"],
+      "prerequisites": {
+        "artifacts": ["PRE-DEPLOYMENT-PACKAGE.zip", "readiness-approval.json", "rollback-verification-report.json", "UAT-CLOSURE-PACKAGE.zip"],
+        "approvals": ["Executive sponsor", "SRE/Operations", "Security"],
+        "system_state": ["Prod credentials", "automation scripts", "dashboards & alerting"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Readiness Confirmation", "pass_threshold": "Checklist 100%"},
+        {"id": "2", "name": "Approval & Freeze", "pass_threshold": "All stakeholders ack"},
+        {"id": "3", "name": "Production Launch", "pass_threshold": "0 blocking incidents; ≥95% validation"},
+        {"id": "4", "name": "Stabilization & Reporting", "pass_threshold": "Metrics within SLO; report ≥95%"}
+      ],
+      "handoffs_to": ["16"],
+      "invariants": ["DO NOT deploy to production without staging success, stakeholder approval, and executable rollback plan."],
+      "automation_hooks": [
+        "scripts/validate_gate_11_readiness.py",
+        "scripts/validate_gate_11_launch.py"
+      ]
+    },
+    {
+      "id": "16",
+      "name": "POST-DEPLOYMENT MONITORING & OBSERVABILITY",
+      "purpose": "Activate, validate, and tune observability systems after deployment.",
+      "inputs_from": ["15", "21"],
+      "outputs_to": ["20", "21", "22"],
+      "prerequisites": {
+        "artifacts": ["post-deployment-validation.json", "deployment-health-log.md", "DEPLOYMENT-REPORT.md"],
+        "approvals": ["Release Manager", "SRE lead", "Security/compliance"],
+        "system_state": ["Monitoring stack & alerting integrations"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Instrumentation Coverage", "pass_threshold": ">=95%"},
+        {"id": "2", "name": "Alert Validation", "pass_threshold": "Ack ≤ SLA; dashboards ≥ 90%"},
+        {"id": "3", "name": "Observability Assurance", "pass_threshold": "Schedule 100%; backlog created"},
+        {"id": "4", "name": "Monitoring Handoff", "pass_threshold": "Manifest ≥95%; approvals 100%"}
+      ],
+      "handoffs_to": ["17"],
+      "invariants": ["DO NOT declare monitoring complete until rules, dashboards, and runbooks validated against live telemetry."],
+      "automation_hooks": [
+        "scripts/validate_gate_12_instrumentation.py",
+        "scripts/validate_gate_12_handoff.py"
+      ]
+    },
+    {
+      "id": "17",
+      "name": "INCIDENT RESPONSE & ROLLBACK",
+      "purpose": "Coordinate detection, mitigation, and resolution of production incidents with rollback.",
+      "inputs_from": ["16", "15", "14"],
+      "outputs_to": ["22", "21", "19"],
+      "prerequisites": {
+        "artifacts": ["MONITORING-PACKAGE.zip", "alert-test-results.json", "production-deployment-report.json", "rollback-verification-report.json"],
+        "approvals": ["Incident commander authority", "Release Manager acknowledgement", "Security approval if regulated data"],
+        "system_state": ["Monitoring dashboards", "privileged credentials", "war-room channels"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Severity Alignment", "pass_threshold": "Consensus + notifications within SLA"},
+        {"id": "2", "name": "Mitigation Readiness", "pass_threshold": "Rollback prerequisites verified; approvals 100%"},
+        {"id": "3", "name": "Recovery Validation", "pass_threshold": "≥95% critical checks pass"},
+        {"id": "4", "name": "Resolution & Documentation", "pass_threshold": "Docs ≥95%; stakeholders informed"}
+      ],
+      "handoffs_to": ["18"],
+      "invariants": ["DO NOT perform rollback without confirming severity, scope, and stakeholder alignment."],
+      "automation_hooks": [
+        "scripts/validate_gate_13_severity.py",
+        "scripts/validate_gate_13_resolution.py"
+      ]
+    },
+    {
+      "id": "18",
+      "name": "PERFORMANCE OPTIMIZATION & TUNING",
+      "purpose": "Detect, analyze, and remediate performance bottlenecks via telemetry and load testing.",
+      "inputs_from": ["16", "17", "15"],
+      "outputs_to": ["22", "21", "19"],
+      "prerequisites": {
+        "artifacts": ["MONITORING-PACKAGE.zip", "INCIDENT-REPORT.md", "baseline-metrics.json", "DEPLOYMENT-REPORT.md"],
+        "approvals": ["PO prioritization", "SRE lead approval", "Security clearance"],
+        "system_state": ["APM/logs/tracing", "load testing env"]
+      },
+      "quality_gates": [
+        {"id": "1", "name": "Baseline Validation", "pass_threshold": "≥95% completeness"},
+        {"id": "2", "name": "Diagnostic Coverage", "pass_threshold": "≥90%"},
+        {"id": "3", "name": "Optimization Validation", "pass_threshold": "≥15% improvement; 0 regressions"},
+        {"id": "4", "name": "Governance & Communication", "pass_threshold": "Docs ≥95%; approvals captured"}
+      ],
+      "handoffs_to": ["22"],
+      "invariants": ["DO NOT deploy performance changes without reproducible benchmarking evidence and SLO instrumentation."],
+      "automation_hooks": [
+        "scripts/validate_gate_14_baseline.py",
+        "scripts/validate_gate_14_optimization.py"
+      ]}
+    ,{
+      "id": "19",
+      "name": "DOCUMENTATION & KNOWLEDGE TRANSFER",
+      "purpose": "Capture, validate, and distribute durable knowledge for independent execution.",
+      "inputs_from": ["06","07","10","11","12","15","16","17","18","13"],
+      "outputs_to": ["20","21","22"],
+      "prerequisites": {
+        "artifacts": ["FINAL-PRD.md","architecture-decision-log.json","SPRINT-IMPLEMENTATION-NOTES.md","INTEGRATION-VALIDATION-REPORT.zip","QUALITY-AUDIT-PACKAGE.zip","PRODUCTION-DEPLOYMENT-REPORT.json","OBSERVABILITY-BASELINE.md","INCIDENT-POSTMORTEMS/","PERFORMANCE-INSIGHTS.md","UAT-FEEDBACK.csv"],
+        "approvals": ["PO","Engineering Lead","Support & Operations leadership"],
+        "system_state": ["Access to docs repos","collaboration tools","recording tools"]
+      },
+      "quality_gates": [
+        {"id": "1","name": "Documentation Completeness","pass_threshold": "All persona deliverables approved"},
+        {"id": "2","name": "Knowledge Transfer Readiness","pass_threshold": "Attendance ≥90%, 0 critical gaps"},
+        {"id": "3","name": "Publication Integrity","pass_threshold": "100% accessibility OK"}
+      ],
+      "handoffs_to": ["20"],
+      "invariants": ["Never declare documentation complete until all consumers confirm access and gaps=0."],
+      "automation_hooks": ["scripts/validate_gate_16_completeness.py","scripts/validate_gate_16_publication.py"]
+    },
+    {
+      "id": "20",
+      "name": "PROJECT CLOSURE & HANDOVER",
+      "purpose": "Verify deliverables, secure approvals, formalize ownership, retire governance with evidence.",
+      "inputs_from": ["19","15","21"],
+      "outputs_to": ["21","22","PMO Archive"],
+      "prerequisites": {
+        "artifacts": ["DOCUMENTATION-PACKAGE.zip","ENABLEMENT-ACCESS-LOG.csv","PROJECT-DELIVERABLE-REGISTER.xlsx","FINAL-DEPLOYMENT-REPORT.json","SLA-BASELINE.md","INCIDENT-POSTMORTEMS/","PERFORMANCE-IMPROVEMENT-BACKLOG.json","MAINTENANCE-PLAN-DRAFT.md","FINANCIAL-CLOSEOUT-REPORT.pdf"],
+        "approvals": ["Executive Sponsor","PO","Operations Director","Legal/Compliance"],
+        "system_state": ["Portfolio tool access","tasks closed","comms open"]
+      },
+      "quality_gates": [
+        {"id": "1","name": "Deliverable Completion","pass_threshold": "100% Accepted"},
+        {"id": "2","name": "Operational Handover Readiness","pass_threshold": "100% services assigned+SLA"},
+        {"id": "3","name": "Governance Closure","pass_threshold": "All items Closed"}
+      ],
+      "handoffs_to": ["21"],
+      "invariants": ["Do not close project until all deliverables, finances, and handover items have signed approvals and evidence."],
+      "automation_hooks": ["scripts/validate_gate_17_deliverables.py","scripts/validate_gate_17_handover.py"]
+    },
+    {
+      "id": "21",
+      "name": "CONTINUOUS MAINTENANCE & SUPPORT PLANNING",
+      "purpose": "Translate closure outputs into a living maintenance program with governance cadence.",
+      "inputs_from": ["20","19","17"],
+      "outputs_to": ["22","23","Ops Teams"],
+      "prerequisites": {
+        "artifacts": ["CLOSURE-PACKAGE.zip","operational-handover-record.json","knowledge-transfer-feedback.json","OBSERVABILITY-BASELINE.md","INCIDENT-POSTMORTEMS/","PERFORMANCE-IMPROVEMENT-BACKLOG.json","TECH-DEBT-REGISTER.md","SECURITY-RISK-LOG.csv","SERVICE-CATALOG.xlsx"],
+        "approvals": ["Operations Director","Support Lead","PO","Security Lead"],
+        "system_state": ["Monitoring, ticketing, KB platforms","SLO dashboards"]
+      },
+      "quality_gates": [
+        {"id": "1","name": "Maintenance Backlog Integrity","pass_threshold": "All critical items have owner+due date"},
+        {"id": "2","name": "Stakeholder Approval","pass_threshold": "All required Approved"},
+        {"id": "3","name": "Governance Cadence Activation","pass_threshold": "Checklist complete"}
+      ],
+      "handoffs_to": ["22"],
+      "invariants": ["Do not finalize plan without explicit commitments for every critical item, SLA target, optimization backlog."],
+      "automation_hooks": ["scripts/validate_gate_18_backlog.py","scripts/validate_gate_18_governance.py"]
+    },
+    {
+      "id": "22",
+      "name": "IMPLEMENTATION RETROSPECTIVE",
+      "purpose": "Synthesize cross-phase learnings and produce prioritized improvement plan.",
+      "inputs_from": ["21","20","19"],
+      "outputs_to": ["23","06","CI Backlog"],
+      "prerequisites": {
+        "artifacts": ["maintenance-plan.md","maintenance-lessons-input.md","closure-lessons-input.md","LESSONS-LEARNED-DOC-NOTES.md","INCIDENT-POSTMORTEMS/","PERFORMANCE-INSIGHTS.md","QUALITY-AUDIT-PACKAGE.zip","UAT-FEEDBACK.csv","SPRINT-IMPLEMENTATION-NOTES.md"],
+        "approvals": ["Executive Sponsor","PO","Engineering Manager","Operations Lead"],
+        "system_state": ["Workspace prepared","survey tools","action tracking system"]
+      },
+      "quality_gates": [
+        {"id": "1","name": "Participation & Coverage","pass_threshold": "Attendance ≥90%; evidence per theme ≥1"},
+        {"id": "2","name": "Action Plan Readiness","pass_threshold": "100% critical actions owner+date+link"},
+        {"id": "3","name": "CI Integration","pass_threshold": "100% high impact actions acknowledged"}
+      ],
+      "handoffs_to": ["23"],
+      "invariants": ["Do not conclude until every critical action item has owner, due date, follow-up protocol."],
+      "automation_hooks": ["scripts/validate_gate_5_action_plan.py","scripts/validate_gate_5_integration.py"]
+    },
+    {
+      "id": "23",
+      "name": "SCRIPT GOVERNANCE",
+      "purpose": "Validate, audit, and enforce consistency across operational scripts without modifying them.",
+      "inputs_from": ["12","21"],
+      "outputs_to": ["12","22","19"],
+      "prerequisites": {
+        "artifacts": ["QUALITY-AUDIT-PACKAGE.zip","quality-audit-summary.json","script-registry.json (optional)"]},
+      "quality_gates": [
+        {"id": "1","name": "Inventory Accuracy","pass_threshold": ">=95%"},
+        {"id": "2","name": "Documentation & Static Compliance","pass_threshold": ">=95%, 0 blockers"},
+        {"id": "3","name": "Artifact Governance","pass_threshold": ">=98%"},
+        {"id": "4","name": "Governance Reporting","pass_threshold": "Scorecard valid; backlog coverage 100%"}
+      ],
+      "handoffs_to": ["12","22"],
+      "invariants": ["Do not modify or execute scripts directly; only validate, analyze, and report."],
+      "automation_hooks": ["scripts/validate_script_registry.py","scripts/generate_protocol_23_artifacts.py"]
+    }
+  ]
+}
