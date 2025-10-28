@@ -1,0 +1,27 @@
+{
+  "protocol_id": "P24",
+  "protocol_name": "CLIENT DISCOVERY (ALTERNATE TRACK)",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["JOB-POST.md", "architecture-principles.md", "PROJECT-BRIEF.md"],
+    "approvals": ["Engagement lead authorization"],
+    "system_state": ["Legacy engagement identified"],
+    "cognitive_readiness": ["Rapid discovery", "Evidence-driven intake", "Fast-track validation"]
+  },
+  "reasoning_paths": [{
+    "path_id": "DNA_24_PATH_01",
+    "name": "Alternate Discovery Track",
+    "sequence": 1,
+    "decision_points": [
+      {"id": "DP_24_01", "question": "Is intake validation complete?", "criteria": "JOB-POST ≥90% + brief skeleton present", "gate_reference": "G1", "ledger_event_pattern": "evt_*_P24_G1_*"},
+      {"id": "DP_24_02", "question": "Are requirements elicited?", "criteria": "Questionnaire ≥85% + stakeholder ack", "gate_reference": "G2", "ledger_event_pattern": "evt_*_P24_G2_*"},
+      {"id": "DP_24_03", "question": "Is scope validated and approved?", "criteria": "Scope confirmed + client approval", "gate_reference": "G3", "ledger_event_pattern": "evt_*_P24_G3_*"}
+    ]
+  }],
+  "handoff_logic": {"outputs_to": ["06"], "artifacts_produced": ["rapid-discovery-report.md", "alternate-brief.json"], "handoff_condition": "All 3 gates pass; skip P02-P03-P04-P05", "ledger_capture": "Alternate discovery results, fast-track validation", "cycle_fix_note": "Previously output to P03 creating cycle; now outputs to P06 (PRD) directly"},
+  "invariants": ["Must justify alternate track usage", "Evidence still required despite fast-track"],
+  "coverage_metrics": {"total_decision_points": 3, "gates_mapped": 3, "coverage_ratio": 1.0, "ledger_linkage": "Complete"}
+}
+

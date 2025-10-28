@@ -1,0 +1,28 @@
+{
+  "protocol_id": "P20",
+  "protocol_name": "PROJECT CLOSURE & HANDOVER",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["DOCUMENTATION-PACKAGE.zip", "knowledge-transfer-record.json", "maintenance-plan.md"],
+    "approvals": ["All stakeholders"],
+    "system_state": ["Documentation complete", "Maintenance planned"],
+    "cognitive_readiness": ["Closure procedures", "Handover coordination", "Archive management"]
+  },
+  "reasoning_paths": [{
+    "path_id": "DNA_20_PATH_01",
+    "name": "Project Closure",
+    "sequence": 1,
+    "decision_points": [
+      {"id": "DP_20_01", "question": "Are deliverables verified?", "criteria": "Register ≥95% complete", "gate_reference": "G1", "ledger_event_pattern": "evt_*_P20_G1_*"},
+      {"id": "DP_20_02", "question": "Are financials reconciled?", "criteria": "Budget ≤+5%; approvals 100%", "gate_reference": "G2", "ledger_event_pattern": "evt_*_P20_G2_*"},
+      {"id": "DP_20_03", "question": "Is governance retired properly?", "criteria": "Ownership transferred; manifest validated", "gate_reference": "G3", "ledger_event_pattern": "evt_*_P20_G3_*"},
+      {"id": "DP_20_04", "question": "Is final sign-off obtained?", "criteria": "All signatures + evidence archived", "gate_reference": "G4", "ledger_event_pattern": "evt_*_P20_G4_*"}
+    ]
+  }],
+  "handoff_logic": {"outputs_to": ["21", "22", "PMO Archive"], "artifacts_produced": ["CLOSURE-PACKAGE.zip", "final-sign-off-record.json"], "handoff_condition": "All 4 gates pass; project officially closed", "ledger_capture": "Closure validation, financial reconciliation, ownership transfer"},
+  "invariants": ["Closure is irreversible", "All deliverables must be archived"],
+  "coverage_metrics": {"total_decision_points": 4, "gates_mapped": 4, "coverage_ratio": 1.0, "ledger_linkage": "Complete"}
+}
+

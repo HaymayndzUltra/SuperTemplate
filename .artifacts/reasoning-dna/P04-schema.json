@@ -1,0 +1,74 @@
+{
+  "protocol_id": "P04",
+  "protocol_name": "PROJECT BOOTSTRAP AND CONTEXT ENGINEERING",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["PROJECT-BRIEF.md", "project-brief-validation-report.json", "BRIEF-APPROVAL-RECORD.json"],
+    "approvals": ["Delivery lead", "DevOps confirmation"],
+    "system_state": ["Access to scripts/", "Workspace initialized"],
+    "cognitive_readiness": ["Bootstrap patterns", "Environment configuration", "Context engineering"]
+  },
+  "reasoning_paths": [
+    {
+      "path_id": "DNA_04_PATH_01",
+      "name": "Brief Validation & Environment Setup",
+      "sequence": 1,
+      "decision_points": [
+        {
+          "id": "DP_04_01",
+          "question": "Is brief validated and environment ready?",
+          "criteria": "≥0.95 validation score",
+          "gate_reference": "G1",
+          "ledger_event_pattern": "evt_*_P04_G1_*"
+        },
+        {
+          "id": "DP_04_02",
+          "question": "Are environment and rules integrity verified?",
+          "criteria": "doctor=0 and audit ≤ Medium",
+          "gate_reference": "G2",
+          "ledger_event_pattern": "evt_*_P04_G2_*"
+        }
+      ]
+    },
+    {
+      "path_id": "DNA_04_PATH_02",
+      "name": "Scaffold & Context Validation",
+      "sequence": 2,
+      "decision_points": [
+        {
+          "id": "DP_04_03",
+          "question": "Is scaffold validation complete?",
+          "criteria": "≥98% validation score",
+          "gate_reference": "G3",
+          "ledger_event_pattern": "evt_*_P04_G3_*"
+        },
+        {
+          "id": "DP_04_04",
+          "question": "Is context engineering complete?",
+          "criteria": "Workflow pass + docs updated",
+          "gate_reference": "G4",
+          "ledger_event_pattern": "evt_*_P04_G4_*"
+        }
+      ]
+    }
+  ],
+  "handoff_logic": {
+    "outputs_to": ["05"],
+    "artifacts_produced": ["governance-status.md", "bootstrap-manifest.json", "context-kit/"],
+    "handoff_condition": "All 4 gates pass",
+    "ledger_capture": "Bootstrap completion, environment state, context artifacts"
+  },
+  "invariants": [
+    "No scaffold modifications without governance approval",
+    "Environment baseline must be validated"
+  ],
+  "coverage_metrics": {
+    "total_decision_points": 4,
+    "gates_mapped": 4,
+    "coverage_ratio": 1.0,
+    "ledger_linkage": "Complete"
+  }
+}
+

@@ -1,0 +1,67 @@
+{
+  "protocol_id": "P13",
+  "protocol_name": "USER ACCEPTANCE TESTING (UAT) COORDINATION",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["QUALITY-AUDIT-PACKAGE.zip", "quality-audit-summary.json"],
+    "approvals": ["Quality audit sign-off"],
+    "system_state": ["Quality gates passed"],
+    "cognitive_readiness": ["UAT coordination", "Stakeholder management", "Defect triage"]
+  },
+  "reasoning_paths": [
+    {
+      "path_id": "DNA_13_PATH_01",
+      "name": "UAT Execution & Sign-off",
+      "sequence": 1,
+      "decision_points": [
+        {
+          "id": "DP_13_01",
+          "question": "Is UAT entry checklist complete?",
+          "criteria": "Checklist 100%",
+          "gate_reference": "G1",
+          "ledger_event_pattern": "evt_*_P13_G1_*"
+        },
+        {
+          "id": "DP_13_02",
+          "question": "Are scenarios executed sufficiently?",
+          "criteria": "≥95% scenarios executed",
+          "gate_reference": "G2",
+          "ledger_event_pattern": "evt_*_P13_G2_*"
+        },
+        {
+          "id": "DP_13_03",
+          "question": "Are defects resolved acceptably?",
+          "criteria": "0 blockers; critical ≤1 with waiver",
+          "gate_reference": "G3",
+          "ledger_event_pattern": "evt_*_P13_G3_*"
+        },
+        {
+          "id": "DP_13_04",
+          "question": "Is stakeholder acceptance obtained?",
+          "criteria": "All signatures + checksum verified",
+          "gate_reference": "G4",
+          "ledger_event_pattern": "evt_*_P13_G4_*"
+        }
+      ]
+    }
+  ],
+  "handoff_logic": {
+    "outputs_to": ["14"],
+    "artifacts_produced": ["UAT-RESULTS.json", "stakeholder-acceptance-record.json"],
+    "handoff_condition": "All 4 gates pass",
+    "ledger_capture": "UAT execution results, defect status, stakeholder acceptance"
+  },
+  "invariants": [
+    "No deployment without stakeholder acceptance",
+    "All critical defects must be resolved or waived"
+  ],
+  "coverage_metrics": {
+    "total_decision_points": 4,
+    "gates_mapped": 4,
+    "coverage_ratio": 1.0,
+    "ledger_linkage": "Complete"
+  }
+}
+

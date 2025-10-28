@@ -1,0 +1,26 @@
+{
+  "protocol_id": "P26",
+  "protocol_name": "INTEGRATION GUIDE",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["protocol-integration-map.json", "automation-scripts/"],
+    "approvals": ["DevOps lead"],
+    "system_state": ["Automation framework ready"],
+    "cognitive_readiness": ["Integration patterns", "CI/CD configuration", "Automation setup"]
+  },
+  "reasoning_paths": [{
+    "path_id": "DNA_26_PATH_01",
+    "name": "Integration & Automation",
+    "sequence": 1,
+    "decision_points": [
+      {"id": "DP_26_01", "question": "Is integration guide complete?", "criteria": "All integration points documented", "gate_reference": "G1", "ledger_event_pattern": "evt_*_P26_G1_*"},
+      {"id": "DP_26_02", "question": "Are automation scripts validated?", "criteria": "All scripts tested and documented", "gate_reference": "G2", "ledger_event_pattern": "evt_*_P26_G2_*"}
+    ]
+  }],
+  "handoff_logic": {"outputs_to": ["Documentation"], "artifacts_produced": ["integration-guide.md", "automation-runbook.md"], "handoff_condition": "All gates pass", "ledger_capture": "Integration procedures, automation configuration"},
+  "invariants": ["Integration must be automated where possible", "Guides must be executable"],
+  "coverage_metrics": {"total_decision_points": 2, "gates_mapped": 2, "coverage_ratio": 1.0, "ledger_linkage": "Complete"}
+}
+

@@ -1,0 +1,67 @@
+{
+  "protocol_id": "P11",
+  "protocol_name": "INTEGRATION TESTING & SYSTEM VALIDATION",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["implementation-evidence/", "task-completion-manifest.json"],
+    "approvals": ["QA lead"],
+    "system_state": ["All tasks complete"],
+    "cognitive_readiness": ["Integration testing", "Contract validation", "System verification"]
+  },
+  "reasoning_paths": [
+    {
+      "path_id": "DNA_11_PATH_01",
+      "name": "Integration Testing",
+      "sequence": 1,
+      "decision_points": [
+        {
+          "id": "DP_11_01",
+          "question": "Are all services scoped and aligned?",
+          "criteria": "All services accounted; parity confirmed",
+          "gate_reference": "G1",
+          "ledger_event_pattern": "evt_*_P11_G1_*"
+        },
+        {
+          "id": "DP_11_02",
+          "question": "Do critical contracts pass?",
+          "criteria": "All critical contracts pass",
+          "gate_reference": "G2",
+          "ledger_event_pattern": "evt_*_P11_G2_*"
+        },
+        {
+          "id": "DP_11_03",
+          "question": "Is execution integrity verified?",
+          "criteria": "No open critical defects",
+          "gate_reference": "G3",
+          "ledger_event_pattern": "evt_*_P11_G3_*"
+        },
+        {
+          "id": "DP_11_04",
+          "question": "Is sign-off obtained and handoff packaged?",
+          "criteria": "Approved + packaged",
+          "gate_reference": "G4",
+          "ledger_event_pattern": "evt_*_P11_G4_*"
+        }
+      ]
+    }
+  ],
+  "handoff_logic": {
+    "outputs_to": ["12"],
+    "artifacts_produced": ["integration-test-results.json", "system-validation-report.md"],
+    "handoff_condition": "All 4 gates pass",
+    "ledger_capture": "Integration test results, contract validations, defect status"
+  },
+  "invariants": [
+    "All critical paths must be tested",
+    "No open critical defects before handoff"
+  ],
+  "coverage_metrics": {
+    "total_decision_points": 4,
+    "gates_mapped": 4,
+    "coverage_ratio": 1.0,
+    "ledger_linkage": "Complete"
+  }
+}
+

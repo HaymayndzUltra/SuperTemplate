@@ -1,0 +1,28 @@
+{
+  "protocol_id": "P21",
+  "protocol_name": "CONTINUOUS MAINTENANCE & SUPPORT PLANNING",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["CLOSURE-PACKAGE.zip", "operational-handover-record.json"],
+    "approvals": ["Ops team acceptance"],
+    "system_state": ["Project closed"],
+    "cognitive_readiness": ["Maintenance planning", "Support procedures", "SLA management"]
+  },
+  "reasoning_paths": [{
+    "path_id": "DNA_21_PATH_01",
+    "name": "Maintenance Planning",
+    "sequence": 1,
+    "decision_points": [
+      {"id": "DP_21_01", "question": "Is support scope defined?", "criteria": "SLA matrix approved", "gate_reference": "G1", "ledger_event_pattern": "evt_*_P21_G1_*"},
+      {"id": "DP_21_02", "question": "Are escalation paths validated?", "criteria": "≥95% scenarios covered", "gate_reference": "G2", "ledger_event_pattern": "evt_*_P21_G2_*"},
+      {"id": "DP_21_03", "question": "Is improvement backlog prioritized?", "criteria": "Backlog validated + roadmap approved", "gate_reference": "G3", "ledger_event_pattern": "evt_*_P21_G3_*"},
+      {"id": "DP_21_04", "question": "Is maintenance plan approved?", "criteria": "Manifest ≥95%; ops approval 100%", "gate_reference": "G4", "ledger_event_pattern": "evt_*_P21_G4_*"}
+    ]
+  }],
+  "handoff_logic": {"outputs_to": ["22", "23", "Ops Teams"], "artifacts_produced": ["maintenance-plan.md", "sla-matrix.json"], "handoff_condition": "All 4 gates pass", "ledger_capture": "Maintenance schedule, SLA definitions, ops handover"},
+  "invariants": ["SLAs must be measurable", "Escalation paths must be documented"],
+  "coverage_metrics": {"total_decision_points": 4, "gates_mapped": 4, "coverage_ratio": 1.0, "ledger_linkage": "Complete"}
+}
+

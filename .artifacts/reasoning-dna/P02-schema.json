@@ -1,0 +1,81 @@
+{
+  "protocol_id": "P02",
+  "protocol_name": "CLIENT DISCOVERY INITIATION",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["PROPOSAL.md", "proposal-summary.json", "client-reply.md"],
+    "approvals": ["Business development lead"],
+    "system_state": ["Client engagement confirmed"],
+    "cognitive_readiness": ["Discovery framework understanding", "Stakeholder communication", "Requirement elicitation"]
+  },
+  "reasoning_paths": [
+    {
+      "path_id": "DNA_02_PATH_01",
+      "name": "Context Alignment",
+      "sequence": 1,
+      "decision_points": [
+        {
+          "id": "DP_02_01",
+          "question": "Are discovery objectives aligned with proposal?",
+          "criteria": "≥95% coverage match",
+          "gate_reference": "G1",
+          "ledger_event_pattern": "evt_*_P02_G1_*"
+        }
+      ]
+    },
+    {
+      "path_id": "DNA_02_PATH_02",
+      "name": "Requirement Deep Dive",
+      "sequence": 2,
+      "decision_points": [
+        {
+          "id": "DP_02_02",
+          "question": "Are requirements complete and validated?",
+          "criteria": "Completeness score ≥0.9",
+          "gate_reference": "G2",
+          "ledger_event_pattern": "evt_*_P02_G2_*"
+        }
+      ]
+    },
+    {
+      "path_id": "DNA_02_PATH_03",
+      "name": "Expectation Alignment & Confirmation",
+      "sequence": 3,
+      "decision_points": [
+        {
+          "id": "DP_02_03",
+          "question": "Are client expectations aligned and approved?",
+          "criteria": "Client approval flag recorded",
+          "gate_reference": "G3",
+          "ledger_event_pattern": "evt_*_P02_G3_*"
+        },
+        {
+          "id": "DP_02_04",
+          "question": "Is discovery confirmed with documentation?",
+          "criteria": "Approval timestamp + transcripts present",
+          "gate_reference": "G4",
+          "ledger_event_pattern": "evt_*_P02_G4_*"
+        }
+      ]
+    }
+  ],
+  "handoff_logic": {
+    "outputs_to": ["03", "04"],
+    "artifacts_produced": ["client-discovery-form.md", "discovery-recap.md", "communication-plan.md"],
+    "handoff_condition": "Client approval documented",
+    "ledger_capture": "Discovery objectives, requirements, and client confirmation"
+  },
+  "invariants": [
+    "Client approval required before proceeding to brief",
+    "Discovery must be evidence-based, not assumed"
+  ],
+  "coverage_metrics": {
+    "total_decision_points": 4,
+    "gates_mapped": 4,
+    "coverage_ratio": 1.0,
+    "ledger_linkage": "Complete"
+  }
+}
+

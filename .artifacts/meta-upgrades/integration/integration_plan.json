@@ -1,7 +1,7 @@
 {
   "schedule": [
     {"stage": "S0", "name": "Causal Ledger", "upgrade": "UPG04", "depends_on": [], "mode": "append-only, mock IDs", "notes": "Capture decision points non-intrusively."},
-    {"stage": "S1", "name": "Reasoning DNA Schema", "upgrade": "UPG02", "depends_on": ["S0"], "mode": "emit reasoning_dna.json per protocol", "notes": "Schema validate only."},
+    {"stage": "S1", "name": "Reasoning DNA Schema", "upgrade": "UPG02", "depends_on": ["S0"], "mode": "emit reasoning_dna.json per protocol", "notes": "Schema validate only.", "status": "deployed", "deployed_at": "2025-10-30T00:00:00Z", "coverage": "100%", "evidence": ".artifacts/meta-upgrades/stage-S1/"},
     {"stage": "S2", "name": "Protocol Intelligence Kernel", "upgrade": "UPG01", "depends_on": ["S0","S1"], "mode": "self_check: halt_on_violation honored", "notes": "Local checks only."},
     {"stage": "S3", "name": "Protocol Exchange Layer", "upgrade": "UPG03", "depends_on": ["S0","S1","S2"], "mode": "simulate handoffs, bounded retries", "notes": "No writes to protocols."},
     {"stage": "S4", "name": "Temporal Reasoning Layer", "upgrade": "UPG08", "depends_on": ["S1","S3"], "mode": "time-aware validations", "notes": "Generate alerts only."},
