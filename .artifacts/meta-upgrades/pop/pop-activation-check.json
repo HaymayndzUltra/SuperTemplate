@@ -8,12 +8,53 @@
     "temporal_layer_health": "UPG08 status == green for 3 consecutive observer runs"
   },
   "current_evidence": {
-    "dna_coverage": null,
-    "pik_self_check_pass_rate": null,
-    "pel_conflict_free_runs": null,
-    "ledger_decision_coverage": null,
-    "temporal_layer_health": null
+    "dna_coverage": {
+      "cycle_values": [
+        { "cycle": 1, "value": 0.90 },
+        { "cycle": 2, "value": 0.92 },
+        { "cycle": 3, "value": 0.93 }
+      ],
+      "average": 0.9166666667,
+      "meets_threshold": true
+    },
+    "pik_self_check_pass_rate": {
+      "cycle_values": [
+        { "cycle": 2, "value": 0.96 },
+        { "cycle": 3, "value": 0.97 }
+      ],
+      "minimum_observed": 0.96,
+      "meets_threshold": true
+    },
+    "pel_conflict_free_runs": {
+      "cycle_span": "cycles-1-3",
+      "consecutive_runs": 3,
+      "meets_threshold": true
+    },
+    "ledger_decision_coverage": {
+      "cycle_values": [
+        { "cycle": 1, "value": 0.95 },
+        { "cycle": 2, "value": 0.96 },
+        { "cycle": 3, "value": 0.97 }
+      ],
+      "minimum_observed": 0.95,
+      "meets_threshold": true
+    },
+    "temporal_layer_health": {
+      "cycle_statuses": [
+        { "cycle": 1, "status": "green" },
+        { "cycle": 2, "status": "green" },
+        { "cycle": 3, "status": "green" }
+      ],
+      "consecutive_green_cycles": 3,
+      "meets_threshold": true
+    },
+    "false_positives": 0
   },
-  "status": "pending",
-  "notes": "POP will not enforce until all criteria met; observer findings must show 0 false positives over 3 runs."
+  "evidence_sources": [
+    ".artifacts/meta-upgrades/pop/cycle-1-results.json",
+    ".artifacts/meta-upgrades/pop/cycle-2-results.json",
+    ".artifacts/meta-upgrades/pop/cycle-3-results.json"
+  ],
+  "status": "observer_green",
+  "notes": "Aggregated observer evidence across three consecutive POP runs; ready for controller activation review."
 }
