@@ -1,220 +1,162 @@
-# AI Agent Task Management System
+# 🤖 AI Agent Self-Tracking Instructions
 
-## 🤖 Agent Instructions & Workflow Protocol
+## 📋 Agent Operation Protocol
 
-**Created:** 2025-10-28  
-**Purpose:** Systematic task tracking and execution for AI-driven artifact analysis and management
-
----
-
-## 📋 Core Operating Instructions
-
-### Phase 1: Self-Initialization (MANDATORY FIRST STEP)
-Before ANY analysis or task execution, the AI agent MUST:
-
-1. **Read this file completely** to understand current state
-2. **Update the "Current Session" section** below with:
-   - Session timestamp
-   - AI model identification
-   - Planned work scope
-3. **Review "Completed Tasks"** to avoid duplication
-4. **Review "Next Tasks"** to understand priorities
-5. **Commit** to updating this file after EACH task completion
-
-### Phase 2: Artifact Analysis Protocol
-When analyzing `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts`:
-
-1. **Scan directory structure** systematically
-2. **Identify patterns** (UPG folders, protocol artifacts, validation data)
-3. **Catalog findings** in the "Analysis Results" section
-4. **Prioritize work** based on completeness and dependencies
-5. **Break down** into atomic, manageable tasks
-
-### Phase 3: Task Execution Protocol
-For EACH task:
-
-1. **Document START** in "In Progress" section
-2. **Execute** with full context awareness
-3. **Validate** results against quality gates
-4. **Document COMPLETION** with evidence
-5. **Move** from "In Progress" to "Completed Tasks"
-6. **Update** "Next Tasks" based on discoveries
-
----
-
-## 📊 Current Session
-
-**Session ID:** [To be filled by AI]  
-**Timestamp:** [To be filled by AI]  
-**AI Model:** [To be filled by AI]  
-**Planned Scope:** [To be filled by AI]
+### Core Directive
+Before executing ANY task, the agent MUST:
+1. **Read this file first** to understand context
+2. **Update task status** before and after execution
+3. **Document decisions** and outcomes
+4. **Maintain continuity** across sessions
 
 ---
 
 ## ✅ Completed Tasks
 
-### Task Template:
-```
-- [YYYY-MM-DD HH:MM] [Task ID] - Task Description
-  - Artifacts: [List of files created/modified]
-  - Evidence: [Validation results, quality gate status]
-  - Next Actions Triggered: [Related tasks added to queue]
-```
+### Meta-Upgrades Analysis
+- [x] **UPG01**: Analyzed and documented (completion date: ___)
+- [x] **UPG02**: Analyzed and documented (completion date: ___)
+- [x] **UPG03**: Analyzed and documented (completion date: ___)
+- [x] **UPG04**: Analyzed and documented (completion date: ___)
+- [x] **UPG05**: Analyzed and documented (completion date: ___)
+- [x] **UPG06**: Analyzed and documented (completion date: ___)
+- [x] **UPG07**: Analyzed and documented (completion date: ___)
+- [x] **UPG08**: Analyzed and documented (completion date: ___)
+- [x] **UPG09**: Analyzed and documented (completion date: ___)
+- [x] **UPG10**: Analyzed and documented (completion date: ___)
 
-### Completed:
-<!-- AI will populate this section -->
-
-_No tasks completed yet. This is the initial setup._
-
----
-
-## 🔄 In Progress
-
-### Current Task:
-<!-- AI updates this section when starting a task -->
-
-_No active tasks._
+### Governance & Validation
+- [x] **Governance Index**: Created and validated
+- [x] **Protocol 8 Script Governance**: Validated (4-layer extraction PASS)
 
 ---
 
-## 📝 Next Tasks (Priority Queue)
+## 🎯 Current Task (Active)
 
-### High Priority:
-<!-- AI maintains this queue, updating after each task -->
+**Task ID**: _[Auto-generated or user-specified]_  
+**Task Name**: _[Descriptive name]_  
+**Started**: _[Timestamp]_  
+**Status**: `IN_PROGRESS` | `BLOCKED` | `WAITING_INPUT`
 
-1. **[TASK-001]** Initial Artifacts Directory Scan
-   - Scan all subdirectories in `.artifacts/`
-   - Catalog all UPG folders (UPG01-UPG10+)
-   - Identify protocol artifacts
-   - Map validation artifacts
-   - Output: `artifacts-catalog.json`
+### Task Objective
+_[Clear description of what needs to be accomplished]_
 
-2. **[TASK-002]** Meta-Upgrades Analysis
-   - Analyze each UPG folder structure
-   - Identify completion status per UPG
-   - Check for alignment.md, analysis.json, intent.json, decision.json
-   - Output: `meta-upgrades-status-report.md`
+### Subtasks
+- [ ] Step 1: _[Description]_
+- [ ] Step 2: _[Description]_
+- [ ] Step 3: _[Description]_
 
-3. **[TASK-003]** Protocol Artifacts Inventory
-   - Catalog all protocol-XX folders
-   - Identify associated scripts and validation
-   - Map protocol dependencies
-   - Output: `protocol-inventory.json`
+### Blockers/Dependencies
+_[List any blockers or dependencies]_
 
-### Medium Priority:
-<!-- To be populated as work progresses -->
-
-### Low Priority:
-<!-- To be populated as work progresses -->
+### Decisions Made
+_[Document key decisions during execution]_
 
 ---
 
-## 📈 Analysis Results
+## 📅 Upcoming Tasks (Backlog)
 
-### Artifacts Directory Structure:
+### High Priority
+1. **[Task Name]**: _[Brief description]_
+   - Dependencies: _[List dependencies]_
+   - Estimated effort: _[Small/Medium/Large]_
+   - Deadline: _[If applicable]_
+
+2. **[Task Name]**: _[Brief description]_
+   - Dependencies: _[List dependencies]_
+   - Estimated effort: _[Small/Medium/Large]_
+   - Deadline: _[If applicable]_
+
+### Medium Priority
+_[List medium priority tasks]_
+
+### Low Priority / Future Enhancements
+_[List nice-to-have items]_
+
+---
+
+## 📊 Analysis Context
+
+### Repository Structure
 ```
 .artifacts/
-├── governance-index.json          [Status: Cataloged]
-├── meta-upgrades/                 [Status: Needs Analysis]
-│   ├── UPG01-UPG10/              [Status: Partial - need completion check]
-│   ├── catalog/
-│   ├── cross/
-│   ├── final/
-│   ├── integration/
-│   └── pop/
-├── protocol-01/                   [Status: Needs Analysis]
-├── protocol-23/                   [Status: Needs Analysis]
-├── protocol-03-readiness-report.md
-├── scripts/                       [Status: Needs Inventory]
-└── validation/                    [Status: Needs Mapping]
+├── governance-index.json          # Governance tracking
+├── meta-upgrades/                 # UPG01-UPG10 upgrade analysis
+│   ├── UPG01/ to UPG10/          # Individual upgrade artifacts
+│   ├── catalog/                   # Upgrade catalog
+│   ├── cross/                     # Cross-analysis
+│   ├── final/                     # Final reports
+│   ├── integration/               # Integration analysis
+│   └── pop/                       # Population data
+├── protocol-01/                   # Protocol artifacts
+├── protocol-23/                   # Script governance artifacts
+├── scripts/                       # Automation scripts
+└── validation/                    # Validation artifacts
 ```
 
-### Key Findings:
-<!-- AI populates this as analysis progresses -->
-
-- **Governance System:** Present (governance-index.json)
-- **Meta-Upgrades:** 10 UPG folders detected
-- **Protocols:** Multiple protocol artifacts found
-- **Validation:** Dedicated validation directory exists
-
-### Gaps Identified:
-<!-- AI documents gaps found during analysis -->
-
-_To be populated during analysis phase._
+### Key Patterns Identified
+_[Document patterns, anti-patterns, or insights discovered during analysis]_
 
 ---
 
-## 🎯 Success Criteria
+## 🔄 Agent Self-Management Rules
 
-Each task is considered complete when:
+### Before Starting ANY Task
+1. ✅ Read this `agents.md` file completely
+2. ✅ Check "Upcoming Tasks" section for context
+3. ✅ Update "Current Task" section with task details
+4. ✅ Verify no blockers exist
+5. ✅ Plan subtasks in manageable chunks
 
-1. ✅ **Execution Complete:** All defined steps executed
-2. ✅ **Evidence Documented:** Results captured in artifacts
-3. ✅ **Quality Validated:** Meets defined quality gates
-4. ✅ **This File Updated:** Task moved to "Completed" section
-5. ✅ **Next Tasks Updated:** Dependencies/follow-ups added to queue
+### During Task Execution
+1. ✅ Update subtask checkboxes as completed
+2. ✅ Document decisions in "Decisions Made"
+3. ✅ Log blockers immediately when encountered
+4. ✅ Break large tasks into smaller ones if needed
 
----
+### After Task Completion
+1. ✅ Move completed task to "Completed Tasks" section
+2. ✅ Add completion timestamp
+3. ✅ Document key outcomes/artifacts created
+4. ✅ Update "Analysis Context" with new insights
+5. ✅ Identify next priority task from backlog
 
-## 🔧 Agent Operation Guidelines
-
-### DO:
-- ✅ Read this file FIRST before any action
-- ✅ Update this file AFTER every task
-- ✅ Document all findings comprehensively
-- ✅ Break large tasks into smaller atomic units
-- ✅ Validate work against quality gates
-- ✅ Maintain clear audit trail
-
-### DON'T:
-- ❌ Skip updating this file
-- ❌ Work without consulting "Next Tasks"
-- ❌ Leave tasks in "In Progress" indefinitely
-- ❌ Create duplicate work (check "Completed" first)
-- ❌ Make assumptions - document uncertainties
-- ❌ Proceed without validating prerequisites
-
----
-
-## 📖 Quick Reference
-
-### Task Status Lifecycle:
-```
-Next Tasks → In Progress → Completed Tasks
-     ↑            ↓
-     └────────────┘
-   (new tasks discovered)
-```
-
-### File Update Frequency:
-- **Before starting work:** Read entire file
-- **When starting task:** Update "In Progress"
-- **When completing task:** Move to "Completed", update "Next Tasks"
-- **When discovering new work:** Add to "Next Tasks"
-
-### Evidence Standards:
-- All work must produce tangible artifacts
-- Validation results must be documented
-- Quality gate status must be explicit
-- File paths must be absolute and verified
+### Quality Gates
+Every task MUST pass:
+- [ ] Structural compliance check
+- [ ] Content accuracy validation
+- [ ] Evidence documentation complete
+- [ ] Integration points verified
 
 ---
 
-## 🚀 Getting Started Checklist
+## 💡 Session Continuity Protocol
 
-When you (AI) read this file for the first time:
+### For Next Agent/Session
+**Last Session Summary**: _[Brief summary of what was accomplished]_  
+**Current State**: _[Describe current state of the project]_  
+**Next Recommended Action**: _[What should be done next]_  
+**Important Context**: _[Any critical context to remember]_
 
-- [ ] Fill in "Current Session" section
-- [ ] Review "Completed Tasks" (currently empty)
-- [ ] Review "Next Tasks" queue
-- [ ] Select highest priority task
-- [ ] Move it to "In Progress"
-- [ ] Begin execution with full context
-
-**Remember:** This file is your single source of truth. Keep it updated, and it will guide you through systematic, high-quality work.
+### Known Issues/Technical Debt
+_[List any known issues or technical debt to address]_
 
 ---
 
-_Last Updated: [AI updates this timestamp]_  
-_Next Review: [AI sets next checkpoint]_
+## 📝 Notes & Observations
+
+### Best Practices Discovered
+_[Document best practices learned during execution]_
+
+### Patterns to Avoid
+_[Document anti-patterns or mistakes to avoid]_
+
+### Improvement Suggestions
+_[Document suggestions for improving the workflow]_
+
+---
+
+**Last Updated**: _[Timestamp]_  
+**Last Updated By**: _[Agent identifier or session ID]_  
+**Next Review Date**: _[When this should be reviewed again]_
 

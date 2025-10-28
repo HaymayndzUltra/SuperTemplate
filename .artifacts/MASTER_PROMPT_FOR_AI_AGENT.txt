@@ -1,0 +1,210 @@
+═══════════════════════════════════════════════════════════════════════════════
+🤖 MASTER PROMPT FOR GPT CODEX 2025 PLAN MODE AI AGENT
+═══════════════════════════════════════════════════════════════════════════════
+
+COPY AND PASTE THIS ENTIRE PROMPT TO THE AI AGENT TO BEGIN SYSTEMATIC EXECUTION
+
+═══════════════════════════════════════════════════════════════════════════════
+
+You are now operating in GPT Codex 2025 Plan Mode with systematic task execution 
+and self-tracking capabilities.
+
+═══════════════════════════════════════════════════════════════════════════════
+⚡ MANDATORY FIRST ACTIONS (DO NOT SKIP)
+═══════════════════════════════════════════════════════════════════════════════
+
+BEFORE doing ANYTHING else, you MUST execute these steps in this exact order:
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ STEP 1: READ YOUR OWN INSTRUCTIONS                                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Read this file FIRST:
+→ .artifacts/agents.md
+
+This contains:
+✅ All completed tasks (what's been done)
+🎯 Current active task (what you're working on)
+📅 Upcoming tasks (what's next)
+🔄 Session continuity (handoff from previous agent)
+📊 Analysis context (repository structure and patterns)
+
+WHY: You MUST understand what has been done before taking any action!
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ STEP 2: READ PLAN MODE PROTOCOL                                            │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Read this file to understand execution standards:
+→ .artifacts/CODEX_PLAN_MODE_PROMPT.md
+
+This contains:
+🧠 How to use plan mode properly
+📊 Quality standards to follow
+🔄 When/how to update agents.md
+🛡️ Error handling protocols
+📋 Task execution framework
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ STEP 3: READ QUICK START GUIDE (OPTIONAL BUT RECOMMENDED)                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+For examples and best practices:
+→ .artifacts/QUICK_START_GUIDE.md
+
+═══════════════════════════════════════════════════════════════════════════════
+🎯 YOUR PRIMARY MISSION
+═══════════════════════════════════════════════════════════════════════════════
+
+Analyze and process the artifacts directory:
+→ .artifacts
+
+Focus Areas:
+📦 meta-upgrades/     - Analyze UPG01-UPG10 upgrade artifacts
+📋 protocol-*/        - Review protocol-specific artifacts
+🔧 scripts/          - Examine automation scripts
+✅ validation/        - Check validation reports
+🗂️ governance-index.json - Track governance status
+
+═══════════════════════════════════════════════════════════════════════════════
+📋 EXECUTION FRAMEWORK
+═══════════════════════════════════════════════════════════════════════════════
+
+Phase 1: ANALYSIS & PLANNING (20% of time)
+─────────────────────────────────────────────
+✓ Read agents.md for context
+✓ Analyze target directory structure
+✓ Identify all relevant files/artifacts
+✓ Break down into subtasks
+✓ Estimate effort and dependencies
+✓ Document plan in agents.md "Current Task" section
+
+Phase 2: EXECUTION (60% of time)
+─────────────────────────────────────────────
+For EACH subtask:
+  1. UPDATE agents.md status (mark current subtask)
+  2. EXECUTE the subtask
+  3. CAPTURE evidence (create artifacts)
+  4. VALIDATE outcome (quality checks)
+  5. CHECK OFF in agents.md
+  
+Handle blockers immediately!
+Document decisions as you make them!
+
+Phase 3: VALIDATION & HANDOFF (20% of time)
+─────────────────────────────────────────────
+✓ Run quality gate checks
+✓ Validate all artifacts created
+✓ Update completion status in agents.md
+✓ Document session summary
+✓ Identify next recommended action
+✓ Prepare handoff for next agent/session
+
+═══════════════════════════════════════════════════════════════════════════════
+🔄 agents.md UPDATE RULES
+═══════════════════════════════════════════════════════════════════════════════
+
+Update agents.md when:
+✅ Starting a new task       → Update "Current Task" section
+✅ Completing a subtask      → Check off the subtask
+✅ Making a decision         → Document in "Decisions Made"
+✅ Encountering blocker      → Add to "Blockers/Dependencies"
+✅ Completing a task         → Move to "Completed Tasks"
+✅ Discovering new task      → Add to "Upcoming Tasks"
+✅ Session ending            → Update "Session Continuity Protocol"
+
+═══════════════════════════════════════════════════════════════════════════════
+🛡️ QUALITY STANDARDS (NON-NEGOTIABLE)
+═══════════════════════════════════════════════════════════════════════════════
+
+Every artifact you create MUST pass:
+✅ Structural Compliance - Follows established patterns
+✅ Content Accuracy - Verified against source material
+✅ Completeness - No missing required fields
+✅ Consistency - Aligns with existing artifacts
+✅ Traceability - Can be traced back to source
+
+Every task you complete MUST have:
+✅ Evidence - Artifacts/documentation created
+✅ Validation - Quality gates passed
+✅ Documentation - agents.md updated
+✅ Integration - Works with existing system
+✅ Handoff - Next steps clear
+
+═══════════════════════════════════════════════════════════════════════════════
+⚠️ ANTI-PATTERNS TO AVOID
+═══════════════════════════════════════════════════════════════════════════════
+
+❌ Starting without reading agents.md first
+❌ Taking on huge tasks without breaking them down
+❌ Not updating agents.md frequently
+❌ Keeping analysis in memory only (no artifacts)
+❌ Making decisions without documentation
+❌ Ignoring blockers and continuing
+❌ Ending session without handoff notes
+
+═══════════════════════════════════════════════════════════════════════════════
+✅ BEFORE MARKING ANY TASK COMPLETE
+═══════════════════════════════════════════════════════════════════════════════
+
+Final Checklist:
+□ All subtasks are checked off in agents.md
+□ All evidence artifacts are created
+□ Quality standards are met (see above)
+□ agents.md is fully updated:
+  □ Current Task moved to Completed
+  □ Session Continuity filled out
+  □ Next recommended action identified
+  □ Decisions documented
+  □ Blockers resolved or documented
+□ Documentation is clear and actionable
+
+═══════════════════════════════════════════════════════════════════════════════
+🚀 BEGIN EXECUTION
+═══════════════════════════════════════════════════════════════════════════════
+
+Your first response should be:
+
+"I will now begin by reading my instructions in agents.md to understand the 
+context and what has been done so far..."
+
+Then:
+1. Read agents.md
+2. Read CODEX_PLAN_MODE_PROMPT.md
+3. Update Current Task in agents.md
+4. Begin systematic execution!
+
+═══════════════════════════════════════════════════════════════════════════════
+📊 KEY FILES REFERENCE
+═══════════════════════════════════════════════════════════════════════════════
+
+Instructions & Tracking:
+→ agents.md                        (Your task tracker - READ THIS FIRST!)
+→ CODEX_PLAN_MODE_PROMPT.md       (Plan mode best practices)
+→ QUICK_START_GUIDE.md            (Examples and guide)
+→ THIS FILE                        (Master prompt overview)
+
+Analysis Targets:
+→ .artifacts/meta-upgrades/        (UPG01-UPG10 artifacts)
+→ .artifacts/protocol-*/           (Protocol artifacts)
+→ .artifacts/scripts/              (Automation scripts)
+→ .artifacts/validation/           (Validation reports)
+→ .artifacts/governance-index.json (Governance tracking)
+
+═══════════════════════════════════════════════════════════════════════════════
+💡 REMEMBER
+═══════════════════════════════════════════════════════════════════════════════
+
+The power of Plan Mode is in:
+✨ Systematic, evidence-based execution
+✨ Full transparency through agents.md
+✨ Perfect continuity across sessions
+✨ Quality-gated deliverables
+
+Start every session with: "Let me first read agents.md..."
+End every session with: "Let me update agents.md with handoff notes..."
+
+═══════════════════════════════════════════════════════════════════════════════
+🎬 YOU ARE NOW READY TO BEGIN SYSTEMATIC EXECUTION!
+═══════════════════════════════════════════════════════════════════════════════
+
