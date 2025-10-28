@@ -28,6 +28,108 @@
     "integration-tests": [
       "scripts/test_gate_validators.py",
       "scripts/test_gate_integration.sh"
+    ],
+    "protocol-04-validators": [
+      "scripts/validate_gate_4_pre_audit.py",
+      "scripts/validate_gate_4_reporting.py"
+    ],
+    "protocol-05-validators": [
+      "scripts/validate_gate_5_participation.py",
+      "scripts/validate_gate_5_action_plan.py",
+      "scripts/validate_gate_5_integration.py"
+    ],
+    "protocol-08-validators": [
+      "scripts/validate_gate_8_inventory.py",
+      "scripts/validate_gate_8_static.py",
+      "scripts/validate_gate_8_artifacts.py",
+      "scripts/validate_gate_8_reporting.py"
+    ],
+    "protocol-10-validators": [
+      "scripts/validate_gate_10_intake.py",
+      "scripts/validate_gate_10_rehearsal.py",
+      "scripts/validate_gate_10_security.py",
+      "scripts/validate_gate_10_readiness.py"
+    ],
+    "protocol-11-validators": [
+      "scripts/validate_gate_11_readiness.py",
+      "scripts/validate_gate_11_freeze.py",
+      "scripts/validate_gate_11_launch.py",
+      "scripts/validate_gate_11_reporting.py"
+    ],
+    "protocol-12-validators": [
+      "scripts/validate_gate_12_instrumentation.py",
+      "scripts/validate_gate_12_alerts.py",
+      "scripts/validate_gate_12_assurance.py",
+      "scripts/validate_gate_12_handoff.py"
+    ],
+    "protocol-13-validators": [
+      "scripts/validate_gate_13_severity.py",
+      "scripts/validate_gate_13_mitigation.py",
+      "scripts/validate_gate_13_recovery.py",
+      "scripts/validate_gate_13_resolution.py"
+    ],
+    "protocol-14-validators": [
+      "scripts/validate_gate_14_baseline.py",
+      "scripts/validate_gate_14_diagnostics.py",
+      "scripts/validate_gate_14_optimization.py",
+      "scripts/validate_gate_14_governance.py"
+    ],
+    "protocol-15-validators": [
+      "scripts/validate_gate_15_entry.py",
+      "scripts/validate_gate_15_execution.py",
+      "scripts/validate_gate_15_defects.py",
+      "scripts/validate_gate_15_acceptance.py"
+    ],
+    "protocol-16-validators": [
+      "scripts/validate_gate_16_completeness.py",
+      "scripts/validate_gate_16_enablement.py",
+      "scripts/validate_gate_16_publication.py"
+    ],
+    "protocol-17-validators": [
+      "scripts/validate_gate_17_deliverables.py",
+      "scripts/validate_gate_17_handover.py",
+      "scripts/validate_gate_17_governance.py"
+    ],
+    "protocol-18-validators": [
+      "scripts/validate_gate_18_backlog.py",
+      "scripts/validate_gate_18_approvals.py",
+      "scripts/validate_gate_18_governance.py"
+    ],
+    "protocol-runners": {
+      "protocol-00": "scripts/run_protocol_00_gates.py",
+      "protocol-00cd": "scripts/run_protocol_00CD_gates.py",
+      "protocol-0": "scripts/run_protocol_0_gates.py",
+      "protocol-01": "scripts/run_protocol_01_gates.py",
+      "protocol-1": "scripts/run_protocol_1_gates.py",
+      "protocol-02": "scripts/run_protocol_2_gates.py",
+      "protocol-03": "scripts/run_protocol_3_gates.py",
+      "protocol-04": "scripts/run_protocol_4_gates.py",
+      "protocol-04-pre-audit": "scripts/run_protocol_4_pre_audit.py",
+      "protocol-05": "scripts/run_protocol_5_gates.py",
+      "protocol-06": "scripts/run_protocol_6_gates.py",
+      "protocol-07": "scripts/run_protocol_7_gates.py",
+      "protocol-08": "scripts/run_protocol_8_gates.py",
+      "protocol-09": "scripts/run_protocol_9_gates.py",
+      "protocol-10": "scripts/run_protocol_10_gates.py",
+      "protocol-11": "scripts/run_protocol_11_gates.py",
+      "protocol-12": "scripts/run_protocol_12_gates.py",
+      "protocol-13": "scripts/run_protocol_13_gates.py",
+      "protocol-14": "scripts/run_protocol_14_gates.py",
+      "protocol-15": "scripts/run_protocol_15_gates.py",
+      "protocol-16": "scripts/run_protocol_16_gates.py",
+      "protocol-17": "scripts/run_protocol_17_gates.py",
+      "protocol-18": "scripts/run_protocol_18_gates.py"
+    },
+    "gate-stub-framework": "scripts/gate_stub_framework.py",
+    "protocol-02-supplemental": [
+      "scripts/complete_protocol_02_requirements.py",
+      "scripts/populate_protocol_02_test_data.sh"
+    ],
+    "protocol-maintenance": [
+      "scripts/apply_protocol_fixes.py",
+      "scripts/batch_upgrade_protocols.py",
+      "scripts/cycle2_fix_validators.py",
+      "scripts/cycle3_final_polish.py"
     ]
   },
   "bootstrap": {
@@ -59,7 +161,8 @@
     "ai-orchestrator": "scripts/ai_orchestrator.py",
     "lane-executor": "scripts/lane_executor.py",
     "project-generator-orchestration": "scripts/project_generator_orchestration.py",
-    "workflow-automation": "scripts/workflow_automation.py"
+    "workflow-automation": "scripts/workflow_automation.py",
+    "session-continuation": "scripts/generate_session_continuation.py"
   },
   "quality": {
     "comprehensive-audit": "scripts/quality_gates.py",
@@ -76,7 +179,9 @@
     "validate-ai-directives": "scripts/validate_ai_directives.py",
     "validate-protocol-identity": "scripts/validate_protocol_identity.py",
     "test-protocol-identity-validator": "scripts/test_protocol_identity_validator.sh",
-    "validation-gates": "scripts/validation_gates.py"
+    "validation-gates": "scripts/validation_gates.py",
+    "validate-evidence-citations": "scripts/validate_evidence_citations.py",
+    "validate-proposal-structure": "scripts/validate_proposal_structure.py"
   },
   "retrospective": {
     "evidence-report": "scripts/evidence_report.py",
@@ -155,6 +260,29 @@
     "test-circular-validation": "scripts/test_circular_validation.py",
     "test-policy-decisions": "scripts/test_policy_decisions.py",
     "test-workflow-integration": "scripts/test_workflow_integration.sh",
-    "validate-script-registry": "scripts/validate_script_registry.py"
+    "validate-script-registry": "scripts/validate_script_registry.py",
+    "test-gate-automation-e2e": "scripts/test_gate_automation_e2e.sh"
+  },
+  "review-gates": {
+    "code-review": [
+      "scripts/validate_gate_CR_standards.py",
+      "scripts/validate_gate_CR_tests.py",
+      "scripts/validate_gate_CR_feedback.py"
+    ],
+    "security-review": [
+      "scripts/validate_gate_SR_scans.py",
+      "scripts/validate_gate_SR_controls.py",
+      "scripts/validate_gate_SR_disposition.py"
+    ],
+    "architecture-review": [
+      "scripts/validate_gate_AR_structure.py",
+      "scripts/validate_gate_AR_quality.py",
+      "scripts/validate_gate_AR_traceability.py"
+    ],
+    "review-runners": {
+      "code-review": "scripts/run_protocol_CR_gates.py",
+      "security-review": "scripts/run_protocol_SR_gates.py",
+      "architecture-review": "scripts/run_protocol_AR_gates.py"
+    }
   }
 }
