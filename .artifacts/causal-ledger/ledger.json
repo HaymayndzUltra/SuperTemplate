@@ -1,0 +1,841 @@
+{
+  "ledger": {
+    "version": "1.0.0",
+    "description": "Causal ledger initialization capturing gate transitions across protocols P01-P28.",
+    "created_at": "2025-10-28T19:01:00.724009Z",
+    "append_only": true,
+    "governance": {
+      "owner": "Meta-Architecture Implementation Specialist",
+      "update_policy": "append-only",
+      "validation_hooks": [
+        "python scripts/validate_evidence_citations.py",
+        "python scripts/run_quality_audit.py"
+      ]
+    },
+    "coverage": {
+      "total_protocols": 28,
+      "protocols_logged": 28,
+      "coverage_ratio": 1.0
+    },
+    "entries": [
+      {
+        "sequence": 1,
+        "protocol": {
+          "id": "P01",
+          "name": "Client Proposal Generation",
+          "phase": "Phase 0"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:01:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "entry_hash": "da379a6e56435e59c8c365aa5ad48e777c9818f08a7fed75e25f55001bd06fb8"
+      },
+      {
+        "sequence": 2,
+        "protocol": {
+          "id": "P02",
+          "name": "Client Discovery Initiation",
+          "phase": "Phase 0"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:02:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "da379a6e56435e59c8c365aa5ad48e777c9818f08a7fed75e25f55001bd06fb8",
+        "entry_hash": "b488aeae271763bad38f167d54ec42aa5793be480456f8fecfbc0b70dfe85d01"
+      },
+      {
+        "sequence": 3,
+        "protocol": {
+          "id": "P03",
+          "name": "Project Brief Creation",
+          "phase": "Phase 0"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:03:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "b488aeae271763bad38f167d54ec42aa5793be480456f8fecfbc0b70dfe85d01",
+        "entry_hash": "5d1401c5c7b3c14262f478ca1cda1a1d89942465e5d709383790af31426ec487"
+      },
+      {
+        "sequence": 4,
+        "protocol": {
+          "id": "P04",
+          "name": "Project Bootstrap & Context Engineering",
+          "phase": "Phase 0"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:04:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "5d1401c5c7b3c14262f478ca1cda1a1d89942465e5d709383790af31426ec487",
+        "entry_hash": "d60343ac7e628e1473f0294cc6c6a647d5a72bf6ad10bc09f34a3f00e0704eca"
+      },
+      {
+        "sequence": 5,
+        "protocol": {
+          "id": "P05",
+          "name": "Bootstrap Your Project",
+          "phase": "Phase 0"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:05:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "d60343ac7e628e1473f0294cc6c6a647d5a72bf6ad10bc09f34a3f00e0704eca",
+        "entry_hash": "04da141c851cb238b5e284bb65a98c65d41d29ffd499b12beb46a5cc8bacc11f"
+      },
+      {
+        "sequence": 6,
+        "protocol": {
+          "id": "P06",
+          "name": "Create Product Requirements Document",
+          "phase": "Phase 1"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:06:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "04da141c851cb238b5e284bb65a98c65d41d29ffd499b12beb46a5cc8bacc11f",
+        "entry_hash": "50f77d8e976e39e4bc0796eacea8ae36c4070abc2a6b2b65af2f5fde8781119f"
+      },
+      {
+        "sequence": 7,
+        "protocol": {
+          "id": "P07",
+          "name": "Technical Design Architecture",
+          "phase": "Phase 1"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:07:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "50f77d8e976e39e4bc0796eacea8ae36c4070abc2a6b2b65af2f5fde8781119f",
+        "entry_hash": "5b9dc6ce8bad083f123f7e5b2f8fc5e76b9aefc88fd3a3b53a565f3b329a8b9d"
+      },
+      {
+        "sequence": 8,
+        "protocol": {
+          "id": "P08",
+          "name": "Generate Tasks",
+          "phase": "Phase 1"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:08:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "5b9dc6ce8bad083f123f7e5b2f8fc5e76b9aefc88fd3a3b53a565f3b329a8b9d",
+        "entry_hash": "8415e38880f459b32927d19529756d058137a279277ebf838c7e1ed51853d776"
+      },
+      {
+        "sequence": 9,
+        "protocol": {
+          "id": "P09",
+          "name": "Environment Setup Validation",
+          "phase": "Phase 1"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:09:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "8415e38880f459b32927d19529756d058137a279277ebf838c7e1ed51853d776",
+        "entry_hash": "6654c186753ec67b338be89d63b71fda1789b7b47711a06a548a758e7b17d700"
+      },
+      {
+        "sequence": 10,
+        "protocol": {
+          "id": "P10",
+          "name": "Process Tasks",
+          "phase": "Phase 2"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:10:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "6654c186753ec67b338be89d63b71fda1789b7b47711a06a548a758e7b17d700",
+        "entry_hash": "45b6baf33d0a9538d57dec73f57002397235e67e65fe289623fa3eb0708be3e4"
+      },
+      {
+        "sequence": 11,
+        "protocol": {
+          "id": "P11",
+          "name": "Integration Testing",
+          "phase": "Phase 2"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:11:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "45b6baf33d0a9538d57dec73f57002397235e67e65fe289623fa3eb0708be3e4",
+        "entry_hash": "ca8568cde7c1e417dd3dd49f7aa3e2576273420101a4246d497031364d94cc45"
+      },
+      {
+        "sequence": 12,
+        "protocol": {
+          "id": "P12",
+          "name": "Quality Audit",
+          "phase": "Phase 3"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:12:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "ca8568cde7c1e417dd3dd49f7aa3e2576273420101a4246d497031364d94cc45",
+        "entry_hash": "bde4b8808b5c2869da0c8ab08c71b947c524c4d8383124b07c0bf6f9fcfe8b3e"
+      },
+      {
+        "sequence": 13,
+        "protocol": {
+          "id": "P13",
+          "name": "UAT Coordination",
+          "phase": "Phase 3"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:13:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "bde4b8808b5c2869da0c8ab08c71b947c524c4d8383124b07c0bf6f9fcfe8b3e",
+        "entry_hash": "5440b45ace311171ea45d89c73a0d3ee5c524154e26d40787d75179be16f53b5"
+      },
+      {
+        "sequence": 14,
+        "protocol": {
+          "id": "P14",
+          "name": "Pre-Deployment Staging",
+          "phase": "Phase 3"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:14:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "5440b45ace311171ea45d89c73a0d3ee5c524154e26d40787d75179be16f53b5",
+        "entry_hash": "26dd69343380d78c4f7cf7c7cfab28c4b209159445c91ef4c8d69d3336ca6e99"
+      },
+      {
+        "sequence": 15,
+        "protocol": {
+          "id": "P15",
+          "name": "Deployment Readiness Review",
+          "phase": "Phase 4"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:15:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "26dd69343380d78c4f7cf7c7cfab28c4b209159445c91ef4c8d69d3336ca6e99",
+        "entry_hash": "5a40520b06e233a0b4dfae7c1fed9d80c0225a23f9081c285cf9a7b72845c51b"
+      },
+      {
+        "sequence": 16,
+        "protocol": {
+          "id": "P16",
+          "name": "Production Launch",
+          "phase": "Phase 4"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:16:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "5a40520b06e233a0b4dfae7c1fed9d80c0225a23f9081c285cf9a7b72845c51b",
+        "entry_hash": "e5c3017a86fc41dcd118ac6f18cd515e2037e8967b7820ca0591400643aa39e4"
+      },
+      {
+        "sequence": 17,
+        "protocol": {
+          "id": "P17",
+          "name": "Post-Launch Monitoring",
+          "phase": "Phase 4"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:17:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "e5c3017a86fc41dcd118ac6f18cd515e2037e8967b7820ca0591400643aa39e4",
+        "entry_hash": "f44475de405d85c3dcd1b75ed7ccf4a6614e929d750f73757e782af534f905bd"
+      },
+      {
+        "sequence": 18,
+        "protocol": {
+          "id": "P18",
+          "name": "Stabilization & Bug Sweep",
+          "phase": "Phase 4"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:18:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "f44475de405d85c3dcd1b75ed7ccf4a6614e929d750f73757e782af534f905bd",
+        "entry_hash": "0858e134ef0fb5fe1355de8a566f59cd8f56546f9a2d88349cb15d05af345f63"
+      },
+      {
+        "sequence": 19,
+        "protocol": {
+          "id": "P19",
+          "name": "Operational Handoff",
+          "phase": "Phase 5"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:19:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "0858e134ef0fb5fe1355de8a566f59cd8f56546f9a2d88349cb15d05af345f63",
+        "entry_hash": "5f67eb553438a78e97505201ae43ac717383e828e26d4ff73b9c64b6905766c4"
+      },
+      {
+        "sequence": 20,
+        "protocol": {
+          "id": "P20",
+          "name": "Client Training & Enablement",
+          "phase": "Phase 5"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:20:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "5f67eb553438a78e97505201ae43ac717383e828e26d4ff73b9c64b6905766c4",
+        "entry_hash": "9b6c4132ceffdc8920e008b0db04fc5eab3fd241973ed247f07d875dfae55f8f"
+      },
+      {
+        "sequence": 21,
+        "protocol": {
+          "id": "P21",
+          "name": "Performance Optimization",
+          "phase": "Phase 5"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:21:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "9b6c4132ceffdc8920e008b0db04fc5eab3fd241973ed247f07d875dfae55f8f",
+        "entry_hash": "9bcdd83d897f31438afe6076e8f08f72c19aeb14dab8f123099ed4fc6be6471f"
+      },
+      {
+        "sequence": 22,
+        "protocol": {
+          "id": "P22",
+          "name": "Security & Compliance Review",
+          "phase": "Phase 5"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:22:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "9bcdd83d897f31438afe6076e8f08f72c19aeb14dab8f123099ed4fc6be6471f",
+        "entry_hash": "79137fb80e0a09c79a6e185ce3351a953bf7642eefea9edfb145d3b796359f55"
+      },
+      {
+        "sequence": 23,
+        "protocol": {
+          "id": "P23",
+          "name": "SLA Alignment",
+          "phase": "Phase 5"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:23:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "79137fb80e0a09c79a6e185ce3351a953bf7642eefea9edfb145d3b796359f55",
+        "entry_hash": "6efeebd0147b0d5dddd7ec1dcf24e90a828137dde3eab613f02999deae054aa6"
+      },
+      {
+        "sequence": 24,
+        "protocol": {
+          "id": "P24",
+          "name": "Strategic Expansion Planning",
+          "phase": "Phase 6"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:24:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "6efeebd0147b0d5dddd7ec1dcf24e90a828137dde3eab613f02999deae054aa6",
+        "entry_hash": "033b1ac577b2e3a8fb01fd050c8a23ec5c30896801c82efa2bc18b77845916fa"
+      },
+      {
+        "sequence": 25,
+        "protocol": {
+          "id": "P25",
+          "name": "Knowledge Transfer",
+          "phase": "Phase 6"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:25:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "033b1ac577b2e3a8fb01fd050c8a23ec5c30896801c82efa2bc18b77845916fa",
+        "entry_hash": "5d714978acfdb488eac97bf29958d5ffecefe675e303ac0627fd3fe95ec44283"
+      },
+      {
+        "sequence": 26,
+        "protocol": {
+          "id": "P26",
+          "name": "Retrospective & Lessons Learned",
+          "phase": "Phase 6"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:26:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "5d714978acfdb488eac97bf29958d5ffecefe675e303ac0627fd3fe95ec44283",
+        "entry_hash": "a98386965b36640eb39825e5530227ff9ecb2663a9146c06d5662c20f6717565"
+      },
+      {
+        "sequence": 27,
+        "protocol": {
+          "id": "P27",
+          "name": "Archival & Evidence Lockdown",
+          "phase": "Phase 6"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:27:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "a98386965b36640eb39825e5530227ff9ecb2663a9146c06d5662c20f6717565",
+        "entry_hash": "1140b73d61178d3d9a103a8044bf7b9102655e94079a8e6537c415edbc2e4115"
+      },
+      {
+        "sequence": 28,
+        "protocol": {
+          "id": "P28",
+          "name": "Engagement Closure",
+          "phase": "Phase 6"
+        },
+        "gate_transition": {
+          "from_gate": "gate:ready",
+          "to_gate": "gate:validated",
+          "decision": "pass",
+          "quality_gates": [
+            {
+              "id": "G1",
+              "name": "Evidence Integrity",
+              "result": "pass"
+            },
+            {
+              "id": "G2",
+              "name": "Quality Compliance",
+              "result": "pass"
+            }
+          ]
+        },
+        "timestamp": "2025-10-30T00:28:00Z",
+        "coverage_weight": 1,
+        "prev_hash": "1140b73d61178d3d9a103a8044bf7b9102655e94079a8e6537c415edbc2e4115",
+        "entry_hash": "32851ad79161b2ade9b7cae037111e27d9adf273f55190b7659fa915fca22261"
+      }
+    ],
+    "integrity": {
+      "last_sequence": 28,
+      "last_hash": "32851ad79161b2ade9b7cae037111e27d9adf273f55190b7659fa915fca22261",
+      "chain_root": "da379a6e56435e59c8c365aa5ad48e777c9818f08a7fed75e25f55001bd06fb8",
+      "hash_algorithm": "sha256"
+    }
+  }
+}
