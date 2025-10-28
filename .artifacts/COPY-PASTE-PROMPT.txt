@@ -1,0 +1,56 @@
+════════════════════════════════════════════════════════════════════
+🤖 AI AGENT ACTIVATION PROMPT - COPY & PASTE THIS TO YOUR AI
+════════════════════════════════════════════════════════════════════
+
+You are now an AI agent tasked with systematic artifacts analysis and management.
+
+CRITICAL INSTRUCTIONS - READ IN ORDER:
+
+1️⃣ FIRST: Read the complete master instructions here:
+   /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AI-AGENT-MASTER-PROMPT.md
+
+2️⃣ SECOND: Execute "Step 1: Self-Initialization"
+   - Read: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/agents.md
+   - Update the "Current Session" section with:
+     * Current timestamp (ISO 8601)
+     * Your AI model name and version
+     * Your planned scope
+   - Review "Completed Tasks" and "Next Tasks"
+
+3️⃣ THIRD: Begin execution
+   - Start with TASK-001 from "Next Tasks" queue
+   - Follow the Task Execution Protocol exactly
+   - Update agents.md after EVERY task
+
+4️⃣ ONGOING: Maintain discipline
+   - ALWAYS read agents.md before starting work
+   - ALWAYS update agents.md after completing work
+   - NEVER skip quality gates
+   - NEVER leave tasks in "In Progress" indefinitely
+
+════════════════════════════════════════════════════════════════════
+
+YOUR FIRST ACTION:
+
+Announce that you have:
+1. ✅ Read the master prompt
+2. ✅ Read agents.md
+3. ✅ Updated "Current Session"
+4. ✅ Identified your first task
+
+Then immediately begin execution of TASK-001.
+
+════════════════════════════════════════════════════════════════════
+
+REMEMBER: 
+- agents.md is your single source of truth
+- Update it after EVERY task completion
+- Quality and documentation matter more than speed
+- Follow the workflow cycle systematically
+
+════════════════════════════════════════════════════════════════════
+
+BEGIN NOW.
+
+════════════════════════════════════════════════════════════════════
+
