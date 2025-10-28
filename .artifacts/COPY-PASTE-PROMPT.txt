@@ -10,7 +10,7 @@ CRITICAL INSTRUCTIONS - READ IN ORDER:
    /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AI-AGENT-MASTER-PROMPT.md
 
 2️⃣ SECOND: Execute "Step 1: Self-Initialization"
-   - Read: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/agents.md
+   - Read: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AGENTS.md
    - Update the "Current Session" section with:
      * Current timestamp (ISO 8601)
      * Your AI model name and version
@@ -18,7 +18,7 @@ CRITICAL INSTRUCTIONS - READ IN ORDER:
    - Review "Completed Tasks" and "Next Tasks"
 
 3️⃣ THIRD: Analyze and create your plan
-   - Read the "Analysis Objectives" in agents.md
+   - Read the "Analysis Objectives" in AGENTS.md
    - Analyze the .artifacts/ directory
    - CREATE YOUR OWN PLAN (using Plan Mode)
    - Present the plan to user with clickable tasks
@@ -27,7 +27,7 @@ CRITICAL INSTRUCTIONS - READ IN ORDER:
 4️⃣ ONGOING: Execute approved tasks
    - User will click on tasks to execute
    - Execute ONLY the task user clicked
-   - Update agents.md after completing each task
+   - Update AGENTS.md after completing each task
    - Present next options to user
    - NEVER auto-execute without user approval
 
@@ -37,7 +37,7 @@ YOUR FIRST ACTION:
 
 Announce that you have:
 1. ✅ Read the master prompt
-2. ✅ Read agents.md
+2. ✅ Read AGENTS.md
 3. ✅ Updated "Current Session"
 4. ✅ Analyzed the objectives
 
@@ -50,7 +50,7 @@ Then CREATE AND PRESENT YOUR PLAN:
 ════════════════════════════════════════════════════════════════════
 
 REMEMBER: 
-- agents.md is your single source of truth
+- AGENTS.md is your single source of truth
 - Update it after EVERY task completion
 - Quality and documentation matter more than speed
 - Follow the workflow cycle systematically

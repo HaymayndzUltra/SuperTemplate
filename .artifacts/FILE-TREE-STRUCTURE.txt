@@ -7,7 +7,7 @@
 │
 ├── 📋 CORE SYSTEM FILES (3) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 │   │
-│   ├── agents.md ⭐ [LIVE STATE]
+│   ├── AGENTS.md ⭐ [LIVE STATE]
 │   │   └── Purpose: Task tracking, progress monitoring, state management
 │   │   └── Used by: AI (reads before/after every task)
 │   │   └── Size: ~500 lines
@@ -247,7 +247,7 @@ Format Distribution:
    ├── SYSTEM-FLOW-DIAGRAM.txt (15 minutes)
    ├── AI-AGENT-MASTER-PROMPT.md (25 minutes)
    ├── CREATION-SUMMARY.md (15 minutes)
-   └── agents.md (10 minutes)
+   └── AGENTS.md (10 minutes)
        └── Total Time: ~95 minutes
 
 🔍 PATH 5: REFERENCE LOOKUP (As Needed)
@@ -278,7 +278,7 @@ For TECHNICAL DETAILS:
 
 For AI EXECUTION:
    → AI-AGENT-MASTER-PROMPT.md (AI reads this)
-   → agents.md (AI updates this)
+   → AGENTS.md (AI updates this)
 
 For PROJECT REPORTING:
    → CREATION-SUMMARY.md
@@ -311,7 +311,7 @@ OVERALL STATUS:       🟢 PRODUCTION READY
 3. ✅ Copy entire contents
 4. ✅ Paste to AI (ChatGPT, Claude, etc.)
 5. ✅ Submit and watch AI execute
-6. ✅ Monitor progress in agents.md
+6. ✅ Monitor progress in AGENTS.md
 7. ✅ Review generated outputs
 
 

@@ -12,7 +12,7 @@ You are an AI agent tasked with systematically analyzing and managing the artifa
 Before doing ANYTHING else, you MUST:
 
 ```
-1. Read and understand: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/agents.md
+1. Read and understand: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AGENTS.md
 2. Update the "Current Session" section with:
    - Current timestamp (ISO 8601 format)
    - Your AI model name and version
@@ -25,7 +25,7 @@ Before doing ANYTHING else, you MUST:
 **Output after Step 1:**
 ```
 ✅ Initialization Complete
-   - agents.md read and understood
+   - AGENTS.md read and understood
    - Current session logged
    - Task queue reviewed
    - Ready to proceed with highest priority task
@@ -36,14 +36,14 @@ Before doing ANYTHING else, you MUST:
 **IMPORTANT:** You are using GPT Codex 2025 Plan Mode. This means:
 
 1. **DO NOT execute pre-defined tasks** (no TASK-001, TASK-002, etc.)
-2. **CREATE YOUR OWN PLAN** based on the objectives in `agents.md`
+2. **CREATE YOUR OWN PLAN** based on the objectives in `AGENTS.md`
 3. **Present your plan to the user** for approval
 4. **User clicks to execute each task** - you don't auto-execute
-5. **Update agents.md** after each task the user approves
+5. **Update AGENTS.md** after each task the user approves
 
 **Codex Plan Mode Workflow:**
 ```
-Read Objectives → Analyze Directory → Create Plan → Present Plan → Wait for User → Execute Clicked Task → Update agents.md → Repeat
+Read Objectives → Analyze Directory → Create Plan → Present Plan → Wait for User → Execute Clicked Task → Update AGENTS.md → Repeat
 ```
 
 **Your role:**
@@ -51,7 +51,7 @@ Read Objectives → Analyze Directory → Create Plan → Present Plan → Wait 
 - ✅ Create smart, adaptive task breakdown
 - ✅ Present clear plan with clickable tasks
 - ✅ Execute when user clicks/approves
-- ✅ Document progress in agents.md
+- ✅ Document progress in AGENTS.md
 
 **NOT your role:**
 - ❌ Execute tasks automatically without user approval
@@ -144,7 +144,7 @@ Read Objectives → Analyze Directory → Create Plan → Present Plan → Wait 
 ✅ Content is well-structured
 ✅ Data is accurate and complete
 ✅ Follows format standards
-✅ Documented in agents.md
+✅ Documented in AGENTS.md
 
 **Evidence:**
 [Paste relevant validation results, file snippets, or confirmations]
@@ -154,7 +154,7 @@ Read Objectives → Analyze Directory → Create Plan → Present Plan → Wait 
 ```markdown
 After completing ANY task, you MUST:
 
-1. Move task from "In Progress" to "Completed Tasks" in agents.md
+1. Move task from "In Progress" to "Completed Tasks" in AGENTS.md
 2. Document:
    - Timestamp
    - Task ID and description
@@ -181,7 +181,7 @@ After completing ANY task, you MUST:
 
 ### Gate 3: Documentation Completeness
 - [ ] All findings documented in appropriate artifacts
-- [ ] agents.md is current and accurate
+- [ ] AGENTS.md is current and accurate
 - [ ] Evidence is verifiable and traceable
 
 ### Gate 4: Task Management Hygiene
@@ -195,21 +195,21 @@ After completing ANY task, you MUST:
 
 ### Phase 1: Bootstrap (First Session)
 ```
-1. Read agents.md
+1. Read AGENTS.md
 2. Initialize "Current Session" section
 3. Execute TASK-001: Initial Artifacts Directory Scan
-4. Update agents.md with completion
+4. Update AGENTS.md with completion
 5. Proceed to next highest priority task
 ```
 
 ### Phase 2: Systematic Analysis (Ongoing)
 ```
 For each task in queue:
-1. Check prerequisites in agents.md
+1. Check prerequisites in AGENTS.md
 2. Move to "In Progress"
 3. Execute task following execution protocol
 4. Validate against quality gates
-5. Update agents.md
+5. Update AGENTS.md
 6. Continue to next task
 ```
 
@@ -220,7 +220,7 @@ When all individual analyses complete:
 2. Identify cross-cutting patterns
 3. Generate actionable recommendations
 4. Finalize all documentation
-5. Mark project as complete in agents.md
+5. Mark project as complete in AGENTS.md
 ```
 
 ---
@@ -277,17 +277,17 @@ When all individual analyses complete:
 ## 🔔 Critical Reminders
 
 ### ⚠️ ALWAYS:
-1. **Read agents.md FIRST** before any work
-2. **Update agents.md AFTER** every task
+1. **Read AGENTS.md FIRST** before any work
+2. **Update AGENTS.md AFTER** every task
 3. **Validate your work** against quality gates
 4. **Document uncertainties** - never assume
 5. **Produce tangible artifacts** - no work without evidence
 6. **Follow the task lifecycle** - Next → In Progress → Completed
 
 ### ❌ NEVER:
-1. Skip reading agents.md
+1. Skip reading AGENTS.md
 2. Leave tasks in "In Progress" indefinitely
-3. Create outputs without updating agents.md
+3. Create outputs without updating AGENTS.md
 4. Make assumptions without flagging them
 5. Duplicate work already in "Completed Tasks"
 6. Proceed without checking prerequisites
@@ -304,7 +304,7 @@ When all individual analyses complete:
 **Task Name:** Initial Artifacts Directory Scan
 **Priority:** High
 **Prerequisites:** 
-  - agents.md exists and is initialized
+  - AGENTS.md exists and is initialized
   - Access to /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/
 **Expected Outputs:**
   - artifacts-catalog.json
@@ -341,7 +341,7 @@ ls -R /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/ > raw-scan.txt
 ✅ Catalog contains 247 entries
 ✅ Structure map has 5 levels of hierarchy
 ✅ All paths verified as accessible
-✅ Documented in agents.md
+✅ Documented in AGENTS.md
 
 **Evidence:**
 Catalog excerpt:
@@ -371,7 +371,7 @@ Catalog excerpt:
 
 You'll know you're executing correctly when:
 
-1. ✅ agents.md is always current
+1. ✅ AGENTS.md is always current
 2. ✅ Every task has documented evidence
 3. ✅ No tasks stuck in "In Progress"
 4. ✅ Quality gates consistently pass
@@ -385,18 +385,18 @@ You'll know you're executing correctly when:
 When you're ready to begin, execute:
 
 ```
-1. Read: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/agents.md
+1. Read: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AGENTS.md
 2. Initialize: Update "Current Session" section
 3. Execute: Start with TASK-001 from "Next Tasks"
-4. Document: Update agents.md with completion
+4. Document: Update AGENTS.md with completion
 5. Continue: Proceed to next priority task
 ```
 
 ---
 
-**Remember:** You are building a systematic, evidence-based analysis of a complex artifact system. Quality and traceability matter more than speed. Document everything, validate rigorously, and maintain the agents.md file as your single source of truth.
+**Remember:** You are building a systematic, evidence-based analysis of a complex artifact system. Quality and traceability matter more than speed. Document everything, validate rigorously, and maintain the AGENTS.md file as your single source of truth.
 
-**Your success is measured by:** Clear documentation, complete analysis, and a well-maintained task tracking system in agents.md.
+**Your success is measured by:** Clear documentation, complete analysis, and a well-maintained task tracking system in AGENTS.md.
 
 ---
 

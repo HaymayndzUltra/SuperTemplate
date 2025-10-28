@@ -23,8 +23,8 @@ A complete AI agent system has been successfully created for systematic analysis
 
 ### Core System Files (3)
 
-#### 1. **agents.md** - Task Tracking & State Management
-**Location:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/agents.md`
+#### 1. **AGENTS.md** - Task Tracking & State Management
+**Location:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AGENTS.md`
 
 **Purpose:**
 - Single source of truth for AI agent operations
@@ -296,7 +296,7 @@ A complete AI agent system has been successfully created for systematic analysis
 
 #### Gate 3: Documentation Completeness
 - ✅ All findings documented
-- ✅ agents.md always current
+- ✅ AGENTS.md always current
 - ✅ Evidence traceable
 - ✅ Outputs well-structured
 
@@ -318,7 +318,7 @@ A complete AI agent system has been successfully created for systematic analysis
 ### 2. **Self-Managing**
 - AI tracks its own progress
 - Automatic task queue management
-- Real-time status updates in `agents.md`
+- Real-time status updates in `AGENTS.md`
 
 ### 3. **Evidence-Based**
 - All work produces tangible outputs
@@ -392,7 +392,7 @@ A complete AI agent system has been successfully created for systematic analysis
 
 ### Phase 1: Initialization (2 minutes)
 - ✅ AI reads master prompt
-- ✅ AI reads agents.md
+- ✅ AI reads AGENTS.md
 - ✅ AI updates "Current Session"
 - ✅ AI announces readiness
 
@@ -401,20 +401,20 @@ A complete AI agent system has been successfully created for systematic analysis
 - ✅ TASK-002 completed → 2 files generated
 - ✅ TASK-003 completed → 2 files generated
 - ✅ TASK-004 completed → 2 files generated
-- ✅ agents.md updated after each task
+- ✅ AGENTS.md updated after each task
 
 ### Phase 3: Completion (5 minutes)
 - ✅ Final validation performed
 - ✅ Synthesis report generated
 - ✅ Recommendations documented
-- ✅ Project marked complete in agents.md
+- ✅ Project marked complete in AGENTS.md
 
 ---
 
 ## 🎯 Success Metrics
 
 ### Process Success:
-- ✅ **agents.md** updated: 5+ times (session init + 4 tasks)
+- ✅ **AGENTS.md** updated: 5+ times (session init + 4 tasks)
 - ✅ **Quality gates** passed: 16 checks (4 gates × 4 tasks)
 - ✅ **Tasks completed**: 4 initial tasks minimum
 - ✅ **Evidence documented**: 100% of completed work
@@ -471,7 +471,7 @@ User Entry Points:
 
 AI Entry Points:
 ├── AI-AGENT-MASTER-PROMPT.md → Complete instructions
-└── agents.md → Live state management
+└── AGENTS.md → Live state management
 
 Reference Materials:
 ├── SYSTEM-OVERVIEW.md → Architecture deep dive
@@ -516,13 +516,13 @@ Special Purpose:
 2. ✅ Choose reading path (fastest/quick/deep)
 3. ✅ Open COPY-PASTE-PROMPT.txt
 4. ✅ Copy and paste to AI
-5. ✅ Monitor progress in agents.md
+5. ✅ Monitor progress in AGENTS.md
 6. ✅ Review generated outputs
 
 ### Monitoring:
 ```bash
 # Watch AI progress in real-time
-watch -n 10 'tail -50 /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/agents.md'
+watch -n 10 'tail -50 /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AGENTS.md'
 
 # Check for new outputs
 ls -lt /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/*.{json,md}
@@ -540,15 +540,15 @@ ls -lt /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/*.{json,md}
 
 ### If AI Isn't Working:
 1. Verify AI has read AI-AGENT-MASTER-PROMPT.md
-2. Check agents.md for "Current Session" update
+2. Check AGENTS.md for "Current Session" update
 3. Remind AI to follow protocol
 4. Re-paste COPY-PASTE-PROMPT.txt if needed
 
 ### To Extend the System:
-1. Add new tasks to agents.md "Next Tasks" queue
+1. Add new tasks to AGENTS.md "Next Tasks" queue
 2. Define quality gates for new tasks
 3. Update master prompt with new protocols
-4. Document changes in agents.md
+4. Document changes in AGENTS.md
 
 ---
 
