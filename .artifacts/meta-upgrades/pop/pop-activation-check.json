@@ -48,6 +48,11 @@
       "consecutive_green_cycles": 3,
       "meets_threshold": true
     },
+    "cycle_detection": {
+      "detected_cycles": true,
+      "details_reference": ".artifacts/meta-upgrades/cross/causal_replay.md#cycle--drift-diagnostics",
+      "meets_threshold": false
+    },
     "false_positives": 0
   },
   "evidence_sources": [
@@ -55,6 +60,6 @@
     ".artifacts/meta-upgrades/pop/cycle-2-results.json",
     ".artifacts/meta-upgrades/pop/cycle-3-results.json"
   ],
-  "status": "observer_green",
-  "notes": "Aggregated observer evidence across three consecutive POP runs; ready for controller activation review."
+  "status": "observer_conditional",
+  "notes": "Aggregated observer evidence across three consecutive POP runs; cycle detection failures require governance review before controller activation."
 }
