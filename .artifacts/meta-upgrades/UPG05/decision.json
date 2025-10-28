@@ -7,6 +7,7 @@
     ".artifacts/meta-upgrades/UPG05/intent.json",
     ".artifacts/meta-upgrades/UPG05/analysis.json",
     ".artifacts/meta-upgrades/UPG05/alignment.md",
+    ".artifacts/meta-upgrades/UPG05/observer-config.json",
     ".artifacts/meta-upgrades/pop/pop-activation-check.json"
   ],
   "change_impact": {
