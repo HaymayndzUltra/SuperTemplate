@@ -1,0 +1,33 @@
+{
+  "upgrade_id": "UPG03",
+  "purpose": "Define SLA token budget governing PEL retries under Temporal layer ceilings.",
+  "token_budget": {
+    "initial_tokens": 100,
+    "unit": "sla-token",
+    "source_reference": "validators-system/AGENTS.md#UPG03 Adaptation"
+  },
+  "consumption": {
+    "per_retry_tokens": 10,
+    "applies_to": "PEL handoff retry",
+    "derived_max_retries": 10
+  },
+  "reset_policy": {
+    "event": "protocol_completion",
+    "action": "reset_to_initial_tokens",
+    "notes": "Budget replenished after each protocol execution as instructed in deployment guide."
+  },
+  "temporal_layer_enforcement": {
+    "upgrade_id": "UPG08",
+    "ceiling_reference": ".artifacts/meta-upgrades/UPG08/decision.json#change_impact.risk_mitigation[0]",
+    "ceiling_relationship": "Temporal layer halts retries once SLA tokens reach zero and escalates per UPG08 risk mitigation directives.",
+    "escalation_actions": [
+      "Escalate to governance when tokens exhausted.",
+      "Log exhaustion event to Causal Ledger as per UPG08 risk mitigation."
+    ]
+  },
+  "governance_hooks": {
+    "ledger_logging": true,
+    "ledger_reference": ".artifacts/meta-upgrades/cross/remediation_plan.json",
+    "notes": "Maintain audit trail of PEL negotiations and SLA token consumption."
+  }
+}
