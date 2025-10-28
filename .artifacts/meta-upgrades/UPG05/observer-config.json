@@ -10,7 +10,7 @@
       },
       {
         "artifact": ".artifacts/meta-upgrades/pop/cycle-2-results.json",
-        "role": "Validation run confirming PIK precision ≥0.96 and PEL conflict-free span"
+        "role": "Validation run confirming PIK precision ≥0.95 and PEL conflict-free span"
       },
       {
         "artifact": ".artifacts/meta-upgrades/pop/cycle-3-results.json",
