@@ -1,0 +1,204 @@
+{
+  "activation_evidence_package": {
+    "version": "1.0.0",
+    "generated_at": "2025-10-30T00:00:00Z",
+    "purpose": "Aggregate all activation criteria evidence for POP controller promotion decision",
+    "status": "observer_conditional",
+    "decision_pending": "Phase 6 - POP Controller Activation Decision"
+  },
+  "activation_criteria": {
+    "criterion_1_dna_coverage": {
+      "requirement": ">= 0.90 across protocols",
+      "evidence": {
+        "cycle_1": 0.90,
+        "cycle_2": 0.92,
+        "cycle_3": 0.93,
+        "average": 0.9167,
+        "trend": "improving"
+      },
+      "status": "PASS",
+      "threshold_met": true,
+      "evidence_refs": [
+        ".artifacts/meta-upgrades/pop/cycle-1-results.json#dna_coverage",
+        ".artifacts/meta-upgrades/pop/cycle-2-results.json#dna_coverage",
+        ".artifacts/meta-upgrades/pop/cycle-3-results.json#dna_coverage"
+      ]
+    },
+    "criterion_2_pik_precision": {
+      "requirement": ">= 0.95 self-check pass rate",
+      "evidence": {
+        "cycle_2": 0.96,
+        "cycle_3": 0.97,
+        "minimum_observed": 0.96,
+        "trend": "improving"
+      },
+      "status": "PASS",
+      "threshold_met": true,
+      "evidence_refs": [
+        ".artifacts/meta-upgrades/pop/cycle-2-results.json#pik_self_check_precision",
+        ".artifacts/meta-upgrades/pop/cycle-3-results.json#pik_self_check_precision"
+      ],
+      "notes": "PIK checks activated in cycle 2 and 3; baseline cycle 1 did not include PIK"
+    },
+    "criterion_3_pel_conflict_free": {
+      "requirement": ">= 3 consecutive conflict-free runs",
+      "evidence": {
+        "consecutive_runs": 3,
+        "cycle_span": "cycles 1-3",
+        "conflicts_detected": 0
+      },
+      "status": "PASS",
+      "threshold_met": true,
+      "evidence_refs": [
+        ".artifacts/meta-upgrades/pop/cycle-1-results.json",
+        ".artifacts/meta-upgrades/pop/cycle-2-results.json#pel_conflict_free_runs",
+        ".artifacts/meta-upgrades/pop/cycle-3-results.json#pel_conflict_free_runs"
+      ]
+    },
+    "criterion_4_ledger_coverage": {
+      "requirement": ">= 0.95 decision coverage",
+      "evidence": {
+        "cycle_1": 0.95,
+        "cycle_2": 0.96,
+        "cycle_3": 0.97,
+        "minimum_observed": 0.95,
+        "trend": "improving"
+      },
+      "status": "PASS",
+      "threshold_met": true,
+      "evidence_refs": [
+        ".artifacts/causal-ledger/ledger.json",
+        ".artifacts/meta-upgrades/pop/cycle-1-results.json#ledger_decision_coverage",
+        ".artifacts/meta-upgrades/pop/cycle-2-results.json#ledger_decision_coverage",
+        ".artifacts/meta-upgrades/pop/cycle-3-results.json#ledger_decision_coverage"
+      ]
+    },
+    "criterion_5_temporal_health": {
+      "requirement": "UPG08 status == green for 3 consecutive observer runs",
+      "evidence": {
+        "cycle_1": "green",
+        "cycle_2": "green",
+        "cycle_3": "green",
+        "consecutive_green_cycles": 3
+      },
+      "status": "PASS",
+      "threshold_met": true,
+      "evidence_refs": [
+        ".artifacts/meta-upgrades/pop/cycle-1-results.json#temporal_health",
+        ".artifacts/meta-upgrades/pop/cycle-2-results.json#temporal_health",
+        ".artifacts/meta-upgrades/pop/cycle-3-results.json#temporal_health"
+      ]
+    },
+    "criterion_6_cycle_detection": {
+      "requirement": "0 cycles detected (false positive rate = 0.0)",
+      "evidence": {
+        "causal_replay_cycles_detected": true,
+        "cycle_count": 8,
+        "observer_runtime_cycles": 0,
+        "false_positives": 0
+      },
+      "status": "FAIL",
+      "threshold_met": false,
+      "evidence_refs": [
+        ".artifacts/meta-upgrades/cross/causal_replay.md#cycle--drift-diagnostics",
+        ".artifacts/meta-upgrades/pop/false-positive-log.json"
+      ],
+      "blocker_details": {
+        "issue": "Causal replay simulation detected 8 cycle patterns in protocol handoff documentation",
+        "patterns": [
+          "P02→P03→P04→P05→P02",
+          "P03→P04→P05→P24→P03",
+          "P12→P20→P21→P22→P23→P12",
+          "P22→P23→P22",
+          "P20→P21→P22→P23→P19→P20",
+          "P21→P22→P23→P19→P21",
+          "P22→P23→P19→P22",
+          "P06→...→P22→P06"
+        ],
+        "resolution_required": "Phase 1 - Cycle Detection Resolution",
+        "impact": "Blocks controller promotion until cycles fixed"
+      }
+    }
+  },
+  "summary": {
+    "total_criteria": 6,
+    "criteria_met": 5,
+    "criteria_failed": 1,
+    "pass_rate": 0.8333,
+    "activation_ready": false,
+    "blocking_criteria": ["criterion_6_cycle_detection"]
+  },
+  "stage_deployment_evidence": {
+    "stage_s0_causal_ledger": {
+      "status": "deployed",
+      "evidence": ".artifacts/causal-ledger/",
+      "coverage": "100% (28/28 protocols)",
+      "validation": "PASS"
+    },
+    "stages_s1_s9": {
+      "status": "pending",
+      "note": "Stage deployments will proceed after Phase 0-1 completion"
+    }
+  },
+  "observer_cycle_evidence": {
+    "cycle_1": {
+      "artifact": ".artifacts/meta-upgrades/pop/cycle-1-results.json",
+      "summary": "Baseline - DNA 0.90, Ledger 0.95, Temporal green, FP 0"
+    },
+    "cycle_2": {
+      "artifact": ".artifacts/meta-upgrades/pop/cycle-2-results.json",
+      "summary": "Validation - DNA 0.92, PIK 0.96, PEL 3 runs, Temporal green, FP 0"
+    },
+    "cycle_3": {
+      "artifact": ".artifacts/meta-upgrades/pop/cycle-3-results.json",
+      "summary": "Confirmation - DNA 0.93, PIK 0.97, PEL 3 runs, Temporal green, FP 0"
+    },
+    "findings_report": ".artifacts/meta-upgrades/pop/observer-findings.md",
+    "false_positive_log": ".artifacts/meta-upgrades/pop/false-positive-log.json"
+  },
+  "adaptation_evidence": {
+    "upg03_sla_tokens": {
+      "artifact": ".artifacts/meta-upgrades/UPG03/sla-token-config.json",
+      "status": "configured",
+      "validation": "PASS"
+    },
+    "upg05_observer_mode": {
+      "artifact": ".artifacts/meta-upgrades/UPG05/observer-config.json",
+      "status": "observer_only",
+      "validation": "PASS"
+    }
+  },
+  "governance_evidence": {
+    "zero_protocol_edits": {
+      "artifact": ".artifacts/meta-upgrades/cross/governance_diffs.json",
+      "status": "verified",
+      "validation": "PASS"
+    },
+    "causal_replay": {
+      "artifact": ".artifacts/meta-upgrades/cross/causal_replay.md",
+      "status": "complete_with_cycles_detected",
+      "validation": "CONDITIONAL"
+    }
+  },
+  "performance_evidence": {
+    "system_overhead": {
+      "current": "<3%",
+      "target": "<=5%",
+      "status": "PASS",
+      "note": "Well within budget across all deployed layers"
+    }
+  },
+  "next_steps": {
+    "phase_1": "Fix 8 cycle patterns in protocol handoff documentation",
+    "phase_2_5": "Deploy stages S1-S9 with per-stage validation",
+    "phase_6": "Re-validate all activation criteria after cycle resolution",
+    "decision": "Controller promotion or extended observer mode based on Phase 6 results"
+  },
+  "recommendation": {
+    "current_status": "NOT READY for controller promotion",
+    "primary_blocker": "Cycle detection in causal replay (8 patterns)",
+    "ready_criteria": "5 of 6 activation criteria met",
+    "action": "Proceed with Phase 1 (Cycle Resolution) before controller activation consideration"
+  }
+}
+
