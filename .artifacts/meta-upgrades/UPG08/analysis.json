@@ -1,0 +1,21 @@
+{
+  "scores": {
+    "intent_match": 0.88,
+    "dependency_satisfaction": 0.88,
+    "gate_compatibility": 0.96,
+    "governance_coherence": 0.93,
+    "performance_risk_penalty": 0.05,
+    "alignment_score": 0.856
+  },
+  "findings": [
+    "Temporal SLAs can overlay existing gates and handoffs.",
+    "Provides escalation paths for prolonged waits."
+  ],
+  "conflicts": [
+    "Interactions with PEL retries must be bounded by SLA budget."
+  ],
+  "remediation_options": [
+    "Define SLA token model; PEL honors remaining time budget.",
+    "Escalate to governance when tokens exhausted."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "upgrade_id": "UPG07",
+  "goal": "Enable sandboxed adaptive protocol mutation proposals that are POP-gated and A/B validated before promotion.",
+  "layers": ["governance", "automation"],
+  "touchpoints": ["Proposal Engine"],
+  "dependencies": ["UPG05"],
+  "expected_outcomes": [
+    {"metric":"gate_regressions_in_sandbox","target":0},
+    {"metric":"promotion_after_pop_activation","target":true}
+  ],
+  "risks": {"cycle_risk":"low","gate_regression_risk":"low","perf_risk":"medium"}
+}

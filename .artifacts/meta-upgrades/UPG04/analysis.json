@@ -1,0 +1,21 @@
+{
+  "scores": {
+    "intent_match": 0.90,
+    "dependency_satisfaction": 0.92,
+    "gate_compatibility": 0.97,
+    "governance_coherence": 0.95,
+    "performance_risk_penalty": 0.02,
+    "alignment_score": 0.909
+  },
+  "findings": [
+    "Append-only decision capture at gate boundaries is compatible with all protocols.",
+    "Replay can reconstruct protocol transitions for audits."
+  ],
+  "conflicts": [
+    "None identified; ensure storage overhead remains minimal."
+  ],
+  "remediation_options": [
+    "Compress ledger segments; rotate by protocol phase.",
+    "Redact secrets by policy before append."
+  ]
+}

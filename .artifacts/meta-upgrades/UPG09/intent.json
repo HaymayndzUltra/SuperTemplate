@@ -1,0 +1,12 @@
+{
+  "upgrade_id": "UPG09",
+  "goal": "Introduce a meta-cognition loop that detects redundant/contradictory steps post-protocol with ≥0.9 precision.",
+  "layers": ["reasoning", "governance"],
+  "touchpoints": ["Post-Protocol Retrospectives"],
+  "dependencies": ["UPG04","UPG02"],
+  "expected_outcomes": [
+    {"metric":"redundancy_detection_precision","target":0.9},
+    {"metric":"contradiction_detection_precision","target":0.9}
+  ],
+  "risks": {"cycle_risk":"low","gate_regression_risk":"low","perf_risk":"low"}
+}

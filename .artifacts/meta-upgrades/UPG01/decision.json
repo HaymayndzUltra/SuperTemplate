@@ -1,0 +1,21 @@
+{
+  "upgrade_id": "UPG01",
+  "alignment_score": 0.8645,
+  "decision": "Accept",
+  "rationale": "Meets precision and governance constraints; advisory-only self-checks with halt_on_violation respected; no gate weakening.",
+  "evidence_refs": [
+    ".artifacts/meta-upgrades/UPG01/intent.json",
+    ".artifacts/meta-upgrades/UPG01/analysis.json",
+    ".artifacts/meta-upgrades/UPG01/alignment.md",
+    ".artifacts/meta-upgrades/cross/upgrade_protocol_graph.json",
+    ".artifacts/meta-upgrades/catalog/protocol_catalog.json"
+  ],
+  "change_impact": {
+    "affected_protocols": ["P01","P02","P03","P04","P05","P06","P07","P08","P09","P10","P11","P12","P13","P14","P15","P16","P17","P18","P19","P20","P21","P22","P23"],
+    "gates_changed": [],
+    "risk_mitigation": [
+      "Gate any enforcement behind POP Controller mode.",
+      "Disable if overhead exceeds 5% or false passes observed."
+    ]
+  }
+}

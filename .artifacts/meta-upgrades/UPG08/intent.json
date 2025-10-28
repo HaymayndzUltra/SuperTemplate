@@ -1,0 +1,12 @@
+{
+  "upgrade_id": "UPG08",
+  "goal": "Add a Temporal Reasoning Layer to enforce time-aware gates and handoffs with SLA-based escalation.",
+  "layers": ["validation", "governance"],
+  "touchpoints": ["Time-Constrained Gates","Handoffs"],
+  "dependencies": ["UPG02"],
+  "expected_outcomes": [
+    {"metric":"sla_enforcement_rate","target":1.0},
+    {"metric":"escalation_trigger_accuracy","target":0.95}
+  ],
+  "risks": {"cycle_risk":"low","gate_regression_risk":"low","perf_risk":"medium"}
+}

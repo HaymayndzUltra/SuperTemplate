@@ -1,0 +1,20 @@
+{
+  "upgrade_id": "UPG07",
+  "alignment_score": 0.774,
+  "decision": "Adapt",
+  "rationale": "Sandbox-only with POP gating; requires A/B guardrails and zero gate regressions.",
+  "evidence_refs": [
+    ".artifacts/meta-upgrades/UPG07/intent.json",
+    ".artifacts/meta-upgrades/UPG07/analysis.json",
+    ".artifacts/meta-upgrades/UPG07/alignment.md",
+    ".artifacts/meta-upgrades/cross/remediation_plan.json"
+  ],
+  "change_impact": {
+    "affected_protocols": ["Proposal engine; improvement loops"],
+    "gates_changed": [],
+    "risk_mitigation": [
+      "Quarantine proposals until POP observer → Controller activation passes.",
+      "Run A/B on non-critical flows and record to Ledger."
+    ]
+  }
+}

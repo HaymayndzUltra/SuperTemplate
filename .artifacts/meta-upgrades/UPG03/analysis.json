@@ -1,0 +1,21 @@
+{
+  "scores": {
+    "intent_match": 0.84,
+    "dependency_satisfaction": 0.85,
+    "gate_compatibility": 0.92,
+    "governance_coherence": 0.90,
+    "performance_risk_penalty": 0.06,
+    "alignment_score": 0.8105
+  },
+  "findings": [
+    "PEL models handoffs and retries without altering protocol text.",
+    "SLA budgets must constrain retry loops."
+  ],
+  "conflicts": [
+    "Potential contention with Temporal SLAs on escalations."
+  ],
+  "remediation_options": [
+    "Introduce SLA token budget consumed by PEL retries.",
+    "If budget exhausted, escalate via Temporal layer." 
+  ]
+}
