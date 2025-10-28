@@ -1,0 +1,28 @@
+{
+  "protocol_id": "P22",
+  "protocol_name": "IMPLEMENTATION RETROSPECTIVE",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["maintenance-plan.md", "closure-lessons-input.md", "LESSONS-LEARNED-DOC-NOTES.md"],
+    "approvals": ["Team retrospective participation"],
+    "system_state": ["Project closed", "Maintenance planned"],
+    "cognitive_readiness": ["Retrospective facilitation", "Lessons analysis", "Improvement planning"]
+  },
+  "reasoning_paths": [{
+    "path_id": "DNA_22_PATH_01",
+    "name": "Retrospective & Improvement",
+    "sequence": 1,
+    "decision_points": [
+      {"id": "DP_22_01", "question": "Are lessons synthesized?", "criteria": "≥10 validated lessons", "gate_reference": "G1", "ledger_event_pattern": "evt_*_P22_G1_*"},
+      {"id": "DP_22_02", "question": "Are impact scores validated?", "criteria": "Metrics consensus ≥80%", "gate_reference": "G2", "ledger_event_pattern": "evt_*_P22_G2_*"},
+      {"id": "DP_22_03", "question": "Is improvement backlog prioritized?", "criteria": "Top 5 actions with owners", "gate_reference": "G3", "ledger_event_pattern": "evt_*_P22_G3_*"},
+      {"id": "DP_22_04", "question": "Is action plan approved?", "criteria": "Stakeholder approval + integration scheduled", "gate_reference": "G4", "ledger_event_pattern": "evt_*_P22_G4_*"}
+    ]
+  }],
+  "handoff_logic": {"outputs_to": ["23", "CI Backlog"], "artifacts_produced": ["retrospective-report.md", "improvement-action-plan.json"], "handoff_condition": "All 4 gates pass", "ledger_capture": "Lessons learned, improvement priorities, action assignments", "cycle_fix_note": "Previously output to P06 creating mega-loop; now outputs to CI Backlog (future projects only)"},
+  "invariants": ["Lessons must be actionable", "Improvement plans must have owners"],
+  "coverage_metrics": {"total_decision_points": 4, "gates_mapped": 4, "coverage_ratio": 1.0, "ledger_linkage": "Complete"}
+}
+

@@ -1,0 +1,75 @@
+{
+  "protocol_id": "P05",
+  "protocol_name": "BOOTSTRAP YOUR PROJECT (Legacy Alignment)",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["governance-status.md", "bootstrap-manifest.json"],
+    "approvals": ["PO approval", "Eng lead confirmation"],
+    "system_state": ["Repository accessible", "Governance tooling configured"],
+    "cognitive_readiness": ["Legacy system understanding", "Alignment strategies", "Governance configuration"]
+  },
+  "reasoning_paths": [
+    {
+      "path_id": "DNA_05_PATH_01",
+      "name": "Governance Activation & Repository Mapping",
+      "sequence": 1,
+      "decision_points": [
+        {
+          "id": "DP_05_01",
+          "question": "Is governance properly activated?",
+          "criteria": "Valid YAML frontmatter",
+          "gate_reference": "G1",
+          "ledger_event_pattern": "evt_*_P05_G1_*"
+        },
+        {
+          "id": "DP_05_02",
+          "question": "Is repository mapping complete and approved?",
+          "criteria": "User approval + ≥90% stack detection",
+          "gate_reference": "G2",
+          "ledger_event_pattern": "evt_*_P05_G2_*"
+        }
+      ]
+    },
+    {
+      "path_id": "DNA_05_PATH_02",
+      "name": "Principle Validation & Alignment",
+      "sequence": 2,
+      "decision_points": [
+        {
+          "id": "DP_05_03",
+          "question": "Are architectural principles validated?",
+          "criteria": "User confirmation; <3 critical questions",
+          "gate_reference": "G3",
+          "ledger_event_pattern": "evt_*_P05_G3_*"
+        },
+        {
+          "id": "DP_05_04",
+          "question": "Is governance alignment complete?",
+          "criteria": "Audit ≤ Medium + docs approvals",
+          "gate_reference": "G4",
+          "ledger_event_pattern": "evt_*_P05_G4_*"
+        }
+      ]
+    }
+  ],
+  "handoff_logic": {
+    "outputs_to": ["06"],
+    "artifacts_produced": ["architecture-principles.md", "governance-alignment-report.md"],
+    "handoff_condition": "All 4 gates pass; ready for PRD creation",
+    "ledger_capture": "Legacy alignment status, governance configuration, forward to planning phase",
+    "cycle_fix_note": "Previously output to P02 creating cycle; now outputs to P06 (forward-only flow)"
+  },
+  "invariants": [
+    "No backward phase jumps to discovery",
+    "Governance configuration immutable after approval"
+  ],
+  "coverage_metrics": {
+    "total_decision_points": 4,
+    "gates_mapped": 4,
+    "coverage_ratio": 1.0,
+    "ledger_linkage": "Complete"
+  }
+}
+

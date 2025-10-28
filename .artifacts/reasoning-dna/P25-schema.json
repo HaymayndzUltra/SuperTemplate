@@ -1,0 +1,26 @@
+{
+  "protocol_id": "P25",
+  "protocol_name": "PROTOCOL INTEGRATION MAP",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["All protocol documentation"],
+    "approvals": ["Architecture review"],
+    "system_state": ["System operational"],
+    "cognitive_readiness": ["Integration mapping", "Dependency analysis", "Workflow visualization"]
+  },
+  "reasoning_paths": [{
+    "path_id": "DNA_25_PATH_01",
+    "name": "Integration Mapping",
+    "sequence": 1,
+    "decision_points": [
+      {"id": "DP_25_01", "question": "Are all protocol dependencies mapped?", "criteria": "100% protocol coverage", "gate_reference": "G1", "ledger_event_pattern": "evt_*_P25_G1_*"},
+      {"id": "DP_25_02", "question": "Are integration points validated?", "criteria": "All handoffs documented", "gate_reference": "G2", "ledger_event_pattern": "evt_*_P25_G2_*"}
+    ]
+  }],
+  "handoff_logic": {"outputs_to": ["Documentation"], "artifacts_produced": ["protocol-integration-map.json", "dependency-graph.svg"], "handoff_condition": "All gates pass", "ledger_capture": "Integration map, dependency graph, visualization"},
+  "invariants": ["Map must reflect actual protocol relationships", "Dependencies must be acyclic"],
+  "coverage_metrics": {"total_decision_points": 2, "gates_mapped": 2, "coverage_ratio": 1.0, "ledger_linkage": "Complete"}
+}
+

@@ -1,0 +1,67 @@
+{
+  "protocol_id": "P03",
+  "protocol_name": "PROJECT BRIEF CREATION",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["client-discovery-form.md", "scope-clarification.md", "communication-plan.md", "PROPOSAL.md"],
+    "approvals": ["Client confirmation in discovery-recap.md"],
+    "system_state": ["Discovery phase complete"],
+    "cognitive_readiness": ["Brief structure knowledge", "Scope definition", "Success criteria formulation"]
+  },
+  "reasoning_paths": [
+    {
+      "path_id": "DNA_03_PATH_01",
+      "name": "Discovery Evidence Integration",
+      "sequence": 1,
+      "decision_points": [
+        {
+          "id": "DP_03_01",
+          "question": "Is discovery evidence complete and verified?",
+          "criteria": "Evidence verification ≥0.95",
+          "gate_reference": "G1",
+          "ledger_event_pattern": "evt_*_P03_G1_*"
+        }
+      ]
+    },
+    {
+      "path_id": "DNA_03_PATH_02",
+      "name": "Brief Structure & Validation",
+      "sequence": 2,
+      "decision_points": [
+        {
+          "id": "DP_03_02",
+          "question": "Does brief structure cover all required sections?",
+          "criteria": "Coverage = 100%",
+          "gate_reference": "G2",
+          "ledger_event_pattern": "evt_*_P03_G2_*"
+        },
+        {
+          "id": "DP_03_03",
+          "question": "Are client and internal approvals obtained?",
+          "criteria": "Client + internal approved",
+          "gate_reference": "G3",
+          "ledger_event_pattern": "evt_*_P03_G3_*"
+        }
+      ]
+    }
+  ],
+  "handoff_logic": {
+    "outputs_to": ["04", "06"],
+    "artifacts_produced": ["PROJECT-BRIEF.md", "project-brief-validation-report.json"],
+    "handoff_condition": "Dual approval (client + internal)",
+    "ledger_capture": "Brief contents, validation results, approval timestamps"
+  },
+  "invariants": [
+    "Brief must be validated before bootstrap",
+    "Client sign-off mandatory for accuracy"
+  ],
+  "coverage_metrics": {
+    "total_decision_points": 3,
+    "gates_mapped": 3,
+    "coverage_ratio": 1.0,
+    "ledger_linkage": "Complete"
+  }
+}
+

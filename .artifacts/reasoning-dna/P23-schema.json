@@ -1,0 +1,28 @@
+{
+  "protocol_id": "P23",
+  "protocol_name": "SCRIPT GOVERNANCE",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["QUALITY-AUDIT-PACKAGE.zip", "maintenance-plan.md"],
+    "approvals": ["Governance lead"],
+    "system_state": ["Quality audit complete"],
+    "cognitive_readiness": ["Script validation", "Governance enforcement", "Audit procedures"]
+  },
+  "reasoning_paths": [{
+    "path_id": "DNA_23_PATH_01",
+    "name": "Script Governance & Validation",
+    "sequence": 1,
+    "decision_points": [
+      {"id": "DP_23_01", "question": "Is validator coverage sufficient?", "criteria": "≥80% scripts validated", "gate_reference": "G1", "ledger_event_pattern": "evt_*_P23_G1_*"},
+      {"id": "DP_23_02", "question": "Is collision audit clean?", "criteria": "0 high-severity conflicts", "gate_reference": "G2", "ledger_event_pattern": "evt_*_P23_G2_*"},
+      {"id": "DP_23_03", "question": "Is backlog properly prioritized?", "criteria": "Top issues with owners + timelines", "gate_reference": "G3", "ledger_event_pattern": "evt_*_P23_G3_*"},
+      {"id": "DP_23_04", "question": "Is release authorization obtained?", "criteria": "Governance approval + manifest validated", "gate_reference": "G4", "ledger_event_pattern": "evt_*_P23_G4_*"}
+    ]
+  }],
+  "handoff_logic": {"outputs_to": ["19"], "artifacts_produced": ["script-governance-report.json", "validation-findings.md"], "handoff_condition": "All 4 gates pass", "ledger_capture": "Script validation results, governance findings, release authorization", "cycle_fix_note": "Previously output to P12 and P22 creating multiple cycles; now outputs to P19 (documentation) only"},
+  "invariants": ["Scripts validated without modification", "Governance findings documented"],
+  "coverage_metrics": {"total_decision_points": 4, "gates_mapped": 4, "coverage_ratio": 1.0, "ledger_linkage": "Complete"}
+}
+

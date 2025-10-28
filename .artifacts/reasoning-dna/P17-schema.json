@@ -1,0 +1,28 @@
+{
+  "protocol_id": "P17",
+  "protocol_name": "INCIDENT RESPONSE & ROLLBACK",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["monitoring-config.json", "deployment-report.json"],
+    "approvals": ["On-call authorization"],
+    "system_state": ["Monitoring active"],
+    "cognitive_readiness": ["Incident management", "Rollback execution", "Root cause analysis"]
+  },
+  "reasoning_paths": [{
+    "path_id": "DNA_17_PATH_01",
+    "name": "Incident Response & Recovery",
+    "sequence": 1,
+    "decision_points": [
+      {"id": "DP_17_01", "question": "Is severity properly classified?", "criteria": "Consensus + notifications within SLA", "gate_reference": "G1", "ledger_event_pattern": "evt_*_P17_G1_*"},
+      {"id": "DP_17_02", "question": "Is mitigation ready for execution?", "criteria": "Rollback prerequisites verified; approvals 100%", "gate_reference": "G2", "ledger_event_pattern": "evt_*_P17_G2_*"},
+      {"id": "DP_17_03", "question": "Is recovery validated?", "criteria": "≥95% critical checks pass", "gate_reference": "G3", "ledger_event_pattern": "evt_*_P17_G3_*"},
+      {"id": "DP_17_04", "question": "Is resolution documented?", "criteria": "Docs ≥95%; stakeholders informed", "gate_reference": "G4", "ledger_event_pattern": "evt_*_P17_G4_*"}
+    ]
+  }],
+  "handoff_logic": {"outputs_to": ["18", "19"], "artifacts_produced": ["incident-report.md", "postmortem.md"], "handoff_condition": "All 4 gates pass", "ledger_capture": "Incident details, mitigation actions, recovery validation"},
+  "invariants": ["Rollback must be tested before execution", "All incidents require postmortem"],
+  "coverage_metrics": {"total_decision_points": 4, "gates_mapped": 4, "coverage_ratio": 1.0, "ledger_linkage": "Complete"}
+}
+

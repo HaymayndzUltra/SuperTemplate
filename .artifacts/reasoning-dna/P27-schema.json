@@ -1,0 +1,27 @@
+{
+  "protocol_id": "P27",
+  "protocol_name": "VALIDATION GUIDE",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["quality-audit-results/", "validation-procedures/"],
+    "approvals": ["Quality assurance lead"],
+    "system_state": ["QA framework operational"],
+    "cognitive_readiness": ["Validation procedures", "Quality criteria", "Compliance checking"]
+  },
+  "reasoning_paths": [{
+    "path_id": "DNA_27_PATH_01",
+    "name": "Validation & Quality",
+    "sequence": 1,
+    "decision_points": [
+      {"id": "DP_27_01", "question": "Is validation methodology defined?", "criteria": "Methodology approved", "gate_reference": "G1", "ledger_event_pattern": "evt_*_P27_G1_*"},
+      {"id": "DP_27_02", "question": "Is process accuracy validated?", "criteria": "Accuracy metrics met", "gate_reference": "G2", "ledger_event_pattern": "evt_*_P27_G2_*"},
+      {"id": "DP_27_03", "question": "Is remediation workflow documented?", "criteria": "Workflow validated", "gate_reference": "G3", "ledger_event_pattern": "evt_*_P27_G3_*"}
+    ]
+  }],
+  "handoff_logic": {"outputs_to": ["Documentation"], "artifacts_produced": ["validation-guide.md", "quality-criteria.json"], "handoff_condition": "All gates pass", "ledger_capture": "Validation methodology, quality criteria, remediation workflows"},
+  "invariants": ["Validation must be repeatable", "Quality criteria must be measurable"],
+  "coverage_metrics": {"total_decision_points": 3, "gates_mapped": 3, "coverage_ratio": 1.0, "ledger_linkage": "Complete"}
+}
+

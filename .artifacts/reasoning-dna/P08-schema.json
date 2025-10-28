@@ -1,0 +1,67 @@
+{
+  "protocol_id": "P08",
+  "protocol_name": "TECHNICAL TASK GENERATION",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["ARCHITECTURE.md", "architecture-decision-log.json"],
+    "approvals": ["Stakeholder approval for high-level tasks"],
+    "system_state": ["Architecture validated"],
+    "cognitive_readiness": ["Task decomposition", "Effort estimation", "Rule mapping"]
+  },
+  "reasoning_paths": [
+    {
+      "path_id": "DNA_08_PATH_01",
+      "name": "Task Generation & Validation",
+      "sequence": 1,
+      "decision_points": [
+        {
+          "id": "DP_08_01",
+          "question": "Is context preparation complete?",
+          "criteria": "Rule index ≥95%",
+          "gate_reference": "G1",
+          "ledger_event_pattern": "evt_*_P08_G1_*"
+        },
+        {
+          "id": "DP_08_02",
+          "question": "Are high-level tasks approved?",
+          "criteria": "Stakeholder approval",
+          "gate_reference": "G2",
+          "ledger_event_pattern": "evt_*_P08_G2_*"
+        },
+        {
+          "id": "DP_08_03",
+          "question": "Is decomposition integrity maintained?",
+          "criteria": "100% subtasks mapped to rules",
+          "gate_reference": "G3",
+          "ledger_event_pattern": "evt_*_P08_G3_*"
+        },
+        {
+          "id": "DP_08_04",
+          "question": "Is task validation complete?",
+          "criteria": "status=pass & ≥90% enriched",
+          "gate_reference": "G4",
+          "ledger_event_pattern": "evt_*_P08_G4_*"
+        }
+      ]
+    }
+  ],
+  "handoff_logic": {
+    "outputs_to": ["09", "10"],
+    "artifacts_produced": ["TASKS.json", "task-validation-report.json"],
+    "handoff_condition": "All 4 gates pass",
+    "ledger_capture": "Task definitions, decomposition structure, validation results"
+  },
+  "invariants": [
+    "All tasks must map to cursor rules",
+    "Task estimates must be evidence-based"
+  ],
+  "coverage_metrics": {
+    "total_decision_points": 4,
+    "gates_mapped": 4,
+    "coverage_ratio": 1.0,
+    "ledger_linkage": "Complete"
+  }
+}
+

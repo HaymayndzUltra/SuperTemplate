@@ -1,0 +1,88 @@
+{
+  "protocol_id": "P01",
+  "protocol_name": "CLIENT PROPOSAL GENERATION",
+  "version": "2.1.0",
+  "schema_type": "reasoning_dna",
+  "generated_at": "2025-10-30T00:00:00Z",
+  "prerequisites": {
+    "artifacts": ["JOB-POST.md"],
+    "approvals": [],
+    "system_state": [],
+    "cognitive_readiness": ["Understanding of client needs", "Tone mapping capability", "Proposal structure knowledge"]
+  },
+  "reasoning_paths": [
+    {
+      "path_id": "DNA_01_PATH_01",
+      "name": "Job Post Analysis",
+      "sequence": 1,
+      "decision_points": [
+        {
+          "id": "DP_01_01",
+          "question": "Is job post complete and parseable?",
+          "criteria": "≥90% required fields present",
+          "gate_reference": "G1",
+          "ledger_event_pattern": "evt_*_P01_G1_*"
+        },
+        {
+          "id": "DP_01_02",
+          "question": "Can we extract client tone and requirements?",
+          "criteria": "Tone confidence ≥80%",
+          "gate_reference": "G2",
+          "ledger_event_pattern": "evt_*_P01_G2_*"
+        }
+      ]
+    },
+    {
+      "path_id": "DNA_01_PATH_02",
+      "name": "Proposal Generation",
+      "sequence": 2,
+      "decision_points": [
+        {
+          "id": "DP_01_03",
+          "question": "Does proposal structure meet requirements?",
+          "criteria": "Structure compliance ≥95%",
+          "gate_reference": "G3",
+          "ledger_event_pattern": "evt_*_P01_G3_*"
+        },
+        {
+          "id": "DP_01_04",
+          "question": "Are all compliance checks satisfied?",
+          "criteria": "All validation rules pass",
+          "gate_reference": "G4",
+          "ledger_event_pattern": "evt_*_P01_G4_*"
+        }
+      ]
+    },
+    {
+      "path_id": "DNA_01_PATH_03",
+      "name": "Approval & Handoff",
+      "sequence": 3,
+      "decision_points": [
+        {
+          "id": "DP_01_05",
+          "question": "Is proposal ready for submission?",
+          "criteria": "Final validation pass",
+          "gate_reference": "G5",
+          "ledger_event_pattern": "evt_*_P01_G5_*"
+        }
+      ]
+    }
+  ],
+  "handoff_logic": {
+    "outputs_to": ["02"],
+    "artifacts_produced": ["PROPOSAL.md", "proposal-summary.json"],
+    "handoff_condition": "All 5 gates pass",
+    "ledger_capture": "Record approval timestamp and artifacts generated"
+  },
+  "invariants": [
+    "Only mention experience you actually have. Don't lie.",
+    "Proposal must be client-specific, not generic template"
+  ],
+  "coverage_metrics": {
+    "total_decision_points": 5,
+    "gates_mapped": 5,
+    "coverage_ratio": 1.0,
+    "ledger_linkage": "Complete"
+  }
+}
+
