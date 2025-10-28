@@ -1,0 +1,219 @@
+# ============================================
+# META-INSTRUCTION B
+# PR Evaluation Framework
+# ============================================
+
+version: "3.0"
+generated_from: "Meta-Instruction A"
+
+# --------------------------------------------
+# CONTEXT
+# --------------------------------------------
+
+original_prompt_summary: |
+  The MASTER RAY™ MVI-01 directive describes a comprehensive validation initiative to analyze,
+  align, and synthesize ten meta-upgrades across protocols 01–23 without altering code, focusing on
+  evidence-backed artifacts, strict governance, and a staged integration plan.
+  It emphasizes parallel-safe execution, rigorous validation gates, artifact generation, and
+  governance enforcement for AI-driven workflow protocols.
+
+primary_intent: "Create an evidence-driven evaluation and integration framework for ten meta-upgrades across protocols 01–23 while maintaining governance and validation integrity."
+
+secondary_intents:
+  - "Ensure per-upgrade intent recognition, validation scoring, and decision-making artifacts are produced."
+  - "Develop staged integration sequencing and governance activation criteria covering instrumentation through unification."
+
+technical_domain: "AI workflow governance and validation systems"
+complexity_level: "highly-complex"
+
+# --------------------------------------------
+# REQUIREMENTS CHECKLIST
+# --------------------------------------------
+
+requirements:
+  explicit:
+    - "No modifications to protocol files; all outputs must be stored under .artifacts/meta-upgrades."
+    - "Generate intent, validation, analysis, decision, and integration artifacts for each of the ten upgrades (UPG01–UPG10)."
+    - "Construct cross-upgrade catalogues and graphs to detect conflicts and dependencies."
+    - "Enforce governance rules including POP observer mode, activation criteria, and halt conditions."
+    - "Deliver final reports, acceptance matrices, and integration plans summarizing decisions."
+  implicit:
+    - "Maintain causal continuity by avoiding new circular dependencies or gate regressions."
+    - "Provide evidence references for every decision and maintain traceability across artifacts."
+    - "Coordinate parallel analyses while respecting shared catalog artifacts and synchronization barriers."
+    - "Document remediation options for conflicts and ensure rollback planning is available."
+  technical:
+    - "Execution is analysis-only with parallel-safe operations scoped to artifact outputs."
+    - "Hard gates require master rules 1 and 2 to be present before proceeding."
+    - "Quality gates must remain unchanged or stricter compared to existing protocols."
+    - "POP controller activation depends on ledger, DNA, PIK, and PEL metrics meeting specified thresholds."
+  quality:
+    - "Every validation and decision must cite evidence artifacts and maintain auditability."
+    - "Simulation and dry-run artifacts such as causal replay and governance diffs must be produced before sign-off."
+    - "Documentation must capture conflicts, remediation plans, and next actions for Adapt or Reject outcomes."
+
+# --------------------------------------------
+# EVALUATION FRAMEWORK
+# --------------------------------------------
+
+evaluation_axes:
+
+  - axis: "Intent Alignment"
+    weight: 0.35
+    question: "Does this PR deliver a robust framework for validating and integrating the ten meta-upgrades without breaching core governance?"
+    scoring:
+      10: "Perfectly operationalizes the MASTER RAY™ meta-upgrade validation intent, covering all protocols and governance constraints."
+      7: "Addresses the meta-upgrade validation intent with only minor gaps or assumptions that do not hinder execution."
+      4: "Partially aligns with the intent but leaves significant ambiguities or missing governance safeguards."
+      1: "Fails to address the core intent or disregards essential governance boundaries."
+    evaluation_steps:
+      - "Check that the PR establishes processes for analyzing all ten upgrades against protocols 01–23."
+      - "Verify that governance constraints (no gate weakening, no circular dependencies, POP observer mode) are enforced."
+      - "Confirm the PR maintains artifact-only outputs and respects causal continuity."
+
+  - axis: "Completeness"
+    weight: 0.25
+    question: "Are all MASTER RAY™ MVI-01 requirements satisfied across discovery, validation, integration, and governance?"
+    scoring:
+      10: "Implements every explicit and implicit requirement, including all specified artifacts and procedures."
+      7: "Covers most requirements with only minor missing artifacts or lightly documented steps."
+      4: "Several key requirements or artifacts are absent or under-specified."
+      1: "Majority of required steps or artifacts are missing or contradicted."
+    evaluation_steps:
+      - "Check each requirement from the checklist for representation in the PR."
+      - "Verify per-upgrade artifact generation (intent, analysis, decision, adapters)."
+      - "Ensure cross-upgrade, simulation, and final deliverables are fully addressed."
+
+  - axis: "Implementation Quality"
+    weight: 0.20
+    question: "Is the proposed system well-structured, maintainable, and suitable for AI workflow governance?"
+    scoring:
+      10: "Exhibits excellent structure with clear modularization, documentation, and maintainable processes or code."
+      7: "Generally well-organized with minor clarity or maintainability issues."
+      4: "Functional but with notable complexity, duplication, or weak documentation."
+      1: "Disorganized, unclear, or error-prone implementation details."
+    evaluation_steps:
+      - "Review organization of directories, artifact schemas, and process descriptions."
+      - "Assess clarity of instructions, automation hooks, and documentation."
+      - "Check consistency and maintainability of workflows or scripts introduced."
+
+  - axis: "Validation & Evidence Strategy"
+    weight: 0.10
+    question: "Does the PR provide rigorous validation mechanisms and evidence collection aligned with the specification?"
+    scoring:
+      10: "Defines comprehensive validation procedures with coverage metrics, test artifacts, and evidence references meeting all gates."
+      7: "Provides strong validation coverage with minor omissions in metrics or evidence linkage."
+      4: "Validation exists but lacks depth, coverage metrics, or evidence traceability."
+      1: "Little to no validation strategy or missing evidence requirements."
+    evaluation_steps:
+      - "Verify inclusion of coverage metrics (e.g., DNA coverage, ledger coverage, PIK precision)."
+      - "Check that simulation and dry-run artifacts are specified with evidence requirements."
+      - "Ensure halt conditions and remediation logging are supported."
+
+  - axis: "Governance & Integration Readiness"
+    weight: 0.10
+    question: "Does the PR provide coherent sequencing, governance enforcement, and activation criteria for integration?"
+    scoring:
+      10: "Delivers a precise integration sequence (S0–S9), governance activation checks, and rollback safeguards in line with the prompt."
+      7: "Integration and governance plans are mostly complete with minor gaps or unclear dependencies."
+      4: "Sequencing or governance enforcement is partially defined but misses critical dependencies or criteria."
+      1: "Lacks a viable integration order, governance controls, or activation criteria."
+    evaluation_steps:
+      - "Review the integration plan sequencing from instrumentation to unification."
+      - "Confirm POP observer and controller activation criteria are supported."
+      - "Ensure rollback, remediation, and next-action documentation are addressed."
+
+# --------------------------------------------
+# EVALUATION PROTOCOL
+# --------------------------------------------
+
+target_inputs: "4 Pull Requests (PR-A, PR-B, PR-C, PR-D)"
+
+execution_steps:
+  step_1: "Read each PR's code changes thoroughly"
+  step_2: "Score each PR against all evaluation axes (1-10 scale)"
+  step_3: "Write 1-2 sentence justification per axis score"
+  step_4: "Calculate weighted total: Σ(axis_score × weight)"
+  step_5: "Rank all 4 PRs by weighted total (highest first)"
+  step_6: "Select the top-ranked PR"
+  step_7: "Write recommendation with comparison to other PRs"
+
+output_format: |
+
+  # PR EVALUATION RESULTS
+
+  ## Context
+  - Original Intent: [primary_intent]
+  - Domain: [technical_domain]
+  - Total Requirements: [count]
+
+  ---
+
+  ## PR-A Evaluation
+
+  **Scores:**
+  - [Axis 1]: X/10 - [justification]
+  - [Axis 2]: X/10 - [justification]
+  - [Axis 3]: X/10 - [justification]
+  - [Axis 4]: X/10 - [justification]
+  - [Axis 5]: X/10 - [justification]
+
+  **Weighted Total: X.XX/10**
+
+  **Strengths:** [2-3 key strengths]
+  **Weaknesses:** [2-3 key weaknesses]
+
+  ---
+
+  ## PR-B Evaluation
+  [Same format]
+
+  ---
+
+  ## PR-C Evaluation
+  [Same format]
+
+  ---
+
+  ## PR-D Evaluation
+  [Same format]
+
+  ---
+
+  ## Final Ranking
+
+  1. PR-[X] - [score]/10
+  2. PR-[Y] - [score]/10
+  3. PR-[Z] - [score]/10
+  4. PR-[W] - [score]/10
+
+  ---
+
+  ## ✅ RECOMMENDED PR: PR-[X]
+
+  **Rationale:**
+
+  [3-5 sentences explaining why this PR is the best choice.
+  Must reference how it addresses the primary_intent and
+  key requirements better than the other PRs.]
+
+  **Comparison:**
+  - vs PR-[Y]: [Key differentiator]
+  - vs PR-[Z]: [Key differentiator]
+  - vs PR-[W]: [Key differentiator]
+
+  **Trade-offs:**
+  [Any important considerations, or "None - clear winner"]
+
+# --------------------------------------------
+# EVALUATION CONSTRAINTS
+# --------------------------------------------
+
+constraints:
+  - "Score based only on observable code in the PRs"
+  - "Do not infer requirements not in original_prompt"
+  - "Do not penalize style differences unless they affect quality"
+  - "If PRs are equally strong, explain the tie"
+  - "If no PR meets minimum requirements, state this clearly"
+  - "Focus on how well each PR solves the stated problem"
+
