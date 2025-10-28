@@ -58,7 +58,11 @@
   "evidence_sources": [
     ".artifacts/meta-upgrades/pop/cycle-1-results.json",
     ".artifacts/meta-upgrades/pop/cycle-2-results.json",
-    ".artifacts/meta-upgrades/pop/cycle-3-results.json"
+    ".artifacts/meta-upgrades/pop/cycle-3-results.json",
+    ".artifacts/meta-upgrades/pop/observer-findings.md",
+    ".artifacts/meta-upgrades/pop/false-positive-log.json",
+    ".artifacts/meta-upgrades/pop/activation-evidence.json",
+    ".artifacts/meta-upgrades/cross/governance_diffs.json"
   ],
   "status": "observer_conditional",
   "notes": "Aggregated observer evidence across three consecutive POP runs; cycle detection failures require governance review before controller activation."
