@@ -1,0 +1,21 @@
+{
+  "scores": {
+    "intent_match": 0.82,
+    "dependency_satisfaction": 0.80,
+    "gate_compatibility": 0.96,
+    "governance_coherence": 0.93,
+    "performance_risk_penalty": 0.05,
+    "alignment_score": 0.815
+  },
+  "findings": [
+    "POP can begin as read-only observer to detect cycles and gate skips.",
+    "Controller activation must be strictly gated by DNA/Ledger/PEL/Temporal health."
+  ],
+  "conflicts": [
+    "Potential friction with Adaptive Mutation proposals before Controller activation."
+  ],
+  "remediation_options": [
+    "Disallow promotions until POP Controller criteria satisfied.",
+    "Require Fabric corroboration for cycle detection before enforcement."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "upgrade_id": "UPG03",
+  "goal": "Create a Protocol Exchange Layer (PEL) that models handoffs with negotiation and bounded retry semantics.",
+  "layers": ["automation", "validation"],
+  "touchpoints": ["P03","P04","P05","P06","P07","P08","P09","P10","P11","P12","P13","P14","P15"],
+  "dependencies": ["UPG02","UPG04"],
+  "expected_outcomes": [
+    {"metric":"deadlocks","target":0},
+    {"metric":"retry_bounded","target":true}
+  ],
+  "risks": {"cycle_risk":"low","gate_regression_risk":"low","perf_risk":"medium"}
+}

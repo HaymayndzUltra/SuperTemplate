@@ -1,0 +1,12 @@
+{
+  "upgrade_id": "UPG10",
+  "goal": "Build a read-only Reasoning Fabric graph that aggregates protocol reasoning, ledger links, and governance edges for POP corroboration.",
+  "layers": ["reasoning", "governance"],
+  "touchpoints": ["Global Graph"],
+  "dependencies": ["UPG04","UPG02","UPG05"],
+  "expected_outcomes": [
+    {"metric":"spurious_edges","target":0},
+    {"metric":"pop_cycle_corroboration","target":true}
+  ],
+  "risks": {"cycle_risk":"none","gate_regression_risk":"none","perf_risk":"low"}
+}

@@ -1,0 +1,11 @@
+upgrade_id,alignment_score,decision,notes
+UPG01,0.8645,Accept,"Advisory-only PIK; POP-gated enforcement"
+UPG02,0.913,Accept,"DNA schema overlays; coverage ≥0.90"
+UPG03,0.8105,Adapt,"Bound PEL retries by Temporal SLA tokens"
+UPG04,0.909,Accept,"Append-only decision ledger; exact replay"
+UPG05,0.815,Adapt,"Observer mode only; Controller deferred"
+UPG06,0.856,Accept,"Read-only dashboard; ≤5% overhead"
+UPG07,0.774,Adapt,"Sandbox proposals; 0 gate regressions; POP-gated"
+UPG08,0.856,Accept,"Temporal SLAs and escalations; PEL bounded"
+UPG09,0.872,Accept,"Meta-cognition precision ≥0.9"
+UPG10,0.868,Accept,"Read-only Fabric corroborates POP cycles"

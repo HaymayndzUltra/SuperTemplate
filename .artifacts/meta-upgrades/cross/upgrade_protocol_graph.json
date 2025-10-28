@@ -1,0 +1,589 @@
+{
+    "graph": {
+        "upgrades": [
+            {
+                "id": "UPG01",
+                "name": "Protocol Intelligence Kernel",
+                "touchpoints": [
+                    "P01",
+                    "P02",
+                    "P03",
+                    "P04",
+                    "P05",
+                    "P06",
+                    "P07",
+                    "P08",
+                    "P09",
+                    "P10",
+                    "P11",
+                    "P12",
+                    "P13",
+                    "P14",
+                    "P15",
+                    "P16",
+                    "P17",
+                    "P18",
+                    "P19",
+                    "P20",
+                    "P21",
+                    "P22",
+                    "P23"
+                ],
+                "dependencies": [
+                    "UPG02",
+                    "UPG04"
+                ]
+            },
+            {
+                "id": "UPG02",
+                "name": "Reasoning DNA Schema",
+                "touchpoints": [
+                    "P01",
+                    "P02",
+                    "P03",
+                    "P04",
+                    "P05",
+                    "P06",
+                    "P07",
+                    "P08",
+                    "P09",
+                    "P10",
+                    "P11",
+                    "P12",
+                    "P13",
+                    "P14",
+                    "P15",
+                    "P16",
+                    "P17",
+                    "P18",
+                    "P19",
+                    "P20",
+                    "P21",
+                    "P22",
+                    "P23"
+                ],
+                "dependencies": []
+            },
+            {
+                "id": "UPG03",
+                "name": "Protocol Exchange Layer",
+                "touchpoints": [
+                    "P03",
+                    "P04",
+                    "P05",
+                    "P06",
+                    "P07",
+                    "P08",
+                    "P09",
+                    "P10",
+                    "P11",
+                    "P12",
+                    "P13",
+                    "P14",
+                    "P15"
+                ],
+                "dependencies": [
+                    "UPG02",
+                    "UPG04"
+                ]
+            },
+            {
+                "id": "UPG04",
+                "name": "Causal Ledger",
+                "touchpoints": [
+                    "P01",
+                    "P02",
+                    "P03",
+                    "P04",
+                    "P05",
+                    "P06",
+                    "P07",
+                    "P08",
+                    "P09",
+                    "P10",
+                    "P11",
+                    "P12",
+                    "P13",
+                    "P14",
+                    "P15",
+                    "P16",
+                    "P17",
+                    "P18",
+                    "P19",
+                    "P20",
+                    "P21",
+                    "P22",
+                    "P23"
+                ],
+                "dependencies": []
+            },
+            {
+                "id": "UPG05",
+                "name": "Protocol-of-Protocols Controller (POP)",
+                "touchpoints": [
+                    "Governance"
+                ],
+                "dependencies": [
+                    "UPG04",
+                    "UPG02",
+                    "UPG01",
+                    "UPG03",
+                    "UPG08"
+                ]
+            },
+            {
+                "id": "UPG06",
+                "name": "Cognitive Telemetry Dashboard",
+                "touchpoints": [
+                    "Read-Ledger",
+                    "Read-DNA",
+                    "Read-PEL",
+                    "Read-POP"
+                ],
+                "dependencies": [
+                    "UPG04",
+                    "UPG02",
+                    "UPG03",
+                    "UPG05"
+                ]
+            },
+            {
+                "id": "UPG07",
+                "name": "Adaptive Protocol Mutation",
+                "touchpoints": [
+                    "Proposal Engine"
+                ],
+                "dependencies": [
+                    "UPG05"
+                ]
+            },
+            {
+                "id": "UPG08",
+                "name": "Temporal Reasoning Layer",
+                "touchpoints": [
+                    "Time-Constrained Gates & Handoffs"
+                ],
+                "dependencies": [
+                    "UPG02"
+                ]
+            },
+            {
+                "id": "UPG09",
+                "name": "Meta-Cognition Loop",
+                "touchpoints": [
+                    "Post-Protocol Retrospectives"
+                ],
+                "dependencies": [
+                    "UPG04",
+                    "UPG02"
+                ]
+            },
+            {
+                "id": "UPG10",
+                "name": "Reasoning Fabric Engine",
+                "touchpoints": [
+                    "Global Read-only Graph"
+                ],
+                "dependencies": [
+                    "UPG04",
+                    "UPG02",
+                    "UPG05"
+                ]
+            }
+        ],
+        "edges": [
+            {
+                "upgrade": "UPG01",
+                "protocol": "P01"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P02"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P03"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P04"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P05"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P06"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P07"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P08"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P09"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P10"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P11"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P12"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P13"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P14"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P15"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P16"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P17"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P18"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P19"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P20"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P21"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P22"
+            },
+            {
+                "upgrade": "UPG01",
+                "protocol": "P23"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P01"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P02"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P03"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P04"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P05"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P06"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P07"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P08"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P09"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P10"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P11"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P12"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P13"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P14"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P15"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P16"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P17"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P18"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P19"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P20"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P21"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P22"
+            },
+            {
+                "upgrade": "UPG02",
+                "protocol": "P23"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P03"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P04"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P05"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P06"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P07"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P08"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P09"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P10"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P11"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P12"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P13"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P14"
+            },
+            {
+                "upgrade": "UPG03",
+                "protocol": "P15"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P01"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P02"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P03"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P04"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P05"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P06"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P07"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P08"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P09"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P10"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P11"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P12"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P13"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P14"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P15"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P16"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P17"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P18"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P19"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P20"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P21"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P22"
+            },
+            {
+                "upgrade": "UPG04",
+                "protocol": "P23"
+            },
+            {
+                "upgrade": "UPG05",
+                "protocol": "Governance"
+            },
+            {
+                "upgrade": "UPG06",
+                "protocol": "Read-Ledger"
+            },
+            {
+                "upgrade": "UPG06",
+                "protocol": "Read-DNA"
+            },
+            {
+                "upgrade": "UPG06",
+                "protocol": "Read-PEL"
+            },
+            {
+                "upgrade": "UPG06",
+                "protocol": "Read-POP"
+            },
+            {
+                "upgrade": "UPG07",
+                "protocol": "Proposal Engine"
+            },
+            {
+                "upgrade": "UPG08",
+                "protocol": "Time-Constrained Gates & Handoffs"
+            },
+            {
+                "upgrade": "UPG09",
+                "protocol": "Post-Protocol Retrospectives"
+            },
+            {
+                "upgrade": "UPG10",
+                "protocol": "Global Read-only Graph"
+            }
+        ],
+        "collisions": [
+            {
+                "protocol": "P03",
+                "upgrades": [
+                    "UPG01",
+                    "UPG02"
+                ],
+                "type": "shared-touchpoint"
+            },
+            {
+                "protocol": "P11",
+                "upgrades": [
+                    "UPG03",
+                    "UPG08"
+                ],
+                "type": "temporal-handoff"
+            },
+            {
+                "protocol": "Governance",
+                "upgrades": [
+                    "UPG05",
+                    "UPG07",
+                    "UPG10"
+                ],
+                "type": "governance-scope"
+            }
+        ],
+        "notes": "Graph is acyclic by design; POP remains observer until S0\u2013S4 green."
+    }
+}

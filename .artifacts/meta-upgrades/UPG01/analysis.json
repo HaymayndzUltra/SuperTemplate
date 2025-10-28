@@ -1,0 +1,21 @@
+{
+  "scores": {
+    "intent_match": 0.88,
+    "dependency_satisfaction": 0.85,
+    "gate_compatibility": 0.95,
+    "governance_coherence": 0.92,
+    "performance_risk_penalty": 0.03,
+    "alignment_score": 0.8645
+  },
+  "findings": [
+    "PIK can operate advisory-only against DNA and Ledger without altering gates.",
+    "Halt-on-violation can be honored locally without protocol edits."
+  ],
+  "conflicts": [
+    "None intrinsic; ensure POP observer mode processes PIK findings as advisory."
+  ],
+  "remediation_options": [
+    "Gate PIK enforcement behind POP Controller activation.",
+    "Record PIK findings to Ledger for audit and disable if overhead >5%."
+  ]
+}

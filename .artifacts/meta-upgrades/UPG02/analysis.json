@@ -1,0 +1,21 @@
+{
+  "scores": {
+    "intent_match": 0.92,
+    "dependency_satisfaction": 0.90,
+    "gate_compatibility": 0.98,
+    "governance_coherence": 0.95,
+    "performance_risk_penalty": 0.02,
+    "alignment_score": 0.913
+  },
+  "findings": [
+    "DNA schema can be emitted alongside existing artifacts without gate changes.",
+    "Schema fields map to objectives, gates, decisions, and evidence."
+  ],
+  "conflicts": [
+    "Coverage unknown until instrumentation; ensure no duplication with existing manifests."
+  ],
+  "remediation_options": [
+    "Start with minimal schema; expand after pilot coverage measurement.",
+    "Use Ledger IDs to reference decisions in DNA." 
+  ]
+}

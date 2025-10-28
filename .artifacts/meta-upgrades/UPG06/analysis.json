@@ -1,0 +1,20 @@
+{
+  "scores": {
+    "intent_match": 0.83,
+    "dependency_satisfaction": 0.85,
+    "gate_compatibility": 0.99,
+    "governance_coherence": 0.93,
+    "performance_risk_penalty": 0.03,
+    "alignment_score": 0.856
+  },
+  "findings": [
+    "Read-only telemetry across DNA/Ledger/PEL/POP; no protocol edits required.",
+    "Overhead must be measured and capped."
+  ],
+  "conflicts": [
+    "None beyond performance envelope."
+  ],
+  "remediation_options": [
+    "Sample metrics; precompute aggregates; offload to artifacts."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "scores": {
+    "intent_match": 0.78,
+    "dependency_satisfaction": 0.78,
+    "gate_compatibility": 0.90,
+    "governance_coherence": 0.88,
+    "performance_risk_penalty": 0.05,
+    "alignment_score": 0.774
+  },
+  "findings": [
+    "Sandboxed mutation proposals only; promotion gated by POP.",
+    "Requires careful A/B guardrails to avoid gate regressions."
+  ],
+  "conflicts": [
+    "Governance scope overlaps with POP activation timeline."
+  ],
+  "remediation_options": [
+    "Quarantine proposals until POP observer shows 0 false positives across 3 runs.",
+    "Run A/B on non-critical flows first."
+  ]
+}
