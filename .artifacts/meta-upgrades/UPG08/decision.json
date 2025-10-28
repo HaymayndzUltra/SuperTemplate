@@ -1,0 +1,17 @@
+{
+  "upgrade_id": "UPG08",
+  "alignment_score": 0.856,
+  "decision": "Accept",
+  "rationale": "Temporal SLAs overlay gates; interactions with PEL bounded via token budget.",
+  "evidence_refs": [
+    ".artifacts/meta-upgrades/UPG08/intent.json",
+    ".artifacts/meta-upgrades/UPG08/analysis.json",
+    ".artifacts/meta-upgrades/UPG08/alignment.md",
+    ".artifacts/meta-upgrades/cross/remediation_plan.json"
+  ],
+  "change_impact": {
+    "affected_protocols": ["Time-constrained gates and handoffs"],
+    "gates_changed": [],
+    "risk_mitigation": ["SLA token budget; escalate when exhausted; log to Ledger."]
+  }
+}
