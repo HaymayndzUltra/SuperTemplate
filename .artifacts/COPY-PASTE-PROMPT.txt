@@ -11,41 +11,49 @@ CRITICAL INSTRUCTIONS - READ IN ORDER:
 
 2️⃣ SECOND: Execute "Step 1: Self-Initialization"
    - Read: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AGENTS.md
-   - Update the "Current Session" section with:
+   - Update the "CURRENT SESSION" section with:
+     * Session ID (generate unique)
      * Current timestamp (ISO 8601)
      * Your AI model name and version
-     * Your planned scope
-   - Review "Completed Tasks" and "Next Tasks"
+     * Current task objective (from user)
+   - Review "TASK COMPLETION LOG" to see what's already done
+   - Review "ANALYSIS OBJECTIVES" to understand overall goals
 
-3️⃣ THIRD: Analyze and create your plan
-   - Read the "Analysis Objectives" in AGENTS.md
-   - Analyze the .artifacts/ directory
-   - CREATE YOUR OWN PLAN (using Plan Mode)
-   - Present the plan to user with clickable tasks
-   - WAIT for user to click/approve tasks
+3️⃣ THIRD: Understand your task
+   - User will tell you what to do this session
+   - Read the "ANALYSIS OBJECTIVES" for context
+   - Analyze the .artifacts/ directory as needed
+   - Plan your autonomous approach
+   - Execute following quality gates
 
-4️⃣ ONGOING: Execute approved tasks
-   - User will click on tasks to execute
-   - Execute ONLY the task user clicked
-   - Update AGENTS.md after completing each task
-   - Present next options to user
-   - NEVER auto-execute without user approval
+4️⃣ ONGOING: Document and complete
+   - Execute the task autonomously
+   - Add detailed entry to "TASK COMPLETION LOG" in AGENTS.md
+   - Include all files created/modified/deleted
+   - Document key decisions and quality checks
+   - Suggest next recommended task (optional)
+   - Mark session as COMPLETE
 
 ════════════════════════════════════════════════════════════════════
 
 YOUR FIRST ACTION:
 
 Announce that you have:
-1. ✅ Read the master prompt
-2. ✅ Read AGENTS.md
-3. ✅ Updated "Current Session"
-4. ✅ Analyzed the objectives
+1. ✅ Read the master prompt (AI-AGENT-MASTER-PROMPT.md)
+2. ✅ Read AGENTS.md completely
+3. ✅ Updated "CURRENT SESSION" with session details
+4. ✅ Reviewed "TASK COMPLETION LOG" (what's already done)
+5. ✅ Understood "ANALYSIS OBJECTIVES" (overall goals)
 
-Then CREATE AND PRESENT YOUR PLAN:
-- Break down objectives into logical tasks
-- Present as clickable plan for user approval
-- WAIT for user to click before executing
-- DO NOT auto-execute tasks
+Then ASK THE USER:
+"What task would you like me to execute in this session?"
+
+Then EXECUTE AUTONOMOUSLY:
+- Understand the task objective
+- Plan your approach
+- Execute following quality gates
+- Document everything in "TASK COMPLETION LOG"
+- Session-based, autonomous execution
 
 ════════════════════════════════════════════════════════════════════
 
