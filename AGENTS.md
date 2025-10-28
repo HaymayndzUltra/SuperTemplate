@@ -1,619 +1,369 @@
-# AI-Driven Workflow System
-
-## 🚀 Overview
-
-The **AI-Driven Workflow System** is a comprehensive, 28-protocol development lifecycle that transforms AI from a simple code generator into a reliable engineering partner. This system provides structured, evidence-based workflows for complete software development from client discovery to project closure.
-
-### ✅ **PRODUCTION READY (2025-10-21)**
-**All 24 documented gaps have been resolved.** The system is now production-ready with:
-- ✅ Zero circular dependencies across all protocols
-- ✅ Correct handoff sequences (P10→P11, P11→P12, etc.)
-- ✅ Clean prerequisite chains (no forward/self-references)
-- ✅ Clear branching guidance (Protocol 02 vs 24 documented)
-- ✅ Automated evidence validation (CI/CD integrated)
-
-**Key Documents**:
-- **Gap Closure Report**: `documentation/gap-closure-report.md`
-- **Branching Guide**: `documentation/protocol-branching-guide.md`
-- **Validation Summary**: `validation-summary.md` (status: PRODUCTION READY)
-
-### Core Philosophy
-- **"Why Before How"**: Every action must align with cognitive dependencies
-- **Developer Cognitive Loop**: Protocols follow natural developer thinking patterns
-- **Reasoning Integrity**: Automation extends reasoning, never replaces it
-- **Evidence-Based**: All actions must be validated and documented
-
-### Key Benefits
-- ✅ **Complete SDLC Coverage**: From client proposal to project closure
-- ✅ **Quality Assurance**: Built-in quality gates and validation
-- ✅ **Evidence-Based Delivery**: All work documented and validated
-- ✅ **Client-Ready**: Professional workflows for client projects
-- ✅ **Automation Integration**: Scripts and CI/CD integration
-- ✅ **Scalable**: From simple projects to complex enterprise systems
-- ✅ **Gap-Free**: All 24 gaps resolved (100% closure)
-
-## 🎯 Implementation Status Update (2025-10-21)
-
-### ✅ Gap Closure Complete (Wave 5)
-
-All 24 documented gaps have been systematically resolved:
-
-1. **Circular Dependencies Eliminated** ✅
-   - All 10 circular dependencies removed from protocols
-   - No forward-phase references remain (P11→P21, P12→P15/P21/P23, etc.)
-   - Self-referential prerequisites fixed (P19, P21)
-   - Temporal impossibilities resolved
-
-2. **Handoff Sequences Corrected** ✅
-   - All 10 incorrect handoffs fixed (P10→P11, P11→P12, etc.)
-   - Self-referencing loops eliminated (P06→P06 fixed to P06→P07)
-   - Phase transitions properly sequenced
-
-3. **Documentation Enhanced** ✅
-   - Branching guide created (`documentation/protocol-branching-guide.md`)
-   - Prerequisites simplified (transitive dependencies documented)
-   - Duplicate coverage clarified (P02 vs P24 decision guide)
-
-4. **Automation & Validation** ✅
-   - Evidence validator created (`scripts/validate_evidence_citations.py`)
-   - CI/CD workflow configured (`.github/workflows/evidence-validation.yml`)
-   - Quality gates enforced
-
-### Next Wave Focus
-With gap closure complete, focus shifts to:
-- **Wave 4**: Testing & Scenario Validation (in progress)
-- **Wave 5**: Performance optimization and scale testing
-- **Wave 6**: Enterprise deployment readiness
-
-See `documentation/action-roadmap.md` for detailed wave planning.
-
----
-
-## 📋 Complete Protocol Inventory (28 Protocols)
-
-### Phase 0: Foundation & Discovery (01-05)
-**Purpose**: Client engagement, discovery, and project initialization
-
-| Protocol | Name | Purpose | Key Features |
-|----------|------|---------|--------------|
-| **01** | `client-proposal-generation.md` | Generate professional client proposals | Job post analysis, tone mapping, proposal validation |
-| **02** | `client-discovery-initiation.md` | Initiate client discovery process | Requirements gathering, stakeholder mapping, risk assessment |
-| **03** | `project-brief-creation.md` | Create comprehensive project brief | Scope definition, success criteria, timeline planning |
-| **04** | `project-bootstrap-and-context-engineering.md` | Bootstrap project with context | Environment setup, tooling configuration, team alignment |
-| **05** | `bootstrap-your-project.md` | Initialize project structure | Codebase analysis, architecture setup, development environment |
-
-### Phase 1-2: Planning & Design (06-09)
-**Purpose**: Requirements documentation, architecture design, and task planning
-
-| Protocol | Name | Purpose | Key Features |
-|----------|------|---------|--------------|
-| **06** | `create-prd.md` | Create Product Requirements Document | Requirements analysis, feature specification, acceptance criteria |
-| **07** | `technical-design-architecture.md` | Design technical architecture | System design, technology selection, integration planning |
-| **08** | `generate-tasks.md` | Generate development tasks | Task decomposition, effort estimation, priority ordering |
-| **09** | `environment-setup-validation.md` | Setup and validate development environment | Environment configuration, tooling validation, CI/CD setup |
-
-### Phase 3: Development (10-11)
-**Purpose**: Task execution and integration testing
-
-| Protocol | Name | Purpose | Key Features |
-|----------|------|---------|--------------|
-| **10** | `process-tasks.md` | Execute development tasks | Task implementation, code review, evidence collection |
-| **11** | `integration-testing.md` | Perform integration testing | API testing, system integration, end-to-end validation |
-
-### Phase 4: Quality & Testing (12-14)
-**Purpose**: Quality assurance, user acceptance testing, and pre-deployment
-
-| Protocol | Name | Purpose | Key Features |
-|----------|------|---------|--------------|
-| **12** | `quality-audit.md` | Comprehensive quality audit | Code review, security scan, performance analysis |
-| **13** | `uat-coordination.md` | User Acceptance Testing coordination | UAT planning, stakeholder coordination, feedback integration |
-| **14** | `pre-deployment-staging.md` | Pre-deployment staging validation | Staging environment, final testing, deployment preparation |
-
-### Phase 5: Deployment & Operations (15-18)
-**Purpose**: Production deployment, monitoring, and incident management
-
-| Protocol | Name | Purpose | Key Features |
-|----------|------|---------|--------------|
-| **15** | `production-deployment.md` | Production deployment execution | Deployment strategy, rollback planning, go-live coordination |
-| **16** | `monitoring-observability.md` | Setup monitoring and observability | Metrics collection, alerting, performance monitoring |
-| **17** | `incident-response-rollback.md` | Incident response and rollback procedures | Incident management, rollback execution, post-incident analysis |
-| **18** | `performance-optimization.md` | Performance optimization | Performance analysis, optimization implementation, monitoring |
-
-### Phase 6: Closure & Maintenance (19-23)
-**Purpose**: Project closure, documentation, and ongoing maintenance
-
-| Protocol | Name | Purpose | Key Features |
-|----------|------|---------|--------------|
-| **19** | `documentation-knowledge-transfer.md` | Documentation and knowledge transfer | Technical documentation, user guides, knowledge transfer |
-| **20** | `project-closure.md` | Project closure and handover | Deliverable validation, stakeholder sign-off, project closure |
-| **21** | `maintenance-support.md` | Ongoing maintenance and support | Maintenance planning, support procedures, SLA management |
-| **22** | `implementation-retrospective.md` | Implementation retrospective | Process analysis, lessons learned, improvement recommendations |
-| **23** | `script-governance-protocol.md` | Script governance and management | Script validation, automation governance, maintenance procedures |
-
-### Supporting Protocols (24-27)
-**Purpose**: Additional tools and reference materials
-
-| Protocol | Name | Purpose | Key Features |
-|----------|------|---------|--------------|
-| **24** | `client-discovery.md` | Extended client discovery | Deep discovery, stakeholder analysis, requirement validation |
-| **25** | `protocol-integration-map.md` | Protocol integration mapping | Workflow visualization, dependency mapping, integration points |
-| **26** | `integration-guide.md` | Integration and automation guide | Script integration, CI/CD setup, automation configuration |
-| **27** | `validation-guide.md` | Validation and quality guide | Quality criteria, validation procedures, compliance checking |
-
----
-
-## 🎯 Master Rules System
-
-The system includes **8 master rules** that govern AI behavior and ensure consistent, high-quality execution:
-
-| Rule | Name | Purpose |
-|------|------|---------|
-| **1** | `context-discovery-protocol` | Context gathering and rule loading |
-| **2** | `ai-collaboration-guidelines` | AI-user collaboration protocols |
-| **3** | `code-quality-checklist` | Code quality standards and best practices |
-| **4** | `code-modification-safety-protocol` | Safe code modification procedures |
-| **5** | `documentation-and-context-guidelines` | Documentation maintenance and context integrity |
-| **6** | `how-to-create-effective-rules` | Rule creation and optimization guidelines |
-| **9** | `protocol-orchestrator` | Protocol orchestration and workflow management |
-| **Advanced** | `advanced-meta-instruction-intelligence-system` | Advanced analysis and intelligence system |
-
-### Additional Cursor Rules
-The system also includes specialized rules for specific domains:
-
-| Rule Type | Location | Purpose |
-|-----------|----------|---------|
-| **Common Rules** | `.cursor/rules/common-rules/` | Domain-specific guidelines (UI, backend, etc.) |
-| **Project Rules** | `.cursor/rules/project-rules/` | Project-specific configurations |
-| **Elaboration Specialist** | `.cursor/rules/elaboration-specialist.mdc` | Enhanced instruction clarification |
-| **Meta Instructions** | `.cursor/rules/meta-instruction-explain.mdc` | Meta-instruction analysis and explanation |
-
----
-
-## 🔍 Quality Audit System
-
-### Review Protocols
-Located in `.cursor/ai-driven-workflow/review-protocols/`:
-
-- **`code-review.md`**: Code quality validation and DDD compliance
-- **`security-check.md`**: Security compliance and vulnerability assessment
-- **`architecture-review.md`**: Architecture validation and performance analysis
-- **`design-system.md`**: UI/UX compliance and component validation
-- **`ui-accessibility.md`**: Accessibility validation and compliance
-- **`pre-production.md`**: Pre-deployment validation and readiness check
-
-### Quality Gates
-Each protocol includes quality gates with:
-- **Prerequisite Gates**: Must pass before protocol execution
-- **Execution Gates**: Must pass during protocol execution
-- **Completion Gates**: Must pass before protocol completion
-- **Integration Gates**: Must pass for workflow integration
-
----
-
-## ⚙️ Automation Integration
-
-### Script Integration
-The system integrates with automation scripts for:
-- **Project Analysis**: `analyze_codebase.py`, `classify_domain.py`
-- **Validation**: `validate_prd.py`, `validate_tasks.py`
-- **Execution**: `execute_task.py`, `evidence_report.py`
-- **Quality**: `run_quality_audit.py`, `aggregate_coverage.py`
-
-### Available Scripts
-Located in `.artifacts/scripts/`:
-- **`script-index.json`**: Complete script inventory and capabilities
-- **`static-analysis-report.json`**: Code analysis and quality metrics
-- **`validation-report.json`**: Protocol validation results
-- **`artifact-compliance-report.json`**: Artifact structure compliance
-- **`protocol-4-extension-report.json`**: Protocol extension analysis
-
-### Cursor Commands
-Available slash commands in `.cursor/commands/`:
-- **`/compare-prs`**: Advanced PR comparison and analysis
-- **`/elaborate`**: Enhanced instruction clarification
-- **`/generate-cursor-rules`**: Automated rule generation
-- **`/generate-proposal`**: Client proposal generation
-- **`/protocol-orchestrator`**: Workflow orchestration
-- **`/meta-analysis-generator`**: Meta-analysis and intelligence
-
-### Template Packs & Generators
-Located in `generators/` directory:
-- **Protocol Generators**: Automated protocol creation (6-18)
-- **Input Forms**: YAML-based configuration templates
-- **Generator Instructions**: Step-by-step generation guides
-- **Quick Start Guides**: Rapid setup and deployment
-- **Meta Analysis**: Advanced analysis and intelligence tools
-
-### Template Packs System
-Located in `template-packs/` directory:
-- **Backend Templates**: Django, FastAPI, NestJS, Go frameworks
-- **Frontend Templates**: Next.js, Nuxt, Angular, Expo frameworks
-- **Database Templates**: PostgreSQL, MongoDB, Firebase configurations
-- **DevEx Templates**: DevContainer, Docker Compose, VS Code snippets
-- **CI/CD Templates**: GitHub workflows, gates configuration
-- **Policy DSL**: YAML definitions for gating rules and policies
-
-### CI/CD Integration
-- **Linting**: `.github/workflows/ci-lint.yml`
-- **Testing**: `.github/workflows/ci-test.yml`
-- **Security**: `.github/workflows/security-scan.yml`
-- **Deployment**: `.github/workflows/deploy.yml`
-
----
-
-## 🚀 Quick Start Guide
-
-### Basic Usage
-1. **Initialize Project**: Start with Protocol 05 (bootstrap-your-project.md)
-2. **Follow Sequence**: Execute protocols in numerical order
-3. **Collect Evidence**: Document all actions and decisions
-4. **Validate Gates**: Ensure all quality gates pass
-
-### Command Format
-```bash
-@apply .cursor/ai-driven-workflow/[protocol-number]-[protocol-name].md
-```
-
-### Example Commands
-```bash
-# Start a new project
-@apply .cursor/ai-driven-workflow/05-bootstrap-your-project.md
-
-# Create requirements document
-@apply .cursor/ai-driven-workflow/06-create-prd.md
-
-# Execute development tasks
-@apply .cursor/ai-driven-workflow/10-process-tasks.md @codebase
-
-# Run quality audit
-@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode comprehensive
-```
-
----
-
-## 📖 Complete Lifecycle Command Playbook
-
-### Client Project Lifecycle (Full SDLC)
-
-#### Phase 0: Client Engagement
-```bash
-# 1. Generate client proposal
-@apply .cursor/ai-driven-workflow/01-client-proposal-generation.md
-
-# 2. Initiate client discovery
-@apply .cursor/ai-driven-workflow/02-client-discovery-initiation.md
-
-# 3. Create project brief
-@apply .cursor/ai-driven-workflow/03-project-brief-creation.md
-
-# 4. Bootstrap project context
-@apply .cursor/ai-driven-workflow/04-project-bootstrap-and-context-engineering.md
-
-# 5. Initialize project structure
-@apply .cursor/ai-driven-workflow/05-bootstrap-your-project.md
-```
-
-#### Phase 1-2: Planning & Design
-```bash
-# 6. Create Product Requirements Document
-@apply .cursor/ai-driven-workflow/06-create-prd.md
-
-# 7. Design technical architecture
-@apply .cursor/ai-driven-workflow/07-technical-design-architecture.md
-
-# 8. Generate development tasks
-@apply .cursor/ai-driven-workflow/08-generate-tasks.md
-
-# 9. Setup development environment
-@apply .cursor/ai-driven-workflow/09-environment-setup-validation.md
-```
-
-#### Phase 3: Development
-```bash
-# 10. Execute development tasks
-@apply .cursor/ai-driven-workflow/10-process-tasks.md @codebase
-
-# 11. Perform integration testing
-@apply .cursor/ai-driven-workflow/11-integration-testing.md
-```
-
-#### Phase 4: Quality & Testing
-```bash
-# 12. Run comprehensive quality audit
-@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode comprehensive
-
-# 13. Coordinate User Acceptance Testing
-@apply .cursor/ai-driven-workflow/13-uat-coordination.md
-
-# 14. Pre-deployment staging validation
-@apply .cursor/ai-driven-workflow/14-pre-deployment-staging.md
-```
-
-#### Phase 5: Deployment & Operations
-```bash
-# 15. Execute production deployment
-@apply .cursor/ai-driven-workflow/15-production-deployment.md
-
-# 16. Setup monitoring and observability
+# REPORT MUST ANALYZE
+
+Summary
+The workflow is well-structured with rigorous gates, approvals, and handoffs. Review protocols and CI workflows exist and are detailed. However, many protocol-referenced gate scripts (CR/SR/AR and numbered gates) are missing in the repository, and several CI snippets show mismatched script names. Protocols lack explicit guidance for template-pack selection despite a strong generator system. Validators exist but are not directly integrated by protocols. Prioritized fixes: reconcile script references (or provide fallbacks), correct CI gate invocations, and add a protocol-level template selection step.
+
+Inventory
+Protocols (ID, name, path)
+
+00: generate-rules — .cursor/ai-driven-workflow/00-generate-rules.md
+01: client-proposal-generation — .cursor/ai-driven-workflow/01-client-proposal-generation.md
+01 (streamlined): .cursor/ai-driven-workflow/01-client-proposal-generation-STREAMLINED.md
+02: client-discovery-initiation — .cursor/ai-driven-workflow/02-client-discovery-initiation.md
+03: project-brief-creation — .cursor/ai-driven-workflow/03-project-brief-creation.md
+04: project-bootstrap-and-context-engineering — .cursor/ai-driven-workflow/04-project-bootstrap-and-context-engineering.md
+05: bootstrap-your-project — .cursor/ai-driven-workflow/05-bootstrap-your-project.md
+06: create-prd — .cursor/ai-driven-workflow/06-create-prd.md
+07: technical-design-architecture — .cursor/ai-driven-workflow/07-technical-design-architecture.md
+08: generate-tasks — .cursor/ai-driven-workflow/08-generate-tasks.md
+09: environment-setup-validation — .cursor/ai-driven-workflow/09-environment-setup-validation.md
+10: process-tasks — .cursor/ai-driven-workflow/10-process-tasks.md
+11: integration-testing — .cursor/ai-driven-workflow/11-integration-testing.md
+12: quality-audit — .cursor/ai-driven-workflow/12-quality-audit.md
+13: uat-coordination — .cursor/ai-driven-workflow/13-uat-coordination.md
+14: pre-deployment-staging — .cursor/ai-driven-workflow/14-pre-deployment-staging.md
+15: production-deployment — .cursor/ai-driven-workflow/15-production-deployment.md
+16: monitoring-observability — .cursor/ai-driven-workflow/16-monitoring-observability.md
+17: incident-response-rollback — .cursor/ai-driven-workflow/17-incident-response-rollback.md
+18: performance-optimization — .cursor/ai-driven-workflow/18-performance-optimization.md
+19: documentation-knowledge-transfer — .cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md
+20: project-closure — .cursor/ai-driven-workflow/20-project-closure.md
+21: maintenance-support — .cursor/ai-driven-workflow/21-maintenance-support.md
+22: implementation-retrospective — .cursor/ai-driven-workflow/22-implementation-retrospective.md
+23: script-governance-protocol — .cursor/ai-driven-workflow/23-script-governance-protocol.md
+24: client-discovery-ALTERNATE-TRACK — .cursor/ai-driven-workflow/24-client-discovery-ALTERNATE-TRACK.md
+25 (doc): protocol-integration-map — .cursor/ai-driven-workflow/25-protocol-integration-map-DOCUMENTATION.md
+26 (doc): integration-guide — .cursor/ai-driven-workflow/26-integration-guide-DOCUMENTATION.md
+27 (doc): validation-guide — .cursor/ai-driven-workflow/27-validation-guide-DOCUMENTATION.md
+Support: AGENTS.md, MASTER-RAY-BRANDING.md, analysis-01-client-proposal-generation.md
+Rules (name, path)
+
+.cursor/rules/master-rules/1-master-rule-context-discovery.mdc
+.cursor/rules/master-rules/2-master-rule-ai-collaboration-guidelines.mdc
+.cursor/rules/master-rules/3-master-rule-code-quality-checklist.mdc
+.cursor/rules/master-rules/4-master-rule-code-modification-safety-protocol.mdc
+.cursor/rules/master-rules/5-master-rule-documentation-and-context-guidelines.mdc
+.cursor/rules/master-rules/6-master-rule-how-to-create-effective-rules.mdc
+.cursor/rules/master-rules/9-master-rule-protocol-orchestrator.mdc
+.cursor/rules/master-rules/advanced-meta-instruction-intelligence-system.mdc
+.cursor/rules/common-rules/common-rule-ui-foundation-design-system.mdc
+.cursor/rules/common-rules/common-rule-ui-interaction-a11y-perf.mdc
+.cursor/rules/common-rules/common-rule-ui-premium-brand-dataviz-enterprise-gated.mdc
+.cursor/rules/ai-comprehension-system.mdc
+.cursor/rules/commit-messages.mdc
+.cursor/rules/debug-commands.mdc
+.cursor/rules/elaboration-specialist.mdc
+.cursor/rules/modern-react-nextjs.mdc
+.cursor/rules/prompt-generator.mdc
+.cursor/rules/reveal-model.mdc
+.cursor/rules/semgrep-security-scan.mdc
+(and associated .mdc in rules tree)
+Review Protocols (name, path)
+
+code-review — .cursor/ai-driven-workflow/review-protocols/code-review.md
+security-check — .cursor/ai-driven-workflow/review-protocols/security-check.md
+architecture-review — .cursor/ai-driven-workflow/review-protocols/architecture-review.md
+pre-production — .cursor/ai-driven-workflow/review-protocols/pre-production.md
+ui-accessibility — .cursor/ai-driven-workflow/review-protocols/ui-accessibility.md
+design-system — .cursor/ai-driven-workflow/review-protocols/design-system.md
+utils — multiple under .cursor/ai-driven-workflow/review-protocols/utils/
+Reference Map (selected examples)
+
+11-integration-testing → scripts: scripts/validate_environment.py, scripts/run_contract_tests.py, scripts/generate_artifact_manifest.py, pytest -m integration; workflow: embedded CI example; rules referenced indirectly via section structure.
+12-quality-audit → scripts: scripts/collect_change_context.py, scripts/run_comprehensive_review.py, scripts/validate_router_mapping.py, scripts/verify_specialized_execution.py, scripts/validate_gate_4_*, scripts/run_protocol_4_gates.py; workflow: CI example.
+14-pre-deployment-staging → scripts: scripts/refresh_staging_data.py, scripts/update_deployment_checklist.py, scripts/validate_gate_10_*, scripts/run_protocol_10_gates.py.
+15-production-deployment → scripts: scripts/deploy_backend.sh, scripts/validate_gate_11_*, scripts/run_protocol_11_gates.py; workflow: CI example.
+16-monitoring-observability → scripts: scripts/collect_perf.py, scripts/validate_gate_12_*, scripts/run_protocol_12_gates.py.
+17-incident-response-rollback → scripts: scripts/validate_gate_13_*, scripts/run_protocol_13_gates.py.
+18-performance-optimization → scripts: scripts/validate_gate_14_*, scripts/run_protocol_14_gates.py.
+20-project-closure → scripts: scripts/validate_gate_17_*, scripts/run_protocol_17_gates.py.
+21-maintenance-support → scripts: scripts/validate_gate_18_*, scripts/run_protocol_18_gates.py.
+23-script-governance-protocol → scripts: scripts/validate_script_registry.py, scripts/auto_register_scripts.py, scripts/generate_protocol_23_artifacts.py, scripts/validate_gate_8_*, scripts/run_protocol_8_gates.py.
+CI workflows: .github/workflows/validate-integration.yml (runs scripts/validate_workflow_integration.py and scripts/test_workflow_integration.sh); .github/workflows/evidence-validation.yml, .github/workflows/script-registry-enforcement.yml, .github/workflows/real-validation-pipeline.yml.
+Findings
+Missing gate scripts referenced by protocols (CR/SR/AR and numbered gates)
+Evidence:
+python scripts/validate_prerequisites_CR.py python scripts/validate_gate_CR_standards.py --issues .artifacts/review-code/design-issues.json python scripts/validate_gate_CR_tests.py --report .artifacts/review-code/test-validation-report.json python scripts/validate_gate_CR_feedback.py --log .artifacts/review-code/feedback-log.csv python scripts/aggregate_evidence_CR.py --output .artifacts/review-code/
+
+    ```353:360:/workspace/.cursor/ai-driven-workflow/12-quality-audit.md
+python scripts/validate_prerequisites_4.py
+python scripts/validate_gate_4_pre_audit.py --threshold 0.80
+python scripts/validate_gate_4_reporting.py --threshold 0.95
+python scripts/aggregate_evidence_4.py --output .artifacts/quality-audit/
+Insufficient evidence to conclude presence for these scripts under scripts/ (no matching files found in repository search).
+
+Impact: Protocol automation is not runnable as-specified; gates can’t be executed automatically.
+
+Confidence: High.
+
+CI/automation snippet mismatches
+
+Evidence (Protocol 11 file shows a job named “Protocol 15 Validation” and runs run_protocol_9_gates.py):
+name: Protocol 15 Validation on: [push, pull_request] jobs: validate: runs-on: ubuntu-latest steps: - name: Run Protocol 15 Gates run: python scripts/run_protocol_9_gates.py
+
+  - Evidence (Protocol 15 runs `run_protocol_11_gates.py`):
+    ```367:383:/workspace/.cursor/ai-driven-workflow/15-production-deployment.md
+# GitHub Actions workflow integration
+name: Protocol 15 Validation
+...
+      - name: Run Protocol 15 Gates
+        run: python scripts/run_protocol_11_gates.py
+Impact: Confusing/incorrect CI wiring; increases risk of running wrong gate set or failing builds.
+
+Confidence: High.
+
+Human approval gates are present and explicit
+
+Evidence:
+Required Approvals
+[ ] Quality orchestrator authorization to commence integration testing
+[ ] Environment owner confirmation that integration environment matches baseline
+System State Requirements
+[ ] ... Automation scripts ...
+    ```20:24:/workspace/.cursor/ai-driven-workflow/15-production-deployment.md
+### Required Approvals
+- [ ] Executive sponsor or Product Owner authorization to deploy to production
+- [ ] SRE/Operations lead approval confirming monitoring coverage
+- [ ] Security lead sign-off if release includes security-impacting changes
+Impact: Clear decision points align with solo developer operations and risk containment.
+
+Confidence: High.
+
+Protocol handoffs are coherent and forward-only
+
+Evidence:
+Handoff to Protocol 12:
+[MASTER RAY™ | PROTOCOL COMPLETE] Ready for Protocol 12: Quality Audit ...
+
+Trigger next protocol
+@apply .cursor/ai-driven-workflow/12-quality-audit.md
+
+    ```417:427:/workspace/.cursor/ai-driven-workflow/15-production-deployment.md
+### Handoff to Protocol 16:
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 16: Monitoring & Observability
+...
 @apply .cursor/ai-driven-workflow/16-monitoring-observability.md
+Impact: Reduces risk of cycles; supports auditable progression.
 
-# 17. Incident response procedures (if needed)
-@apply .cursor/ai-driven-workflow/17-incident-response-rollback.md
+Confidence: High.
 
-# 18. Performance optimization
-@apply .cursor/ai-driven-workflow/18-performance-optimization.md
-```
+Rules ↔ Protocol alignment (self-identification, modification safety, comprehension)
 
-#### Phase 6: Closure & Maintenance
-```bash
-# 19. Documentation and knowledge transfer
-@apply .cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md
+Evidence (self-identification rule):
+AI Model Self-Identification Protocol
+... At the beginning of every interaction, you MUST identify yourself by stating your actual AI model name and version...
 
-# 20. Project closure and handover
-@apply .cursor/ai-driven-workflow/20-project-closure.md
+  - Evidence (code modification safety expectations):
+    ```5:20:/workspace/.cursor/rules/master-rules/4-master-rule-code-modification-safety-protocol.mdc
+# Master Rule: Code Modification Safety Protocol
+...
+**[STRICT]** Before any modification, you MUST:
+- Confirm the Target
+- Validate File Location
+- Read the Latest Version
+...
+Evidence (protocols contain required sections enforced by validators):
+REQUIRED_SECTIONS = [ ("PREREQUISITES", r"PREREQUISITES"), ("AI ROLE AND MISSION", r"AI ROLE AND MISSION"), ("WORKFLOW", r"WORKFLOW"), ("INTEGRATION POINTS", r"INTEGRATION POINTS"), ("QUALITY GATES", r"QUALITY GATES"), ("COMMUNICATION PROTOCOLS", r"COMMUNICATION PROTOCOLS"), ("AUTOMATION HOOKS", r"AUTOMATION HOOKS"), ("HANDOFF CHECKLIST", r"HANDOFF CHECKLIST"), ("EVIDENCE SUMMARY", r"EVIDENCE SUMMARY") ]
 
-# 21. Ongoing maintenance and support
-@apply .cursor/ai-driven-workflow/21-maintenance-support.md
+  - Impact: Protocols adhere to global constraints; validator enforces structure.
+  - Confidence: High.
 
-# 22. Implementation retrospective
-@apply .cursor/ai-driven-workflow/22-implementation-retrospective.md
-```
+- Template-pack integration exists via generator, but protocols lack explicit selection/usage steps
+  - Evidence (generator uses template-packs):
+    ```386:399:/workspace/project_generator/core/generator.py
+template_root = Path(__file__).parent.parent.parent / 'template-packs' / 'frontend' / self.args.frontend
+variant_path = template_root / variant
+...
+self._process_templates(frontend_dir)
+```408:434:/workspace/project_generator/core/generator.py
+template_path = Path(file).parent.parent.parent / 'template-packs' / 'backend' / self.args.backend ... shutil.copytree(variant_path, backend_dir, dirs_exist_ok=True)
 
-### Technical Development Workflow (Development-Focused)
+  - Insufficient evidence to conclude protocols instruct explicit template selection or generator usage.
+  - Impact: Missed opportunity to guide consistent scaffolding at Protocol 05–07.
+  - Confidence: High.
 
-#### Quick Development Cycle
-```bash
-# Bootstrap project
-@apply .cursor/ai-driven-workflow/05-bootstrap-your-project.md
+- Validators-system provides robust checks, but protocols do not call it directly
+  - Evidence (validators capability):
+    ```1:16:/workspace/validators-system/scripts/validate_protocol_identity.py
+#!/usr/bin/env python3
+"Protocol Identity Validator"
+...
+Insufficient evidence to conclude direct invocation from protocols (no references found).
 
-# Create requirements
-@apply .cursor/ai-driven-workflow/06-create-prd.md
+Impact: Validation may rely on CI workflows rather than protocol automation hooks.
 
-# Design architecture
-@apply .cursor/ai-driven-workflow/07-technical-design-architecture.md
+Confidence: Medium-High.
 
-# Generate tasks
-@apply .cursor/ai-driven-workflow/08-generate-tasks.md
+CI integration to validate workflow connectivity exists
 
-# Execute development
-@apply .cursor/ai-driven-workflow/10-process-tasks.md @codebase
+Evidence:
+name: Validate Dev-Workflow Integration on: push: branches: [ main, develop ] ...
 
-# Integration testing
-@apply .cursor/ai-driven-workflow/11-integration-testing.md
+    ```41:49:/workspace/.github/workflows/validate-integration.yml
+python scripts/validate_workflow_integration.py --verbose --output .artifacts/validation-results.json
+bash scripts/test_workflow_integration.sh --keep
+Impact: Automated detection of misalignments; current findings imply it should be flagging missing scripts.
+Confidence: High.
+Gaps and Risks
+Missing gate scripts referenced by protocols
 
-# Quality audit
-@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode quick
-```
+Severity: High
+Confidence: High
+Affected: Multiple protocols (CR/SR/AR, 11, 12, 14, 15, 16, 17, 18, 20, 21, 23)
+Evidence: See code references above; Insufficient evidence to conclude presence of scripts/validate_gate_* and run_protocol_*_gates.py.
+CI snippet/script mismatches (wrong protocol numbers in filenames)
 
-### Quality Assurance Workflow
+Severity: Medium
+Confidence: High
+Affected: Protocol 11 and 15 CI examples
+Evidence: Protocol 11 uses run_protocol_9_gates.py; Protocol 15 uses run_protocol_11_gates.py.
+Protocols lack explicit template-pack selection/usage guidance
 
-#### Comprehensive Quality Check
-```bash
-# Full quality audit
-@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode comprehensive
+Severity: Medium
+Confidence: High
+Affected: Early protocols (05–07)
+Evidence: Template usage exists in generator; no protocol references found.
+Validators not directly referenced in protocol automation hooks
 
-# Security-focused audit
-@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode security
+Severity: Low-Medium
+Confidence: Medium-High
+Affected: Protocol automation sections
+Evidence: Validators exist; no direct protocol references.
+Recommendations
+Title: Reconcile protocol-referenced gate scripts or provide fallbacks
 
-# Architecture review
-@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode architecture
+Action Steps:
+Implement minimal gate scripts for each referenced validate_gate_* and run_protocol_*_gates.py, or update protocols to reference existing, real scripts (e.g., consolidate gate checks into scripts/validate_workflow_integration.py).
+Add a central scripts/script-registry.json entry per new script and enforce with Protocol 23.
+Expected Outcome: Protocol automation becomes runnable; CI failures reduced.
+Effort: M
+Risk: Low-Medium.
+Title: Correct CI snippets and align gate runner names
 
-# Pre-deployment validation
-@apply .cursor/ai-driven-workflow/14-pre-deployment-staging.md
-```
+Action Steps:
+Update Protocol 11 and 15 CI examples to reference the correct runner names and protocol numbers.
+Add a test in scripts/validate_workflow_integration.py to detect protocol-number mismatches in example YAML.
+Expected Outcome: Clear, accurate CI wiring; fewer operator errors.
+Effort: S
+Risk: Low.
+Title: Add protocol-level template-pack selection and generator step
 
-### Emergency Response Workflow
+Action Steps:
+In Protocol 05–07, add a “Template Selection & Generator” step referencing scripts/generate_client_project.py with required inputs and evidence outputs (e.g., generator-config.json, scaffold manifests).
+Include decision criteria for stacks and compliance.
+Expected Outcome: Standardized scaffolding across projects; better integration of template-packs.
+Effort: M
+Risk: Low.
+Confidence and Limitations
+Confidence: High for identified gaps (missing scripts, CI mismatches, approvals/gates presence, generator/template integration). Medium-High for validators-system integration assertions.
+Limitations: Some findings note “Insufficient evidence to conclude presence” where files were not found; if stored outside scripts/, provide locations to re-check.
+Next Steps
+Approve recommendations.
 
-#### Incident Management
-```bash
-# Incident response
-@apply .cursor/ai-driven-workflow/17-incident-response-rollback.md
+Implement missing or corrected scripts and CI snippet updates.
 
-# Performance optimization
-@apply .cursor/ai-driven-workflow/18-performance-optimization.md
+Add template-pack steps to Protocol 05–07.
 
-# Monitoring setup
-@apply .cursor/ai-driven-workflow/16-monitoring-observability.md
-```
+Re-run .github/workflows/validate-integration.yml and validators to confirm closure.
 
-### Maintenance Workflow
+Evidence references:
 
-#### Ongoing Maintenance
-```bash
-# Maintenance planning
-@apply .cursor/ai-driven-workflow/21-maintenance-support.md
+Protocol 11 (integration testing) script/gate calls:
+Gate 1: Scope Alignment Gate
+...
 
-# Documentation updates
-@apply .cursor/ai-driven-workflow/19-documentation-knowledge-transfer.md
+Automation: python scripts/validate_environment.py --env integration --output .artifacts/protocol-15/environment-validation-report.json ...
+Automation: python scripts/run_contract_tests.py --env integration --output .artifacts/protocol-15/contract-validation-results.json ...
+Automation: python scripts/generate_artifact_manifest.py --input .artifacts/protocol-15/ --output .artifacts/protocol-15/integration-evidence-manifest.json
+  - Protocol 15 gate calls:
+    ```285:311:/workspace/.cursor/ai-driven-workflow/15-production-deployment.md
+### Gate 1: Readiness Confirmation Gate
+...
+- **Automation**: `python scripts/validate_gate_11_readiness.py --checklist .artifacts/deployment/deployment-readiness-checklist.json`
+...
+- **Automation**: `python scripts/validate_gate_11_freeze.py --stakeholders config/release-approvers.yaml`
+...
+- **Automation**: `python scripts/validate_gate_11_launch.py --validation-threshold 0.95`
+...
+- **Automation**: `python scripts/validate_gate_11_reporting.py --threshold 0.95`
+Review gates (CR):
+Gate 1: Standards Compliance
+...
 
-# Script governance
-@apply .cursor/ai-driven-workflow/23-script-governance-protocol.md
-```
+Automation: python scripts/validate_gate_CR_standards.py --issues .artifacts/review-code/design-issues.json ...
+Automation: python scripts/validate_gate_CR_tests.py --report .artifacts/review-code/test-validation-report.json ...
+Automation: python scripts/validate_gate_CR_feedback.py --log .artifacts/review-code/feedback-log.csv
+  - CI validation workflow:
+    ```41:49:/workspace/.github/workflows/validate-integration.yml
+python scripts/validate_workflow_integration.py --verbose --output .artifacts/validation-results.json
+bash scripts/test_workflow_integration.sh --keep
+Generator → template-packs usage:
+template_root = Path(file).parent.parent.parent / 'template-packs' / 'frontend' / self.args.frontend variant_path = template_root / variant ... self._process_templates(frontend_dir)
 
----
 
-## 🔧 Advanced Usage
+- Status: Inventory completed. I compiled the audit and mapped references; identified gaps and proposed fixes.
 
-### Custom Workflows
-Create custom sequences for specific needs:
 
-#### MVP Development
-```bash
-@apply .cursor/ai-driven-workflow/05-bootstrap-your-project.md
-@apply .cursor/ai-driven-workflow/06-create-prd.md
-@apply .cursor/ai-driven-workflow/10-process-tasks.md @codebase
-@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode quick
-```
-
-#### Enterprise Project
-```bash
-# Full enterprise workflow with all protocols
-# Use complete client project lifecycle above
-```
-
-#### Bug Fix Workflow
-```bash
-@apply .cursor/ai-driven-workflow/12-quality-audit.md --mode security
-@apply .cursor/ai-driven-workflow/10-process-tasks.md @codebase
-@apply .cursor/ai-driven-workflow/11-integration-testing.md
-```
-
-### Context Integration
-Use Cursor's context features:
-- **`@codebase`**: Full project context
-- **`@recent-changes`**: Git change analysis
-- **`@filename`**: File-specific context
-
-### Automation Hooks
-Integrate with existing scripts:
-```bash
-# Run validation scripts
-python scripts/validate_protocols.py
-python scripts/test_protocol_execution.py
-python scripts/validate_evidence.py
-```
-
----
-
-## 🛠️ Troubleshooting
-
-### Common Issues
-
-#### Missing Prerequisites
-- Ensure all prerequisites are met before protocol execution
-- Check required artifacts and approvals
-- Validate system state requirements
-
-#### Incomplete Evidence
-- Verify evidence collection is complete
-- Check evidence format and structure
-- Ensure all validation results are documented
-
-#### Failed Quality Gates
-- Address gate failures immediately
-- Review failure reasons and implement fixes
-- Re-run gate validation after fixes
-
-#### Integration Problems
-- Check protocol dependencies
-- Verify handoff requirements
-- Ensure proper sequence execution
-
-### Debug Commands
-```bash
-# Validate protocol structure
-python scripts/validate_protocols.py
-
-# Test protocol execution
-python scripts/test_protocol_execution.py
-
-# Check evidence collection
-python scripts/validate_evidence.py
-
-# Run quality audit
-python scripts/run_quality_audit.py
-```
 
 ---
 
-## 📚 Additional Resources
 
-### Documentation
-- **Protocol Integration Map**: `.cursor/ai-driven-workflow/25-protocol-integration-map.md`
-- **Integration Guide**: `.cursor/ai-driven-workflow/26-integration-guide.md`
-- **Validation Guide**: `.cursor/ai-driven-workflow/27-validation-guide.md`
-- **Master Rules**: `.cursor/rules/master-rules/`
-- **Common Rules**: `.cursor/rules/common-rules/`
-- **Project Rules**: `.cursor/rules/project-rules/`
+# IMPLEMENTATION PLAN MUST FOLLOW
 
-### Automation Scripts
-- **Scripts Directory**: `.artifacts/scripts/`
-- **CI/CD Workflows**: `.github/workflows/`
-- **Quality Gates**: Built into each protocol
 
-### Template Packs & Generators
-- **Generators Directory**: `generators/`
-- **Protocol Generators**: Automated protocol creation
-- **Input Forms**: YAML configuration templates
-- **Quick Start Guides**: Rapid deployment guides
 
-### Template Packs System
-- **Template Packs Directory**: `template-packs/`
-- **Backend Templates**: Django, FastAPI, NestJS, Go frameworks
-- **Frontend Templates**: Next.js, Nuxt, Angular, Expo frameworks
-- **Database Templates**: PostgreSQL, MongoDB, Firebase configurations
-- **DevEx Templates**: DevContainer, Docker Compose, VS Code snippets
-- **CI/CD Templates**: GitHub workflows, gates configuration
-- **Policy DSL**: YAML definitions for gating rules and policies
 
-### Cursor Commands
-- **Commands Directory**: `.cursor/commands/`
-- **Slash Commands**: `/compare-prs`, `/elaborate`, `/generate-proposal`
-- **Protocol Orchestrator**: Workflow management
-- **Meta Analysis**: Advanced intelligence tools
 
-### Support
-- **Review Protocols**: `.cursor/ai-driven-workflow/review-protocols/`
-- **Validation Reports**: `.artifacts/validation/`
-- **Evidence Collection**: `.artifacts/protocol-[number]/`
 
----
+Task Name: Reconcile protocol-referenced gate scripts or provide fallbacks
+Report Source: “Title: Reconcile protocol-referenced gate scripts or provide fallbacks … Action Steps: Implement minimal gate scripts for each referenced validate_gate_* and run_protocol_*_gates.py, or update protocols to reference existing, real scripts (e.g., consolidate gate checks into scripts/validate_workflow_integration.py). Add a central scripts/script-registry.json entry per new script and enforce with Protocol 23. Expected Outcome: Protocol automation becomes runnable; CI failures reduced. Effort: M Risk: Low-Medium.”
+Report Section: Recommendations — Reconcile protocol-referenced gate scripts or provide fallbacks
+Priority: High
+Effort: M
+Action Steps:
 
-## 🎯 Success Metrics
+Implement minimal gate scripts for each referenced validate_gate_* and run_protocol_*_gates.py, or update protocols to reference existing, real scripts (e.g., consolidate gate checks into scripts/validate_workflow_integration.py).
 
-### Quality Targets
-- **Protocol Completion**: 100% of protocols executed successfully
-- **Evidence Collection**: Complete documentation for all actions
-- **Quality Gates**: All gates passed with validation
-- **Integration**: Seamless workflow continuity
-- **Client Satisfaction**: Professional delivery and documentation
+Add a central scripts/script-registry.json entry per new script and enforce with Protocol 23.
+Success Criteria: Protocol automation becomes runnable; CI failures reduced.
 
-### Performance Indicators
-- **Efficiency**: Reduced development time through structured workflows
-- **Quality**: Improved code quality through systematic validation
-- **Consistency**: Standardized processes across all projects
-- **Scalability**: Ability to handle projects of any complexity
-- **Reliability**: Evidence-based delivery with validation gates
+1. Implement minimal gate scripts for each referenced `validate_gate_*` and `run_protocol_*_gates.py`, or update protocols to reference existing, real scripts (e.g., consolidate gate checks into `scripts/validate_workflow_integration.py`).
+2. Add a central `scripts/script-registry.json` entry per new script and enforce with Protocol 23.
 
----
+Task Name: Correct CI snippets and align gate runner names
+Report Source: “Title: Correct CI snippets and align gate runner names … Action Steps: Update Protocol 11 and 15 CI examples to reference the correct runner names and protocol numbers. Add a test in scripts/validate_workflow_integration.py to detect protocol-number mismatches in example YAML. Expected Outcome: Clear, accurate CI wiring; fewer operator errors. Effort: S Risk: Low.”
+Report Section: Recommendations — Correct CI snippets and align gate runner names
+Priority: Medium
+Effort: S
+Action Steps:
 
-**Ready to transform your development workflow? Start with Protocol 05 and follow the complete lifecycle for professional, evidence-based software development!** 🚀
+Update Protocol 11 and 15 CI examples to reference the correct runner names and protocol numbers.
 
----
+Add a test in scripts/validate_workflow_integration.py to detect protocol-number mismatches in example YAML.
+Success Criteria: Clear, accurate CI wiring; fewer operator errors.
 
-## 🧭 Protocol 02 – Client Discovery Initiation Guardrails
+1. Update Protocol 11 and 15 CI examples to reference the correct runner names and protocol numbers.
+2. Add a test in `scripts/validate_workflow_integration.py` to detect protocol-number mismatches in example YAML.
 
-These rules govern every execution of `.cursor/ai-driven-workflow/02-client-discovery-initiation.md`.
+Task Name: Add protocol-level template-pack selection and generator step
+Report Source: “Title: Add protocol-level template-pack selection and generator step … Action Steps: In Protocol 05–07, add a “Template Selection & Generator” step referencing scripts/generate_client_project.py with required inputs and evidence outputs (e.g., generator-config.json, scaffold manifests). Include decision criteria for stacks and compliance. Expected Outcome: Standardized scaffolding across projects; better integration of template-packs. Effort: M Risk: Low.”
+Report Section: Recommendations — Add protocol-level template-pack selection and generator step
+Priority: Medium
+Effort: M
+Action Steps:
 
-### 1. Session Scope & Ownership
-- Run **exactly one protocol per session**; do not mix Protocol 02 tasks with other protocols or backlog grooming.
-- If prerequisite artifacts from Protocol 01 are missing or stale, stop immediately, document the gap in `.artifacts/protocol-02/manual-validation-log.md`, and notify the reviewer instead of fabricating placeholders.
+In Protocol 05–07, add a “Template Selection & Generator” step referencing scripts/generate_client_project.py with required inputs and evidence outputs (e.g., generator-config.json, scaffold manifests).
 
-### 2. Pre-Flight Verification
-- Confirm the following before announcing `[MASTER RAY™ | PHASE 1 START]`:
-  1. `PROPOSAL.md` and `proposal-summary.json` from Protocol 01 are approved and stored in `.artifacts/protocol-01/`.
-  2. Client acceptance or follow-up is captured in `.artifacts/protocol-02/client-reply.md` or an equivalent transcript.
-  3. Communication channel, discovery templates, and scheduling commitments are verified (email/call/chat confirmed with timestamp).
-- If any prerequisite is absent, capture the blocker in `manual-validation-log.md`, request the missing asset, and halt the session.
+Include decision criteria for stacks and compliance.
+Success Criteria: Standardized scaffolding across projects; better integration of template-packs.
 
-### 3. Execution Discipline
-- Follow the protocol phases sequentially—Context Alignment → Requirement Deep Dive → Delivery Framework Alignment → Discovery Confirmation.
-- Each sub-step produces a named artifact inside `.artifacts/protocol-02/`; never reuse filenames from earlier sessions.
-- Use the automation hooks when available:
-  - `python scripts/validate_prerequisites_02.py`
-  - `python scripts/validate_discovery_objectives.py --input .artifacts/protocol-02/client-context-notes.md`
-  - `python scripts/validate_discovery_scope.py --form .artifacts/protocol-02/client-discovery-form.md`
-  - `python scripts/validate_discovery_expectations.py --recap .artifacts/protocol-02/discovery-recap.md`
-  - `python scripts/aggregate_evidence_02.py --output .artifacts/protocol-02/`
-- If automation fails, log the command, error, and remediation in `manual-validation-log.md` before retrying. Do not mark gates as passed without evidence.
+1. In Protocol 05–07, add a “Template Selection & Generator” step referencing `scripts/generate_client_project.py` with required inputs and evidence outputs (e.g., `generator-config.json`, scaffold manifests).
+2. Include decision criteria for stacks and compliance.
 
-### 4. Communication & Evidence Integrity
-- Announce each phase transition using the protocol’s status prompts and capture exact wording in `communication-plan.md` or call transcripts.
-- Maintain a live `risk-log.md` capturing unresolved questions, client dependencies, and approval gaps; update it whenever you pause execution.
-- Store raw transcripts in `.artifacts/protocol-02/transcripts/` with ISO-8601 timestamps.
-- Enforce readability and empathy by paraphrasing client language inside `discovery-recap.md`; avoid copy-pasting proposal text.
 
-### 5. Session Closeout & Continuity
-- Run `python scripts/generate_session_continuation.py --protocol 02` after validations complete to produce updated instructions for the next operator.
-- Validate the final evidence package manually if any gate was waived, and record reviewer handoff notes in `.artifacts/protocol-02/reviewer-brief.md`.
-- Do not trigger Protocol 03 until the client has explicitly approved `discovery-recap.md` and the approval is archived in `transcripts/`.
+Validation Checklist:
+[X] Every task has a direct quote from the report
+[X] No tasks were added that aren't in the report
+[X] Priority/effort matches report exactly
+[X] No assumptions made about implementation details not in report
+
