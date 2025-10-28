@@ -1,4 +1,4 @@
-# 🚀 Mabilis na Gabay - AI Agent System (GPT Codex Tong 2025 Plan Mode)
+# 🚀 Mabilis na Gabay - AI Agent System (GPT Codex 2025 Plan Mode)
 
 ## 📖 Ano ang Ginawa Natin?
 
@@ -353,6 +353,6 @@ Ngayon may **complete system** ka na para sa AI agent na:
 ---
 
 _Created: 2025-10-28_  
-_System: GPT Codex Tong 2025 Plan Mode_  
+_System: GPT Codex 2025 Plan Mode_  
 _Framework: AI-Driven Workflow System_
 
