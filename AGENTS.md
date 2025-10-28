@@ -617,3 +617,9 @@ These rules govern every execution of `.cursor/ai-driven-workflow/02-client-disc
 - Run `python scripts/generate_session_continuation.py --protocol 02` after validations complete to produce updated instructions for the next operator.
 - Validate the final evidence package manually if any gate was waived, and record reviewer handoff notes in `.artifacts/protocol-02/reviewer-brief.md`.
 - Do not trigger Protocol 03 until the client has explicitly approved `discovery-recap.md` and the approval is archived in `transcripts/`.
+
+## 📌 Implementation Plan Guidance (2025-10-21 Audit Follow-up)
+- Use `documentation/audit-implementation-plan.md` as the single source for remediation scope derived from the latest audit.
+- Do **not** modify `.cursor/ai-driven-workflow/*.md` protocols; implement overlays or supporting assets only.
+- Prioritize remediation in this order: missing gate scripts coverage, CI snippet alignment, template-pack step integration.
+- Maintain evidence for every change (link scripts to `scripts/script-registry.json` and capture CI adjustments).
