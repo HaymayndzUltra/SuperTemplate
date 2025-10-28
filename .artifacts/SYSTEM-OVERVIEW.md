@@ -28,7 +28,7 @@
                       ▼
     ┌─────────────────────────────────────────────────────┐
     │         TASK MANAGEMENT SYSTEM                      │
-    │           (agents.md)                               │
+    │           (AGENTS.md)                               │
     │                                                      │
     │  • ✅ Completed Tasks                               │
     │  • 🔄 In Progress                                   │
@@ -69,7 +69,7 @@
 ```
 .artifacts/
 │
-├── 📋 agents.md                         [CORE - Task Tracking System]
+├── 📋 AGENTS.md                         [CORE - Task Tracking System]
 │   └── Single source of truth for AI agent
 │       • Completed tasks log
 │       • Current work in progress
@@ -133,9 +133,9 @@ User Action:
     │
     └─→ AI Reads: AI-AGENT-MASTER-PROMPT.md
         │
-        └─→ AI Reads: agents.md
+        └─→ AI Reads: AGENTS.md
             │
-            └─→ AI Updates: "Current Session" in agents.md
+            └─→ AI Updates: "Current Session" in AGENTS.md
                 │
                 └─→ AI Ready to Execute
 ```
@@ -143,7 +143,7 @@ User Action:
 ### Phase 2: Task Execution Loop
 ```
 ┌─────────────────────────────────────────┐
-│ Read agents.md                          │
+│ Read AGENTS.md                          │
 │ • Check completed tasks                 │
 │ • Get next priority task                │
 │ • Verify prerequisites                  │
@@ -168,7 +168,7 @@ User Action:
                 │
                 ▼
 ┌─────────────────────────────────────────┐
-│ Update agents.md                        │
+│ Update AGENTS.md                        │
 │ • Move to "Completed Tasks"             │
 │ • Document evidence                     │
 │ • Add new discovered tasks to queue     │
@@ -226,7 +226,7 @@ All Tasks Complete
 ### Gate 3: Documentation Completeness
 ```
 ✓ All findings documented
-✓ agents.md current
+✓ AGENTS.md current
 ✓ Evidence traceable
 ✓ Outputs well-structured
 ```
@@ -291,10 +291,10 @@ cat /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/COPY-PASTE-PROMPT.txt
 ### For AI (Automatic):
 ```markdown
 1. Read: AI-AGENT-MASTER-PROMPT.md
-2. Read: agents.md
-3. Update: "Current Session" in agents.md
+2. Read: AGENTS.md
+3. Update: "Current Session" in AGENTS.md
 4. Execute: TASK-001
-5. Update: agents.md after completion
+5. Update: AGENTS.md after completion
 6. Continue with next task
 ```
 
@@ -303,7 +303,7 @@ cat /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/COPY-PASTE-PROMPT.txt
 ## 📈 Success Metrics
 
 ### Process Metrics
-- ✅ agents.md updated after every task
+- ✅ AGENTS.md updated after every task
 - ✅ All quality gates pass
 - ✅ No tasks abandoned in "In Progress"
 - ✅ Clear evidence trail maintained
@@ -324,7 +324,7 @@ cat /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/COPY-PASTE-PROMPT.txt
 
 ## 🔧 Troubleshooting
 
-### Issue: AI not updating agents.md
+### Issue: AI not updating AGENTS.md
 **Solution:** Remind AI to read and follow the master prompt, specifically Step 4 (Agents.md Update)
 
 ### Issue: Tasks stuck in "In Progress"
@@ -353,7 +353,7 @@ Level 3: SYSTEM-OVERVIEW.md (This File)
 Level 4: AI-AGENT-MASTER-PROMPT.md
 └─→ Complete execution protocol
 
-Level 5: agents.md
+Level 5: AGENTS.md
 └─→ Live task tracking and state
 ```
 
@@ -370,7 +370,7 @@ Level 5: agents.md
 1. Start with: `QUICK-START-GUIDE-TAGALOG.md`
 2. Review: `SYSTEM-OVERVIEW.md` (this file)
 3. Deep dive: `AI-AGENT-MASTER-PROMPT.md`
-4. Monitor: `agents.md` for live status
+4. Monitor: `AGENTS.md` for live status
 
 ---
 
@@ -423,16 +423,16 @@ STATUS: 🟢 PRODUCTION READY
 
 ### Updating the System:
 1. Modify `AI-AGENT-MASTER-PROMPT.md` for protocol changes
-2. Update `agents.md` for task queue modifications
+2. Update `AGENTS.md` for task queue modifications
 3. Enhance `QUICK-START-GUIDE-TAGALOG.md` for clarity improvements
 
 ### Monitoring Progress:
-- Check `agents.md` "Completed Tasks" section
+- Check `AGENTS.md` "Completed Tasks" section
 - Review output artifacts as they're generated
 - Validate against quality gates
 
 ### Extending the System:
-- Add new tasks to "Next Tasks" queue in `agents.md`
+- Add new tasks to "Next Tasks" queue in `AGENTS.md`
 - Define new quality gates in master prompt
 - Create new output format standards as needed
 

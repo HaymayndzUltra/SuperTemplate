@@ -1,4 +1,4 @@
-# 🚀 Mabilis na Gabay - AI Agent System (GPT Codex Tong 2025 Plan Mode)
+# 🚀 Mabilis na Gabay - AI Agent System (GPT Codex 2025 Plan Mode)
 
 ## 📖 Ano ang Ginawa Natin?
 
@@ -8,8 +8,8 @@ Gumawa tayo ng **kompletong sistema para sa AI agent** na mag-aanalisa at mag-ma
 
 ## 📁 Mga Importanteng File na Ginawa
 
-### 1. **agents.md** - Ang Command Center ng AI
-**Location:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/agents.md`
+### 1. **AGENTS.md** - Ang Command Center ng AI
+**Location:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AGENTS.md`
 
 **Ano ang laman:**
 - ✅ Mga natapos na gawain (Completed Tasks)
@@ -56,64 +56,100 @@ Basahin mo at sundin ang complete instructions dito:
 
 /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AI-AGENT-MASTER-PROMPT.md
 
-Simulan mo sa Step 1: Self-Initialization. Huwag gawin ang ibang bagay hanggang hindi mo pa nababasa ang agents.md file.
+Simulan mo sa Step 1: Self-Initialization. Huwag gawin ang ibang bagay hanggang hindi mo pa nababasa ang AGENTS.md file.
 ```
 
 ### Hakbang 2: Automatic na Gagawin ng AI
 
 Kapag binigay mo na ang master prompt, automatic na gagawin ng AI:
 
-1. ✅ Babasahin ang `agents.md`
+1. ✅ Babasahin ang `AGENTS.md`
 2. ✅ I-update ang "Current Session" section
-3. ✅ Titingnan ang completed at next tasks
-4. ✅ Magsisimula sa highest priority task (TASK-001)
-5. ✅ I-update ang `agents.md` after every task
+3. ✅ Babasahin ang mga objectives
+4. ✅ **Gagawa ng sarili niyang PLAN** (Plan Mode)
+5. ✅ **Ipapakita sa iyo ang plan** - ikaw mag-approve
+6. ✅ **Maghihintay na i-click mo ang task** bago mag-execute
+7. ✅ I-update ang `AGENTS.md` after every task
 
 ---
 
 ## 📊 Ano ang Mga Gagawin ng AI?
 
-### Task 1: Initial Artifacts Directory Scan
-**Ano ang gagawin:**
-- Mag-scan ng buong `.artifacts/` directory
-- Mag-catalog ng lahat ng files at folders
-- Gumawa ng structure map
+### ⚠️ IMPORTANTE: AI ang Gumawa ng Sariling Plan!
 
-**Ano ang output:**
-- `artifacts-catalog.json` - Complete inventory
-- `artifacts-structure-map.md` - Visual hierarchy
+Hindi ko dapat i-dictate ang exact tasks kasi **Codex Plan Mode** mismo ang mag-manage:
 
-### Task 2: Meta-Upgrades Analysis
-**Ano ang gagawin:**
-- Tingnan ang bawat UPG folder (UPG01-UPG10)
-- Check kung complete ba ang:
-  - `alignment.md`
-  - `analysis.json`
-  - `intent.json`
-  - `decision.json`
+**Plan Mode Workflow:**
+```
+AI → Basahin objectives
+    ↓
+    Analyze .artifacts/
+    ↓
+    Gumawa ng SARILING PLAN
+    ↓
+    Ipakita sa iyo ang plan (clickable tasks)
+    ↓
+    Maghintay na i-click mo
+    ↓
+    Execute lang kung nag-click ka
+    ↓
+    Update AGENTS.md
+    ↓
+    Ulitin
+```
 
-**Ano ang output:**
-- `meta-upgrades-status-report.md` - Completion status
-- `meta-upgrades-completion-matrix.json` - Per-UPG details
+### 🎯 Mga Objectives (Goals lang, hindi specific tasks)
 
-### Task 3: Protocol Artifacts Inventory
-**Ano ang gagawin:**
-- Catalog lahat ng protocol-XX folders
-- Map ang dependencies
-- Check validation status
+**Objective 1: Maintindihan ang Artifacts Directory**
+- Ano ang laman?
+- Paano organized?
+- Ano ang relationships?
 
-**Ano ang output:**
-- `protocol-inventory.json` - Complete list
-- `protocol-dependency-graph.md` - Visual dependencies
+**Objective 2: I-assess ang Status**
+- Ano ang tapos na?
+- Ano ang kulang?
+- Ano ang kailangan gawin?
 
-### Task 4: Scripts Analysis
-**Ano ang gagawin:**
-- Inventory ng automation scripts
-- Analysis ng integration points
+**Objective 3: I-map ang Dependencies**
+- Paano nag-connect ang mga parts?
+- Saan ang integration points?
 
-**Ano ang output:**
-- `scripts-catalog.json`
-- `scripts-integration-map.md`
+**Objective 4: Mag-recommend**
+- Ano ang gaps?
+- Ano ang next steps?
+
+### 💡 Halimbawa ng AI-Generated Plan
+
+Kapag na-activate ang AI, gagawa siya ng ganito:
+
+```
+📋 My Analysis Plan:
+
+Task 1: Quick Directory Scan
+  - Get overall structure
+  - Identify major components
+  [Click to execute]
+
+Task 2: Deep Dive into Meta-Upgrades
+  - Check each UPG folder
+  - Document completion status
+  [Click to execute]
+
+Task 3: Protocol Mapping
+  - Catalog protocols
+  - Map dependencies
+  [Click to execute]
+
+Task 4: Generate Report
+  - Synthesize findings
+  - Make recommendations
+  [Click to execute]
+```
+
+**Ikaw ang mag-decide:**
+- ✅ I-click mo kung gusto mo i-execute
+- ✅ Skip mo kung hindi kailangan
+- ✅ Ask for adjustments kung may gusto kang baguhin
 
 ---
 
@@ -121,7 +157,7 @@ Kapag binigay mo na ang master prompt, automatic na gagawin ng AI:
 
 ```
 ┌─────────────────────────────────────────┐
-│ 1. AI basahin ang agents.md            │
+│ 1. AI basahin ang AGENTS.md            │
 └─────────────┬───────────────────────────┘
               │
               ▼
@@ -146,7 +182,7 @@ Kapag binigay mo na ang master prompt, automatic na gagawin ng AI:
               │
               ▼
 ┌─────────────────────────────────────────┐
-│ 6. Update agents.md (move to Completed)│
+│ 6. Update AGENTS.md (move to Completed)│
 └─────────────┬───────────────────────────┘
               │
               ▼
@@ -173,7 +209,7 @@ Bawat task ay dapat pumasa sa:
 
 ### ✅ Gate 3: Documentation Completeness
 - Documented ba lahat ng findings?
-- Updated ba ang agents.md?
+- Updated ba ang AGENTS.md?
 - Verifiable ba ang evidence?
 
 ### ✅ Gate 4: Task Management Hygiene
@@ -183,7 +219,7 @@ Bawat task ay dapat pumasa sa:
 
 ---
 
-## 📝 Halimbawa ng Output sa agents.md
+## 📝 Halimbawa ng Output sa AGENTS.md
 
 ### Bago magsimula:
 ```markdown
@@ -222,16 +258,16 @@ TASK-002 - Meta-Upgrades Analysis (Started: 2025-10-28 14:45)
 ## 🎯 Mga Importante na Alalahanin
 
 ### ✅ Dapat Gawin ng AI:
-1. **Laging basahin ang agents.md BAGO magsimula**
-2. **I-update ang agents.md PAGKATAPOS ng bawat task**
+1. **Laging basahin ang AGENTS.md BAGO magsimula**
+2. **I-update ang AGENTS.md PAGKATAPOS ng bawat task**
 3. **I-validate ang work laban sa quality gates**
 4. **I-document ang lahat ng uncertainties**
 5. **Gumawa ng tangible artifacts** (files) - walang work na walang patunay
 
 ### ❌ Hindi Dapat Gawin ng AI:
-1. Hindi magbasa ng agents.md
+1. Hindi magbasa ng AGENTS.md
 2. Iwanan ang tasks sa "In Progress" nang matagal
-3. Gumawa ng output nang hindi nag-uupdate ng agents.md
+3. Gumawa ng output nang hindi nag-uupdate ng AGENTS.md
 4. Mag-assume nang walang documentation
 5. Ulitin ang work na nasa "Completed Tasks" na
 6. Magpatuloy nang hindi na-check ang prerequisites
@@ -249,10 +285,10 @@ Basahin at sundin ang master instructions:
 
 IMPORTANT: 
 1. Simulan mo sa Self-Initialization
-2. Basahin muna ang agents.md bago gumawa ng kahit ano
+2. Basahin muna ang AGENTS.md bago gumawa ng kahit ano
 3. I-update ang "Current Session" section
 4. Magsimula sa TASK-001
-5. I-update ang agents.md after EVERY task
+5. I-update ang AGENTS.md after EVERY task
 
 Simulan mo na ngayon.
 ```
@@ -264,14 +300,14 @@ Simulan mo na ngayon.
 ### Mga File Locations:
 ```
 /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/
-├── agents.md                          ← Task tracking system
+├── AGENTS.md                          ← Task tracking system
 ├── AI-AGENT-MASTER-PROMPT.md          ← Complete instructions
 ├── QUICK-START-GUIDE-TAGALOG.md       ← Itong file
 └── [mga outputs ng AI dito]
 ```
 
 ### Kung May Problema:
-1. **Check agents.md** - Updated ba?
+1. **Check AGENTS.md** - Updated ba?
 2. **Check master prompt** - Sinunod ba ang steps?
 3. **Check quality gates** - Pumasa ba?
 4. **Check evidence** - May documentation ba?
@@ -317,6 +353,6 @@ Ngayon may **complete system** ka na para sa AI agent na:
 ---
 
 _Created: 2025-10-28_  
-_System: GPT Codex Tong 2025 Plan Mode_  
+_System: GPT Codex 2025 Plan Mode_  
 _Framework: AI-Driven Workflow System_
 

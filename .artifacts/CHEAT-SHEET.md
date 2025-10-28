@@ -17,7 +17,7 @@ Submit: Done!
 
 | File | Purpose | Who Uses |
 |------|---------|----------|
-| `agents.md` | Task tracking | AI (constant) |
+| `AGENTS.md` | Task tracking | AI (constant) |
 | `AI-AGENT-MASTER-PROMPT.md` | Instructions | AI (startup) |
 | `COPY-PASTE-PROMPT.txt` | Activation | User (once) |
 | `README.md` | Navigation | User (reference) |
@@ -27,7 +27,7 @@ Submit: Done!
 ## 🔄 AI WORKFLOW LOOP
 
 ```
-1. Read agents.md
+1. Read AGENTS.md
    ↓
 2. Get next task
    ↓
@@ -35,7 +35,7 @@ Submit: Done!
    ↓
 4. Validate work
    ↓
-5. Update agents.md
+5. Update AGENTS.md
    ↓
 6. Repeat
 ```
@@ -57,7 +57,7 @@ Submit: Done!
 
 □ Documentation
   ├─ All findings documented
-  ├─ agents.md updated
+  ├─ AGENTS.md updated
   └─ Evidence verifiable
 
 □ Task Management
@@ -108,10 +108,10 @@ Completed Tasks
 
 ```bash
 # Check AI progress
-cat agents.md
+cat AGENTS.md
 
 # View completed tasks
-grep -A 5 "Completed Tasks" agents.md
+grep -A 5 "Completed Tasks" AGENTS.md
 
 # List outputs
 ls -lt .artifacts/*.json
@@ -124,7 +124,7 @@ ls -lt .artifacts/*.md
 
 | Problem | Fix |
 |---------|-----|
-| AI not updating agents.md | Re-paste COPY-PASTE-PROMPT.txt |
+| AI not updating AGENTS.md | Re-paste COPY-PASTE-PROMPT.txt |
 | Tasks stuck | Ask AI to validate & complete |
 | Missing evidence | Refer to quality gates |
 | Incomplete work | Check prerequisites |
@@ -137,7 +137,7 @@ ls -lt .artifacts/*.md
 BASE: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/
 
 Essential:
-├── agents.md
+├── AGENTS.md
 ├── AI-AGENT-MASTER-PROMPT.md
 └── COPY-PASTE-PROMPT.txt
 
@@ -158,14 +158,14 @@ Targets:
 ## 🎓 DO's and DON'Ts
 
 ### ✅ DO:
-- Read agents.md first
-- Update agents.md after each task
+- Read AGENTS.md first
+- Update AGENTS.md after each task
 - Validate against quality gates
 - Document uncertainties
 - Produce tangible outputs
 
 ### ❌ DON'T:
-- Skip agents.md
+- Skip AGENTS.md
 - Leave tasks in "In Progress"
 - Work without updates
 - Make assumptions
@@ -176,7 +176,7 @@ Targets:
 ## 🔔 SUCCESS INDICATORS
 
 ```
-✓ agents.md always current
+✓ AGENTS.md always current
 ✓ Tasks moving through lifecycle
 ✓ Quality gates passing
 ✓ Evidence documented

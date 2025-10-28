@@ -12,106 +12,98 @@ You are an AI agent tasked with systematically analyzing and managing the artifa
 Before doing ANYTHING else, you MUST:
 
 ```
-1. Read and understand: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/agents.md
-2. Update the "Current Session" section with:
+1. Read and understand: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AGENTS.md
+2. Update the "CURRENT SESSION" section with:
+   - Session ID (generate unique)
    - Current timestamp (ISO 8601 format)
    - Your AI model name and version
-   - Your planned scope for this session
-3. Review all "Completed Tasks" to avoid duplication
-4. Review "Next Tasks" to understand priorities
-5. Commit to this protocol
+   - Your current task objective (from user)
+3. Review "TASK COMPLETION LOG" to see what's already done
+4. Review "ANALYSIS OBJECTIVES" to understand overall goals
+5. Commit to autonomous execution protocol
 ```
 
 **Output after Step 1:**
 ```
 ✅ Initialization Complete
-   - agents.md read and understood
-   - Current session logged
-   - Task queue reviewed
-   - Ready to proceed with highest priority task
+   - AGENTS.md read and understood
+   - Current session logged with unique ID
+   - Previous completed tasks reviewed
+   - Analysis objectives understood
+   - Ready to autonomously execute current task
 ```
 
-### Step 2: Plan Mode Activation
+### Step 2: Plan Mode Activation (CRITICAL - Let Codex Manage Tasks)
 
-Follow GPT Codex 2025 Plan Mode Protocol:
+**IMPORTANT:** You are using GPT Codex 2025 Plan Mode. This means:
 
-1. **Analyze** the complete task before execution
-2. **Break down** complex tasks into atomic steps
-3. **Document** each step's purpose and expected output
-4. **Validate** prerequisites before proceeding
-5. **Execute** systematically with evidence collection
-6. **Verify** results against quality gates
+1. **DO NOT execute pre-defined tasks** (no TASK-001, TASK-002, etc.)
+2. **CREATE YOUR OWN PLAN** based on the objectives in `AGENTS.md`
+3. **Present your plan to the user** for approval
+4. **User clicks to execute each task** - you don't auto-execute
+5. **Update AGENTS.md** after each task the user approves
+
+**Codex Plan Mode Workflow:**
+```
+Read Objectives → Analyze Directory → Create Plan → Present Plan → Wait for User → Execute Clicked Task → Update AGENTS.md → Repeat
+```
+
+**Your role:**
+- ✅ Analyze and understand what needs to be done
+- ✅ Create smart, adaptive task breakdown
+- ✅ Present clear plan with clickable tasks
+- ✅ Execute when user clicks/approves
+- ✅ Document progress in AGENTS.md
+
+**NOT your role:**
+- ❌ Execute tasks automatically without user approval
+- ❌ Follow rigid pre-defined task list
+- ❌ Assume what user wants next
 
 ---
 
 ## 🔍 Primary Analysis Objectives
 
-### Objective 1: Complete Artifacts Inventory
-**What to analyze:**
-```
-/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/
-├── All subdirectories
-├── All files and their purposes
-├── Relationships between artifacts
-├── Completion status of work items
-└── Quality and validation states
-```
+**Target Directory:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/`
 
-**Expected outputs:**
-- `artifacts-catalog.json` - Complete inventory
-- `artifacts-structure-map.md` - Visual hierarchy
-- `artifacts-status-report.md` - Completion analysis
+### High-Level Goals:
 
-### Objective 2: Meta-Upgrades Deep Analysis
-**What to analyze:**
-```
-/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/meta-upgrades/
-├── Each UPG folder (UPG01-UPG10+)
-│   ├── alignment.md (check existence and content)
-│   ├── analysis.json (check existence and content)
-│   ├── intent.json (check existence and content)
-│   └── decision.json (check existence and content)
-├── catalog/ directory
-├── cross/ directory
-├── final/ directory
-├── integration/ directory
-└── pop/ directory
-```
+**1. Understand the Artifacts Ecosystem**
+   - What exists in the artifacts directory?
+   - How are things organized?
+   - What relationships and dependencies exist?
 
-**Expected outputs:**
-- `meta-upgrades-completion-matrix.json` - Per-UPG status
-- `meta-upgrades-analysis-report.md` - Findings and patterns
-- `meta-upgrades-gaps.json` - Missing or incomplete items
+**2. Assess Completion Status**
+   - Which components are complete?
+   - What's in progress?
+   - What's missing or incomplete?
 
-### Objective 3: Protocol Artifacts Mapping
-**What to analyze:**
-```
-All protocol-XX/ directories and files
-- Protocol dependencies
-- Execution status
-- Validation artifacts
-- Integration points
-```
+**3. Map Integration & Dependencies**
+   - How do different artifacts relate?
+   - Where are the integration points?
+   - What depends on what?
 
-**Expected outputs:**
-- `protocol-inventory.json` - Complete protocol catalog
-- `protocol-dependency-graph.md` - Visual dependencies
-- `protocol-validation-status.json` - Validation results
+**4. Identify Gaps & Opportunities**
+   - What needs attention?
+   - Where are the weak points?
+   - What recommendations can be made?
 
-### Objective 4: Scripts & Automation Analysis
-**What to analyze:**
-```
-/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/scripts/
-- All automation scripts
-- Their purposes and capabilities
-- Integration with protocols
-- Validation mechanisms
-```
+### Key Areas to Examine:
 
-**Expected outputs:**
-- `scripts-catalog.json` - Script inventory
-- `scripts-integration-map.md` - How scripts support workflows
-- `scripts-validation-report.md` - Script quality assessment
+- **Meta-Upgrades (`meta-upgrades/`)**: UPG folders, their status and completeness
+- **Protocols (`protocol-*/`)**: Protocol artifacts, dependencies, validation
+- **Scripts (`scripts/`)**: Automation tools, integration, capabilities
+- **Validation (`validation/`)**: Validation data and coverage
+
+### Let Plan Mode Guide You:
+
+**You decide:**
+- How to break this down into tasks
+- What order makes sense
+- What outputs are most useful
+- How detailed to go
+
+**Present your plan to user, then wait for approval before executing.**
 
 ---
 
@@ -121,9 +113,9 @@ All protocol-XX/ directories and files
 
 #### 1. PRE-EXECUTION (Mandatory)
 ```markdown
-**Task ID:** [Assign unique ID, e.g., TASK-001]
-**Task Name:** [Clear, descriptive name]
-**Priority:** [High/Medium/Low]
+**Task ID:** [Assign unique ID based on session, e.g., SESSION-001-ANALYZE]
+**Task Name:** [Clear, descriptive name based on current objective]
+**Priority:** [Determined by you based on context]
 **Prerequisites:** [List what must exist before starting]
 **Expected Outputs:** [List all artifacts this task will produce]
 **Success Criteria:** [How you'll know it's complete]
@@ -154,7 +146,7 @@ All protocol-XX/ directories and files
 ✅ Content is well-structured
 ✅ Data is accurate and complete
 ✅ Follows format standards
-✅ Documented in agents.md
+✅ Documented in AGENTS.md
 
 **Evidence:**
 [Paste relevant validation results, file snippets, or confirmations]
@@ -164,15 +156,17 @@ All protocol-XX/ directories and files
 ```markdown
 After completing ANY task, you MUST:
 
-1. Move task from "In Progress" to "Completed Tasks" in agents.md
+1. Add comprehensive entry to "TASK COMPLETION LOG" in AGENTS.md
 2. Document:
+   - Session ID
    - Timestamp
    - Task ID and description
-   - All artifacts produced (with paths)
-   - Validation evidence
-   - Any new tasks discovered
-3. Update "Next Tasks" queue with follow-up work
-4. Set task status indicators
+   - What you did (detailed actions)
+   - All files created/modified/deleted (with paths and purposes)
+   - Key decisions made and rationale
+   - Quality checks passed
+3. Suggest next recommended task (optional)
+4. Mark current session as complete
 ```
 
 ---
@@ -191,7 +185,7 @@ After completing ANY task, you MUST:
 
 ### Gate 3: Documentation Completeness
 - [ ] All findings documented in appropriate artifacts
-- [ ] agents.md is current and accurate
+- [ ] AGENTS.md is current and accurate
 - [ ] Evidence is verifiable and traceable
 
 ### Gate 4: Task Management Hygiene
@@ -205,22 +199,25 @@ After completing ANY task, you MUST:
 
 ### Phase 1: Bootstrap (First Session)
 ```
-1. Read agents.md
-2. Initialize "Current Session" section
-3. Execute TASK-001: Initial Artifacts Directory Scan
-4. Update agents.md with completion
-5. Proceed to next highest priority task
+1. Read AGENTS.md completely
+2. Update "CURRENT SESSION" section with session details
+3. Understand the task objective from user
+4. Analyze and plan your approach autonomously
+5. Execute the task following quality gates
+6. Document everything in "TASK COMPLETION LOG"
+7. Session complete - wait for user's next session
 ```
 
-### Phase 2: Systematic Analysis (Ongoing)
+### Phase 2: Ongoing Sessions (Autonomous Execution)
 ```
-For each task in queue:
-1. Check prerequisites in agents.md
-2. Move to "In Progress"
-3. Execute task following execution protocol
-4. Validate against quality gates
-5. Update agents.md
-6. Continue to next task
+For each new session:
+1. Read AGENTS.md to understand what's been done
+2. Update "CURRENT SESSION" for this session
+3. Understand current task from user
+4. Plan your approach based on context
+5. Execute autonomously following quality gates
+6. Add detailed entry to "TASK COMPLETION LOG"
+7. Mark session complete
 ```
 
 ### Phase 3: Integration & Synthesis (Final)
@@ -230,7 +227,7 @@ When all individual analyses complete:
 2. Identify cross-cutting patterns
 3. Generate actionable recommendations
 4. Finalize all documentation
-5. Mark project as complete in agents.md
+5. Mark project as complete in AGENTS.md
 ```
 
 ---
@@ -287,92 +284,95 @@ When all individual analyses complete:
 ## 🔔 Critical Reminders
 
 ### ⚠️ ALWAYS:
-1. **Read agents.md FIRST** before any work
-2. **Update agents.md AFTER** every task
+1. **Read AGENTS.md FIRST** before any work
+2. **Update AGENTS.md AFTER** every task
 3. **Validate your work** against quality gates
 4. **Document uncertainties** - never assume
 5. **Produce tangible artifacts** - no work without evidence
 6. **Follow the task lifecycle** - Next → In Progress → Completed
 
 ### ❌ NEVER:
-1. Skip reading agents.md
+1. Skip reading AGENTS.md
 2. Leave tasks in "In Progress" indefinitely
-3. Create outputs without updating agents.md
+3. Create outputs without updating AGENTS.md
 4. Make assumptions without flagging them
 5. Duplicate work already in "Completed Tasks"
 6. Proceed without checking prerequisites
 
 ---
 
-## 🎓 Example First Task Execution
+## 🎓 Example Session-Based Autonomous Execution
 
-### Task: Initial Artifacts Directory Scan
+### User: "Analyze the artifacts directory structure"
 
-#### Pre-Execution
+#### Step 1: Codex Initialization
 ```markdown
-**Task ID:** TASK-001
-**Task Name:** Initial Artifacts Directory Scan
-**Priority:** High
-**Prerequisites:** 
-  - agents.md exists and is initialized
-  - Access to /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/
-**Expected Outputs:**
-  - artifacts-catalog.json
-  - artifacts-structure-map.md
-**Success Criteria:**
-  - All directories and files cataloged
-  - Structure visualized in markdown
-  - No access errors encountered
+✅ Reading AGENTS.md...
+✅ Updating CURRENT SESSION:
+   - Session ID: SESSION-2025-10-28-001
+   - Timestamp: 2025-10-28T14:30:00Z
+   - Model: Claude 3.7 Sonnet
+   - Task Objective: Analyze artifacts directory structure
+
+✅ Reviewed TASK COMPLETION LOG: No previous tasks
+✅ Reviewed ANALYSIS OBJECTIVES: Understand ecosystem
+✅ Ready to execute autonomously
 ```
 
-#### Execution
+#### Step 2: Autonomous Planning & Execution
+```markdown
+I will:
+1. Scan the .artifacts/ directory comprehensively
+2. Catalog all files and folders with metadata
+3. Create visual structure map
+4. Generate JSON inventory
+5. Document findings
+
+Executing now...
+```
+
+#### Step 3: Execution (Autonomous)
 ```bash
-# Scan directory
-ls -R /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/ > raw-scan.txt
-
-# Analyze structure
-# ... (AI performs analysis)
-
-# Generate catalog
-# ... (AI creates artifacts-catalog.json)
-
-# Generate structure map
-# ... (AI creates artifacts-structure-map.md)
+# Codex autonomously decides approach
+# Scans directory, analyzes structure
+# Creates outputs based on what makes sense
+# No pre-defined outputs - adapts to what's found
 ```
 
-#### Post-Execution
+#### Step 4: Documentation in AGENTS.md
 ```markdown
-**Outputs Produced:**
-- artifacts-catalog.json: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/artifacts-catalog.json
-- artifacts-structure-map.md: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/artifacts-structure-map.md
+## ✅ TASK COMPLETION LOG
 
-**Quality Validation:**
-✅ Both files created successfully
-✅ Catalog contains 247 entries
-✅ Structure map has 5 levels of hierarchy
-✅ All paths verified as accessible
-✅ Documented in agents.md
+---
+### [SESSION-2025-10-28-001] Artifacts Directory Structure Analysis
+**Session:** SESSION-2025-10-28-001
+**Date:** 2025-10-28 14:30
+**Status:** ✅ COMPLETE
 
-**Evidence:**
-Catalog excerpt:
-{
-  "total_items": 247,
-  "directories": 45,
-  "files": 202,
-  ...
-}
-```
+**What I Did:**
+1. Scanned .artifacts/ directory recursively
+2. Cataloged 247 items (45 dirs, 202 files)
+3. Identified 3 main areas: meta-upgrades, protocols, scripts
+4. Created JSON inventory with metadata
+5. Generated visual markdown structure map
 
-#### Agents.md Update
-```markdown
-## ✅ Completed Tasks
+**Files Created:**
+- `.artifacts/artifacts-inventory.json` - Complete catalog with metadata
+- `.artifacts/artifacts-structure-visual.md` - Hierarchy visualization
 
-- [2025-10-28 14:30] TASK-001 - Initial Artifacts Directory Scan
-  - Artifacts: 
-    - artifacts-catalog.json
-    - artifacts-structure-map.md
-  - Evidence: 247 items cataloged, 5-level hierarchy mapped
-  - Next Actions Triggered: TASK-002 (Meta-Upgrades Analysis)
+**Key Decisions:**
+- Used JSON for structured data (easier to parse)
+- Included file sizes and timestamps in catalog
+- Organized structure map by functional area
+
+**Quality Checks Passed:**
+- ✅ All 247 items cataloged successfully
+- ✅ No access errors encountered
+- ✅ Visual map is clear and hierarchical
+- ✅ JSON is valid and well-structured
+
+**Next Recommended Task:** Deep dive into meta-upgrades folder to assess UPG completion status
+---
 ```
 
 ---
@@ -381,7 +381,7 @@ Catalog excerpt:
 
 You'll know you're executing correctly when:
 
-1. ✅ agents.md is always current
+1. ✅ AGENTS.md is always current
 2. ✅ Every task has documented evidence
 3. ✅ No tasks stuck in "In Progress"
 4. ✅ Quality gates consistently pass
@@ -390,23 +390,25 @@ You'll know you're executing correctly when:
 
 ---
 
-## 🚦 Getting Started Command
+## 🚦 Getting Started (Session-Based Workflow)
 
-When you're ready to begin, execute:
+When starting any session:
 
 ```
-1. Read: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/agents.md
-2. Initialize: Update "Current Session" section
-3. Execute: Start with TASK-001 from "Next Tasks"
-4. Document: Update agents.md with completion
-5. Continue: Proceed to next priority task
+1. Read: /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AGENTS.md completely
+2. Initialize: Update "CURRENT SESSION" section with session details
+3. Understand: The task objective given by user
+4. Plan: Your autonomous approach to accomplish it
+5. Execute: Following quality gates and best judgment
+6. Document: Add detailed entry to "TASK COMPLETION LOG"
+7. Complete: Mark session as done, suggest next task (optional)
 ```
 
 ---
 
-**Remember:** You are building a systematic, evidence-based analysis of a complex artifact system. Quality and traceability matter more than speed. Document everything, validate rigorously, and maintain the agents.md file as your single source of truth.
+**Remember:** You are building a systematic, evidence-based analysis of a complex artifact system. Quality and traceability matter more than speed. Document everything, validate rigorously, and maintain the AGENTS.md file as your single source of truth.
 
-**Your success is measured by:** Clear documentation, complete analysis, and a well-maintained task tracking system in agents.md.
+**Your success is measured by:** Clear documentation, complete analysis, and a well-maintained task tracking system in AGENTS.md.
 
 ---
 

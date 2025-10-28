@@ -38,7 +38,7 @@
 
 | File | Purpose | When to Use |
 |------|---------|-------------|
-| **agents.md** | Task tracking & state management | AI reads/updates this constantly |
+| **AGENTS.md** | Task tracking & state management | AI reads/updates this constantly |
 | **AI-AGENT-MASTER-PROMPT.md** | Complete execution instructions | AI reads this first, then follows |
 | **COPY-PASTE-PROMPT.txt** | Instant activation prompt | User copies this to activate AI |
 
@@ -66,10 +66,10 @@
 │                      AI AGENT                                │
 │                                                              │
 │  Step 1: Reads AI-AGENT-MASTER-PROMPT.md                    │
-│  Step 2: Reads agents.md                                    │
+│  Step 2: Reads AGENTS.md                                    │
 │  Step 3: Updates "Current Session"                          │
 │  Step 4: Executes tasks from queue                          │
-│  Step 5: Updates agents.md after each task                  │
+│  Step 5: Updates AGENTS.md after each task                  │
 └────────────────────────┬─────────────────────────────────────┘
                          │
                          ▼
@@ -93,7 +93,7 @@
 2. **Catalog** all files, folders, and their relationships
 3. **Assess** completion status of UPG folders and protocols
 4. **Document** findings in structured reports
-5. **Track** progress in real-time via `agents.md`
+5. **Track** progress in real-time via `AGENTS.md`
 
 ### What AI Will Create:
 - ✅ Complete artifacts inventory (JSON)
@@ -127,8 +127,8 @@ When AI starts, it will execute these tasks in order:
 You'll know the system is working correctly when:
 
 ### Process Indicators:
-- ✅ AI reads `agents.md` before starting work
-- ✅ AI updates `agents.md` after completing each task
+- ✅ AI reads `AGENTS.md` before starting work
+- ✅ AI updates `AGENTS.md` after completing each task
 - ✅ Tasks move from "Next Tasks" → "In Progress" → "Completed"
 - ✅ New output files appear in `.artifacts/`
 
@@ -145,7 +145,7 @@ You'll know the system is working correctly when:
 ### Real-Time Status Check:
 ```bash
 # View current AI progress
-cat /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/agents.md
+cat /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/AGENTS.md
 
 # Check completed tasks section
 # Check in-progress section
@@ -172,7 +172,7 @@ ls -lt /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/*.md
 
 **Intermediate:**
 1. Review: `SYSTEM-OVERVIEW.md`
-2. Understand: `agents.md` structure
+2. Understand: `AGENTS.md` structure
 3. Monitor: AI progress in real-time
 
 **Advanced:**
@@ -184,13 +184,13 @@ ls -lt /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/*.md
 
 **Initialization:**
 1. Read: `AI-AGENT-MASTER-PROMPT.md`
-2. Read: `agents.md`
+2. Read: `AGENTS.md`
 3. Update: "Current Session" section
 
 **Execution:**
-1. Get next task from `agents.md`
+1. Get next task from `AGENTS.md`
 2. Execute following protocol
-3. Update `agents.md` with completion
+3. Update `AGENTS.md` with completion
 
 **Validation:**
 1. Check against quality gates
@@ -205,15 +205,15 @@ ls -lt /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/*.md
 **A:** Copy all contents of `COPY-PASTE-PROMPT.txt` and paste into your AI (ChatGPT, Claude, etc.)
 
 ### Q: How do I know if AI is working correctly?
-**A:** Check `agents.md` - it should show updated "Current Session" and tasks moving through the workflow
+**A:** Check `AGENTS.md` - it should show updated "Current Session" and tasks moving through the workflow
 
 ### Q: Where are the outputs?
 **A:** All outputs are created in `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/`
 
 ### Q: Can I add custom tasks?
-**A:** Yes! Add them to the "Next Tasks" queue in `agents.md`
+**A:** Yes! Add them to the "Next Tasks" queue in `AGENTS.md`
 
-### Q: What if AI skips updating agents.md?
+### Q: What if AI skips updating AGENTS.md?
 **A:** Remind it to read and follow `AI-AGENT-MASTER-PROMPT.md` Step 4
 
 ### Q: How do I validate AI's work?
@@ -225,7 +225,7 @@ ls -lt /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/*.md
 
 | Problem | Solution |
 |---------|----------|
-| AI not reading agents.md | Paste `COPY-PASTE-PROMPT.txt` again to reset |
+| AI not reading AGENTS.md | Paste `COPY-PASTE-PROMPT.txt` again to reset |
 | Tasks stuck in "In Progress" | Ask AI to complete validation and move to "Completed" |
 | Missing evidence | Reference quality gates in master prompt |
 | Incomplete analysis | Check task prerequisites and dependencies |
@@ -267,7 +267,7 @@ ls -lt /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/*.md
 ├── 📖 QUICK-START-GUIDE-TAGALOG.md       ← Filipino guide
 ├── 📊 SYSTEM-OVERVIEW.md                 ← Architecture reference
 ├── 📋 AI-AGENT-MASTER-PROMPT.md          ← Complete instructions
-├── 📝 agents.md                          ← Live task tracking
+├── 📝 AGENTS.md                          ← Live task tracking
 │
 ├── 📁 meta-upgrades/                     ← Analysis target
 ├── 📁 protocol-01/                       ← Analysis target
@@ -288,12 +288,12 @@ ls -lt /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/*.md
 4. ✅ Submit and watch it work!
 
 ### To Monitor Progress:
-1. ✅ Check `agents.md` regularly
+1. ✅ Check `AGENTS.md` regularly
 2. ✅ Review output files as they're created
 3. ✅ Validate against success criteria
 
 ### To Extend System:
-1. ✅ Add tasks to `agents.md` queue
+1. ✅ Add tasks to `AGENTS.md` queue
 2. ✅ Update master prompt for new protocols
 3. ✅ Define additional quality gates
 
@@ -310,7 +310,7 @@ ls -lt /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/*.md
 │  Quality Gates:        ✅ Defined (4 gates)                  │
 │  Activation Prompt:    ✅ Ready                              │
 │  AI Instructions:      ✅ Complete                           │
-│  Monitoring System:    ✅ Active (agents.md)                 │
+│  Monitoring System:    ✅ Active (AGENTS.md)                 │
 ├──────────────────────────────────────────────────────────────┤
 │  STATUS:               🟢 PRODUCTION READY                   │
 └──────────────────────────────────────────────────────────────┘

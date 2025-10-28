@@ -50,7 +50,7 @@
     ┌────────────────────────────────────────────┐
     │ Step 1.2: Read Task Management System      │
     │                                            │
-    │  File: agents.md                           │
+    │  File: AGENTS.md                           │
     │  • Operating instructions                  │
     │  • Completed tasks (initially empty)       │
     │  • In Progress (initially empty)           │
@@ -61,7 +61,7 @@
     ┌────────────────────────────────────────────┐
     │ Step 1.3: Update Current Session           │
     │                                            │
-    │  Updates in agents.md:                     │
+    │  Updates in AGENTS.md:                     │
     │  • Session ID: [Generated]                 │
     │  • Timestamp: [ISO 8601]                   │
     │  • AI Model: [Claude/GPT/etc.]             │
@@ -74,7 +74,7 @@
     │                                            │
     │  AI Announces:                             │
     │  ✅ Master prompt read                     │
-    │  ✅ agents.md read                         │
+    │  ✅ AGENTS.md read                         │
     │  ✅ Current session logged                 │
     │  ✅ Ready to execute TASK-001              │
     └──────────────────┬─────────────────────────┘
@@ -94,11 +94,11 @@
     ┌────────────────────────────────────────────┐
     │ 2.1: Pre-Execution Analysis                │
     │                                            │
-    │  Read agents.md:                           │
+    │  Read AGENTS.md:                           │
     │  • Get highest priority task from queue    │
     │  • Verify prerequisites met                │
     │  • Move task to "In Progress"              │
-    │  • Update agents.md                        │
+    │  • Update AGENTS.md                        │
     └──────────────────┬─────────────────────────┘
                        │
                        ▼
@@ -154,7 +154,7 @@
                        │
                        ▼
     ┌────────────────────────────────────────────┐
-    │ 2.5: agents.md Update                      │
+    │ 2.5: AGENTS.md Update                      │
     │                                            │
     │  Move task from "In Progress" to:          │
     │  "Completed Tasks" section                 │
@@ -214,7 +214,7 @@
     ┌────────────────────────────────────────────┐
     │ 3.3: Final Documentation Update            │
     │                                            │
-    │  Update agents.md:                         │
+    │  Update AGENTS.md:                         │
     │  ├─ Mark project as complete               │
     │  ├─ Document final statistics              │
     │  ├─ Archive session details                │
@@ -265,7 +265,7 @@
     │  │  │   • Quality gates                         │           │
     │  │  │   • Standards                             │           │
     │  │  │                                           │           │
-    │  │  └── agents.md                               │           │
+    │  │  └── AGENTS.md                               │           │
     │  │      • Task tracking                         │           │
     │  │      • Progress monitoring                   │           │
     │  │      • State management                      │           │
@@ -349,7 +349,7 @@
                           ▼
     ┌─────────────────────────────────────────────────────────┐
     │  Gate 4: Task Management Hygiene                       │
-    │  ✓ agents.md updated                                   │
+    │  ✓ AGENTS.md updated                                   │
     │  ✓ Evidence complete                                   │
     │  ✓ Next tasks defined                                  │
     └─────────────────────────────────────────────────────────┘
@@ -366,7 +366,7 @@
     │   USER MONITORS   │
     │                   │
     │  Checks:          │
-    │  • agents.md      │
+    │  • AGENTS.md      │
     │  • Output files   │
     │  • Progress       │
     └─────────┬─────────┘
@@ -378,9 +378,9 @@
     ┌───────────────────────────────────┐
     │     AI EXECUTION                  │
     │                                   │
-    │  • Reads agents.md                │
+    │  • Reads AGENTS.md                │
     │  • Executes tasks                 │
-    │  • Updates agents.md              │
+    │  • Updates AGENTS.md              │
     │  • Generates outputs              │
     └─────────┬─────────────────────────┘
               │
@@ -425,7 +425,7 @@
 ════════════════════════════════════════════════════════════════════════════════
 
     ✅ Process Metrics:
-       • agents.md updated after every task
+       • AGENTS.md updated after every task
        • All quality gates pass
        • No abandoned tasks
        • Clear evidence trail
