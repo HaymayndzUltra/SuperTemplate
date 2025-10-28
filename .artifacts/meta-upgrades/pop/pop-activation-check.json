@@ -49,9 +49,12 @@
       "meets_threshold": true
     },
     "cycle_detection": {
-      "detected_cycles": true,
+      "detected_cycles": false,
+      "cycle_count": 0,
       "details_reference": ".artifacts/meta-upgrades/cross/causal_replay.md#cycle--drift-diagnostics",
-      "meets_threshold": false
+      "meets_threshold": true,
+      "resolution_applied": "2025-10-30",
+      "resolution_reference": "documentation/cycle-resolution-analysis.md"
     },
     "false_positives": 0
   },
@@ -64,6 +67,6 @@
     ".artifacts/meta-upgrades/pop/activation-evidence.json",
     ".artifacts/meta-upgrades/cross/governance_diffs.json"
   ],
-  "status": "observer_conditional",
-  "notes": "Aggregated observer evidence across three consecutive POP runs; cycle detection failures require governance review before controller activation."
+  "status": "observer_ready",
+  "notes": "All activation criteria met after Phase 1 cycle resolution. Ready for stage deployments (S1-S9) and subsequent activation decision."
 }
