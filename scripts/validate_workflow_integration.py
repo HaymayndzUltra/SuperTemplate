@@ -116,6 +116,7 @@ class WorkflowValidator:
         # Run all validation checks
         checks = [
             self._validate_protocol_alignment,
+            self._validate_ci_examples,
             self._validate_connectivity,
             self._validate_conflicts,
             self._validate_scripts,
@@ -242,9 +243,69 @@ class WorkflowValidator:
             else:
                 results["summary"]["passed"] += 1
                 results["alignment"][f"protocol_{protocol_id}"] = "✅ aligned"
-        
+
         return results
-    
+
+    def _validate_ci_examples(self) -> Dict[str, Any]:
+        """Detect protocol-number mismatches in documented CI examples."""
+        results: Dict[str, Any] = {
+            "issues": [],
+            "summary": {"passed": 0, "failed": 0, "warnings": 0}
+        }
+
+        yaml_block_pattern = re.compile(r"```yaml(.*?)```", re.DOTALL | re.IGNORECASE)
+        workflow_name_pattern = re.compile(r"name:\s*Protocol\s+(\d+)\s+Validation", re.IGNORECASE)
+        step_name_pattern = re.compile(r"-\s+name:\s*Run\s+Protocol\s+(\d+)\s+Gates", re.IGNORECASE)
+        runner_pattern = re.compile(r"run:\s*python\d*\s+scripts/run_protocol_([0-9]+)_gates\.py", re.IGNORECASE)
+
+        protocol_files = sorted(self.ai_driven_workflow_dir.glob("*.md"))
+
+        for protocol_file in protocol_files:
+            try:
+                content = protocol_file.read_text(encoding="utf-8")
+            except Exception:
+                continue
+
+            yaml_blocks = yaml_block_pattern.findall(content)
+            if not yaml_blocks:
+                continue
+
+            for block in yaml_blocks:
+                name_match = workflow_name_pattern.search(block)
+                step_match = step_name_pattern.search(block)
+                runner_match = runner_pattern.search(block)
+
+                # Only evaluate blocks that contain both workflow and runner references
+                if not (name_match and runner_match):
+                    continue
+
+                numbers = {}
+                numbers["workflow"] = name_match.group(1)
+                numbers["step"] = step_match.group(1) if step_match else None
+                numbers["runner"] = runner_match.group(1)
+
+                normalized = {
+                    key: int(value.lstrip("0") or "0")
+                    for key, value in numbers.items()
+                    if value is not None and value.isdigit()
+                }
+
+                if len(set(normalized.values())) > 1:
+                    results["issues"].append({
+                        "severity": "warning",
+                        "protocol_file": protocol_file.name,
+                        "message": (
+                            "Protocol CI example references inconsistent numbers: "
+                            f"{normalized}"
+                        ),
+                        "fix": "Align workflow name, step label, and runner script to the same protocol number"
+                    })
+                    results["summary"]["warnings"] += 1
+                else:
+                    results["summary"]["passed"] += 1
+
+        return results
+
     def _validate_connectivity(self) -> Dict[str, Any]:
         """Validate that protocol outputs match next protocol inputs."""
         results = {
