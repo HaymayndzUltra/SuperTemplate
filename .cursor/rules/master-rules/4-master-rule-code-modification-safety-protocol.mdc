@@ -1,6 +1,5 @@
 ---
 description: "TAGS: [global,safety,modification,validation,regression] | TRIGGERS: modify,edit,change,update,refactor,fix,implement | SCOPE: global | DESCRIPTION: A comprehensive protocol for safe code modification, including pre-analysis, risk assessment, surgical implementation, and validation to prevent regressions."
-alwaysApply: false
 ---
 # Master Rule: Code Modification Safety Protocol
 
