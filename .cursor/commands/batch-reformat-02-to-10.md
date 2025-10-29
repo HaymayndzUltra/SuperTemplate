@@ -156,8 +156,10 @@ When you run `@apply .cursor/commands/batch-reformat-02-to-10.md`, manually skip
 ### Current Status (as of last run)
 - ✅ Protocol 02 - COMPLETE
 - ✅ Protocol 03 - COMPLETE  
-- 🔄 Protocol 04 - IN PROGRESS (may need to restart this one)
-- ⏳ Protocols 05-10 - PENDING
+- ✅ Protocol 04 - COMPLETE
+- ✅ Protocol 05 - COMPLETE
+- 🔄 Protocol 06 - IN PROGRESS (only backup/inventory/format analysis generated)
+- ⏳ Protocols 07-10 - PENDING
 
 ### To Continue
-Start from **STEP 3 (Protocol 04)** or the first non-completed protocol in the progress summary.
+- Start from **STEP 5 (Protocol 06)** or the first non-completed protocol in the progress summary.

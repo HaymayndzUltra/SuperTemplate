@@ -6,9 +6,9 @@
 |----------|--------|-----------------|-------------|
 | Protocol 02: Client Discovery Initiation | ✅ COMPLETE | `.artifacts/protocol-reformat/02-client-discovery-initiation/` | ✅ VALIDATED |
 | Protocol 03: Project Brief Creation | ✅ COMPLETE | `.artifacts/protocol-reformat/03-project-brief-creation/` | ✅ VALIDATED |
-| Protocol 04: Project Bootstrap and Context Engineering | 🔄 IN PROGRESS | `.artifacts/protocol-reformat/04-project-bootstrap-and-context-engineering/` | Pending |
-| Protocol 05: Bootstrap Your Project | ⏳ PENDING | - | - |
-| Protocol 06: Create PRD | ⏳ PENDING | - | - |
+| Protocol 04: Project Bootstrap and Context Engineering | ✅ COMPLETE | `.artifacts/protocol-reformat/04-project-bootstrap-and-context-engineering/` | ✅ VALIDATED |
+| Protocol 05: Bootstrap Your Project | ✅ COMPLETE | `.artifacts/protocol-reformat/05-bootstrap-your-project/` | ✅ VALIDATED |
+| Protocol 06: Create PRD | 🔄 IN PROGRESS | `.artifacts/protocol-reformat/06-create-prd/` | Pending |
 | Protocol 07: Technical Design Architecture | ⏳ PENDING | - | - |
 | Protocol 08: Generate Tasks | ⏳ PENDING | - | - |
 | Protocol 09: Environment Setup Validation | ⏳ PENDING | - | - |
