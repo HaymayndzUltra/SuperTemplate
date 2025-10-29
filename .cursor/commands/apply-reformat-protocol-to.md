@@ -1,7 +1,8 @@
-usage: "@apply .cursor/commands/apply-reformat-protocol-to.md --file=.cursor/ai-driven-workflow/[protocol].md"
-
-
 # COMMAND: REFORMAT PROTOCOL WITH CATEGORY-BASED FORMATS
+
+**Usage:** Read this file and execute the reformat steps for the specified target protocol file.
+
+**Target File Parameter:** When executing, specify which protocol file to reformat (e.g., `.cursor/ai-driven-workflow/08-generate-tasks.md`)
 
 ## 📋 Purpose
 
@@ -19,16 +20,16 @@ Reformat the specified protocol file to follow category-based format standards w
 
 ## 📥 Input Parameters
 
-When invoking this command, provide:
+When executing this command, you need:
 
-- **Protocol File:** [Specify protocol path, e.g., `.cursor/ai-driven-workflow/08-generate-tasks.md`]
+- **Target Protocol File:** Specify the protocol path (e.g., `.cursor/ai-driven-workflow/08-generate-tasks.md`)
 - **Preserve Content:** YES (mandatory - non-negotiable)
 - **Apply Category Formats:** YES (mandatory)
 
-**Example Invocation:**
-```markdown
-@apply .cursor/commands/apply-reformat-protocol-to.md --file=.cursor/ai-driven-workflow/01-client-proposal-generation.md
-```
+**Example Execution:**
+1. Read this file (`.cursor/commands/apply-reformat-protocol-to.md`)
+2. Follow all steps below
+3. Apply to target file: `.cursor/ai-driven-workflow/01-client-proposal-generation.md`
 
 ---
 

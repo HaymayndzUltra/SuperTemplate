@@ -2,7 +2,9 @@
 
 ## 🚨 CRITICAL EXECUTION RULES
 
-When executing batch reformat commands (e.g., `@apply .cursor/commands/batch-reformat-02-to-23.md`), you **MUST** follow these rules **WITHOUT EXCEPTION**:
+When executing batch reformat commands (reading `.cursor/commands/batch-reformat-02-to-23.md`), you **MUST** follow these rules **WITHOUT EXCEPTION**:
+
+**Note:** The `@apply` syntax you may see in documentation is Cursor-specific and for reference only. Instead, **read the command file and follow the instructions directly**.
 
 ---
 
