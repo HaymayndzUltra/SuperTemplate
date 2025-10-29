@@ -380,7 +380,7 @@ Maintain lessons learned with structure:
    
    ```bash
    # Prerequisite validation
-   python scripts/validate_prerequisites_01.py
+   python scripts/validate_prerequisites_03.py
    ```
 
 2. **`[MUST]` Run discovery input validation:**
@@ -423,7 +423,7 @@ Maintain lessons learned with structure:
    
    ```bash
    # Evidence aggregation
-   python scripts/aggregate_evidence_01.py \
+   python scripts/aggregate_evidence_03.py \
      --output .artifacts/protocol-03/
    ```
 
@@ -436,7 +436,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Protocol 03 Gates
-        run: python scripts/run_protocol_01_gates.py
+        run: python scripts/run_protocol_03_gates.py
 ```
 
 ### Manual Fallbacks:

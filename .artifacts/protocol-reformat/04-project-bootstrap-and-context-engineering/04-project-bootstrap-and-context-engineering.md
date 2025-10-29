@@ -446,7 +446,7 @@ Maintain structured lessons learned:
 
 1. **Prerequisite Validation:**
    * **Action:** Execute prerequisite checks
-   * **Command:** `python scripts/validate_prerequisites_00.py`
+   * **Command:** `python scripts/validate_prerequisites_04.py`
    * **Evidence:** Validation output log
    * **Validation:** Exit code 0
 
@@ -464,7 +464,7 @@ Maintain structured lessons learned:
 
 3. **Evidence Aggregation:**
    * **Action:** Collect and organize all evidence artifacts
-   * **Command:** `python scripts/aggregate_evidence_00.py --output .artifacts/protocol-04/`
+   * **Command:** `python scripts/aggregate_evidence_04.py --output .artifacts/protocol-04/`
    * **Evidence:** Aggregated evidence manifest
    * **Validation:** All required artifacts present
 
@@ -477,7 +477,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Protocol 04 Gates
-        run: python scripts/run_protocol_00_gates.py
+        run: python scripts/run_protocol_04_gates.py
 ```
 
 ### Manual Fallback Procedures
