@@ -140,9 +140,76 @@ For each section, add an HTML comment at the beginning:
 
 ---
 
-### STEP 3: Format Application
+### STEP 3: Determine Generation Strategy (Multi-Part vs Single)
 
-**[STRICT]** Apply the selected format to each section following these rules:
+**[CRITICAL]** Large protocols (800+ lines) must be reformatted in multiple parts to prevent token overflow!
+
+#### 3.1 Check Protocol Size
+
+```bash
+# Count lines in original protocol
+wc -l [protocol-path]
+```
+
+#### 3.2 Choose Strategy
+
+| Protocol Size | Strategy | Output Files |
+|--------------|----------|--------------|
+| < 800 lines | **Single Generation** | `REFORMATTED.md` only |
+| 800-1500 lines | **Multi-Part (3 parts)** | `REFORMATTED-PART1.md`, `PART2.md`, `PART3.md` → merge to `REFORMATTED.md` |
+| 1500+ lines | **Multi-Part (5 parts)** | `REFORMATTED-PART1.md`, `PART2.md`, `PART3.md`, `PART4.md`, `PART5.md` → merge to `REFORMATTED.md` |
+
+#### 3.3 Multi-Part Generation Process
+
+**If protocol is large (800+ lines):**
+
+1. **Divide protocol into logical sections:**
+   - PART1: Prerequisites + AI Role + First 1-2 workflow steps
+   - PART2: Next 2-3 workflow steps
+   - PART3: Remaining workflow steps
+   - PART4: Quality Gates + Communication (if needed)
+   - PART5: Automation + Handoff + Reflection (if needed)
+
+2. **Generate each part separately:**
+   ```markdown
+   # Generate PART1
+   - Apply category-based formats to sections 1-2
+   - Save to `.artifacts/protocol-reformat/[protocol-stem]/REFORMATTED-PART1.md`
+   
+   # Generate PART2
+   - Apply category-based formats to sections 3-5
+   - Save to `.artifacts/protocol-reformat/[protocol-stem]/REFORMATTED-PART2.md`
+   
+   # Continue for all parts...
+   ```
+
+3. **Merge all parts into final REFORMATTED.md:**
+   ```bash
+   cd .artifacts/protocol-reformat/[protocol-stem]/
+   cat REFORMATTED-PART1.md > REFORMATTED.md
+   echo "" >> REFORMATTED.md
+   cat REFORMATTED-PART2.md >> REFORMATTED.md
+   echo "" >> REFORMATTED.md
+   cat REFORMATTED-PART3.md >> REFORMATTED.md
+   # Continue for all parts...
+   ```
+
+4. **Verify merged file:**
+   - Check that all sections are present
+   - Check that content flows logically
+   - Check that no content was duplicated
+
+**Why Multi-Part?**
+- Prevents token overflow during generation
+- Allows focused formatting on specific sections
+- Makes validation easier (can check each part)
+- Enables recovery if one part fails (no need to regenerate all)
+
+---
+
+### STEP 4: Format Application
+
+**[STRICT]** Apply the selected format to each section (or part) following these rules:
 
 #### Rule 1: Preserve ALL Content Elements
 
@@ -248,9 +315,9 @@ For each section, add an HTML comment at the beginning:
 
 ---
 
-### STEP 4: Cross-Reference Validation
+### STEP 5: Cross-Reference Validation
 
-**[STRICT]** After reformatting, validate that:
+**[STRICT]** After reformatting and merging (if multi-part), validate that:
 
 1. **Reasoning Preservation:**
    - [ ] Every reasoning block from original appears in reformatted version
@@ -285,9 +352,9 @@ grep -c "scripts/" "$ORIG"; grep -c "scripts/" "$REF"                # Must matc
 
 ---
 
-### STEP 5: Diff Comparison
+### STEP 6: Diff Comparison
 
-**[STRICT]** Generate a comprehensive diff report:
+**[STRICT]** Generate a comprehensive diff report (comparing original vs final merged REFORMATTED.md):
 
 ```bash
 # 1. Compare structure changes only (ignore whitespace)
@@ -321,9 +388,9 @@ grep -c "Gate [0-9]:" [protocol-path]
 
 ---
 
-### STEP 6: Quality Checklist
+### STEP 7: Quality Checklist
 
-**[STRICT]** Before finalizing, confirm:
+**[STRICT]** Before finalizing, confirm (all checks on final merged REFORMATTED.md):
 
 #### Content Preservation Checklist
 - [ ] All reasoning blocks preserved (count matches original)
@@ -362,11 +429,17 @@ After successful execution, generate (centralized in `.artifacts/protocol-reform
 
 2. **Output Folder:**  
    `.artifacts/protocol-reformat/[protocol-stem]/` containing:
-   - `ORIGINAL-BACKUP.md`
-   - `CONTENT-INVENTORY.json`
-   - `FORMAT-ANALYSIS.md`
-   - `format-changes.diff`
-   - `validation-report.md`
+   - `ORIGINAL-BACKUP.md` - Exact copy of original protocol
+   - `CONTENT-INVENTORY.json` - Structured content counts
+   - `FORMAT-ANALYSIS.md` - Section-by-section format choices
+   - `REFORMATTED-PART1.md` - First part (if multi-part generation)
+   - `REFORMATTED-PART2.md` - Second part (if multi-part generation)
+   - `REFORMATTED-PART3.md` - Third part (if multi-part generation)
+   - `REFORMATTED-PART4.md` - Fourth part (if multi-part generation, 1500+ lines)
+   - `REFORMATTED-PART5.md` - Fifth part (if multi-part generation, 1500+ lines)
+   - `REFORMATTED.md` - Final merged output (all parts combined)
+   - `format-changes.diff` - Structural changes only
+   - `validation-report.md` - 100% content preservation proof
 
 3. **Format Analysis (example template):**  
    Saved as `FORMAT-ANALYSIS.md`
