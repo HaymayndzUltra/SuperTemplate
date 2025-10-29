@@ -379,7 +379,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Run Protocol 15 Gates
-        run: python scripts/run_protocol_11_gates.py
+        run: python scripts/run_protocol_15_gates.py
 ```
 
 ### Manual Fallbacks:

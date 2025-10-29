@@ -339,14 +339,14 @@ python scripts/aggregate_evidence_9.py --output .artifacts/protocol-15/
 
 ### CI/CD Integration:
 ```yaml
-name: Protocol 15 Validation
+name: Protocol 11 Validation
 on: [push, pull_request]
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Protocol 15 Gates
-        run: python scripts/run_protocol_9_gates.py
+      - name: Run Protocol 11 Gates
+        run: python scripts/run_protocol_11_gates.py
 ```
 
 ### Manual Fallbacks:
