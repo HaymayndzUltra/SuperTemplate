@@ -196,6 +196,7 @@
     "tone-mapper": "scripts/tone_mapper.py"
   },
   "utilities": {
+    "package-init": "scripts/__init__.py",
     "backup-workflows": "scripts/backup_workflows.py",
     "benchmark-generation": "scripts/benchmark_generation.py",
     "build-submission-pack": "scripts/build_submission_pack.sh",
