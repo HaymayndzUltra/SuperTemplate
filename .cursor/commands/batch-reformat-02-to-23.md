@@ -1,6 +1,6 @@
-usage: "@apply .cursor/commands/batch-reformat-02-to-23.md"
-
 # COMMAND: Batch Reformat Protocols 02→23 (Strict Sequential)
+
+**Usage:** Execute this batch reformat by reading this file and following each step sequentially.
 
 ## 📋 Purpose
 - Reformat protocols 02 through 23 sequentially using the category-based formats.
@@ -22,158 +22,92 @@ Check `.artifacts/protocol-reformat/BATCH-PROGRESS-SUMMARY.md` to see which prot
 ## ✅ Steps (02 → 23)
 
 **[STRICT] STEP 1 — Protocol 02**
-- **Action:** read `.cursor/ai-driven-workflow/02-client-discovery-initiation.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/02-client-discovery-initiation.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/02-client-discovery-initiation.md`
 
 **[STRICT] STEP 2 — Protocol 03**
-- **Action:** read `.cursor/ai-driven-workflow/03-project-brief-creation.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/03-project-brief-creation.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/03-project-brief-creation.md`
 
 **[STRICT] STEP 3 — Protocol 04**
-- **Action:** read `.cursor/ai-driven-workflow/04-project-bootstrap-and-context-engineering.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/04-project-bootstrap-and-context-engineering.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/04-project-bootstrap-and-context-engineering.md`
 
 **[STRICT] STEP 4 — Protocol 05**
-- **Action:** read `.cursor/ai-driven-workflow/05-bootstrap-your-project.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/05-bootstrap-your-project.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/05-bootstrap-your-project.md`
 
 **[STRICT] STEP 5 — Protocol 06**
-- **Action:** read `.cursor/ai-driven-workflow/06-create-prd.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/06-create-prd.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/06-create-prd.md`
 
 **[STRICT] STEP 6 — Protocol 07**
-- **Action:** read `.cursor/ai-driven-workflow/07-technical-design-architecture.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/07-technical-design-architecture.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/07-technical-design-architecture.md`
 
 **[STRICT] STEP 7 — Protocol 08**
-- **Action:** read `.cursor/ai-driven-workflow/08-generate-tasks.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/08-generate-tasks.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/08-generate-tasks.md`
 
 **[STRICT] STEP 8 — Protocol 09**
-- **Action:** read `.cursor/ai-driven-workflow/09-environment-setup-validation.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/09-environment-setup-validation.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/09-environment-setup-validation.md`
 
 **[STRICT] STEP 9 — Protocol 10**
-- **Action:** read `.cursor/ai-driven-workflow/10-process-tasks.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/10-process-tasks.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/10-process-tasks.md`
 
 **[STRICT] STEP 10 — Protocol 11**
-- **Action:** read `.cursor/ai-driven-workflow/11-implement-feature.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/11-implement-feature.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/11-implement-feature.md`
 
 **[STRICT] STEP 11 — Protocol 12**
-- **Action:** read `.cursor/ai-driven-workflow/12-code-review-validation.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/12-code-review-validation.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/12-code-review-validation.md`
 
 **[STRICT] STEP 12 — Protocol 13**
-- **Action:** read `.cursor/ai-driven-workflow/13-testing-validation.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/13-testing-validation.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/13-testing-validation.md`
 
 **[STRICT] STEP 13 — Protocol 14**
-- **Action:** read `.cursor/ai-driven-workflow/14-pre-deployment-staging.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/14-pre-deployment-staging.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/14-pre-deployment-staging.md`
 
 **[STRICT] STEP 14 — Protocol 15**
-- **Action:** read `.cursor/ai-driven-workflow/15-deployment-protocol.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/15-deployment-protocol.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/15-deployment-protocol.md`
 
 **[STRICT] STEP 15 — Protocol 16**
-- **Action:** read `.cursor/ai-driven-workflow/16-post-deployment-validation.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/16-post-deployment-validation.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/16-post-deployment-validation.md`
 
 **[STRICT] STEP 16 — Protocol 17**
-- **Action:** read `.cursor/ai-driven-workflow/17-production-monitoring.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/17-production-monitoring.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/17-production-monitoring.md`
 
 **[STRICT] STEP 17 — Protocol 18**
-- **Action:** read `.cursor/ai-driven-workflow/18-incident-response.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/18-incident-response.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/18-incident-response.md`
 
 **[STRICT] STEP 18 — Protocol 19**
-- **Action:** read `.cursor/ai-driven-workflow/19-retrospective-learning.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/19-retrospective-learning.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/19-retrospective-learning.md`
 
 **[STRICT] STEP 19 — Protocol 20**
-- **Action:** read `.cursor/ai-driven-workflow/20-documentation-finalization.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/20-documentation-finalization.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/20-documentation-finalization.md`
 
 **[STRICT] STEP 20 — Protocol 21**
-- **Action:** read `.cursor/ai-driven-workflow/21-project-handoff.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/21-project-handoff.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/21-project-handoff.md`
 
 **[STRICT] STEP 21 — Protocol 22**
-- **Action:** read `.cursor/ai-driven-workflow/22-maintenance-support-protocol.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/22-maintenance-support-protocol.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/22-maintenance-support-protocol.md`
 
 **[STRICT] STEP 22 — Protocol 23**
-- **Action:** read `.cursor/ai-driven-workflow/23-script-governance-protocol.md`
-- **Then execute:**
-  ```markdown
-  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/23-script-governance-protocol.md
-  ```
+- **Read and execute:** `.cursor/commands/apply-reformat-protocol-to.md`
+- **Target file:** `/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/23-script-governance-protocol.md`
 
 ---
 
@@ -242,7 +176,7 @@ cat .artifacts/protocol-reformat/BATCH-PROGRESS-SUMMARY.md
 ```
 
 ### Skip Completed Protocols
-When you run `@apply .cursor/commands/batch-reformat-02-to-23.md`, manually skip steps that show ✅ COMPLETE in the progress summary.
+When executing this batch reformat command, manually skip steps that show ✅ COMPLETE in the progress summary.
 
 ### Current Status (as of last run)
 - ✅ Protocol 02 - COMPLETE

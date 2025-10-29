@@ -243,9 +243,8 @@ The batch reformat is **COMPLETE** only when:
 ## 🔧 Command Reference
 
 **To execute batch reformat:**
-```markdown
-@apply .cursor/commands/batch-reformat-02-to-23.md
-```
+1. Read the file: `.cursor/commands/batch-reformat-02-to-23.md`
+2. Follow each step sequentially as instructed
 
 **To check progress:**
 ```bash
