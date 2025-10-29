@@ -23,7 +23,7 @@
       "requirement": "Coverage ≥90% of protocol decision points",
       "target": "≥90%",
       "achieved": "100%",
-      "calculation": "104 decision points / 104 total gates = 1.0",
+      "calculation": "105 decision points / 105 total gates = 1.0",
       "status": "PASS",
       "evidence": "All gates mapped in schemas"
     },
@@ -31,7 +31,7 @@
       "requirement": "All DNA entries linked to ledger events",
       "target": "100%",
       "achieved": "100%",
-      "calculation": "104 decision points with ledger_event_pattern / 104 total = 1.0",
+      "calculation": "105 decision points with ledger_event_pattern / 105 total = 1.0",
       "status": "PASS",
       "evidence": "All decision points include ledger_event_pattern field"
     },

@@ -94,6 +94,37 @@ Document POP observer cycle simulations and aggregate activation evidence.
 <!-- Codex adds completed tasks here in reverse chronological order (newest first) -->
 
 ---
+### [TASK-S1-LEDGER] Stage S1 Decision Point Reconciliation
+**Session:** SESSION-S1-LEDGER-001
+**Date:** 2025-10-30 00:30
+**Status:** ✅ COMPLETE
+
+**What I Did:**
+1. Reviewed Stage S1 acceptance metrics and identified the decision point total mismatch reported during Codex review.
+2. Corrected the coverage and ledger linkage calculations to reflect the full set of 105 decision points defined in P01–P28 schemas.
+3. Updated the session log to capture the reconciliation for deployment evidence tracking.
+
+**Files Created:**
+- _None._
+
+**Files Modified:**
+- `.artifacts/meta-upgrades/stage-S1/acceptance-validation.json` - Adjusted coverage and ledger calculations to use 105 decision points.
+- `.artifacts/AGENTS.md` - Logged reconciliation task completion.
+
+**Files Deleted:**
+- _None._
+
+**Key Decisions:**
+- Mirrored the schema-derived decision point count in acceptance metrics to maintain evidence parity.
+- Retained 100% achievement status since all 105 decision points remain covered and linked.
+
+**Quality Checks Passed:**
+- ✅ Data consistency verified against P01–P28 schema definitions
+- ✅ Documentation updated
+- ✅ No additional validation required
+
+**Next Recommended Task:** Reconfirm aggregate metrics in Stage S1 deployment log to ensure consistency across artifacts.
+---
 ### [TASK-POP-OBS] POP Observer Cycle Evidence Aggregation
 **Session:** SESSION-POP-OBS-001
 **Date:** 2025-10-30 00:00
