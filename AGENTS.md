@@ -1,549 +1,280 @@
+# AI Agent Instructions - Batch Protocol Reformat
 
-usage: "/apply-reformat-protocol-to.md [protocol-path]"
+## 🚨 CRITICAL EXECUTION RULES
 
-
-# COMMAND: REFORMAT PROTOCOL WITH CATEGORY-BASED FORMATS
-
-## 📋 Purpose
-
-This command reformats existing protocol files to follow the **category-based format system** while **preserving ALL existing content** including reasoning, logic, steps, evidence requirements, gates, and automation hooks.
-
-**Core Principle:** Change ONLY the structural format, never the content.
+When executing batch reformat commands (e.g., `@apply .cursor/commands/batch-reformat-02-to-23.md`), you **MUST** follow these rules **WITHOUT EXCEPTION**:
 
 ---
 
-## 🎯 Objective
+## 📋 Strict Sequential Execution Protocol
 
-Reformat the specified protocol file to follow category-based format standards while preserving ALL existing content (reasoning, logic, steps, evidence, gates).
+### Rule 1: One Step at a Time
+**[STRICT]** Execute **ONLY ONE STEP** at a time. Do not proceed to the next step until the current step is **100% complete**.
 
----
+**What "Complete" Means:**
+- ✅ Protocol file has been read
+- ✅ `apply-reformat-protocol-to.md` command has been executed
+- ✅ All output files generated (ORIGINAL-BACKUP.md, CONTENT-INVENTORY.json, FORMAT-ANALYSIS.md, REFORMATTED.md, format-changes.diff, validation-report.md)
+- ✅ Validation report confirms 100% content preservation
+- ✅ Progress summary has been updated
 
-## 📥 Input Parameters
+### Rule 2: Mandatory Progress Update After Each Step
+**[STRICT]** After **EVERY SINGLE STEP**, you **MUST** update the progress summary file:
 
-When invoking this command, provide:
+```
+/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/protocol-reformat/BATCH-PROGRESS-SUMMARY.md
+```
 
-- **Protocol File:** [Specify protocol path, e.g., `.cursor/ai-driven-workflow/08-generate-tasks.md`]
-- **Preserve Content:** YES (mandatory - non-negotiable)
-- **Apply Category Formats:** YES (mandatory)
+**Update Requirements:**
+1. Read the current BATCH-PROGRESS-SUMMARY.md
+2. Update the status for the protocol you just completed
+3. Update timestamps
+4. Update completion counts
+5. Save the updated summary
 
-**Example Invocation:**
+**Example Update:**
 ```markdown
-@apply .cursor/commands/reformat-protocol.md --file=.cursor/ai-driven-workflow/01-client-proposal-generation.md
+## Protocol 06 - create-prd
+- Status: ✅ COMPLETE
+- Completed: 2025-10-29 14:30:00
+- Validation: 100% content preservation confirmed
+- Files: ORIGINAL-BACKUP.md, CONTENT-INVENTORY.json, FORMAT-ANALYSIS.md, REFORMATTED.md, format-changes.diff, validation-report.md
+```
+
+### Rule 3: No Parallelization or Prefetching
+**[STRICT]** Do NOT:
+- ❌ Read multiple protocol files at once
+- ❌ Start the next step while the current step is still processing
+- ❌ Batch multiple steps together
+- ❌ "Prepare" or "prefetch" future steps
+
+**Why:** This causes token overflow, incomplete processing, and validation errors.
+
+### Rule 4: Checkpoint Validation Before Proceeding
+**[STRICT]** Before moving to the next step, you **MUST** validate:
+
+```
+✓ Current protocol's output directory exists
+✓ All 6+ required files are present
+✓ validation-report.md shows 100% content preservation
+✓ BATCH-PROGRESS-SUMMARY.md reflects completion
+✓ No errors in previous step
+```
+
+**If ANY checkpoint fails:** STOP and report the issue. Do NOT proceed.
+
+---
+
+## 🔄 Execution Flow (Required Pattern)
+
+For each step in the batch command:
+
+```
+1. READ: Load protocol file
+   ↓
+2. EXECUTE: Run apply-reformat-protocol-to.md command
+   ↓
+3. VALIDATE: Confirm all outputs generated correctly
+   ↓
+4. UPDATE: Update BATCH-PROGRESS-SUMMARY.md
+   ↓
+5. CHECKPOINT: Verify all validation criteria met
+   ↓
+6. PROCEED: Move to next step (or STOP if error)
+```
+
+**[BLOCKING]** You **MUST** complete steps 1-5 before moving to step 6.
+
+---
+
+## 📊 Progress Summary Update Template
+
+After **EVERY** completed step, update the summary with this pattern:
+
+```markdown
+## Summary
+- Total Protocols: 22 (02-23)
+- Completed: [N]
+- In Progress: [0 or 1]
+- Pending: [remaining count]
+- Failed: [count if any]
+
+## Detailed Status
+
+### ✅ Completed Protocols
+
+#### Protocol [NN] - [protocol-name]
+- Status: ✅ COMPLETE
+- Started: [timestamp]
+- Completed: [timestamp]
+- Duration: [time taken]
+- Output Directory: `.artifacts/protocol-reformat/[protocol-stem]/`
+- Validation: 100% content preservation confirmed
+- Files Generated:
+  - ✅ ORIGINAL-BACKUP.md
+  - ✅ CONTENT-INVENTORY.json
+  - ✅ FORMAT-ANALYSIS.md
+  - ✅ REFORMATTED.md
+  - ✅ format-changes.diff
+  - ✅ validation-report.md
+
+[Repeat for each completed protocol]
+
+### 🔄 In Progress Protocols
+[None or current protocol]
+
+### ⏳ Pending Protocols
+[List remaining protocols]
 ```
 
 ---
 
-## 🛠️ Execution Steps
+## 🛑 Error Handling & Recovery
 
-### STEP 1: Content Inventory & Backup
+### If a Step Encounters an Error:
+**[STRICT]** Do NOT stop immediately. Instead, follow this intelligent recovery protocol:
 
-**[STRICT]** Before any changes, create a complete inventory of existing content:
+1. **ANALYZE the error:**
+   - Identify the root cause
+   - Determine if it's recoverable
+   - Check what succeeded and what failed
 
-1. **Read the entire protocol file**
-2. **Extract and document:**
-   - All reasoning blocks and their justifications
-   - All logic flows and decision trees
-   - All step sequences and substeps
-   - All evidence requirements (`.artifacts/...` paths)
-   - All gate definitions and validation criteria
-   - All automation hooks and scripts
-   - All handoff checklists
-   - All integration points
-   - All [STRICT], [MUST], [GUIDELINE] markers
+2. **ATTEMPT to FIX:**
+   - If file not found → verify path and retry
+   - If parsing error → analyze content structure and adjust
+   - If validation incomplete → regenerate missing outputs
+   - If token overflow → break into smaller chunks
+   - If formatting issue → apply corrections and retry
 
-3. **Create backup file:**
-   ```bash
-   cp [protocol-name].md [protocol-name]-ORIGINAL-BACKUP.md
-   ```
+3. **RETRY the step:**
+   - Apply the fix
+   - Re-execute the failed operation
+   - Validate the results
 
-4. **Generate content inventory:**
-   Create `[protocol-name]-CONTENT-INVENTORY.json` containing:
-   ```json
-   {
-     "reasoning_blocks_count": 12,
-     "evidence_requirements_count": 15,
-     "script_references": ["scripts/validate_xyz.py", ...],
-     "artifact_paths": [".artifacts/proposal/...", ...],
-     "gate_definitions_count": 4,
-     "automation_hooks_count": 8
-   }
-   ```
+4. **ONLY STOP if:**
+   - ❌ Error persists after 3 fix attempts
+   - ❌ Root cause is unclear/unknown
+   - ❌ Fix would require human decision-making
+   - ❌ Data integrity would be compromised
 
----
+5. **IF STOPPING, report:**
+   - Which protocol failed
+   - What attempts were made to fix
+   - Why the error couldn't be resolved
+   - Current state of output files
+   - Mark as FAILED in BATCH-PROGRESS-SUMMARY.md
 
-### STEP 2: Section Analysis
+### If Validation Fails:
+1. **ANALYZE the validation failure:**
+   - Check content inventory counts
+   - Compare original vs reformatted
+   - Identify missing or changed content
 
-**[STRICT]** For EACH section in the protocol, perform this analysis:
+2. **ATTEMPT to FIX:**
+   - If content missing → regenerate that section
+   - If format incorrect → reapply correct format
+   - If counts mismatch → verify and correct inventory
 
-#### 2.1 Identify Section Type
+3. **RETRY validation:**
+   - Re-run validation checks
+   - Confirm 100% content preservation
 
-Ask for each section: **"What is this section DOING?"**
+4. **ONLY STOP if:**
+   - Content cannot be preserved accurately
+   - Validation fails after multiple fix attempts
+   - Structural integrity compromised
 
-| Section Behavior | Category File | Variant (if applicable) |
-|-----------------|---------------|-------------------------|
-| Executing simple workflow | EXECUTION-FORMATS.md | BASIC |
-| Executing detailed tracking (5+ substeps) | EXECUTION-FORMATS.md | SUBSTEPS |
-| Executing with critical decisions | EXECUTION-FORMATS.md | REASONING |
-| Setting rules/standards | GUIDELINES-FORMATS.md | N/A |
-| Creating project issues | ISSUE-FORMATS.md | N/A |
-| Multi-agent orchestration | PROMPT-FORMATS.md | N/A |
-| Protocol analysis/generation | META-FORMATS.md | N/A |
-
-#### 2.2 Document Format Choice
-
-For each section, add an HTML comment at the beginning:
-
-```markdown
-<!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
-<!-- Why: This phase involves critical go/no-go decisions requiring documented premises, alternatives, and risk assessment -->
-```
-
-**Example Section Analysis:**
-
-```markdown
-## WORKFLOW
-
-<!-- [Category: EXECUTION-FORMATS - Mixed variants by phase] -->
-
-### PHASE 1: Context Preparation
-<!-- [Category: EXECUTION-BASIC] -->
-<!-- Why: Simple file loading and validation, no complex decisions -->
-
-### PHASE 2: Stakeholder Alignment
-<!-- [Category: EXECUTION-REASONING] -->
-<!-- Why: Critical decision on proposal scope requires documented alternatives and risk assessment -->
-
-### PHASE 3: Detailed Breakdown
-<!-- [Category: EXECUTION-SUBSTEPS] -->
-<!-- Why: Multiple precise substeps (7+ steps) requiring exact tracking and evidence collection -->
-
-### PHASE 4: Validation
-<!-- [Category: EXECUTION-BASIC] -->
-<!-- Why: Straightforward validation checklist -->
-```
+**Philosophy:** Be resilient and self-healing. Most errors are fixable through analysis and retry. Only escalate when truly stuck.
 
 ---
 
-### STEP 3: Format Application
+## 📁 Output Directory Structure Verification
 
-**[STRICT]** Apply the selected format to each section following these rules:
+After each step, verify this structure exists:
 
-#### Rule 1: Preserve ALL Content Elements
-
-**✅ MUST KEEP:**
-- Every reasoning block
-- Every logic explanation
-- Every step description
-- Every evidence requirement (exact path: `.artifacts/...`)
-- Every validation criterion
-- Every script reference (exact name and path)
-- Every gate definition
-- Every handoff item
-- Every [STRICT], [MUST], [GUIDELINE] marker
-- Every example (DO/DON'T blocks)
-
-#### Rule 2: Change ONLY Structure
-
-**❌ DO NOT:**
-- Remove or summarize content
-- Change script names or paths
-- Modify evidence artifact paths
-- Remove reasoning justifications
-- Simplify decision documentation
-- Merge steps to reduce length
-- Remove "redundant" validation checks
-
-**✅ DO:**
-- Change header levels (e.g., `###` to `####`)
-- Change numbering style (e.g., `1.` to `1.1`)
-- Add `[REASONING]` blocks where decisions exist
-- Restructure subsections for clarity
-- Add format choice comments
-- Improve visual hierarchy
-
-#### Rule 3: Format-Specific Transformations
-
-**If applying EXECUTION-BASIC:**
-
-```markdown
-## PHASE [N]: [Phase Name]
-
-1. **`[MUST]` [Step Name]:**
-   * **Action:** [What to do - preserve exact original wording]
-   * **Evidence:** [Required output - preserve exact artifact path]
-   * **Validation:** [How to verify - preserve exact criteria]
-   
-   **Example (DO):**
-   [If original has example, preserve it exactly]
-   
-   **Example (DON'T):**
-   [If original has anti-pattern, preserve it exactly]
+```
+.artifacts/protocol-reformat/[protocol-stem]/
+├── ORIGINAL-BACKUP.md          ← Exact copy of original
+├── CONTENT-INVENTORY.json      ← Content element counts
+├── FORMAT-ANALYSIS.md          ← Format decisions documented
+├── REFORMATTED-PART1.md        ← Reformatted chunks (if large)
+├── REFORMATTED-PART2.md        ← (if needed)
+├── REFORMATTED.md              ← Final merged output
+├── format-changes.diff         ← Structural changes only
+└── validation-report.md        ← 100% preservation proof
 ```
 
-**If applying EXECUTION-SUBSTEPS:**
-
-```markdown
-## PHASE [N]: [Phase Name]
-
-1. **`[MUST]` [Main Step Name]:**
-   * **[N].1. [Substep Name]:**
-       * **Action:** [What to do - preserve exact original wording]
-       * **Evidence:** [Required output - preserve exact artifact path]
-       * **Validation:** [How to verify - preserve exact criteria]
-   
-   * **[N].2. [Substep Name]:**
-       * **Action:** [What to do - preserve exact original wording]
-       * **Evidence:** [Required output - preserve exact artifact path]
-       * **Validation:** [How to verify - preserve exact criteria]
-   
-   * **[N].3. [Substep Name]:**
-       * **Action:** [What to do]
-       * **Evidence:** [Required output]
-```
-
-**If applying EXECUTION-REASONING:**
-
-```markdown
-## PHASE [N]: [Phase Name]
-
-1. **`[MUST]` [Step Name]:**
-   * **Action:** [What to do - preserve exact original wording]
-   
-   **[REASONING]:**
-   - **Premises:** [Starting facts/conditions - extract from original context]
-   - **Constraints:** [Limitations/requirements - extract from original]
-   - **Alternatives Considered:**
-     * **A)** [Option 1] - [Why selected/rejected - from original logic]
-     * **B)** [Option 2] - [Why selected/rejected - from original logic]
-     * **C)** [Option 3] - [If exists in original]
-   - **Decision:** [Final choice and justification - from original]
-   - **Evidence:** [Supporting data/references for decision]
-   - **Risks & Mitigations:**
-     * **Risk:** [Potential issue] → **Mitigation:** [How to address]
-     * [Additional risks from original]
-   - **Acceptance Link:** [Reference to requirement/standard/PRD section]
-   
-   * **Evidence:** [Required output - preserve exact artifact path]
-   * **Validation:** [How to verify - preserve exact criteria]
-   
-   **Example (DO):**
-   [If original has example, preserve it exactly]
-```
+**[STRICT]** If this structure is incomplete, the step is NOT complete.
 
 ---
 
-### STEP 4: Cross-Reference Validation
+## ✅ Success Criteria Checklist
 
-**[STRICT]** After reformatting, validate that:
+For each protocol, confirm:
 
-1. **Reasoning Preservation:**
-   - [ ] Every reasoning block from original appears in reformatted version
-   - [ ] All decision justifications are present
-   - [ ] All alternative considerations are documented
+- [ ] Protocol file read successfully
+- [ ] Command executed without errors
+- [ ] Output directory created
+- [ ] ORIGINAL-BACKUP.md exists and matches source
+- [ ] CONTENT-INVENTORY.json generated with accurate counts
+- [ ] FORMAT-ANALYSIS.md documents all format decisions
+- [ ] REFORMATTED.md generated (merged if multi-part)
+- [ ] format-changes.diff shows structural changes only
+- [ ] validation-report.md confirms 100% content preservation
+- [ ] BATCH-PROGRESS-SUMMARY.md updated with completion
+- [ ] All automation hooks intact
+- [ ] No content loss or modification detected
 
-2. **Technical Reference Preservation:**
-   - [ ] Every script reference is preserved exactly (no path changes)
-   - [ ] Every evidence requirement is preserved exactly (no artifact path changes)
-   - [ ] Every automation command is preserved exactly
-
-3. **Gate Preservation:**
-   - [ ] Every gate definition is complete
-   - [ ] All gate criteria are documented
-   - [ ] All gate automation hooks are present
-
-4. **Integration Preservation:**
-   - [ ] All integration points are documented
-   - [ ] All handoff items are present
-   - [ ] All approval requirements are listed
-
-5. **Content Count Validation:**
-   ```bash
-   # Count key elements
-   grep -c "\[REASONING\]" [original].md
-   grep -c "\[REASONING\]" [reformatted].md
-   # Must match
-   
-   grep -c "\.artifacts/" [original].md
-   grep -c "\.artifacts/" [reformatted].md
-   # Must match
-   
-   grep -c "scripts/" [original].md
-   grep -c "scripts/" [reformatted].md
-   # Must match
-   ```
+**[STRICT]** ALL checkboxes must be checked before proceeding to next step.
 
 ---
 
-### STEP 5: Diff Comparison
+## 🎯 Completion Goal
 
-**[STRICT]** Generate a comprehensive diff report:
+The batch reformat is **COMPLETE** only when:
 
+1. All 22 protocols (02-23) show ✅ COMPLETE status
+2. BATCH-PROGRESS-SUMMARY.md shows "Completed: 22"
+3. All validation reports confirm 100% content preservation
+4. No protocols marked as FAILED or IN PROGRESS
+
+---
+
+## 🔧 Command Reference
+
+**To execute batch reformat:**
+```markdown
+@apply .cursor/commands/batch-reformat-02-to-23.md
+```
+
+**To check progress:**
 ```bash
-# 1. Compare structure changes only (ignore whitespace)
-diff -u [protocol-name]-ORIGINAL-BACKUP.md [protocol-name]-REFORMATTED.md > [protocol-name]-format-changes.diff
+cat /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/protocol-reformat/BATCH-PROGRESS-SUMMARY.md
+```
 
-# 2. Verify no content loss - Reasoning blocks
-echo "Original reasoning blocks:"
-grep -c "REASONING" [protocol-name]-ORIGINAL-BACKUP.md
-echo "Reformatted reasoning blocks:"
-grep -c "REASONING" [protocol-name]-REFORMATTED.md
-
-# 3. Verify no content loss - Evidence paths
-echo "Original evidence paths:"
-grep -c ".artifacts/" [protocol-name]-ORIGINAL-BACKUP.md
-echo "Reformatted evidence paths:"
-grep -c ".artifacts/" [protocol-name]-REFORMATTED.md
-
-# 4. Verify no content loss - Script references
-echo "Original script references:"
-grep -c "scripts/" [protocol-name]-ORIGINAL-BACKUP.md
-echo "Reformatted script references:"
-grep -c "scripts/" [protocol-name]-REFORMATTED.md
-
-# 5. Verify no content loss - Gates
-echo "Original gates:"
-grep -c "Gate [0-9]:" [protocol-name]-ORIGINAL-BACKUP.md
-echo "Reformatted gates:"
-grep -c "Gate [0-9]:" [protocol-name]-REFORMATTED.md
+**To verify specific protocol:**
+```bash
+ls -la /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/protocol-reformat/[protocol-stem]/
 ```
 
 ---
 
-### STEP 6: Quality Checklist
+## 💡 Remember
 
-**[STRICT]** Before finalizing, confirm:
+- **Quality over speed** - Take time to ensure each step is perfect
+- **One step at a time** - No shortcuts, no parallelization
+- **Always update progress** - After every single step
+- **Validate before proceeding** - Confirm success before moving on
+- **Be resilient on errors** - Analyze, fix, and retry before escalating
+- **Self-healing approach** - Most errors are fixable, only stop when truly stuck
 
-#### Content Preservation Checklist
-- [ ] All reasoning blocks preserved (count matches original)
-- [ ] All logic flows preserved (no simplification)
-- [ ] All steps preserved (no merging or removal)
-- [ ] All evidence paths unchanged (exact matches)
-- [ ] All script references unchanged (exact matches)
-- [ ] All gate definitions complete (no summary)
-- [ ] All handoffs documented (no omissions)
-- [ ] All examples preserved (DO/DON'T blocks intact)
-- [ ] All [STRICT]/[MUST]/[GUIDELINE] markers preserved
-
-#### Format Application Checklist
-- [ ] Format follows category-based standards
-- [ ] Section format choices documented with comments
-- [ ] Each section has "Why" justification for format choice
-- [ ] Visual hierarchy is improved
-- [ ] Numbering is consistent within each section
-- [ ] [REASONING] blocks added where decisions exist
-
-#### Technical Integrity Checklist
-- [ ] Diff report shows ONLY structural changes
-- [ ] No artifact paths were modified
-- [ ] No script names were changed
-- [ ] No validation criteria were simplified
-- [ ] No automation hooks were removed
+**These rules exist to prevent token overflow, ensure data integrity, and maintain process traceability while allowing intelligent error recovery.**
 
 ---
 
-## 📤 Output Deliverables
-
-After successful execution, generate:
-
-1. **Reformatted Protocol:**  
-   `[protocol-name].md` (overwrites original after validation)
-
-2. **Backup:**  
-   `[protocol-name]-ORIGINAL-BACKUP.md`
-
-3. **Format Analysis:**  
-   `[protocol-name]-FORMAT-ANALYSIS.md`
-   ```markdown
-   # Format Analysis for [Protocol Name]
-   
-   ## Section-by-Section Format Choices
-   
-   ### PHASE 1: [Name]
-   - **Format Applied:** EXECUTION-BASIC
-   - **Reasoning:** Simple workflow steps with straightforward validation
-   - **Content Preserved:** 3 steps, 3 evidence requirements, 1 script reference
-   
-   ### PHASE 2: [Name]
-   - **Format Applied:** EXECUTION-REASONING
-   - **Reasoning:** Critical go/no-go decision requiring documented alternatives
-   - **Content Preserved:** 1 decision point, 3 alternatives, 2 risk mitigations
-   
-   [Continue for all sections...]
-   ```
-
-4. **Diff Report:**  
-   `[protocol-name]-format-changes.diff`
-
-5. **Validation Report:**  
-   `[protocol-name]-validation-report.md`
-   ```markdown
-   # Validation Report for [Protocol Name]
-   
-   ## Content Preservation Validation
-   
-   | Element Type | Original Count | Reformatted Count | Status |
-   |--------------|----------------|-------------------|--------|
-   | Reasoning blocks | 12 | 12 | ✅ PASS |
-   | Evidence paths | 15 | 15 | ✅ PASS |
-   | Script references | 8 | 8 | ✅ PASS |
-   | Gate definitions | 4 | 4 | ✅ PASS |
-   | Handoff items | 6 | 6 | ✅ PASS |
-   
-   ## Format Application Validation
-   
-   | Section | Original Format | Applied Format | Justification |
-   |---------|----------------|----------------|---------------|
-   | PHASE 1 | Unstructured | EXECUTION-BASIC | Simple workflow |
-   | PHASE 2 | Unstructured | EXECUTION-REASONING | Critical decisions |
-   | PHASE 3 | Unstructured | EXECUTION-SUBSTEPS | 7 detailed substeps |
-   
-   ## Overall Status: ✅ PASS
-   ```
-
----
-
-## ✅ Success Criteria
-
-**The reformat is successful if:**
-
-✅ All content from original protocol is present in reformatted version  
-✅ Format follows category-based selection principles  
-✅ Each section uses the most appropriate format variant  
-✅ Format choices are documented and justified  
-✅ No script paths or artifact paths were modified  
-✅ All reasoning logic is preserved  
-✅ Protocol remains fully executable  
-✅ Validation report shows 100% content preservation  
-✅ Diff shows ONLY structural/formatting changes
-
----
-
-## ❌ Anti-Patterns to Avoid
-
-**DO NOT:**
-
-❌ Choose one format for entire protocol without section-by-section analysis  
-❌ Remove "verbose" reasoning blocks to "clean up" the document  
-❌ Change evidence artifact paths "for consistency"  
-❌ Simplify complex REASONING blocks to BASIC format to reduce length  
-❌ Apply SUBSTEPS format when simple BASIC would suffice (over-engineering)  
-❌ Miss the "Why" justification comments for format choices  
-❌ Merge multiple steps into one to make protocol "shorter"  
-❌ Remove examples or DO/DON'T blocks as "redundant"  
-❌ Change script names to "standardize" them  
-❌ Simplify validation criteria to "streamline" the process
-
----
-
-## 🔧 Troubleshooting
-
-### Issue: Content appears to be lost after reformat
-
-**Solution:**
-1. Compare content inventory JSON before/after
-2. Run validation report script
-3. If mismatch found, restore from backup and re-analyze section format choices
-4. Ensure REASONING variant was used for decision-heavy sections
-
-### Issue: Diff shows unexpected content changes
-
-**Solution:**
-1. Review diff line by line
-2. Identify if changes are:
-   - Structural only (acceptable) - e.g., header level changes
-   - Content modifications (unacceptable) - restore from backup
-3. Re-run with stricter content preservation rules
-
-### Issue: Format choice seems wrong for a section
-
-**Solution:**
-1. Re-read the section's actual behavior
-2. Ask: "What is this section DOING?" (not "What is it about?")
-3. Check if section involves:
-   - Simple workflow? → BASIC
-   - Detailed tracking? → SUBSTEPS
-   - Critical decisions? → REASONING
-4. Update format choice and document why
-
----
-
-## 📚 Related Resources
-
-- **Category Format Files:**
-  - `examples/EXECUTION-FORMATS.md` - 3 execution variants
-  - `examples/GUIDELINES-FORMATS.md` - Rules format
-  - `examples/ISSUE-FORMATS.md` - Issue tracking format
-  - `examples/PROMPT-FORMATS.md` - Multi-agent format
-  - `examples/META-FORMATS.md` - Protocol analysis format
-
-- **Category Selection Guide:**
-  - `examples/README.md` - Category-based selection principles
-
----
-
-## 🎯 Usage Examples
-
-### Example 1: Reformat Protocol 08 (Generate Tasks)
-
-```markdown
-@apply .cursor/commands/reformat-protocol.md --file=.cursor/ai-driven-workflow/08-generate-tasks.md
-```
-
-**Expected Result:**
-- PHASE 1-2: EXECUTION-BASIC (simple context loading)
-- PHASE 3: EXECUTION-REASONING (critical task breakdown decisions)
-- PHASE 4-5: EXECUTION-SUBSTEPS (detailed task decomposition with 7+ substeps)
-- PHASE 6: EXECUTION-BASIC (validation checklist)
-
-### Example 2: Reformat Protocol 14 (Pre-Deployment Staging)
-
-```markdown
-@apply .cursor/commands/reformat-protocol.md --file=.cursor/ai-driven-workflow/14-pre-deployment-staging.md
-```
-
-**Expected Result:**
-- PHASE 1: EXECUTION-SUBSTEPS (staging alignment with precise comparison steps)
-- PHASE 2: EXECUTION-REASONING (deployment rehearsal go/no-go decision)
-- PHASE 3: EXECUTION-SUBSTEPS (rollback verification sequence)
-- PHASE 4: EXECUTION-REASONING (readiness review approval decision)
-
-### Example 3: Reformat Protocol 01 (Client Proposal)
-
-```markdown
-@apply .cursor/commands/reformat-protocol.md --file=.cursor/ai-driven-workflow/01-client-proposal-generation.md
-```
-
-**Expected Result:**
-- PHASE 1: EXECUTION-BASIC (brief loading)
-- PHASE 2: EXECUTION-REASONING (pricing strategy decision with alternatives)
-- PHASE 3: EXECUTION-SUBSTEPS (detailed proposal generation with 5+ substeps)
-- PHASE 4: EXECUTION-BASIC (validation)
-
----
-
-## 🚀 Quick Start
-
-1. **Identify protocol to reformat**
-2. **Invoke command:**
-   ```markdown
-   /apply-reformat-protocol-to.md [protocol-path]
-   ```
-3. **Review validation report**
-4. **Verify diff shows only structural changes**
-5. **Confirm protocol is still executable**
-6. **Archive backup and deliverables**
-
----
-
-## 📝 Notes
-
-- **Backup First:** Always creates backup before any changes
-- **Content Sacred:** Content preservation is non-negotiable
-- **Format Flexible:** Format choices are per-section, not per-protocol
-- **Document Choices:** Every format choice must have a "Why" comment
-- **Validate Everything:** Multiple validation layers ensure no content loss
-
----
-
-**[MASTER RAY™]** This command ensures protocol evolution without regression.
+## 📝 Last Updated
+- Document Version: 1.1
+- Last Modified: 2025-10-29
+- Changes: Added intelligent error recovery protocol (analyze, fix, retry before stopping)
+- Purpose: Ensure strict sequential execution of batch protocol reformat operations with resilient error handling
 

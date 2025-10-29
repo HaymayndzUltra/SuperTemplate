@@ -1,9 +1,9 @@
-usage: "@apply .cursor/commands/batch-reformat-02-to-10.md"
+usage: "@apply .cursor/commands/batch-reformat-02-to-23.md"
 
-# COMMAND: Batch Reformat Protocols 02→10 (Strict Sequential)
+# COMMAND: Batch Reformat Protocols 02→23 (Strict Sequential)
 
 ## 📋 Purpose
-- Reformat protocols 02 through 10 sequentially using the category-based formats.
+- Reformat protocols 02 through 23 sequentially using the category-based formats.
 - Prevent agent overload by enforcing strict one-step-at-a-time execution.
 
 ## 🔒 Execution Policy
@@ -19,7 +19,7 @@ Check `.artifacts/protocol-reformat/BATCH-PROGRESS-SUMMARY.md` to see which prot
 
 ---
 
-## ✅ Steps (02 → 10)
+## ✅ Steps (02 → 23)
 
 **[STRICT] STEP 1 — Protocol 02**
 - **Action:** read `.cursor/ai-driven-workflow/02-client-discovery-initiation.md`
@@ -84,6 +84,97 @@ Check `.artifacts/protocol-reformat/BATCH-PROGRESS-SUMMARY.md` to see which prot
   @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/10-process-tasks.md
   ```
 
+**[STRICT] STEP 10 — Protocol 11**
+- **Action:** read `.cursor/ai-driven-workflow/11-implement-feature.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/11-implement-feature.md
+  ```
+
+**[STRICT] STEP 11 — Protocol 12**
+- **Action:** read `.cursor/ai-driven-workflow/12-code-review-validation.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/12-code-review-validation.md
+  ```
+
+**[STRICT] STEP 12 — Protocol 13**
+- **Action:** read `.cursor/ai-driven-workflow/13-testing-validation.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/13-testing-validation.md
+  ```
+
+**[STRICT] STEP 13 — Protocol 14**
+- **Action:** read `.cursor/ai-driven-workflow/14-pre-deployment-staging.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/14-pre-deployment-staging.md
+  ```
+
+**[STRICT] STEP 14 — Protocol 15**
+- **Action:** read `.cursor/ai-driven-workflow/15-deployment-protocol.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/15-deployment-protocol.md
+  ```
+
+**[STRICT] STEP 15 — Protocol 16**
+- **Action:** read `.cursor/ai-driven-workflow/16-post-deployment-validation.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/16-post-deployment-validation.md
+  ```
+
+**[STRICT] STEP 16 — Protocol 17**
+- **Action:** read `.cursor/ai-driven-workflow/17-production-monitoring.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/17-production-monitoring.md
+  ```
+
+**[STRICT] STEP 17 — Protocol 18**
+- **Action:** read `.cursor/ai-driven-workflow/18-incident-response.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/18-incident-response.md
+  ```
+
+**[STRICT] STEP 18 — Protocol 19**
+- **Action:** read `.cursor/ai-driven-workflow/19-retrospective-learning.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/19-retrospective-learning.md
+  ```
+
+**[STRICT] STEP 19 — Protocol 20**
+- **Action:** read `.cursor/ai-driven-workflow/20-documentation-finalization.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/20-documentation-finalization.md
+  ```
+
+**[STRICT] STEP 20 — Protocol 21**
+- **Action:** read `.cursor/ai-driven-workflow/21-project-handoff.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/21-project-handoff.md
+  ```
+
+**[STRICT] STEP 21 — Protocol 22**
+- **Action:** read `.cursor/ai-driven-workflow/22-maintenance-support-protocol.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/22-maintenance-support-protocol.md
+  ```
+
+**[STRICT] STEP 22 — Protocol 23**
+- **Action:** read `.cursor/ai-driven-workflow/23-script-governance-protocol.md`
+- **Then execute:**
+  ```markdown
+  @apply .cursor/commands/apply-reformat-protocol-to.md --file=/home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.cursor/ai-driven-workflow/23-script-governance-protocol.md
+  ```
+
 ---
 
 ## 📦 Expected Outputs (per step)
@@ -97,7 +188,7 @@ For each protocol `[protocol-stem]`, the following files will be generated under
 - `validation-report.md` - Comprehensive validation report confirming 100% content preservation
 
 ## 🧭 Completion Criteria
-- All nine steps complete without errors.
+- All twenty-two steps complete without errors.
 - For every protocol:
   - Content counts match exactly (reasoning blocks, artifact paths, script refs)
   - Diffs show structural/formatting changes only
@@ -151,7 +242,7 @@ cat .artifacts/protocol-reformat/BATCH-PROGRESS-SUMMARY.md
 ```
 
 ### Skip Completed Protocols
-When you run `@apply .cursor/commands/batch-reformat-02-to-10.md`, manually skip steps that show ✅ COMPLETE in the progress summary.
+When you run `@apply .cursor/commands/batch-reformat-02-to-23.md`, manually skip steps that show ✅ COMPLETE in the progress summary.
 
 ### Current Status (as of last run)
 - ✅ Protocol 02 - COMPLETE
@@ -159,7 +250,8 @@ When you run `@apply .cursor/commands/batch-reformat-02-to-10.md`, manually skip
 - ✅ Protocol 04 - COMPLETE
 - ✅ Protocol 05 - COMPLETE
 - 🔄 Protocol 06 - IN PROGRESS (only backup/inventory/format analysis generated)
-- ⏳ Protocols 07-10 - PENDING
+- ⏳ Protocols 07-23 - PENDING
 
 ### To Continue
 - Start from **STEP 5 (Protocol 06)** or the first non-completed protocol in the progress summary.
+
