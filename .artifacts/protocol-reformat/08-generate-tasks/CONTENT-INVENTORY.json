@@ -1,0 +1,60 @@
+{
+  "protocol_name": "Protocol 08: Technical Task Generation",
+  "total_lines": 571,
+  "content_elements": {
+    "reasoning_blocks_count": 5,
+    "evidence_requirements_count": 17,
+    "script_references": [
+      "scripts/validate_prerequisites_2.py",
+      "scripts/validate_rule_index.py",
+      "scripts/validate_high_level_tasks.py",
+      "scripts/validate_task_decomposition.py",
+      "scripts/validate_tasks.py",
+      "scripts/enrich_tasks.py",
+      "scripts/aggregate_evidence_2.py",
+      "scripts/run_protocol_2_gates.py"
+    ],
+    "artifact_paths": [
+      ".artifacts/protocol-08/rule-index.json",
+      ".artifacts/protocol-08/task-context.md",
+      ".artifacts/protocol-08/task-personas.json",
+      ".cursor/tasks/tasks-{feature}.md",
+      ".artifacts/protocol-08/high-level-tasks.json",
+      ".artifacts/protocol-08/task-approval-log.md",
+      ".artifacts/protocol-08/task-automation-matrix.json",
+      ".artifacts/protocol-08/task-validation.json",
+      ".artifacts/protocol-08/task-enrichment.json",
+      ".artifacts/protocol-08/task-artifact-manifest.json",
+      ".artifacts/protocol-08/task-execution-summary.md",
+      ".artifacts/protocol-08/manual-task-review.md",
+      ".artifacts/protocol-08/manual-automation-checklist.md",
+      ".artifacts/protocol-08/manual-validation-log.md",
+      ".cursor/rules/",
+      ".cursor/context-kit/",
+      ".cursor/tasks/"
+    ],
+    "gate_definitions_count": 4,
+    "decision_points_count": 1,
+    "communication_templates_count": 3,
+    "automation_hooks_count": 8,
+    "markers": {
+      "strict_count": 1,
+      "must_count": 11,
+      "guideline_count": 4,
+      "critical_count": 1
+    }
+  },
+  "sections": {
+    "prerequisites": true,
+    "ai_role_mission": true,
+    "workflow_steps": 4,
+    "reflection_learning": true,
+    "integration_points": true,
+    "quality_gates": true,
+    "communication_protocols": true,
+    "automation_hooks": true,
+    "handoff_checklist": true,
+    "evidence_summary": true,
+    "reasoning_cognitive": true
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "protocol_name": "17-incident-response-rollback",
+  "total_lines": 608,
+  "reasoning_blocks_count": 0,
+  "evidence_requirements_count": 25,
+  "script_references": [
+    "scripts/validate_gate_13_severity.py",
+    "scripts/validate_gate_13_mitigation.py",
+    "scripts/validate_gate_13_recovery.py",
+    "scripts/validate_gate_13_resolution.py",
+    "scripts/validate_prerequisites_13.py",
+    "scripts/aggregate_evidence_13.py",
+    "scripts/run_protocol_13_gates.py"
+  ],
+  "artifact_paths": [
+    ".cursor/context-kit/",
+    ".artifacts/incidents/incident-intake-log.md",
+    ".artifacts/incidents/severity-assessment.json",
+    ".artifacts/incidents/mitigation-plan.md",
+    ".artifacts/incidents/rollback-readiness-checklist.json",
+    ".artifacts/incidents/mitigation-execution-report.json",
+    ".artifacts/incidents/recovery-validation.json",
+    ".artifacts/incidents/resolution-summary.json",
+    ".artifacts/incidents/rca-manifest.json",
+    ".artifacts/incidents/INCIDENT-REPORT.md",
+    ".artifacts/incidents/",
+    ".artifacts/protocol-20/manual-validation-log.md",
+    ".cursor/ai-driven-workflow/18-performance-optimization.md"
+  ],
+  "gate_definitions_count": 4,
+  "automation_hooks_count": 7,
+  "communication_templates_count": 13,
+  "workflow_steps": {
+    "main_steps": 4,
+    "sub_steps": 11,
+    "total_steps": 15
+  },
+  "markers": {
+    "STRICT": 1,
+    "MUST": 8,
+    "GUIDELINE": 3,
+    "CRITICAL": 1
+  },
+  "integration_points": {
+    "inputs_from": 3,
+    "outputs_to": 3
+  }
+}

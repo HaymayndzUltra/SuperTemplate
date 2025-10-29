@@ -1,0 +1,38 @@
+{
+  "protocol_name": "Protocol 14: Pre-Deployment Validation & Staging Readiness",
+  "total_lines": 601,
+  "content_summary": {
+    "prerequisites_count": 10,
+    "workflow_steps": 11,
+    "quality_gates": 4,
+    "communication_examples": 10,
+    "automation_hooks": 8,
+    "handoff_items": 13
+  },
+  "artifact_paths": [
+    ".artifacts/pre-deployment/intake-validation-report.json",
+    ".artifacts/pre-deployment/staging-parity-report.json",
+    ".artifacts/pre-deployment/staging-data-refresh.md",
+    ".artifacts/pre-deployment/staging-deployment-run.log",
+    ".artifacts/pre-deployment/staging-test-results.json",
+    ".artifacts/pre-deployment/rollback-verification-report.json",
+    ".artifacts/pre-deployment/security-compliance-report.json",
+    ".artifacts/pre-deployment/pre-deployment-manifest.json",
+    ".artifacts/pre-deployment/readiness-approval.json",
+    ".artifacts/pre-deployment/deployment-checklist.md",
+    ".artifacts/pre-deployment/PRE-DEPLOYMENT-PACKAGE.zip",
+    ".artifacts/pre-deployment/observability-baseline.md",
+    ".artifacts/pre-deployment/manual-validation-log.md"
+  ],
+  "script_references": [
+    "scripts/refresh_staging_data.py",
+    "scripts/update_deployment_checklist.py",
+    "scripts/validate_gate_10_intake.py",
+    "scripts/validate_gate_10_rehearsal.py",
+    "scripts/validate_gate_10_security.py",
+    "scripts/validate_gate_10_readiness.py",
+    "scripts/validate_prerequisites_10.py",
+    "scripts/aggregate_evidence_10.py",
+    "scripts/run_protocol_10_gates.py"
+  ]
+}

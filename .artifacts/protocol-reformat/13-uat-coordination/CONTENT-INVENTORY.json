@@ -1,0 +1,67 @@
+{
+  "protocol_name": "Protocol 13: User Acceptance Testing (UAT) Coordination",
+  "total_lines": 605,
+  "content_summary": {
+    "prerequisites_count": 10,
+    "workflow_steps": 11,
+    "quality_gates": 4,
+    "communication_examples": 10,
+    "automation_hooks": 8,
+    "handoff_items": 13,
+    "reflection_sections": 10,
+    "reasoning_blocks": 5,
+    "decision_points": 1,
+    "learning_mechanisms": 4
+  },
+  "artifact_paths": [
+    ".artifacts/uat/uat-entry-checklist.json",
+    ".artifacts/uat/participant-roster.csv",
+    ".artifacts/uat/session-schedule.ics",
+    ".artifacts/uat/uat-toolkit-manifest.json",
+    ".artifacts/uat/kickoff-notes.md",
+    ".artifacts/uat/execution-log.json",
+    ".artifacts/uat/feedback-notebook.md",
+    ".artifacts/uat/uat-defect-register.csv",
+    ".artifacts/uat/retest-results.json",
+    ".artifacts/uat/release-notes-draft.md",
+    ".artifacts/uat/uat-approval-record.json",
+    ".artifacts/uat/uat-closure-manifest.json",
+    ".artifacts/uat/UAT-CLOSURE-PACKAGE.zip",
+    ".artifacts/uat/handoff-brief.md",
+    ".artifacts/uat/manual-validation-log.md",
+    ".cursor/context-kit/uat-scenario-catalog.csv"
+  ],
+  "script_references": [
+    "scripts/build_uat_toolkit.py",
+    "scripts/generate_release_notes.py",
+    "scripts/validate_gate_15_entry.py",
+    "scripts/validate_gate_15_execution.py",
+    "scripts/validate_gate_15_defects.py",
+    "scripts/validate_gate_15_acceptance.py",
+    "scripts/validate_prerequisites_15.py",
+    "scripts/aggregate_evidence_15.py",
+    "scripts/run_protocol_15_gates.py"
+  ],
+  "gate_definitions": [
+    "UAT Entry Gate",
+    "Execution Integrity Gate",
+    "Defect Resolution Gate",
+    "Acceptance Gate"
+  ],
+  "automation_commands": [
+    "python scripts/build_uat_toolkit.py --scenarios config/uat-scenarios.yaml --output .artifacts/uat/uat-toolkit-manifest.json",
+    "python scripts/generate_release_notes.py --source .artifacts/uat/feedback-notebook.md --output .artifacts/uat/release-notes-draft.md",
+    "python scripts/validate_gate_15_entry.py --checklist .artifacts/uat/uat-entry-checklist.json",
+    "python scripts/validate_gate_15_execution.py --scenarios config/uat-scenarios.yaml",
+    "python scripts/validate_gate_15_defects.py --register .artifacts/uat/uat-defect-register.csv",
+    "python scripts/validate_gate_15_acceptance.py --package .artifacts/uat/UAT-CLOSURE-PACKAGE.zip",
+    "@apply .cursor/ai-driven-workflow/14-pre-deployment-staging.md"
+  ],
+  "markers_count": {
+    "STRICT": 1,
+    "MUST": 8,
+    "GUIDELINE": 4,
+    "CRITICAL": 1,
+    "MASTER_RAY": 10
+  }
+}

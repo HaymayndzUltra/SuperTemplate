@@ -1,0 +1,52 @@
+{
+  "protocol_name": "16-monitoring-observability",
+  "total_lines": 602,
+  "reasoning_blocks_count": 0,
+  "evidence_requirements_count": 26,
+  "script_references": [
+    "scripts/collect_perf.py",
+    "scripts/validate_gate_12_instrumentation.py",
+    "scripts/validate_gate_12_alerts.py",
+    "scripts/validate_gate_12_assurance.py",
+    "scripts/validate_gate_12_handoff.py",
+    "scripts/validate_prerequisites_12.py",
+    "scripts/aggregate_evidence_12.py",
+    "scripts/run_protocol_12_gates.py"
+  ],
+  "artifact_paths": [
+    ".artifacts/monitoring/baseline-metrics.json",
+    ".artifacts/monitoring/monitoring-requirements.md",
+    ".artifacts/monitoring/instrumentation-audit.json",
+    ".artifacts/monitoring/dashboard-config.md",
+    ".artifacts/monitoring/alert-test-results.json",
+    ".artifacts/monitoring/observability-schedule.json",
+    ".artifacts/monitoring/alert-tuning-report.md",
+    ".artifacts/monitoring/monitoring-package-manifest.json",
+    ".artifacts/monitoring/monitoring-approval-record.json",
+    ".artifacts/monitoring/improvement-backlog.md",
+    ".artifacts/monitoring/observability-scorecard.md",
+    ".artifacts/monitoring/MONITORING-PACKAGE.zip",
+    ".artifacts/monitoring/",
+    ".cursor/context-kit/",
+    ".artifacts/protocol-19/manual-validation-log.md",
+    ".cursor/ai-driven-workflow/17-incident-response-rollback.md"
+  ],
+  "gate_definitions_count": 4,
+  "automation_hooks_count": 8,
+  "communication_templates_count": 11,
+  "workflow_steps": {
+    "main_steps": 4,
+    "sub_steps": 11,
+    "total_steps": 15
+  },
+  "markers": {
+    "STRICT": 1,
+    "MUST": 8,
+    "GUIDELINE": 3,
+    "CRITICAL": 1
+  },
+  "integration_points": {
+    "inputs_from": 3,
+    "outputs_to": 3
+  }
+}

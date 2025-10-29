@@ -1,0 +1,605 @@
+--- .artifacts/protocol-reformat/13-uat-coordination/ORIGINAL-BACKUP.md	2025-10-29 22:36:02.756149383 +0800
++++ .artifacts/protocol-reformat/13-uat-coordination/REFORMATTED.md	2025-10-29 22:41:48.399055823 +0800
+@@ -7,52 +7,59 @@
+ 
+ **Purpose:** Execute Unknown Protocol workflow with quality validation and evidence generation.
+ 
+-## PREREQUISITES
++<!-- [Category: GUIDELINES-FORMATS - Requirements & Standards] -->
++## 1. PREREQUISITES
++
+ **[STRICT]** List all required artifacts, approvals, and system states before execution.
+ 
+-### Required Artifacts
+-- [ ] `QUALITY-AUDIT-PACKAGE.zip` from Protocol 12 – final quality audit evidence
+-- [ ] `INTEGRATION-EVIDENCE.zip` from Protocol 11 – integration verification traceability
+-- [ ] `readiness-recommendation.md` from Protocol 12 – quality audit recommendation
+-- [ ] `release-notes-draft.md` from Protocol 10 – baseline scope statement
+-- [ ] `uat-scenario-catalog.csv` (if existing) from prior cycles stored in `.cursor/context-kit/`
+-
+-### Required Approvals
+-- [ ] Product Owner confirmation that UAT objectives align with PRD acceptance criteria (Protocol 06)
+-- [ ] Quality Audit readiness recommendation signed by Senior Quality Engineer (Protocol 12)
+-- [ ] Staging environment access granted by DevOps lead (Protocol 09)
+-
+-### System State Requirements
+-- [ ] UAT/staging environment synchronized with latest release candidate build
+-- [ ] Communication channels (email/slack) configured for participants
+-- [ ] Access to `.artifacts/uat/` directory with write permissions
++### 1.1 Required Artifacts
++**[MUST]** Validate presence of upstream artifacts before protocol initiation:
+ 
+----
++- **`[REQUIRED]`** `QUALITY-AUDIT-PACKAGE.zip` from Protocol 12 – final quality audit evidence
++- **`[REQUIRED]`** `INTEGRATION-EVIDENCE.zip` from Protocol 11 – integration verification traceability
++- **`[REQUIRED]`** `readiness-recommendation.md` from Protocol 12 – quality audit recommendation
++- **`[REQUIRED]`** `release-notes-draft.md` from Protocol 10 – baseline scope statement
++- **`[REQUIRED]`** `uat-scenario-catalog.csv` (if existing) from prior cycles stored in `.cursor/context-kit/`
++
++### 1.2 Required Approvals
++**[MUST]** Obtain necessary authorizations:
++
++- **`[REQUIRED]`** Product Owner confirmation that UAT objectives align with PRD acceptance criteria (Protocol 06)
++- **`[REQUIRED]`** Quality Audit readiness recommendation signed by Senior Quality Engineer (Protocol 12)
++- **`[REQUIRED]`** Staging environment access granted by DevOps lead (Protocol 09)
++
++### 1.3 System State Requirements
++**[MUST]** Verify system readiness:
++
++- **`[REQUIRED]`** UAT/staging environment synchronized with latest release candidate build
++- **`[REQUIRED]`** Communication channels (email/slack) configured for participants
++- **`[REQUIRED]`** Access to `.artifacts/uat/` directory with write permissions
+ 
+-## 15. AI ROLE AND MISSION
++<!-- [Category: GUIDELINES-FORMATS - Role Definition] -->
++## 2. AI ROLE AND MISSION
+ 
+ You are a **UAT Coordinator**. Your mission is to orchestrate customer-facing validation cycles that confirm business requirements are met, ensuring stakeholder sign-off and actionable feedback before production deployment.
+ 
+-**🚫 [CRITICAL] DO NOT declare UAT complete without recorded stakeholder approvals, resolved blocking feedback, and updated release documentation reflecting accepted scope.**
+-
+----
++**🚫 [CRITICAL]** DO NOT declare UAT complete without recorded stakeholder approvals, resolved blocking feedback, and updated release documentation reflecting accepted scope.
+ 
+-## WORKFLOW
++<!-- [Category: EXECUTION-FORMATS - Mixed variants by phase] -->
++## 3. WORKFLOW
+ 
+-### STEP 1: Entry Validation and Participant Preparation
++<!-- [Category: EXECUTION-BASIC - Sequential validation and preparation] -->
++### PHASE 1: Entry Validation and Participant Preparation
+ 
+ 1. **`[MUST]` Verify UAT Entry Criteria:**
+    * **Action:** Cross-check prerequisites across Protocols 4, 9, and 10 to confirm readiness for UAT execution.
+    * **Communication:** 
+      > "[MASTER RAY™ | PHASE 1 START] - Validating UAT scope, entry criteria, and prerequisite artifacts..."
+-   * **Halt condition:** Stop if any required artifact or approval is missing.
++   * **Halt Condition:** Stop if any required artifact or approval is missing.
+    * **Evidence:** `.artifacts/uat/uat-entry-checklist.json` capturing each prerequisite and signatory.
+ 
+ 2. **`[MUST]` Assemble Participant Roster and Logistics:**
+    * **Action:** Identify participants, confirm environment access, schedule sessions, and document contact matrix.
+    * **Communication:** 
+      > "[PHASE 1] Participant roster confirmed. Invitations dispatching now..."
+-   * **Halt condition:** Pause if any participant lacks environment or data access.
++   * **Halt Condition:** Pause if any participant lacks environment or data access.
+    * **Evidence:** `.artifacts/uat/participant-roster.csv` and `.artifacts/uat/session-schedule.ics`.
+ 
+ 3. **`[GUIDELINE]` Prepare UAT Toolkit:**
+@@ -61,69 +68,79 @@
+      ```bash
+      python scripts/build_uat_toolkit.py --scenarios config/uat-scenarios.yaml --output .artifacts/uat/uat-toolkit-manifest.json
+      ```
++   * **Evidence:** `.artifacts/uat/uat-toolkit-manifest.json`
+ 
+-### STEP 2: Orientation and Cycle Facilitation
+-
+-1. **`[MUST]` Conduct UAT Kickoff:**
+-   * **Action:** Brief participants on objectives, scope, acceptance criteria, communication channels, and support expectations.
+-   * **Communication:** 
+-     > "[MASTER RAY™ | PHASE 2 START] - Hosting UAT kickoff session with stakeholders..."
+-   * **Halt condition:** Halt progression if kickoff feedback reveals misaligned expectations.
+-   * **Evidence:** `.artifacts/uat/kickoff-notes.md` summarizing agreements and questions.
+-
+-2. **`[MUST]` Facilitate Execution Cycles:**
+-   * **Action:** Monitor scenario execution, support testers, and ensure evidence capture via structured logging.
+-   * **Communication:** 
+-     > "[PHASE 2] Monitoring UAT execution. Logging scenario outcomes in real time..."
+-   * **Halt condition:** Suspend if critical environment issues prevent progress.
+-   * **Evidence:** `.artifacts/uat/execution-log.json` and attachments (screenshots, recordings).
+-
+-3. **`[GUIDELINE]` Capture Qualitative Insights:**
+-   * **Action:** Record usability notes, enhancement ideas, and sentiment quotes.
+-   * **Example:**
+-     ```markdown
+-     - Persona: Billing Manager
+-       - Quote: "The reconciliation workflow matches expectations."
+-       - Improvement: Add tooltip for tax adjustments.
+-     ```
++<!-- [Category: EXECUTION-SUBSTEPS - Multiple coordinated activities] -->
++### PHASE 2: Orientation and Cycle Facilitation
+ 
+-### STEP 3: Defect Management and Revalidation
++1. **`[MUST]` Conduct UAT Kickoff and Execution:**
++   
++   * **2.1. Host Kickoff Session:**
++     * **Action:** Brief participants on objectives, scope, acceptance criteria, communication channels, and support expectations.
++     * **Communication:** 
++       > "[MASTER RAY™ | PHASE 2 START] - Hosting UAT kickoff session with stakeholders..."
++     * **Halt Condition:** Halt progression if kickoff feedback reveals misaligned expectations.
++     * **Evidence:** `.artifacts/uat/kickoff-notes.md` summarizing agreements and questions.
++   
++   * **2.2. Monitor Execution Cycles:**
++     * **Action:** Monitor scenario execution, support testers, and ensure evidence capture via structured logging.
++     * **Communication:** 
++       > "[PHASE 2] Monitoring UAT execution. Logging scenario outcomes in real time..."
++     * **Halt Condition:** Suspend if critical environment issues prevent progress.
++     * **Evidence:** `.artifacts/uat/execution-log.json` and attachments (screenshots, recordings).
++   
++   * **2.3. Capture Qualitative Insights:**
++     * **Action:** Record usability notes, enhancement ideas, and sentiment quotes.
++     * **Example:**
++       ```markdown
++       - Persona: Billing Manager
++         - Quote: "The reconciliation workflow matches expectations."
++         - Improvement: Add tooltip for tax adjustments.
++       ```
++     * **Evidence:** `.artifacts/uat/feedback-notebook.md`
++
++<!-- [Category: EXECUTION-SUBSTEPS - Complex defect tracking and fix verification] -->
++### PHASE 3: Defect Management and Revalidation
++
++1. **`[MUST]` Manage Defects and Fixes:**
++   
++   * **3.1. Log and Prioritize Findings:**
++     * **Action:** Convert issues into tracked defects, categorize severity, assign owners, and sync with Protocol 21 task board.
++     * **Communication:** 
++       > "[MASTER RAY™ | PHASE 3 START] - Triage UAT findings and initiating remediation workflows..."
++     * **Halt Condition:** Pause progression if blocker severity items remain untriaged.
++     * **Evidence:** `.artifacts/uat/uat-defect-register.csv` with linkage to ticket IDs.
++   
++   * **3.2. Coordinate Fix Verification:**
++     * **Action:** Ensure fixes deployed to UAT/staging, re-run impacted scenarios, and update execution logs with retest outcomes.
++     * **Communication:** 
++       > "[PHASE 3] Fix verification in progress. Requesting confirmation from testers..."
++     * **Halt Condition:** Stop if retests fail to confirm resolution.
++     * **Evidence:** `.artifacts/uat/retest-results.json` mapping defects to retest status.
++   
++   * **3.3. Refresh Release Notes:**
++     * **Action:** Update release notes with accepted scope, known issues, and FAQ entries informed by UAT insights.
++     * **Example:**
++       ```bash
++       python scripts/generate_release_notes.py --source .artifacts/uat/feedback-notebook.md --output .artifacts/uat/release-notes-draft.md
++       ```
++     * **Evidence:** `.artifacts/uat/release-notes-draft.md`
+ 
+-1. **`[MUST]` Log and Prioritize Findings:**
+-   * **Action:** Convert issues into tracked defects, categorize severity, assign owners, and sync with Protocol 21 task board.
+-   * **Communication:** 
+-     > "[MASTER RAY™ | PHASE 3 START] - Triage UAT findings and initiating remediation workflows..."
+-   * **Halt condition:** Pause progression if blocker severity items remain untriaged.
+-   * **Evidence:** `.artifacts/uat/uat-defect-register.csv` with linkage to ticket IDs.
+-
+-2. **`[MUST]` Coordinate Fix Verification:**
+-   * **Action:** Ensure fixes deployed to UAT/staging, re-run impacted scenarios, and update execution logs with retest outcomes.
+-   * **Communication:** 
+-     > "[PHASE 3] Fix verification in progress. Requesting confirmation from testers..."
+-   * **Halt condition:** Stop if retests fail to confirm resolution.
+-   * **Evidence:** `.artifacts/uat/retest-results.json` mapping defects to retest status.
+-
+-3. **`[GUIDELINE]` Refresh Release Notes & FAQs:**
+-   * **Action:** Update release notes with accepted scope, known issues, and FAQ entries informed by UAT insights.
+-   * **Example:**
+-     ```bash
+-     python scripts/generate_release_notes.py --source .artifacts/uat/feedback-notebook.md --output .artifacts/uat/release-notes-draft.md
+-     ```
+-
+-### STEP 4: Acceptance, Documentation, and Handoff
++<!-- [Category: EXECUTION-BASIC - Sequential approval and package generation] -->
++### PHASE 4: Acceptance, Documentation, and Handoff
+ 
+ 1. **`[MUST]` Capture Formal UAT Sign-Off:**
+    * **Action:** Collect approvals from designated stakeholders confirming acceptance criteria met and residual risk tolerated.
+    * **Communication:** 
+      > "[MASTER RAY™ | PHASE 4 START] - Requesting formal UAT acceptance approvals..."
+-   * **Halt condition:** Do not proceed if signatures missing or conditional approvals unmet.
++   * **Halt Condition:** Do not proceed if signatures missing or conditional approvals unmet.
+    * **Evidence:** `.artifacts/uat/uat-approval-record.json` and e-sign evidence if available.
+ 
+ 2. **`[MUST]` Compile UAT Closure Package:**
+    * **Action:** Bundle entry checklist, execution logs, defect register, retest results, sign-off record, and release notes into `UAT-CLOSURE-PACKAGE.zip`.
+    * **Communication:** 
+      > "[PHASE 4] Compiling UAT closure package for deployment handoff..."
+-   * **Halt condition:** Stop if any mandatory artifact missing from package.
++   * **Halt Condition:** Stop if any mandatory artifact missing from package.
+    * **Evidence:** `.artifacts/uat/uat-closure-manifest.json` with artifact list and checksum.
+ 
+ 3. **`[GUIDELINE]` Deliver Deployment Handoff Brief:**
+@@ -135,13 +152,12 @@
+      - Known Issues: None
+      - Support Notes: Customer champions available during launch window.
+      ```
++   * **Evidence:** `.artifacts/uat/handoff-brief.md`
+ 
+----
++<!-- [Category: META-FORMATS - Retrospective and Learning] -->
++## 4. REFLECTION & LEARNING
+ 
+-
+-## REFLECTION & LEARNING
+-
+-### Retrospective Guidance
++### 4.1 Retrospective Guidance
+ 
+ After completing protocol execution (successful or halted), conduct retrospective:
+ 
+@@ -167,7 +183,7 @@
+ 
+ **Output:** Retrospective report stored in protocol execution artifacts
+ 
+-### Continuous Improvement Opportunities
++### 4.2 Continuous Improvement Opportunities
+ 
+ #### Identified Improvement Opportunities
+ - Identify based on protocol-specific execution patterns
+@@ -189,7 +205,7 @@
+ - Stakeholder feedback scores
+ - Downstream protocol satisfaction ratings
+ 
+-### System Evolution
++### 4.3 System Evolution
+ 
+ #### Version History
+ - Current version with implementation date
+@@ -211,7 +227,7 @@
+ - Triggers for initiating rollback
+ - Communication plan for rollback events
+ 
+-### Knowledge Capture and Organizational Learning
++### 4.4 Knowledge Capture and Organizational Learning
+ 
+ #### Lessons Learned Repository
+ Maintain lessons learned with structure:
+@@ -231,7 +247,7 @@
+ - Cross-team learning sessions
+ - Access controls and search tools
+ 
+-### Future Planning
++### 4.5 Future Planning
+ 
+ #### Roadmap
+ - Planned enhancements with timelines
+@@ -253,64 +269,70 @@
+ - Dependencies on other work
+ - Risk buffers and contingencies
+ 
++<!-- [Category: GUIDELINES-FORMATS - Integration Standards] -->
++## 5. INTEGRATION POINTS
+ 
+----
+-
+-## 15. INTEGRATION POINTS
++### 5.1 Inputs From
++- **Protocol 19:** `QUALITY-AUDIT-PACKAGE.zip` – verifies audit completeness before UAT
++- **Protocol 15:** `integration-evidence-bundle.zip` – ensures integrated features ready for user validation
++- **Protocol 21:** `staging-parity-report.json`, `session-schedule.ics` – confirms environment parity and scheduling
++- **Protocol 21:** `task-validation-report.json` – traceability for defect triage and retest alignment
++
++### 5.2 Outputs To
++- **Protocol 21:** `uat-closure-manifest.json`, `retest-results.json` – informs staging readiness updates
++- **Protocol 15:** `UAT-CLOSURE-PACKAGE.zip`, `uat-approval-record.json` – mandatory for production go/no-go
++- **Protocol 22:** `feedback-notebook.md` – qualitative insights for retrospective
++- **Protocol 21:** `execution-log.json` – source for performance perception feedback
+ 
+-### Inputs From:
+-- **Protocol 19**: `QUALITY-AUDIT-PACKAGE.zip` – verifies audit completeness before UAT
+-- **Protocol 15**: `integration-evidence-bundle.zip` – ensures integrated features ready for user validation
+-- **Protocol 21**: `staging-parity-report.json`, `session-schedule.ics` – confirms environment parity and scheduling
+-- **Protocol 21**: `task-validation-report.json` – traceability for defect triage and retest alignment
+-
+-### Outputs To:
+-- **Protocol 21**: `uat-closure-manifest.json`, `retest-results.json` – informs staging readiness updates
+-- **Protocol 15**: `UAT-CLOSURE-PACKAGE.zip`, `uat-approval-record.json` – mandatory for production go/no-go
+-- **Protocol 22**: `feedback-notebook.md` – qualitative insights for retrospective
+-- **Protocol 21**: `execution-log.json` – source for performance perception feedback
+-
+-### Artifact Storage Locations:
++### 5.3 Artifact Storage Locations
+ - `.artifacts/uat/` - Primary evidence storage
+ - `.cursor/context-kit/` - Context and configuration artifacts
+ 
+----
+-
+-## 15. QUALITY GATES
++<!-- [Category: GUIDELINES-FORMATS - Quality Gate Definitions] -->
++## 6. QUALITY GATES
+ 
+ ### Gate 1: UAT Entry Gate
+-- **Criteria**: All prerequisites validated; participants provisioned; toolkit ready.
+-- **Evidence**: `uat-entry-checklist.json`, `participant-roster.csv`, `uat-toolkit-manifest.json`.
+-- **Pass Threshold**: Checklist completion score = 100%.
+-- **Failure Handling**: Halt kickoff, resolve missing prerequisites, rerun checklist.
+-- **Automation**: `python scripts/validate_gate_15_entry.py --checklist .artifacts/uat/uat-entry-checklist.json`
++**[STRICT]** Entry validation requirements:
++
++- **Criteria:** All prerequisites validated; participants provisioned; toolkit ready.
++- **Evidence:** `uat-entry-checklist.json`, `participant-roster.csv`, `uat-toolkit-manifest.json`.
++- **Pass Threshold:** Checklist completion score = 100%.
++- **Failure Handling:** Halt kickoff, resolve missing prerequisites, rerun checklist.
++- **Automation:** `python scripts/validate_gate_15_entry.py --checklist .artifacts/uat/uat-entry-checklist.json`
+ 
+ ### Gate 2: Execution Integrity Gate
+-- **Criteria**: Kickoff held; execution logs populated; qualitative insights captured.
+-- **Evidence**: `kickoff-notes.md`, `execution-log.json`, `feedback-notebook.md`.
+-- **Pass Threshold**: ≥ 95% planned scenarios executed; no unresolved access blockers.
+-- **Failure Handling**: Schedule catch-up sessions; remediate access; revalidate.
+-- **Automation**: `python scripts/validate_gate_15_execution.py --scenarios config/uat-scenarios.yaml`
++**[STRICT]** Execution validation requirements:
++
++- **Criteria:** Kickoff held; execution logs populated; qualitative insights captured.
++- **Evidence:** `kickoff-notes.md`, `execution-log.json`, `feedback-notebook.md`.
++- **Pass Threshold:** ≥ 95% planned scenarios executed; no unresolved access blockers.
++- **Failure Handling:** Schedule catch-up sessions; remediate access; revalidate.
++- **Automation:** `python scripts/validate_gate_15_execution.py --scenarios config/uat-scenarios.yaml`
+ 
+ ### Gate 3: Defect Resolution Gate
+-- **Criteria**: Blocker/critical defects resolved or waived; retests confirmed.
+-- **Evidence**: `uat-defect-register.csv`, `retest-results.json`, updated `release-notes-draft.md`.
+-- **Pass Threshold**: Blocker count = 0; critical items ≤ 1 with waiver.
+-- **Failure Handling**: Engage delivery teams, implement fixes, rerun retests before sign-off.
+-- **Automation**: `python scripts/validate_gate_15_defects.py --register .artifacts/uat/uat-defect-register.csv`
++**[STRICT]** Defect management requirements:
++
++- **Criteria:** Blocker/critical defects resolved or waived; retests confirmed.
++- **Evidence:** `uat-defect-register.csv`, `retest-results.json`, updated `release-notes-draft.md`.
++- **Pass Threshold:** Blocker count = 0; critical items ≤ 1 with waiver.
++- **Failure Handling:** Engage delivery teams, implement fixes, rerun retests before sign-off.
++- **Automation:** `python scripts/validate_gate_15_defects.py --register .artifacts/uat/uat-defect-register.csv`
+ 
+ ### Gate 4: Acceptance Gate
+-- **Criteria**: Sign-off record complete; closure package compiled; deployment handoff brief delivered.
+-- **Evidence**: `uat-approval-record.json`, `uat-closure-manifest.json`, `handoff-brief.md`.
+-- **Pass Threshold**: Required approvers = 100%; manifest checksum verified.
+-- **Failure Handling**: Escalate missing approvals; regenerate package; update brief before release handoff.
+-- **Automation**: `python scripts/validate_gate_15_acceptance.py --package .artifacts/uat/UAT-CLOSURE-PACKAGE.zip`
++**[STRICT]** Final approval requirements:
+ 
+----
++- **Criteria:** Sign-off record complete; closure package compiled; deployment handoff brief delivered.
++- **Evidence:** `uat-approval-record.json`, `uat-closure-manifest.json`, `handoff-brief.md`.
++- **Pass Threshold:** Required approvers = 100%; manifest checksum verified.
++- **Failure Handling:** Escalate missing approvals; regenerate package; update brief before release handoff.
++- **Automation:** `python scripts/validate_gate_15_acceptance.py --package .artifacts/uat/UAT-CLOSURE-PACKAGE.zip`
+ 
+-## 15. COMMUNICATION PROTOCOLS
++<!-- [Category: GUIDELINES-FORMATS - Communication Standards] -->
++## 7. COMMUNICATION PROTOCOLS
++
++### 7.1 Status Announcements
++**[GUIDELINE]** Standard status messages for protocol execution:
+ 
+-### Status Announcements:
+ ```
+ [MASTER RAY™ | PHASE 1 START] - Validating UAT scope, entry criteria, and prerequisite artifacts...
+ [MASTER RAY™ | PHASE 1 COMPLETE] - UAT entry confirmed. Evidence: uat-entry-checklist.json.
+@@ -321,7 +343,9 @@
+ [RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
+ ```
+ 
+-### Validation Prompts:
++### 7.2 Validation Prompts
++**[GUIDELINE]** Interactive validation templates:
++
+ ```
+ [RAY CONFIRMATION REQUIRED]
+ > "I have completed UAT execution and compiled the closure package.
+@@ -331,7 +355,9 @@
+ > Please review and confirm readiness to proceed to Protocol 21/11 handoff."
+ ```
+ 
+-### Error Handling:
++### 7.3 Error Handling
++**[GUIDELINE]** Quality gate failure response template:
++
+ ```
+ [RAY GATE FAILED: Defect Resolution Gate]
+ > "Quality gate 'Defect Resolution Gate' failed.
+@@ -345,15 +371,15 @@
+ > 3. Halt protocol execution"
+ ```
+ 
+----
++<!-- [Category: GUIDELINES-FORMATS - Automation Standards] -->
++## 8. AUTOMATION HOOKS
+ 
+-## 15. AUTOMATION HOOKS
++### 8.1 Registry Reference
++**[GUIDELINE]** See `scripts/script-registry.json` for complete script inventory, ownership, and governance context.
+ 
++### 8.2 Validation Scripts
++**[MUST]** Execute automation scripts in sequence:
+ 
+-**Registry Reference:** See `scripts/script-registry.json` for complete script inventory, ownership, and governance context.
+-
+-
+-### Validation Scripts:
+ ```bash
+ # Prerequisite validation
+ python scripts/validate_prerequisites_15.py
+@@ -366,7 +392,9 @@
+ python scripts/aggregate_evidence_15.py --output .artifacts/uat/
+ ```
+ 
+-### CI/CD Integration:
++### 8.3 CI/CD Integration
++**[GUIDELINE]** Pipeline configuration template:
++
+ ```yaml
+ # GitHub Actions workflow integration
+ name: Protocol 20 Validation
+@@ -381,39 +409,38 @@
+         run: python scripts/run_protocol_15_gates.py
+ ```
+ 
+-### Manual Fallbacks:
+-When automation is unavailable, execute manual validation:
+-1. Manually review participant access logs and update roster spreadsheet.
+-2. Inspect execution evidence and retest results, logging observations in `manual-validation-log.md`.
+-3. Document results in `.artifacts/protocol-20/manual-validation-log.md`
+-
+----
+-
+-## 15. HANDOFF CHECKLIST
++### 8.4 Manual Fallbacks
++**[GUIDELINE]** When automation is unavailable, execute manual validation:
+ 
++1. Manually review participant access logs and update roster spreadsheet
++2. Inspect execution evidence and retest results, logging observations in `manual-validation-log.md`
++3. Document results in `.artifacts/protocol-20/manual-validation-log.md`
+ 
++<!-- [Category: EXECUTION-BASIC - Validation Checklist] -->
++## 9. HANDOFF CHECKLIST
+ 
+-### Continuous Improvement Validation:
+-- [ ] Execution feedback collected and logged
+-- [ ] Lessons learned documented in protocol artifacts
+-- [ ] Quality metrics captured for improvement tracking
+-- [ ] Knowledge base updated with new patterns or insights
+-- [ ] Protocol adaptation opportunities identified and logged
+-- [ ] Retrospective scheduled (if required for this protocol phase)
+-
+-
+-### Pre-Handoff Validation:
+-Before declaring protocol complete, validate:
++### 9.1 Continuous Improvement Validation
++**[MUST]** Verify improvement tracking:
+ 
+-- [ ] All prerequisites were met
+-- [ ] All workflow steps completed successfully
+-- [ ] All quality gates passed (or waivers documented)
+-- [ ] All evidence artifacts captured and stored
+-- [ ] All integration outputs generated
+-- [ ] All automation hooks executed successfully
+-- [ ] Communication log complete
++- **`[CHECK]`** Execution feedback collected and logged
++- **`[CHECK]`** Lessons learned documented in protocol artifacts
++- **`[CHECK]`** Quality metrics captured for improvement tracking
++- **`[CHECK]`** Knowledge base updated with new patterns or insights
++- **`[CHECK]`** Protocol adaptation opportunities identified and logged
++- **`[CHECK]`** Retrospective scheduled (if required for this protocol phase)
++
++### 9.2 Pre-Handoff Validation
++**[MUST]** Before declaring protocol complete, validate:
++
++- **`[CHECK]`** All prerequisites were met
++- **`[CHECK]`** All workflow steps completed successfully
++- **`[CHECK]`** All quality gates passed (or waivers documented)
++- **`[CHECK]`** All evidence artifacts captured and stored
++- **`[CHECK]`** All integration outputs generated
++- **`[CHECK]`** All automation hooks executed successfully
++- **`[CHECK]`** Communication log complete
+ 
+-### Handoff to Protocol 14:
++### 9.3 Handoff to Protocol 14
+ **[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 14: Pre-Deployment Validation & Staging Readiness
+ 
+ **Evidence Package:**
+@@ -426,13 +453,10 @@
+ @apply .cursor/ai-driven-workflow/14-pre-deployment-staging.md
+ ```
+ 
+----
+-
+-## 15. EVIDENCE SUMMARY
+-
+-
++<!-- [Category: GUIDELINES-FORMATS - Documentation Standards] -->
++## 10. EVIDENCE SUMMARY
+ 
+-### Learning and Improvement Mechanisms
++### 10.1 Learning and Improvement Mechanisms
+ 
+ **Feedback Collection:** All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+ 
+@@ -442,8 +466,8 @@
+ 
+ **Adaptation:** Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
+ 
++### 10.2 Generated Artifacts
+ 
+-### Generated Artifacts:
+ | Artifact | Location | Purpose | Consumer |
+ |----------|----------|---------|----------|
+ | `uat-entry-checklist.json` | `.artifacts/uat/` | Confirms prerequisites met | Protocol 20 Gates |
+@@ -452,8 +476,7 @@
+ | `UAT-CLOSURE-PACKAGE.zip` | `.artifacts/uat/` | Formal UAT deliverables | Protocol 15 |
+ | `feedback-notebook.md` | `.artifacts/uat/` | Qualitative insights | Protocol 22 & 14 |
+ 
+-
+-### Traceability Matrix
++### 10.3 Traceability Matrix
+ 
+ **Upstream Dependencies:**
+ - Input artifacts inherit from: [list predecessor protocols]
+@@ -470,20 +493,18 @@
+ - Verification procedure: [describe validation process]
+ - Audit trail: All artifact modifications logged in protocol execution log
+ 
+-### Quality Metrics:
++### 10.4 Quality Metrics
++
+ | Metric | Target | Actual | Status |
+ |--------|--------|--------|--------|
+ | Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+ | Evidence Completeness | 100% | [TBD] | ⏳ |
+ | Integration Integrity | 100% | [TBD] | ⏳ |
+ 
++<!-- [Category: META-FORMATS - Protocol Analysis] -->
++## 11. REASONING & COGNITIVE PROCESS
+ 
+----
+-
+-
+-## REASONING & COGNITIVE PROCESS
+-
+-### Reasoning Patterns
++### 11.1 Reasoning Patterns
+ 
+ **Primary Reasoning Pattern: Systematic Execution**
+ - Execute protocol steps sequentially with validation at each checkpoint
+@@ -496,7 +517,7 @@
+ - Quarterly review identifies pattern weaknesses and optimization opportunities
+ - Iterate patterns based on empirical evidence from completed executions
+ 
+-### Decision Logic
++### 11.2 Decision Logic
+ 
+ #### Decision Point 1: Execution Readiness
+ **Context:** Determining if prerequisites are met to begin protocol execution
+@@ -512,7 +533,7 @@
+ 
+ **Logging:** Record decision and prerequisites status in execution log
+ 
+-### Root Cause Analysis Framework
++### 11.3 Root Cause Analysis Framework
+ 
+ When protocol execution encounters blockers or quality gate failures:
+ 
+@@ -532,7 +553,7 @@
+ 4. **Implement Fix:** Update protocol, re-engage stakeholders, adjust execution
+ 5. **Validate Fix:** Re-run quality gates, confirm resolution
+ 
+-### Learning Mechanisms
++### 11.4 Learning Mechanisms
+ 
+ #### Feedback Loops
+ **Purpose:** Establish continuous feedback collection to inform protocol improvements.
+@@ -566,7 +587,7 @@
+ - **Workflow optimization:** Streamline steps based on historical efficiency data
+ - **Tool selection:** Choose optimal automation based on available resources
+ 
+-### Meta-Cognition
++### 11.5 Meta-Cognition
+ 
+ #### Self-Awareness and Process Awareness
+ **Purpose:** Enable AI to maintain explicit awareness of execution state and limitations.

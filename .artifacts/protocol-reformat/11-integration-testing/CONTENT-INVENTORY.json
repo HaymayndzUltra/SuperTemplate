@@ -1,0 +1,69 @@
+{
+  "protocol_name": "Protocol 11: Integration Testing & System Validation",
+  "total_lines": 404,
+  "content_summary": {
+    "prerequisites_count": 9,
+    "workflow_steps": 10,
+    "quality_gates": 4,
+    "communication_examples": 10,
+    "automation_hooks": 11,
+    "handoff_items": 9,
+    "reasoning_blocks": 5,
+    "decision_points": 1,
+    "learning_mechanisms": 4
+  },
+  "artifact_paths": [
+    ".artifacts/protocol-15/integration-scope-matrix.json",
+    ".artifacts/protocol-15/environment-validation-report.json",
+    ".artifacts/protocol-15/integration-test-plan.md",
+    ".artifacts/protocol-15/contract-validation-results.json",
+    ".artifacts/protocol-15/test-execution-report.json",
+    ".artifacts/protocol-15/defect-log.csv",
+    ".artifacts/protocol-15/integration-evidence-manifest.json",
+    ".artifacts/protocol-15/integration-signoff.json",
+    ".artifacts/protocol-15/regression-summary.md",
+    ".artifacts/protocol-15/forward-recommendations.md",
+    ".artifacts/protocol-15/observability-readiness.md",
+    ".artifacts/protocol-15/test-data-inventory.md",
+    ".artifacts/protocol-15/manual-test-report.md",
+    ".artifacts/protocol-15/manual-approval-log.md",
+    ".artifacts/protocol-15/manual-environment-check.md"
+  ],
+  "script_references": [
+    "scripts/validate_environment.py",
+    "scripts/run_contract_tests.py",
+    "scripts/generate_artifact_manifest.py",
+    "scripts/validate_prerequisites_9.py",
+    "scripts/aggregate_evidence_9.py",
+    "scripts/run_protocol_11_gates.py"
+  ],
+  "gate_definitions": [
+    "Scope Alignment Gate",
+    "Contract Assurance Gate",
+    "Execution Integrity Gate",
+    "Sign-Off & Handoff Gate"
+  ],
+  "automation_commands": [
+    "python scripts/validate_environment.py --env integration --output .artifacts/protocol-15/environment-validation-report.json",
+    "python scripts/run_contract_tests.py --env integration --output .artifacts/protocol-15/contract-validation-results.json",
+    "pytest -m integration --json-report --json-report-file .artifacts/protocol-15/test-execution-report.json",
+    "python scripts/generate_artifact_manifest.py --input .artifacts/protocol-15/ --output .artifacts/protocol-15/integration-evidence-manifest.json",
+    "@apply .cursor/ai-driven-workflow/12-quality-audit.md"
+  ],
+  "markers_count": {
+    "STRICT": 0,
+    "MUST": 0,
+    "GUIDELINE": 0,
+    "MASTER_RAY": 7
+  },
+  "sections": {
+    "prerequisites": true,
+    "workflow": true,
+    "quality_gates": true,
+    "communication_protocols": true,
+    "automation_hooks": true,
+    "handoff_checklist": true,
+    "evidence_summary": true,
+    "reasoning_cognitive_process": true
+  }
+}

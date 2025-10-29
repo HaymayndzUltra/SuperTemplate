@@ -1,0 +1,52 @@
+{
+  "protocol_name": "15-production-deployment",
+  "total_lines": 607,
+  "reasoning_blocks_count": 0,
+  "evidence_requirements_count": 29,
+  "script_references": [
+    "scripts/deploy_*.sh",
+    "scripts/rollback_*.sh", 
+    "scripts/deploy_backend.sh",
+    "scripts/validate_gate_11_readiness.py",
+    "scripts/validate_gate_11_freeze.py",
+    "scripts/validate_gate_11_launch.py",
+    "scripts/validate_gate_11_reporting.py",
+    "scripts/validate_prerequisites_11.py",
+    "scripts/aggregate_evidence_11.py",
+    "scripts/run_protocol_15_gates.py"
+  ],
+  "artifact_paths": [
+    ".artifacts/pre-deployment/deployment-checklist.md",
+    ".artifacts/deployment/deployment-readiness-checklist.json",
+    ".artifacts/deployment/release-manifest.md",
+    ".artifacts/deployment/staging-validation-results.json",
+    ".artifacts/deployment/change-freeze-confirmation.md",
+    ".artifacts/deployment/production-approval.json",
+    ".artifacts/deployment/production-deployment-report.json",
+    ".artifacts/deployment/post-deployment-validation.json",
+    ".artifacts/deployment/deployment-health-log.md",
+    ".artifacts/deployment/DEPLOYMENT-REPORT.md",
+    ".artifacts/deployment/",
+    ".cursor/context-kit/",
+    ".artifacts/protocol-15/manual-validation-log.md",
+    ".cursor/ai-driven-workflow/16-monitoring-observability.md"
+  ],
+  "gate_definitions_count": 4,
+  "automation_hooks_count": 10,
+  "communication_templates_count": 12,
+  "workflow_steps": {
+    "main_steps": 4,
+    "sub_steps": 13,
+    "total_steps": 17
+  },
+  "markers": {
+    "STRICT": 1,
+    "MUST": 9,
+    "GUIDELINE": 3,
+    "CRITICAL": 1
+  },
+  "integration_points": {
+    "inputs_from": 3,
+    "outputs_to": 4
+  }
+}

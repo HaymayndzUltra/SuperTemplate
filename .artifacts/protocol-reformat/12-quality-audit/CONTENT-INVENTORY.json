@@ -1,0 +1,89 @@
+{
+  "protocol_name": "Protocol 12: Quality Audit Orchestrator",
+  "total_lines": 599,
+  "content_summary": {
+    "prerequisites_count": 8,
+    "workflow_steps": 11,
+    "quality_gates": 4,
+    "communication_examples": 11,
+    "automation_hooks": 9,
+    "handoff_items": 13,
+    "reflection_sections": 10,
+    "reasoning_blocks": 5,
+    "decision_points": 1,
+    "learning_mechanisms": 4
+  },
+  "artifact_paths": [
+    ".artifacts/quality-audit/ci-<workflow>-results.json",
+    ".artifacts/quality-audit/ci-workflow-log.txt",
+    ".artifacts/quality-audit/coverage-report.json",
+    ".artifacts/quality-audit/coverage-metadata.yaml",
+    ".artifacts/quality-audit/change-context.json",
+    ".artifacts/quality-audit/mode-resolution.json",
+    ".artifacts/quality-audit/protocol-manifest.json",
+    ".artifacts/quality-audit/execution-log.md",
+    ".artifacts/quality-audit/audit-findings.json",
+    ".artifacts/quality-audit/finding-summary.csv",
+    ".artifacts/quality-audit/comprehensive-trace.json",
+    ".artifacts/quality-audit/quality-audit-manifest.json",
+    ".artifacts/quality-audit/readiness-recommendation.md",
+    ".artifacts/quality-audit/QUALITY-AUDIT-PACKAGE.zip",
+    ".artifacts/quality-audit/manual-validation-log.md",
+    ".cursor/ai-driven-workflow/review-protocols/",
+    ".cursor/context-kit/quality-audit-summary.json"
+  ],
+  "script_references": [
+    "scripts/collect_change_context.py",
+    "scripts/run_comprehensive_review.py",
+    "scripts/run_protocol_4_pre_audit.py",
+    "scripts/validate_router_mapping.py",
+    "scripts/verify_specialized_execution.py",
+    "scripts/validate_gate_4_reporting.py",
+    "scripts/validate_prerequisites_4.py",
+    "scripts/validate_gate_4_pre_audit.py",
+    "scripts/aggregate_evidence_4.py",
+    "scripts/run_protocol_4_gates.py"
+  ],
+  "gate_definitions": [
+    "Pre-Audit Automation Gate",
+    "Routing Integrity Gate",
+    "Execution Completion Gate",
+    "Unified Reporting Gate"
+  ],
+  "automation_commands": [
+    "python scripts/collect_change_context.py --since main --output .artifacts/quality-audit/change-context.json",
+    "python scripts/run_comprehensive_review.py --output .artifacts/quality-audit/comprehensive-trace.json",
+    "python scripts/run_protocol_4_pre_audit.py --coverage-threshold 0.80",
+    "python scripts/validate_router_mapping.py --mode ${MODE}",
+    "python scripts/verify_specialized_execution.py --protocol ${PROTOCOL}",
+    "python scripts/validate_gate_4_reporting.py --threshold 0.95",
+    "@apply .cursor/ai-driven-workflow/13-uat-coordination.md"
+  ],
+  "markers_count": {
+    "STRICT": 2,
+    "MUST": 8,
+    "GUIDELINE": 4,
+    "CRITICAL": 1,
+    "MASTER_RAY": 12
+  },
+  "sections": {
+    "prerequisites": true,
+    "ai_role": true,
+    "workflow": true,
+    "reflection_learning": true,
+    "integration_points": true,
+    "quality_gates": true,
+    "communication_protocols": true,
+    "automation_hooks": true,
+    "handoff_checklist": true,
+    "evidence_summary": true,
+    "reasoning_cognitive_process": true
+  },
+  "specialized_elements": {
+    "router_functionality": true,
+    "mode_determination": true,
+    "specialized_protocol_execution": true,
+    "comprehensive_mode_checks": true,
+    "unified_reporting": true
+  }
+}

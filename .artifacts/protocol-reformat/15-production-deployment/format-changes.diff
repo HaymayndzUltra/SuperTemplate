@@ -1,0 +1,561 @@
+--- ORIGINAL-BACKUP.md	2025-10-29 23:20:32.832631114 +0800
++++ REFORMATTED.md	2025-10-29 23:25:40.725827448 +0800
+@@ -7,29 +7,34 @@
+ 
+ **Purpose:** Execute Unknown Protocol workflow with quality validation and evidence generation.
+ 
+-## PREREQUISITES
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Prerequisites section sets standards and requirements rather than executing workflow -->
++## 1. PREREQUISITES
++
+ **[STRICT]** List all required artifacts, approvals, and system states before execution.
+ 
+-### Required Artifacts
++### 1.1 Required Artifacts
+ - [ ] `PRE-DEPLOYMENT-PACKAGE.zip` from Protocol 14 – readiness evidence bundle
+ - [ ] `readiness-approval.json` from Protocol 14 – stakeholder go decision
+ - [ ] `rollback-verification-report.json` from Protocol 14 – validated rollback plan
+ - [ ] `UAT-CLOSURE-PACKAGE.zip` from Protocol 13 – customer acceptance proof
+ - [ ] Latest release manifest `.artifacts/pre-deployment/deployment-checklist.md`
+ 
+-### Required Approvals
++### 1.2 Required Approvals
+ - [ ] Executive sponsor or Product Owner authorization to deploy to production
+ - [ ] SRE/Operations lead approval confirming monitoring coverage
+ - [ ] Security lead sign-off if release includes security-impacting changes
+ 
+-### System State Requirements
++### 1.3 System State Requirements
+ - [ ] Production environment credentials available with MFA satisfied
+ - [ ] Deployment automation scripts accessible (`scripts/deploy_*.sh`, `scripts/rollback_*.sh`)
+ - [ ] Monitoring dashboards and alerting tools operational for health window
+ 
+ ---
+ 
+-## 11. AI ROLE AND MISSION
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Establishes rules and mission statement, not a workflow execution -->
++## 2. AI ROLE AND MISSION
+ 
+ You are a **Release Manager**. Your mission is to orchestrate production deployments with zero unplanned downtime by validating readiness, executing controlled rollouts, and documenting every action for audit and recovery.
+ 
+@@ -37,9 +42,14 @@
+ 
+ ---
+ 
+-## WORKFLOW
++## 3. WORKFLOW
++
++<!-- [Category: EXECUTION-FORMATS - Mixed variants by step] -->
++
++### 3.1 PHASE 1: Readiness Verification and Approval
+ 
+-### STEP 1: Readiness Verification and Approval
++<!-- [Category: EXECUTION-BASIC] -->
++<!-- Why: Simple validation workflow with straightforward actions and evidence requirements -->
+ 
+ 1. **`[MUST]` Validate Pre-Deployment Evidence:**
+    * **Action:** Confirm Protocol 21 and 15 artifacts are complete, current, and free of blocking issues.
+@@ -64,7 +74,10 @@
+      - On-call: SRE (Alex), Product (Taylor)
+      ```
+ 
+-### STEP 2: Staging Verification Confirmation
++### 3.2 PHASE 2: Staging Verification Confirmation
++
++<!-- [Category: EXECUTION-BASIC] -->
++<!-- Why: Direct verification steps without complex decision-making -->
+ 
+ 1. **`[MUST]` Reconfirm Staging Health:**
+    * **Action:** Review Protocol 21 staging run logs and optionally rerun quick validation to ensure nothing drifted.
+@@ -87,10 +100,26 @@
+      bash scripts/deploy_backend.sh --env production --release ${TAG} --dry-run
+      ```
+ 
+-### STEP 3: Production Deployment & Immediate Validation
++### 3.3 PHASE 3: Production Deployment & Immediate Validation
++
++<!-- [Category: EXECUTION-REASONING] -->
++<!-- Why: Critical go/no-go deployment decisions with documented alternatives and risk assessment -->
+ 
+ 1. **`[MUST]` Request Production Approval:**
+    * **Action:** Present readiness checklist, staging evidence, and rollback plan to approvers; capture go/no-go decision.
++   
++   **[REASONING]:**
++   - **Premises:** All readiness gates passed, staging validation successful, rollback plan tested
++   - **Constraints:** Must have documented approval before production changes
++   - **Alternatives Considered:**
++     * **A)** Proceed with deployment - Selected if all criteria met
++     * **B)** Delay deployment - If any concerns raised by stakeholders
++     * **C)** Cancel deployment - If critical issues discovered
++   - **Decision:** Proceed only with unanimous approval from required stakeholders
++   - **Evidence:** Readiness checklist, staging results, rollback verification
++   - **Risks & Mitigations:**
++     * **Risk:** Incomplete approval chain → **Mitigation:** Validate all approvers before proceeding
++   
+    * **Communication:** 
+      > "[APPROVAL REQUEST] All readiness gates passed. Approve production deployment? (yes/no)"
+    * **Halt condition:** Do not continue without recorded approval.
+@@ -117,7 +146,10 @@
+      [RAY ANNOUNCEMENT] Production deployment 50% complete. No errors observed. Next update in 10 minutes.
+      ```
+ 
+-### STEP 4: Stabilization Window and Documentation
++### 3.4 PHASE 4: Stabilization Window and Documentation
++
++<!-- [Category: EXECUTION-BASIC] -->
++<!-- Why: Monitoring and documentation steps, straightforward tracking and reporting -->
+ 
+ 1. **`[MUST]` Monitor Health Window:**
+    * **Action:** Track metrics during agreed soak period, documenting anomalies and decisions.
+@@ -143,10 +175,11 @@
+ 
+ ---
+ 
++<!-- [Category: META-FORMATS] -->
++<!-- Why: Protocol analysis and improvement framework, not direct execution -->
++## 4. REFLECTION & LEARNING
+ 
+-## REFLECTION & LEARNING
+-
+-### Retrospective Guidance
++### 4.1 Retrospective Guidance
+ 
+ After completing protocol execution (successful or halted), conduct retrospective:
+ 
+@@ -172,138 +205,141 @@
+ 
+ **Output:** Retrospective report stored in protocol execution artifacts
+ 
+-### Continuous Improvement Opportunities
++### 4.2 Continuous Improvement Opportunities
+ 
+-#### Identified Improvement Opportunities
++#### 4.2.1 Identified Improvement Opportunities
+ - Identify based on protocol-specific execution patterns
+ 
+-#### Process Optimization Tracking
++#### 4.2.2 Process Optimization Tracking
+ - Track key performance metrics over time
+ - Monitor quality gate pass rates and execution velocity
+ - Measure downstream satisfaction and rework requests
+ - Identify automation opportunities
+ 
+-#### Tracking Mechanisms and Metrics
++#### 4.2.3 Tracking Mechanisms and Metrics
+ - Quarterly metrics dashboard with trends
+ - Improvement tracking log with before/after comparisons
+ - Evidence of improvement validation
+ 
+-#### Evidence of Improvement and Validation
++#### 4.2.4 Evidence of Improvement and Validation
+ - Metric trends showing improvement trajectories
+ - A/B testing results for protocol changes
+ - Stakeholder feedback scores
+ - Downstream protocol satisfaction ratings
+ 
+-### System Evolution
++### 4.3 System Evolution
+ 
+-#### Version History
++#### 4.3.1 Version History
+ - Current version with implementation date
+ - Previous versions with change descriptions
+ - Deprecation notices for obsolete approaches
+ 
+-#### Rationale for Changes
++#### 4.3.2 Rationale for Changes
+ - Documented reasons for each protocol evolution
+ - Evidence supporting the change decision
+ - Expected impact assessment
+ 
+-#### Impact Assessment
++#### 4.3.3 Impact Assessment
+ - Measured outcomes of protocol changes
+ - Comparison against baseline metrics
+ - Validation of improvement hypotheses
+ 
+-#### Rollback Procedures
++#### 4.3.4 Rollback Procedures
+ - Process for reverting to previous protocol version
+ - Triggers for initiating rollback
+ - Communication plan for rollback events
+ 
+-### Knowledge Capture and Organizational Learning
++### 4.4 Knowledge Capture and Organizational Learning
+ 
+-#### Lessons Learned Repository
++#### 4.4.1 Lessons Learned Repository
+ Maintain lessons learned with structure:
+ - Project/execution context
+ - Insight or discovery
+ - Action taken based on insight
+ - Outcome and applicability
+ 
+-#### Knowledge Base Growth
++#### 4.4.2 Knowledge Base Growth
+ - Systematic extraction of patterns from executions
+ - Scheduled knowledge base updates
+ - Quality metrics for knowledge base content
+ 
+-#### Knowledge Sharing Mechanisms
++#### 4.4.3 Knowledge Sharing Mechanisms
+ - Internal distribution channels
+ - Onboarding integration
+ - Cross-team learning sessions
+ - Access controls and search tools
+ 
+-### Future Planning
++### 4.5 Future Planning
+ 
+-#### Roadmap
++#### 4.5.1 Roadmap
+ - Planned enhancements with timelines
+ - Integration with other protocols
+ - Automation expansion plans
+ 
+-#### Priorities
++#### 4.5.2 Priorities
+ - Ranked list of improvement initiatives
+ - Resource requirements
+ - Expected benefits
+ 
+-#### Resource Requirements
++#### 4.5.3 Resource Requirements
+ - Development effort estimates
+ - Tool or infrastructure needs
+ - Team capacity planning
+ 
+-#### Timeline
++#### 4.5.4 Timeline
+ - Milestone dates for major enhancements
+ - Dependencies on other work
+ - Risk buffers and contingencies
+ 
+-
+ ---
+ 
+-## 11. INTEGRATION POINTS
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Standards for input/output artifacts and integration specifications -->
++## 5. INTEGRATION POINTS
+ 
+-### Inputs From:
++### 5.1 Inputs From:
+ - **Protocol 09**: `environment-validation-report.json` – baseline infrastructure readiness
+ - **Protocol 21**: `PRE-DEPLOYMENT-PACKAGE.zip`, `readiness-approval.json`, `deployment-checklist.md`
+ - **Protocol 20**: `UAT-CLOSURE-PACKAGE.zip`, `uat-approval-record.json`
+ 
+-### Outputs To:
++### 5.2 Outputs To:
+ - **Protocol 19**: `post-deployment-validation.json`, `deployment-health-log.md`, updated monitoring notes
+ - **Protocol 20**: `production-deployment-report.json`, `rollback-plan.md` (if triggered)
+ - **Protocol 22**: `DEPLOYMENT-REPORT.md`, `retrospective-inputs.json`
+ - **Protocol 21**: Metrics snapshot for performance baseline adjustments
+ 
+-### Artifact Storage Locations:
++### 5.3 Artifact Storage Locations:
+ - `.artifacts/deployment/` - Primary evidence storage
+ - `.cursor/context-kit/` - Context and configuration artifacts
+ 
+ ---
+ 
+-## 11. QUALITY GATES
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Defines validation standards and criteria, not executing validation -->
++## 6. QUALITY GATES
+ 
+-### Gate 1: Readiness Confirmation Gate
++### 6.1 Gate 1: Readiness Confirmation Gate
+ - **Criteria**: All prerequisite artifacts validated; approvals recorded; rollback plan verified.
+ - **Evidence**: `deployment-readiness-checklist.json`, `release-manifest.md`.
+ - **Pass Threshold**: Checklist completion = 100%.
+ - **Failure Handling**: Halt deployment; resolve missing items; reschedule if necessary.
+ - **Automation**: `python scripts/validate_gate_11_readiness.py --checklist .artifacts/deployment/deployment-readiness-checklist.json`
+ 
+-### Gate 2: Approval & Change Freeze Gate
++### 6.2 Gate 2: Approval & Change Freeze Gate
+ - **Criteria**: Staging health reconfirmed; change freeze acknowledged by all stakeholders.
+ - **Evidence**: `staging-validation-results.json`, `change-freeze-confirmation.md`.
+ - **Pass Threshold**: Freeze acknowledgements = 100% of required stakeholders.
+ - **Failure Handling**: Delay deployment; obtain acknowledgements; repeat freeze confirmation.
+ - **Automation**: `python scripts/validate_gate_11_freeze.py --stakeholders config/release-approvers.yaml`
+ 
+-### Gate 3: Production Launch Gate
++### 6.3 Gate 3: Production Launch Gate
+ - **Criteria**: Production approval recorded; deployment completed; immediate checks passed.
+ - **Evidence**: `production-approval.json`, `production-deployment-report.json`, `post-deployment-validation.json`.
+ - **Pass Threshold**: 0 blocking incidents; validation success rate ≥ 95%.
+ - **Failure Handling**: Execute rollback, notify stakeholders, transition to Protocol 20.
+ - **Automation**: `python scripts/validate_gate_11_launch.py --validation-threshold 0.95`
+ 
+-### Gate 4: Stabilization & Reporting Gate
++### 6.4 Gate 4: Stabilization & Reporting Gate
+ - **Criteria**: Health window metrics within thresholds; release report compiled; retrospective inputs documented.
+ - **Evidence**: `deployment-health-log.md`, `DEPLOYMENT-REPORT.md`, `retrospective-inputs.json`.
+ - **Pass Threshold**: Metrics within SLO tolerances; report completeness ≥ 95%.
+@@ -312,9 +348,11 @@
+ 
+ ---
+ 
+-## 11. COMMUNICATION PROTOCOLS
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Templates and standards for communication, not execution -->
++## 7. COMMUNICATION PROTOCOLS
+ 
+-### Status Announcements:
++### 7.1 Status Announcements:
+ ```
+ [MASTER RAY™ | PHASE 1 START] - Verifying deployment readiness artifacts...
+ [MASTER RAY™ | PHASE 2 START] - Reconfirming staging health prior to production launch...
+@@ -324,7 +362,7 @@
+ [RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
+ ```
+ 
+-### Validation Prompts:
++### 7.2 Validation Prompts:
+ ```
+ [RAY CONFIRMATION REQUIRED]
+ > "Production deployment executed. Evidence ready:
+@@ -334,7 +372,7 @@
+ > Confirm readiness to transition to Protocol 19?"
+ ```
+ 
+-### Error Handling:
++### 7.3 Error Handling:
+ ```
+ [RAY GATE FAILED: Production Launch Gate]
+ > "Quality gate 'Production Launch Gate' failed.
+@@ -345,13 +383,13 @@
+ 
+ ---
+ 
+-## 11. AUTOMATION HOOKS
+-
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Reference standards for scripts and CI/CD integration -->
++## 8. AUTOMATION HOOKS
+ 
+ **Registry Reference:** See `scripts/script-registry.json` for complete script inventory, ownership, and governance context.
+ 
+-
+-### Validation Scripts:
++### 8.1 Validation Scripts:
+ ```bash
+ # Prerequisite validation
+ python scripts/validate_prerequisites_11.py
+@@ -364,7 +402,7 @@
+ python scripts/aggregate_evidence_11.py --output .artifacts/deployment/
+ ```
+ 
+-### CI/CD Integration:
++### 8.2 CI/CD Integration:
+ ```yaml
+ # GitHub Actions workflow integration
+ name: Protocol 15 Validation
+@@ -382,7 +420,7 @@
+         run: python scripts/run_protocol_15_gates.py
+ ```
+ 
+-### Manual Fallbacks:
++### 8.3 Manual Fallbacks:
+ When automation is unavailable, execute manual validation:
+ 1. Review readiness checklist and approvals manually via documented evidence.
+ 2. Observe deployment via war-room call, logging commands in spreadsheet.
+@@ -390,11 +428,11 @@
+ 
+ ---
+ 
+-## 11. HANDOFF CHECKLIST
++<!-- [Category: EXECUTION-BASIC] -->
++<!-- Why: Simple checklist workflow with validation items -->
++## 9. HANDOFF CHECKLIST
+ 
+-
+-
+-### Continuous Improvement Validation:
++### 9.1 Continuous Improvement Validation:
+ - [ ] Execution feedback collected and logged
+ - [ ] Lessons learned documented in protocol artifacts
+ - [ ] Quality metrics captured for improvement tracking
+@@ -402,8 +440,7 @@
+ - [ ] Protocol adaptation opportunities identified and logged
+ - [ ] Retrospective scheduled (if required for this protocol phase)
+ 
+-
+-### Pre-Handoff Validation:
++### 9.2 Pre-Handoff Validation:
+ Before declaring protocol complete, validate:
+ 
+ - [ ] All prerequisites were met
+@@ -414,7 +451,7 @@
+ - [ ] All automation hooks executed successfully
+ - [ ] Communication log complete
+ 
+-### Handoff to Protocol 16:
++### 9.3 Handoff to Protocol 16:
+ **[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 16: Monitoring & Observability
+ 
+ **Evidence Package:**
+@@ -429,11 +466,11 @@
+ 
+ ---
+ 
+-## 11. EVIDENCE SUMMARY
+-
+-
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Documentation standards and metrics tracking -->
++## 10. EVIDENCE SUMMARY
+ 
+-### Learning and Improvement Mechanisms
++### 10.1 Learning and Improvement Mechanisms
+ 
+ **Feedback Collection:** All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+ 
+@@ -443,8 +480,7 @@
+ 
+ **Adaptation:** Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
+ 
+-
+-### Generated Artifacts:
++### 10.2 Generated Artifacts:
+ | Artifact | Location | Purpose | Consumer |
+ |----------|----------|---------|----------|
+ | `deployment-readiness-checklist.json` | `.artifacts/deployment/` | Validates prerequisites | Protocol 15 Gates |
+@@ -453,8 +489,7 @@
+ | `deployment-health-log.md` | `.artifacts/deployment/` | Stabilization monitoring notes | Protocol 19/13 |
+ | `DEPLOYMENT-REPORT.md` | `.artifacts/deployment/` | Final release report | Protocol 22 |
+ 
+-
+-### Traceability Matrix
++### 10.3 Traceability Matrix
+ 
+ **Upstream Dependencies:**
+ - Input artifacts inherit from: [list predecessor protocols]
+@@ -471,20 +506,20 @@
+ - Verification procedure: [describe validation process]
+ - Audit trail: All artifact modifications logged in protocol execution log
+ 
+-### Quality Metrics:
++### 10.4 Quality Metrics:
+ | Metric | Target | Actual | Status |
+ |--------|--------|--------|--------|
+ | Gate 3 Pass Rate | ≥ 98% | [TBD] | ⏳ |
+ | Evidence Completeness | 100% | [TBD] | ⏳ |
+ | Integration Integrity | 100% | [TBD] | ⏳ |
+ 
+-
+ ---
+ 
++<!-- [Category: META-FORMATS] -->
++<!-- Why: Meta-level protocol analysis and cognitive patterns -->
++## 11. REASONING & COGNITIVE PROCESS
+ 
+-## REASONING & COGNITIVE PROCESS
+-
+-### Reasoning Patterns
++### 11.1 Reasoning Patterns
+ 
+ **Primary Reasoning Pattern: Systematic Execution**
+ - Execute protocol steps sequentially with validation at each checkpoint
+@@ -497,9 +532,9 @@
+ - Quarterly review identifies pattern weaknesses and optimization opportunities
+ - Iterate patterns based on empirical evidence from completed executions
+ 
+-### Decision Logic
++### 11.2 Decision Logic
+ 
+-#### Decision Point 1: Execution Readiness
++#### 11.2.1 Decision Point 1: Execution Readiness
+ **Context:** Determining if prerequisites are met to begin protocol execution
+ 
+ **Decision Criteria:**
+@@ -513,7 +548,7 @@
+ 
+ **Logging:** Record decision and prerequisites status in execution log
+ 
+-### Root Cause Analysis Framework
++### 11.3 Root Cause Analysis Framework
+ 
+ When protocol execution encounters blockers or quality gate failures:
+ 
+@@ -533,9 +568,9 @@
+ 4. **Implement Fix:** Update protocol, re-engage stakeholders, adjust execution
+ 5. **Validate Fix:** Re-run quality gates, confirm resolution
+ 
+-### Learning Mechanisms
++### 11.4 Learning Mechanisms
+ 
+-#### Feedback Loops
++#### 11.4.1 Feedback Loops
+ **Purpose:** Establish continuous feedback collection to inform protocol improvements.
+ 
+ - **Execution feedback:** Collect outcome data after each protocol execution
+@@ -543,7 +578,7 @@
+ - **Downstream protocol feedback:** Capture issues reported by dependent protocols
+ - **Continuous monitoring:** Automated alerts for anomalies and degradation
+ 
+-#### Improvement Tracking
++#### 11.4.2 Improvement Tracking
+ **Purpose:** Systematically track protocol effectiveness improvements over time.
+ 
+ - **Metrics tracking:** Monitor key performance indicators in quarterly dashboards
+@@ -551,7 +586,7 @@
+ - **Effectiveness measurement:** Compare before/after metrics for each improvement
+ - **Continuous monitoring:** Automated alerts when metrics degrade
+ 
+-#### Knowledge Base Integration
++#### 11.4.3 Knowledge Base Integration
+ **Purpose:** Build and leverage institutional knowledge to accelerate protocol quality.
+ 
+ - **Pattern library:** Maintain repository of successful execution patterns
+@@ -559,7 +594,7 @@
+ - **Common blockers:** Catalog typical issues with proven resolutions
+ - **Industry templates:** Specialized variations for specific domains
+ 
+-#### Adaptation Mechanisms
++#### 11.4.4 Adaptation Mechanisms
+ **Purpose:** Enable protocol to automatically adjust based on context and patterns.
+ 
+ - **Context adaptation:** Adjust execution based on project type, complexity, constraints
+@@ -567,9 +602,9 @@
+ - **Workflow optimization:** Streamline steps based on historical efficiency data
+ - **Tool selection:** Choose optimal automation based on available resources
+ 
+-### Meta-Cognition
++### 11.5 Meta-Cognition
+ 
+-#### Self-Awareness and Process Awareness
++#### 11.5.1 Self-Awareness and Process Awareness
+ **Purpose:** Enable AI to maintain explicit awareness of execution state and limitations.
+ 
+ **Awareness Statement Protocol:**
+@@ -581,7 +616,7 @@
+ - Known limitations and assumptions
+ - Required inputs for next steps
+ 
+-#### Process Monitoring and Progress Tracking
++#### 11.5.2 Process Monitoring and Progress Tracking
+ **Purpose:** Continuously track execution status and detect anomalies.
+ 
+ - **Progress tracking:** Update execution status after each step
+@@ -589,7 +624,7 @@
+ - **Quality monitoring:** Track gate pass rates and artifact completeness
+ - **Anomaly detection:** Alert on unexpected patterns or deviations
+ 
+-#### Self-Correction Protocols
++#### 11.5.3 Self-Correction Protocols
+ **Purpose:** Enable autonomous detection and correction of execution issues.
+ 
+ - **Halt condition detection:** Recognize blockers and escalate appropriately
+@@ -597,7 +632,7 @@
+ - **Anomaly response:** Diagnose and propose fixes for unexpected conditions
+ - **Recovery procedures:** Maintain execution state for graceful resume
+ 
+-#### Continuous Improvement Integration
++#### 11.5.4 Continuous Improvement Integration
+ **Purpose:** Systematically capture lessons and evolve protocol effectiveness.
+ 
+ - **Retrospective execution:** Conduct after-action reviews post-completion

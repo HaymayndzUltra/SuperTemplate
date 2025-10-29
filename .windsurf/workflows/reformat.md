@@ -1,5 +1,5 @@
 ---
-description: auto_execution_mode: 3
+description:  Execute this batch reformat by reading this file and following each step sequentially
 auto_execution_mode: 3
 ---
 
@@ -183,13 +183,3 @@ cat .artifacts/protocol-reformat/BATCH-PROGRESS-SUMMARY.md
 ### Skip Completed Protocols
 When executing this batch reformat command, manually skip steps that show ✅ COMPLETE in the progress summary.
 
-### Current Status (as of last run)
-- ✅ Protocol 02 - COMPLETE
-- ✅ Protocol 03 - COMPLETE  
-- ✅ Protocol 04 - COMPLETE
-- ✅ Protocol 05 - COMPLETE
-- 🔄 Protocol 06 - IN PROGRESS (only backup/inventory/format analysis generated)
-- ⏳ Protocols 07-23 - PENDING
-
-### To Continue
-- Start from **STEP 5 (Protocol 06)** or the first non-completed protocol in the progress summary.
