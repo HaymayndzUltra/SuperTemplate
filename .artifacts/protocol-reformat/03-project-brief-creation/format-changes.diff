@@ -1,0 +1,100 @@
+--- ORIGINAL-BACKUP.md	2025-10-29 18:04:00.351089414 +0800
++++ REFORMATTED.md	2025-10-29 18:10:35.262688357 +0800
+@@ -7,112 +7,153 @@
+ 
+ **Purpose:** Execute PROJECT BRIEF CREATION workflow with quality validation and evidence generation.
+ 
+-## PREREQUISITES
+-**[STRICT]** List all required artifacts, approvals, and system states before execution.
++## 1. PREREQUISITES
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Setting rules and standards for required artifacts, approvals, and system states before execution -->
++
++**[STRICT] All prerequisites must be met before protocol execution.**
+ 
+ ### Required Artifacts
+-- [ ] `client-discovery-form.md` from Protocol 02 (validated functional requirements)
+-- [ ] `scope-clarification.md` from Protocol 02 (technical constraints)
+-- [ ] `communication-plan.md` and `timeline-discussion.md` from Protocol 02 (collaboration expectations)
+-- [ ] `PROPOSAL.md` and `proposal-summary.json` from Protocol 01 (accepted commitments)
++**[STRICT]** The following artifacts must exist and be validated:
++- `client-discovery-form.md` from Protocol 02 (validated functional requirements)
++- `scope-clarification.md` from Protocol 02 (technical constraints)
++- `communication-plan.md` and `timeline-discussion.md` from Protocol 02 (collaboration expectations)
++- `PROPOSAL.md` and `proposal-summary.json` from Protocol 01 (accepted commitments)
+ 
+ ### Required Approvals
+-- [ ] Client confirmation captured in `discovery-recap.md`
+-- [ ] Internal solutions architect sign-off that discovery evidence is complete
++**[STRICT]** The following approvals must be obtained:
++- Client confirmation captured in `discovery-recap.md`
++- Internal solutions architect sign-off that discovery evidence is complete
+ 
+ ### System State Requirements
+-- [ ] Access to project brief templates under `.templates/briefs/`
+-- [ ] Automation scripts `assemble_project_brief.py` and `validate_brief_structure.py` available
++**[STRICT]** System must meet the following conditions:
++- Access to project brief templates under `.templates/briefs/`
++- Automation scripts `assemble_project_brief.py` and `validate_brief_structure.py` available
+ 
+ ---
+ 
+-## 01. AI ROLE AND MISSION
++## 2. AI ROLE AND MISSION
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Establishing role definition and mission standards -->
+ 
+ You are a **Freelance Solutions Architect**. Your mission is to convert validated discovery intelligence into a single source of truth—an implementation-ready Project Brief that downstream teams can trust.
+ 
+-**🚫 [CRITICAL] Do not finalize the brief without recorded client approval and reconciliation against discovery scope.**
++**[CRITICAL] Do not finalize the brief without recorded client approval and reconciliation against discovery scope.**
+ 
+ ---
+ 
+-## WORKFLOW
++## 3. WORKFLOW
++<!-- [Category: EXECUTION-FORMATS - Mixed variants by step] -->
+ 
+-### STEP 1: Discovery Validation
++### PHASE 1: Discovery Validation
++<!-- [Category: EXECUTION-BASIC] -->
++<!-- Why: Simple workflow steps for validating discovery artifacts -->
+ 
+ 1. **`[MUST]` Audit Required Artifacts:**
+    * **Action:** Confirm discovery artifacts exist, contain approved content, and align with accepted proposal commitments; log results in `project-brief-validation-report.json`.
+-   * **Communication:** 
+-     > "[MASTER RAY™ | PHASE 1 START] - Auditing discovery artifacts for completeness and alignment."
+-   * **Halt condition:** Stop if any artifact is missing, empty, or lacks approval evidence.
+    * **Evidence:** `.artifacts/protocol-03/project-brief-validation-report.json`
++   * **Validation:** All required artifacts present with validation score ≥ 0.95.
++   
++   **Communication:** 
++   > "[MASTER RAY™ | PHASE 1 START] - Auditing discovery artifacts for completeness and alignment."
++   
++   **Halt condition:** Stop if any artifact is missing, empty, or lacks approval evidence.
+ 
+ 2. **`[MUST]` Resolve Inconsistencies:**
+    * **Action:** Cross-check feature lists, constraints, and expectations; record discrepancies in `validation-issues.md` and resolve with stakeholders before proceeding.
+-   * **Communication:** 
+-     > "Highlighting discovery inconsistencies for resolution before brief assembly."
+    * **Evidence:** `.artifacts/protocol-03/validation-issues.md`
++   * **Validation:** All discrepancies documented and resolved or waived.
++   
++   **Communication:** 
++   > "Highlighting discovery inconsistencies for resolution before brief assembly."
+ 
+ 3. **`[GUIDELINE]` Capture Context Summary:**
+    * **Action:** Summarize client goals, audience, and success metrics in `context-summary.md` for quick reference.
+-   * **Example:**
+-     ```markdown
+-     **Client Goals**
+-     - Reduce onboarding time from 7 days to 2 days
+-     - Support 10k MAU within first quarter
+-     ```
++   * **Evidence:** `.artifacts/protocol-03/context-summary.md`
++   * **Validation:** Summary includes goals, audience, and at least 2 success metrics.
++   
++   **Example (DO):**
++   ```markdown
++   **Client Goals**
++   - Reduce onboarding time from 7 days to 2 days

@@ -1,5 +1,4 @@
-
-usage: "/apply-reformat-protocol-to.md [protocol-path]"
+usage: "@apply .cursor/commands/apply-reformat-protocol-to.md --file=.cursor/ai-driven-workflow/[protocol].md"
 
 
 # COMMAND: REFORMAT PROTOCOL WITH CATEGORY-BASED FORMATS
@@ -28,12 +27,27 @@ When invoking this command, provide:
 
 **Example Invocation:**
 ```markdown
-@apply .cursor/commands/reformat-protocol.md --file=.cursor/ai-driven-workflow/01-client-proposal-generation.md
+@apply .cursor/commands/apply-reformat-protocol-to.md --file=.cursor/ai-driven-workflow/01-client-proposal-generation.md
 ```
 
 ---
 
 ## 🛠️ Execution Steps
+
+### Output Directory (Single Folder)
+
+All generated outputs must be placed under a single folder to avoid clutter.
+
+- Root: `.artifacts/protocol-reformat/[protocol-stem]/`
+- Files:
+  - `ORIGINAL-BACKUP.md`
+  - `CONTENT-INVENTORY.json`
+  - `FORMAT-ANALYSIS.md`
+  - `format-changes.diff`
+  - `validation-report.md`
+  - `REFORMATTED.md` (optional working file before overwrite)
+
+Note: `[protocol-stem]` is the basename of the protocol file without extension (e.g., `01-client-proposal-generation`).
 
 ### STEP 1: Content Inventory & Backup
 
@@ -53,11 +67,12 @@ When invoking this command, provide:
 
 3. **Create backup file:**
    ```bash
-   cp [protocol-name].md [protocol-name]-ORIGINAL-BACKUP.md
+   mkdir -p .artifacts/protocol-reformat/[protocol-stem]
+   cp [protocol-path] .artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
    ```
 
 4. **Generate content inventory:**
-   Create `[protocol-name]-CONTENT-INVENTORY.json` containing:
+   Create `.artifacts/protocol-reformat/[protocol-stem]/CONTENT-INVENTORY.json` containing:
    ```json
    {
      "reasoning_blocks_count": 12,
@@ -258,19 +273,14 @@ For each section, add an HTML comment at the beginning:
 
 5. **Content Count Validation:**
    ```bash
-   # Count key elements
-   grep -c "\[REASONING\]" [original].md
-   grep -c "\[REASONING\]" [reformatted].md
-   # Must match
-   
-   grep -c "\.artifacts/" [original].md
-   grep -c "\.artifacts/" [reformatted].md
-   # Must match
-   
-   grep -c "scripts/" [original].md
-   grep -c "scripts/" [reformatted].md
-   # Must match
-   ```
+# Count key elements using consolidated paths
+ORIG=.artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
+REF=[protocol-path]
+
+grep -c "\[REASONING\]" "$ORIG"; grep -c "\[REASONING\]" "$REF"  # Must match
+grep -c "\.artifacts/" "$ORIG"; grep -c "\.artifacts/" "$REF"      # Must match
+grep -c "scripts/" "$ORIG"; grep -c "scripts/" "$REF"                # Must match
+```
 
 ---
 
@@ -280,31 +290,32 @@ For each section, add an HTML comment at the beginning:
 
 ```bash
 # 1. Compare structure changes only (ignore whitespace)
-diff -u [protocol-name]-ORIGINAL-BACKUP.md [protocol-name]-REFORMATTED.md > [protocol-name]-format-changes.diff
+diff -u .artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md \
+       [protocol-path] > .artifacts/protocol-reformat/[protocol-stem]/format-changes.diff
 
 # 2. Verify no content loss - Reasoning blocks
 echo "Original reasoning blocks:"
-grep -c "REASONING" [protocol-name]-ORIGINAL-BACKUP.md
+grep -c "REASONING" .artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
 echo "Reformatted reasoning blocks:"
-grep -c "REASONING" [protocol-name]-REFORMATTED.md
+grep -c "REASONING" [protocol-path]
 
 # 3. Verify no content loss - Evidence paths
 echo "Original evidence paths:"
-grep -c ".artifacts/" [protocol-name]-ORIGINAL-BACKUP.md
+grep -c ".artifacts/" .artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
 echo "Reformatted evidence paths:"
-grep -c ".artifacts/" [protocol-name]-REFORMATTED.md
+grep -c ".artifacts/" [protocol-path]
 
 # 4. Verify no content loss - Script references
 echo "Original script references:"
-grep -c "scripts/" [protocol-name]-ORIGINAL-BACKUP.md
+grep -c "scripts/" .artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
 echo "Reformatted script references:"
-grep -c "scripts/" [protocol-name]-REFORMATTED.md
+grep -c "scripts/" [protocol-path]
 
 # 5. Verify no content loss - Gates
 echo "Original gates:"
-grep -c "Gate [0-9]:" [protocol-name]-ORIGINAL-BACKUP.md
+grep -c "Gate [0-9]:" .artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
 echo "Reformatted gates:"
-grep -c "Gate [0-9]:" [protocol-name]-REFORMATTED.md
+grep -c "Gate [0-9]:" [protocol-path]
 ```
 
 ---
@@ -343,16 +354,21 @@ grep -c "Gate [0-9]:" [protocol-name]-REFORMATTED.md
 
 ## 📤 Output Deliverables
 
-After successful execution, generate:
+After successful execution, generate (centralized in `.artifacts/protocol-reformat/[protocol-stem]/`):
 
 1. **Reformatted Protocol:**  
-   `[protocol-name].md` (overwrites original after validation)
+   `[protocol-path]` (overwrites original after validation)
 
-2. **Backup:**  
-   `[protocol-name]-ORIGINAL-BACKUP.md`
+2. **Output Folder:**  
+   `.artifacts/protocol-reformat/[protocol-stem]/` containing:
+   - `ORIGINAL-BACKUP.md`
+   - `CONTENT-INVENTORY.json`
+   - `FORMAT-ANALYSIS.md`
+   - `format-changes.diff`
+   - `validation-report.md`
 
-3. **Format Analysis:**  
-   `[protocol-name]-FORMAT-ANALYSIS.md`
+3. **Format Analysis (example template):**  
+   Saved as `FORMAT-ANALYSIS.md`
    ```markdown
    # Format Analysis for [Protocol Name]
    
@@ -371,11 +387,8 @@ After successful execution, generate:
    [Continue for all sections...]
    ```
 
-4. **Diff Report:**  
-   `[protocol-name]-format-changes.diff`
-
-5. **Validation Report:**  
-   `[protocol-name]-validation-report.md`
+4. **Validation Report (example template):**  
+   Saved as `validation-report.md`
    ```markdown
    # Validation Report for [Protocol Name]
    
@@ -486,7 +499,7 @@ After successful execution, generate:
 ### Example 1: Reformat Protocol 08 (Generate Tasks)
 
 ```markdown
-@apply .cursor/commands/reformat-protocol.md --file=.cursor/ai-driven-workflow/08-generate-tasks.md
+@apply .cursor/commands/apply-reformat-protocol-to.md --file=.cursor/ai-driven-workflow/08-generate-tasks.md
 ```
 
 **Expected Result:**
@@ -498,7 +511,7 @@ After successful execution, generate:
 ### Example 2: Reformat Protocol 14 (Pre-Deployment Staging)
 
 ```markdown
-@apply .cursor/commands/reformat-protocol.md --file=.cursor/ai-driven-workflow/14-pre-deployment-staging.md
+@apply .cursor/commands/apply-reformat-protocol-to.md --file=.cursor/ai-driven-workflow/14-pre-deployment-staging.md
 ```
 
 **Expected Result:**
@@ -526,7 +539,7 @@ After successful execution, generate:
 1. **Identify protocol to reformat**
 2. **Invoke command:**
    ```markdown
-   @apply .cursor/commands/reformat-protocol.md --file=[your-protocol-path]
+   @apply .cursor/commands/apply-reformat-protocol-to.md --file=[your-protocol-path]
    ```
 3. **Review validation report**
 4. **Verify diff shows only structural changes**

@@ -1,0 +1,44 @@
+{
+  "protocol_id": "03",
+  "protocol_name": "PROJECT BRIEF CREATION (PROJECT-SCOPING COMPLIANT)",
+  "reasoning_blocks_count": 5,
+  "decision_points_count": 1,
+  "evidence_requirements_count": 14,
+  "script_references": [
+    "scripts/validate_discovery_inputs.py",
+    "scripts/validate_brief_structure.py",
+    "scripts/verify_brief_approvals.py",
+    "scripts/validate_prerequisites_01.py",
+    "scripts/aggregate_evidence_01.py",
+    "scripts/run_protocol_01_gates.py",
+    "scripts/assemble_project_brief.py"
+  ],
+  "artifact_paths": [
+    ".artifacts/protocol-03/project-brief-validation-report.json",
+    ".artifacts/protocol-03/validation-issues.md",
+    ".artifacts/protocol-03/context-summary.md",
+    ".artifacts/protocol-03/PROJECT-BRIEF.md",
+    ".artifacts/protocol-03/traceability-map.json",
+    ".artifacts/protocol-03/brief-structure-report.json",
+    ".artifacts/protocol-03/BRIEF-APPROVAL-RECORD.json",
+    ".artifacts/protocol-03/project-brief-slides.pptx",
+    ".artifacts/protocol-03/technical-baseline.json",
+    ".artifacts/protocol-03/manual-validation-log.md",
+    ".artifacts/protocol-03/manual-validation-checklist.md"
+  ],
+  "gate_definitions_count": 3,
+  "automation_hooks_count": 6,
+  "workflow_steps_count": 3,
+  "substeps_count": 8,
+  "feedback_loops_count": 4,
+  "adaptation_mechanisms_count": 4,
+  "self_correction_triggers_count": 4,
+  "strict_markers_count": 2,
+  "must_markers_count": 6,
+  "guideline_markers_count": 3,
+  "critical_markers_count": 1,
+  "integration_points": {
+    "inputs_from": ["Protocol 01", "Protocol 02"],
+    "outputs_to": ["Protocol 04", "Protocol 06"]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "protocol_id": "06",
+  "protocol_name": "IMPLEMENTATION-READY PRD CREATION (PLANNING COMPLIANT)",
+  "reasoning_blocks_count": 5,
+  "decision_points_count": 1,
+  "evidence_requirements_count": 20,
+  "script_references": [
+    "scripts/generate_prd_assets.py",
+    "scripts/validate_prd_gate.py",
+    "scripts/validate_prd_context.py",
+    "scripts/validate_prd_requirements.py",
+    "scripts/validate_prerequisites_1.py",
+    "scripts/aggregate_evidence_1.py",
+    "scripts/run_protocol_1_gates.py"
+  ],
+  "artifact_paths": [
+    ".artifacts/protocol-06/prd-context.json",
+    ".artifacts/protocol-06/layer-detection.md",
+    ".artifacts/protocol-06/stakeholder-goals.md",
+    ".artifacts/protocol-06/user-stories.md",
+    ".artifacts/protocol-06/functional-requirements.md",
+    ".artifacts/protocol-06/technical-specs.md",
+    ".artifacts/protocol-06/risk-assumption-log.md",
+    ".artifacts/protocol-06/validation-plan.md",
+    ".artifacts/protocol-06/timeline-discussion.md",
+    ".artifacts/protocol-06/prd-{feature}.md",
+    ".artifacts/protocol-06/prd-assets/",
+    ".artifacts/protocol-06/prd-validation.json",
+    ".artifacts/protocol-06/prd-traceability.json",
+    ".artifacts/protocol-06/manual-prd-review.md",
+    ".artifacts/protocol-06/approvals/",
+    ".artifacts/protocol-06/manual-validation-log.md",
+    ".templates/prd/",
+    ".cursor/context-kit/"
+  ],
+  "gate_definitions_count": 3,
+  "automation_hooks_count": 7,
+  "workflow_steps_count": 4,
+  "substeps_count": 12,
+  "strict_markers_count": 1,
+  "must_markers_count": 10,
+  "guideline_markers_count": 3,
+  "critical_markers_count": 1,
+  "integration_points": {
+    "inputs_from": ["Protocol 03", "Protocol 04-CD", "Protocol 05"],
+    "outputs_to": ["Protocol 06", "Protocol 02", "Protocol 07"]
+  },
+  "communication_templates": 3,
+  "manual_fallback_procedures": 3,
+  "quality_metrics_count": 3
+}
