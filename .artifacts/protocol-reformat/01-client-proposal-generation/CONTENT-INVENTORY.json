@@ -1,0 +1,27 @@
+{
+  "reasoning_blocks_count": 1,
+  "evidence_requirements_count": 9,
+  "script_references": [
+    "scripts/aggregate_evidence_01.py",
+    "scripts/analyze_jobpost.py",
+    "scripts/run_protocol_01_gates.py",
+    "scripts/script-registry.json",
+    "scripts/tone_mapper.py",
+    "scripts/validate_evidence_manifest.py",
+    "scripts/validate_proposal.py",
+    "scripts/validate_proposal_structure.py"
+  ],
+  "artifact_paths": [
+    ".artifacts/protocol-01/",
+    ".artifacts/protocol-01/.",
+    ".artifacts/protocol-01/PROPOSAL.md",
+    ".artifacts/protocol-01/humanization-log.json",
+    ".artifacts/protocol-01/jobpost-analysis.json",
+    ".artifacts/protocol-01/notes.md",
+    ".artifacts/protocol-01/pricing-analysis.json",
+    ".artifacts/protocol-01/proposal-summary.json",
+    ".artifacts/protocol-01/tone-map.json"
+  ],
+  "gate_definitions_count": 10,
+  "automation_hooks_count": 15
+}

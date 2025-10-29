@@ -63,8 +63,8 @@ Success is measured by human believability, evidence completeness, and the abili
    * **Validation:** File exists and contains timestamp header
 
 2. **`[MUST]` Clear Previous Artifacts (Optional):**
-   * **Action:** Optionally clear previous run artifacts if you no longer need them by running `rm -rf .artifacts/protocol-01/*`.
-   * **Evidence:** Cleanup decision captured in the working notes (`notes.md`)
+   * **Action:** Optionally clear previous run artifacts if you no longer need them.
+   * **Command:** `rm -rf .artifacts/protocol-01/*`
    * **Validation:** Decision to clear or retain is documented in notes.md
 
 ---
@@ -85,18 +85,18 @@ Success is measured by human believability, evidence completeness, and the abili
 
    * **1.2. Record Raw Details into JSON:**
        * **Action:** Create `jobpost-analysis.json` with the following schema:
-         ```json
-         {
-           "exact_quotes": ["...", "..."],
-           "tech_stack": ["list"],
-           "pain_points": ["client phrasing"],
-           "tone_type": "formal|casual|technical",
-           "urgency_signals": ["phrases"],
-           "vague_requirements": [
-             { "client_says": "...", "interpretation_needed": true }
-           ]
-         }
-         ```
+       ```json
+       {
+         "exact_quotes": ["...", "..."],
+         "tech_stack": ["list"],
+         "pain_points": ["client phrasing"],
+         "tone_type": "formal|casual|technical",
+         "urgency_signals": ["phrases"],
+         "vague_requirements": [
+           { "client_says": "...", "interpretation_needed": true }
+         ]
+       }
+       ```
        * **Evidence:** `.artifacts/protocol-01/jobpost-analysis.json`
        * **Validation:** All 6 schema fields are populated (exact_quotes, tech_stack, pain_points, tone_type, urgency_signals, vague_requirements)
 
@@ -233,11 +233,14 @@ Success is measured by human believability, evidence completeness, and the abili
        * **Validation:** Specific next action requested, availability times provided
 
 2. **`[MUST]` Enforce Human Voice Rules:**
-   * **Action:** Apply all human voice rules during drafting:
-     - Minimum 3 contractions, 1 uncertainty statement, 1 direct question
-     - Every assertion linked to tool, metric, or timeframe
-     - Word count: 180–220 (readable in ≤60 seconds)
-     - Attachments capped at 2 relevant pieces (case study, screenshot, quick loom link)
+
+   **Rules:**
+   - Minimum 3 contractions, 1 uncertainty statement, 1 direct question
+   - Every assertion linked to tool, metric, or timeframe
+   - Word count: 180–220 (readable in ≤60 seconds)
+   - Attachments capped at 2 relevant pieces (case study, screenshot, quick loom link)
+
+   * **Action:** Apply all 4 rules during drafting
    * **Evidence:** Final PROPOSAL.md meeting all criteria
    * **Validation:** Manual checklist:
      - [ ] ≥3 contractions found
