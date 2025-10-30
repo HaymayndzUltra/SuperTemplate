@@ -1,0 +1,41 @@
+{
+  "protocol_name": "19-documentation-knowledge-transfer",
+  "total_lines": 640,
+  "reasoning_blocks_count": 5,
+  "evidence_requirements_count": 27,
+  "script_references": [
+    "scripts/script-registry.json"
+  ],
+  "artifact_paths": [
+    ".artifacts/protocol-19/",
+    ".artifacts/protocol-19/audience-requirements.csv",
+    ".artifacts/protocol-19/draft-index.json",
+    ".artifacts/protocol-19/enablement-summary.md",
+    ".artifacts/protocol-19/knowledge-gap-log.json",
+    ".artifacts/protocol-19/kt-session-log.md",
+    ".artifacts/protocol-19/manual-validation-log.md",
+    ".artifacts/protocol-19/publication-manifest.json",
+    ".artifacts/protocol-19/review-tracker.csv",
+    ".artifacts/protocol-19/source-inventory.json",
+    ".artifacts/protocol-19/style-audit.json",
+    ".artifacts/protocol-19/validation-report.json"
+  ],
+  "gate_definitions_count": 3,
+  "automation_hooks_count": 2,
+  "communication_templates_count": 14,
+  "workflow_steps": {
+    "main_steps": 4,
+    "sub_steps": 12,
+    "total_steps": 16
+  },
+  "markers": {
+    "STRICT": 1,
+    "MUST": 8,
+    "GUIDELINE": 4,
+    "CRITICAL": 1
+  },
+  "integration_points": {
+    "inputs_from": 17,
+    "outputs_to": 6
+  }
+}
