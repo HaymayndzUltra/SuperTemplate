@@ -1,0 +1,13 @@
+{
+  "protocol_id": "3",
+  "protocol_title": "Stub Protocol",
+  "generated_at": "2025-10-30T10:08:42.393602Z",
+  "automation_coverage": {
+    "referenced_scripts": [],
+    "missing_scripts": [],
+    "coverage": 0.0
+  },
+  "artifacts": [],
+  "validators": [],
+  "notes": "Stub protocol gate run completed\nWarning: Unknown protocol id: 3"
+}
