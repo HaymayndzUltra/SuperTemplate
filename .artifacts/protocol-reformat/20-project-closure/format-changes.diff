@@ -1,0 +1,162 @@
+--- .artifacts/protocol-reformat/20-project-closure/ORIGINAL-BACKUP.md	2025-10-30 00:24:29.729360150 +0000
++++ .cursor/ai-driven-workflow/20-project-closure.md	2025-10-30 00:26:20.653173191 +0000
+@@ -44,72 +44,78 @@
+ 
+ ## WORKFLOW
+ 
+-### STEP 1: Closure Intake & Deliverable Validation
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Each phase executes a focused set of closure tasks with explicit communications, halt conditions, and evidence capture. -->
++### PHASE 1: Closure Intake & Deliverable Validation
+ 
+ 1. **`[MUST]` Verify Closure Prerequisites:**
+    * **Action:** Confirm receipt and validity of all upstream artifacts, approvals, and outstanding actions.
+-   * **Communication:** 
++   * **Communication:**
+      > "[MASTER RAY™ | PHASE 1 START] - Validating closure prerequisites and deliverable readiness..."
+-   * **Halt condition:** Stop if any required artifact or approval is missing.
++   * **Halt Condition:** Stop if any required artifact or approval is missing.
+    * **Evidence:** `.artifacts/protocol-20/closure-prerequisite-checklist.json` with validation results.
+ 
+ 2. **`[MUST]` Audit Deliverable Register:**
+    * **Action:** Cross-reference deliverable register with final documentation and deployment evidence to ensure completion.
+-   * **Communication:** 
++   * **Communication:**
+      > "[PHASE 1] Auditing deliverable register for completion status..."
+-   * **Halt condition:** Pause if deliverables are incomplete or lack acceptance evidence.
++   * **Halt Condition:** Pause if deliverables are incomplete or lack acceptance evidence.
+    * **Evidence:** `.artifacts/protocol-20/deliverable-audit-log.csv` capturing status per deliverable.
+ 
+ 3. **`[GUIDELINE]` Review Financial & Contractual Status:**
+    * **Action:** Validate budget closure, invoice status, and contractual obligations.
+-   * **Example:**
++   * **Reference Example:**
+      ```markdown
+      - Contract Clause 4.3 – Warranty support confirmed by Legal on 2024-05-20
+      - Budget variance: +2% under plan (Finance closeout report)
+      ```
+ 
+-### STEP 2: Stakeholder Acceptance & Transition Planning
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Phase two focuses on stakeholder alignment activities without multi-branch decision trees. -->
++### PHASE 2: Stakeholder Acceptance & Transition Planning
+ 
+ 1. **`[MUST]` Facilitate Final Acceptance Reviews:**
+    * **Action:** Convene acceptance meeting with sponsor, product owner, operations, and support leads; capture decisions.
+-   * **Communication:** 
++   * **Communication:**
+      > "[MASTER RAY™ | PHASE 2 START] - Hosting final acceptance review. Recording approvals and outstanding actions..."
+-   * **Halt condition:** Stop if any stakeholder withholds approval.
++   * **Halt Condition:** Stop if any stakeholder withholds approval.
+    * **Evidence:** `.artifacts/protocol-20/acceptance-minutes.md` with attendees, decisions, action items.
+ 
+ 2. **`[MUST]` Confirm Operational Ownership Transfer:**
+    * **Action:** Document owning teams, SLAs, and escalation paths; verify support readiness using enablement evidence.
+-   * **Communication:** 
++   * **Communication:**
+      > "[PHASE 2] Confirming operational ownership and support readiness..."
+-   * **Halt condition:** Pause if ownership assignments incomplete or SLAs undefined.
++   * **Halt Condition:** Pause if ownership assignments incomplete or SLAs undefined.
+    * **Evidence:** `.artifacts/protocol-20/operational-handover-record.json` mapping services to owners and SLAs.
+ 
+ 3. **`[GUIDELINE]` Plan Celebration & Recognition Activities:**
+    * **Action:** Coordinate recognition communications or events acknowledging team contributions.
+-   * **Example:**
++   * **Reference Example:**
+      ```markdown
+      - Recognition email drafted for executive sponsor approval by 2024-05-22
+      ```
+ 
+-### STEP 3: Governance Closure & Archive Preparation
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Phase three executes archival and handover tasks with direct evidence capture and simple halt checks. -->
++### PHASE 3: Governance Closure & Archive Preparation
+ 
+ 1. **`[MUST]` Close Project Governance Artifacts:**
+    * **Action:** Update project portfolio tools, close tasks/issues, archive documentation, and set permissions to maintenance state.
+-   * **Communication:** 
++   * **Communication:**
+      > "[MASTER RAY™ | PHASE 3 START] - Closing governance artifacts and archiving project documentation..."
+-   * **Halt condition:** Halt if any governance item remains open without disposition.
++   * **Halt Condition:** Halt if any governance item remains open without disposition.
+    * **Evidence:** `.artifacts/protocol-20/governance-closure-report.json` summarizing updates.
+ 
+ 2. **`[MUST]` Prepare Handover Package for Support:**
+    * **Action:** Assemble curated package containing documentation, SLAs, runbooks, and outstanding risk registers.
+-   * **Communication:** 
++   * **Communication:**
+      > "[PHASE 3] Packaging closure evidence for support handover..."
+-   * **Halt condition:** Pause if package inventory incomplete.
++   * **Halt Condition:** Pause if package inventory incomplete.
+    * **Evidence:** `.artifacts/protocol-20/handover-package-index.json` listing contents and recipients.
+ 
+ 3. **`[GUIDELINE]` Capture Closure Metrics & Lessons:**
+    * **Action:** Record closure KPIs (budget variance, schedule adherence, satisfaction scores) for retrospective.
+-   * **Example:**
++   * **Reference Example:**
+      ```json
+      {
+        "metric": "Stakeholder satisfaction",
+@@ -121,6 +127,8 @@
+ ---
+ 
+ 
++<!-- [Category: META-FORMATS - RETROSPECTIVE SYNTHESIS] -->
++<!-- Why: Guides structured learning capture and continuous improvement analysis post-execution. -->
+ ## REFLECTION & LEARNING
+ 
+ ### Retrospective Guidance
+@@ -238,6 +246,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - INTEGRATION MAPPING] -->
++<!-- Why: Documents upstream dependencies and downstream outputs for traceability and coordination. -->
+ ## 17. INTEGRATION POINTS
+ 
+ ### Inputs From:
+@@ -259,6 +269,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - QUALITY CONTROL] -->
++<!-- Why: Defines gate criteria, evidence, automation, and failure handling standards. -->
+ ## 17. QUALITY GATES
+ 
+ ### Gate 1: Deliverable Completion Assurance
+@@ -284,6 +296,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - COMMUNICATION PLAYBOOK] -->
++<!-- Why: Specifies status messaging, validation prompts, and escalation language. -->
+ ## 17. COMMUNICATION PROTOCOLS
+ 
+ ### Status Announcements:
+@@ -361,6 +375,8 @@
+ 
+ ---
+ 
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Checklist verifies readiness for downstream maintenance transition with explicit evidence requirements. -->
+ ## 17. HANDOFF CHECKLIST
+ 
+ 
+@@ -400,6 +416,8 @@
+ 
+ ---
+ 
++<!-- [Category: META-FORMATS - EVIDENCE INVENTORY] -->
++<!-- Why: Aggregates artifacts, traceability, and metrics for audit completeness. -->
+ ## 17. EVIDENCE SUMMARY
+ 
+ 
+@@ -452,6 +470,8 @@
+ ---
+ 
+ 
++<!-- [Category: META-FORMATS - COGNITIVE EXPLAINABILITY] -->
++<!-- Why: Captures reasoning patterns, decision logic, and adaptive learning strategies. -->
+ ## REASONING & COGNITIVE PROCESS
+ 
+ ### Reasoning Patterns

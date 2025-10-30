@@ -1,0 +1,164 @@
+--- .artifacts/protocol-reformat/21-maintenance-support/ORIGINAL-BACKUP.md	2025-10-30 00:27:24.953061354 +0000
++++ .cursor/ai-driven-workflow/21-maintenance-support.md	2025-10-30 00:28:11.100985601 +0000
+@@ -44,74 +44,80 @@
+ 
+ ## WORKFLOW
+ 
+-### STEP 1: Intake & Operational Readiness Assessment
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Phase one evaluates operational readiness with direct evidence capture and linear halt checks. -->
++### PHASE 1: Intake & Operational Readiness Assessment
+ 
+ 1. **`[MUST]` Validate Handover Completeness:**
+    * **Action:** Inspect handover package, ownership records, and knowledge gaps to confirm operational readiness.
+-   * **Communication:** 
++   * **Communication:**
+      > "[MASTER RAY™ | PHASE 1 START] - Reviewing handover package and operational assignments for maintenance planning..."
+-   * **Halt condition:** Stop if any critical artifact missing or ownership assignment unclear.
++   * **Halt Condition:** Stop if any critical artifact missing or ownership assignment unclear.
+    * **Evidence:** `.artifacts/protocol-21/handover-validation-report.json` summarizing completeness checks.
+ 
+ 2. **`[MUST]` Assess Operational Baselines:**
+    * **Action:** Review observability baselines, SLA metrics, and incident history to identify risk areas.
+-   * **Communication:** 
++   * **Communication:**
+      > "[PHASE 1] Assessing operational baselines and historic incidents..."
+-   * **Halt condition:** Pause if baseline metrics unavailable or outdated.
++   * **Halt Condition:** Pause if baseline metrics unavailable or outdated.
+    * **Evidence:** `.artifacts/protocol-21/operational-baseline-analysis.md` with findings.
+ 
+ 3. **`[GUIDELINE]` Align Support Model with Demand Forecast:**
+    * **Action:** Estimate ticket volume, coverage requirements, and staffing rotation using historic data.
+-   * **Example:**
++   * **Reference Example:**
+      ```python
+      from maintenance.forecast import forecast_ticket_volume
+      forecast_ticket_volume(input_path=".artifacts/protocol-21/ticket-history.csv",
+                             output_path=".artifacts/protocol-21/support-coverage-plan.json")
+      ```
+ 
+-### STEP 2: Maintenance Backlog Formation & Prioritization
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Phase two consolidates and prioritizes backlog workstreams through sequential execution steps. -->
++### PHASE 2: Maintenance Backlog Formation & Prioritization
+ 
+ 1. **`[MUST]` Consolidate Maintenance Backlog:**
+    * **Action:** Merge technical debt, incident remediation, security risks, and performance backlog into a unified tracker.
+-   * **Communication:** 
++   * **Communication:**
+      > "[MASTER RAY™ | PHASE 2 START] - Consolidating maintenance backlog from cross-protocol sources..."
+-   * **Halt condition:** Halt if backlog items lack ownership or severity ratings.
++   * **Halt Condition:** Halt if backlog items lack ownership or severity ratings.
+    * **Evidence:** `.artifacts/protocol-21/maintenance-backlog.csv` with priority, owner, due date.
+ 
+ 2. **`[MUST]` Prioritize Remediation & Enhancement Streams:**
+    * **Action:** Apply risk, impact, and effort scoring to backlog items; align with SLA and compliance requirements.
+-   * **Communication:** 
++   * **Communication:**
+      > "[PHASE 2] Prioritizing maintenance items based on risk and business impact..."
+-   * **Halt condition:** Pause if prioritization conflicts unresolved with stakeholders.
++   * **Halt Condition:** Pause if prioritization conflicts unresolved with stakeholders.
+    * **Evidence:** `.artifacts/protocol-21/backlog-prioritization-matrix.json` with scoring rationale.
+ 
+ 3. **`[GUIDELINE]` Establish Automation Opportunities:**
+    * **Action:** Identify tasks suitable for runbook automation or self-healing workflows.
+-   * **Example:**
++   * **Reference Example:**
+      ```bash
+      python scripts/discover_automation_candidates.py --input .artifacts/protocol-21/maintenance-backlog.csv \
+        --output .artifacts/protocol-21/automation-candidates.json
+      ```
+ 
+-### STEP 3: Maintenance Plan Finalization & Governance Setup
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Phase three finalizes governance deliverables with straightforward approval checkpoints. -->
++### PHASE 3: Maintenance Plan Finalization & Governance Setup
+ 
+ 1. **`[MUST]` Draft Maintenance & Support Plan:**
+    * **Action:** Document maintenance cadence, release windows, escalation matrix, and KPI reporting structure.
+-   * **Communication:** 
++   * **Communication:**
+      > "[MASTER RAY™ | PHASE 3 START] - Drafting maintenance plan and aligning governance cadence..."
+-   * **Halt condition:** Stop if plan lacks coverage for critical services or SLAs.
++   * **Halt Condition:** Stop if plan lacks coverage for critical services or SLAs.
+    * **Evidence:** `.artifacts/protocol-21/maintenance-plan.md` with sections for cadence, responsibilities, governance.
+ 
+ 2. **`[MUST]` Secure Stakeholder Approvals:**
+    * **Action:** Review plan with operations, support, product, and security leads; capture approvals and adjustments.
+-   * **Communication:** 
++   * **Communication:**
+      > "[PHASE 3] Presenting maintenance plan for stakeholder approval..."
+-   * **Halt condition:** Pause if any stakeholder rejects or defers approval.
++   * **Halt Condition:** Pause if any stakeholder rejects or defers approval.
+    * **Evidence:** `.artifacts/protocol-21/approval-log.csv` documenting approvals, conditions, and dates.
+ 
+ 3. **`[GUIDELINE]` Configure Monitoring & Reporting Cadence:**
+    * **Action:** Schedule KPI reviews, set up dashboards, and document reporting templates.
+-   * **Example:**
++   * **Reference Example:**
+      ```yaml
+      kpi_reviews:
+        - metric: "Mean Time to Resolution"
+@@ -125,6 +131,8 @@
+ ---
+ 
+ 
++<!-- [Category: META-FORMATS - RETROSPECTIVE SYNTHESIS] -->
++<!-- Why: Provides structured learning capture guidance following maintenance planning execution. -->
+ ## REFLECTION & LEARNING
+ 
+ ### Retrospective Guidance
+@@ -242,6 +250,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - INTEGRATION MAPPING] -->
++<!-- Why: Outlines cross-protocol dependencies and deliverable routing for maintenance planning. -->
+ ## 18. INTEGRATION POINTS
+ 
+ ### Inputs From:
+@@ -264,6 +274,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - QUALITY CONTROL] -->
++<!-- Why: Establishes validation criteria, automation hooks, and remediation steps. -->
+ ## 18. QUALITY GATES
+ 
+ ### Gate 1: Maintenance Backlog Integrity
+@@ -289,6 +301,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - COMMUNICATION PLAYBOOK] -->
++<!-- Why: Defines announcement, validation, and error messaging standards. -->
+ ## 18. COMMUNICATION PROTOCOLS
+ 
+ ### Status Announcements:
+@@ -366,6 +380,8 @@
+ 
+ ---
+ 
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Checklist ensures readiness for Protocol 22 with explicit evidence requirements. -->
+ ## 18. HANDOFF CHECKLIST
+ 
+ 
+@@ -405,6 +421,8 @@
+ 
+ ---
+ 
++<!-- [Category: META-FORMATS - EVIDENCE INVENTORY] -->
++<!-- Why: Aggregates artifacts, traceability, and metrics for audit and governance. -->
+ ## 18. EVIDENCE SUMMARY
+ 
+ 
+@@ -457,6 +475,8 @@
+ ---
+ 
+ 
++<!-- [Category: META-FORMATS - COGNITIVE EXPLAINABILITY] -->
++<!-- Why: Documents reasoning patterns, decision logic, and adaptation strategies. -->
+ ## REASONING & COGNITIVE PROCESS
+ 
+ ### Reasoning Patterns

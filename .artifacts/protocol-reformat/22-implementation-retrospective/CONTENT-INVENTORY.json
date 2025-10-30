@@ -1,0 +1,29 @@
+{
+  "reasoning_blocks_count": 0,
+  "evidence_requirements_count": 25,
+  "script_references": [
+    "scripts/aggregate_evidence_5.py",
+    "scripts/generate_retrospective_report.py",
+    "scripts/run_protocol_5_gates.py",
+    "scripts/script-registry.json",
+    "scripts/validate_gate_5_action_plan.py",
+    "scripts/validate_gate_5_integration.py",
+    "scripts/validate_gate_5_participation.py",
+    "scripts/validate_prerequisites_5.py"
+  ],
+  "artifact_paths": [
+    ".artifacts/protocol-22/",
+    ".artifacts/protocol-22/action-prioritization-matrix.csv",
+    ".artifacts/protocol-22/action-register.csv",
+    ".artifacts/protocol-22/insight-log.json",
+    ".artifacts/protocol-22/integration-confirmation-log.json",
+    ".artifacts/protocol-22/manual-validation-log.md",
+    ".artifacts/protocol-22/retrospective-report.md",
+    ".artifacts/protocol-22/retrospective-source-compilation.json",
+    ".artifacts/protocol-22/session-notes.md",
+    ".artifacts/protocol-22/theme-matrix.csv",
+    ".artifacts/protocol-5"
+  ],
+  "gate_definitions_count": 3,
+  "automation_hooks_count": 10
+}

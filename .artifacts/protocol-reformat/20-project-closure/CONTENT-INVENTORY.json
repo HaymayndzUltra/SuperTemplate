@@ -1,0 +1,25 @@
+{
+  "reasoning_blocks_count": 0,
+  "evidence_requirements_count": 22,
+  "script_references": [
+    "scripts/aggregate_evidence_17.py",
+    "scripts/run_protocol_17_gates.py",
+    "scripts/script-registry.json",
+    "scripts/validate_gate_17_deliverables.py",
+    "scripts/validate_gate_17_governance.py",
+    "scripts/validate_gate_17_handover.py",
+    "scripts/validate_prerequisites_17.py"
+  ],
+  "artifact_paths": [
+    ".artifacts/protocol-20/",
+    ".artifacts/protocol-20/acceptance-minutes.md",
+    ".artifacts/protocol-20/closure-prerequisite-checklist.json",
+    ".artifacts/protocol-20/deliverable-audit-log.csv",
+    ".artifacts/protocol-20/governance-closure-report.json",
+    ".artifacts/protocol-20/handover-package-index.json",
+    ".artifacts/protocol-20/manual-validation-log.md",
+    ".artifacts/protocol-20/operational-handover-record.json"
+  ],
+  "gate_definitions_count": 3,
+  "automation_hooks_count": 9
+}
