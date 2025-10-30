@@ -1,0 +1,71 @@
+{
+  "phases": [
+    {
+      "phase_number": 1,
+      "phase_name": "Context Alignment",
+      "category": "EXECUTION-BASIC",
+      "step_count": 2,
+      "steps": [
+        "Review Proposal and Client Response",
+        "Capture Business Background"
+      ]
+    },
+    {
+      "phase_number": 2,
+      "phase_name": "Requirement Deep Dive",
+      "category": "EXECUTION-REASONING",
+      "step_count": 3,
+      "steps": [
+        "Facilitate Feature Prioritization",
+        "Validate Technical and Integration Requirements",
+        "Capture Risks and Assumptions"
+      ]
+    },
+    {
+      "phase_number": 3,
+      "phase_name": "Delivery Framework Alignment",
+      "category": "EXECUTION-BASIC",
+      "step_count": 3,
+      "steps": [
+        "Confirm Timeline, Budget, and Milestones",
+        "Establish Collaboration and Communication Plan",
+        "Define Decision Governance"
+      ]
+    },
+    {
+      "phase_number": 4,
+      "phase_name": "Discovery Confirmation",
+      "category": "EXECUTION-BASIC",
+      "step_count": 9,
+      "steps": [
+        "Summarize Discovery Outcomes",
+        "Archive Communication Evidence",
+        "Run objective validation",
+        "Run scope validation",
+        "Run expectation validation",
+        "Aggregate evidence artifacts",
+        "Validate prerequisites",
+        "Validate protocol completion",
+        "Execute protocol handoff"
+      ]
+    }
+  ],
+  "reasoning_blocks_count": 0,
+  "reasoning_blocks": [],
+  "evidence_requirements_count": 19,
+  "artifact_paths_count": 70,
+  "artifact_paths_unique": 44,
+  "script_references_count": 8,
+  "script_references": [
+    "python scripts/aggregate_evidence_02.py",
+    "python scripts/check_client_confirmation.py",
+    "python scripts/search_knowledge_base.py",
+    "python scripts/validate_discovery_expectations.py",
+    "python scripts/validate_discovery_objectives.py",
+    "python scripts/validate_discovery_scope.py",
+    "python scripts/validate_prerequisites_02.py",
+    "python scripts/validate_protocol_handoffs.py"
+  ],
+  "gate_definitions_count": 11,
+  "automation_hooks_count": 0
+}
