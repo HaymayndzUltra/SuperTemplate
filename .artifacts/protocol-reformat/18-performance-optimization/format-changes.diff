@@ -1,0 +1,537 @@
+--- .artifacts/protocol-reformat/18-performance-optimization/ORIGINAL-BACKUP.md	2025-10-30 00:13:24.661247589 +0000
++++ .artifacts/protocol-reformat/18-performance-optimization/REFORMATTED.md	2025-10-30 00:14:33.296893820 +0000
+@@ -7,29 +7,33 @@
+ 
+ **Purpose:** Execute Unknown Protocol workflow with quality validation and evidence generation.
+ 
+-## PREREQUISITES
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Prerequisites section defines required inputs, approvals, and system readiness. -->
++## 1. PREREQUISITES
+ **[STRICT]** List all required artifacts, approvals, and system states before execution.
+ 
+-### Required Artifacts
++### 1.1 Required Artifacts
+ - [ ] `MONITORING-PACKAGE.zip` from Protocol 16 – monitoring dashboards and alert configuration
+ - [ ] `INCIDENT-REPORT.md` from Protocol 17 (if available) – recent incident context impacting performance
+ - [ ] `performance-intake-backlog.json` from previous cycles (if available) – outstanding performance actions
+ - [ ] `baseline-metrics.json` from previous optimization cycles (if available)
+ - [ ] Latest deployment notes `DEPLOYMENT-REPORT.md` from Protocol 15
+ 
+-### Required Approvals
++### 1.2 Required Approvals
+ - [ ] Product Owner prioritization of performance objectives for this cycle
+ - [ ] SRE lead approval for executing load/stress tests in target environments
+ - [ ] Security/compliance clearance for profiling and data sampling activities
+ 
+-### System State Requirements
++### 1.3 System State Requirements
+ - [ ] Access to production telemetry tools (APM, logging, tracing)
+ - [ ] Load testing environment configured to mirror production scale
+ - [ ] Write permissions to `.artifacts/performance/` and `.cursor/context-kit/`
+ 
+ ---
+ 
+-## 14. AI ROLE AND MISSION
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Establishes mission, constraints, and guardrails for the AI role. -->
++## 2. AI ROLE AND MISSION
+ 
+ You are a **Performance Engineer**. Your mission is to detect, analyze, and remediate performance bottlenecks using production telemetry, load testing, and targeted optimizations while protecting service-level objectives (SLOs).
+ 
+@@ -37,9 +41,14 @@
+ 
+ ---
+ 
+-## WORKFLOW
++<!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
++<!-- Why: Performance optimization requires multi-phase execution with critical decision points. -->
++## 3. WORKFLOW
+ 
+-### STEP 1: Intake, Baseline, and Hypothesis Framing
++
++<!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
++<!-- Why: Phase balances data review with hypothesis decisions. -->
++### 3.1 PHASE 1: Intake, Baseline, and Hypothesis Framing
+ 
+ 1. **`[MUST]` Collect Telemetry Inputs:**
+    * **Action:** Aggregate monitoring dashboards (Protocol 19), incident timelines (Protocol 20), and deployment notes (Protocol 15) to identify performance pain points.
+@@ -63,7 +72,10 @@
+      - Validation: Review Redis hit ratio + profile checkout API
+      ```
+ 
+-### STEP 2: Diagnostics and Load Simulation
++
++<!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
++<!-- Why: Phase requires interpreting diagnostics and selecting test strategies. -->
++### 3.2 PHASE 2: Diagnostics and Load Simulation
+ 
+ 1. **`[MUST]` Profile Critical Transactions:**
+    * **Action:** Run profilers, tracing, and database analysis to identify bottlenecks for prioritized services.
+@@ -87,7 +99,10 @@
+      - Scaling Policy Change: Increase min replicas from 6 → 8
+      ```
+ 
+-### STEP 3: Optimization Implementation and Verification
++
++<!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
++<!-- Why: Phase involves selecting optimization tactics and verifying improvements. -->
++### 3.3 PHASE 3: Optimization Implementation and Verification
+ 
+ 1. **`[MUST]` Define Optimization Plan:**
+    * **Action:** Translate findings into prioritized optimization tasks with owners, risk assessment, and expected impact.
+@@ -111,7 +126,10 @@
+      - Alert: Adjusted latency threshold from 600ms → 450ms
+      ```
+ 
+-### STEP 4: Governance, Communication, and Handoff
++
++<!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
++<!-- Why: Phase manages go/no-go decisions and coordinated communications. -->
++### 3.4 PHASE 4: Governance, Communication, and Handoff
+ 
+ 1. **`[MUST]` Record SLO Adjustments:**
+    * **Action:** Document updated SLO targets, alert thresholds, and escalation policies impacted by optimizations.
+@@ -138,9 +156,11 @@
+ ---
+ 
+ 
+-## REFLECTION & LEARNING
++<!-- [Category: META-FORMATS] -->
++<!-- Why: Captures retrospectives, continuous improvement, and knowledge development. -->
++## 4. REFLECTION & LEARNING
+ 
+-### Retrospective Guidance
++### 4.1 Retrospective Guidance
+ 
+ After completing protocol execution (successful or halted), conduct retrospective:
+ 
+@@ -166,88 +186,88 @@
+ 
+ **Output:** Retrospective report stored in protocol execution artifacts
+ 
+-### Continuous Improvement Opportunities
++### 4.2 Continuous Improvement Opportunities
+ 
+-#### Identified Improvement Opportunities
++#### 4.2.1 Identified Improvement Opportunities
+ - Identify based on protocol-specific execution patterns
+ 
+-#### Process Optimization Tracking
++#### 4.2.2 Process Optimization Tracking
+ - Track key performance metrics over time
+ - Monitor quality gate pass rates and execution velocity
+ - Measure downstream satisfaction and rework requests
+ - Identify automation opportunities
+ 
+-#### Tracking Mechanisms and Metrics
++#### 4.2.3 Tracking Mechanisms and Metrics
+ - Quarterly metrics dashboard with trends
+ - Improvement tracking log with before/after comparisons
+ - Evidence of improvement validation
+ 
+-#### Evidence of Improvement and Validation
++#### 4.2.4 Evidence of Improvement and Validation
+ - Metric trends showing improvement trajectories
+ - A/B testing results for protocol changes
+ - Stakeholder feedback scores
+ - Downstream protocol satisfaction ratings
+ 
+-### System Evolution
++### 4.3 System Evolution
+ 
+-#### Version History
++#### 4.3.1 Version History
+ - Current version with implementation date
+ - Previous versions with change descriptions
+ - Deprecation notices for obsolete approaches
+ 
+-#### Rationale for Changes
++#### 4.3.2 Rationale for Changes
+ - Documented reasons for each protocol evolution
+ - Evidence supporting the change decision
+ - Expected impact assessment
+ 
+-#### Impact Assessment
++#### 4.3.3 Impact Assessment
+ - Measured outcomes of protocol changes
+ - Comparison against baseline metrics
+ - Validation of improvement hypotheses
+ 
+-#### Rollback Procedures
++#### 4.3.4 Rollback Procedures
+ - Process for reverting to previous protocol version
+ - Triggers for initiating rollback
+ - Communication plan for rollback events
+ 
+-### Knowledge Capture and Organizational Learning
++### 4.4 Knowledge Capture and Organizational Learning
+ 
+-#### Lessons Learned Repository
++#### 4.4.1 Lessons Learned Repository
+ Maintain lessons learned with structure:
+ - Project/execution context
+ - Insight or discovery
+ - Action taken based on insight
+ - Outcome and applicability
+ 
+-#### Knowledge Base Growth
++#### 4.4.2 Knowledge Base Growth
+ - Systematic extraction of patterns from executions
+ - Scheduled knowledge base updates
+ - Quality metrics for knowledge base content
+ 
+-#### Knowledge Sharing Mechanisms
++#### 4.4.3 Knowledge Sharing Mechanisms
+ - Internal distribution channels
+ - Onboarding integration
+ - Cross-team learning sessions
+ - Access controls and search tools
+ 
+-### Future Planning
++### 4.5 Future Planning
+ 
+-#### Roadmap
++#### 4.5.1 Roadmap
+ - Planned enhancements with timelines
+ - Integration with other protocols
+ - Automation expansion plans
+ 
+-#### Priorities
++#### 4.5.2 Priorities
+ - Ranked list of improvement initiatives
+ - Resource requirements
+ - Expected benefits
+ 
+-#### Resource Requirements
++#### 4.5.3 Resource Requirements
+ - Development effort estimates
+ - Tool or infrastructure needs
+ - Team capacity planning
+ 
+-#### Timeline
++#### 4.5.4 Timeline
+ - Milestone dates for major enhancements
+ - Dependencies on other work
+ - Risk buffers and contingencies
+@@ -255,49 +275,53 @@
+ 
+ ---
+ 
+-## 14. INTEGRATION POINTS
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Documents cross-protocol inputs, outputs, and storage expectations. -->
++## 5. INTEGRATION POINTS
+ 
+-### Inputs From:
++### 5.1 Inputs From:
+ - **Protocol 15**: `DEPLOYMENT-REPORT.md`, recent change manifest for context
+ - **Protocol 19**: `MONITORING-PACKAGE.zip`, `alert-test-results.json`, baseline metrics
+ - **Protocol 20**: `INCIDENT-REPORT.md`, `incident-intake-log.md`
+ - **Protocol 22**: Historical performance backlog items and lessons learned
+ 
+-### Outputs To:
++### 5.2 Outputs To:
+ - **Protocol 22**: `PERFORMANCE-REPORT.md`, `continuous-improvement-notes.md`
+ - **Protocol 19**: `instrumentation-update-log.md`, `slo-update-record.json`
+ - **Protocol 21**: `optimization-plan.json`, `profiling-report.md`
+ 
+-### Artifact Storage Locations:
++### 5.3 Artifact Storage Locations:
+ - `.artifacts/performance/` - Primary evidence storage
+ - `.cursor/context-kit/` - Context and configuration artifacts
+ 
+ ---
+ 
+-## 14. QUALITY GATES
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Defines pass/fail criteria that govern protocol progression. -->
++## 6. QUALITY GATES
+ 
+-### Gate 1: Baseline Validation Gate
++### 6.1 Gate 1: Baseline Validation Gate
+ - **Criteria**: Intake report complete; baseline metrics captured with traceable sources; hypotheses documented.
+ - **Evidence**: `performance-intake-report.json`, `baseline-metrics.csv`, `hypothesis-log.md`.
+ - **Pass Threshold**: Baseline completeness ≥ 95%.
+ - **Failure Handling**: Fill telemetry gaps; rerun baseline capture before proceeding.
+ - **Automation**: `python scripts/validate_gate_14_baseline.py --threshold 0.95`
+ 
+-### Gate 2: Diagnostic Coverage Gate
++### 6.2 Gate 2: Diagnostic Coverage Gate
+ - **Criteria**: Profiling executed for prioritized services; load tests cover peak scenarios; capacity analysis documented.
+ - **Evidence**: `profiling-report.md`, `load-test-results.json`, `capacity-analysis.md`.
+ - **Pass Threshold**: Diagnostic coverage score ≥ 90%.
+ - **Failure Handling**: Extend diagnostics or add scenarios; rerun validation.
+ - **Automation**: `python scripts/validate_gate_14_diagnostics.py --coverage 0.90`
+ 
+-### Gate 3: Optimization Validation Gate
++### 6.3 Gate 3: Optimization Validation Gate
+ - **Criteria**: Optimization plan approved; validation report shows measurable improvement with no regressions.
+ - **Evidence**: `optimization-plan.json`, `optimization-validation-report.json`, `instrumentation-update-log.md`.
+ - **Pass Threshold**: Improvement ≥ 15% on targeted metric or documented justification; regression count = 0.
+ - **Failure Handling**: Rework optimizations; rollback changes; rerun validation tests.
+ - **Automation**: `python scripts/validate_gate_14_optimization.py --improvement-threshold 0.15`
+ 
+-### Gate 4: Governance & Communication Gate
++### 6.4 Gate 4: Governance & Communication Gate
+ - **Criteria**: SLO updates recorded; performance report published; improvement notes shared.
+ - **Evidence**: `slo-update-record.json`, `PERFORMANCE-REPORT.md`, `continuous-improvement-notes.md`.
+ - **Pass Threshold**: Documentation completeness ≥ 95%; approvals captured.
+@@ -306,9 +330,11 @@
+ 
+ ---
+ 
+-## 14. COMMUNICATION PROTOCOLS
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Sets standardized communication patterns and escalation flows. -->
++## 7. COMMUNICATION PROTOCOLS
+ 
+-### Status Announcements:
++### 7.1 Status Announcements:
+ ```
+ [MASTER RAY™ | PHASE 1 START] - Consolidating telemetry and incident evidence for performance triage...
+ [MASTER RAY™ | PHASE 2 START] - Profiling critical transactions across services...
+@@ -318,7 +344,7 @@
+ [RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
+ ```
+ 
+-### Validation Prompts:
++### 7.2 Validation Prompts:
+ ```
+ [RAY CONFIRMATION REQUIRED]
+ > "Performance optimization validation complete.
+@@ -328,7 +354,7 @@
+ > Approve SLO updates and handoff to Protocol 22?"
+ ```
+ 
+-### Error Handling:
++### 7.3 Error Handling:
+ ```
+ [RAY GATE FAILED: Optimization Validation Gate]
+ > "Quality gate 'Optimization Validation Gate' failed.
+@@ -339,13 +365,15 @@
+ 
+ ---
+ 
+-## 14. AUTOMATION HOOKS
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Lists automation integrations and fallback paths. -->
++## 8. AUTOMATION HOOKS
+ 
+ 
+ **Registry Reference:** See `scripts/script-registry.json` for complete script inventory, ownership, and governance context.
+ 
+ 
+-### Validation Scripts:
++### 8.1 Validation Scripts:
+ ```bash
+ # Prerequisite validation
+ python scripts/validate_prerequisites_14.py
+@@ -358,7 +386,7 @@
+ python scripts/aggregate_evidence_14.py --output .artifacts/performance/
+ ```
+ 
+-### CI/CD Integration:
++### 8.2 CI/CD Integration:
+ ```yaml
+ # GitHub Actions workflow integration
+ name: Protocol 21 Validation
+@@ -376,7 +404,7 @@
+         run: python scripts/run_protocol_14_gates.py
+ ```
+ 
+-### Manual Fallbacks:
++### 8.3 Manual Fallbacks:
+ When automation is unavailable, execute manual validation:
+ 1. Export telemetry dashboards manually and attach to intake report.
+ 2. Run targeted load tests from local tooling; capture results in spreadsheet.
+@@ -384,11 +412,13 @@
+ 
+ ---
+ 
+-## 14. HANDOFF CHECKLIST
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Ensures downstream recipients receive validated artifacts and sign-offs. -->
++## 9. HANDOFF CHECKLIST
+ 
+ 
+ 
+-### Continuous Improvement Validation:
++### 9.1 Continuous Improvement Validation:
+ - [ ] Execution feedback collected and logged
+ - [ ] Lessons learned documented in protocol artifacts
+ - [ ] Quality metrics captured for improvement tracking
+@@ -397,7 +427,7 @@
+ - [ ] Retrospective scheduled (if required for this protocol phase)
+ 
+ 
+-### Pre-Handoff Validation:
++### 9.2 Pre-Handoff Validation:
+ Before declaring protocol complete, validate:
+ 
+ - [ ] All prerequisites were met
+@@ -408,7 +438,7 @@
+ - [ ] All automation hooks executed successfully
+ - [ ] Communication log complete
+ 
+-### Handoff to Protocol 22:
++### 9.3 Handoff to Protocol 22:
+ **[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 22: Implementation Retrospective
+ 
+ **Evidence Package:**
+@@ -423,11 +453,13 @@
+ 
+ ---
+ 
+-## 14. EVIDENCE SUMMARY
++<!-- [Category: GUIDELINES-FORMATS] -->
++<!-- Why: Summarizes generated evidence, metrics, and traceability. -->
++## 10. EVIDENCE SUMMARY
+ 
+ 
+ 
+-### Learning and Improvement Mechanisms
++### 10.1 Learning and Improvement Mechanisms
+ 
+ **Feedback Collection:** All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+ 
+@@ -438,7 +470,7 @@
+ **Adaptation:** Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
+ 
+ 
+-### Generated Artifacts:
++### 10.2 Generated Artifacts:
+ | Artifact | Location | Purpose | Consumer |
+ |----------|----------|---------|----------|
+ | `performance-intake-report.json` | `.artifacts/performance/` | Consolidated telemetry insights | Protocol 21 Gates |
+@@ -448,7 +480,7 @@
+ | `PERFORMANCE-REPORT.md` | `.artifacts/performance/` | Final optimization summary | Protocol 22 |
+ 
+ 
+-### Traceability Matrix
++### 10.3 Traceability Matrix
+ 
+ **Upstream Dependencies:**
+ - Input artifacts inherit from: [list predecessor protocols]
+@@ -465,7 +497,7 @@
+ - Verification procedure: [describe validation process]
+ - Audit trail: All artifact modifications logged in protocol execution log
+ 
+-### Quality Metrics:
++### 10.4 Quality Metrics:
+ | Metric | Target | Actual | Status |
+ |--------|--------|--------|--------|
+ | Gate 3 Pass Rate | ≥ 95% | [TBD] | ⏳ |
+@@ -476,9 +508,11 @@
+ ---
+ 
+ 
+-## REASONING & COGNITIVE PROCESS
++<!-- [Category: META-FORMATS] -->
++<!-- Why: Details cognitive strategies, decision logic, and self-monitoring. -->
++## 11. REASONING & COGNITIVE PROCESS
+ 
+-### Reasoning Patterns
++### 11.1 Reasoning Patterns
+ 
+ **Primary Reasoning Pattern: Systematic Execution**
+ - Execute protocol steps sequentially with validation at each checkpoint
+@@ -491,9 +525,9 @@
+ - Quarterly review identifies pattern weaknesses and optimization opportunities
+ - Iterate patterns based on empirical evidence from completed executions
+ 
+-### Decision Logic
++### 11.2 Decision Logic
+ 
+-#### Decision Point 1: Execution Readiness
++#### 11.2.1 Decision Point 1: Execution Readiness
+ **Context:** Determining if prerequisites are met to begin protocol execution
+ 
+ **Decision Criteria:**
+@@ -507,7 +541,7 @@
+ 
+ **Logging:** Record decision and prerequisites status in execution log
+ 
+-### Root Cause Analysis Framework
++### 11.3 Root Cause Analysis Framework
+ 
+ When protocol execution encounters blockers or quality gate failures:
+ 
+@@ -527,9 +561,9 @@
+ 4. **Implement Fix:** Update protocol, re-engage stakeholders, adjust execution
+ 5. **Validate Fix:** Re-run quality gates, confirm resolution
+ 
+-### Learning Mechanisms
++### 11.4 Learning Mechanisms
+ 
+-#### Feedback Loops
++#### 11.4.1 Feedback Loops
+ **Purpose:** Establish continuous feedback collection to inform protocol improvements.
+ 
+ - **Execution feedback:** Collect outcome data after each protocol execution
+@@ -537,7 +571,7 @@
+ - **Downstream protocol feedback:** Capture issues reported by dependent protocols
+ - **Continuous monitoring:** Automated alerts for anomalies and degradation
+ 
+-#### Improvement Tracking
++#### 11.4.2 Improvement Tracking
+ **Purpose:** Systematically track protocol effectiveness improvements over time.
+ 
+ - **Metrics tracking:** Monitor key performance indicators in quarterly dashboards
+@@ -545,7 +579,7 @@
+ - **Effectiveness measurement:** Compare before/after metrics for each improvement
+ - **Continuous monitoring:** Automated alerts when metrics degrade
+ 
+-#### Knowledge Base Integration
++#### 11.4.3 Knowledge Base Integration
+ **Purpose:** Build and leverage institutional knowledge to accelerate protocol quality.
+ 
+ - **Pattern library:** Maintain repository of successful execution patterns
+@@ -553,7 +587,7 @@
+ - **Common blockers:** Catalog typical issues with proven resolutions
+ - **Industry templates:** Specialized variations for specific domains
+ 
+-#### Adaptation Mechanisms
++#### 11.4.4 Adaptation Mechanisms
+ **Purpose:** Enable protocol to automatically adjust based on context and patterns.
+ 
+ - **Context adaptation:** Adjust execution based on project type, complexity, constraints
+@@ -561,9 +595,9 @@
+ - **Workflow optimization:** Streamline steps based on historical efficiency data
+ - **Tool selection:** Choose optimal automation based on available resources
+ 
+-### Meta-Cognition
++### 11.5 Meta-Cognition
+ 
+-#### Self-Awareness and Process Awareness
++#### 11.5.1 Self-Awareness and Process Awareness
+ **Purpose:** Enable AI to maintain explicit awareness of execution state and limitations.
+ 
+ **Awareness Statement Protocol:**
+@@ -575,7 +609,7 @@
+ - Known limitations and assumptions
+ - Required inputs for next steps
+ 
+-#### Process Monitoring and Progress Tracking
++#### 11.5.2 Process Monitoring and Progress Tracking
+ **Purpose:** Continuously track execution status and detect anomalies.
+ 
+ - **Progress tracking:** Update execution status after each step
+@@ -583,7 +617,7 @@
+ - **Quality monitoring:** Track gate pass rates and artifact completeness
+ - **Anomaly detection:** Alert on unexpected patterns or deviations
+ 
+-#### Self-Correction Protocols
++#### 11.5.3 Self-Correction Protocols
+ **Purpose:** Enable autonomous detection and correction of execution issues.
+ 
+ - **Halt condition detection:** Recognize blockers and escalate appropriately
+@@ -591,7 +625,7 @@
+ - **Anomaly response:** Diagnose and propose fixes for unexpected conditions
+ - **Recovery procedures:** Maintain execution state for graceful resume
+ 
+-#### Continuous Improvement Integration
++#### 11.5.4 Continuous Improvement Integration
+ **Purpose:** Systematically capture lessons and evolve protocol effectiveness.
+ 
+ - **Retrospective execution:** Conduct after-action reviews post-completion
