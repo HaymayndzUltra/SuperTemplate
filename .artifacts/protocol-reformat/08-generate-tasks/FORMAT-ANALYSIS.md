@@ -2,123 +2,103 @@
 
 ## Section-by-Section Format Choices
 
-### PREREQUISITES
+### 1. PREREQUISITES
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Setting rules and standards for required artifacts, approvals, and system states before execution -->
+<!-- Why: Establishes mandatory artifacts, approvals, and access permissions before task generation. -->
 - **Format Applied:** GUIDELINES-FORMATS
-- **Reasoning:** Defining standards and prerequisites that must be met
-- **Content Preserved:** 3 subsections (Required Artifacts, Required Approvals, System State Requirements)
+- **Content Preserved:** Required upstream documents, approvals, and system permissions
 
-### AI ROLE AND MISSION
+### 2. AI ROLE AND MISSION
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Establishing role definition and mission standards -->
+<!-- Why: Defines the Task Orchestrator responsibilities and constraints. -->
 - **Format Applied:** GUIDELINES-FORMATS
-- **Reasoning:** Setting the standards for AI behavior and mission objectives as Technical Lead
-- **Content Preserved:** Role definition and critical directive about documentation only
+- **Content Preserved:** Role definition, mission, and automation boundaries
 
-### WORKFLOW
+### 3. WORKFLOW (Mixed Variants)
 <!-- [Category: EXECUTION-FORMATS - Mixed variants by step] -->
-- **Overall Format:** EXECUTION-FORMATS with mixed variants
+- **Overview:** EXECUTION-BASIC for steps 1, 3, 4; EXECUTION-REASONING for step 2
 
-#### STEP 1: Context Preparation
+#### STEP 1: Initialize Task Framework
 <!-- [Category: EXECUTION-BASIC] -->
-<!-- Why: Simple workflow steps for indexing rules and analyzing inputs -->
-- **Format Applied:** EXECUTION-BASIC
-- **Content Preserved:** 3 substeps including rule indexing, input analysis, and persona identification
+<!-- Why: Sequential setup operations without branching logic. -->
+- **Content Preserved:** Context extraction, skeleton creation, cross-check of prerequisites
 
-#### STEP 2: High-Level Task Structuring
+#### STEP 2: Decompose Feature into Workstreams
 <!-- [Category: EXECUTION-REASONING] -->
-<!-- Why: Critical decision point requiring stakeholder approval and WHY context for tasks -->
-- **Format Applied:** EXECUTION-REASONING
-- **Content Preserved:** 4 substeps including task skeleton creation, high-level task generation, approval gate, and branching strategy
+<!-- Why: Breaks down feature scope through reasoning with alternatives and risk analysis. -->
+- **Content Preserved:** Reasoning blocks for workstream decomposition and prioritization
 
-#### STEP 3: Detailed Decomposition
-<!-- [Category: EXECUTION-SUBSTEPS] -->
-<!-- Why: Multiple precise substeps for detailed task breakdown with rule mapping and automation -->
-- **Format Applied:** EXECUTION-SUBSTEPS
-- **Content Preserved:** 3 substeps with layer-specific decomposition, automation hooks, and persona mapping
-
-#### STEP 4: Validation and Packaging
+#### STEP 3: Generate Detailed Tasks
 <!-- [Category: EXECUTION-BASIC] -->
-<!-- Why: Straightforward validation execution and artifact packaging -->
-- **Format Applied:** EXECUTION-BASIC
-- **Content Preserved:** 4 substeps including validation, enrichment, archival, and summary
+<!-- Why: Linear task generation for each workstream. -->
+- **Content Preserved:** Subtask generation per discipline, acceptance criteria, automation metadata
 
-### REFLECTION & LEARNING
+#### STEP 4: Validate & Publish Task Package
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Straightforward validation, enrichment, and publication steps. -->
+- **Content Preserved:** Validation scripts, enrichment automation, evidence exports, approval logging
+
+### 4. REFLECTION & LEARNING
 <!-- [Category: META-FORMATS] -->
-<!-- Why: Meta-level retrospective and continuous improvement tracking -->
+<!-- Why: Supports retrospectives, improvement tracking, and knowledge capture. -->
 - **Format Applied:** META-FORMATS
-- **Reasoning:** Documenting retrospective guidance and improvement mechanisms
-- **Content Preserved:** Retrospective guidance, continuous improvement opportunities, system evolution, knowledge capture, future planning
+- **Content Preserved:** Retrospective cadence, improvement tracking, system evolution, knowledge base updates, future planning
 
-### INTEGRATION POINTS
+### 5. INTEGRATION POINTS
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Defining standards for inputs/outputs and artifact storage -->
+<!-- Why: Documents upstream dependencies and downstream consumers. -->
 - **Format Applied:** GUIDELINES-FORMATS
-- **Reasoning:** Setting integration standards between protocols
-- **Content Preserved:** Inputs from 3 protocols, outputs to 2 protocols, storage locations
+- **Content Preserved:** Inputs from protocols 06/07, outputs to protocol 09 and automation systems, storage locations
 
-### QUALITY GATES
+### 6. QUALITY GATES
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Setting validation standards and criteria -->
+<!-- Why: Establishes validation criteria, thresholds, and automation triggers. -->
 - **Format Applied:** GUIDELINES-FORMATS
-- **Reasoning:** Defining quality standards and thresholds
-- **Content Preserved:** 4 gates with criteria, evidence, thresholds, failure handling, and automation
+- **Content Preserved:** Four gates (Prerequisite, Coverage, Decomposition, Publication) with evidence and automation commands
 
-### COMMUNICATION PROTOCOLS
+### 7. COMMUNICATION PROTOCOLS
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Setting communication standards and templates -->
+<!-- Why: Standardizes announcements, confirmation prompts, and failure handling. -->
 - **Format Applied:** GUIDELINES-FORMATS
-- **Reasoning:** Defining standard communication formats and error handling
-- **Content Preserved:** Status announcements (4 phases), validation prompts, error handling templates
+- **Content Preserved:** Phase notifications, validation request prompt, escalation template
 
-### AUTOMATION HOOKS
+### 8. AUTOMATION HOOKS
 <!-- [Category: EXECUTION-BASIC] -->
-<!-- Why: Simple execution of validation scripts with clear steps -->
+<!-- Why: Executes validation and enrichment scripts along with CI pipeline. -->
 - **Format Applied:** EXECUTION-BASIC
-- **Reasoning:** Straightforward script execution procedures
-- **Content Preserved:** 8 automation scripts with parameters, CI/CD integration, manual fallbacks
+- **Content Preserved:** Script commands, CI workflow snippet, manual fallback procedures
 
-### HANDOFF CHECKLIST
+### 9. HANDOFF CHECKLIST
 <!-- [Category: EXECUTION-BASIC] -->
-<!-- Why: Simple checklist execution for protocol completion -->
+<!-- Why: Sequential checks before handing tasks to Protocol 09. -->
 - **Format Applied:** EXECUTION-BASIC
-- **Reasoning:** Basic validation and handoff steps
-- **Content Preserved:** Pre-handoff validation, continuous improvement validation, handoff to Protocol 09
+- **Content Preserved:** Continuous improvement validation, pre-handoff checks, downstream trigger instructions
 
-### EVIDENCE SUMMARY
+### 10. EVIDENCE SUMMARY
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Defining standards for evidence collection and quality metrics -->
+<!-- Why: Normalizes artifact catalog, traceability, and quality metrics. -->
 - **Format Applied:** GUIDELINES-FORMATS
-- **Reasoning:** Setting evidence standards and metrics tracking
-- **Content Preserved:** Generated artifacts table, traceability matrix, quality metrics
+- **Content Preserved:** Artifact table, traceability matrix, metrics table
 
-### REASONING & COGNITIVE PROCESS
+### 11. REASONING & COGNITIVE PROCESS
 <!-- [Category: META-FORMATS] -->
-<!-- Why: Meta-level protocol analysis and reasoning patterns documentation -->
+<!-- Why: Captures reasoning patterns, decision logic, and meta-cognition. -->
 - **Format Applied:** META-FORMATS
-- **Reasoning:** Documenting reasoning patterns, decision logic, and meta-cognition
-- **Content Preserved:** Reasoning patterns, decision logic, root cause analysis, learning mechanisms, meta-cognition
+- **Content Preserved:** Reasoning patterns, decision logic, root-cause procedure, learning systems, self-awareness routines
 
 ## Content Preservation Summary
 
-- **Total Sections Analyzed:** 12
+- **Sections Analyzed:** 11
 - **Formats Applied:**
   - GUIDELINES-FORMATS: 6 sections
-  - EXECUTION-BASIC: 6 sections/subsections (2 workflow steps + 2 other sections)
-  - EXECUTION-REASONING: 1 section (Step 2: High-Level Task Structuring)
-  - EXECUTION-SUBSTEPS: 1 section (Step 3: Detailed Decomposition)
+  - EXECUTION-BASIC: 3 workflow steps + 3 supporting sections
+  - EXECUTION-REASONING: 1 workflow step (Step 2)
   - META-FORMATS: 2 sections
-
-- **All Content Preserved:**
-  - ✅ All 5 reasoning blocks preserved (task approval, decomposition logic, etc.)
-  - ✅ All 1 decision point preserved
-  - ✅ All 17 evidence requirements preserved
-  - ✅ All 8 script references preserved
-  - ✅ All 4 quality gates preserved
-  - ✅ All automation hooks preserved
-  - ✅ All integration points preserved
-  - ✅ All markers ([STRICT], [MUST], [GUIDELINE], [CRITICAL]) preserved
-  - ✅ All communication templates preserved
-  - ✅ Task approval gate and "Go" requirement preserved
-  - ✅ WHY context requirements for tasks preserved
+- **Key Element Counts:**
+  - Reasoning Blocks: 2 preserved (task decomposition and cognitive process)
+  - Decision Points: 1 prioritization decision maintained
+  - Evidence Requirements: 43 explicit entries referencing original artifacts
+  - Script References: 9 unique automation hooks retained
+  - Quality Gates: 4 gates preserved with criteria and automation
+  - Compliance Markers: 8 `[STRICT]`, 31 `[MUST]`, 9 `[GUIDELINE]`, 1 `[CRITICAL]`
+- **Validation:** Diff confirms structural conversion only; all artifact paths, scripts, and communications remain intact.
