@@ -1,0 +1,163 @@
+--- .artifacts/protocol-reformat/22-implementation-retrospective/ORIGINAL-BACKUP.md	2025-10-30 00:28:51.460923605 +0000
++++ .cursor/ai-driven-workflow/22-implementation-retrospective.md	2025-10-30 00:29:35.468852721 +0000
+@@ -44,73 +44,79 @@
+ 
+ ## WORKFLOW
+ 
+-### STEP 1: Retrospective Preparation & Data Synthesis
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Phase one synthesizes retrospective inputs with straightforward halt checks for missing evidence. -->
++### PHASE 1: Retrospective Preparation & Data Synthesis
+ 
+ 1. **`[MUST]` Aggregate Cross-Protocol Insights:**
+    * **Action:** Consolidate artifacts from protocols 3–18 into a single retrospective knowledge base.
+-   * **Communication:** 
++   * **Communication:**
+      > "[MASTER RAY™ | PHASE 1 START] - Aggregating lessons and evidence across delivery, quality, and operations..."
+-   * **Halt condition:** Stop if any key artifact is missing or outdated.
++   * **Halt Condition:** Stop if any key artifact is missing or outdated.
+    * **Evidence:** `.artifacts/protocol-22/retrospective-source-compilation.json` with artifact inventory and freshness.
+ 
+ 2. **`[MUST]` Identify Thematic Focus Areas:**
+    * **Action:** Categorize insights into themes (requirements, delivery, quality, operations, customer) using qualitative analysis.
+-   * **Communication:** 
++   * **Communication:**
+      > "[PHASE 1] Categorizing retrospective inputs into thematic focus areas..."
+-   * **Halt condition:** Pause if themes lack supporting evidence or stakeholder alignment.
++   * **Halt Condition:** Pause if themes lack supporting evidence or stakeholder alignment.
+    * **Evidence:** `.artifacts/protocol-22/theme-matrix.csv` mapping inputs to themes.
+ 
+ 3. **`[GUIDELINE]` Issue Pre-Retrospective Survey:**
+    * **Action:** Send survey for anonymous input on wins, challenges, and ideas.
+-   * **Example:**
++   * **Reference Example:**
+      ```markdown
+      - Question: "What should we keep doing to maintain quality?"
+      - Question: "Where did tooling slow us down?"
+      ```
+ 
+-### STEP 2: Facilitation & Insight Generation
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Phase two focuses on facilitation tasks with linear execution and evidence capture. -->
++### PHASE 2: Facilitation & Insight Generation
+ 
+ 1. **`[MUST]` Conduct Structured Retrospective Session:**
+    * **Action:** Facilitate meeting using agenda (Set the Stage → Gather Data → Generate Insights → Decide Actions).
+-   * **Communication:** 
++   * **Communication:**
+      > "[MASTER RAY™ | PHASE 2 START] - Facilitating retrospective session. Capturing insights in real time..."
+-   * **Halt condition:** Halt if quorum not met or key roles absent.
++   * **Halt Condition:** Halt if quorum not met or key roles absent.
+    * **Evidence:** `.artifacts/protocol-22/session-notes.md` capturing discussion, decisions, and votes.
+ 
+ 2. **`[MUST]` Capture Actionable Insights & Decisions:**
+    * **Action:** Translate discussion outcomes into actionable statements with rationale and evidence references.
+-   * **Communication:** 
++   * **Communication:**
+      > "[PHASE 2] Documenting actionable insights with supporting evidence..."
+-   * **Halt condition:** Pause if insights lack measurable impact or ownership alignment.
++   * **Halt Condition:** Pause if insights lack measurable impact or ownership alignment.
+    * **Evidence:** `.artifacts/protocol-22/insight-log.json` listing insight, impact, source, owner candidates.
+ 
+ 3. **`[GUIDELINE]` Highlight Celebrations & Success Stories:**
+    * **Action:** Document noteworthy wins and recognition items for leadership communications.
+-   * **Example:**
++   * **Reference Example:**
+      ```markdown
+      - Success: Zero-severity-one incidents during release window
+      - Recognition: QA team for proactive test automation coverage increase
+      ```
+ 
+-### STEP 3: Action Plan & Continuous Improvement Alignment
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Phase three drives action planning with direct assignment and communication requirements. -->
++### PHASE 3: Action Plan & Continuous Improvement Alignment
+ 
+ 1. **`[MUST]` Prioritize Improvement Actions:**
+    * **Action:** Score improvement ideas using impact/effort matrix and align to owning protocols or teams.
+-   * **Communication:** 
++   * **Communication:**
+      > "[MASTER RAY™ | PHASE 3 START] - Prioritizing action items and aligning owners..."
+-   * **Halt condition:** Halt if priority conflicts unresolved or lacking consensus.
++   * **Halt Condition:** Halt if priority conflicts unresolved or lacking consensus.
+    * **Evidence:** `.artifacts/protocol-22/action-prioritization-matrix.csv` with scoring and rank.
+ 
+ 2. **`[MUST]` Assign Owners, Due Dates, and Follow-Up Protocols:**
+    * **Action:** Create action register with accountable owner, timeline, and protocol linkage for feedback loops.
+-   * **Communication:** 
++   * **Communication:**
+      > "[PHASE 3] Assigning action ownership and scheduling follow-ups..."
+-   * **Halt condition:** Pause if any critical action lacks owner or due date.
++   * **Halt Condition:** Pause if any critical action lacks owner or due date.
+    * **Evidence:** `.artifacts/protocol-22/action-register.csv` capturing owner, due date, linked protocol.
+ 
+ 3. **`[GUIDELINE]` Publish Retrospective Report & Communication:**
+    * **Action:** Share summary with stakeholders, including wins, opportunities, and action commitments.
+-   * **Example:**
++   * **Reference Example:**
+      ```bash
+      python scripts/generate_retrospective_report.py --inputs .artifacts/protocol-5 --output .artifacts/protocol-22/retrospective-report.md
+      ```
+@@ -118,6 +124,8 @@
+ ---
+ 
+ 
++<!-- [Category: META-FORMATS - RETROSPECTIVE SYNTHESIS] -->
++<!-- Why: Reinforces structured learning capture and continuous improvement evaluation. -->
+ ## REFLECTION & LEARNING
+ 
+ ### Retrospective Guidance
+@@ -235,6 +243,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - INTEGRATION MAPPING] -->
++<!-- Why: Documents cross-protocol inputs and outputs for retrospective alignment. -->
+ ## 5. INTEGRATION POINTS
+ 
+ ### Inputs From:
+@@ -258,6 +268,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - QUALITY CONTROL] -->
++<!-- Why: Defines participation, action planning, and integration gate criteria with automation hooks. -->
+ ## 5. QUALITY GATES
+ 
+ ### Gate 1: Participation & Coverage
+@@ -283,6 +295,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - COMMUNICATION PLAYBOOK] -->
++<!-- Why: Provides messaging templates for status, validation, and error handling. -->
+ ## 5. COMMUNICATION PROTOCOLS
+ 
+ ### Status Announcements:
+@@ -360,6 +374,8 @@
+ 
+ ---
+ 
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Ensures readiness for Protocol 23 via explicit checklist and evidence requirements. -->
+ ## 5. HANDOFF CHECKLIST
+ 
+ 
+@@ -399,6 +415,8 @@
+ 
+ ---
+ 
++<!-- [Category: META-FORMATS - EVIDENCE INVENTORY] -->
++<!-- Why: Aggregates artifacts, traceability, and metrics for audit and improvement tracking. -->
+ ## 5. EVIDENCE SUMMARY
+ 
+ 
+@@ -451,6 +469,8 @@
+ ---
+ 
+ 
++<!-- [Category: META-FORMATS - COGNITIVE EXPLAINABILITY] -->
++<!-- Why: Captures reasoning patterns, decision logic, and adaptive learning mechanisms. -->
+ ## REASONING & COGNITIVE PROCESS
+ 
+ ### Reasoning Patterns

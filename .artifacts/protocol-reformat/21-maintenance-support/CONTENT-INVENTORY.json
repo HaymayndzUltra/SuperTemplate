@@ -1,0 +1,30 @@
+{
+  "reasoning_blocks_count": 0,
+  "evidence_requirements_count": 26,
+  "script_references": [
+    "scripts/aggregate_evidence_18.py",
+    "scripts/discover_automation_candidates.py",
+    "scripts/run_protocol_18_gates.py",
+    "scripts/script-registry.json",
+    "scripts/validate_gate_18_approvals.py",
+    "scripts/validate_gate_18_backlog.py",
+    "scripts/validate_gate_18_governance.py",
+    "scripts/validate_prerequisites_18.py"
+  ],
+  "artifact_paths": [
+    ".artifacts/protocol-21/",
+    ".artifacts/protocol-21/approval-log.csv",
+    ".artifacts/protocol-21/automation-candidates.json",
+    ".artifacts/protocol-21/backlog-prioritization-matrix.json",
+    ".artifacts/protocol-21/governance-cadence-checklist.json",
+    ".artifacts/protocol-21/handover-validation-report.json",
+    ".artifacts/protocol-21/maintenance-backlog.csv",
+    ".artifacts/protocol-21/maintenance-plan.md",
+    ".artifacts/protocol-21/manual-validation-log.md",
+    ".artifacts/protocol-21/operational-baseline-analysis.md",
+    ".artifacts/protocol-21/support-coverage-plan.json",
+    ".artifacts/protocol-21/ticket-history.csv"
+  ],
+  "gate_definitions_count": 3,
+  "automation_hooks_count": 10
+}

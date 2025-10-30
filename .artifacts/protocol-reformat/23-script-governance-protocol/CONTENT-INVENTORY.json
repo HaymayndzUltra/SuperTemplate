@@ -1,0 +1,43 @@
+{
+  "reasoning_blocks_count": 0,
+  "evidence_requirements_count": 26,
+  "script_references": [
+    "scripts/aggregate_evidence_8.py",
+    "scripts/artifact-compliance-report.json",
+    "scripts/auto_register_scripts.py",
+    "scripts/documentation-audit.csv",
+    "scripts/generate_protocol_23_artifacts.py",
+    "scripts/inventory-validation-report.json",
+    "scripts/manual-remediation-log.md",
+    "scripts/remediation-backlog.csv",
+    "scripts/run_protocol_8_gates.py",
+    "scripts/script-categories.json",
+    "scripts/script-index.json",
+    "scripts/script-registry.json",
+    "scripts/static-analysis-report.json",
+    "scripts/validate_gate_8_artifacts.py",
+    "scripts/validate_gate_8_inventory.py",
+    "scripts/validate_gate_8_reporting.py",
+    "scripts/validate_gate_8_static.py",
+    "scripts/validate_prerequisites_8.py",
+    "scripts/validate_script_registry.py"
+  ],
+  "artifact_paths": [
+    ".artifacts/protocol-23",
+    ".artifacts/protocol-23/",
+    ".artifacts/protocol-23/manual-validation-log.md",
+    ".artifacts/quality-audit/QUALITY-AUDIT-PACKAGE.zip",
+    ".artifacts/scripts/",
+    ".artifacts/scripts/artifact-compliance-report.json",
+    ".artifacts/scripts/documentation-audit.csv",
+    ".artifacts/scripts/inventory-validation-report.json",
+    ".artifacts/scripts/manual-remediation-log.md",
+    ".artifacts/scripts/remediation-backlog.csv",
+    ".artifacts/scripts/script-categories.json",
+    ".artifacts/scripts/script-index.json",
+    ".artifacts/scripts/static-analysis-report.json",
+    ".artifacts/validation/script-registry-report.json"
+  ],
+  "gate_definitions_count": 4,
+  "automation_hooks_count": 9
+}

@@ -1,0 +1,185 @@
+--- .artifacts/protocol-reformat/23-script-governance-protocol/ORIGINAL-BACKUP.md	2025-10-30 00:30:19.732779153 +0000
++++ .cursor/ai-driven-workflow/23-script-governance-protocol.md	2025-10-30 00:31:08.916698485 +0000
+@@ -71,84 +71,90 @@
+ 
+ ## WORKFLOW
+ 
+-### STEP 1: Script Discovery and Inventory Baseline
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Phase one performs linear discovery and validation steps with explicit halt checks and evidence capture. -->
++### PHASE 1: Script Discovery and Inventory Baseline
+ 
+ 1. **`[MUST]` Index Scripts Across Repository:**
+    * **Action:** Enumerate `.py`, `.sh`, `.ps1`, and `.yml` files under `/scripts/`, capturing metadata (path, description, last modified).
+-   * **Communication:** 
++   * **Communication:**
+      > "[MASTER RAY™ | PHASE 1 START] - Beginning script discovery and indexing..."
+-   * **Halt condition:** Stop if `/scripts/` directory missing or inaccessible.
++   * **Halt Condition:** Stop if `/scripts/` directory missing or inaccessible.
+    * **Evidence:** `.artifacts/scripts/script-index.json` with completeness score.
+ 
+ 2. **`[MUST]` Validate Inventory Completeness:**
+    * **Action:** Compare discovered files against existing registry (if available) ensuring ≥95% alignment.
+-   * **Communication:** 
++   * **Communication:**
+      > "[PHASE 1] Inventory completeness evaluated. Deviations recorded."
+-   * **Halt condition:** Pause if completeness <95% without documented rationale.
++   * **Halt Condition:** Pause if completeness <95% without documented rationale.
+    * **Evidence:** `.artifacts/scripts/inventory-validation-report.json` summarizing matches and gaps.
+    * **Automation:** `python3 scripts/validate_script_registry.py --min-coverage 95.0 --fail-on-orphans`
+ 
+ 3. **`[GUIDELINE]` Categorize Scripts by Function:**
+    * **Action:** Group scripts into categories (deployment, validation, reporting) for governance insights.
+-   * **Example:**
++   * **Reference Example:**
+      ```python
+      categories = classify_scripts(script_index)
+      save(categories, ".artifacts/scripts/script-categories.json")
+      ```
+ 
+-### STEP 2: Documentation and Static Compliance Checks
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Phase two executes sequential compliance checks with straightforward halt conditions. -->
++### PHASE 2: Documentation and Static Compliance Checks
+ 
+ 1. **`[MUST]` Assess Documentation Quality:**
+    * **Action:** Ensure each script includes purpose statement, usage instructions, and artifact output description.
+-   * **Communication:** 
++   * **Communication:**
+      > "[MASTER RAY™ | PHASE 2 START] - Auditing script documentation completeness..."
+-   * **Halt condition:** Halt if any critical script lacks documentation.
++   * **Halt Condition:** Halt if any critical script lacks documentation.
+    * **Evidence:** `.artifacts/scripts/documentation-audit.csv` capturing compliance per script.
+    * **Automation:** `python3 scripts/generate_protocol_23_artifacts.py --output-dir .artifacts/protocol-23`
+ 
+ 2. **`[MUST]` Run Static Analysis Toolchain:**
+    * **Action:** Execute read-only static analysis (`pylint`, `shellcheck`, `yamllint`) capturing warnings and severity levels.
+-   * **Communication:** 
++   * **Communication:**
+      > "[RAY AUTOMATION] Executing static analysis suite across script inventory..."
+-   * **Halt condition:** Pause if tool execution fails or generates blocking severity findings.
++   * **Halt Condition:** Pause if tool execution fails or generates blocking severity findings.
+    * **Evidence:** `.artifacts/scripts/static-analysis-report.json` aggregated by tool and script.
+ 
+ 3. **`[MUST]` Confirm Artifact Output Compliance:**
+    * **Action:** Validate each script’s expected outputs align with `.artifacts/` storage conventions and JSON schema rules.
+-   * **Communication:** 
++   * **Communication:**
+      > "[PHASE 2] Verifying artifact output compliance and schema adherence..."
+-   * **Halt condition:** Stop if artifact paths or schemas deviate without mitigation plan.
++   * **Halt Condition:** Stop if artifact paths or schemas deviate without mitigation plan.
+    * **Evidence:** `.artifacts/scripts/artifact-compliance-report.json` including schema validation results.
+    * **Automation:** `python3 scripts/generate_protocol_23_artifacts.py --output-dir .artifacts/protocol-23`
+ 
+ 4. **`[GUIDELINE]` Extend Protocol 19 Gates:**
+    * **Action:** Map relevant Protocol 19 quality gate expectations to scripts to ensure consistency.
+-   * **Example:**
++   * **Reference Example:**
+      ```markdown
+      - Gate Alignment: Pre-Audit Automation → Scripts: run_protocol_4_pre_audit.py
+      - Evidence: static-analysis-report.json (severity <= medium)
+      ```
+ 
+-### STEP 3: Governance Reporting and Feedback Loop
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Phase three consolidates governance reporting with linear tasks and evidence capture. -->
++### PHASE 3: Governance Reporting and Feedback Loop
+ 
+ 1. **`[MUST]` Generate Compliance Scorecard:**
+    * **Action:** Consolidate inventory, documentation, static analysis, and artifact compliance into `script-compliance.json`.
+-   * **Communication:** 
++   * **Communication:**
+      > "[MASTER RAY™ | PHASE 3 START] - Compiling script governance scorecard for downstream consumers..."
+-   * **Halt condition:** Pause if data model validation fails.
++   * **Halt Condition:** Pause if data model validation fails.
+    * **Evidence:** `.cursor/context-kit/script-compliance.json` with compliance index.
+    * **Automation:** `python3 scripts/generate_protocol_23_artifacts.py --output-dir .artifacts/protocol-23`
+ 
+ 2. **`[MUST]` Publish Remediation Backlog:**
+    * **Action:** Create backlog entries for non-compliant scripts and notify owners.
+-   * **Communication:** 
++   * **Communication:**
+      > "[PHASE 3] Script remediation backlog prepared. Owners notified."
+-   * **Halt condition:** Stop if backlog cannot be linked to issue tracker.
++   * **Halt Condition:** Stop if backlog cannot be linked to issue tracker.
+    * **Evidence:** `.artifacts/scripts/remediation-backlog.csv` containing action items.
+ 
+ 3. **`[GUIDELINE]` Share Insights with Quality Audit:**
+    * **Action:** Provide summary to Protocol 19 to influence upcoming audits.
+-   * **Example:**
++   * **Reference Example:**
+      ```markdown
+      ### Script Governance Highlights
+      - Coverage: 98% scripts documented
+@@ -159,6 +165,8 @@
+ ---
+ 
+ 
++<!-- [Category: META-FORMATS - RETROSPECTIVE SYNTHESIS] -->
++<!-- Why: Guides post-governance learning capture and improvement tracking. -->
+ ## REFLECTION & LEARNING
+ 
+ ### Retrospective Guidance
+@@ -276,6 +284,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - INTEGRATION MAPPING] -->
++<!-- Why: Maps upstream audit inputs and downstream governance outputs. -->
+ ## 8. INTEGRATION POINTS
+ 
+ ### Inputs From:
+@@ -293,6 +303,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - QUALITY CONTROL] -->
++<!-- Why: Establishes inventory, compliance, artifact, and reporting gate standards. -->
+ ## 8. QUALITY GATES
+ 
+ ### Gate 1: Inventory Accuracy Gate
+@@ -325,6 +337,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - COMMUNICATION PLAYBOOK] -->
++<!-- Why: Provides messaging templates for governance status, validation, and errors. -->
+ ## 8. COMMUNICATION PROTOCOLS
+ 
+ ### Status Announcements:
+@@ -364,6 +378,8 @@
+ 
+ ---
+ 
++<!-- [Category: GUIDELINES-FORMATS - AUTOMATION PLAYBOOK] -->
++<!-- Why: Documents validation scripts, CI/CD integration, and manual fallback steps. -->
+ ## 8. AUTOMATION HOOKS
+ 
+ ### Validation Scripts:
+@@ -405,6 +421,8 @@
+ 
+ ---
+ 
++<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
++<!-- Why: Checklist confirms readiness before handing evidence to audit and retrospective protocols. -->
+ ## 8. HANDOFF CHECKLIST
+ 
+ 
+@@ -444,6 +462,8 @@
+ 
+ ---
+ 
++<!-- [Category: META-FORMATS - EVIDENCE INVENTORY] -->
++<!-- Why: Aggregates artifacts, traceability, and metrics for governance oversight. -->
+ ## 8. EVIDENCE SUMMARY
+ 
+ 
+@@ -497,6 +517,8 @@
+ ---
+ 
+ 
++<!-- [Category: META-FORMATS - COGNITIVE EXPLAINABILITY] -->
++<!-- Why: Captures reasoning patterns, decision logic, and adaptive learning mechanisms. -->
+ ## REASONING & COGNITIVE PROCESS
+ 
+ ### Reasoning Patterns
