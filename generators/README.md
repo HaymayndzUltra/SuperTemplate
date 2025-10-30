@@ -1,155 +1,85 @@
-# 📁 GENERATORS FOLDER - Complete System
+# 📁 Generators System – Protocol & Evidence Automation
 
-## 🎯 WHAT'S IN THIS FOLDER
+The `generators/` directory hosts the tooling, prompts, and forms that let AI assistants and operators derive new workflow assets directly from the 23-protocol lifecycle. Two primary outcomes drive this folder:
 
-**Complete bidirectional generator system** para sa:
-1. **Pag-analyze ng existing protocols** → Extract structure and patterns
-2. **Pag-create ng new protocols** → Generate following exact format
-
-**Guaranteed compatibility** through circular validation!
+1. **Meta-analysis generation** – Translate any protocol into a structured analysis artifact for audits or validator inputs.
+2. **Protocol drafting** – Produce brand-new protocols from standardized inputs while preserving the canonical format and governance requirements.
 
 ---
 
-## 📂 FILE ORGANIZATION
+## 📂 Folder Map
 
-### 📖 Documentation (Start Here!)
-```
-GENERATORS-INDEX.md                          ← START HERE (Complete navigation)
-QUICK-START-GENERATORS.md                   ← Quick start guide (5 min)
-GENERATOR-SYSTEM-SUMMARY.md                 ← Full system documentation
-```
-
-### 🤖 AI Generator Instructions
-```
-meta-analysis-generator-instructions.md      ← AI guide: Protocol → Analysis
-protocol-generator-instructions.md           ← AI guide: Requirements → Protocol
-```
-
-### 📝 User Templates & Forms
-```
-protocol-input-form.yaml                     ← Empty template (fill this!)
-sample-filled-form.yaml                      ← Filled example (reference)
-```
-
-### ✅ Validation Examples
-```
-6-deployment-automation.md                   ← Sample generated protocol
-analysis-6-deployment-automation.md          ← Sample generated analysis
-```
+| Path | Purpose |
+| --- | --- |
+| `GENERATORS-INDEX.md` | Navigation hub with links to every guide and template |
+| `QUICK-START-GENERATORS.md` | 5-minute onboarding for new operators |
+| `GENERATOR-SYSTEM-SUMMARY.md` | Full documentation for the generator stack |
+| `meta-analysis-generator-instructions.md` | AI prompt script for “Protocol → Meta Analysis” conversions |
+| `protocol-generator-instructions.md` | AI prompt script for “Requirements → Protocol” drafting |
+| `protocol-input-form.yaml` | Blank YAML form capturing project context, evidence, gates, and outcomes |
+| `sample-filled-form.yaml` | Example of a completed input form |
+| `analysis-6-deployment-automation.md` | Sample meta-analysis output |
+| `6-deployment-automation.md` | Sample generated protocol following the 23-protocol format |
 
 ---
 
-## 🚀 QUICK START
+## 🚀 Quick Start
 
-### Option 1: I want to start immediately (5 min)
-→ Read: `QUICK-START-GENERATORS.md`
+### Need an Analysis?
+1. Open `meta-analysis-generator-instructions.md`.
+2. Provide the target protocol markdown.
+3. Request an AI assistant to generate the analysis document.
 
-### Option 2: I want full understanding (20 min)
-→ Read: `GENERATOR-SYSTEM-SUMMARY.md`
+### Need a New Protocol?
+1. Fill out `protocol-input-form.yaml` (clone `sample-filled-form.yaml` for guidance).
+2. Feed the populated form into `protocol-generator-instructions.md`.
+3. Validate the draft against the canonical structure (purpose, prerequisites, steps, evidence, quality gates, script hooks).
 
-### Option 3: I want to explore files
-→ Start: `GENERATORS-INDEX.md` (navigation hub)
-
----
-
-## 📋 TWO MAIN WORKFLOWS
-
-### Workflow 1: Generate Meta-Analysis
-```
-Existing Protocol → Meta-Analysis Generator → Analysis Document
-```
-
-### Workflow 2: Generate New Protocol
-```
-Fill Form → Protocol Generator → New Protocol (Validated!)
-```
+### Cross-check Outcomes
+- Use `analysis-*.md` files to confirm evidence layers (structural, process, decision, integration) are captured.
+- Feed generated protocols back into the meta-analysis workflow to ensure consistency with validator expectations.
 
 ---
 
-## 🔄 CIRCULAR VALIDATION PROVEN
+## 🔄 Feedback Loop with the 23-Protocol Lifecycle
 
-**Test Case Completed:**
-- ✅ Form filled: `sample-filled-form.yaml`
-- ✅ Protocol generated: `6-deployment-automation.md`
-- ✅ Analysis generated: `analysis-6-deployment-automation.md`
-- ✅ Validation: ALL 4 LAYERS EXTRACTED ✓
-- ✅ Result: **CIRCULAR VALIDATION PASSED**
+```mermaid
+flowchart LR
+    Brief[Project Inputs] --> Form[Protocol Input Form]
+    Form -->|AI Draft| Protocol
+    Protocol -->|AI Analysis| Analysis
+    Analysis -->|Validator Inputs| Validators
+    Validators -->|Score & Gaps| Improvement
+    Improvement -->|Revision| Protocol
+```
+
+This closed loop keeps new or revised protocols aligned with governance requirements and downstream validator criteria.
 
 ---
 
-## 💡 COMMON TASKS
+## ✅ Usage Checklist
 
-### Task 1: Analyze Existing Protocol
-```
-Tell AI: "Generate meta-analysis for [protocol-name].md 
-using generators/meta-analysis-generator-instructions.md"
-```
-
-### Task 2: Create New Protocol
-```
-1. Fill: generators/protocol-input-form.yaml
-2. Tell AI: "Generate protocol using generators/protocol-generator-instructions.md 
-   with my-filled-form.yaml"
-```
-
-### Task 3: Validate Protocol Quality
-```
-Generated Protocol → Meta-Analysis Generator → Validation Report
-✓ All 4 layers present = VALID
-```
+- [ ] Identify target protocol or desired workflow outcome.
+- [ ] Prepare the latest context (brief, gates, evidence expectations).
+- [ ] Use the matching generator prompt (analysis or protocol drafting).
+- [ ] Validate outputs against `.cursor/ai-driven-workflow/AGENTS.md` and integration maps.
+- [ ] Archive generated artifacts in `.artifacts/` with evidence manifests if promoted to production.
 
 ---
 
-## 🎯 SUCCESS CHECKLIST
+## 🧭 Suggested Learning Path
 
-### You know you're successful when:
-- [ ] You can analyze any existing protocol
-- [ ] You can generate new protocols from form
-- [ ] You understand 4-layer architecture
-- [ ] You can validate protocol quality
-- [ ] Generated protocols pass validation
+1. Read `QUICK-START-GENERATORS.md` for orientation.
+2. Review `GENERATOR-SYSTEM-SUMMARY.md` to understand architecture and safeguards.
+3. Study the sample pair (`sample-filled-form.yaml`, `6-deployment-automation.md`, `analysis-6-deployment-automation.md`).
+4. Run the loop end-to-end with a low-risk protocol before proposing changes to core protocols.
 
 ---
 
-## 📚 LEARNING PATH
+## 🤝 Support & Contributions
 
-### Beginner
-1. Read `QUICK-START-GENERATORS.md`
-2. Look at `sample-filled-form.yaml`
-3. Review `6-deployment-automation.md` (generated example)
+- Governance rules live in `.cursor/ai-driven-workflow/AGENTS.md` and `COMMAND-PLAYBOOK.md`.
+- When submitting new protocols, include the filled YAML form and matching analysis artifact.
+- Flag improvements or gaps via `documentation/pr-reviews/` playbooks to route feedback through protocol governors.
 
-### Intermediate
-1. Read `GENERATOR-SYSTEM-SUMMARY.md`
-2. Study `analysis-6-deployment-automation.md` (analysis example)
-3. Try generating meta-analysis for existing protocol
-
-### Advanced
-1. Read `meta-analysis-generator-instructions.md` (full AI guide)
-2. Read `protocol-generator-instructions.md` (full AI guide)
-3. Generate new protocol from scratch
-4. Understand circular validation mechanism
-
----
-
-## 🆘 SUPPORT
-
-### Need Help?
-- **Quick answers:** Check `QUICK-START-GENERATORS.md`
-- **Detailed explanation:** Read `GENERATOR-SYSTEM-SUMMARY.md`
-- **Examples:** Study sample files
-- **Navigation:** Use `GENERATORS-INDEX.md`
-
----
-
-## 🎉 YOU'RE READY!
-
-**Everything you need is in this folder:**
-- ✅ Complete documentation
-- ✅ Working examples
-- ✅ Templates and forms
-- ✅ Validation system
-- ✅ Quick start guide
-
-**Start here:** `GENERATORS-INDEX.md`
-
-**Welcome to the Protocol & Analysis Generator System!** 🚀
+Everything in this directory is built to keep protocol evolution consistent, auditable, and aligned with the AI-driven workflow lifecycle. Use it to extend the system responsibly! 🚀

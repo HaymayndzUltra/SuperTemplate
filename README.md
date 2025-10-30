@@ -1,515 +1,200 @@
-# AI Meta Workflow Test Protocol - Comprehensive Testing & Validation Framework
+# AI-Driven Workflow Platform
 
-## 🚀 Executive Summary
-
-The **AI Meta Workflow Test Protocol** is a systematic, evidence-based framework for validating the entire AI-driven workflow system (28 protocols, 82+ scripts, quality gates, review protocols) for production readiness across freelance, enterprise, and startup scenarios. This protocol ensures every component, gate, dependency, and artifact is logically and functionally verified before real-world deployment.
-
-### ✅ **PRODUCTION READY STATUS (2025-10-21)**
-**All 24 documented gaps have been resolved.** The system is production-ready with:
-- ✅ Zero circular dependencies
-- ✅ Correct protocol sequences
-- ✅ Clean prerequisite chains
-- ✅ Clear branching guidance
-- ✅ Automated evidence validation
-
-See `documentation/gap-closure-report.md` for complete details.
-
-### Core Philosophy
-- **"Why Before How"**: Every validation must align with cognitive dependencies
-- **Logic-First Validation**: Beyond gaps/errors/duplicates - validate reasoning integrity
-- **Evidence-Based Testing**: All validation steps must be documented and traceable
-- **Session Continuity**: Each session builds upon previous validation with automatic handoff
-
-### Key Benefits
-- ✅ **Complete System Validation**: All 28 protocols systematically tested
-- ✅ **Logic Validation Framework**: 4-layer validation (Structural, Process, Decision, Integration)
-- ✅ **Automatic Session Handoff**: Auto-generated continuation instructions
-- ✅ **Production Ready**: All 24 gaps closed, zero temporal impossibilities
-- ✅ **Real-World Scenario Testing**: Freelance, enterprise, and startup simulations
-- ✅ **Comprehensive Gap Closure**: 100% resolution with evidence validation
-- ✅ **Automated Quality**: Evidence validator + CI/CD integration
+Comprehensive automation, evidence, and validation tooling for the 23-protocol AI-driven development lifecycle. The repository combines orchestration scripts, protocol blueprints, validation suites, and template packs to deliver production-ready software projects with human-governed checkpoints.
 
 ---
 
-## 🎯 Quick Start Guide
+## 🚀 What You Get
 
-### Immediate Testing Commands
-
-```bash
-# Start Phase 0 Testing (Protocols 01-05)
-@apply .cursor/ai-driven-workflow/01-client-proposal-generation.md --test-mode
-
-# Read Previous Session Instructions
-cat .cursor/session-instructions/latest-session-instructions.md
-
-# Generate Continuation Instructions (after completing any protocol)
-python scripts/generate_session_continuation.py --protocol 01 --session-id $(date +%Y%m%d-%H%M%S)
-
-# View Readiness Scorecard
-python scripts/generate_readiness_scorecard.py --format markdown
-```
-
-### Session Workflow
-1. **Startup**: Read previous session instructions and load context
-2. **Execution**: Test protocols with all validation layers
-3. **Completion**: Generate next session instructions automatically
-4. **Handoff**: Document verified outputs and artifacts
+- **End-to-end delivery playbook** covering seven phases (Phase 0–6) and 23 protocols
+- **Automation suite** that turns briefs into execution-ready projects with evidence and quality gates
+- **Validation layer** that scores protocol completeness, script coverage, and lifecycle health
+- **Template ecosystem** (frontend, backend, devex, compliance) wired into the unified generator
+- **Governance tooling** for script registration, protocol audits, and workflow retrospectives
 
 ---
 
-## 📋 AI Meta Workflow Test Protocol Framework
+## 📈 Workflow at a Glance
 
-### Enhanced Test Protocol Structure
+```mermaid
+flowchart LR
+    subgraph P0[Phase 0 · Foundation & Discovery]
+        A01[01 · Client Proposal Generation]
+        A02[02 · Client Discovery Initiation]
+        A03[03 · Project Brief Creation]
+        A04[04 · Project Bootstrap & Context]
+        A05[05 · Bootstrap Your Project]
+    end
 
-The testing framework systematically validates the entire AI-driven workflow system through:
+    subgraph P1[Phase 1-2 · Planning & Design]
+        B06[06 · Create PRD]
+        B07[07 · Technical Design Architecture]
+        B08[08 · Generate Tasks]
+        B09[09 · Environment Setup Validation]
+    end
 
-#### 1. Phase-by-Phase Testing (Protocols 01-23)
-- **Phase 0**: Foundation & Discovery (Protocols 01-05)
-- **Phase 1-2**: Planning & Design (Protocols 06-09)
-- **Phase 3**: Development (Protocols 10-11)
-- **Phase 4**: Quality & Testing (Protocols 12-14)
-- **Phase 5**: Deployment & Operations (Protocols 15-18)
-- **Phase 6**: Closure & Maintenance (Protocols 19-23)
+    subgraph P3[Phase 3 · Development]
+        C10[10 · Process Tasks]
+        C11[11 · Integration Testing]
+    end
 
-#### 2. Logic Validation Framework (4-Layer System)
+    subgraph P4[Phase 4 · Quality & Testing]
+        D12[12 · Quality Audit]
+        D13[13 · UAT Coordination]
+        D14[14 · Pre-Deployment Staging]
+    end
 
-**Structural Logic Validation**:
-- Are prerequisites logically ordered?
-- Do gates follow proper sequence?
-- Are dependencies complete and coherent?
+    subgraph P5[Phase 5 · Deployment & Operations]
+        E15[15 · Production Deployment]
+        E16[16 · Monitoring & Observability]
+        E17[17 · Incident Response & Rollback]
+        E18[18 · Performance Optimization]
+    end
 
-**Process Logic Validation**:
-- Does the workflow make practical sense?
-- Are steps in optimal order?
-- Are there logical gaps in the flow?
+    subgraph P6[Phase 6 · Closure & Maintenance]
+        F19[19 · Documentation & Knowledge Transfer]
+        F20[20 · Project Closure]
+        F21[21 · Maintenance Support]
+        F22[22 · Implementation Retrospective]
+        F23[23 · Script Governance]
+    end
 
-**Decision Logic Validation**:
-- Are conditional branches complete?
-- Do fallback mechanisms exist?
-- Are edge cases handled appropriately?
-
-**Integration Logic Validation**:
-- Do handoffs make logical sense?
-- Is data flow consistent?
-- Are interfaces well-defined?
-
-#### 3. Stop-on-Error Protocol
-When any error, anomaly, or inconsistency is detected:
-- **Analyze** root cause immediately
-- **Fix** the issue within the same session
-- **Document** the fix with reasoning
-- **Stop** execution to prevent cascading errors
-- **Generate** continuation instructions for next session
-
-#### 4. Documentation & Diagramming Requirements
-After each completed phase (or fix):
-- Create comprehensive documentation record
-- Generate visual diagram representing tested phase
-- Prepare continuation prompt with verified outputs
-- Document next target phase for following session
-
----
-
-## 🔄 Session Continuity System
-
-### Automatic Agent Instruction Generation
-
-After completing each protocol test, the system automatically generates structured continuation instructions in `AGENTS.md` format:
-
-#### Instruction Template Structure
-```markdown
-# Session Continuation Instructions
-Generated: [timestamp]
-Previous Session: [session-id]
-Protocol Tested: [protocol-number]
-
-## What Was Tested
-- Protocol: [name and number]
-- Logic Validation: [✓ Pass / ✗ Fail with details]
-- Gap Detection: [findings]
-- Error Analysis: [findings]
-- Duplicate Check: [findings]
-
-## What Was Fixed
-- [List of fixes applied]
-- [Reasoning for each fix]
-
-## Verified Artifacts
-- [List of generated/validated artifacts]
-- [Evidence collected]
-
-## Logic Validation Results
-- Structural Logic: [✓/✗ with notes]
-- Process Logic: [✓/✗ with notes]
-- Decision Logic: [✓/✗ with notes]
-- Integration Logic: [✓/✗ with notes]
-
-## Next Session Target
-- Protocol: [next-protocol-number]
-- Prerequisites: [what must be ready]
-- Context Needed: [files, data, context]
-- Expected Outcomes: [what success looks like]
-
-## Critical Notes
-- [Any blockers or important considerations]
-- [Dependencies for next phase]
-```
-
-#### Storage Mechanism
-- **Location**: `.cursor/session-instructions/`
-- **Naming**: `session-[timestamp]-continuation-instructions.md`
-- **Latest**: `latest-session-instructions.md` (symlink to most recent)
-
-### Session Workflow Integration
-
-```
-Session Start
-    ↓
-Read Previous AGENTS.md Instructions
-    ↓
-Load Context & Artifacts
-    ↓
-Execute Current Protocol Test
-    ↓
-[Logic Validation + Gap/Error/Duplicate Check]
-    ↓
-Fix Issues (if found) → Stop
-    ↓
-Generate Documentation & Diagram
-    ↓
-Create AGENTS.md Continuation Instructions ← [AUTOMATIC]
-    ↓
-Session End (Ready for Next Session)
+    A05 --> B06
+    B09 --> C10
+    C11 --> D12
+    D14 --> E15
+    E18 --> F19
+    F22 --> F23
+    F23 -.-> A01
 ```
 
 ---
 
-## 🔍 Gap Analysis & Closure (COMPLETE ✅)
+## 🧭 Phase Breakdown
 
-**Status**: All 24 documented gaps have been resolved (2025-10-21)
+| Phase | Protocols | Primary Outcomes | Evidence & Gates |
+| --- | --- | --- | --- |
+| **Phase 0 – Foundation & Discovery** | 01–05 | Client alignment, scoped brief, baseline repo | Discovery transcript, brief, bootstrap manifest |
+| **Phase 1-2 – Planning & Design** | 06–09 | Approved PRD, architecture, task plan, validated environment | PRD sign-off, design diagrams, task manifest, environment audit |
+| **Phase 3 – Development** | 10–11 | Implemented backlog, integration-ready code | Execution logs, code review notes, integration results |
+| **Phase 4 – Quality & Testing** | 12–14 | Multi-layer QA, UAT readiness, staged release plan | QA scorecard, UAT schedule, staging verification |
+| **Phase 5 – Deployment & Operations** | 15–18 | Production deployment, monitoring, incident readiness, performance baseline | Deployment checklist, monitoring dashboards, incident runbooks |
+| **Phase 6 – Closure & Maintenance** | 19–23 | Knowledge transfer, closure, maintenance program, continuous improvement | Handoff docs, closure reports, maintenance SLAs, retrospective insights |
 
-**Key Documents**:
-- **Gap Closure Report**: `documentation/gap-closure-report.md`
-- **Branching Guide**: `documentation/protocol-branching-guide.md`
-- **Validation Summary**: `validation-summary.md` (updated: PRODUCTION READY)
-
-### Resolved Gap Categories:
-- ✅ **10 Incorrect Handoffs**: All fixed - protocols now hand off correctly
-- ✅ **10 Circular Dependencies**: All resolved - no forward/self-references remain
-- ✅ **1 Duplicate Coverage**: Clarified with branching decision guide
-- ✅ **3 Undefined Inputs**: Addressed with simplified prerequisites
+Supporting documentation protocols (24–27) provide integration maps, implementation guidance, and validation procedures for teams and AI agents.
 
 ---
 
-## 🔍 Phase 1: Protocol Lifecycle Coverage Analysis (Protocols 01-23)
+## 🧰 Repository Map
 
-#### 1.1 Phase 0 Analysis: Foundation & Discovery (Protocols 01-05)
-
-**Objective**: Verify client engagement and project initialization completeness
-
-**Analysis Tasks**:
-- Protocol 01 (Client Proposal Generation): Evaluate freelance platform alignment, tone mapping, validation gates
-- Protocol 02 (Client Discovery Initiation): Assess discovery workflow completeness, stakeholder mapping
-- Protocol 03 (Project Brief Creation): Validate brief structure, scope definition, success criteria
-- Protocol 04 (Project Bootstrap & Context Engineering): Review context setup, tooling configuration
-- Protocol 05 (Bootstrap Your Project): Examine codebase initialization, architecture setup
-
-**Scoring Criteria** (per protocol, 0-50 scale):
-- Completeness (0-10): All necessary steps present
-- Realism (0-10): Reflects actual workflows
-- Clarity (0-10): Instructions unambiguous
-- Adaptability (0-10): Works across project types
-- Freelance Alignment (0-10): Platform standards compliance
-
-**Gaps to Identify**:
-- Missing client communication touchpoints
-- Incomplete discovery artifacts
-- Unclear handoff procedures
-- Inadequate validation gates
-
-#### 1.2 Phase 1-2 Analysis: Planning & Design (Protocols 06-09)
-
-**Objective**: Validate requirements and architecture design completeness
-
-**Analysis Tasks**:
-- Protocol 06 (Create PRD): Assess PRD structure, acceptance criteria, validation
-- Protocol 07 (Technical Design Architecture): Review architecture documentation, technology selection
-- Protocol 08 (Generate Tasks): Examine task decomposition, effort estimation, dependencies
-- Protocol 09 (Environment Setup Validation): Validate environment configuration, CI/CD setup
-
-**Critical Questions**:
-- Can PRD be generated autonomously from brief?
-- Are architecture decisions traceable and justified?
-- Do tasks have clear acceptance criteria?
-- Are development environments reproducible?
-
-#### 1.3 Phase 3 Analysis: Development (Protocols 10-11)
-
-**Objective**: Verify development execution and integration testing
-
-**Analysis Tasks**:
-- Protocol 10 (Process Tasks): Review task execution workflow, evidence collection, code review
-- Protocol 11 (Integration Testing): Assess testing completeness, API validation, E2E testing
-
-**Real-World Scenarios**:
-- Solo developer execution
-- Team collaboration workflows
-- Client feedback integration
-- Change request management
-
-#### 1.4 Phase 4 Analysis: Quality & Testing (Protocols 12-14)
-
-**Objective**: Validate quality assurance and pre-deployment validation
-
-**Analysis Tasks**:
-- Protocol 12 (Quality Audit): Examine 6-layer validation, protocol routing, evidence consolidation
-- Protocol 13 (UAT Coordination): Review UAT planning, stakeholder coordination, feedback integration
-- Protocol 14 (Pre-Deployment Staging): Assess staging validation, final testing, deployment preparation
-
-**Quality Gates Assessment**:
-- Are quality gates enforceable?
-- Do protocols integrate with CI/CD?
-- Is evidence collection comprehensive?
-
-#### 1.5 Phase 5 Analysis: Deployment & Operations (Protocols 15-18)
-
-**Objective**: Verify production deployment and operational procedures
-
-**Analysis Tasks**:
-- Protocol 15 (Production Deployment): Review deployment strategy, rollback planning, go-live
-- Protocol 16 (Monitoring & Observability): Assess monitoring setup, alerting, performance tracking
-- Protocol 17 (Incident Response & Rollback): Examine incident management, rollback procedures
-- Protocol 18 (Performance Optimization): Evaluate optimization analysis, implementation, monitoring
-
-**Production Readiness Checks**:
-- Deployment automation completeness
-- Monitoring coverage adequacy
-- Incident response effectiveness
-- Performance baseline establishment
-
-#### 1.6 Phase 6 Analysis: Closure & Maintenance (Protocols 19-23)
-
-**Objective**: Validate project closure and ongoing maintenance
-
-**Analysis Tasks**:
-- Protocol 19 (Documentation & Knowledge Transfer): Review documentation standards, knowledge transfer
-- Protocol 20 (Project Closure): Assess deliverable validation, stakeholder sign-off, closure procedures
-- Protocol 21 (Maintenance Support): Examine maintenance planning, support procedures, SLA management
-- Protocol 22 (Implementation Retrospective): Evaluate retrospective process, lessons learned
-- Protocol 23 (Script Governance): Review script validation, automation governance
-
-**Lifecycle Completeness**:
-- Is project handoff clear and complete?
-- Are maintenance procedures sustainable?
-- Do retrospectives drive improvement?
-
-### Phase 2: Scripts Audit & Automation Analysis (82+ Scripts)
-
-#### 2.1 Script Inventory & Categorization
-
-**Objective**: Complete inventory of all automation scripts
-
-**Tasks**:
-- List all scripts in /scripts directory
-- Categorize by purpose: bootstrap, validation, generation, execution, quality, deployment
-- Identify registered (18, 22%) vs unregistered (64+, 78%) scripts
-- Map scripts to protocols
-
-**Critical Analysis**:
-- Why are 78% of scripts unregistered?
-- Are unregistered scripts orphaned or actively used?
-- Do protocols reference non-existent scripts?
-
-#### 2.2 Script-Protocol Mapping Matrix
-
-**Objective**: Validate optimal script usage per protocol
-
-**Matrix Structure**:
-```
-| Protocol | Current Script | Purpose Match | Optimal Script | Alternative | Action |
-|----------|----------------|---------------|----------------|-------------|--------|
-| 01 | analyze_jobpost.py | Yes | Yes | tone_mapper.py | Keep |
-| 02 | [NONE] | N/A | No | TBD | Add Script |
-```
-
-**Analysis Per Protocol**:
-- Does protocol have required automation?
-- Is script functionally adequate?
-- Are better alternatives available?
-- Is script documented and maintained?
-
-#### 2.3 Script Quality Assessment
-
-**Objective**: Evaluate script code quality and maintainability
-
-**Criteria**:
-- **Documented**: Clear docstrings, README, usage guide
-- **Maintained**: Recent updates, high code quality
-- **Integrated**: Properly referenced in protocols
-- **Tested**: Unit tests, integration tests present
-
-**Priority Scripts** (from registry):
-- bootstrap: classify_domain.py, generate_from_brief.py, normalize_project_rules.py
-- prd: validate_prd_gate.py, generate_prd_assets.py
-- execution: run_workflow.py, update_task_state.py
-- quality: quality_gates.py, collect_coverage.py
-- retrospective: evidence_report.py, trigger_plan.py
-
-#### 2.4 Redundancy & Gap Detection
-
-**Objective**: Identify script consolidation opportunities and missing automation
-
-**Redundancy Analysis**:
-- Find scripts with overlapping functionality
-- Propose consolidation strategies
-- Estimate maintenance reduction
-
-**Gap Analysis**:
-- Identify protocol needs without automation
-- Propose new scripts needed
-- Prioritize by impact
-
-### Phase 3: Review Protocols & Utils Analysis
-
-#### 3.1 Review Protocols Effectiveness
-
-**Objective**: Validate specialized review protocol quality
-
-**Files to Analyze**:
-- code-review.md: DDD compliance, code quality
-- security-check.md: Security validation, compliance
-- architecture-review.md: Performance, architecture patterns
-- design-system.md: Component usage, visual consistency
-- ui-accessibility.md: Accessibility, user experience
-- pre-production.md: Deep security validation
-
-**Assessment Criteria**:
-- Protocol specificity and actionability
-- Integration with quality audit orchestrator
-- Evidence collection mechanisms
-- Real-world applicability
-
-#### 3.2 Utils Folder Analysis
-
-**Objective**: Evaluate utility functions and routers
-
-**Files to Analyze**:
-- _review-router.md: Protocol selection logic, fallback mechanism
-- context-analyzer.md: Change detection, smart recommendations
-- enhanced-static-template.md: Static validation framework
-- enhanced-static-validation.md: Testing and validation framework
-- rule-injection-system.md: Rule filtering efficiency
-
-**Critical Questions**:
-- Does router handle all edge cases?
-- Is context analysis accurate (90% target)?
-- Are validation frameworks comprehensive?
-- Does rule injection deliver 40% efficiency gain?
-
-### Phase 4: Real-World Scenario Testing
-
-#### 4.1 Freelance Project Simulation
-
-**Scenario**: Upwork client project from job post to delivery
-
-**Test Steps**:
-1. Start with job post analysis (Protocol 01)
-2. Execute discovery and brief creation (Protocols 02-03)
-3. Bootstrap project with template (Protocols 04-05)
-4. Generate PRD and architecture (Protocols 06-07)
-5. Create tasks and execute (Protocols 08-10)
-6. Quality audit and deployment (Protocols 12-15)
-7. Close and document (Protocols 19-20)
-
-**Success Criteria**:
-- All protocols execute without manual intervention
-- Evidence collected at every step
-- Quality gates enforceable
-- Client-ready deliverables produced
-
-#### 4.2 Enterprise Project Simulation
-
-**Scenario**: Enterprise software with compliance requirements
-
-**Test Considerations**:
-- HIPAA/SOC2/PCI compliance validation
-- Multi-team coordination
-- Enterprise architecture patterns
-- Comprehensive documentation requirements
-
-#### 4.3 Startup MVP Simulation
-
-**Scenario**: Fast-paced MVP development with iteration
-
-**Test Considerations**:
-- Rapid prototyping support
-- Minimal viable documentation
-- Quick feedback loops
-- Pivot handling
+| Directory | Description |
+| --- | --- |
+| `.cursor/ai-driven-workflow/` | Canonical protocol definitions, integration map, validation guide |
+| `scripts/` | Orchestration, validation, compliance, and lifecycle automation scripts wired to the 23-protocol flow |
+| `unified_workflow/` | AI orchestrator, evidence manager, and workflow automation packages |
+| `validators-system/` | Modular validator implementations plus roadmap for the 10-validator suite |
+| `project_generator/` | Python package that crafts full projects using template packs and workflow rules |
+| `template-packs/` | Frontend/backend/devex/compliance packs consumed by the generator |
+| `generators/` | Instructions and forms for meta-analysis and new protocol/template generation |
+| `documentation/` | Gap reports, governance prompts, validation specs, and operational guides |
+| `.artifacts/` | Generated evidence (validation, reformats, meta-upgrades) for auditability |
 
 ---
 
-## 📊 Production Readiness Assessment
+## ⚙️ Getting Started
 
-### Readiness Scorecard
+1. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. **Validate environment & context**
+   ```bash
+   python scripts/doctor.py --strict
+   python scripts/analyze_brief.py PROJECT-BRIEF.md --output brief-analysis.json
+   ```
+3. **Run workflow orchestration**
+   ```bash
+   python unified_workflow/automation/ai_orchestrator.py \
+     --project-name "demo" \
+     --phases "0-6" \
+     --brief brief-analysis.json
+   ```
+4. **Execute validation gates and evidence packaging**
+   ```bash
+   python scripts/quality_gates.py
+   python scripts/evidence_report.py --project demo --output .artifacts/evidence/demo.json
+   ```
 
-**Scoring Model**:
-```
-Category | Weight | Score | Weighted Score
----------|--------|-------|---------------
-Protocol Completeness | 25% | TBD/10 | TBD
-Script Integration | 20% | TBD/10 | TBD
-Quality Gates | 20% | TBD/10 | TBD
-Evidence Collection | 15% | TBD/10 | TBD
-Real-World Applicability | 20% | TBD/10 | TBD
----------|--------|-------|---------------
-TOTAL | 100% | TBD/10 | TBD/10
-```
+Refer to `unified_workflow/README.md` for orchestration CLI details and `validators-system/README.md` for protocol-level validation coverage.
 
-**Production Readiness Thresholds**:
-- **9.0-10.0**: Production Ready - Deploy with confidence
-- **7.5-8.9**: Near Ready - Address high-priority gaps
-- **6.0-7.4**: Needs Work - Significant improvements required
-- **<6.0**: Not Ready - Critical gaps must be resolved
+---
 
-### Go/No-Go Decision Criteria
+## 🛡️ Quality & Governance
 
-**GO Criteria** (Deploy to production):
-- All critical gaps resolved
-- Protocol completeness ≥ 90%
-- Script integration ≥ 85%
-- Quality gates enforceable
-- Evidence collection complete
-- Real-world validation successful
+- **Validator Suite** – Ten planned validators (identity through meta-reflection) with Validator 01 delivered and remaining validators roadmapped for staged rollout @validators-system/README.md#119-384
+- **Quality Gates** – Scripts enforce gating at every protocol handoff (see `scripts/quality_gates.py` and `scripts/enforce_gates.py`)
+- **Evidence Pipeline** – `evidence_manager.py` and `evidence_report.py` maintain traceable audit logs, manifest metadata, and checksum verification
+- **Script Governance** – Protocol 23 + `scripts/validate_script_bindings.py` ensure automation assets remain registered, current, and dependency-free
 
-**NO-GO Criteria** (Block production deployment):
-- Critical gaps remain
-- Protocol completeness < 80%
-- Script integration < 70%
-- Quality gates not enforceable
-- Evidence collection inadequate
-- Real-world validation failed
+Key governance documents:
 
-**ITERATE Criteria** (Improve and reassess):
-- Some critical gaps remain
-- Scores in 6.0-8.9 range
-- Specific improvements identified
-- Timeline for resolution clear
+- `documentation/MASTER-VALIDATOR-COMPLETE-SPEC.md`
+- `documentation/protocol-branching-guide.md`
+- `validation-summary.md`
+- `.cursor/ai-driven-workflow/25-protocol-integration-map-DOCUMENTATION.md`
 
-### Gap Resolution Summary (COMPLETE ✅)
+---
 
-**All gaps have been resolved as of 2025-10-21**
+## 🧩 Ecosystem Components
 
-#### Previously Critical Gaps (NOW RESOLVED ✅)
-- ✅ All circular dependencies removed
-- ✅ All handoff targets corrected
-- ✅ Self-referential prerequisites eliminated
-- ✅ Temporal impossibilities resolved
+| Component | Purpose |
+| --- | --- |
+| **Protocol Blueprints** | Step-by-step, AI-friendly workflow instructions with prerequisites, evidence, and gates |
+| **Automation Scripts** | Python & shell tooling for generation, validation, deployment, compliance, and retrospectives |
+| **Template Packs** | Opinionated code scaffolds, CI/CD workflows, and devex assets for multiple stacks |
+| **Meta Generators** | AI prompts + forms for reverse-engineering existing protocols or drafting new ones |
+| **Validators** | Scoring engines that provide lifecycle, quality, and governance assurance |
 
-#### Previously High-Priority Gaps (NOW RESOLVED ✅)
-- ✅ All protocol sequences fixed
-- ✅ Phase transitions corrected
-- ✅ Workflow integrity restored
+---
+
+## 📚 Recommended Reading Order
+
+1. `.cursor/ai-driven-workflow/AGENTS.md` – Verification playbook for AI agents
+2. `.cursor/ai-driven-workflow/25-protocol-integration-map-DOCUMENTATION.md` – Cross-protocol dependencies
+3. `unified_workflow/README.md` – Execution stack overview
+4. `scripts/README.md` – Automation script catalogue and usage
+5. `validators-system/README.md` – Validator scope, progress, and roadmap
+
+---
+
+## ✅ Current Status (Oct 2025)
+
+- Protocol set updated to 23 core execution protocols with supporting documentation tracks
+- Gap closure and integration corrections complete (see `documentation/gap-closure-report.md`)
+- Validator system at 10% implementation with production-ready identity validator
+- Template registry unified across generator and workflow subsystems
+- Continuous evidence capture configured for audit readiness
+
+Roadmap priorities:
+
+1. Deliver Validators 02–04 (AI Role, Workflow, Quality Gates)
+2. Expand automation coverage for Protocols 15–23 (operations & maintenance)
+3. Harden CI/CD evidence validation pipeline and GitHub workflow integrations
+
+---
+
+## 🤝 Contributing & Support
+
+- Review `COMMAND-PLAYBOOK.md` for execution norms
+- Follow `validators-system/documentation/VALIDATOR-GENERATOR-PROMPT.md` for validator contributions
+- Use `documentation/protocol-branching-guide.md` when proposing protocol changes
+- Raise issues in `documentation/pr-reviews/` playbooks for structured feedback
+
+For questions, start with `AGENTS.md` or contact the maintainers listed in `PROJECT-BRIEF.md`.
+
+---
+
+**Kaya natin to!** The platform is designed for resilience, auditability, and rapid iteration across engagements. Stay aligned with the 23-protocol lifecycle, keep evidence flowing, and always close the loop with governance.
 
 #### Previously Medium-Priority (NOW RESOLVED ✅)
 - ✅ Branching criteria documented
