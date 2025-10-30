@@ -1,9 +1,9 @@
 {
   "protocol_id": "06",
   "protocol_name": "IMPLEMENTATION-READY PRD CREATION (PLANNING COMPLIANT)",
-  "reasoning_blocks_count": 5,
+  "reasoning_blocks_count": 0,
   "decision_points_count": 1,
-  "evidence_requirements_count": 20,
+  "evidence_requirements_count": 32,
   "script_references": [
     "scripts/generate_prd_assets.py",
     "scripts/validate_prd_gate.py",
@@ -11,9 +11,11 @@
     "scripts/validate_prd_requirements.py",
     "scripts/validate_prerequisites_1.py",
     "scripts/aggregate_evidence_1.py",
-    "scripts/run_protocol_1_gates.py"
+    "scripts/run_protocol_1_gates.py",
+    "scripts/script-registry.json"
   ],
   "artifact_paths": [
+    ".artifacts/protocol-06/",
     ".artifacts/protocol-06/prd-context.json",
     ".artifacts/protocol-06/layer-detection.md",
     ".artifacts/protocol-06/stakeholder-goals.md",
@@ -37,9 +39,9 @@
   "automation_hooks_count": 7,
   "workflow_steps_count": 4,
   "substeps_count": 12,
-  "strict_markers_count": 1,
-  "must_markers_count": 10,
-  "guideline_markers_count": 3,
+  "strict_markers_count": 7,
+  "must_markers_count": 28,
+  "guideline_markers_count": 9,
   "critical_markers_count": 1,
   "integration_points": {
     "inputs_from": ["Protocol 03", "Protocol 04-CD", "Protocol 05"],

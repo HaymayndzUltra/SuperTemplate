@@ -1,5 +1,5 @@
---- /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/protocol-reformat/08-generate-tasks/ORIGINAL-BACKUP.md	2025-10-29 20:58:01.578285847 +0800
-+++ /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/protocol-reformat/08-generate-tasks/REFORMATTED.md	2025-10-29 21:08:16.591040606 +0800
+--- .artifacts/protocol-reformat/08-generate-tasks/ORIGINAL-BACKUP.md	2025-10-29 23:52:34.143117896 +0000
++++ .artifacts/protocol-reformat/08-generate-tasks/08-generate-tasks.md	2025-10-29 23:52:37.087112448 +0000
 @@ -7,36 +7,46 @@
  
  **Purpose:** Execute TECHNICAL TASK GENERATION workflow with quality validation and evidence generation.

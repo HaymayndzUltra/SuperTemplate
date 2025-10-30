@@ -1,58 +1,52 @@
 {
-  "protocol_name": "Protocol 10: Controlled Task Execution",
-  "total_lines": 570,
-  "content_elements": {
-    "reasoning_blocks_count": 5,
-    "evidence_requirements_count": 18,
-    "script_references": [
-      "scripts/update_task_state.py",
-      "scripts/validate_prerequisites_3.py",
-      "scripts/validate_preflight.py",
-      "scripts/validate_subtask_compliance.py",
-      "scripts/validate_quality_gate.py",
-      "scripts/validate_session_closeout.py",
-      "scripts/aggregate_evidence_3.py",
-      "scripts/run_protocol_3_gates.py"
-    ],
-    "artifact_paths": [
-      ".artifacts/protocol-21/execution-session-log.md",
-      ".artifacts/protocol-21/preflight-checklist.json",
-      ".artifacts/protocol-21/context-history.log",
-      ".artifacts/protocol-21/subtask-evidence/{ID}/",
-      ".artifacts/protocol-21/task-file-diff.patch",
-      ".artifacts/protocol-21/quality-reports/{parentID}.json",
-      ".artifacts/protocol-21/task-state.json",
-      ".artifacts/protocol-21/parent-task-retrospective.md",
-      ".artifacts/protocol-21/execution-artifact-manifest.json",
-      ".artifacts/protocol-21/manual-preflight.md",
-      ".artifacts/protocol-21/manual-review-notes.md",
-      ".artifacts/protocol-21/manual-validation-log.md",
-      ".cursor/tasks/tasks-{feature}.md",
-      ".cursor/ai-driven-workflow/4-quality-audit.md",
-      ".cursor/rules/"
-    ],
-    "gate_definitions_count": 4,
-    "decision_points_count": 1,
-    "communication_templates_count": 3,
-    "automation_hooks_count": 8,
-    "markers": {
-      "strict_count": 1,
-      "must_count": 11,
-      "guideline_count": 5,
-      "critical_count": 1
-    }
+  "protocol_id": "10",
+  "protocol_name": "CONTROLLED TASK EXECUTION (DELIVERY COMPLIANT)",
+  "reasoning_blocks_count": 2,
+  "decision_points_count": 1,
+  "evidence_requirements_count": 49,
+  "script_references": [
+    "scripts/validate_prerequisites_3.py",
+    "scripts/validate_preflight.py",
+    "scripts/update_task_state.py",
+    "scripts/validate_quality_gate.py",
+    "scripts/validate_subtask_compliance.py",
+    "scripts/validate_session_closeout.py",
+    "scripts/aggregate_evidence_3.py",
+    "scripts/run_protocol_3_gates.py",
+    "scripts/script-registry.json"
+  ],
+  "artifact_paths": [
+    ".cursor/tasks/",
+    ".cursor/tasks/tasks-{feature}.md",
+    ".artifacts/protocol-21/",
+    ".artifacts/protocol-21/preflight-checklist.json",
+    ".artifacts/protocol-21/task-state.json",
+    ".artifacts/protocol-21/task-file-diff.patch",
+    ".artifacts/protocol-21/execution-session-log.md",
+    ".artifacts/protocol-21/execution-artifact-manifest.json",
+    ".artifacts/protocol-21/subtask-evidence/{ID}/",
+    ".artifacts/protocol-21/quality-reports/{parentID}.json",
+    ".artifacts/protocol-21/manual-validation-log.md",
+    ".artifacts/protocol-21/manual-review-notes.md",
+    ".artifacts/protocol-21/parent-task-retrospective.md",
+    ".artifacts/protocol-21/context-history.log",
+    ".cursor/rules/",
+    ".cursor/ai-driven-workflow/11-integration-testing.md",
+    ".cursor/ai-driven-workflow/4-quality-audit.md"
+  ],
+  "gate_definitions_count": 4,
+  "automation_hooks_count": 9,
+  "workflow_steps_count": 4,
+  "substeps_count": 33,
+  "strict_markers_count": 8,
+  "must_markers_count": 31,
+  "guideline_markers_count": 9,
+  "critical_markers_count": 1,
+  "integration_points": {
+    "inputs_from": ["Protocol 08", "Rule Index", "Automation Catalog"],
+    "outputs_to": ["Protocol 11", "Quality Audit", "Maintenance Pipeline"]
   },
-  "sections": {
-    "prerequisites": true,
-    "ai_role_mission": true,
-    "workflow_steps": 4,
-    "reflection_learning": true,
-    "integration_points": true,
-    "quality_gates": true,
-    "communication_protocols": true,
-    "automation_hooks": true,
-    "handoff_checklist": true,
-    "evidence_summary": true,
-    "reasoning_cognitive": true
-  }
+  "communication_templates": 3,
+  "manual_fallback_procedures": 3,
+  "quality_metrics_count": 3
 }
