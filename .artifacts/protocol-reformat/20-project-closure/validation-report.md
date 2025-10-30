@@ -6,7 +6,7 @@
 |--------------|----------------|-------------------|--------|
 | Reasoning blocks | 0 | 0 | ✅ PASS |
 | Evidence paths | 22 | 22 | ✅ PASS |
-| Script references | 10 | 10 | ✅ PASS |
+| Script references | 7 | 7 | ✅ PASS |
 | Gate definitions | 3 | 3 | ✅ PASS |
 
 ## Verification Notes

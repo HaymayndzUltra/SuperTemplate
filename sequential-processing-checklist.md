@@ -6,7 +6,7 @@
 - [x] .artifacts/protocol-reformat/14-pre-deployment-staging/14-pre-deployment-staging.md — completed
 - [x] .artifacts/protocol-reformat/15-production-deployment/15-production-deployment.md — completed
 
-- [x] .cursor/ai-driven-workflow/20-project-closure.md — completed
-- [x] .cursor/ai-driven-workflow/21-maintenance-support.md — completed
-- [x] .cursor/ai-driven-workflow/22-implementation-retrospective.md — completed
-- [x] .cursor/ai-driven-workflow/23-script-governance-protocol.md — completed
+- [x] .artifacts/protocol-reformat/20-project-closure/REFORMATTED.md — completed
+- [x] .artifacts/protocol-reformat/21-maintenance-support/REFORMATTED.md — completed
+- [x] .artifacts/protocol-reformat/22-implementation-retrospective/REFORMATTED.md — completed
+- [x] .artifacts/protocol-reformat/23-script-governance-protocol/REFORMATTED.md — completed
