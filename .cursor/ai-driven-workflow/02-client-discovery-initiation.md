@@ -7,137 +7,210 @@
 
 **Purpose:** Orchestrate structured client discovery to validate scope, requirements, and expectations, producing authoritative artifacts for project brief creation. This protocol transforms proposal acceptance into actionable project definition through systematic requirements gathering, risk assessment, and stakeholder alignment.
 
-## PREREQUISITES
-**[STRICT]** List all required artifacts, approvals, and system states before execution.
+## 1. PREREQUISITES
+<!-- [Category: GUIDELINES-FORMATS] -->
+<!-- Why: Setting rules and standards for required artifacts, approvals, and system states before execution -->
+
+**[STRICT] All prerequisites must be met before protocol execution.**
 
 ### Required Artifacts
-- [ ] `PROPOSAL.md` from Protocol 01 (accepted proposal content)
-- [ ] `proposal-summary.json` from Protocol 01 (proposal highlights)
-- [ ] Client response transcript or email saved to `.artifacts/protocol-02/client-reply.md`
+**[STRICT]** The following artifacts must exist and be validated:
+- `PROPOSAL.md` from Protocol 01 (accepted proposal content)
+- `proposal-summary.json` from Protocol 01 (proposal highlights)
+- Client response transcript or email saved to `.artifacts/protocol-02/client-reply.md`
 
 ### Required Approvals
-- [ ] Business development lead approval to initiate structured discovery
+**[STRICT]** The following approvals must be obtained:
+- Business development lead approval to initiate structured discovery
 
 ### System State Requirements
-- [ ] Scheduled communication channel established with client (email, call, or chat)
-- [ ] Access to discovery templates within `.templates/discovery/`
+**[STRICT]** System must meet the following conditions:
+- Scheduled communication channel established with client (email, call, or chat)
+- Access to discovery templates within `.templates/discovery/`
 
 ---
 
-## 02. AI ROLE AND MISSION
+## 2. AI ROLE AND MISSION
+<!-- [Category: GUIDELINES-FORMATS] -->
+<!-- Why: Establishing role definition and mission standards -->
 
 You are a **Freelance Solutions Architect**. Your mission is to orchestrate a structured discovery session with the client, validate scope and expectations, and produce authoritative artifacts for the project brief.
 
-**🚫 [CRITICAL] Do not advance to planning deliverables until every discovery question is answered and validated with the client.**
+**[STRICT] Do not advance to planning deliverables until every discovery question is answered and validated with the client.**
 
 ---
 
-## WORKFLOW
+## 3. WORKFLOW
+<!-- [Category: EXECUTION-FORMATS - Mixed variants by step] -->
 
-### STEP 1: Context Alignment
+### PHASE 1: Context Alignment
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Simple workflow steps for reviewing and capturing context -->
 
 1. **`[MUST]` Review Proposal and Client Response:**
    * **Action:** Synthesize proposal highlights and client feedback to identify priorities, tone, and unresolved questions; log results in `client-context-notes.md`.
-   * **Communication:** 
-     > "[MASTER RAY™ | PHASE 1 START] - Reviewing accepted proposal and client reply to align objectives."
-   * **Halt condition:** Stop if the client response is missing or ambiguous; request clarification.
    * **Evidence:** `.artifacts/protocol-02/client-context-notes.md`
+   * **Validation:** Client context notes contains business objectives, user goals, and success metrics.
+   
+   **Communication:** 
+   > "[MASTER RAY™ | PHASE 1 START] - Reviewing accepted proposal and client reply to align objectives."
+   
+   **Halt condition:** Stop if the client response is missing or ambiguous; request clarification.
 
 2. **`[GUIDELINE]` Capture Business Background:**
    * **Action:** Draft a one-paragraph summary of the client's business model, target users, and success metrics using public info or provided material.
-   * **Example:**
-     ```markdown
-     **Business Snapshot**
-     - Industry: HealthTech SaaS
-     - Primary Users: Clinic administrators
-     - Success Metric: Reduce patient intake time by 30%
-     ```
+   * **Evidence:** Business snapshot section in `client-context-notes.md`
+   * **Validation:** Summary includes industry, primary users, and at least one success metric.
+   
+   **Example (DO):**
+   ```markdown
+   **Business Snapshot**
+   - Industry: HealthTech SaaS
+   - Primary Users: Clinic administrators
+   - Success Metric: Reduce patient intake time by 30%
+   ```
 
-### STEP 2: Requirement Deep Dive
+### PHASE 2: Requirement Deep Dive
+<!-- [Category: EXECUTION-REASONING] -->
+<!-- Why: Critical prioritization and validation decisions requiring documented reasoning -->
 
 1. **`[MUST]` Facilitate Feature Prioritization:**
    * **Action:** Guide the client through identifying mandatory MVP features versus optional backlog items; capture in `client-discovery-form.md`.
-   * **Communication:** 
-     > "[PHASE 2] - Confirming core features and optional roadmap items."
-   * **Halt condition:** Pause if feature classifications are incomplete or conflicting.
+   
+   **[REASONING]:**
+   - **Premises:** Client has multiple feature requests, limited budget, and timeline constraints
+   - **Constraints:** Must deliver working MVP within budget and timeline
+   - **Alternatives Considered:**
+     * **A)** Include all features in MVP - Rejected: exceeds budget and timeline
+     * **B)** Strict MVP with minimal features - Selected: meets constraints
+     * **C)** Phased approach with MVP + roadmap - Considered: depends on client flexibility
+   - **Decision:** Prioritize features using MoSCoW method to ensure clear MVP scope
+   - **Evidence:** Client communication history, budget constraints from proposal
+   - **Risks & Mitigations:**
+     * **Risk:** Feature creep during discovery → **Mitigation:** Document all requests but categorize strictly
+     * **Risk:** Client dissatisfaction with limited MVP → **Mitigation:** Create detailed roadmap for future phases
+   - **Acceptance Link:** Aligns with Protocol 01 proposal commitments
+   
    * **Evidence:** `.artifacts/protocol-02/client-discovery-form.md`
+   * **Validation:** MVP features list complete with acceptance criteria.
+   
+   **Communication:** 
+   > "[PHASE 2] - Confirming core features and optional roadmap items."
+   
+   **Halt condition:** Pause if feature classifications are incomplete or conflicting.
 
 2. **`[MUST]` Validate Technical and Integration Requirements:**
    * **Action:** Document stack preferences, compliance needs, integrations, and constraints in `scope-clarification.md`.
-   * **Communication:** 
-     > "[PHASE 2] - Documenting technology preferences, integrations, and compliance constraints."
+   
+   **[REASONING]:**
+   - **Premises:** Technical decisions impact architecture, timeline, and cost
+   - **Constraints:** Client may have existing systems, compliance requirements
+   - **Alternatives Considered:**
+     * **A)** Greenfield approach with latest tech - Consider if no constraints
+     * **B)** Integrate with existing systems - Required if legacy systems exist
+     * **C)** Hybrid approach - Balance modern and legacy
+   - **Decision:** Document all technical requirements and constraints explicitly
+   - **Evidence:** Client technical documentation, compliance requirements
+   - **Risks & Mitigations:**
+     * **Risk:** Unknown integration complexity → **Mitigation:** Request technical deep dive if >5 integrations
+   
    * **Evidence:** `.artifacts/protocol-02/scope-clarification.md`
+   * **Validation:** Technical requirements include stack, integrations, and compliance needs.
+   
+   **Communication:** 
+   > "[PHASE 2] - Documenting technology preferences, integrations, and compliance constraints."
 
 3. **`[GUIDELINE]` Capture Risks and Assumptions:**
    * **Action:** Note known risks, assumptions, and open questions for resolution in `risk-log.md`.
-   * **Example:**
-     ```markdown
-     - Assumption: Client provides existing API documentation
-     - Risk: Third-party auth provider contract pending renewal
-     ```
+   * **Evidence:** `.artifacts/protocol-02/risk-log.md`
+   * **Validation:** Risk log contains at least identified risks with severity ratings.
+   
+   **Example (DO):**
+   ```markdown
+   - Assumption: Client provides existing API documentation
+   - Risk: Third-party auth provider contract pending renewal
+   ```
 
-### STEP 3: Delivery Framework Alignment
+### PHASE 3: Delivery Framework Alignment
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Straightforward alignment and communication planning -->
 
 1. **`[MUST]` Confirm Timeline, Budget, and Milestones:**
    * **Action:** Establish milestone dates, success checkpoints, and budget guardrails; summarize in `timeline-discussion.md`.
-   * **Communication:** 
-     > "[PHASE 3] - Aligning delivery milestones, budget expectations, and decision points."
-   * **Halt condition:** Await confirmation if budget or schedule remains unresolved.
    * **Evidence:** `.artifacts/protocol-02/timeline-discussion.md`
+   * **Validation:** Timeline includes start date, milestones, and delivery date.
+   
+   **Communication:** 
+   > "[PHASE 3] - Aligning delivery milestones, budget expectations, and decision points."
+   
+   **Halt condition:** Await confirmation if budget or schedule remains unresolved.
 
 2. **`[MUST]` Establish Collaboration and Communication Plan:**
    * **Action:** Agree on communication cadence, tools, timezone overlap, and escalation paths; record in `communication-plan.md`.
-   * **Communication:** 
-     > "[PHASE 3] - Finalizing collaboration channels and escalation procedure."
-   * **Halt condition:** Pause until both parties confirm the communication plan.
    * **Evidence:** `.artifacts/protocol-02/communication-plan.md`
+   * **Validation:** Plan includes cadence, channels, and escalation procedure.
+   
+   **Communication:** 
+   > "[PHASE 3] - Finalizing collaboration channels and escalation procedure."
+   
+   **Halt condition:** Pause until both parties confirm the communication plan.
 
 3. **`[GUIDELINE]` Define Decision Governance:**
    * **Action:** Map decision owners, approval thresholds, and change-control expectations in `governance-map.md`.
-   * **Example:**
-     ```markdown
-     | Decision Type | Owner | SLA |
-     |---------------|-------|-----|
-     | Scope Change  | Product Owner | 2 business days |
-     ```
+   * **Evidence:** `.artifacts/protocol-02/governance-map.md`
+   * **Validation:** Governance map includes decision types and owners.
+   
+   **Example (DO):**
+   ```markdown
+   | Decision Type | Owner | SLA |
+   |---------------|-------|-----|
+   | Scope Change  | Product Owner | 2 business days |
+   ```
 
-### STEP 4: Discovery Confirmation
+### PHASE 4: Discovery Confirmation
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Simple confirmation and archival steps -->
 
 1. **`[MUST]` Summarize Discovery Outcomes:**
    * **Action:** Compile a client-facing recap (`discovery-recap.md`) and send validation prompt to confirm accuracy.
-   * **Communication:** 
-     > "[PHASE 4] - Presenting discovery recap for client confirmation."
-   * **Halt condition:** Stop until client explicitly approves the recap or requests updates.
    * **Evidence:** `.artifacts/protocol-02/discovery-recap.md`
+   * **Validation:** Recap includes all discovery findings and client approval section.
+   
+   **Communication:** 
+   > "[PHASE 4] - Presenting discovery recap for client confirmation."
+   
+   **Halt condition:** Stop until client explicitly approves the recap or requests updates.
 
 2. **`[GUIDELINE]` Archive Communication Evidence:**
    * **Action:** Store transcripts, call notes, and recordings in `.artifacts/protocol-02/transcripts/` for audit trail.
-   * **Example:**
-     ```text
-     2024-05-10-discovery-call.txt
-     ```
-
----
-
-## REASONING & COGNITIVE PROCESS
+   * **Evidence:** `.artifacts/protocol-02/transcripts/`
+   * **Validation:** Transcripts folder contains at least one communication record.
+   
+   **Example (DO):**
+   ```text
+   2024-05-10-discovery-call.txt
+   ```
+## 4. REASONING & COGNITIVE PROCESS
+<!-- [Category: META-FORMATS] -->
+<!-- Why: Meta-level protocol analysis and reasoning patterns documentation -->
 
 ### Reasoning Patterns
 
-**Primary Reasoning Pattern: Hierarchical Task Decomposition**
+#### Primary Reasoning Pattern: Hierarchical Task Decomposition
 - Break complex discovery into 4 sequential phases (Context → Requirements → Delivery → Confirmation)
 - Each phase decomposes into concrete steps with defined inputs/outputs
 - Pattern ensures completeness while maintaining focus
 
-**Secondary Reasoning Pattern: Risk-Based Triage**
+#### Secondary Reasoning Pattern: Risk-Based Triage
 - Continuously assess risk severity and impact throughout discovery
 - Apply decision trees to determine escalation needs
 - Pattern enables proactive risk management vs. reactive firefighting
 
-**Tertiary Reasoning Pattern: Adaptive Template Selection**
+#### Tertiary Reasoning Pattern: Adaptive Template Selection
 - Match client context (industry, maturity, preferences) to appropriate discovery approach
 - Pattern reduces discovery friction and improves relevance
 
-**Pattern Improvement Strategy:**
+#### Pattern Improvement Strategy:
 - Track pattern effectiveness via gate pass rates and client satisfaction
 - Quarterly review identifies pattern weaknesses
 - Iterate patterns based on empirical evidence from completed projects
@@ -214,7 +287,6 @@ When discovery blockers or quality gate failures occur:
 ### Learning Mechanisms
 
 #### Feedback Loops
-**Purpose:** Establish continuous feedback collection to inform protocol improvements.
 
 **Feedback Loop 1: Client Experience**
 - **Collection:** After each discovery session, client completes satisfaction survey (`.artifacts/protocol-02/client-feedback-YYYY-MM-DD.json`)
@@ -235,42 +307,39 @@ When discovery blockers or quality gate failures occur:
 - **Closure:** Enhanced templates validated by Protocol 03 team before deployment
 
 #### Improvement Tracking
-**Purpose:** Systematically track and measure protocol effectiveness over time.
 
-**Improvement Tracking System:**
-- **Metrics Dashboard:** `.artifacts/protocol-02/improvement-metrics-YYYY-QN.json`
-  - Discovery duration trend (target: <5 days)
-  - First-time gate pass rate trend (target: ≥80%)
-  - Client satisfaction trend (target: ≥4.5/5)
-  - Downstream rework requests (target: <10%)
-  
-- **Template Evolution Log:** `.artifacts/protocol-02/template-changelog.md`
-  ```markdown
-  ## 2024-05-15: Added integration complexity triage
-  **Trigger:** 3 projects missed complex integrations in initial discovery
-  **Change:** Added Decision Point 1 with integration count thresholds
-  **Impact:** Next 5 projects correctly identified architecture needs (100% vs. 40%)
-  ```
+**Metrics Dashboard:** `.artifacts/protocol-02/improvement-metrics-YYYY-QN.json`
+- Discovery duration trend (target: <5 days)
+- First-time gate pass rate trend (target: ≥80%)
+- Client satisfaction trend (target: ≥4.5/5)
+- Downstream rework requests (target: <10%)
 
-- **Question Effectiveness Matrix:** `.artifacts/protocol-02/question-effectiveness.json`
-  ```json
-  {
-    "question_id": "Q2.3_integration_list",
-    "times_asked": 47,
-    "actionable_answers": 42,
-    "confusion_rate": 0.11,
-    "clarity_score": 0.89,
-    "recommendation": "keep"
-  }
-  ```
+**Template Evolution Log:** `.artifacts/protocol-02/template-changelog.md`
+```markdown
+## 2024-05-15: Added integration complexity triage
+**Trigger:** 3 projects missed complex integrations in initial discovery
+**Change:** Added Decision Point 1 with integration count thresholds
+**Impact:** Next 5 projects correctly identified architecture needs (100% vs. 40%)
+```
 
-- **Continuous Monitoring:** Automated alerts when:
-  - Gate pass rate drops >10% from baseline
-  - Discovery duration exceeds 7 days for 2+ consecutive projects
-  - Client satisfaction falls below 4.0
+**Question Effectiveness Matrix:** `.artifacts/protocol-02/question-effectiveness.json`
+```json
+{
+  "question_id": "Q2.3_integration_list",
+  "times_asked": 47,
+  "actionable_answers": 42,
+  "confusion_rate": 0.11,
+  "clarity_score": 0.89,
+  "recommendation": "keep"
+}
+```
+
+**Continuous Monitoring:** Automated alerts when:
+- Gate pass rate drops >10% from baseline
+- Discovery duration exceeds 7 days for 2+ consecutive projects
+- Client satisfaction falls below 4.0
 
 #### Knowledge Base Integration
-**Purpose:** Build and leverage institutional knowledge to accelerate discovery quality.
 
 **Knowledge Base Components:**
 
@@ -309,7 +378,6 @@ When discovery blockers or quality gate failures occur:
 - Annual audit: Remove outdated/unused knowledge base entries
 
 #### Adaptation Mechanisms
-**Purpose:** Enable protocol to automatically adjust based on context and historical patterns.
 
 **Adaptation 1: Template Customization**
 - **Trigger:** Client industry + technical maturity profile identified in Protocol 01
@@ -334,11 +402,9 @@ When discovery blockers or quality gate failures occur:
 - **Action:** Adjust quality gate pass thresholds
 - **Example:** Simple project: 85% pass threshold; complex project: 95% pass threshold
 - **Rationale:** Higher stakes projects need more thorough discovery validation
-
 ### Meta-Cognition
 
 #### Self-Awareness and Process Awareness
-**Purpose:** Enable AI to maintain explicit awareness of its current state, progress, and limitations throughout discovery.
 
 **Awareness Statement Protocol:**
 At the start of each workflow step, AI must generate and log awareness statement:
@@ -377,7 +443,6 @@ At the start of each workflow step, AI must generate and log awareness statement
 - "I acknowledge I am making an assumption that client will provide API documentation; validation plan: confirm in next client call."
 
 #### Process Monitoring and Progress Tracking
-**Purpose:** Continuously track execution status, detect anomalies, and maintain detailed audit trail.
 
 **Monitoring Dashboard:** `.artifacts/protocol-02/discovery-progress.md`
 
@@ -421,7 +486,6 @@ Auto-updated after each workflow step:
 - If scope grows >150% from initial estimate → flag scope creep, propose renegotiation
 
 #### Self-Correction Protocols and Error Recovery
-**Purpose:** Enable AI to detect, diagnose, and correct execution issues autonomously.
 
 **Self-Correction Trigger 1: Halt Condition Detection**
 ```markdown
@@ -483,7 +547,6 @@ Auto-updated after each workflow step:
 ```
 
 #### Continuous Improvement and Learning Integration
-**Purpose:** Systematically capture lessons and evolve protocol effectiveness.
 
 **Improvement Cycle:**
 1. **Execution:** Run discovery protocol, collect metrics
@@ -507,7 +570,9 @@ Auto-updated after each workflow step:
 
 ---
 
-## REFLECTION & LEARNING
+## 5. REFLECTION & LEARNING
+<!-- [Category: META-FORMATS] -->
+<!-- Why: Continuous improvement and learning integration for protocol evolution -->
 
 ### Retrospective Guidance
 
@@ -538,6 +603,7 @@ After completing discovery (successful or halted), conduct micro-retrospective:
 ### Continuous Improvement Opportunities
 
 #### Identified Improvement Opportunities
+
 **Opportunity 1: Automated Risk Detection**
 - **Current State:** Manual risk identification in Step 2.3
 - **Opportunity:** Use ML model to scan discovery inputs for risk keywords/patterns
@@ -616,7 +682,6 @@ After completing discovery (successful or halted), conduct micro-retrospective:
 3. **Analyze:** Conduct root cause analysis of what caused degradation
 4. **Test Fix:** Pilot updated protocol on 1-2 low-risk projects before re-deploying
 5. **Document:** Record rollback event and resolution in `.artifacts/protocol-02/protocol-evolution-log.md`
-
 ### Knowledge Capture and Organizational Learning
 
 #### Lessons Learned Repository and Documentation
@@ -735,25 +800,33 @@ Maintain `.artifacts/protocol-02/lessons-learned.md` with standardized format:
 
 ---
 
-## 02. INTEGRATION POINTS
+## 6. INTEGRATION POINTS
+<!-- [Category: GUIDELINES-FORMATS] -->
+<!-- Why: Defining standards for inputs/outputs and artifact storage -->
 
 ### Inputs From:
+**[STRICT]** The following inputs must be validated before execution:
 - **Protocol 01**: `PROPOSAL.md`, `proposal-summary.json` - Baseline scope and commitments to validate with client.
 - **Protocol 04**: `client-intake-log.md` - Original contact context and opportunity metadata.
 
 ### Outputs To:
+**[STRICT]** The following outputs must be generated for downstream protocols:
 - **Protocol 03**: `client-discovery-form.md`, `scope-clarification.md`, `discovery-recap.md` - Structured inputs for project brief drafting.
 - **Protocol 04**: `communication-plan.md`, `governance-map.md` - Updates to organizational context kit.
 
 ### Artifact Storage Locations:
+**[STRICT]** All artifacts must be stored in standardized locations:
 - `.artifacts/protocol-02/` - Primary evidence storage
 - `.cursor/context-kit/` - Context and configuration artifacts
 
 ---
 
-## 02. QUALITY GATES
+## 7. QUALITY GATES
+<!-- [Category: GUIDELINES-FORMATS] -->
+<!-- Why: Setting validation standards and criteria -->
 
 ### Gate 1: Objective Alignment Gate
+**[STRICT]** This gate validates business objectives, user goals, and success metrics.
 - **Criteria**: Business objectives, user goals, and success metrics documented and approved.
 - **Evidence**: `.artifacts/protocol-02/client-context-notes.md`
 - **Pass Threshold**: Coverage score ≥ 95% across objectives, users, and KPIs.
@@ -761,6 +834,7 @@ Maintain `.artifacts/protocol-02/lessons-learned.md` with standardized format:
 - **Automation**: `python scripts/validate_discovery_objectives.py --input .artifacts/protocol-02/client-context-notes.md`
 
 ### Gate 2: Requirement Completeness Gate
+**[STRICT]** This gate validates MVP features, optional backlog, and technical constraints.
 - **Criteria**: MVP features, optional backlog, and technical constraints fully captured.
 - **Evidence**: `.artifacts/protocol-02/client-discovery-form.md`, `.artifacts/protocol-02/scope-clarification.md`
 - **Pass Threshold**: Requirement completeness score ≥ 0.9 and no open `critical` risks.
@@ -768,6 +842,7 @@ Maintain `.artifacts/protocol-02/lessons-learned.md` with standardized format:
 - **Automation**: `python scripts/validate_discovery_scope.py --form .artifacts/protocol-02/client-discovery-form.md`
 
 ### Gate 3: Expectation Alignment Gate
+**[STRICT]** This gate validates timeline, budget, collaboration, and governance.
 - **Criteria**: Timeline, budget, collaboration cadence, and governance confirmed by client.
 - **Evidence**: `.artifacts/protocol-02/timeline-discussion.md`, `.artifacts/protocol-02/communication-plan.md`, `.artifacts/protocol-02/governance-map.md`
 - **Pass Threshold**: Client approval flag recorded in `discovery-recap.md`.
@@ -775,6 +850,7 @@ Maintain `.artifacts/protocol-02/lessons-learned.md` with standardized format:
 - **Automation**: `python scripts/validate_discovery_expectations.py --recap .artifacts/protocol-02/discovery-recap.md`
 
 ### Gate 4: Discovery Confirmation Gate
+**[STRICT]** This gate validates client approval and artifact completeness.
 - **Criteria**: Client-approved recap with no unresolved blockers and all artifacts archived.
 - **Evidence**: `.artifacts/protocol-02/discovery-recap.md`, `.artifacts/protocol-02/transcripts/`
 - **Pass Threshold**: Confirmation timestamp recorded and transcripts stored.
@@ -783,9 +859,12 @@ Maintain `.artifacts/protocol-02/lessons-learned.md` with standardized format:
 
 ---
 
-## 02. COMMUNICATION PROTOCOLS
+## 8. COMMUNICATION PROTOCOLS
+<!-- [Category: GUIDELINES-FORMATS] -->
+<!-- Why: Setting communication standards and templates -->
 
 ### Status Announcements:
+**[STRICT]** Use standardized announcements for phase transitions:
 ```
 [MASTER RAY™ | PHASE 1 START] - "Analyzing proposal acceptance and clarifying business objectives."
 [MASTER RAY™ | PHASE 2 START] - "Gathering detailed functional and technical requirements."
@@ -796,6 +875,7 @@ Maintain `.artifacts/protocol-02/lessons-learned.md` with standardized format:
 ```
 
 ### Validation Prompts:
+**[STRICT]** Use standardized prompts for validation requests:
 ```
 [RAY CONFIRMATION REQUIRED]
 > "Discovery recap prepared with the following evidence:
@@ -809,6 +889,7 @@ Maintain `.artifacts/protocol-02/lessons-learned.md` with standardized format:
 ```
 
 ### Error Handling:
+**[STRICT]** Use standardized error messages for gate failures:
 ```
 [RAY GATE FAILED: Requirement Completeness Gate]
 > "Quality gate 'Requirement Completeness' failed.
@@ -824,90 +905,116 @@ Maintain `.artifacts/protocol-02/lessons-learned.md` with standardized format:
 
 ---
 
-## 02. AUTOMATION HOOKS
+## 9. AUTOMATION HOOKS
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Simple execution of validation scripts with clear steps -->
 
 **Registry Reference:** See `scripts/script-registry.json` for complete script inventory, ownership, and governance context.
 
 ### Validation Scripts:
 
 #### Gate 1: Objective Alignment
-```bash
-# Validate business objectives and success criteria
-python scripts/validate_discovery_objectives.py \
-  --input .artifacts/protocol-02/client-context-notes.md \
-  --output .artifacts/protocol-02/gate1-validation.json \
-  --threshold 0.95
-
-# Exit codes: 0=pass, 1=fail, 2=warning
-# Logs: .artifacts/protocol-02/gate1-validation.log
-# Output format: JSON with coverage_score, missing_fields, recommendations
-# Owner: discovery team
-# CI Integration: runs on commit to .artifacts/protocol-02/
-```
+1. **`[MUST]` Run objective validation:**
+   * **Action:** Execute validation script to check business objectives and success criteria
+   * **Evidence:** `.artifacts/protocol-02/gate1-validation.json`
+   * **Validation:** Exit code 0 and coverage_score ≥ 0.95
+   
+   ```bash
+   # Validate business objectives and success criteria
+   python scripts/validate_discovery_objectives.py \
+     --input .artifacts/protocol-02/client-context-notes.md \
+     --output .artifacts/protocol-02/gate1-validation.json \
+     --threshold 0.95
+   
+   # Exit codes: 0=pass, 1=fail, 2=warning
+   # Logs: .artifacts/protocol-02/gate1-validation.log
+   # Output format: JSON with coverage_score, missing_fields, recommendations
+   # Owner: discovery team
+   # CI Integration: runs on commit to .artifacts/protocol-02/
+   ```
 
 #### Gate 2: Requirement Completeness
-```bash
-# Validate feature prioritization and scope clarity
-python scripts/validate_discovery_scope.py \
-  --form .artifacts/protocol-02/client-discovery-form.md \
-  --clarification .artifacts/protocol-02/scope-clarification.md \
-  --output .artifacts/protocol-02/gate2-validation.json \
-  --completeness-threshold 0.9
-
-# Exit codes: 0=pass, 1=fail (missing critical fields), 2=warning (missing optional fields)
-# Logs: .artifacts/protocol-02/gate2-validation.log
-# Output: JSON with completeness_score, missing_requirements, risk_flags
-# Owner: solutions architect team
-# CI Integration: runs on merge to main
-```
-
+1. **`[MUST]` Run scope validation:**
+   * **Action:** Execute validation script to check feature prioritization and scope clarity
+   * **Evidence:** `.artifacts/protocol-02/gate2-validation.json`
+   * **Validation:** Exit code 0 and completeness_score ≥ 0.9
+   
+   ```bash
+   # Validate feature prioritization and scope clarity
+   python scripts/validate_discovery_scope.py \
+     --form .artifacts/protocol-02/client-discovery-form.md \
+     --clarification .artifacts/protocol-02/scope-clarification.md \
+     --output .artifacts/protocol-02/gate2-validation.json \
+     --completeness-threshold 0.9
+   
+   # Exit codes: 0=pass, 1=fail (missing critical fields), 2=warning (missing optional fields)
+   # Logs: .artifacts/protocol-02/gate2-validation.log
+   # Output: JSON with completeness_score, missing_requirements, risk_flags
+   # Owner: solutions architect team
+   # CI Integration: runs on merge to main
+   ```
 #### Gate 3: Expectation Alignment
-```bash
-# Validate timeline, budget, and collaboration agreements
-python scripts/validate_discovery_expectations.py \
-  --recap .artifacts/protocol-02/discovery-recap.md \
-  --timeline .artifacts/protocol-02/timeline-discussion.md \
-  --comms .artifacts/protocol-02/communication-plan.md \
-  --output .artifacts/protocol-02/gate3-validation.json
-
-# Exit codes: 0=pass (client approved), 1=fail (missing approval), 3=escalation required
-# Logs: .artifacts/protocol-02/gate3-validation.log
-# Output: JSON with approval_status, pending_items, escalation_recommendations
-# Owner: account management team
-# CI Integration: manual trigger only (requires client input)
-```
+1. **`[MUST]` Run expectation validation:**
+   * **Action:** Execute validation script to check timeline, budget, and collaboration agreements
+   * **Evidence:** `.artifacts/protocol-02/gate3-validation.json`
+   * **Validation:** Exit code 0 and client approval confirmed
+   
+   ```bash
+   # Validate timeline, budget, and collaboration agreements
+   python scripts/validate_discovery_expectations.py \
+     --recap .artifacts/protocol-02/discovery-recap.md \
+     --timeline .artifacts/protocol-02/timeline-discussion.md \
+     --comms .artifacts/protocol-02/communication-plan.md \
+     --output .artifacts/protocol-02/gate3-validation.json
+   
+   # Exit codes: 0=pass (client approved), 1=fail (missing approval), 3=escalation required
+   # Logs: .artifacts/protocol-02/gate3-validation.log
+   # Output: JSON with approval_status, pending_items, escalation_recommendations
+   # Owner: account management team
+   # CI Integration: manual trigger only (requires client input)
+   ```
 
 #### Evidence Aggregation
-```bash
-# Aggregate all discovery artifacts into evidence package
-python scripts/aggregate_evidence_02.py \
-  --input-dir .artifacts/protocol-02/ \
-  --output .artifacts/protocol-02/evidence-manifest.json \
-  --include-transcripts \
-  --validate-integrity
-
-# Exit codes: 0=success, 1=missing artifacts, 2=integrity check failed
-# Logs: .artifacts/protocol-02/evidence-aggregation.log
-# Output: JSON manifest with artifact_list, checksums, timestamps, completeness_score
-# Owner: protocol orchestration team
-# Registry: scripts/script-registry.json → protocol-gates.evidence-aggregation
-```
+1. **`[MUST]` Aggregate evidence artifacts:**
+   * **Action:** Execute script to collect and validate all discovery artifacts
+   * **Evidence:** `.artifacts/protocol-02/evidence-manifest.json`
+   * **Validation:** Exit code 0 and all required artifacts present
+   
+   ```bash
+   # Aggregate all discovery artifacts into evidence package
+   python scripts/aggregate_evidence_02.py \
+     --input-dir .artifacts/protocol-02/ \
+     --output .artifacts/protocol-02/evidence-manifest.json \
+     --include-transcripts \
+     --validate-integrity
+   
+   # Exit codes: 0=success, 1=missing artifacts, 2=integrity check failed
+   # Logs: .artifacts/protocol-02/evidence-aggregation.log
+   # Output: JSON manifest with artifact_list, checksums, timestamps, completeness_score
+   # Owner: protocol orchestration team
+   # Registry: scripts/script-registry.json → protocol-gates.evidence-aggregation
+   ```
 
 #### Prerequisite Validation
-```bash
-# Validate all prerequisites before starting discovery
-python scripts/validate_prerequisites_02.py \
-  --check-artifacts \
-  --check-approvals \
-  --check-system-state \
-  --output .artifacts/protocol-02/prereq-validation.json
-
-# Exit codes: 0=all met, 1=missing prerequisites, 2=partial (can proceed with warnings)
-# Logs: .artifacts/protocol-02/prereq-validation.log
-# Output: JSON with prerequisites_status, missing_items, blocking_issues
-# Owner: protocol orchestration team
-# Note: Must run BEFORE any workflow steps
-```
+1. **`[MUST]` Validate prerequisites:**
+   * **Action:** Execute script to check all prerequisites before starting discovery
+   * **Evidence:** `.artifacts/protocol-02/prereq-validation.json`
+   * **Validation:** Exit code 0 and all prerequisites met
+   
+   ```bash
+   # Validate all prerequisites before starting discovery
+   python scripts/validate_prerequisites_02.py \
+     --check-artifacts \
+     --check-approvals \
+     --check-system-state \
+     --output .artifacts/protocol-02/prereq-validation.json
+   
+   # Exit codes: 0=all met, 1=missing prerequisites, 2=partial (can proceed with warnings)
+   # Logs: .artifacts/protocol-02/prereq-validation.log
+   # Output: JSON with prerequisites_status, missing_items, blocking_issues
+   # Owner: protocol orchestration team
+   # Note: Must run BEFORE any workflow steps
+   ```
 
 ### CI/CD Integration:
 ```yaml
@@ -1019,39 +1126,54 @@ All validation scripts write structured JSON to `--output` path and human-readab
 
 ---
 
-## 02 . HANDOFF CHECKLIST
+## 10. HANDOFF CHECKLIST
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Simple checklist execution for protocol completion -->
 
 ### Pre-Handoff Validation:
-Before declaring protocol complete, validate:
 
-- [ ] All prerequisites were met
-- [ ] All workflow steps completed successfully
-- [ ] All quality gates passed (or waivers documented)
-- [ ] All evidence artifacts captured and stored
-- [ ] All integration outputs generated
-- [ ] All automation hooks executed successfully
-- [ ] Communication log complete
+1. **`[MUST]` Validate protocol completion:**
+   * **Action:** Verify all prerequisites were met and workflow steps completed
+   * **Evidence:** Completed checklist in protocol execution log
+   * **Validation:** All items checked
+   
+   **Checklist:**
+   - [ ] All prerequisites were met
+   - [ ] All workflow steps completed successfully
+   - [ ] All quality gates passed (or waivers documented)
+   - [ ] All evidence artifacts captured and stored
+   - [ ] All integration outputs generated
+   - [ ] All automation hooks executed successfully
+   - [ ] Communication log complete
 
 ### Handoff to Protocol 03:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 03: Project Brief Creation
 
-**Evidence Package:**
-- `client-discovery-form.md` - Validated functional requirements
-- `discovery-recap.md` - Client-approved discovery summary
-
-**Execution:**
-```bash
-# Trigger next protocol
-@apply .cursor/ai-driven-workflow/03-project-brief-creation.md
-```
+1. **`[MUST]` Execute protocol handoff:**
+   * **Action:** Package evidence and trigger Protocol 03
+   * **Evidence:** Handoff confirmation in execution log
+   * **Validation:** Protocol 03 acknowledges receipt
+   
+   **[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 03: Project Brief Creation
+   
+   **Evidence Package:**
+   - `client-discovery-form.md` - Validated functional requirements
+   - `discovery-recap.md` - Client-approved discovery summary
+   
+   **Execution:**
+   ```bash
+   # Trigger next protocol
+   @apply .cursor/ai-driven-workflow/03-project-brief-creation.md
+   ```
 
 ---
 
-## 02. EVIDENCE SUMMARY
-
-
+## 11. EVIDENCE SUMMARY
+<!-- [Category: GUIDELINES-FORMATS] -->
+<!-- Why: Defining standards for evidence collection and quality metrics -->
 
 ### Learning and Improvement Mechanisms
+
+**[STRICT]** All artifacts must generate feedback for continuous improvement:
 
 **Feedback Collection:** All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
 
@@ -1061,8 +1183,10 @@ Before declaring protocol complete, validate:
 
 **Adaptation:** Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
 
-
 ### Generated Artifacts:
+
+**[STRICT]** The following artifacts must be generated and validated:
+
 | Artifact | Location | Purpose | Consumer | Verification Owner |
 |----------|----------|---------|----------|-------------------|
 | `client-context-notes.md` | `.artifacts/protocol-02/` | Business objectives and goals | Protocol 03 | Solutions Architect |
@@ -1078,22 +1202,21 @@ Before declaring protocol complete, validate:
 | `gate3-validation.json` | `.artifacts/protocol-02/` | Gate 3 validation results | Protocol 04, CI/CD | Automation |
 | `evidence-manifest.json` | `.artifacts/protocol-02/` | Complete evidence package | Protocol 03, 20, 22 | Protocol Orchestrator |
 
-
 ### Traceability Matrix
 
 **Upstream Dependencies:**
-- Input artifacts inherit from: [list predecessor protocols]
-- Configuration dependencies: [list config files or environment requirements]
-- External dependencies: [list third-party systems or APIs]
+- Input artifacts inherit from: Protocol 01, Protocol 04
+- Configuration dependencies: `.templates/discovery/`, `scripts/script-registry.json`
+- External dependencies: Client communication channel
 
 **Downstream Consumers:**
-- Output artifacts consumed by: [list successor protocols]
-- Shared artifacts: [list artifacts used by multiple protocols]
-- Archive requirements: [list retention policies]
+- Output artifacts consumed by: Protocol 03, Protocol 04, Protocol 07, Protocol 08, Protocol 17, Protocol 20, Protocol 22
+- Shared artifacts: `communication-plan.md`, `governance-map.md`, `risk-log.md`
+- Archive requirements: 7-year retention per compliance
 
 **Verification Chain:**
 - Each artifact includes: SHA-256 checksum, timestamp, verified_by field
-- Verification procedure: [describe validation process]
+- Verification procedure: Run `scripts/validate_protocol_handoffs.py`
 - Audit trail: All artifact modifications logged in protocol execution log
 
 ### Archival and Traceability
@@ -1137,6 +1260,9 @@ Before declaring protocol complete, validate:
 - PII-containing artifacts: Purge after 30 days post-project completion (per GDPR)
 
 ### Quality Metrics:
+
+**[STRICT]** Track and maintain the following quality metrics:
+
 | Metric | Target | Baseline | Current | Status | Trend |
 |--------|--------|----------|---------|--------|-------|
 | Gate 1 Pass Rate | ≥ 95% | 0.88 | 0.92 | ⚠️ Warning | ↗️ +4% |

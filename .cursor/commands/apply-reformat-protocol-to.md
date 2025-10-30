@@ -1,8 +1,15 @@
 # COMMAND: REFORMAT PROTOCOL WITH CATEGORY-BASED FORMATS
 
+**For Codex Users:** If `@apply` syntax doesn't work, use this command instead:
+```
+Analyze .cursor/commands/apply-reformat-protocol-to.md and apply to [target file]
+```
+
 **Usage:** Read this file and execute the reformat steps for the specified target protocol file.
 
-**Target File Parameter:** When executing, specify which protocol file to reformat (e.g., `.cursor/ai-driven-workflow/08-generate-tasks.md`)
+**Target File Parameter:** When executing, specify which protocol file to reformat:
+- Protocol files: `.cursor/ai-driven-workflow/[protocol-name].md`
+- Or already reformatted: `.artifacts/new-protocol-reformat/[protocol-stem]/*.md`
 
 ## 📋 Purpose
 
@@ -25,6 +32,9 @@ When executing this command, you need:
 - **Target Protocol File:** Specify the protocol path (e.g., `.cursor/ai-driven-workflow/08-generate-tasks.md`)
 - **Preserve Content:** YES (mandatory - non-negotiable)
 - **Apply Category Formats:** YES (mandatory)
+- **--force-format (optional):** Override auto-selector for all sections
+  - Choices: `EXECUTION::REASONING|EXECUTION::SUBSTEPS|EXECUTION::BASIC|GUIDELINES|ISSUE|PROMPT|META`
+  - Precedence: Inline `[format: ...]` > `--force-format` > auto-selector
 
 **Example Execution:**
 1. Read this file (`.cursor/commands/apply-reformat-protocol-to.md`)
@@ -39,7 +49,7 @@ When executing this command, you need:
 
 All generated outputs must be placed under a single folder to avoid clutter.
 
-- Root: `.artifacts/protocol-reformat/[protocol-stem]/`
+- Root: `.artifacts/new-protocol-reformat/[protocol-stem]/`
 - Files:
   - `ORIGINAL-BACKUP.md`
   - `CONTENT-INVENTORY.json`
@@ -68,12 +78,12 @@ Note: `[protocol-stem]` is the basename of the protocol file without extension (
 
 3. **Create backup file:**
    ```bash
-   mkdir -p .artifacts/protocol-reformat/[protocol-stem]
-   cp [protocol-path] .artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
+   mkdir -p .artifacts/new-protocol-reformat/[protocol-stem]
+   cp [protocol-path] .artifacts/new-protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
    ```
 
 4. **Generate content inventory:**
-   Create `.artifacts/protocol-reformat/[protocol-stem]/CONTENT-INVENTORY.json` containing:
+   Create `.artifacts/new-protocol-reformat/[protocol-stem]/CONTENT-INVENTORY.json` containing:
    ```json
    {
      "reasoning_blocks_count": 12,
@@ -87,55 +97,98 @@ Note: `[protocol-stem]` is the basename of the protocol file without extension (
 
 ---
 
+### STEP 1.5: Auto-Format Selector (Section-Level)
+
+**Goal:** For each top-level section/phase in the target protocol, automatically pick the correct category + variant from the 6 format files, then annotate the section with a one-line HTML comment documenting the choice and the "Why".
+
+#### Signals & Heuristics (greppable, content-preserving)
+- REASONING_HITS: `^\[REASONING\]|^- +Premises:|^- +Constraints:|^- +Alternatives|^- +Decision:|^- +Evidence:|^- +Risks` 
+- SUBSTEP_HITS: `^[[:space:]]*([0-9]+(\.[0-9]+)+[.)]?|[0-9]+[.)])[[:space:]]` 
+- ROLE_HITS: `^\*\*System:\*\*|^\*\*Developer:\*\*|^\*\*User:\*\*` 
+- META_HITS: `Format (A|B|C|D)|generator-?instructions|Circular Validation|Format Classification|Reusable Component Extraction` 
+- ISSUE_HITS: `Subtasks|Priority.*\[P[0-4]\]|File Scaffolding` 
+- GUIDELINE_MARKS: `^\*\*\[STRICT\]|\*\*\[GUIDELINE\]` 
+- HAS_FRONTMATTER: unang linya `---` 
+- IS_RULES_HEADING: heading contains `rules|guidelines|standards` (case-insensitive)
+
+**Density rule:** `reasoning_density = reasoning_hits / max(1, section_lines)`; if ≥ `0.01` ⇒ EXECUTION::REASONING.
+
+#### Decision Rules (ordered; first match wins)
+1. PROMPT (may role blocks)
+2. META (meta-generator/format A–D/analyzer cues)
+3. ISSUE (issue scaffold/priorities/subtasks)
+4. GUIDELINES (frontmatter + [STRICT]/[GUIDELINE] + rules/guidelines heading)
+5. EXECUTION::REASONING (density ≥ 0.01)
+6. EXECUTION::SUBSTEPS (substeps ≥ 6)
+7. EXECUTION::BASIC (fallback)
+
+**Overrides (precedence)**
+1. Inline heading tag: `[format: CATEGORY[::VARIANT]]` 
+2. `--force-format=…` 
+3. Auto-selector
+
+**Annotation (single-line)**
+```html
+<!-- FORMAT:{CATEGORY}[::{VARIANT}] | WHY:{signal/override} -->
+```
+
+**Minimal CLI Hook (optional)**
+```
+--force-format=EXECUTION::REASONING|EXECUTION::SUBSTEPS|EXECUTION::BASIC|GUIDELINES|ISSUE|PROMPT|META
+```
+
+---
+
 ### STEP 2: Section Analysis
 
 **[STRICT]** For EACH section in the protocol, perform this analysis:
 
-#### 2.1 Identify Section Type
+#### 2.1 Identify Section Type (Automated then Human-Confirm)
 
-Ask for each section: **"What is this section DOING?"**
+1. Run **STEP 1.5 Auto-Format Selector** to compute a candidate choice per section.
+2. Insert the one-line HTML annotation documenting the choice and "Why".
+3. Allow inline override via `[format: ...]` in the heading (case-insensitive).
 
-| Section Behavior | Category File | Variant (if applicable) |
+**Reference table for validation:**
+
+| Section Behavior | Category | Variant (if applicable) |
 |-----------------|---------------|-------------------------|
-| Executing simple workflow | EXECUTION-FORMATS.md | BASIC |
-| Executing detailed tracking (5+ substeps) | EXECUTION-FORMATS.md | SUBSTEPS |
-| Executing with critical decisions | EXECUTION-FORMATS.md | REASONING |
-| Setting rules/standards | GUIDELINES-FORMATS.md | N/A |
-| Creating project issues | ISSUE-FORMATS.md | N/A |
-| Multi-agent orchestration | PROMPT-FORMATS.md | N/A |
-| Protocol analysis/generation | META-FORMATS.md | N/A |
+| Executing simple workflow | EXECUTION | BASIC |
+| Executing detailed tracking (6+ substeps) | EXECUTION | SUBSTEPS |
+| Executing with critical decisions | EXECUTION | REASONING |
+| Setting rules/standards | GUIDELINES | N/A |
+| Creating project issues | ISSUE | N/A |
+| Multi-agent orchestration | PROMPT | N/A |
+| Protocol analysis/generation | META | N/A |
 
-#### 2.2 Document Format Choice
+#### 2.2 Document Format Choice (Enforced)
 
-For each section, add an HTML comment at the beginning:
+Each section MUST contain the annotation:
 
-```markdown
-<!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
-<!-- Why: This phase involves critical go/no-go decisions requiring documented premises, alternatives, and risk assessment -->
+```html
+<!-- FORMAT:{CATEGORY}[::{VARIANT}] | WHY:{reason/override} -->
 ```
+
+**Absence or malformed annotation is a blocker.**
 
 **Example Section Analysis:**
 
 ```markdown
 ## WORKFLOW
 
-<!-- [Category: EXECUTION-FORMATS - Mixed variants by phase] -->
+<!-- FORMAT:EXECUTION | WHY:Mixed variants by phase -->
 
 ### PHASE 1: Context Preparation
-<!-- [Category: EXECUTION-BASIC] -->
-<!-- Why: Simple file loading and validation, no complex decisions -->
+<!-- FORMAT:EXECUTION::BASIC | WHY:Simple file loading, no decisions -->
 
 ### PHASE 2: Stakeholder Alignment
-<!-- [Category: EXECUTION-REASONING] -->
-<!-- Why: Critical decision on proposal scope requires documented alternatives and risk assessment -->
+<!-- FORMAT:EXECUTION::REASONING | WHY:reasoning_density=0.02, critical scope decision -->
 
 ### PHASE 3: Detailed Breakdown
-<!-- [Category: EXECUTION-SUBSTEPS] -->
-<!-- Why: Multiple precise substeps (7+ steps) requiring exact tracking and evidence collection -->
+<!-- FORMAT:EXECUTION::SUBSTEPS | WHY:substeps=8 -->
 
 ### PHASE 4: Validation
-<!-- [Category: EXECUTION-BASIC] -->
-<!-- Why: Straightforward validation checklist -->
+<!-- FORMAT:EXECUTION::BASIC | WHY:Straightforward checklist -->
 ```
 
 ---
@@ -174,18 +227,18 @@ wc -l [protocol-path]
    ```markdown
    # Generate PART1
    - Apply category-based formats to sections 1-2
-   - Save to `.artifacts/protocol-reformat/[protocol-stem]/REFORMATTED-PART1.md`
+   - Save to `.artifacts/new-protocol-reformat/[protocol-stem]/REFORMATTED-PART1.md`
    
    # Generate PART2
    - Apply category-based formats to sections 3-5
-   - Save to `.artifacts/protocol-reformat/[protocol-stem]/REFORMATTED-PART2.md`
+   - Save to `.artifacts/new-protocol-reformat/[protocol-stem]/REFORMATTED-PART2.md`
    
    # Continue for all parts...
    ```
 
 3. **Merge all parts into final REFORMATTED.md:**
    ```bash
-   cd .artifacts/protocol-reformat/[protocol-stem]/
+   cd .artifacts/new-protocol-reformat/[protocol-stem]/
    cat REFORMATTED-PART1.md > REFORMATTED.md
    echo "" >> REFORMATTED.md
    cat REFORMATTED-PART2.md >> REFORMATTED.md
@@ -313,6 +366,32 @@ wc -l [protocol-path]
    [If original has example, preserve it exactly]
 ```
 
+**If applying GUIDELINES:**
+- Rewrap using YAML frontmatter + `[STRICT]`/`[GUIDELINE]` structure from `examples/GUIDELINES-FORMATS.md`
+
+**If applying ISSUE:**
+- Rewrap using 9-subtask scaffold from `examples/ISSUE-FORMATS.md`
+
+**If applying PROMPT:**
+- Rewrap using System/Developer/User role blocks from `examples/PROMPT-FORMATS.md`
+
+**If applying META:**
+- Rewrap using analyzer/classifier (Format A/B/C/D) structure from `examples/META-FORMATS.md`
+
+#### Guards Before Transformation
+
+**[STRICT]** Before transforming any section:
+- **Verify** that the chosen `{CATEGORY}[::{VARIANT}]` is one of the allowed values:
+  - `EXECUTION::REASONING`
+  - `EXECUTION::SUBSTEPS`
+  - `EXECUTION::BASIC`
+  - `GUIDELINES`
+  - `ISSUE`
+  - `PROMPT`
+  - `META`
+- If not in allowed set, fallback to `EXECUTION::BASIC` and log a WARNING in `validation-report.md`.
+- If `EXECUTION::REASONING`, append structural `[REASONING]` blocks after each step (structure only; do not invent content).
+
 ---
 
 ### STEP 5: Cross-Reference Validation
@@ -342,13 +421,25 @@ wc -l [protocol-path]
 5. **Content Count Validation:**
    ```bash
 # Count key elements using consolidated paths
-ORIG=.artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
-REF=[protocol-path]
+ORIG=.artifacts/new-protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
+REF=.artifacts/new-protocol-reformat/[protocol-stem]/REFORMATTED.md
 
 grep -c "\[REASONING\]" "$ORIG"; grep -c "\[REASONING\]" "$REF"  # Must match
-grep -c "\.artifacts/" "$ORIG"; grep -c "\.artifacts/" "$REF"      # Must match
-grep -c "scripts/" "$ORIG"; grep -c "scripts/" "$REF"                # Must match
+grep -c "\.artifacts/" "$ORIG";  grep -c "\.artifacts/" "$REF"      # Must match
+grep -c "scripts/" "$ORIG";      grep -c "scripts/" "$REF"          # Must match
 ```
+
+6. **Selection Integrity Counters:**
+   
+   **[STRICT]** Validate format selection integrity:
+   
+   - **Per-category counts:** Count sections using each `{CATEGORY}[::{VARIANT}]`.
+   - **GUIDELINES:** Warn if no YAML frontmatter detected (check first 10 lines for `---`).
+   - **ISSUE:** Warn if subtasks < 9 (count `- [ ]` checkboxes).
+   - **PROMPT:** Warn if role blocks < 3 (count `**System:**`, `**Developer:**`, `**User:**`).
+   - **META:** Warn if meta cues not detected post-transform (check for format A/B/C/D or analyzer phases).
+   
+   **Write all warnings to `validation-report.md`.**
 
 ---
 
@@ -358,32 +449,33 @@ grep -c "scripts/" "$ORIG"; grep -c "scripts/" "$REF"                # Must matc
 
 ```bash
 # 1. Compare structure changes only (ignore whitespace)
-diff -u .artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md \
-       [protocol-path] > .artifacts/protocol-reformat/[protocol-stem]/format-changes.diff
+diff -u .artifacts/new-protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md \
+       .artifacts/new-protocol-reformat/[protocol-stem]/REFORMATTED.md \
+       > .artifacts/new-protocol-reformat/[protocol-stem]/format-changes.diff
 
 # 2. Verify no content loss - Reasoning blocks
 echo "Original reasoning blocks:"
-grep -c "REASONING" .artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
+grep -c "REASONING" .artifacts/new-protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
 echo "Reformatted reasoning blocks:"
-grep -c "REASONING" [protocol-path]
+grep -c "REASONING" .artifacts/new-protocol-reformat/[protocol-stem]/REFORMATTED.md
 
 # 3. Verify no content loss - Evidence paths
 echo "Original evidence paths:"
-grep -c ".artifacts/" .artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
+grep -c ".artifacts/" .artifacts/new-protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
 echo "Reformatted evidence paths:"
-grep -c ".artifacts/" [protocol-path]
+grep -c ".artifacts/" .artifacts/new-protocol-reformat/[protocol-stem]/REFORMATTED.md
 
 # 4. Verify no content loss - Script references
 echo "Original script references:"
-grep -c "scripts/" .artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
+grep -c "scripts/" .artifacts/new-protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
 echo "Reformatted script references:"
-grep -c "scripts/" [protocol-path]
+grep -c "scripts/" .artifacts/new-protocol-reformat/[protocol-stem]/REFORMATTED.md
 
 # 5. Verify no content loss - Gates
-echo "Original gates:"
-grep -c "Gate [0-9]:" .artifacts/protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
-echo "Reformatted gates:"
-grep -c "Gate [0-9]:" [protocol-path]
+echo "Original gates:";    grep -Ei -c '(^|[[:space:]])Gate(s)?[[:space:]:#]' \
+  .artifacts/new-protocol-reformat/[protocol-stem]/ORIGINAL-BACKUP.md
+echo "Reformatted gates:"; grep -Ei -c '(^|[[:space:]])Gate(s)?[[:space:]:#]' \
+  .artifacts/new-protocol-reformat/[protocol-stem]/REFORMATTED.md
 ```
 
 ---
@@ -422,13 +514,13 @@ grep -c "Gate [0-9]:" [protocol-path]
 
 ## 📤 Output Deliverables
 
-After successful execution, generate (centralized in `.artifacts/protocol-reformat/[protocol-stem]/`):
+After successful execution, generate (centralized in `.artifacts/new-protocol-reformat/[protocol-stem]/`):
 
 1. **Reformatted Protocol:**  
    `[protocol-path]` (overwrites original after validation)
 
 2. **Output Folder:**  
-   `.artifacts/protocol-reformat/[protocol-stem]/` containing:
+   `.artifacts/new-protocol-reformat/[protocol-stem]/` containing:
    - `ORIGINAL-BACKUP.md` - Exact copy of original protocol
    - `CONTENT-INVENTORY.json` - Structured content counts
    - `FORMAT-ANALYSIS.md` - Section-by-section format choices
@@ -441,24 +533,36 @@ After successful execution, generate (centralized in `.artifacts/protocol-reform
    - `format-changes.diff` - Structural changes only
    - `validation-report.md` - 100% content preservation proof
 
-3. **Format Analysis (example template):**  
+3. **Format Analysis (auto-filled):**  
    Saved as `FORMAT-ANALYSIS.md`
    ```markdown
    # Format Analysis for [Protocol Name]
    
    ## Section-by-Section Format Choices
    
-   ### PHASE 1: [Name]
-   - **Format Applied:** EXECUTION-BASIC
-   - **Reasoning:** Simple workflow steps with straightforward validation
-   - **Content Preserved:** 3 steps, 3 evidence requirements, 1 script reference
-   
-   ### PHASE 2: [Name]
-   - **Format Applied:** EXECUTION-REASONING
-   - **Reasoning:** Critical go/no-go decision requiring documented alternatives
-   - **Content Preserved:** 1 decision point, 3 alternatives, 2 risk mitigations
+   | Section | Signals Detected | Decision Rule | Format Applied | Why |
+   |---------|-----------------|---------------|----------------|-----|
+   | PHASE 1: [Name] | REASONING: 0, SUBSTEPS: 0 | Rule 7 (default) | EXECUTION::BASIC | Simple workflow steps with straightforward validation |
+   | PHASE 2: [Name] | REASONING_DENSITY: 0.02 | Rule 5 (density ≥ 0.01) | EXECUTION::REASONING | Critical go/no-go decision requiring documented alternatives |
+   | PHASE 3: [Name] | SUBSTEPS: 8 | Rule 6 (≥6 substeps) | EXECUTION::SUBSTEPS | Multiple precise substeps requiring exact tracking |
    
    [Continue for all sections...]
+   
+   ## Category Distribution
+   
+   - **EXECUTION::BASIC:** 5 sections
+   - **EXECUTION::SUBSTEPS:** 2 sections
+   - **EXECUTION::REASONING:** 3 sections
+   - **GUIDELINES:** 0 sections
+   - **ISSUE:** 0 sections
+   - **PROMPT:** 0 sections
+   - **META:** 0 sections
+   
+   ## Manual Overrides Applied
+   
+   - PHASE 4: Override from auto-selected EXECUTION::BASIC to EXECUTION::REASONING (inline tag `[format: EXECUTION::REASONING]`)
+   
+   [List any human corrections or --force-format flags used]
    ```
 
 4. **Validation Report (example template):**  
@@ -480,9 +584,24 @@ After successful execution, generate (centralized in `.artifacts/protocol-reform
    
    | Section | Original Format | Applied Format | Justification |
    |---------|----------------|----------------|---------------|
-   | PHASE 1 | Unstructured | EXECUTION-BASIC | Simple workflow |
-   | PHASE 2 | Unstructured | EXECUTION-REASONING | Critical decisions |
-   | PHASE 3 | Unstructured | EXECUTION-SUBSTEPS | 7 detailed substeps |
+   | PHASE 1 | Unstructured | EXECUTION::BASIC | Simple workflow |
+   | PHASE 2 | Unstructured | EXECUTION::REASONING | Critical decisions |
+   | PHASE 3 | Unstructured | EXECUTION::SUBSTEPS | 7 detailed substeps |
+   
+   ## Selection Integrity
+   
+   | Category | Section Count | Validation |
+   |----------|---------------|------------|
+   | EXECUTION::BASIC | 5 | ✅ PASS |
+   | EXECUTION::REASONING | 3 | ✅ PASS |
+   | EXECUTION::SUBSTEPS | 2 | ✅ PASS |
+   | GUIDELINES | 0 | N/A |
+   | ISSUE | 0 | N/A |
+   | PROMPT | 0 | N/A |
+   | META | 0 | N/A |
+   
+   **Warnings:**
+   - None
    
    ## Overall Status: ✅ PASS
    ```
@@ -547,9 +666,9 @@ After successful execution, generate (centralized in `.artifacts/protocol-reform
 1. Re-read the section's actual behavior
 2. Ask: "What is this section DOING?" (not "What is it about?")
 3. Check if section involves:
-   - Simple workflow? → BASIC
-   - Detailed tracking? → SUBSTEPS
-   - Critical decisions? → REASONING
+   - Simple workflow? → EXECUTION::BASIC
+   - Detailed tracking? → EXECUTION::SUBSTEPS
+   - Critical decisions? → EXECUTION::REASONING
 4. Update format choice and document why
 
 ---
@@ -577,10 +696,10 @@ After successful execution, generate (centralized in `.artifacts/protocol-reform
 ```
 
 **Expected Result:**
-- PHASE 1-2: EXECUTION-BASIC (simple context loading)
-- PHASE 3: EXECUTION-REASONING (critical task breakdown decisions)
-- PHASE 4-5: EXECUTION-SUBSTEPS (detailed task decomposition with 7+ substeps)
-- PHASE 6: EXECUTION-BASIC (validation checklist)
+- PHASE 1-2: EXECUTION::BASIC (simple context loading)
+- PHASE 3: EXECUTION::REASONING (critical task breakdown decisions)
+- PHASE 4-5: EXECUTION::SUBSTEPS (detailed task decomposition with 7+ substeps)
+- PHASE 6: EXECUTION::BASIC (validation checklist)
 
 ### Example 2: Reformat Protocol 14 (Pre-Deployment Staging)
 
@@ -589,22 +708,22 @@ After successful execution, generate (centralized in `.artifacts/protocol-reform
 ```
 
 **Expected Result:**
-- PHASE 1: EXECUTION-SUBSTEPS (staging alignment with precise comparison steps)
-- PHASE 2: EXECUTION-REASONING (deployment rehearsal go/no-go decision)
-- PHASE 3: EXECUTION-SUBSTEPS (rollback verification sequence)
-- PHASE 4: EXECUTION-REASONING (readiness review approval decision)
+- PHASE 1: EXECUTION::SUBSTEPS (staging alignment with precise comparison steps)
+- PHASE 2: EXECUTION::REASONING (deployment rehearsal go/no-go decision)
+- PHASE 3: EXECUTION::SUBSTEPS (rollback verification sequence)
+- PHASE 4: EXECUTION::REASONING (readiness review approval decision)
 
 ### Example 3: Reformat Protocol 01 (Client Proposal)
 
 ```markdown
-@apply .cursor/commands/reformat-protocol.md --file=.cursor/ai-driven-workflow/01-client-proposal-generation.md
+@apply .cursor/commands/apply-reformat-protocol-to.md --file=.cursor/ai-driven-workflow/01-client-proposal-generation.md
 ```
 
 **Expected Result:**
-- PHASE 1: EXECUTION-BASIC (brief loading)
-- PHASE 2: EXECUTION-REASONING (pricing strategy decision with alternatives)
-- PHASE 3: EXECUTION-SUBSTEPS (detailed proposal generation with 5+ substeps)
-- PHASE 4: EXECUTION-BASIC (validation)
+- PHASE 1: EXECUTION::BASIC (brief loading)
+- PHASE 2: EXECUTION::REASONING (pricing strategy decision with alternatives)
+- PHASE 3: EXECUTION::SUBSTEPS (detailed proposal generation with 6+ substeps)
+- PHASE 4: EXECUTION::BASIC (validation)
 
 ---
 

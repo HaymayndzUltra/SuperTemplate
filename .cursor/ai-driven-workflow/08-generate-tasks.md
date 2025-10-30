@@ -7,36 +7,46 @@
 
 **Purpose:** Execute TECHNICAL TASK GENERATION workflow with quality validation and evidence generation.
 
-## PREREQUISITES
+## 1. PREREQUISITES
+<!-- [Category: GUIDELINES-FORMATS] -->
+<!-- Why: Setting rules and standards for required artifacts, approvals, and system states before execution -->
+
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
-### Required Artifacts
-- [ ] `TECHNICAL-DESIGN.md` and `task-generation-input.json` from Protocol 07
-- [ ] `prd-{feature}.md`, `user-stories.md`, `functional-requirements.md` from Protocol 06
-- [ ] Applicable rule index files and automation catalog from `.cursor/rules/` and `.cursor/context-kit/`
+### 1.1 Required Artifacts
+- **`[MUST]`** `TECHNICAL-DESIGN.md` and `task-generation-input.json` from Protocol 07
+- **`[MUST]`** `prd-{feature}.md`, `user-stories.md`, `functional-requirements.md` from Protocol 06
+- **`[MUST]`** Applicable rule index files and automation catalog from `.cursor/rules/` and `.cursor/context-kit/`
 
-### Required Approvals
-- [ ] Technical design approval recorded in `design-approval-record.json`
-- [ ] Product owner acknowledgement that PRD is final for decomposition
+### 1.2 Required Approvals
+- **`[MUST]`** Technical design approval recorded in `design-approval-record.json`
+- **`[MUST]`** Product owner acknowledgement that PRD is final for decomposition
 
-### System State Requirements
-- [ ] Access to repository search tools compliant with Tool Usage Protocol
-- [ ] Ability to execute automation scripts `validate_tasks.py` and `enrich_tasks.py`
-- [ ] Permissions to write task files under `.cursor/tasks/` or `tasks/`
+### 1.3 System State Requirements
+- **`[MUST]`** Access to repository search tools compliant with Tool Usage Protocol
+- **`[MUST]`** Ability to execute automation scripts `validate_tasks.py` and `enrich_tasks.py`
+- **`[MUST]`** Permissions to write task files under `.cursor/tasks/` or `tasks/`
 
 ---
 
 ## 2. AI ROLE AND MISSION
+<!-- [Category: GUIDELINES-FORMATS] -->
+<!-- Why: Establishing role definition and mission standards -->
 
+**`[STRICT]` Role Definition:**
 You are a **Technical Lead**. Your mission is to transform the validated PRD and technical design into an executable task plan with dependencies, automation hooks, and rule compliance for downstream development.
 
-**🚫 [CRITICAL] Do not author production code; produce structured task documentation only.**
+**🚫 [CRITICAL] Directive:**
+Do not author production code; produce structured task documentation only.
 
 ---
 
-## WORKFLOW
+## 3. WORKFLOW
+<!-- [Category: EXECUTION-FORMATS - Mixed variants by step] -->
 
 ### STEP 1: Context Preparation
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Simple workflow steps for indexing rules and analyzing inputs -->
 
 1. **`[MUST]` Index Governance Rules:**
    * **Action:** Locate rule directories, parse metadata (description, tags, triggers, scope), and build an index stored in `rule-index.json`.
@@ -44,73 +54,165 @@ You are a **Technical Lead**. Your mission is to transform the validated PRD and
      > "[MASTER RAY™ | PHASE 1 START] - Indexing governance rules for task alignment."
    * **Halt condition:** Stop if rule directories missing or metadata incomplete.
    * **Evidence:** `.artifacts/protocol-08/rule-index.json`
+   * **Validation:** Rule index covers ≥ 95% of rule directories
 
 2. **`[MUST]` Analyze Inputs:**
    * **Action:** Review PRD, technical design, and task-generation input to identify feature scope, implementation layers, and constraints; log summary in `task-context.md`.
    * **Evidence:** `.artifacts/protocol-08/task-context.md`
+   * **Validation:** Context document complete with all inputs analyzed
 
 3. **`[GUIDELINE]` Identify Personas & Automation Candidates:**
    * **Action:** Determine LLM personas and relevant automation hooks from previous protocols; note in `task-personas.json`.
+   * **Evidence:** `.artifacts/protocol-08/task-personas.json`
+   * **Validation:** Personas mapped to task categories
 
 ### STEP 2: High-Level Task Structuring
+<!-- [Category: EXECUTION-REASONING] -->
+<!-- Why: Critical decision point requiring stakeholder approval and WHY context for tasks -->
 
 1. **`[MUST]` Create Task File Skeleton:**
    * **Action:** Initialize `tasks-{feature}.md` under `.cursor/tasks/` with sections for high-level tasks, dependencies, and automation metadata.
    * **Communication:** 
      > "[PHASE 2] - Drafting high-level task structure with WHY context."
+   
+   **[REASONING]:**
+   - **Premises:** Tasks must align with technical design and be executable by downstream protocols
+   - **Constraints:** Resource availability, timeline requirements, rule compliance mandates
+   - **Alternatives Considered:**
+     * **A)** Single monolithic task file - Rejected: Lacks granularity for parallel execution
+     * **B)** Task per component - Selected: Enables parallel work and clear ownership
+     * **C)** Task per layer - Considered: May be used for cross-cutting concerns
+   - **Decision:** Component-based task structuring with dependency mapping
+   - **Evidence:** Technical design boundaries, PRD feature scope
+   - **Risks & Mitigations:**
+     * **Risk:** Task interdependencies create bottlenecks → **Mitigation:** Explicit dependency matrix
+     * **Risk:** Over-decomposition creates overhead → **Mitigation:** Group related subtasks
+   - **Acceptance Link:** Technical design component mapping
+   
    * **Evidence:** `.cursor/tasks/tasks-{feature}.md`
+   * **Validation:** Task file structure follows template
 
 2. **`[MUST]` Generate High-Level Tasks:**
    * **Action:** Produce MVP-focused tasks with numbering, WHY statements, complexity tags, and dependency annotations referencing other tasks.
+   
+   **[REASONING]:**
+   - **Premises:** Each task must have clear business value and technical rationale
+   - **Constraints:** MVP scope limitations, available expertise, automation capabilities
+   - **WHY Context Requirements:**
+     * Business justification for the task
+     * Technical necessity explanation
+     * Impact if task is not completed
+   - **Decision:** Include comprehensive WHY statements for every high-level task
+   - **Evidence:** PRD business requirements, stakeholder priorities
+   - **Acceptance Link:** PRD validation criteria
+   
    * **Evidence:** `.artifacts/protocol-08/high-level-tasks.json`
+   * **Validation:** All tasks have WHY statements and complexity ratings
 
 3. **`[MUST]` Present for Approval:**
    * **Action:** Share high-level task list summary and await explicit "Go" before decomposition.
    * **Halt condition:** Do not proceed until approval recorded in `task-approval-log.md`.
    * **Evidence:** `.artifacts/protocol-08/task-approval-log.md`
+   * **Validation:** Explicit "Go" approval documented
 
 4. **`[GUIDELINE]` Recommend Branching Strategy:**
    * **Action:** Suggest Git branch naming and parallelization strategy in `task-context.md`.
+   * **Evidence:** Updated `.artifacts/protocol-08/task-context.md`
+   * **Validation:** Branching strategy aligns with task dependencies
 
 ### STEP 3: Detailed Decomposition
+<!-- [Category: EXECUTION-SUBSTEPS] -->
+<!-- Why: Multiple precise substeps for detailed task breakdown with rule mapping and automation -->
 
 1. **`[MUST]` Break Down Tasks by Layer:**
-   * **Action:** For each approved high-level task, generate detailed subtasks using appropriate templates (frontend, backend, etc.), ensuring rule references inserted.
+   * **1.1. Frontend Layer Decomposition:**
+       * **Action:** Generate UI component tasks with styling, state management, and interaction requirements
+       * **Evidence:** Updated `.cursor/tasks/tasks-{feature}.md` with frontend subtasks
+       * **Validation:** Each UI component has corresponding task
+   
+   * **1.2. Backend Layer Decomposition:**
+       * **Action:** Create API endpoint tasks with request/response schemas and business logic
+       * **Evidence:** Updated `.cursor/tasks/tasks-{feature}.md` with backend subtasks
+       * **Validation:** All API endpoints documented
+   
+   * **1.3. Data Layer Decomposition:**
+       * **Action:** Define database schema tasks, migration scripts, and data access patterns
+       * **Evidence:** Updated `.cursor/tasks/tasks-{feature}.md` with data subtasks
+       * **Validation:** Data models align with technical design
+   
+   * **1.4. Integration Layer Decomposition:**
+       * **Action:** Specify integration tasks for external services and third-party APIs
+       * **Evidence:** Updated `.cursor/tasks/tasks-{feature}.md` with integration subtasks
+       * **Validation:** All external dependencies identified
+   
+   * **1.5. Testing Layer Decomposition:**
+       * **Action:** Generate test tasks including unit, integration, and end-to-end test requirements
+       * **Evidence:** Updated `.cursor/tasks/tasks-{feature}.md` with testing subtasks
+       * **Validation:** Test coverage targets specified
+   
    * **Communication:** 
      > "[PHASE 3] - Decomposing approved tasks into actionable subtasks with rule mapping."
-   * **Evidence:** `.cursor/tasks/tasks-{feature}.md` updated with subtasks
 
 2. **`[MUST]` Assign Automation Hooks:**
-   * **Action:** Annotate high-level tasks with automation metadata (script/workflow commands) referencing validated tools.
-   * **Evidence:** `.artifacts/protocol-08/task-automation-matrix.json`
+   * **2.1. Script Automation Mapping:**
+       * **Action:** Link validation scripts to relevant tasks
+       * **Evidence:** Automation annotations in task file
+       * **Validation:** Critical tasks have automation hooks
+   
+   * **2.2. CI/CD Integration Points:**
+       * **Action:** Identify tasks requiring pipeline integration
+       * **Evidence:** CI/CD markers in task documentation
+       * **Validation:** Deployment tasks have pipeline hooks
+   
+   * **2.3. Tool Command References:**
+       * **Action:** Add specific tool commands for task execution
+       * **Evidence:** `.artifacts/protocol-08/task-automation-matrix.json`
+       * **Validation:** Commands are executable and tested
 
 3. **`[GUIDELINE]` Map Personas:**
-   * **Action:** Assign LLM personas or role ownership per high-level task in `task-personas.json`.
+   * **3.1. Technical Persona Assignment:**
+       * **Action:** Assign appropriate LLM personas for technical tasks
+       * **Evidence:** Persona mapping in `task-personas.json`
+       * **Validation:** Each task category has persona
+   
+   * **3.2. Role-Based Ownership:**
+       * **Action:** Define human role ownership where LLM assistance ends
+       * **Evidence:** Ownership matrix in task documentation
+       * **Validation:** Clear handoff points identified
 
 ### STEP 4: Validation and Packaging
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Straightforward validation execution and artifact packaging -->
 
 1. **`[MUST]` Validate Task Structure:**
    * **Action:** Execute `python scripts/validate_tasks.py --task-file .cursor/tasks/tasks-{feature}.md --output .artifacts/protocol-08/task-validation.json` to ensure completeness and compliance.
    * **Communication:** 
      > "Task validation status: {status} - {issues} issues detected."
    * **Evidence:** `.artifacts/protocol-08/task-validation.json`
+   * **Validation:** All validation checks pass
 
 2. **`[MUST]` Enrich Task Metadata:**
    * **Action:** Run `python scripts/enrich_tasks.py --task-file .cursor/tasks/tasks-{feature}.md --output .artifacts/protocol-08/task-enrichment.json` to add effort estimates, risk flags, and automation coverage.
    * **Evidence:** `.artifacts/protocol-08/task-enrichment.json`
+   * **Validation:** ≥90% tasks have enriched metadata
 
 3. **`[MUST]` Archive Supporting Data:**
    * **Action:** Save rule index, personas, automation matrix, and validation outputs in `.artifacts/protocol-08/` with manifest `task-artifact-manifest.json`.
+   * **Evidence:** `.artifacts/protocol-08/task-artifact-manifest.json`
+   * **Validation:** All artifacts listed in manifest
 
 4. **`[GUIDELINE]` Summarize Execution Plan:**
    * **Action:** Produce `task-execution-summary.md` highlighting dependencies, automation, and readiness for Protocol 21.
+   * **Evidence:** `.artifacts/protocol-08/task-execution-summary.md`
+   * **Validation:** Summary covers all critical paths
 
 ---
 
+## 4. REFLECTION & LEARNING
+<!-- [Category: META-FORMATS] -->
+<!-- Why: Meta-level retrospective and continuous improvement tracking -->
 
-## REFLECTION & LEARNING
-
-### Retrospective Guidance
+### 4.1 Retrospective Guidance
 
 After completing protocol execution (successful or halted), conduct retrospective:
 
@@ -136,7 +238,7 @@ After completing protocol execution (successful or halted), conduct retrospectiv
 
 **Output:** Retrospective report stored in protocol execution artifacts
 
-### Continuous Improvement Opportunities
+### 4.2 Continuous Improvement Opportunities
 
 #### Identified Improvement Opportunities
 - Identify based on protocol-specific execution patterns
@@ -158,7 +260,7 @@ After completing protocol execution (successful or halted), conduct retrospectiv
 - Stakeholder feedback scores
 - Downstream protocol satisfaction ratings
 
-### System Evolution
+### 4.3 System Evolution
 
 #### Version History
 - Current version with implementation date
@@ -180,7 +282,7 @@ After completing protocol execution (successful or halted), conduct retrospectiv
 - Triggers for initiating rollback
 - Communication plan for rollback events
 
-### Knowledge Capture and Organizational Learning
+### 4.4 Knowledge Capture and Organizational Learning
 
 #### Lessons Learned Repository
 Maintain lessons learned with structure:
@@ -200,7 +302,7 @@ Maintain lessons learned with structure:
 - Cross-team learning sessions
 - Access controls and search tools
 
-### Future Planning
+### 4.5 Future Planning
 
 #### Roadmap
 - Planned enhancements with timelines
@@ -222,61 +324,66 @@ Maintain lessons learned with structure:
 - Dependencies on other work
 - Risk buffers and contingencies
 
+---
+
+## 5. INTEGRATION POINTS
+<!-- [Category: GUIDELINES-FORMATS] -->
+<!-- Why: Defining standards for inputs/outputs and artifact storage -->
+
+### 5.1 Inputs From:
+- **Protocol 07:** `task-generation-input.json`, `TECHNICAL-DESIGN.md` - Architecture decomposition and sequencing.
+- **Protocol 06:** `prd-{feature}.md`, `functional-requirements.md`, `validation-plan.md` - Detailed requirements and acceptance criteria.
+- **Protocol 05:** `rule-audit-final.md`, `template-inventory.md` - Governance references and available accelerators.
+
+### 5.2 Outputs To:
+- **Protocol 09:** `task-automation-matrix.json` - Automation readiness for environment setup.
+- **Protocol 21:** `tasks-{feature}.md`, `task-validation.json`, `task-enrichment.json`, `task-execution-summary.md` - Execution blueprint.
+
+### 5.3 Artifact Storage Locations:
+- **Primary Evidence:** `.artifacts/protocol-08/` - Primary evidence storage
+- **Task Repository:** `.cursor/tasks/` - Task documentation repository
 
 ---
 
-## 2. INTEGRATION POINTS
-
-### Inputs From:
-- **Protocol 07**: `task-generation-input.json`, `TECHNICAL-DESIGN.md` - Architecture decomposition and sequencing.
-- **Protocol 06**: `prd-{feature}.md`, `functional-requirements.md`, `validation-plan.md` - Detailed requirements and acceptance criteria.
-- **Protocol 05**: `rule-audit-final.md`, `template-inventory.md` - Governance references and available accelerators.
-
-### Outputs To:
-- **Protocol 09**: `task-automation-matrix.json` - Automation readiness for environment setup.
-- **Protocol 21**: `tasks-{feature}.md`, `task-validation.json`, `task-enrichment.json`, `task-execution-summary.md` - Execution blueprint.
-
-### Artifact Storage Locations:
-- `.artifacts/protocol-08/` - Primary evidence storage
-- `.cursor/tasks/` - Task documentation repository
-
----
-
-## 2. QUALITY GATES
+## 6. QUALITY GATES
+<!-- [Category: GUIDELINES-FORMATS] -->
+<!-- Why: Setting validation standards and criteria -->
 
 ### Gate 1: Context Preparation Gate
-- **Criteria**: Rule index generated, task context summarized, personas identified.
-- **Evidence**: `rule-index.json`, `task-context.md`, `task-personas.json`
-- **Pass Threshold**: Rule index coverage ≥ 95% of rule directories.
-- **Failure Handling**: Rebuild index, verify metadata completeness, rerun gate.
-- **Automation**: `python scripts/validate_rule_index.py --input .artifacts/protocol-08/rule-index.json`
+- **`[STRICT]` Criteria:** Rule index generated, task context summarized, personas identified.
+- **Evidence:** `rule-index.json`, `task-context.md`, `task-personas.json`
+- **Pass Threshold:** Rule index coverage ≥ 95% of rule directories.
+- **Failure Handling:** Rebuild index, verify metadata completeness, rerun gate.
+- **Automation:** `python scripts/validate_rule_index.py --input .artifacts/protocol-08/rule-index.json`
 
 ### Gate 2: High-Level Task Approval Gate
-- **Criteria**: High-level tasks documented with WHY, complexity, dependencies; stakeholder approval logged.
-- **Evidence**: `high-level-tasks.json`, `task-approval-log.md`
-- **Pass Threshold**: Approval status recorded and dependencies resolved.
-- **Failure Handling**: Revise tasks per feedback, re-seek approval, rerun gate.
-- **Automation**: `python scripts/validate_high_level_tasks.py --input .artifacts/protocol-08/high-level-tasks.json`
+- **`[STRICT]` Criteria:** High-level tasks documented with WHY, complexity, dependencies; stakeholder approval logged.
+- **Evidence:** `high-level-tasks.json`, `task-approval-log.md`
+- **Pass Threshold:** Approval status recorded and dependencies resolved.
+- **Failure Handling:** Revise tasks per feedback, re-seek approval, rerun gate.
+- **Automation:** `python scripts/validate_high_level_tasks.py --input .artifacts/protocol-08/high-level-tasks.json`
 
 ### Gate 3: Decomposition Integrity Gate
-- **Criteria**: Subtasks include rule references, automation hooks mapped, personas assigned.
-- **Evidence**: `tasks-{feature}.md`, `task-automation-matrix.json`, `task-personas.json`
-- **Pass Threshold**: 100% subtasks linked to at least one rule and automation coverage ≥ 80% of high-level tasks.
-- **Failure Handling**: Update subtasks, adjust automation assignments, rerun gate.
-- **Automation**: `python scripts/validate_task_decomposition.py --task-file .cursor/tasks/tasks-{feature}.md`
+- **`[STRICT]` Criteria:** Subtasks include rule references, automation hooks mapped, personas assigned.
+- **Evidence:** `tasks-{feature}.md`, `task-automation-matrix.json`, `task-personas.json`
+- **Pass Threshold:** 100% subtasks linked to at least one rule and automation coverage ≥ 80% of high-level tasks.
+- **Failure Handling:** Update subtasks, adjust automation assignments, rerun gate.
+- **Automation:** `python scripts/validate_task_decomposition.py --task-file .cursor/tasks/tasks-{feature}.md`
 
 ### Gate 4: Task Validation Gate
-- **Criteria**: Task validation and enrichment scripts succeed, outputs archived.
-- **Evidence**: `task-validation.json`, `task-enrichment.json`, `task-artifact-manifest.json`
-- **Pass Threshold**: Validation status `pass` and enrichment completed with ≥90% tasks enhanced.
-- **Failure Handling**: Address reported issues, rerun scripts, update manifest.
-- **Automation**: `python scripts/validate_tasks.py --task-file .cursor/tasks/tasks-{feature}.md`
+- **`[STRICT]` Criteria:** Task validation and enrichment scripts succeed, outputs archived.
+- **Evidence:** `task-validation.json`, `task-enrichment.json`, `task-artifact-manifest.json`
+- **Pass Threshold:** Validation status `pass` and enrichment completed with ≥90% tasks enhanced.
+- **Failure Handling:** Address reported issues, rerun scripts, update manifest.
+- **Automation:** `python scripts/validate_tasks.py --task-file .cursor/tasks/tasks-{feature}.md`
 
 ---
 
-## 2. COMMUNICATION PROTOCOLS
+## 7. COMMUNICATION PROTOCOLS
+<!-- [Category: GUIDELINES-FORMATS] -->
+<!-- Why: Setting communication standards and templates -->
 
-### Status Announcements:
+### 7.1 Status Announcements:
 ```
 [MASTER RAY™ | PHASE 1 START] - "Indexing rules and aligning context for task generation."
 [MASTER RAY™ | PHASE 2 START] - "Drafting high-level task structure with dependencies and WHY context."
@@ -286,7 +393,7 @@ Maintain lessons learned with structure:
 [RAY ERROR] - "Issue encountered during [phase]; see automation logs for remediation."
 ```
 
-### Validation Prompts:
+### 7.2 Validation Prompts:
 ```
 [RAY CONFIRMATION REQUIRED]
 > "High-level tasks prepared with WHY context and dependencies. Evidence ready:
@@ -296,7 +403,7 @@ Maintain lessons learned with structure:
 > Please reply 'Go' to authorize detailed decomposition."
 ```
 
-### Error Handling:
+### 7.3 Error Handling:
 ```
 [RAY GATE FAILED: Decomposition Integrity Gate]
 > "Quality gate 'Decomposition Integrity' failed.
@@ -312,29 +419,38 @@ Maintain lessons learned with structure:
 
 ---
 
-## 2. AUTOMATION HOOKS
-
+## 8. AUTOMATION HOOKS
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Simple execution of validation scripts with clear steps -->
 
 **Registry Reference:** See `scripts/script-registry.json` for complete script inventory, ownership, and governance context.
 
+### 8.1 Validation Scripts:
 
-### Validation Scripts:
-```bash
-# Prerequisite validation
-python scripts/validate_prerequisites_2.py
+1. **`[MUST]` Prerequisite Validation:**
+   * **Action:** Run prerequisite check script
+   * **Command:** `python scripts/validate_prerequisites_2.py`
+   * **Evidence:** Script execution log
+   * **Validation:** All prerequisites met
 
-# Quality gate automation
-python scripts/validate_rule_index.py --input .artifacts/protocol-08/rule-index.json
-python scripts/validate_high_level_tasks.py --input .artifacts/protocol-08/high-level-tasks.json
-python scripts/validate_task_decomposition.py --task-file .cursor/tasks/tasks-{feature}.md
-python scripts/validate_tasks.py --task-file .cursor/tasks/tasks-{feature}.md --output .artifacts/protocol-08/task-validation.json
-python scripts/enrich_tasks.py --task-file .cursor/tasks/tasks-{feature}.md --output .artifacts/protocol-08/task-enrichment.json
+2. **`[MUST]` Quality Gate Automation:**
+   * **Action:** Execute quality gate validation scripts
+   * **Commands:**
+     - `python scripts/validate_rule_index.py --input .artifacts/protocol-08/rule-index.json`
+     - `python scripts/validate_high_level_tasks.py --input .artifacts/protocol-08/high-level-tasks.json`
+     - `python scripts/validate_task_decomposition.py --task-file .cursor/tasks/tasks-{feature}.md`
+     - `python scripts/validate_tasks.py --task-file .cursor/tasks/tasks-{feature}.md --output .artifacts/protocol-08/task-validation.json`
+     - `python scripts/enrich_tasks.py --task-file .cursor/tasks/tasks-{feature}.md --output .artifacts/protocol-08/task-enrichment.json`
+   * **Evidence:** Validation reports
+   * **Validation:** All gates pass or have waivers
 
-# Evidence aggregation
-python scripts/aggregate_evidence_2.py --output .artifacts/protocol-08/
-```
+3. **`[MUST]` Evidence Aggregation:**
+   * **Action:** Aggregate all protocol evidence
+   * **Command:** `python scripts/aggregate_evidence_2.py --output .artifacts/protocol-08/`
+   * **Evidence:** Aggregated evidence report
+   * **Validation:** All evidence artifacts present
 
-### CI/CD Integration:
+### 8.2 CI/CD Integration:
 ```yaml
 name: Protocol 08 Validation
 on: [push, pull_request]
@@ -346,7 +462,7 @@ jobs:
         run: python scripts/run_protocol_2_gates.py
 ```
 
-### Manual Fallbacks:
+### 8.3 Manual Fallbacks:
 When automation is unavailable, execute manual validation:
 1. Review high-level tasks with stakeholders; document feedback in `manual-task-review.md`.
 2. Manually verify automation commands; note results in `.artifacts/protocol-08/manual-automation-checklist.md`.
@@ -354,31 +470,83 @@ When automation is unavailable, execute manual validation:
 
 ---
 
-## 2. HANDOFF CHECKLIST
+## 9. HANDOFF CHECKLIST
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Simple checklist execution for protocol completion -->
 
+### 9.1 Continuous Improvement Validation:
 
+1. **`[MUST]` Execution Feedback:**
+   * **Action:** Collect and log execution feedback
+   * **Evidence:** Feedback logged in protocol artifacts
+   * **Validation:** Feedback captured for all phases
 
-### Continuous Improvement Validation:
-- [ ] Execution feedback collected and logged
-- [ ] Lessons learned documented in protocol artifacts
-- [ ] Quality metrics captured for improvement tracking
-- [ ] Knowledge base updated with new patterns or insights
-- [ ] Protocol adaptation opportunities identified and logged
-- [ ] Retrospective scheduled (if required for this protocol phase)
+2. **`[MUST]` Lessons Learned:**
+   * **Action:** Document lessons learned in protocol artifacts
+   * **Evidence:** Lessons documented in knowledge base
+   * **Validation:** At least one lesson per execution
 
+3. **`[MUST]` Quality Metrics:**
+   * **Action:** Capture quality metrics for improvement tracking
+   * **Evidence:** Metrics recorded in dashboard
+   * **Validation:** All required metrics captured
 
-### Pre-Handoff Validation:
+4. **`[GUIDELINE]` Knowledge Base Update:**
+   * **Action:** Update knowledge base with new patterns or insights
+   * **Evidence:** Knowledge base entries created/updated
+   * **Validation:** Relevant patterns documented
+
+5. **`[GUIDELINE]` Protocol Adaptation:**
+   * **Action:** Identify and log protocol adaptation opportunities
+   * **Evidence:** Adaptation opportunities logged
+   * **Validation:** Opportunities reviewed quarterly
+
+6. **`[GUIDELINE]` Retrospective Scheduling:**
+   * **Action:** Schedule retrospective if required for this protocol phase
+   * **Evidence:** Calendar invitation sent
+   * **Validation:** Stakeholders confirmed attendance
+
+### 9.2 Pre-Handoff Validation:
+
 Before declaring protocol complete, validate:
 
-- [ ] All prerequisites were met
-- [ ] All workflow steps completed successfully
-- [ ] All quality gates passed (or waivers documented)
-- [ ] All evidence artifacts captured and stored
-- [ ] All integration outputs generated
-- [ ] All automation hooks executed successfully
-- [ ] Communication log complete
+1. **`[MUST]` Prerequisites Met:**
+   * **Action:** Verify all prerequisites were satisfied
+   * **Evidence:** Prerequisite checklist complete
+   * **Validation:** 100% prerequisites met
 
-### Handoff to Protocol 09:
+2. **`[MUST]` Workflow Completion:**
+   * **Action:** Confirm all workflow steps executed successfully
+   * **Evidence:** Workflow execution log
+   * **Validation:** All steps marked complete
+
+3. **`[MUST]` Quality Gates Passed:**
+   * **Action:** Verify all quality gates passed or have waivers
+   * **Evidence:** Gate validation reports
+   * **Validation:** 100% gates resolved
+
+4. **`[MUST]` Evidence Captured:**
+   * **Action:** Confirm all evidence artifacts captured and stored
+   * **Evidence:** Evidence inventory complete
+   * **Validation:** All required artifacts present
+
+5. **`[MUST]` Integration Outputs:**
+   * **Action:** Verify all integration outputs generated
+   * **Evidence:** Output manifest
+   * **Validation:** All outputs available
+
+6. **`[MUST]` Automation Execution:**
+   * **Action:** Confirm all automation hooks executed successfully
+   * **Evidence:** Automation execution logs
+   * **Validation:** All scripts ran successfully
+
+7. **`[MUST]` Communication Complete:**
+   * **Action:** Verify communication log is complete
+   * **Evidence:** Communication log
+   * **Validation:** All phases communicated
+
+### 9.3 Handoff to Protocol 09:
+
 **[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 09: Environment Setup & Validation
 
 **Evidence Package:**
@@ -393,22 +561,26 @@ Before declaring protocol complete, validate:
 
 ---
 
-## 2. EVIDENCE SUMMARY
+## 10. EVIDENCE SUMMARY
+<!-- [Category: GUIDELINES-FORMATS] -->
+<!-- Why: Defining standards for evidence collection and quality metrics -->
 
+### 10.1 Learning and Improvement Mechanisms
 
+**`[STRICT]` Feedback Collection:** 
+All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
 
-### Learning and Improvement Mechanisms
+**`[STRICT]` Improvement Tracking:** 
+Protocol execution metrics monitored quarterly. Template evolution logged with before/after comparisons. Knowledge base updated after every 5 executions.
 
-**Feedback Collection:** All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+**`[GUIDELINE]` Knowledge Integration:** 
+Execution patterns cataloged in institutional knowledge base. Best practices documented and shared across teams. Common blockers maintained with proven resolutions.
 
-**Improvement Tracking:** Protocol execution metrics monitored quarterly. Template evolution logged with before/after comparisons. Knowledge base updated after every 5 executions.
+**`[GUIDELINE]` Adaptation:** 
+Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
 
-**Knowledge Integration:** Execution patterns cataloged in institutional knowledge base. Best practices documented and shared across teams. Common blockers maintained with proven resolutions.
+### 10.2 Generated Artifacts:
 
-**Adaptation:** Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
-
-
-### Generated Artifacts:
 | Artifact | Location | Purpose | Consumer |
 |----------|----------|---------|----------|
 | `rule-index.json` | `.artifacts/protocol-08/` | Governance mapping for tasks | Protocol 21 |
@@ -418,8 +590,7 @@ Before declaring protocol complete, validate:
 | `task-validation.json` | `.artifacts/protocol-08/` | Validation results | Protocol 21 |
 | `task-enrichment.json` | `.artifacts/protocol-08/` | Enriched metadata | Protocol 21 |
 
-
-### Traceability Matrix
+### 10.3 Traceability Matrix
 
 **Upstream Dependencies:**
 - Input artifacts inherit from: [list predecessor protocols]
@@ -436,20 +607,21 @@ Before declaring protocol complete, validate:
 - Verification procedure: [describe validation process]
 - Audit trail: All artifact modifications logged in protocol execution log
 
-### Quality Metrics:
+### 10.4 Quality Metrics:
+
 | Metric | Target | Actual | Status |
 |--------|--------|--------|--------|
 | Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
 | Evidence Completeness | 100% | [TBD] | ⏳ |
 | Integration Integrity | 100% | [TBD] | ⏳ |
 
-
 ---
 
+## 11. REASONING & COGNITIVE PROCESS
+<!-- [Category: META-FORMATS] -->
+<!-- Why: Meta-level protocol analysis and reasoning patterns documentation -->
 
-## REASONING & COGNITIVE PROCESS
-
-### Reasoning Patterns
+### 11.1 Reasoning Patterns
 
 **Primary Reasoning Pattern: Systematic Execution**
 - Execute protocol steps sequentially with validation at each checkpoint
@@ -462,7 +634,7 @@ Before declaring protocol complete, validate:
 - Quarterly review identifies pattern weaknesses and optimization opportunities
 - Iterate patterns based on empirical evidence from completed executions
 
-### Decision Logic
+### 11.2 Decision Logic
 
 #### Decision Point 1: Execution Readiness
 **Context:** Determining if prerequisites are met to begin protocol execution
@@ -478,7 +650,7 @@ Before declaring protocol complete, validate:
 
 **Logging:** Record decision and prerequisites status in execution log
 
-### Root Cause Analysis Framework
+### 11.3 Root Cause Analysis Framework
 
 When protocol execution encounters blockers or quality gate failures:
 
@@ -498,7 +670,7 @@ When protocol execution encounters blockers or quality gate failures:
 4. **Implement Fix:** Update protocol, re-engage stakeholders, adjust execution
 5. **Validate Fix:** Re-run quality gates, confirm resolution
 
-### Learning Mechanisms
+### 11.4 Learning Mechanisms
 
 #### Feedback Loops
 **Purpose:** Establish continuous feedback collection to inform protocol improvements.
@@ -532,7 +704,7 @@ When protocol execution encounters blockers or quality gate failures:
 - **Workflow optimization:** Streamline steps based on historical efficiency data
 - **Tool selection:** Choose optimal automation based on available resources
 
-### Meta-Cognition
+### 11.5 Meta-Cognition
 
 #### Self-Awareness and Process Awareness
 **Purpose:** Enable AI to maintain explicit awareness of execution state and limitations.
@@ -569,3 +741,5 @@ At each major execution checkpoint, generate awareness statement:
 - **Template review cadence:** Scheduled protocol enhancement cycles
 - **Gate calibration:** Periodic adjustment of pass criteria
 - **Tool evaluation:** Assessment of automation effectiveness
+
+---
