@@ -1,0 +1,43 @@
+{
+  "protocol_name": "18-performance-optimization",
+  "total_lines": 634,
+  "reasoning_blocks_count": 5,
+  "evidence_requirements_count": 17,
+  "script_references": [
+    "scripts/run_protocol_18_gates.py",
+    "scripts/script-registry.json",
+    "scripts/validate_gate_18_approvals.py",
+    "scripts/validate_gate_18_backlog.py",
+    "scripts/validate_gate_18_governance.py"
+  ],
+  "artifact_paths": [
+    ".artifacts/performance/",
+    ".artifacts/performance/baseline-metrics.csv",
+    ".artifacts/performance/load-test-results.json",
+    ".artifacts/performance/optimization-plan.json",
+    ".artifacts/performance/optimization-validation-report.json",
+    ".artifacts/performance/performance-intake-report.json",
+    ".artifacts/performance/performance-report-manifest.json",
+    ".artifacts/performance/profiling-report.md",
+    ".artifacts/performance/slo-update-record.json",
+    ".artifacts/protocol-21/manual-validation-log.md"
+  ],
+  "gate_definitions_count": 4,
+  "automation_hooks_count": 6,
+  "communication_templates_count": 9,
+  "workflow_steps": {
+    "main_steps": 4,
+    "sub_steps": 12,
+    "total_steps": 16
+  },
+  "markers": {
+    "STRICT": 1,
+    "MUST": 8,
+    "GUIDELINE": 4,
+    "CRITICAL": 1
+  },
+  "integration_points": {
+    "inputs_from": 9,
+    "outputs_to": 5
+  }
+}

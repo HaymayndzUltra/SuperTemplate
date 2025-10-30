@@ -3,161 +3,179 @@
 © 2025 - All Rights Reserved
 ---
 
-# PROTOCOL 18 : PERFORMANCE OPTIMIZATION & TUNING (PERFORMANCE COMPLIANT)
+# PROTOCOL 17: INCIDENT RESPONSE & ROLLBACK (OPERATIONS RESILIENCE COMPLIANT)
 
-**Purpose:** Execute Unknown Protocol workflow with quality validation and evidence generation.
+**Purpose:** Execute INCIDENT RESPONSE & ROLLBACK workflow with quality validation and evidence generation.
 
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Prerequisites section defines required inputs, approvals, and system readiness. -->
+<!-- Why: Prerequisites section sets standards and requirements rather than executing workflow -->
 ## 1. PREREQUISITES
+
 **[STRICT]** List all required artifacts, approvals, and system states before execution.
 
 ### 1.1 Required Artifacts
-- [ ] `MONITORING-PACKAGE.zip` from Protocol 16 – monitoring dashboards and alert configuration
-- [ ] `INCIDENT-REPORT.md` from Protocol 17 (if available) – recent incident context impacting performance
-- [ ] `performance-intake-backlog.json` from previous cycles (if available) – outstanding performance actions
-- [ ] `baseline-metrics.json` from previous optimization cycles (if available)
-- [ ] Latest deployment notes `DEPLOYMENT-REPORT.md` from Protocol 15
+- [ ] `MONITORING-PACKAGE.zip` from Protocol 16 – monitoring configuration and validation evidence
+- [ ] `alert-test-results.json` from Protocol 16 – alert routing baseline
+- [ ] `production-deployment-report.json` from Protocol 15 – deployment context
+- [ ] `rollback-verification-report.json` from Protocol 14 – rollback rehearsal evidence
+- [ ] `incident-playbook.md` (if available) from `.cursor/context-kit/`
 
 ### 1.2 Required Approvals
-- [ ] Product Owner prioritization of performance objectives for this cycle
-- [ ] SRE lead approval for executing load/stress tests in target environments
-- [ ] Security/compliance clearance for profiling and data sampling activities
+- [ ] Incident commander/on-call authority to declare incident state
+- [ ] Release Manager acknowledgement of potential rollback impact
+- [ ] Security/compliance approval if incident involves regulated data or customer notification
 
 ### 1.3 System State Requirements
-- [ ] Access to production telemetry tools (APM, logging, tracing)
-- [ ] Load testing environment configured to mirror production scale
-- [ ] Write permissions to `.artifacts/performance/` and `.cursor/context-kit/`
+- [ ] Access to production monitoring dashboards and alerting tools
+- [ ] Privileged credentials available for executing rollback or mitigation scripts
+- [ ] Communication channels (war-room bridge, incident Slack channel) active
 
 ---
 
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Establishes mission, constraints, and guardrails for the AI role. -->
+<!-- Why: Establishes rules and mission statement, not a workflow execution -->
 ## 2. AI ROLE AND MISSION
 
-You are a **Performance Engineer**. Your mission is to detect, analyze, and remediate performance bottlenecks using production telemetry, load testing, and targeted optimizations while protecting service-level objectives (SLOs).
+You are an **Incident Commander**. Your mission is to coordinate rapid detection, mitigation, and resolution of production incidents triggered after deployment, executing rollback or remediation steps while maintaining precise communication and evidence capture.
 
-**🚫 [CRITICAL] DO NOT deploy performance changes without reproducible benchmarking evidence and updated SLO instrumentation demonstrating improvement under expected peak load.**
+**🚫 [CRITICAL] DO NOT perform rollback actions without confirming incident severity, affected scope, and stakeholder alignment on recovery strategy.**
 
 ---
 
-<!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
-<!-- Why: Performance optimization requires multi-phase execution with critical decision points. -->
 ## 3. WORKFLOW
 
+<!-- [Category: EXECUTION-FORMATS - Mixed variants by phase] -->
 
-<!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
-<!-- Why: Phase balances data review with hypothesis decisions. -->
-### 3.1 PHASE 1: Intake, Baseline, and Hypothesis Framing
+### 3.1 PHASE 1: Detection and Severity Assessment
 
-1. **`[MUST]` Collect Telemetry Inputs:**
-   * **Action:** Aggregate monitoring dashboards (Protocol 19), incident timelines (Protocol 20), and deployment notes (Protocol 15) to identify performance pain points.
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Alert monitoring and classification workflow with straightforward actions -->
+
+1. **`[MUST]` Monitor Active Alerts:**
+   * **Action:** Continuously ingest alerts and dashboards from Protocol 19 outputs to detect incidents.
    * **Communication:** 
-     > "[MASTER RAY™ | PHASE 1 START] - Consolidating telemetry and incident evidence for performance triage..."
-   * **Halt condition:** Pause if critical telemetry or incident data unavailable.
-   * **Evidence:** `.artifacts/performance/performance-intake-report.json` summarizing metrics, alerts, and business impact.
+     > "[MASTER RAY™ | PHASE 1 START] - Monitoring production alerts for incident signals..."
+   * **Halt condition:** Pause progression until alert validity confirmed (false positive vs real incident).
+   * **Evidence:** `.artifacts/incidents/incident-intake-log.md` capturing alert details and timestamps.
 
-2. **`[MUST]` Establish Baseline Metrics:**
-   * **Action:** Capture current SLO/SLA values, throughput, latency, error rates, and resource utilization for impacted services.
+2. **`[MUST]` Classify Incident Severity:**
+   * **Action:** Determine severity (SEV-1/2/3) based on SLO breaches, customer impact, and blast radius.
    * **Communication:** 
-     > "[PHASE 1] Baseline capture in progress. Documenting SLO adherence and bottlenecks..."
-   * **Halt condition:** Halt if baselines lack required sources or verification.
-   * **Evidence:** `.artifacts/performance/baseline-metrics.csv` with collection methodology.
+     > "[PHASE 1] Assessing incident severity and affected services..."
+   * **Halt condition:** Stop until severity consensus reached among responders.
+   * **Evidence:** `.artifacts/incidents/severity-assessment.json` documenting rationale.
 
-3. **`[GUIDELINE]` Formulate Hypotheses:**
-   * **Action:** Draft hypotheses linking observed symptoms to root causes (code hot paths, database contention, infra limits).
+3. **`[GUIDELINE]` Notify Stakeholders:**
+   * **Action:** Trigger communication plan (PagerDuty, Slack, email) based on severity.
    * **Example:**
      ```markdown
-     - Hypothesis: Cache miss rate causes elevated DB load during checkout
-     - Validation: Review Redis hit ratio + profile checkout API
+     - Channel: #incident-sev1
+     - Stakeholders: SRE On-call, Product Owner, Support Lead
      ```
 
+### 3.2 PHASE 2: Containment and Mitigation Planning
 
-<!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
-<!-- Why: Phase requires interpreting diagnostics and selecting test strategies. -->
-### 3.2 PHASE 2: Diagnostics and Load Simulation
+<!-- [Category: EXECUTION-REASONING] -->
+<!-- Why: Critical decision point for mitigation strategy and rollback approval requires documented reasoning -->
 
-1. **`[MUST]` Profile Critical Transactions:**
-   * **Action:** Run profilers, tracing, and database analysis to identify bottlenecks for prioritized services.
+1. **`[MUST]` Identify Mitigation Options:**
+   * **Action:** Consult monitoring runbooks and rollback plan to propose mitigation (rollback, feature flag, hotfix).
+   
+   **[REASONING]:**
+   - **Premises:** Incident severity confirmed, system state understood, rollback plan available
+   - **Constraints:** Must minimize customer impact while preserving data integrity
+   - **Alternatives Considered:**
+     * **A)** Full rollback to previous version - Most reliable but disruptive
+     * **B)** Feature flag disable - Quick but only works for flagged features
+     * **C)** Hotfix deployment - Targeted but requires development time
+   - **Decision:** Select based on severity, blast radius, and available options
+   - **Evidence:** Monitoring data, rollback verification results, feature flag inventory
+   - **Risks & Mitigations:**
+     * **Risk:** Rollback may lose recent data → **Mitigation:** Verify data backup before execution
+     * **Risk:** Feature flag may not isolate issue → **Mitigation:** Have rollback ready as backup
+   
    * **Communication:** 
-     > "[MASTER RAY™ | PHASE 2 START] - Profiling critical transactions across services..."
-   * **Halt condition:** Pause if profiling data inconclusive or missing key components.
-   * **Evidence:** `.artifacts/performance/profiling-report.md` including flame graphs and query plans.
+     > "[MASTER RAY™ | PHASE 2 START] - Identifying mitigation strategy for incident containment..."
+   * **Halt condition:** Pause if mitigation options unclear or dependencies unknown.
+   * **Evidence:** `.artifacts/incidents/mitigation-plan.md` enumerating options and risks.
 
-2. **`[MUST]` Execute Load & Stress Tests:**
-   * **Action:** Perform load tests replicating peak workloads and failure scenarios informed by deployment/monitoring data.
+2. **`[MUST]` Validate Rollback Feasibility:**
+   * **Action:** Confirm rollback scripts, data backups, and prerequisites from Protocols 10 and 11 are ready.
    * **Communication:** 
-     > "[PHASE 2] Executing load scenarios to validate capacity and resilience..."
-   * **Halt condition:** Stop if environment unstable or results show regressions requiring mitigation.
-   * **Evidence:** `.artifacts/performance/load-test-results.json` capturing throughput, latency percentiles, and errors.
+     > "[PHASE 2] Validating rollback readiness and dependencies..."
+   * **Halt condition:** Stop if rollback prerequisites unmet.
+   * **Evidence:** `.artifacts/incidents/rollback-readiness-checklist.json` with verification results.
 
-3. **`[GUIDELINE]` Analyze Capacity & Cost:**
-   * **Action:** Evaluate infrastructure utilization, scaling policies, and cost impact of potential optimizations.
+3. **`[GUIDELINE]` Align Decision Makers:**
+   * **Action:** Present options to incident commander and stakeholders for approval, capturing decision timestamp.
    * **Example:**
      ```markdown
-     - Current CPU Utilization (p95): 82%
-     - Scaling Policy Change: Increase min replicas from 6 → 8
+     Decision: Execute rollback_backend.sh
+     Approved by: Incident Commander (Alex), Release Manager (Jordan)
+     Time: 02:34 UTC
      ```
 
+### 3.3 PHASE 3: Execution and Recovery Validation
 
-<!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
-<!-- Why: Phase involves selecting optimization tactics and verifying improvements. -->
-### 3.3 PHASE 3: Optimization Implementation and Verification
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Execution and validation steps without complex decision-making -->
 
-1. **`[MUST]` Define Optimization Plan:**
-   * **Action:** Translate findings into prioritized optimization tasks with owners, risk assessment, and expected impact.
+1. **`[MUST]` Execute Mitigation or Rollback:**
+   * **Action:** Run approved mitigation commands with full logging and change management adherence.
    * **Communication:** 
-     > "[MASTER RAY™ | PHASE 3 START] - Publishing optimization backlog with ownership and risk notes..."
-   * **Halt condition:** Pause if plan lacks approvals or dependencies unresolved.
-   * **Evidence:** `.artifacts/performance/optimization-plan.json` with tasks and expected gains.
+     > "[MASTER RAY™ | PHASE 3 START] - Executing approved mitigation/rollback actions..."
+   * **Halt condition:** Halt sequence if scripts fail or produce unexpected results.
+   * **Evidence:** `.artifacts/incidents/mitigation-execution-report.json` including command outputs.
 
-2. **`[MUST]` Implement and Validate Changes:**
-   * **Action:** Coordinate with Protocol 21 teams to implement optimizations, then rerun targeted tests confirming improvements.
+2. **`[MUST]` Validate System Recovery:**
+   * **Action:** Run smoke tests, health checks, and user journeys to confirm system stability.
    * **Communication:** 
-     > "[PHASE 3] Validating optimization changes against baseline metrics..."
-   * **Halt condition:** Halt if validation reveals regressions or insufficient gains.
-   * **Evidence:** `.artifacts/performance/optimization-validation-report.json` comparing before/after metrics.
+     > "[PHASE 3] Validating post-mitigation system health..."
+   * **Halt condition:** If validation fails, re-enter mitigation planning.
+   * **Evidence:** `.artifacts/incidents/recovery-validation.json` summarizing results.
 
-3. **`[GUIDELINE]` Update Instrumentation:**
-   * **Action:** Ensure monitoring dashboards, alerts, and tracing reflect new performance expectations.
+3. **`[GUIDELINE]` Maintain Incident Timeline:**
+   * **Action:** Update timeline with key events, commands, and communications.
    * **Example:**
      ```markdown
-     - Dashboard update: Added p95 latency panel for /checkout endpoint
-     - Alert: Adjusted latency threshold from 600ms → 450ms
+     02:10 UTC - Alert triggered (API latency > 800ms)
+     02:25 UTC - Rollback initiated
+     02:32 UTC - Recovery validation passed
      ```
 
+### 3.4 PHASE 4: Resolution, Documentation, and Handoff
 
-<!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
-<!-- Why: Phase manages go/no-go decisions and coordinated communications. -->
-### 3.4 PHASE 4: Governance, Communication, and Handoff
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Documentation and handoff steps, straightforward workflow -->
 
-1. **`[MUST]` Record SLO Adjustments:**
-   * **Action:** Document updated SLO targets, alert thresholds, and escalation policies impacted by optimizations.
+1. **`[MUST]` Confirm Incident Resolution:**
+   * **Action:** Verify SLO/SLA restored, alerts cleared, and stakeholders informed.
    * **Communication:** 
-     > "[MASTER RAY™ | PHASE 4 START] - Documenting SLO updates and communicating performance improvements..."
-   * **Halt condition:** Stop if approvals missing for SLO changes.
-   * **Evidence:** `.artifacts/performance/slo-update-record.json` with sign-offs.
+     > "[MASTER RAY™ | PHASE 4 START] - Confirming incident resolution and notifying stakeholders..."
+   * **Halt condition:** Do not close incident until metrics stable and communications sent.
+   * **Evidence:** `.artifacts/incidents/resolution-summary.json` with final status.
 
-2. **`[MUST]` Publish Performance Report:**
-   * **Action:** Compile intake summary, diagnostics, optimization actions, and validation results into `PERFORMANCE-REPORT.md`.
+2. **`[MUST]` Capture Root Cause Inputs:**
+   * **Action:** Archive logs, dashboards, diffs, and contributing factors for postmortem.
    * **Communication:** 
-     > "[PHASE 4] Publishing performance report and distributing to stakeholders..."
-   * **Halt condition:** Halt if report incomplete or evidence missing.
-   * **Evidence:** `.artifacts/performance/performance-report-manifest.json` referencing attachments.
+     > "[PHASE 4] Capturing root cause evidence for retrospective..."
+   * **Halt condition:** Halt closure if critical evidence missing.
+   * **Evidence:** `.artifacts/incidents/rca-manifest.json` indexing stored artifacts.
 
-3. **`[GUIDELINE]` Feed Continuous Improvement Loop:**
-   * **Action:** Share recommendations with Protocol 22 and Protocol 19 for ongoing monitoring enhancements.
+3. **`[GUIDELINE]` Generate Incident Report Draft:**
+   * **Action:** Summarize severity, timeline, actions, and next steps in `INCIDENT-REPORT.md` for Protocol 22.
    * **Example:**
      ```markdown
-     - Action: Automate load-test regression suite weekly
-     - Consumer: Protocol 19 Observability Team
+     ## Summary
+     - Severity: SEV-1
+     - Duration: 27 minutes
+     - Resolution: Rollback to release v1.2.3
      ```
 
 ---
 
-
 <!-- [Category: META-FORMATS] -->
-<!-- Why: Captures retrospectives, continuous improvement, and knowledge development. -->
+<!-- Why: Protocol analysis and improvement framework, not direct execution -->
 ## 4. REFLECTION & LEARNING
 
 ### 4.1 Retrospective Guidance
@@ -272,151 +290,149 @@ Maintain lessons learned with structure:
 - Dependencies on other work
 - Risk buffers and contingencies
 
-
 ---
 
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Documents cross-protocol inputs, outputs, and storage expectations. -->
+<!-- Why: Standards for input/output artifacts and integration specifications -->
 ## 5. INTEGRATION POINTS
 
 ### 5.1 Inputs From:
-- **Protocol 15**: `DEPLOYMENT-REPORT.md`, recent change manifest for context
-- **Protocol 19**: `MONITORING-PACKAGE.zip`, `alert-test-results.json`, baseline metrics
-- **Protocol 20**: `INCIDENT-REPORT.md`, `incident-intake-log.md`
-- **Protocol 22**: Historical performance backlog items and lessons learned
+- **Protocol 19**: `MONITORING-PACKAGE.zip`, `alert-test-results.json`, `monitoring-approval-record.json`
+- **Protocol 15**: `production-deployment-report.json`, `post-deployment-validation.json`
+- **Protocol 21**: `rollback-verification-report.json`
 
 ### 5.2 Outputs To:
-- **Protocol 22**: `PERFORMANCE-REPORT.md`, `continuous-improvement-notes.md`
-- **Protocol 19**: `instrumentation-update-log.md`, `slo-update-record.json`
-- **Protocol 21**: `optimization-plan.json`, `profiling-report.md`
+- **Protocol 22**: `INCIDENT-REPORT.md`, `rca-manifest.json`, `recovery-validation.json`
+- **Protocol 21**: `incident-intake-log.md`, performance degradation notes for tuning
+- **Protocol 19**: `alert-tuning-feedback.json` (if alert improvements identified)
 
 ### 5.3 Artifact Storage Locations:
-- `.artifacts/performance/` - Primary evidence storage
+- `.artifacts/incidents/` - Primary evidence storage
 - `.cursor/context-kit/` - Context and configuration artifacts
 
 ---
 
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Defines pass/fail criteria that govern protocol progression. -->
+<!-- Why: Defines validation standards and criteria, not executing validation -->
 ## 6. QUALITY GATES
 
-### 6.1 Gate 1: Baseline Validation Gate
-- **Criteria**: Intake report complete; baseline metrics captured with traceable sources; hypotheses documented.
-- **Evidence**: `performance-intake-report.json`, `baseline-metrics.csv`, `hypothesis-log.md`.
-- **Pass Threshold**: Baseline completeness ≥ 95%.
-- **Failure Handling**: Fill telemetry gaps; rerun baseline capture before proceeding.
-- **Automation**: `python scripts/validate_gate_14_baseline.py --threshold 0.95`
+### 6.1 Gate 1: Severity Alignment Gate
+- **Criteria**: Incident severity agreed upon; stakeholders notified; intake log complete.
+- **Evidence**: `severity-assessment.json`, `communication-log.md`.
+- **Pass Threshold**: Severity consensus recorded; notifications sent within SLA.
+- **Failure Handling**: Reassess severity with on-call team; delay mitigation until consensus.
+- **Automation**: `python scripts/validate_gate_13_severity.py --sla 5`
 
-### 6.2 Gate 2: Diagnostic Coverage Gate
-- **Criteria**: Profiling executed for prioritized services; load tests cover peak scenarios; capacity analysis documented.
-- **Evidence**: `profiling-report.md`, `load-test-results.json`, `capacity-analysis.md`.
-- **Pass Threshold**: Diagnostic coverage score ≥ 90%.
-- **Failure Handling**: Extend diagnostics or add scenarios; rerun validation.
-- **Automation**: `python scripts/validate_gate_14_diagnostics.py --coverage 0.90`
+### 6.2 Gate 2: Mitigation Readiness Gate
+- **Criteria**: Mitigation plan documented; rollback readiness confirmed; decision approvals logged.
+- **Evidence**: `mitigation-plan.md`, `rollback-readiness-checklist.json`, `decision-log.json`.
+- **Pass Threshold**: All rollback prerequisites verified; decision approvals = 100%.
+- **Failure Handling**: Escalate missing prerequisites; involve release engineering before execution.
+- **Automation**: `python scripts/validate_gate_13_mitigation.py`
 
-### 6.3 Gate 3: Optimization Validation Gate
-- **Criteria**: Optimization plan approved; validation report shows measurable improvement with no regressions.
-- **Evidence**: `optimization-plan.json`, `optimization-validation-report.json`, `instrumentation-update-log.md`.
-- **Pass Threshold**: Improvement ≥ 15% on targeted metric or documented justification; regression count = 0.
-- **Failure Handling**: Rework optimizations; rollback changes; rerun validation tests.
-- **Automation**: `python scripts/validate_gate_14_optimization.py --improvement-threshold 0.15`
+### 6.3 Gate 3: Recovery Validation Gate
+- **Criteria**: Mitigation executed successfully; recovery validation passed; timeline updated.
+- **Evidence**: `mitigation-execution-report.json`, `recovery-validation.json`, `incident-timeline.md`.
+- **Pass Threshold**: Recovery validation success rate ≥ 95% of critical checks.
+- **Failure Handling**: Re-run mitigation or escalate severity; consider alternate rollback strategy.
+- **Automation**: `python scripts/validate_gate_13_recovery.py --threshold 0.95`
 
-### 6.4 Gate 4: Governance & Communication Gate
-- **Criteria**: SLO updates recorded; performance report published; improvement notes shared.
-- **Evidence**: `slo-update-record.json`, `PERFORMANCE-REPORT.md`, `continuous-improvement-notes.md`.
-- **Pass Threshold**: Documentation completeness ≥ 95%; approvals captured.
-- **Failure Handling**: Obtain missing approvals; finalize report; redistribute communications.
-- **Automation**: `python scripts/validate_gate_14_governance.py --threshold 0.95`
+### 6.4 Gate 4: Resolution & Documentation Gate
+- **Criteria**: Resolution summary recorded; root cause evidence archived; incident report drafted.
+- **Evidence**: `resolution-summary.json`, `rca-manifest.json`, `INCIDENT-REPORT.md`.
+- **Pass Threshold**: Documentation completeness ≥ 95%; required stakeholders informed.
+- **Failure Handling**: Collect missing evidence; schedule follow-up review before closure.
+- **Automation**: `python scripts/validate_gate_13_resolution.py --threshold 0.95`
 
 ---
 
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Sets standardized communication patterns and escalation flows. -->
+<!-- Why: Templates and standards for communication, not execution -->
 ## 7. COMMUNICATION PROTOCOLS
 
 ### 7.1 Status Announcements:
 ```
-[MASTER RAY™ | PHASE 1 START] - Consolidating telemetry and incident evidence for performance triage...
-[MASTER RAY™ | PHASE 2 START] - Profiling critical transactions across services...
-[MASTER RAY™ | PHASE 3 START] - Publishing optimization backlog with ownership and risk notes...
-[MASTER RAY™ | PHASE 4 START] - Documenting SLO updates and communicating performance improvements...
-[MASTER RAY™ | PHASE 4 COMPLETE] - Performance report published. Evidence: PERFORMANCE-REPORT.md.
+[MASTER RAY™ | PHASE 1 START] - Monitoring production alerts for incident signals...
+[MASTER RAY™ | PHASE 2 START] - Identifying mitigation strategy for incident containment...
+[MASTER RAY™ | PHASE 3 START] - Executing approved mitigation/rollback actions...
+[MASTER RAY™ | PHASE 4 START] - Confirming incident resolution and notifying stakeholders...
+[MASTER RAY™ | PHASE 4 COMPLETE] - Incident documentation finalized. Evidence: INCIDENT-REPORT.md.
 [RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
 ### 7.2 Validation Prompts:
 ```
-[RAY CONFIRMATION REQUIRED]
-> "Performance optimization validation complete.
-> - optimization-validation-report.json
-> - PERFORMANCE-REPORT.md
->
-> Approve SLO updates and handoff to Protocol 22?"
+[SEVERITY CONFIRMATION]
+> "Incident classified as {severity}. Approve mitigation planning? (yes/no)"
+
+[MITIGATION APPROVAL]
+> "Proposed action: {action}. Execute mitigation now? (yes/no)"
+
+[RESOLUTION CONFIRMATION]
+> "System stabilized. Close incident and trigger postmortem package? (yes/no)"
 ```
 
 ### 7.3 Error Handling:
 ```
-[RAY GATE FAILED: Optimization Validation Gate]
-> "Quality gate 'Optimization Validation Gate' failed.
-> Criteria: Improvement ≥ 15%, no regressions
+[RAY GATE FAILED: Mitigation Readiness Gate]
+> "Quality gate 'Mitigation Readiness Gate' failed.
+> Criteria: Mitigation plan documented, rollback readiness confirmed
 > Actual: {result}
-> Required action: Refine optimization, rerun validation, or adjust targets with approval."
+> Required action: Complete rollback checklist, secure approvals, then retry."
 ```
 
 ---
 
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Lists automation integrations and fallback paths. -->
+<!-- Why: Reference standards for scripts and CI/CD integration -->
 ## 8. AUTOMATION HOOKS
 
-
 **Registry Reference:** See `scripts/script-registry.json` for complete script inventory, ownership, and governance context.
-
 
 ### 8.1 Validation Scripts:
 ```bash
 # Prerequisite validation
-python scripts/validate_prerequisites_14.py
+python scripts/validate_prerequisites_13.py
 
 # Quality gate automation
-python scripts/validate_gate_14_baseline.py --threshold 0.95
-python scripts/validate_gate_14_optimization.py --improvement-threshold 0.15
+python scripts/validate_gate_13_severity.py --sla 5
+python scripts/validate_gate_13_resolution.py --threshold 0.95
 
 # Evidence aggregation
-python scripts/aggregate_evidence_14.py --output .artifacts/performance/
+python scripts/aggregate_evidence_13.py --output .artifacts/incidents/
 ```
 
 ### 8.2 CI/CD Integration:
 ```yaml
 # GitHub Actions workflow integration
-name: Protocol 21 Validation
+name: Protocol 20 Validation
 on:
-  schedule:
-    - cron: '0 4 * * 1'
   workflow_dispatch:
+  push:
+    paths:
+      - '.artifacts/monitoring/**'
+      - '.artifacts/incidents/**'
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Run Protocol 21 Gates
-        run: python scripts/run_protocol_14_gates.py
+      - name: Run Protocol 20 Gates
+        run: python scripts/run_protocol_13_gates.py
 ```
 
 ### 8.3 Manual Fallbacks:
 When automation is unavailable, execute manual validation:
-1. Export telemetry dashboards manually and attach to intake report.
-2. Run targeted load tests from local tooling; capture results in spreadsheet.
-3. Document results in `.artifacts/protocol-21/manual-validation-log.md`
+1. Review alert logs and severity decisions during war-room session.
+2. Capture mitigation steps manually in timeline and execution report.
+3. Document results in `.artifacts/protocol-20/manual-validation-log.md`
 
 ---
 
-<!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Ensures downstream recipients receive validated artifacts and sign-offs. -->
+<!-- [Category: EXECUTION-BASIC] -->
+<!-- Why: Simple checklist workflow with validation items -->
 ## 9. HANDOFF CHECKLIST
-
-
 
 ### 9.1 Continuous Improvement Validation:
 - [ ] Execution feedback collected and logged
@@ -425,7 +441,6 @@ When automation is unavailable, execute manual validation:
 - [ ] Knowledge base updated with new patterns or insights
 - [ ] Protocol adaptation opportunities identified and logged
 - [ ] Retrospective scheduled (if required for this protocol phase)
-
 
 ### 9.2 Pre-Handoff Validation:
 Before declaring protocol complete, validate:
@@ -438,26 +453,24 @@ Before declaring protocol complete, validate:
 - [ ] All automation hooks executed successfully
 - [ ] Communication log complete
 
-### 9.3 Handoff to Protocol 22:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 22: Implementation Retrospective
+### 9.3 Handoff to Protocol 18:
+**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 18: Performance Optimization & Tuning
 
 **Evidence Package:**
-- `PERFORMANCE-REPORT.md` - Comprehensive performance summary
-- `continuous-improvement-notes.md` - Recommendations for ongoing improvements
+- `INCIDENT-REPORT.md` - Incident summary for retrospective
+- `recovery-validation.json` - Verification of restored service health
 
 **Execution:**
 ```bash
 # Trigger next protocol
-@apply .cursor/ai-driven-workflow/22-implementation-retrospective.md
+@apply .cursor/ai-driven-workflow/18-performance-optimization.md
 ```
 
 ---
 
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Summarizes generated evidence, metrics, and traceability. -->
+<!-- Why: Documentation standards and metrics tracking -->
 ## 10. EVIDENCE SUMMARY
-
-
 
 ### 10.1 Learning and Improvement Mechanisms
 
@@ -469,16 +482,14 @@ Before declaring protocol complete, validate:
 
 **Adaptation:** Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
 
-
 ### 10.2 Generated Artifacts:
 | Artifact | Location | Purpose | Consumer |
 |----------|----------|---------|----------|
-| `performance-intake-report.json` | `.artifacts/performance/` | Consolidated telemetry insights | Protocol 21 Gates |
-| `baseline-metrics.csv` | `.artifacts/performance/` | Baseline performance reference | Protocol 21 Gates |
-| `load-test-results.json` | `.artifacts/performance/` | Stress test outcomes | Protocol 21 Gates |
-| `optimization-plan.json` | `.artifacts/performance/` | Optimization backlog | Protocol 21 |
-| `PERFORMANCE-REPORT.md` | `.artifacts/performance/` | Final optimization summary | Protocol 22 |
-
+| `incident-intake-log.md` | `.artifacts/incidents/` | Captures alert signals and timestamps | Protocol 20 Gates |
+| `mitigation-plan.md` | `.artifacts/incidents/` | Documents containment strategy | Protocol 20 Gates |
+| `recovery-validation.json` | `.artifacts/incidents/` | Confirms system stabilization | Protocol 22 |
+| `INCIDENT-REPORT.md` | `.artifacts/incidents/` | Incident summary and actions | Protocol 22 |
+| `rca-manifest.json` | `.artifacts/incidents/` | Root cause evidence index | Protocol 22 |
 
 ### 10.3 Traceability Matrix
 
@@ -504,12 +515,10 @@ Before declaring protocol complete, validate:
 | Evidence Completeness | 100% | [TBD] | ⏳ |
 | Integration Integrity | 100% | [TBD] | ⏳ |
 
-
 ---
 
-
 <!-- [Category: META-FORMATS] -->
-<!-- Why: Details cognitive strategies, decision logic, and self-monitoring. -->
+<!-- Why: Meta-level protocol analysis and cognitive patterns -->
 ## 11. REASONING & COGNITIVE PROCESS
 
 ### 11.1 Reasoning Patterns
