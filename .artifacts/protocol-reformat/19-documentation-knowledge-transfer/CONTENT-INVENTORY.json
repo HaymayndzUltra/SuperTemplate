@@ -4,15 +4,7 @@
   "reasoning_blocks_count": 5,
   "evidence_requirements_count": 27,
   "script_references": [
-    "scripts/aggregate_evidence_16.py",
-    "scripts/check_doc_style.py",
-    "scripts/export_sequence_diagrams.py",
-    "scripts/run_protocol_16_gates.py",
-    "scripts/script-registry.json",
-    "scripts/validate_gate_16_completeness.py",
-    "scripts/validate_gate_16_enablement.py",
-    "scripts/validate_gate_16_publication.py",
-    "scripts/validate_prerequisites_16.py"
+    "scripts/script-registry.json"
   ],
   "artifact_paths": [
     ".artifacts/protocol-19/",

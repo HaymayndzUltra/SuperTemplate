@@ -4,14 +4,11 @@
   "reasoning_blocks_count": 5,
   "evidence_requirements_count": 17,
   "script_references": [
-    "scripts/aggregate_evidence_14.py",
-    "scripts/run_protocol_14_gates.py",
+    "scripts/run_protocol_18_gates.py",
     "scripts/script-registry.json",
-    "scripts/validate_gate_14_baseline.py",
-    "scripts/validate_gate_14_diagnostics.py",
-    "scripts/validate_gate_14_governance.py",
-    "scripts/validate_gate_14_optimization.py",
-    "scripts/validate_prerequisites_14.py"
+    "scripts/validate_gate_18_approvals.py",
+    "scripts/validate_gate_18_backlog.py",
+    "scripts/validate_gate_18_governance.py"
   ],
   "artifact_paths": [
     ".artifacts/performance/",
