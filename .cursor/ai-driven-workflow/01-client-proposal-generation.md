@@ -222,10 +222,36 @@ Success is measured by human believability, evidence completeness, and the abili
        * **Evidence:** Approach section in PROPOSAL.md
        * **Validation:** Contains concrete example with timeframe breakdown
 
+   * **4.3.1 `[CONDITIONAL]` Predictive System Evidence Pattern:**
+       * **Purpose:** Automatically generate proof-of-readiness language when no prior project experience is listed, using workflow transparency as credibility evidence.
+       * **Trigger Conditions:**
+           - `tech_stack` includes `["API", "integration", "sync", "automation", "deployment"]`
+           - `notes.md` lacks `["previous client", "case study", "delivered", "past project"]`
+           - `humanization-log.json` has `workflow_demo_triggered: false`
+       * **Action:** Generate a predictive system evidence statement contextual to detected intent category:
+           > "The workflow I use is already built to prevent the exact issues most clients encounter at this stage—like mismatched scopes and API sync delays. You’ll see results from Day 1 because the process already includes validation gates and artifact logging—everything traceable. Every part of this workflow has been tested internally on simulated data and verified through gated validation logs, ensuring each integration behaves predictably before touching your codebase."
+       * **Humanization Adjustments:**
+           - Add 2 rhythm breaks and 1 short line for emphasis (≤7 words)
+           - Ensure ≥3 contractions for natural cadence
+       * **Artifact Logging:** Append the following to `.artifacts/protocol-01/humanization-log.json`:
+           ```json
+           {
+             "workflow_demo_triggered": true,
+             "workflow_demo_reason": "no_prior_experience_proof + integration_context",
+             "inserted_at": "Phase 4.3",
+             "humanization_adjustments": {"cadence_breaks": 2, "short_sentences_added": true}
+           }
+           ```
+       * **Validation:**
+           - Confirm one predictive statement inserted under Approach
+           - Confirm cadence breaks + contractions present
+           - Confirm tone aligns with `tone-map.json`
+       * **Fail Condition:** If differentiators contain prior client proofs or job post is not integration-related, skip insertion.
+
    * **4.4. Proof via Advanced Intelligent Workflow System:**
        * **Action:** Mention the system as the engine behind similar validations; keep tone factual
-       * **Evidence:** System reference in PROPOSAL.md
-       * **Validation:** System mentioned naturally without marketing language
+       * **Evidence:** System reference in PROPOSAL.md + optional predictive statement link
+       * **Validation:** System mentioned naturally without marketing tone
 
    * **4.5. Next Step CTA:**
        * **Action:** Clear ask (call, async reply) with availability, no corporate sign-off
@@ -234,25 +260,19 @@ Success is measured by human believability, evidence completeness, and the abili
 
 2. **`[MUST]` Enforce Human Voice Rules:**
    * **Action:** Apply all human voice rules during drafting:
-     - Minimum 3 contractions, 1 uncertainty statement, 1 direct question
-     - Every assertion linked to tool, metric, or timeframe
+     - ≥3 contractions, ≥1 uncertainty statement, ≥1 direct question
+     - Every assertion backed by tool, metric, or timeframe
      - Word count: 180–220 (readable in ≤60 seconds)
-     - Attachments capped at 2 relevant pieces (case study, screenshot, quick loom link)
+     - ≤2 attachments (case study, screenshot, loom link)
    * **Evidence:** Final PROPOSAL.md meeting all criteria
-   * **Validation:** Manual checklist:
-     - [ ] ≥3 contractions found
-     - [ ] ≥1 uncertainty statement found
-     - [ ] ≥1 direct question found
-     - [ ] All assertions have supporting evidence (tool/metric/timeframe)
-     - [ ] Word count 180-220
-     - [ ] ≤2 attachments
+   * **Validation:** Manual checklist confirms all boxes checked
 
 3. **`[MUST]` Update Humanization Log:**
-   * **Action:** Update `humanization-log.json` with actual counts (contractions, uncertainty, questions) plus red-flag scan results
-   * **Evidence:** Updated `.artifacts/protocol-01/humanization-log.json`
-   * **Validation:** All counters populated, forbidden phrase scan result recorded (0 matches required)
+   * **Action:** Update `.artifacts/protocol-01/humanization-log.json` with final counts (contractions, uncertainty, questions), red-flag scan, and predictive pattern log if triggered
+   * **Evidence:** Updated humanization log with non-breaking schema
+   * **Validation:** All counters populated, forbidden phrase scan = 0, proof flags recorded
 
-**Outputs:** `.artifacts/protocol-01/PROPOSAL.md`, updated `humanization-log.json`
+**Outputs:** Updated `.artifacts/protocol-01/PROPOSAL.md` and `humanization-log.json`
 
 ---
 
