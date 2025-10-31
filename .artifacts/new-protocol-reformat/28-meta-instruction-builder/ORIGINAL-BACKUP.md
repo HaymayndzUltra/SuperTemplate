@@ -1,19 +1,11 @@
----
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
----
-
-# PROTOCOL 28: META INSTRUCTION BUILDER
-<!-- [Category: META-FORMATS] -->
-<!-- Why: Multi-stage meta-instruction construction coordinating reasoning, logic, formatting, and validation outputs -->
-
-## 1. STAGE 1 — ROLE & INTENT EXPLAINER
-<!-- [Category: EXECUTION-REASONING] -->
-<!-- Why: Sequential reasoning-driven intake to capture persona, objectives, and raw prompts before downstream synthesis -->
+# Stage 1: Role & Intent Explainer
 
 **Purpose:** Define the role and clarify the intent of your meta prompt. This is the foundation of your prompt building process.
 
-### STEP 1.1 — Role Persona Definition
+---
+
+## 📝 Role Definition
+
 **Instruction ID 1 — Role Persona Definition**
 - **Input:** Project brief or stakeholder notes describing the AI’s intended responsibilities, domain, audience, and tone.
 - **Process:**
@@ -23,12 +15,15 @@
 - **Output:** Markdown paragraph labeled “Role” containing domain, responsibilities, audience, and tone in complete sentences.
 - **Validation:** Success if all four elements appear explicitly; otherwise flag “Role description incomplete” and loop to step 2.
 
-#### Role Output Template
+### Role Output Template
 ```
 Role: [Describe domain, responsibilities, audience, tone in 2–3 sentences.]
 ```
 
-### STEP 1.2 — Primary Intent Statement
+---
+
+## 🎯 Intent Explanation
+
 **Instruction ID 2 — Primary Intent Statement**
 - **Input:** User-provided goal statements or success criteria for the meta prompt.
 - **Process:**
@@ -38,12 +33,11 @@ Role: [Describe domain, responsibilities, audience, tone in 2–3 sentences.]
 - **Output:** Single sentence labeled “Primary Intent” including deliverable, scope, and context.
 - **Validation:** Success if sentence answers “What output?”, “For whom/what dataset?”, and “How measured?”; otherwise request clarification.
 
-#### Primary Intent Template
+### Primary Intent Template
 ```
 Primary Intent: [Outcome including deliverable, scope, context, and measurement.]
 ```
 
-### STEP 1.3 — Secondary Objectives Listing
 **Instruction ID 3 — Secondary Objectives Listing**
 - **Input:** Additional goals gathered from stakeholders.
 - **Process:**
@@ -53,14 +47,17 @@ Primary Intent: [Outcome including deliverable, scope, context, and measurement.
 - **Output:** Bulleted list under “Secondary Objectives” where each bullet follows “Action → Target → Impact” structure.
 - **Validation:** Success if at least one and no more than five bullets exist, each with the three fields; otherwise adjust.
 
-#### Secondary Objectives Template
+### Secondary Objectives Template
 ```
 Secondary Objectives:
 - Action: [Action] → Target: [Target] → Impact: [Impact]
 - ...
 ```
 
-### STEP 1.4 — Custom Prompt Capture
+---
+
+## 🔤 User Input Section
+
 **Instruction ID 4 — Custom Prompt Capture**
 - **Input:** Original user prompt or query text.
 - **Process:**
@@ -70,14 +67,28 @@ Secondary Objectives:
 - **Output:** Quoted block labeled “User Query” containing prompt plus metadata line.
 - **Validation:** Success if block matches supplied text checksum and metadata line present; otherwise re-ingest.
 
-#### User Query Template
+### User Query Template
 ```
 User Query:
 > [Verbatim prompt text]
 > Metadata: Provided by [name/date]
 ```
 
-### STEP 1.5 — Transfer Stage-1 Output to Stage-2
+---
+
+## 📤 Output: Intent Document
+
+### Generated Intent Document (Ready to Copy)
+```
+Role: [From Role Output]
+Primary Intent: [From Primary Intent Template]
+Secondary Objectives:
+- [Action → Target → Impact]
+User Query:
+> [Verbatim prompt text]
+> Metadata: Provided by [name/date]
+```
+
 **Instruction ID 5 — Transfer Stage‑1 Output to Stage‑2**
 - **Input:** Completed Stage‑1 Intent Document file.
 - **Process:**
@@ -93,29 +104,18 @@ User Query:
 - Diff Result: __________________
 - Timestamp: __________________
 
-### Stage 1 Output Package
-#### Generated Intent Document (Ready to Copy)
-```
-Role: [From Role Output]
-Primary Intent: [From Primary Intent Template]
-Secondary Objectives:
-- [Action → Target → Impact]
-User Query:
-> [Verbatim prompt text]
-> Metadata: Provided by [name/date]
-```
-
 ---
 
-## 2. STAGE 2 — REASONING SYNTHESIZER (RS)
-<!-- [Category: EXECUTION-REASONING] -->
-<!-- Why: Structured reasoning selection and analysis to translate intent into cognitive workflow -->
+# Stage 2: Reasoning Synthesizer (RS)
 
 📍
 
 **Purpose:** Structure the logical reasoning approach based on the intent defined in Stage 1. This stage builds the cognitive framework for your meta prompt.
 
-### STEP 2.1 — Stage-2 Input Confirmation
+---
+
+## 📥 Input from Previous Stage
+
 **Instruction ID 6 — Stage‑2 Input Confirmation**
 - **Input:** Stage‑1 document and Stage‑2 workspace.
 - **Process:**
@@ -124,14 +124,17 @@ User Query:
 - **Output:** Stage‑2 input validated checklist with four items marked complete.
 - **Validation:** Success if all four headings present; otherwise block progression.
 
-#### Stage‑2 Input Checklist
+### Stage‑2 Input Checklist
 - [ ] Role heading present
 - [ ] Primary Intent heading present
 - [ ] Secondary Objectives heading present
 - [ ] User Query heading present
 - Validation Timestamp: __________________
 
-### STEP 2.2 — Reasoning Approach Selection
+---
+
+## 🧠 Reasoning Framework
+
 **Instruction ID 7 — Reasoning Approach Selection**
 - **Input:** Intent document and list of available reasoning approaches.
 - **Process:**
@@ -141,7 +144,7 @@ User Query:
 - **Output:** Entry “Selected Approach: [Option] — Rationale: [Sentence].”
 - **Validation:** Success if rationale references at least one intent attribute and option is from provided list; otherwise reconsider.
 
-#### Reasoning Approach Scorecard
+### Reasoning Approach Scorecard
 | Approach | Criteria Match Notes | Score (1-5) |
 | --- | --- | --- |
 | Deductive Reasoning | | |
@@ -152,7 +155,6 @@ User Query:
 
 Selected Approach: __________________ — Rationale: __________________________________
 
-### STEP 2.3 — Reasoning Steps Definition
 **Instruction ID 8 — Reasoning Steps Definition**
 - **Input:** Chosen reasoning approach and intent document.
 - **Process:**
@@ -162,13 +164,12 @@ Selected Approach: __________________ — Rationale: ___________________________
 - **Output:** Numbered list “Step 1 … Step N” with input/output annotations.
 - **Validation:** Success if ≥3 steps, each naming input and output; else refine.
 
-#### Reasoning Steps Template
+### Reasoning Steps Template
 1. Step Name — Input: ________ → Output: ________
 2. Step Name — Input: ________ → Output: ________
 3. Step Name — Input: ________ → Output: ________
 4. ...
 
-### STEP 2.4 — Key Considerations Documentation
 **Instruction ID 9 — Key Considerations Documentation**
 - **Input:** Context notes, constraints, stakeholder requirements.
 - **Process:**
@@ -179,43 +180,16 @@ Selected Approach: __________________ — Rationale: ___________________________
 - **Output:** Table with columns Context/Assumptions/Constraints/Success Criteria containing bullet entries.
 - **Validation:** Success if each column has ≥1 entry and success metrics include numeric or boolean thresholds; otherwise revise.
 
-#### Key Considerations Table
+### Key Considerations Table
 | Context | Assumptions | Constraints | Success Criteria |
 | --- | --- | --- | --- |
 | - ... | - ... | - ... | - Metric: ___ ≥/≤ ___ |
 
-### STEP 2.5 — Transfer Stage-2 Output to Stage-3
-**Instruction ID 10 — Transfer Stage‑2 Output to Stage‑3**
-- **Input:** Completed Stage‑2 Reasoning Structure.
-- **Process:**
-  1) Copy entire structure.
-  2) Paste into Stage‑3 input.
-  3) Run word-count comparison (difference ≤0).
-- **Output:** Stage‑3 input populated with Stage‑2 document, plus log showing counts match.
-- **Validation:** Success if counts identical; else redo.
+---
 
-### STEP 2.6 — Stage-3 Input Confirmation
-**Instruction ID 11 — Stage‑3 Input Confirmation**
-- **Input:** Stage‑2 output within Stage‑3 workspace.
-- **Process:**
-  1) Confirm presence of “Reasoning Approach,” “Reasoning Steps,” and “Analysis Parameters.”
-  2) Mark checklist.
-- **Output:** Signed checklist stored with timestamp.
-- **Validation:** Success if all three headings present; otherwise re-import.
+## 📤 Output: Reasoning Structure
 
-#### Stage‑3 Transfer Log
-- Stage‑2 Word Count: _______
-- Stage‑3 Word Count: _______
-- Match Status: [ ] Pass / [ ] Fail
-- Checklist:
-  - [ ] Reasoning Approach present
-  - [ ] Reasoning Steps present
-  - [ ] Analysis Parameters present
-- Reviewer Signature: __________________
-- Timestamp: __________________
-
-### Stage 2 Output Package
-#### Generated Reasoning Structure (Ready to Copy)
+### Generated Reasoning Structure (Ready to Copy)
 ```
 Selected Approach: [Option] — Rationale: [Sentence]
 
@@ -230,15 +204,44 @@ Analysis Parameters (Key Considerations):
 - Success Criteria: [...]
 ```
 
+**Instruction ID 10 — Transfer Stage‑2 Output to Stage‑3**
+- **Input:** Completed Stage‑2 Reasoning Structure.
+- **Process:**
+  1) Copy entire structure.
+  2) Paste into Stage‑3 input.
+  3) Run word-count comparison (difference ≤0).
+- **Output:** Stage‑3 input populated with Stage‑2 document, plus log showing counts match.
+- **Validation:** Success if counts identical; else redo.
+
+**Instruction ID 11 — Stage‑3 Input Confirmation**
+- **Input:** Stage‑2 output within Stage‑3 workspace.
+- **Process:**
+  1) Confirm presence of “Reasoning Approach,” “Reasoning Steps,” and “Analysis Parameters.”
+  2) Mark checklist.
+- **Output:** Signed checklist stored with timestamp.
+- **Validation:** Success if all three headings present; otherwise re-import.
+
+### Stage‑3 Transfer Log
+- Stage‑2 Word Count: _______
+- Stage‑3 Word Count: _______
+- Match Status: [ ] Pass / [ ] Fail
+- Checklist:
+  - [ ] Reasoning Approach present
+  - [ ] Reasoning Steps present
+  - [ ] Analysis Parameters present
+- Reviewer Signature: __________________
+- Timestamp: __________________
+
 ---
 
-## 3. STAGE 3 — LOGIC PLANNER (LP)
-<!-- [Category: EXECUTION-SUBSTEPS] -->
-<!-- Why: Detailed substep blueprinting for decision mapping, conditional branches, and execution sequencing -->
+# Stage 3: Logic Planner (LP)
 
 **Purpose:** Map out the decision-making framework and logical pathways. This stage creates the execution blueprint for your meta prompt.
 
-### STEP 3.1 — Logical Flow Construction
+---
+
+## 🗺️ Logic Mapping
+
 **Instruction ID 12 — Logical Flow Construction**
 - **Input:** Reasoning structure and problem requirements.
 - **Process:**
@@ -248,12 +251,11 @@ Analysis Parameters (Key Considerations):
 - **Output:** Decision tree table listing Condition, Action, Outcome for each node.
 - **Validation:** Success if every reasoning step has at least one linked node and no uncovered intent scenario; otherwise expand tree.
 
-#### Decision Tree Table
+### Decision Tree Table
 | Condition | Action | Outcome | Linked Reasoning Step |
 | --- | --- | --- | --- |
 | If ... | Then ... | Outcome ... | Step # |
 
-### STEP 3.2 — Conditional Logic Specification
 **Instruction ID 13 — Conditional Logic Specification**
 - **Input:** Decision tree from ID12.
 - **Process:**
@@ -263,12 +265,11 @@ Analysis Parameters (Key Considerations):
 - **Output:** Ordered list of IF/THEN/ELSE IF/ELSE clauses with referenced outputs.
 - **Validation:** Success if all nodes from ID12 represented and ELSE path documented; otherwise adjust.
 
-#### Conditional Logic Template
+### Conditional Logic Template
 1. IF [Condition A] THEN [Action] → Output: _______
 2. ELSE IF [Condition B] THEN [Action] → Output: _______
 3. ELSE [Default Action] → Output: _______
 
-### STEP 3.3 — Execution Sequence Detailing
 **Instruction ID 14 — Execution Sequence Detailing**
 - **Input:** Logic blueprint and reasoning steps.
 - **Process:**
@@ -278,13 +279,12 @@ Analysis Parameters (Key Considerations):
 - **Output:** Numbered execution sequence with phase name and required inputs/outputs.
 - **Validation:** Success if sequence covers every reasoning step and includes at least three phases; otherwise refine.
 
-#### Execution Sequence Template
+### Execution Sequence Template
 1. Phase Name — Inputs: ________ — Outputs: ________ — Duration/Resources: ________
 2. Phase Name — Inputs: ________ — Outputs: ________ — Duration/Resources: ________
 3. Phase Name — Inputs: ________ — Outputs: ________ — Duration/Resources: ________
 4. ...
 
-### STEP 3.4 — Edge Case and Fallback Plan
 **Instruction ID 15 — Edge Case and Fallback Plan**
 - **Input:** Risk analysis or historical issues.
 - **Process:**
@@ -294,46 +294,18 @@ Analysis Parameters (Key Considerations):
 - **Output:** Table with columns Scenario, Trigger, Response, Owner.
 - **Validation:** Success if ≥2 scenarios documented plus fallback row; otherwise expand.
 
-#### Edge Case Table
+### Edge Case Table
 | Scenario | Trigger | Response | Owner |
 | --- | --- | --- | --- |
 | Edge Case 1 | | | |
 | Edge Case 2 | | | |
 | Fallback | Trigger: not met | Response: [Default handling] | Owner: |
 
-### STEP 3.5 — Transfer Stage-3 Output to Stage-4
-**Instruction ID 16 — Transfer Stage‑3 Output to Stage‑4**
-- **Input:** Logic Blueprint document.
-- **Process:**
-  1) Copy blueprint.
-  2) Paste into Stage‑4 input.
-  3) Perform checksum comparison to ensure integrity.
-- **Output:** Stage‑4 input containing identical blueprint; checksum report archived.
-- **Validation:** Success if checksum matches; else repeat transfer.
+---
 
-### STEP 3.6 — Stage-4 Input Confirmation
-**Instruction ID 17 — Stage‑4 Input Confirmation**
-- **Input:** Stage‑3 blueprint in Stage‑4 workspace.
-- **Process:**
-  1) Verify presence of sections “Logic Pathways,” “Conditional Logic,” “Processing Sequence,” “Exception Handling.”
-  2) Log verification result.
-- **Output:** Verification log with four checked fields.
-- **Validation:** Success if all sections detected; otherwise re-import.
+## 📤 Output: Logic Blueprint
 
-#### Stage‑4 Transfer Checklist
-- Checksum Source: _______
-- Checksum Destination: _______
-- Match Status: [ ] Pass / [ ] Fail
-- Section Verification:
-  - [ ] Logic Pathways present
-  - [ ] Conditional Logic present
-  - [ ] Processing Sequence present
-  - [ ] Exception Handling present
-- Reviewer: __________________
-- Timestamp: __________________
-
-### Stage 3 Output Package
-#### Generated Logic Blueprint (Ready to Copy)
+### Generated Logic Blueprint (Ready to Copy)
 ```
 Reasoning Reference: [From Stage 2]
 
@@ -356,17 +328,47 @@ Exception Handling:
 | ... |
 ```
 
+**Instruction ID 16 — Transfer Stage‑3 Output to Stage‑4**
+- **Input:** Logic Blueprint document.
+- **Process:**
+  1) Copy blueprint.
+  2) Paste into Stage‑4 input.
+  3) Perform checksum comparison to ensure integrity.
+- **Output:** Stage‑4 input containing identical blueprint; checksum report archived.
+- **Validation:** Success if checksum matches; else repeat transfer.
+
+**Instruction ID 17 — Stage‑4 Input Confirmation**
+- **Input:** Stage‑3 blueprint in Stage‑4 workspace.
+- **Process:**
+  1) Verify presence of sections “Logic Pathways,” “Conditional Logic,” “Processing Sequence,” “Exception Handling.”
+  2) Log verification result.
+- **Output:** Verification log with four checked fields.
+- **Validation:** Success if all sections detected; otherwise re-import.
+
+### Stage‑4 Transfer Checklist
+- Checksum Source: _______
+- Checksum Destination: _______
+- Match Status: [ ] Pass / [ ] Fail
+- Section Verification:
+  - [ ] Logic Pathways present
+  - [ ] Conditional Logic present
+  - [ ] Processing Sequence present
+  - [ ] Exception Handling present
+- Reviewer: __________________
+- Timestamp: __________________
+
 ---
 
-## 4. STAGE 4 — FORMAT DESIGNER/MAPPER (FD)
-<!-- [Category: EXECUTION-SUBSTEPS] -->
-<!-- Why: Structured substeps translate logic blueprint into format, presentation, visualization, and QA controls -->
+# Stage 4: Format Designer/Mapper (FD)
 
 📍
 
 **Purpose:** Define the output structure, formatting, and presentation requirements. This stage ensures your meta prompt produces results in the desired format.
 
-### STEP 4.1 — Format Family Selection
+---
+
+## 📥 Input from Previous Stage
+
 **Instruction ID 18 — Format Family Selection**
 - **Input:** Logic blueprint and repository of format families.
 - **Process:**
@@ -376,7 +378,7 @@ Exception Handling:
 - **Output:** Statement “Selected Format Family: [Name] (Score X/5)” plus score table.
 - **Validation:** Success if chosen family has highest score and justification recorded; otherwise reconsider.
 
-#### Format Family Scorecard
+### Format Family Scorecard
 | Format Family | Alignment Notes | Score (1-5) |
 | --- | --- | --- |
 | Execution – Basic Protocol | | |
@@ -390,7 +392,6 @@ Exception Handling:
 
 Selected Format Family: __________________ (Score __/5)
 
-### STEP 4.2 — Output Container Choice
 **Instruction ID 19 — Output Container Choice**
 - **Input:** Selected format family and stakeholder delivery preferences.
 - **Process:**
@@ -400,7 +401,7 @@ Selected Format Family: __________________ (Score __/5)
 - **Output:** Entry “Selected Output Container: [Option] — Constraints satisfied: [list].”
 - **Validation:** Success if selection satisfies all mandatory constraints; otherwise request alternative.
 
-#### Output Container Assessment
+### Output Container Assessment
 | Container | Mandatory Constraints Met? | Notes |
 | --- | --- | --- |
 | Structured Report / Narrative | | |
@@ -413,7 +414,10 @@ Selected Format Family: __________________ (Score __/5)
 
 Selected Output Container: __________________ — Constraints satisfied: __________________
 
-### STEP 4.3 — Output Structure Definition
+---
+
+## 🎨 Output Format Specification
+
 **Instruction ID 20 — Output Structure Definition**
 - **Input:** Format family blueprint.
 - **Process:**
@@ -423,7 +427,7 @@ Selected Output Container: __________________ — Constraints satisfied: _______
 - **Output:** Structured outline listing sections/components with IDs and descriptions.
 - **Validation:** Success if every reasoning step and decision node references a component in the outline; otherwise revise.
 
-#### Output Structure Outline
+### Output Structure Outline
 1. Section ID: ________ — Title: ________ — Linked Decision Nodes: ________
    - Component 1.1: ________
    - Component 1.2: ________
@@ -431,7 +435,6 @@ Selected Output Container: __________________ — Constraints satisfied: _______
    - Component 2.1: ________
    - Component 2.2: ________
 
-### STEP 4.4 — Style Guidelines Specification
 **Instruction ID 21 — Style Guidelines Specification**
 - **Input:** Audience preferences and organizational style guide.
 - **Process:**
@@ -441,7 +444,7 @@ Selected Output Container: __________________ — Constraints satisfied: _______
 - **Output:** Table with Tone, Length (quantified), Language Complexity, Point of View, plus source column.
 - **Validation:** Success if each field includes concrete value and source; else update.
 
-#### Style Guidelines Table
+### Style Guidelines Table
 | Attribute | Requirement | Source |
 | --- | --- | --- |
 | Tone | | |
@@ -449,7 +452,6 @@ Selected Output Container: __________________ — Constraints satisfied: _______
 | Language Complexity | | |
 | Point of View | | |
 
-### STEP 4.5 — Presentation Elements Rules
 **Instruction ID 22 — Presentation Elements Rules**
 - **Input:** Publishing standards and format outline.
 - **Process:**
@@ -459,7 +461,7 @@ Selected Output Container: __________________ — Constraints satisfied: _______
 - **Output:** Checklist detailing presentation rules with quantitative limits (e.g., “Max 3 callouts per section”).
 - **Validation:** Success if checklist covers headings, emphasis, lists, visuals, citations with measurable constraints; otherwise extend.
 
-#### Presentation Checklist
+### Presentation Checklist
 - [ ] Heading Levels: __________________
 - [ ] Emphasis Rules: __________________ (Limit: ___ per section)
 - [ ] List Usage: __________________
@@ -467,7 +469,10 @@ Selected Output Container: __________________ — Constraints satisfied: _______
 - [ ] Citation Format: __________________
 - [ ] Verification Timestamp: __________________
 
-### STEP 4.6 — Visualization Requirements Definition
+---
+
+## 📊 Data Visualization Requirements
+
 **Instruction ID 23 — Visualization Requirements Definition**
 - **Input:** Data visualization needs from stakeholders.
 - **Process:**
@@ -477,13 +482,16 @@ Selected Output Container: __________________ — Constraints satisfied: _______
 - **Output:** Visualization requirements table with fields Chart Type, Required?, Labels, Legend, Data Source, Rationale.
 - **Validation:** Success if table completed for each planned visualization; otherwise mark “Visualization scope incomplete.”
 
-#### Visualization Requirements Table
+### Visualization Requirements Table
 | Visualization | Required? (Y/N) | Chart Type | Labels | Legend Position | Data Source | Rationale |
 | --- | --- | --- | --- | --- | --- | --- |
 | Viz 1 | | | | | | |
 | Viz 2 | | | | | | |
 
-### STEP 4.7 — Quality Standards Establishment
+---
+
+## 📏 Quality Assurance
+
 **Instruction ID 24 — Quality Standards Establishment**
 - **Input:** Organizational QA criteria and format specification.
 - **Process:**
@@ -492,7 +500,7 @@ Selected Output Container: __________________ — Constraints satisfied: _______
 - **Output:** QA matrix listing each criterion, metric, threshold, reviewer.
 - **Validation:** Success if every criterion has quantitative threshold and assigned reviewer; else revise.
 
-#### QA Matrix
+### QA Matrix
 | Criterion | Metric | Threshold | Reviewer |
 | --- | --- | --- | --- |
 | Completeness | | | |
@@ -500,38 +508,11 @@ Selected Output Container: __________________ — Constraints satisfied: _______
 | Clarity | | | |
 | Consistency | | | |
 
-### STEP 4.8 — Transfer Stage-4 Output to Stage-5
-**Instruction ID 25 — Transfer Stage‑4 Output to Stage‑5**
-- **Input:** Format Specification document.
-- **Process:**
-  1) Copy Stage‑4 output.
-  2) Paste into Stage‑5 input.
-  3) Verify via checksum or diff.
-- **Output:** Stage‑5 input containing identical specification with verification log.
-- **Validation:** Success if verification passes; otherwise repeat transfer.
+---
 
-### STEP 4.9 — Stage-5 Input Confirmation
-**Instruction ID 26 — Stage‑5 Input Confirmation**
-- **Input:** Stage‑4 content now in Stage‑5 workspace.
-- **Process:**
-  1) Confirm presence of “Output Format,” “Formatting Rules,” “Presentation Elements,” “Quality Standards.”
-  2) Mark results.
-- **Output:** Confirmation checklist stored with timestamp.
-- **Validation:** Success if all sections present; else re-paste.
+## 📤 Output: Format Specification
 
-#### Stage‑5 Transfer Checklist
-- Verification Method: [Checksum/Diff]
-- Result: [ ] Pass / [ ] Fail
-- Section Confirmation:
-  - [ ] Output Format present
-  - [ ] Formatting Rules present
-  - [ ] Presentation Elements present
-  - [ ] Quality Standards present
-- Reviewer: __________________
-- Timestamp: __________________
-
-### Stage 4 Output Package
-#### Generated Format Specification (Ready to Copy)
+### Generated Format Specification (Ready to Copy)
 ```
 Selected Format Family: [Name] (Score X/5)
 Selected Output Container: [Option] — Constraints satisfied: [list]
@@ -558,17 +539,46 @@ QA Matrix:
 | ... |
 ```
 
+**Instruction ID 25 — Transfer Stage‑4 Output to Stage‑5**
+- **Input:** Format Specification document.
+- **Process:**
+  1) Copy Stage‑4 output.
+  2) Paste into Stage‑5 input.
+  3) Verify via checksum or diff.
+- **Output:** Stage‑5 input containing identical specification with verification log.
+- **Validation:** Success if verification passes; otherwise repeat transfer.
+
+**Instruction ID 26 — Stage‑5 Input Confirmation**
+- **Input:** Stage‑4 content now in Stage‑5 workspace.
+- **Process:**
+  1) Confirm presence of “Output Format,” “Formatting Rules,” “Presentation Elements,” “Quality Standards.”
+  2) Mark results.
+- **Output:** Confirmation checklist stored with timestamp.
+- **Validation:** Success if all sections present; else re-paste.
+
+### Stage‑5 Transfer Checklist
+- Verification Method: [Checksum/Diff]
+- Result: [ ] Pass / [ ] Fail
+- Section Confirmation:
+  - [ ] Output Format present
+  - [ ] Formatting Rules present
+  - [ ] Presentation Elements present
+  - [ ] Quality Standards present
+- Reviewer: __________________
+- Timestamp: __________________
+
 ---
 
-## 5. STAGE 5 — CONCORDANCE & ALIGNMENT VALIDATOR (CAV)
-<!-- [Category: EXECUTION-REASONING] -->
-<!-- Why: Reasoning-based alignment and optimization ensuring cohesive final meta prompt assembly -->
+# Stage 5: Concordance & Alignment Validator (CAV)
 
 📍
 
 **Purpose:** Validate consistency and alignment across all meta prompt components. This final stage ensures coherence and produces your complete, production-ready meta prompt.
 
-### STEP 5.1 — Cross-Stage Consistency Review
+---
+
+## 🔍 Alignment Validation
+
 **Instruction ID 27 — Cross-Stage Consistency Review**
 - **Input:** Completed documents from Stages 1–4.
 - **Process:**
@@ -578,7 +588,7 @@ QA Matrix:
 - **Output:** Table with four checklist items, pass/fail status, supporting citations.
 - **Validation:** Success if all items marked pass or flagged with corrective action; otherwise hold progression.
 
-#### Cross-Stage Consistency Table
+### Cross-Stage Consistency Table
 | Alignment Item | Pass/Fail | Evidence Reference | Corrective Action |
 | --- | --- | --- | --- |
 | Intent ↔ Reasoning | | | |
@@ -586,7 +596,6 @@ QA Matrix:
 | Logic ↔ Format | | | |
 | Overall Coherence | | | |
 
-### STEP 5.2 — Component Integration Assessment
 **Instruction ID 28 — Component Integration Assessment**
 - **Input:** Cross-stage review outputs.
 - **Process:**
@@ -595,12 +604,11 @@ QA Matrix:
 - **Output:** Integration report summarizing alignment decisions and rationales.
 - **Validation:** Success if every component has decision and rationale recorded; else revise.
 
-#### Integration Report
+### Integration Report
 - Role & Intent Alignment: [Yes/No/Adjust] — Rationale: __________________ — Corrective Task ID: _______
 - Reasoning & Logic Alignment: [Yes/No/Adjust] — Rationale: __________________ — Corrective Task ID: _______
 - Format & Purpose Alignment: [Yes/No/Adjust] — Rationale: __________________ — Corrective Task ID: _______
 
-### STEP 5.3 — Optimization Recommendations Log
 **Instruction ID 29 — Optimization Recommendations Log**
 - **Input:** Alignment gaps and inconsistencies.
 - **Process:**
@@ -610,12 +618,15 @@ QA Matrix:
 - **Output:** Recommendation table (Gap, Severity, Action, Impact Metric, Owner, Due Date).
 - **Validation:** Success if every identified gap has action with metric and owner; otherwise update.
 
-#### Optimization Log
+### Optimization Log
 | Gap | Severity | Recommended Action | Impact Metric | Owner | Due Date |
 | --- | --- | --- | --- | --- | --- |
 | | | | | | |
 
-### STEP 5.4 — Final Meta Prompt Assembly
+---
+
+## ✨ Final Meta Prompt Assembly
+
 **Instruction ID 30 — Final Meta Prompt Assembly**
 - **Input:** Stage outputs (1–4) and validation notes.
 - **Process:**
@@ -625,7 +636,7 @@ QA Matrix:
 - **Output:** Final markdown document “META PROMPT – FINAL VERSION” with all sections populated and lint report attached.
 - **Validation:** Success if lint report passes and document contains all required sections; otherwise correct.
 
-#### Final Assembly Template
+### Final Assembly Template
 ```
 META PROMPT – FINAL VERSION
 
@@ -649,7 +660,6 @@ VALIDATION STATUS
 Lint Report: [Attach results]
 ```
 
-### STEP 5.5 — Final Prompt Submission
 **Instruction ID 31 — Final Prompt Submission**
 - **Input:** Production-ready meta prompt.
 - **Process:**
@@ -659,12 +669,11 @@ Lint Report: [Attach results]
 - **Output:** Submission log including platform, time, confirmation ID.
 - **Validation:** Success if confirmation ID recorded; otherwise re-submit or troubleshoot.
 
-#### Submission Log
+### Submission Log
 | Platform | Submission Time | Confirmation ID | Notes |
 | --- | --- | --- | --- |
 | | | | |
 
-### STEP 5.6 — Post-Execution Review Log
 **Instruction ID 32 — Post-Execution Review Log**
 - **Input:** AI system outputs and stakeholder feedback.
 - **Process:**
@@ -674,12 +683,11 @@ Lint Report: [Attach results]
 - **Output:** Retrospective table (Successes, Issues, Adjustments) with evidence links.
 - **Validation:** Success if each column contains at least one entry and issues include severity; otherwise follow up.
 
-#### Post-Execution Review Table
+### Post-Execution Review Table
 | Successes (Evidence) | Issues (Severity + Evidence) | Adjustments (Linked Section) |
 | --- | --- | --- |
 | | | |
 
-### STEP 5.7 — Iteration Trigger Back to Stage-1
 **Instruction ID 33 — Iteration Trigger Back to Stage‑1**
 - **Input:** Completed review log and outstanding adjustments.
 - **Process:**
@@ -689,22 +697,16 @@ Lint Report: [Attach results]
 - **Output:** Iteration decision record stating whether Stage‑1 restart occurs and why.
 - **Validation:** Success if decision record references review evidence and, when iterating, logs new cycle start date.
 
-#### Iteration Decision Record
+### Iteration Decision Record
 - Outstanding Issues? [Yes/No]
 - Decision: [Restart Stage 1 / No iteration needed]
 - Evidence Reference: __________________
 - Next Review Cycle Date: __________________
 - Authorized By: __________________
 
-### Stage 5 Output Package
-#### Final Meta Prompt Assembly & Governance
-- Outputs: “META PROMPT – FINAL VERSION”, submission log, post-execution review table, iteration decision record.
-- Validation Artifacts: Lint report, confirmation ID, review evidence references.
-
 ---
 
 ## ✅ Validation Summary
-<!-- [Category: META-FORMATS] -->
-<!-- Why: Summative meta confirmation that all instruction IDs retain enhanced requirements after reformat -->
 
 All instruction IDs 1–33 updated to match enhanced Input/Process/Output/Validation requirements. Transfer, alignment, and termination checks now include explicit verification artifacts for compliance.
+
