@@ -10,10 +10,10 @@
             "scripts/validate_gate_01_final.py"
         ],
         "protocol-02-validators": [
-            "scripts/validate_gate_02_objectives.py",
-            "scripts/validate_gate_02_requirements.py",
-            "scripts/validate_gate_02_expectations.py",
-            "scripts/validate_gate_02_confirmation.py"
+            "scripts/validate_gate_02_pre_call.py",
+            "scripts/validate_gate_02_data_capture.py",
+            "scripts/validate_gate_02_recap.py",
+            "scripts/validate_gate_02_handoff.py"
         ],
         "protocol-03-validators": [
             "scripts/validate_gate_03_discovery.py",

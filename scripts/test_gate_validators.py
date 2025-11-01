@@ -142,91 +142,140 @@ Let's schedule a kickoff call to align on priorities.
 
 class TestProtocol02Validators:
     """Test Protocol 02 gate validators."""
-    
-    def test_gate_02_objectives_validator(self):
-        """Test objectives validator with valid content."""
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False) as f:
-            content = """
-# Client Context Notes
 
-## Business Objectives
-The primary objective is to increase user engagement by 50%.
+    def test_gate_02_pre_call_validator(self):
+        """Test pre-call readiness validator with all artifacts present."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            artifacts = {
+                "discovery-brief.md": "Summary of objectives",
+                "assumptions-gaps.md": "Item 1 - ASK CLIENT\nItem 2 - ASK CLIENT",
+                "question-bank.md": "Questions by theme",
+                "integration-inventory.md": "System: CRM",
+                "call-agenda.md": "Agenda outline",
+                "ready-for-call-summary.md": "Status: pre_call_ready",
+            }
+            for name, content in artifacts.items():
+                path = Path(tmpdir) / name
+                path.write_text(content, encoding="utf-8")
+                dest = Path(".artifacts/protocol-02") / name
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                dest.write_text(content, encoding="utf-8")
 
-## Target Users
-Our primary users are small business owners.
+            try:
+                result = subprocess.run(
+                    [sys.executable, "scripts/validate_gate_02_pre_call.py"],
+                    capture_output=True,
+                    text=True,
+                )
 
-## Key Performance Indicators
-- Monthly Active Users (MAU)
-- Customer Retention Rate
-"""
-            f.write(content)
-            temp_path = f.name
-        
+                assert result.returncode == 0
+                output = json.loads(result.stdout)
+                assert output["status"] == "pass"
+            finally:
+                for name in artifacts:
+                    Path(".artifacts/protocol-02") / name
+                    (Path(".artifacts/protocol-02") / name).unlink()
+
+    def test_gate_02_data_capture_validator(self):
+        """Test data capture validator with required sections present."""
+        files = {
+            "client-discovery-form.md": "priority: high\nowner: dev\nacceptance: defined",
+            "scope-clarification.md": "stack: python\nconstraint: none\nintegration: crm",
+            "integration-inventory.md": "system: crm\nowner: ops\nrisk: medium",
+            "timeline-discussion.md": "milestone: kickoff\ncheckpoint: review\ntimeline: 4 weeks",
+            "communication-plan.md": "cadence: weekly\ntool: zoom\nescalation: email",
+            "assumptions-gaps.md": "Question 1 - follow-up owner dev due tomorrow",
+        }
+        for name, content in files.items():
+            path = Path(".artifacts/protocol-02") / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(content, encoding="utf-8")
+
         try:
             result = subprocess.run(
-                [sys.executable, "scripts/validate_gate_02_objectives.py", "--input", temp_path],
+                [sys.executable, "scripts/validate_gate_02_data_capture.py"],
                 capture_output=True,
                 text=True,
             )
-            
-            assert result.returncode == 0
-            output = json.loads(result.stdout)
-            assert output["status"] == "pass"
-            assert output["coverage"] >= 0.95
-        finally:
-            Path(temp_path).unlink()
-    
-    def test_gate_02_requirements_validator(self):
-        """Test requirements validator with MVP and backlog."""
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False) as form:
-            form_content = """
-# Discovery Form
 
-## MVP Features (Must-Have)
-- User authentication
-- Dashboard view
-
-## Optional Backlog
-- Analytics integration
-- Export functionality
-"""
-            form.write(form_content)
-            form_path = form.name
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False) as scope:
-            scope_content = """
-# Scope Clarification
-
-## Technology Stack
-React, Node.js, PostgreSQL
-
-## Technical Constraints
-Must support IE11, WCAG 2.1 AA compliance
-
-## Third-party Integrations
-Stripe for payments, SendGrid for email
-"""
-            scope.write(scope_content)
-            scope_path = scope.name
-        
-        try:
-            result = subprocess.run(
-                [
-                    sys.executable,
-                    "scripts/validate_gate_02_requirements.py",
-                    "--form", form_path,
-                    "--scope", scope_path,
-                ],
-                capture_output=True,
-                text=True,
-            )
-            
             assert result.returncode == 0
             output = json.loads(result.stdout)
             assert output["status"] == "pass"
         finally:
-            Path(form_path).unlink()
-            Path(scope_path).unlink()
+            for name in files:
+                (Path(".artifacts/protocol-02") / name).unlink()
+
+    def test_gate_02_recap_validator(self):
+        """Test recap validator with approved status."""
+        recap_content = "Recap sent on 2025-01-01\nStatus: approved"
+        approval_log = {
+            "status": "approved",
+            "approved_at": "2025-01-01T12:00:00Z",
+            "approver": "client@example.com",
+            "delivery_channel": "email",
+        }
+        ready_content = "Status: pre_call_ready"
+
+        Path(".artifacts/protocol-02/discovery-recap.md").parent.mkdir(parents=True, exist_ok=True)
+        Path(".artifacts/protocol-02/discovery-recap.md").write_text(recap_content, encoding="utf-8")
+        Path(".artifacts/protocol-02/discovery-approval-log.json").write_text(
+            json.dumps(approval_log), encoding="utf-8"
+        )
+        Path(".artifacts/protocol-02/ready-for-call-summary.md").write_text(ready_content, encoding="utf-8")
+
+        try:
+            result = subprocess.run(
+                [sys.executable, "scripts/validate_gate_02_recap.py"],
+                capture_output=True,
+                text=True,
+            )
+
+            assert result.returncode == 0
+            output = json.loads(result.stdout)
+            assert output["status"] == "pass"
+        finally:
+            Path(".artifacts/protocol-02/discovery-recap.md").unlink()
+            Path(".artifacts/protocol-02/discovery-approval-log.json").unlink()
+            Path(".artifacts/protocol-02/ready-for-call-summary.md").unlink()
+
+    def test_gate_02_handoff_validator(self):
+        """Test handoff validator with cleared blockers."""
+        files = {
+            "client-discovery-form.md": "Feature list",
+            "scope-clarification.md": "Stack details",
+            "timeline-discussion.md": "Schedule",
+            "communication-plan.md": "Cadence",
+            "discovery-recap.md": "Approved",
+            "assumptions-gaps.md": "All resolved",
+        }
+        approval_log = {
+            "status": "approved",
+            "approved_at": "2025-01-01T12:00:00Z",
+            "approver": "client@example.com",
+        }
+
+        for name, content in files.items():
+            path = Path(".artifacts/protocol-02") / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(content, encoding="utf-8")
+        Path(".artifacts/protocol-02/discovery-approval-log.json").write_text(
+            json.dumps(approval_log), encoding="utf-8"
+        )
+
+        try:
+            result = subprocess.run(
+                [sys.executable, "scripts/validate_gate_02_handoff.py"],
+                capture_output=True,
+                text=True,
+            )
+
+            assert result.returncode == 0
+            output = json.loads(result.stdout)
+            assert output["status"] == "pass"
+        finally:
+            for name in files:
+                (Path(".artifacts/protocol-02") / name).unlink()
+            Path(".artifacts/protocol-02/discovery-approval-log.json").unlink()
 
 
 class TestProtocol03Validators:

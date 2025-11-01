@@ -4,60 +4,85 @@
 protocol_id: "02"
 protocol_title: "Client Discovery Initiation"
 notes: |
-  Gate automation for client discovery workflow.
-  Ensures objective alignment, requirement completeness, expectation alignment, and discovery confirmation.
+  Solo developer discovery workflow automation.
+  Gates aligned to pre-call readiness, post-call capture, recap approval, and Protocol 03 handoff.
 
 validators:
-  - name: "gate_1_objective_alignment"
-    command: "python3 scripts/validate_gate_02_objectives.py"
-    description: "Validates business objectives, user goals, and success metrics"
+  - name: "gate_0_pre_call_readiness"
+    command: "python3 scripts/validate_gate_02_pre_call.py"
+    description: "Confirms pre-call artifacts complete and outstanding items tagged"
     prerequisite: true
-    
-  - name: "gate_2_requirement_completeness"
-    command: "python3 scripts/validate_gate_02_requirements.py"
-    description: "Validates MVP features, backlog, and technical constraints"
+
+  - name: "gate_1_data_capture"
+    command: "python3 scripts/validate_gate_02_data_capture.py"
+    description: "Validates post-call updates across discovery form, scope, timeline, and comms"
     prerequisite: false
-    
-  - name: "gate_3_expectation_alignment"
-    command: "python3 scripts/validate_gate_02_expectations.py"
-    description: "Validates timeline, budget, and collaboration plan"
+
+  - name: "gate_2_recap_approval"
+    command: "python3 scripts/validate_gate_02_recap.py"
+    description: "Checks recap delivery, approval log, and outstanding follow-ups"
     prerequisite: false
-    
-  - name: "gate_4_discovery_confirmation"
-    command: "python3 scripts/validate_gate_02_confirmation.py"
-    description: "Validates client approval and artifact archival"
+
+  - name: "gate_3_handoff_ready"
+    command: "python3 scripts/validate_gate_02_handoff.py"
+    description: "Verifies Protocol 03 prerequisites satisfied and blockers cleared"
     prerequisite: false
 
 artifacts:
-  - path: ".artifacts/protocol-02/client-context-notes.md"
-    description: "Business objectives and user goals"
-    status: "pending"
-    
+  - path: ".artifacts/protocol-02/discovery-brief.md"
+    description: "Pre-call summary of business goals and constraints"
+    status: "required"
+
+  - path: ".artifacts/protocol-02/assumptions-gaps.md"
+    description: "Tracker of outstanding questions and assumptions"
+    status: "required"
+
+  - path: ".artifacts/protocol-02/question-bank.md"
+    description: "Prioritized discovery question set"
+    status: "required"
+
+  - path: ".artifacts/protocol-02/integration-inventory.md"
+    description: "System and dependency inventory"
+    status: "required"
+
+  - path: ".artifacts/protocol-02/call-agenda.md"
+    description: "Discovery call structure and checklist"
+    status: "required"
+
+  - path: ".artifacts/protocol-02/ready-for-call-summary.md"
+    description: "Pre-call readiness confirmation"
+    status: "required"
+
   - path: ".artifacts/protocol-02/client-discovery-form.md"
-    description: "Structured feature list and requirements"
-    status: "pending"
-    
+    description: "Confirmed functional requirements"
+    status: "required"
+
   - path: ".artifacts/protocol-02/scope-clarification.md"
-    description: "Technical preferences and constraints"
-    status: "pending"
-    
+    description: "Updated technical scope and constraints"
+    status: "required"
+
   - path: ".artifacts/protocol-02/timeline-discussion.md"
-    description: "Delivery expectations and milestones"
-    status: "pending"
-    
+    description: "Milestones and scheduling commitments"
+    status: "required"
+
   - path: ".artifacts/protocol-02/communication-plan.md"
-    description: "Collaboration blueprint and escalation paths"
-    status: "pending"
-    
-  - path: ".artifacts/protocol-02/governance-map.md"
-    description: "Decision governance framework"
-    status: "pending"
-    
+    description: "Collaboration cadence and escalation plan"
+    status: "required"
+
   - path: ".artifacts/protocol-02/discovery-recap.md"
-    description: "Client-approved discovery summary"
-    status: "pending"
+    description: "Client-facing recap of discovery outcomes"
+    status: "required"
+
+  - path: ".artifacts/protocol-02/discovery-approval-log.json"
+    description: "Approval log for recap delivery"
+    status: "required"
+
+  - path: ".artifacts/protocol-02/transcripts/"
+    description: "Call transcripts and recording references"
+    status: "recommended"
 
 quality_thresholds:
-  objective_coverage: 0.95
-  requirement_completeness: 0.9
-  client_approval: true
+  readiness_score: 1.0
+  data_capture_score: 0.95
+  recap_status: "approved"
+  handoff_ready: true

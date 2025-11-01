@@ -1,0 +1,51 @@
+{
+  "exact_quotes": [
+    "I now need help completing the last 10% so it's fully production-ready and stable for all users.",
+    "If you're confident you can wrap this up cleanly and make Surfa fully production-ready, apply and mention how soon you can start."
+  ],
+  "tech_stack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Supabase",
+    "Google Business Profile API",
+    "DataForSEO API",
+    "Stripe API",
+    "Vercel"
+  ],
+  "pain_points": [
+    "Reviews sync and display correctly for all user GBPs, not just mine",
+    "Review replies posted inside Surfa need to sync to actual GBP profile",
+    "Reviews take too long to fetch or time out",
+    "Keyword relevance needs improvement using GBP categories + location context",
+    "Tracked keywords shared across profiles instead of isolated to each GBP",
+    "Dashboard and pages don't load instantly after login",
+    "API latency issues",
+    "Review sync time needs optimization"
+  ],
+  "tone_type": "casual",
+  "urgency_signals": [
+    "Able to start immediately",
+    "deliver results fast",
+    "mention how soon you can start",
+    "the last 10%",
+    "fully production-ready"
+  ],
+  "vague_requirements": [
+    {
+      "client_says": "Make Dashboard and pages load instantly after login",
+      "interpretation_needed": true,
+      "note": "Need clarification on acceptable load time threshold (e.g., <200ms, <500ms, <1s)"
+    },
+    {
+      "client_says": "Optimize review sync time and general API call speed",
+      "interpretation_needed": true,
+      "note": "Need baseline metrics and target performance benchmarks"
+    },
+    {
+      "client_says": "Improve suggested keywords relevance",
+      "interpretation_needed": true,
+      "note": "Need success criteria - what defines 'relevant'? User feedback? CTR metrics?"
+    }
+  ]
+}

@@ -1,0 +1,955 @@
+[Products](https://windsurf.com/changelog)
+[Enterprise](https://windsurf.com/changelog)
+[Pricing](https://windsurf.com/pricing)
+[Blog](https://windsurf.com/blog)
+[Resources](https://windsurf.com/changelog)
+[Company](https://windsurf.com/changelog)
+[Download](https://windsurf.com/download)
+
+# Windsurf Editor Changelog
+[View Docs](https://docs.windsurf.com)
+[Follow us on](https://x.com/windsurf)
+[Windsurf Next Changelog](https://windsurf.com/changelog/windsurf-next)
+
+# Falcon Alpha
+You can now try a new stealth model in Windsurf: Falcon Alpha. Falcon Alpha is a powerful agentic model designed for speed. We're excited to hear what you build with it!
+
+# Patch Fixes and Improvements
+- Various performance improvements and bug fixes.
+
+# Patch Fixes and Improvements
+- Support and fixes for AGENTS.md
+- Improvements and bug fixes for Codemaps.
+- Improvements to Fast Context. Enterprises can opt in using the Windsurf Team Settings. Users can toggle Fast Context automatically using "CMD/Ctrl + Enter" on the first message in a chat.
+- New auto-linting behavior that speeds up Cascade.
+- Fix for MCP Marketplace not respecting team whitelist options.
+- Fixes for Jupyter Notebook tool.
+- Fixes for Memories, Rules, and Workflows.
+- General bug fixes and improvements.
+- Performance optimizations and stability enhancements.
+
+# Dependencies
+- Updated Code OSS to version 1.105.0 (Electron: 37.6.0, Chromium: 138.0.7204.251)
+
+# Patch Fixes
+- Resolved issues affecting SSH remote connections with high resource usage.
+- Fix certain models seeing increased error rates on editing files.
+- Improved diagnostics for third party extensions.
+
+# New Features
+- Fast Context: Introduced Fast Context subagent powered by SWE-grep, enabling agents to find relevant code context up to 20x faster with >2,800 tokens per second throughput.
+Learn more on our [blog](https://cognition.ai/blog/swe-grep).
+
+# Bug Fixes
+- Fixed issues with WSL compatibility.
+- Fixed bugs in Workflows and Rules UI.
+- Various stability improvements and minor bug fixes.
+
+# Patch Fixes
+- Fixes issue with custom MCP servers not being displayed correctly in the new MCP panel.
+- Improvements and bug fixes for the beta Codemaps feature.
+- Fixes issue where some bash commands would get stuck.
+- Fixes issue where certain models couldn't create or edit Jupyter notebooks.
+- General bug fixes and improvements.
+
+# Codemaps
+- Codemaps is a beta feature for codebase understanding and navigation. Open the codemaps pane to try it out!
+
+# Patch Fixes
+- Fixes to Cascade to reduce internal errors.
+- Fixes to Cascade not seeing terminal output.
+- Various other bug fixes and stability improvements.
+
+# Claude Sonnet 4.5
+- Claude Sonnet 4.5 is now available
+
+# Patch Fixes
+- Fix using MCP tools with certain models.
+- Fixes to terminal issues on Windows.
+
+# Patch Fixes
+- Fix to Cascade slowness issues
+
+# GPT-5-Codex is now in Windsurf!
+GPT-5-Codex is now available for free (0x credits) for a limited time for paid users!
+Free users can use GPT-5-Codex as well for 0.5x credits.
+
+## Queued messages
+- Users can now add follow-up messages to Cascade while it is working, and Cascade will process them in order after the current task is complete.
+
+## Mermaid diagram support
+- Cascade now renders mermaid diagrams in the conversation.
+
+# Deprecation
+- Windsurf Browser is now deprecated. We plan to refactor and release a replacement feature in the coming months. Please use [Previews](https://docs.windsurf.com/windsurf/previews) instead.
+[Previews](https://docs.windsurf.com/windsurf/previews)
+
+# Patch Fixes
+- Made improvements to the sign up onboarding flow.
+- Various bug fixes and stability improvements.
+
+# Patch Fixes
+- Minor improvements and bug fixes
+
+# Patch Fixes
+- Minor improvements and bug fixes
+
+# Deprecation Notice
+The Windsurf Browser will be deprecated on Sept 11. We plan to refactor and release a replacement feature in the coming months. Please use [Previews](https://docs.windsurf.com/windsurf/previews) instead.
+
+# Patch Fixes
+- Minor improvements and bug fixes
+- Memory improvements
+
+# Grok Code Fast is now in Windsurf!
+Grok Code Fast 1 is now available in Windsurf for Pro and Teams users! We're excited to enable it for free (0x credits) for a limited time.
+
+# GPT-5 Pricing Changes
+Starting on Tuesday, August 26, our GPT-5 promotion will end for all users. The new pricing will be:
+- GPT 5 High: 2x Credits
+- GPT 5 Med: 1x Credits
+- GPT 5 Low: 0.5x Credits
+
+# Patch Fixes
+- Minor improvements and bug fixes
+
+# Devin features in Windsurf, stability improvements, and a brand new UI
+- Stability & Performance: Over 100 bug fixes and reliability improvements.
+- DeepWiki in Windsurf: Hover over code symbols for intelligent DeepWiki-powered documentation.
+- Vibe and Replace: AI-powered find and replace functionality. Apply intelligent transformations to multiple code matches.
+- Cascade Agent Improvements: Automatic planning mode with no manual toggles required. Revamped tools with more accurate edits. Enhanced code exploration leveraging long context models.
+- Tab Autocomplete: New system with more frequent and smarter suggestions.
+- UI Redesign: All-new Chat, Cascade, and home screen panels.
+- Dev Containers: Support for development containers via remote SSH access.
+
+# GPT-5 Available
+Windsurf now supports the GPT-5 suite of models including GPT-5 (low reasoning), GPT-5 (medium reasoning), and GPT-5 (high reasoning). They are available for free for a limited time for paying users!
+
+# Patch Fixes
+- Minor improvements and bug fixes
+
+# Patch Fixes
+- Minor improvements and bug fixes
+
+# Patch Fixes
+- Minor improvements and bug fixes
+
+# Kimi K2 Available
+Windsurf now supports Kimi K2 model which costs 0.5 credits per prompt.
+
+## Voice
+- Users can now speak into the chat rather than having to type things out.
+
+## @-mentioning conversations
+- @-mention the first conversation so Cascade has full context of it as it goes to write tests for you.
+
+## Deeper Browser integration
+- Chat with Cascade about tabs that are open in the Browser using @-mentions
+
+## JetBrains improvements
+- Planning Mode, Workflows, and file-based Rules are now available for Cascade on JetBrains
+
+## Improvements
+- Now you can @-mention terminal in Cascade.
+- You can turn on the Auto-Continue setting to have Cascade automatically continue its response if it hits a limit.
+- Support for more MCP servers with easier and more secure authentication by integrating the new Streamable HTTP transport (replaces SSE) and MCP authentication (replaces access tokens or API keys in the config).
+- Important for enterprise customers who use Windsurf across lots of repos. Now, you can enforce ignore rules across all repositories by placing .codeiumignore in the ~/.codeium/ folder
+
+# Linux Fixes
+- Fixes to RHEL 8 Support
+
+# Cascade Improvements
+- Improvements to Cascade reliability
+
+# Patch Fixes
+- Minor improvements and bug fixes
+
+# Browser Fixes
+- Fixed unauthenticated missing CSRF token
+
+# Patch Fixes
+- Fixed API Pricing labels in the model selector
+- Fixed bugs related to planning mode
+- Fixed some behavior around conversation button dropdown
+
+# Windsurf Browser
+- Ability to share browser context with Windsurf
+- Share code blocks, selected text, web page elements, screenshots, and console logs
+- Send blocks directly to Cascade
+
+## Fixes
+
+- Fixed writing to plan.md files for Enterprise users
+
+# Planning Mode
+
+- Send messages to Cascade in Planning Mode, a setting that will let Cascade plan before making edits
+- Cascade will create a plan.md file of the actions it plans to take before taking action
+- The plan is user-editable, and Cascade will pick up on user changes
+
+## Terminal Improvements
+- Native terminal in Cascade panel
+- Terminal now accepts user inputs in the Cascade panel
+
+## Legacy Mode Removal
+- Legacy mode has been removed, leaving Write and Chat mode
+
+## Improvements
+- Icons in @-mentions
+- Theme-aware codeblocks with refreshed design
+- Improvements to .codeiumignore
+- New menu to open previous conversations to quickly switch conversations
+
+```
+.codeiumignore
+```
+
+# Patch Fixes
+
+- Fixed Cascade and terminal integration issues for Mac and Linux users
+- Merged upstream changes from VS Code 1.99.3
+- Improvements to import behavior during onboarding
+- Fixed shadow with the App Icon on Mac
+
+## BYOK (Anthropic Key)
+
+- You can now bring your own API Key from Anthropic to use the Claude 4 Sonnet, Claude 4 Sonnet (Thinking), Claude 4 Opus, and Claude 4 Opus (Thinking) models in Cascade
+- To use BYOK, go to [provide API keys](https://windsurf.com/subscription/provider-api-keys) and input your key
+- Once entered, go back to Windsurf and reload the window. You should now be able to use the new models
+- This is only available for Free and Pro users at this time
+[provide API keys](https://windsurf.com/subscription/provider-api-keys)
+
+# SWE-1 Improvements
+
+- Adds multi-modal (image) support to SWE-1
+
+## SWE-1
+- New SWE-1 Model made by Windsurf is available in Cascade
+- SWE-1 is a new model with frontier model-level capabilities
+- Free for a limited time for Pro Users
+
+## SWE-1-lite
+- SWE-1-lite is a new, far more capable model replacing Cascade Base
+- Free to use for all plans and tiers
+
+## SWE-1-mini
+- SWE-1-Mini is our revamped model for tab completion in Windsurf
+
+## Misc
+- Few memory leak bug fixes
+- Various fixes to Cascade Plugin Panel
+
+## Cascade UX Improvements
+- Redesigned Model Selector
+- Continue button when reaching individual tool call limit
+- Opening conversations will now open the associated workspace
+- Hunk accept/reject widget now has a compact mode to cover less code
+- Improvements to commit message generation quality
+- Commit message generation reads from global rules as context
+- Ability to edit proposed terminal command
+
+## Custom Workflows
+- You can create “workflows”, saved prompts that Cascade can follow
+- Workflows can be invoked via slash command
+- Cascade can help create and edit workflows
+- Workflow files are saved in the workspace, under .windsurf/workflows
+
+## File-Based Rules
+- You can create granular rules files that are always on, @mention-able, requested by Cascade, or attached to file globs
+- Rules files are saved in the workspace, under .windsurf/rules
+
+## Simultaneous Cascades
+- Allow Cascade to keep running when switching to another conversation
+- Add support for switching between conversations via a dropdown menu or keyboard shortcuts
+
+## Cascade Plugins
+- New panel in Cascade for managing MCP Servers
+- Easier one-click uninstall and install
+- Easier search
+- MCP now has MCP resources and multimodel responses
+- More MCP Server options coming soon
+
+## Fixes
+- Fixed tool call errors for users with disabled telemetry
+- Fixed crashes around workspace conversation
+
+## Teams: Windsurf Reviews
+- Team admins can install a Github app for code review and PR title/description edits
+- Available to Teams and Enterprise SAAS for 500 reviews/month
+
+## Teams: Conversation Sharing
+- Team users can generate a shareable URL to a Cascade conversation
+- Only fellow team members can access this URL
+- Available to Teams and Enterprise SaaS
+
+## Teams: Knowledge
+- Team admins can connect their Google account and curate relevant Google Docs
+- Team members will be able to @mention these docs, and Cascade can retrieve them
+- Available to Teams and Enterprise SaaS
+
+## Teams Deploys
+- Teams users can connect their Netlify account via Windsurf settings
+- Deploy apps through Cascade directly to your Netlify team for full control
+- Supports team-specific settings like SSO, custom domains, and more through the Netlify dashboard
+- Team admins can manage Deploy permissions and settings for their team.
+
+## Teams Analytics
+- Teams users get a refreshed analytics dashboard for their team
+- Includes new Cascade analytics such as messages sent, total tool calls, model usage, and more
+
+## Misc
+- Upgrade to VS Code 1.99.1
+
+# Patch Fixes
+
+- Reduced errors for edit tool calls for Windows
+- Fixed model selection and loading bugs on Command
+
+## New App Icon
+- Windsurf is now refreshed with a new app icon
+- Windsurf.com has been updated with the new wordmark
+- (Mac) Customizable app icons now use the new logo
+
+## Upgraded Free Tier
+- Free tier now has new, higher limits
+- Ability to use Cascade in write mode
+- Cascade prompt credits: 5 to 25 Cascade prompt credits per month
+- Unlimited Fast Tab
+- Unlimited Cascade Base
+- Access to Previews
+- 1 Deploy
+
+## Performance Improvements
+- Performance and reliability improvements when deploying an app using Deploys
+- Allow users to create a new deployment even if they have an existing deployment config yaml
+- Deploy web app tool now has a check deploy status tool call
+- Stability improvements for remote extensions (WSL, SSH, Dev Containers)
+- Performance improvements when typing in a large active diff zone
+
+## Misc
+- Adds GPT-4.1 to Command
+- Upgraded to VSCode base version 1.98
+
+# Patch Fixes
+
+- Updates IDE marketplace link by mirroring Open VSX
+
+## We're getting rid of Flow Action Credits
+- We're simplifying our pricing model by removing Flow Action Credits
+- Change takes effect April 21st, 2025
+- Plans now come with prompt credits with add-on credits available for purchase
+
+## User Prompt Credits
+- Plans now come with prompt credits, which are consumed per every message sent and not via every tool call
+- Add-on credits are available for purchase
+- Auto-top off (with max limits) can be enabled via profile
+
+## Existing Plans
+- Existing plans are migrating over to the new pricing model
+- For more information, please visit the [Pricing page](https://windsurf.com/pricing)
+[Pricing page](https://windsurf.com/pricing)
+
+## New o4-mini models available and Free (Limited Time)
+
+- Windsurf now supports the o4-mini medium and o4-mini high models, which are free for all users
+- Usage in Windsurf is free for a limited time from April 16th to April 21st
+
+## New GPT 4.1 Model available and Free (Limited Time)
+
+- Windsurf now supports the new GPT 4.1 model, which is free for all users
+- Usage in Windsurf is free for a limited time from April 14th to April 21st
+
+## Cascade is now available on JetBrains IDEs
+
+- See the full [JetBrains Changelog](https://windsurf.com/changelog/jetbrains)
+- Read the [announcement here](https://windsurf.com/blog/windsurf-wave-7)
+[JetBrains Changelog](https://windsurf.com/changelog/jetbrains)
+[announcement here](https://windsurf.com/blog/windsurf-wave-7)
+
+# Codeium is Now Windsurf
+- We are renaming our company to Windsurf & our extension product to Windsurf Plugin.
+- Since the launch of our [Windsurf Editor](https://windsurf.com/editor), we have captured what we are really building: combining human ingenuity and machine to result in experiences that feel and appear effortlessly powerful.
+[Windsurf Editor](https://windsurf.com/editor)
+
+# Patch Fixes
+- Fixes to Commit Generation parsing on Windows
+- UI Fixes to Rules
+- Allow empty files on website deploy
+- Better Deploys error visibility
+- Ability to edit subdomain on website deploy
+- Increased stability around MCP SSE connections
+- Cascade bug fixes
+
+# Patch Fixes
+- Fixes to "Remote - WSL" extension
+- Minor UX fixes
+
+## Deploys (Beta)
+- Deploy your application with one prompt to Netlify under a windsurf.build domain
+- Claim your application's URL via Netlify
+- Once claimed, continue deploying to the same project as you make updates
+- To deploy a new site or change your subdomain, just ask Cascade to deploy to a new subdomain
+- Available to all users for all tiers, with more for paid plans
+
+## Commit Message Generation (Beta)
+- Generate commit messages with a click in the Source Control Panel
+- Available to users on paid plans with no additional credit cost per use
+
+## Improvements to Memories
+- New memories tab in Cascade
+- New ability to edit Cascade's generated memories, including the memory's title, content and tags
+- New ability to search Cascade's generated memories
+- User setting toggle for Auto-Generate Memories
+- When enabled, Cascade will autonomously generate memories to remember important context
+- When disabled, Cascade will only create memories when you explicitly ask in your prompt
+
+## Improvements to Long Conversations
+- Introduced Cascade table of contents of all past user messages, which appears on conversation scroll
+- Table of contents enables the ability to revert or scroll to any past message
+- Improved performance when interacting with long conversations
+
+## Improvements to Windsurf Tab
+- Jupyter Notebook Support for Windsurf Tab
+- Additional context signals for Windsurf Tab, including in-IDE search
+
+# New Mac Icons
+- Two new application icons (Retro and Pixel Surf) are available for users on paid plans
+
+# Misc
+- Cascade new conversation screen now has a new toolbar for tools like MCP, Preview and Deployments.
+- Cascade now supports SSE MCP servers in the JSON configuration
+- Fixed "Open Cascade on Reload" setting so Cascade will be closed upon opening a new window when setting is disabled
+- Cascade input is persisted across new conversation screen and an active conversation
+- Refreshed terminal UI in Cascade, with increased visibility for the "Open terminal" button, which opens Cascade's terminal instance directly
+- Underlined links are now clickable in Cascade and user messages
+- New user setting to enable sound when Cascade is done running (beta)
+- Fixes to "Remote - SSH" extension, including custom SSH binary path setting
+- Merged changes from VS Code 1.97.0
+
+## Gemini 2.5 Pro (Beta)
+- Gemini 2.5 Pro is now available in beta!
+- Gemini 2.5 Pro takes 1x user prompt credits on every message and 1x flow action credits on each tool call
+- Available for users Free and Pro Plans
+- Currently experiencing high-demand and working to increase capacity
+
+## Fixes
+- Fixes to "Remote - SSH" extension, including custom SSH binary path setting
+
+# Patch Fixes
+
+- Fixes for Cascade, which now better respects User-Defined Memories
+- Improvements for Browser Previews
+- Fixes for a few Cascade layout issues impacting icons
+
+## New Windsurf Tab Experience
+- Rolled up Autocomplete, Supercomplete, Tab to Jump, and Tab to Import into one experience called Windsurf Tab
+- Windsurf Tab runs a larger and higher quality model, increasing contextual awareness, quality, and speed
+
+## Context Improvements
+- Completions now use more signals including recently viewed files, terminal commands and outputs, Cascade conversations
+- Optional clipboard as context for completions (default off, opt-in via Advanced Settings)
+- Expanded context length, including more signals to improve completions
+
+## Quality Improvements
+- Increased precision choosing between Autocompletes (insertions) and Supercompletes (edits)
+- Higher recall and more than double the jump distances for Tab to Jump from previous versions
+- Improved indenting and spacing for next-line suggestions
+
+## Speed Improvements
+- Added predictive triggers, leading to consecutive completions after your previous completion or tab to jump
+- Increased server capacities and improved inference speeds
+- Improved networking, leading to reduced network latencies
+- Tab to Import shows quicker and applies more reliably
+
+## Tab UX Improvements
+- Accepted completions are highlighted green (can be disabled via Advanced Settings)
+- Tab to Jump and Tab to Import widgets have a refreshed, more visible UI
+- Tab to Jump and Tab to Import widgets are clickable
+
+## Misc Improvements
+- More reliable credit discounting for lint-fixing edits in auto-fix lint mode
+- In-IDE Terminal commands are now used as context for Cascade
+- The Tab key works to accept intellisense in the Debug Console
+- Improved Cascade diff review UX
+- Fixes to low credit warnings
+- Fixes to Autocomplete Speed settings
+- Improvements to Quick Settings dropdown
+- Improved CPU and memory usage
+- Add Neon database as a Model Context Protocol template
+
+# Patch Fixes
+
+- Fixes crashes around MCP misconfiguration
+- Fixes around web search for Sonnet 3.7
+- Fixes for proxy settings
+
+## Patch Fixes
+- Fixes to Windsurf Previews where certain routes would not load.
+- Fixes to open Cascade shortcuts (cmd/ctrl+shift+L)
+- Re-added new settings configs to new settings panel (proxy settings, index size)
+
+## Windsurf Previews (Beta)
+- Cascade will now let you preview locally run websites in your IDE or in your browser.
+- You can select React and HTML element(s) within the preview to send to Cascade as context.
+- This context will be included in your Cascade conversation so you no longer need to copy-paste or send screenshots.
+- You can also send console errors to Cascade as context.
+- A Windsurf Preview can be activated by asking Cascade to start your web application or through the Website tools icon in the toolbar above conversation input.
+- A preview can be shown in the IDE or in a new browser on Chrome, Arc, and Chromium based browsers.
+- Can be turned off via Windsurf Settings.
+- Available to all plans and costs no credits.
+
+## Cascade Auto-Linter
+- Cascade now auto-lints proposed code changes it has made.
+- If an output from a code edit proposes a lint error, Cascade will automatically fix it in a subsequent edit.
+- Fixes to lints are available to all plans and the Cascade edit step to fix the lints costs no credits.
+- For example, if Cascade made 4 lint errors in a step, Cascade will try to fix the 4 lint errors at no credit charge.
+- Disclaimer: The LLM decides when its purely fixing lints and when to not charge a credit.
+- Can be turned off via Windsurf Settings.
+- Available to all plans.
+
+## New MCP Server Integration
+- You can now setup Cascade to make tool calls to trusted MCP servers.
+- A list of common MCP servers can be found in the new Windsurf Settings Page.
+- Brand new UX to make it easier to add and configure MCP servers.
+- A user-configurable JSON is still available via the Settings page.
+- Available to Pro and Pro Ultimate plans, with support to Teams and Enterprise plans coming soon.
+
+## Tab-to-Import
+- In-line suggestions to import the necessary dependencies when you write code.
+- Windsurf will display a suggestion to import the necessary dependencies in your file.
+- The suggestion can be accepted just like an auto-complete suggestion via tab.
+- Available to all plans.
+
+## Suggested Actions
+- Cascade now gives suggested actions to help you complete your task.
+- If Cascade asks a question or a set of next potential steps, you can select the one you want to proceed with with a suggested action.
+- Available to all plans.
+
+## Drag and Drop Files as Context
+- Cascade now allows you to drag and drop files from the File Explorer into Cascade as context
+- Works with all system file types.
+- Available to all plans.
+
+## Model Option Admin Control
+- For teams and enterprise plans, admins can select which models are available to its team.
+- As a member of a team, you will only see the models that are available to your team unless enabled by your admin.
+
+## Improvements to Claude Sonnet 3.7
+- Claude Sonnet 3.7 is now available as a new model in Command dropdown.
+- Improvements to its performance and quality with respect to tool calls and flow actions.
+
+## Support For Windows ARM
+- Beta support for Windows ARM for Windsurf.
+- Report feedback to [codeium.com/support](https://codeium.com/support).
+[codeium.com/support](https://codeium.com/support)
+
+## Misc
+- Brand new Quick Settings Panel UI and Advanced Settings View.
+- Setting to allow Cascade to access .gitignore files.
+- In-product support for user referrals.
+- Windsurf directory - a curated list of example rules by the Windsurf team that can guide Cascade to better understand you and your codebase, resulting in higher quality responses. [View the directory](https://codeium.com/windsurf/directory)
+[View the directory](https://codeium.com/windsurf/directory)
+
+## Patch Fixes
+- Fixes crashes due to permissions errors on Ubuntu 24.04
+
+## Patch Fixes
+- Improvements for Cascade credit usage for Claude 3.7 Sonnet
+- Once updating, try running all future credits in a new conversation
+- MCP fixes for incorrectly formatted MCP tools in JSON
+- Better MCP Error Handling
+- Fixes for some App Icon issues for Mac users
+- Option for Cascade to view / edit .gitignore files
+
+## New Cascade Models
+
+- Cascade now has a new premium model available: Claude 3.7 SonnetTakes 1.0 user prompt credits on every message and 1.0 flow action credits on each tool callSupport for Claude 3.7 Sonnet ships with Thinking, with a 1.5x multiplier on credit cost.
+- Takes 1.0 user prompt credits on every message and 1.0 flow action credits on each tool call
+- Support for Claude 3.7 Sonnet ships with Thinking, with a 1.5x multiplier on credit cost.
+- [ROLLING] Cascade supports GPT-4.5 as a beta modelDue to costs, rate limits, and quality from early testing, we will be rolling it out to users incrementally.
+- Due to costs, rate limits, and quality from early testing, we will be rolling it out to users incrementally.
+Cascade now has a new premium model available: Claude 3.7 Sonnet
+- Takes 1.0 user prompt credits on every message and 1.0 flow action credits on each tool call
+- Support for Claude 3.7 Sonnet ships with Thinking, with a 1.5x multiplier on credit cost.
+[ROLLING] Cascade supports GPT-4.5 as a beta model
+- Due to costs, rate limits, and quality from early testing, we will be rolling it out to users incrementally.
+
+## Fixes
+
+- Some fixes for Cascade write tools
+- Fixes some bugs around user message cancellation
+- Fixes around enabling Cascade Base when low on credits
+- Catches some error cases around auth entry login and surfaces error message to user
+
+## Model Context Protocol
+- Cascade now supports Model Context Protocol (MCP)
+- You can setup your Cascade conversation to make tool calls to user-configured MCP servers
+- You can setup MCP by clicking on the hammer in the Cascade input tool bar
+- Available to all individual plans
+- Every MCP tool call costs one flow action credit, regardless of the execution result
+
+## New Customizable App Icons
+- You can now change Windsurf's App Icon (Beta & Mac Only)
+- Paying users can choose between Classic, Blueprint, Hand-drawn, and Valentine options
+- Updates across entire operating-system, though a restart is required for a system-wide change to take effect
+- Available to all paid user plans
+- Customization coming to Windows and Linux soon
+
+## Improvements to Completions
+- Fully releasing Tab to Jump, an enhanced editor experience that predicts the location of your next edit and navigates you there with a tab keypress
+- Background predictive completions for improved latencies
+- Performance and quality improvements for supercomplete and autocomplete
+
+## Cascade Turbo Mode
+- Cascade has a revamped "Turbo Mode" that allows Cascade to auto-execute terminal commands, unless specified in deny-list
+- Available to all individual plans
+
+## Cascade Drag and Drop Image Support
+- Cascade now allows you to drag and drop images into Cascade
+- Works from system files or screenshots
+
+## Credit Visibility
+- Cascade now shows many credits an action took.
+- You can see the number of credits consumed by mouse hovering over the completed action in Cascade.
+
+## Misc
+- Fixes to some bugs in Cascade terminal commands.
+- Command steps now include information about the auto execute behavior.
+- Fixed a bug where Cascade panel would always open on reload, even if the user disabled it in their settings
+- You can @-mention terminal text with Cmd/Ctrl+L feature. New selection popup appears.
+- All @docs options now show in a scrollable view instead of limiting the results.
+- @docs now includes even more options including Vercel, Bun, Supabase, and more
+
+```
+@docs
+```
+
+
+```
+@docs
+```
+
+## Fixes
+- Fixed issues with partial credits when transitioning to flex credits
+
+## Fixes
+- Fixed tool calls errors, specifically around invalid tool calls by the model
+- Fixed Web Search setting unavailable message option
+
+## New Models
+- Cascade now has a new premium model available: Gemini 2.0 FlashGemini 2.0 Flash takes 0.25 user prompt credits on every message and 0.25 flow action credits on each tool call
+- Gemini 2.0 Flash takes 0.25 user prompt credits on every message and 0.25 flow action credits on each tool call
+- Gemini 2.0 Flash takes 0.25 user prompt credits on every message and 0.25 flow action credits on each tool call
+
+## Models
+- Cascade now has new premium models available: DeepSeek-R1, Deepseek-V3 and o3-miniDeepseek-V3 and Deepseek-R1 are available to users on Pro and Pro Ultimate PlansDeepseek-V3 takes 0.25 user prompt credits on every message and 0.25 flow action credits on each tool callDeepSeek-R1 takes 0.5 user prompt credits on every message and 0.5 flow action credits on each tool callo3-mini is available to all users on paid planso3-mini takes 1 user prompt credit on every message and 1 flow action credit on each tool call
+- Deepseek-V3 and Deepseek-R1 are available to users on Pro and Pro Ultimate Plans
+- Deepseek-V3 takes 0.25 user prompt credits on every message and 0.25 flow action credits on each tool call
+- DeepSeek-R1 takes 0.5 user prompt credits on every message and 0.5 flow action credits on each tool call
+- o3-mini is available to all users on paid plans
+- o3-mini takes 1 user prompt credit on every message and 1 flow action credit on each tool call
+- Deepseek-V3 and Deepseek-R1 are available to users on Pro and Pro Ultimate Plans
+- Deepseek-V3 takes 0.25 user prompt credits on every message and 0.25 flow action credits on each tool call
+- DeepSeek-R1 takes 0.5 user prompt credits on every message and 0.5 flow action credits on each tool call
+- o3-mini is available to all users on paid plans
+- o3-mini takes 1 user prompt credit on every message and 1 flow action credit on each tool call
+
+## Fixes
+- Further fixes to input lag in long Cascade conversations
+- Fixed a bug where Cascade panel would always open on reload, even if the user disabled it in their settings
+- @docs has more options to choose from
+- Fixed Tab to Jump Quick Setting configuration
+- Added support for drag and drop images into Cascade
+
+```
+@docs
+```
+
+## Improvements
+- Cascade Web search now includes the website description and uses page rank to determine relevance
+- Improvements to Cascade Auto-Generated Memories (Beta)
+
+## Fixes
+- Fixed input lag in long Cascade conversations
+- Increased precision when Cascade makes code edits
+- Fixed issues around Cascade edits with .gitignore files
+- Fixed Tab to Jump Quick Setting configuration
+
+## Web and Docs Search
+- Cascade can now search the web! There are a couple of ways to use this:Automatically: Simply ask a query that needs a live internet search and Cascade will trigger web search automatically.URL Input: Paste in a URL and Cascade will use your URL as context (works well with blog posts, docs, articles, public GitHub files, etc.).@web: If you prefer to explicitly ask Cascade to search the web, use the @web command.@docs: Cascade can search through some popular documentation sites, including Windsurf's own help docs!
+- Automatically: Simply ask a query that needs a live internet search and Cascade will trigger web search automatically.
+- URL Input: Paste in a URL and Cascade will use your URL as context (works well with blog posts, docs, articles, public GitHub files, etc.).
+- @web: If you prefer to explicitly ask Cascade to search the web, use the @web command.
+- @docs: Cascade can search through some popular documentation sites, including Windsurf's own help docs!
+- Web tools like search and URL reading can be enabled and disabled via the Windsurf Settings panel in the bottom right of your status bar.
+- A web search is 1 flow action credit and the resulting URL page reads are additional credits.
+- Automatically: Simply ask a query that needs a live internet search and Cascade will trigger web search automatically.
+- URL Input: Paste in a URL and Cascade will use your URL as context (works well with blog posts, docs, articles, public GitHub files, etc.).
+- @web: If you prefer to explicitly ask Cascade to search the web, use the @web command.
+- @docs: Cascade can search through some popular documentation sites, including Windsurf's own help docs!
+
+```
+@web
+```
+
+
+```
+@web
+```
+
+
+```
+@docs
+```
+
+## Cascade Auto-Generated Memories
+- Cascade can now automatically generate memories to retain context between conversations
+- You can prompt Cascade to create a memory at any time if you want it to remember key context
+- Memories are visible in the Memories Panel, which is accessible when Cascade makes a memory or through the command palette
+- Memories can be deleted from the Memories Panel
+- Memories do not cost any flow action credits to generate
+
+## Improvements to Dev Container Support (Beta)
+- Dev Container support for Windows is now in beta
+- UI Tweaks to Dev Container workspace labels
+- Registers a command to reopen the current Dev Container workspace locally, enabling a switch from Dev Container to local workspace
+- "Attach to Running Container" Feature available for any Docker container
+- Added functionality for streaming Dev Container CLI output in real-time to show progress
+- Fixed buffer overflow issues
+- Dev Containers respect remoteUser configuration from devcontainer.json and container metadata
+
+```
+devcontainer.json
+```
+
+## Fixes
+- Fixed a bug where intellisense's auto-selected option would be sometimes be chosen incorrectly
+- Fixed a bug where pressing Ctrl/Cmd + z after a diff hunk rejection would undo editor changes made immediately before the rejection
+- Fixed a bug where rejecting the output of "Add docstring" breadcrumbs button would leave an extra newline
+- Fixed a bug where in-editor diff decorations would not be correctly synced with Cascade after reverting to a past step
+- Fixed a bug where renaming, moving, or deleting a file with an active Cascade diff would cause the changes overview popover to freeze on subsequent steps
+- SSH Agent forwarding for Dev Containers on Mac and Linux
+- Fixed bugs in Cascade's find tool, hopefully reducing errors in Cascade tool usage
+- Performance improvements with Cascade and better visibility into errors
+- Overall improvements to how Cascade will respect Rules and Auto-Generated Memories
+- Fixed a rare bug where Reject All button in changes overview popover would revert all changes but not dispose of diff zones
+- Fixed several sources of crashes that were preventing some users from authenticating
+- Fixed a bug where using the at mention command in Cascade would crash the panel
+
+## Misc
+
+- Cascade can now run commands natively in the IDE's terminal
+- Cascade now proceeds without stopping when editing unsaved files in write mode
+- Performance upgrades to Supercomplete, with more expressive inline rendering capabilities
+- Added a per-file button in the Problems Tab tree view (the default) to send the file's problems to Cascade as an @-mention
+- Added an Explain And Fix Problem button in error hover popup, and a shortcut (⌘/Ctrl + shift + .), which opens a new Cascade conversation instructing Cascade to explain and fix the problem
+- Windsurf OAuth App for GitHub
+- Keyboard shortcuts for accepting/rejecting the focused hunk of a Cascade diff (⌥/Alt + Enter and ⌥/Alt + Shift + Backspace by default) are now shown on the focused hunk
+- Auto-focus the first hunk when opening a file with a Cascade diff
+
+## Fixes
+- Fixed Cascade's Chat Mode sometimes not giving an "Apply" button
+- Dev Container Stability Improvements
+- Some Fixes for Cascade Flow Actions on Windows users
+
+## Fixes
+- Fixed text wrapping layout bugs in Cascade
+- Fixed a bug where "Show Logs" did not read the correct path
+
+## Product Improvements
+- Added a "Send to Cascade" button in the Problems tab
+- Autocomplete and supercomplete show up regardless of intellisense.
+- You can now see your plan on the Status Bar, with usage information on mouse hover
+- Improvements to the onboarding flow
+- Ability to download Windsurf Logs to help with support tickets
+
+## Fixes
+- Fixed a bug for Cascade unable to apply its proposed code edits in chat mode on Windows
+- Fixes autocomplete speed slowdowns affecting some users
+- Bug fixes and stability improvements
+
+## Cascade Memories
+- You can configure rules for Cascade Memories to follow. For example, you can use rules to specify if you want Cascade to respond in a certain language, communicate in a specific style, or use a specific API
+- Rules can be found in the Windsurf Quick Settings panel by clicking on "Windsurf Settings" on the status bar
+- Global rules are rules that will be applied to Cascade in all workspaces
+- Workspace rules are rules that will be applied to Cascade in the current workspace
+- More information can be found on our [docs](https://docs.codeium.com/windsurf/cascade).
+[docs](https://docs.codeium.com/windsurf/cascade)
+
+## Cascade Auto Run Commands
+- Cascade can now automatically detect to run certain terminal commands if it deems safe to do. This option is checked off by default and can be enabled in the Settings page, accessible in the top right dropdown. This only affects Cascade responses by premium models
+- Supports an allow list and deny list of commands for Cascade to run. Allow list always accept the command and deny list always requests for permission to run a command.
+- More information can be found on our [docs](https://docs.codeium.com/windsurf/cascade).
+[docs](https://docs.codeium.com/windsurf/cascade)
+
+## Extensions
+- WSL support is now in beta
+- Bug fixes and improvements to devcontainer support, notably on Mac
+- Updates to Windsurf Pyright
+
+## Misc
+- Added Cascade undo/redo for full-file accept/reject and workspace-wide accept/reject all
+- One-time check to install Windsurf Pyright if Python found
+
+# Misc
+
+- Fixes for some crashes for some users
+- Fixed bug where changing Cascade models would toggle the mode to Chat only
+
+## Usage Transparency and Pricing
+- Rolling out updated usage and [pricing](https://codeium.com/redirect/windsurf/learn-pricing) system for Windsurf. See pricing for details
+- Quick settings panel now additionally shows current plan usage, with information on trial expiry, next refresh cycle, and links to upgrade
+- Introduction of new "Legacy Chat" mode in Cascade that activates when users run out of Flow Credits. This mode is limited compared to Cascade's normal capabilities, but does not require any Flow Credits to use
+- View Cascade usage in the settings panel. Learn more about viewing Cascade usage [here](https://docs.codeium.com/windsurf/usage).
+[pricing](https://codeium.com/redirect/windsurf/learn-pricing)
+[here](https://docs.codeium.com/windsurf/usage)
+
+## Cascade Image Uploads
+- Cascade image uploads are no longer limited to 1MB
+
+## Improved Language support for Python
+- Added feature-rich language support for Python with Windsurf Pyright. Windsurf Pyright is a Pylance alternative
+
+# Misc
+
+- Importing from other VS Code-based IDEs now imports snippets alongside settings
+- AI-related Keybindings can be viewed and configured in the quick settings panel
+- Added clearer error messages and debug handling for users experiencing auth issues
+
+## Upload Images to Cascade
+- Cascade now supports uploading images on premium models
+- Ask Cascade to build or tweak UI on image upload
+
+## New keybindings
+- Keybindings to navigate between changes in a Cascade diff (⌥/Alt + j and ⌥/Alt + k by default)
+- Keybindings to navigate between files with Cascade diffs (⌥/Alt + h and ⌥/Alt + l by default)
+
+# Misc
+
+- Cascade panel open diff button now opens to the first change in the file
+- Added option to control whether Cascade automatically opens created / edited files (enabled by default)
+- Fixed minor autocomplete settings issues that affected some users
+- New quick settings panel UI
+
+## Explain & fix problem
+- Cascade will attempt to fix issues in the codebase
+- Option appears on hover of the issue
+
+## Import from Cursor
+- Import settings and extensions
+- Available via Command Palette or Reset Onboarding
+
+## New keybindings
+- Keybinding for accept all active diffs in a file (⌘/Ctrl + ⏎ by default)
+- Keybinding to reject all active diffs in a file (⌘/Ctrl + ⌫ by default)
+- ⌘/ctrl + shift + L open new conversation in Cascade. It also copies selected
+  terminal / editor text to new conversation
+
+## Improved Command
+- Improved Command experience in Jupyter notebooks
+
+## Improved diff views
+- Removes diffs in deleted files by Cascade
+- Clearer cursor indication that text in a deleted text diff is selectable
+
+## Misc
+- Windsurf quick settings dismisses when clicking outside the panel
+- Increased visibility of elements on onboarding for certain themes
+- Fixed minor layout issues
+- Added button to join Discord community
+- Increased stability of Cascade panel over SSH
+- Files edited / created by Cascade will automatically open in the background. If there is no active editor, then the first edited / created file will open as current active editor
+- Added a link to changelog in the title bar dropdown menu. Also added changelog nudge on title bar, which will show after user updated the version
+
+# Improvements & fixes
+- Minor fixes to Cascade
+
+# Windsurf Launch
+- Windsurf General Release!
+- Chat with Cascade, Codeium’s full repo-aware chat with ability to make multi-file edits
+- Blazing fast Autocomplete, with fast mode
+- Supercomplete, a new modality that predicts next intent
+- Command, with a brand new UX, with an ability to do larger file diffs and modifications
+Footer
+Built to keep you in flow state.
+[mail](mailto:hello@windsurf.com)
+[instagram](https://www.instagram.com/windsurf_ai/)
+[tiktok](https://www.tiktok.com/@windsurf)
+[twitter](https://x.com/windsurf)
+[discordDiscord](https://discord.gg/GjCYNGChrw)
+linkedin
+[reddit](https://reddit.com/r/windsurf)
+[youtube](https://www.youtube.com/@windsurf)
+Product
+- [Editor](https://windsurf.com/editor)
+- [Plugins](https://windsurf.com/plugins)
+- [Windsurf Reviews](https://windsurf.com/reviews)
+- [Pricing](https://windsurf.com/pricing)
+- [Windsurf for Enterprise](https://windsurf.com/enterprise)
+[Editor](https://windsurf.com/editor)
+[Plugins](https://windsurf.com/plugins)
+[Windsurf Reviews](https://windsurf.com/reviews)
+[Pricing](https://windsurf.com/pricing)
+[Windsurf for Enterprise](https://windsurf.com/enterprise)
+Capabilities
+- [Cascade](https://windsurf.com/cascade)
+- [Tab](https://windsurf.com/tab)
+- [Cascade on JetBrains](https://windsurf.com/plugins/jetbrains)
+[Cascade](https://windsurf.com/cascade)
+[Tab](https://windsurf.com/tab)
+[Cascade on JetBrains](https://windsurf.com/plugins/jetbrains)
+Company
+- [About Us](https://windsurf.com/about)
+- [Blog](https://windsurf.com/blog)
+- [Careers](https://windsurf.com/careers)
+- [Support](https://windsurf.com/support)
+- [Contact](https://windsurf.com/contact)
+- [Partnerships](https://windsurf.com/partnerships)
+- [Terms of Service](https://windsurf.com/terms-of-service-individual)
+- [Privacy Policy](https://windsurf.com/privacy-policy)
+- [Security](https://windsurf.com/security)
+- [Windsurf for Government](https://windsurf.com/enterprise/government)
+[About Us](https://windsurf.com/about)
+[Blog](https://windsurf.com/blog)
+[Careers](https://windsurf.com/careers)
+[Support](https://windsurf.com/support)
+[Contact](https://windsurf.com/contact)
+[Partnerships](https://windsurf.com/partnerships)
+[Terms of Service](https://windsurf.com/terms-of-service-individual)
+[Privacy Policy](https://windsurf.com/privacy-policy)
+[Security](https://windsurf.com/security)
+[Windsurf for Government](https://windsurf.com/enterprise/government)
+Resources
+- [Docs](https://docs.windsurf.com)
+- [Changelog](https://windsurf.com/changelog)
+- [Releases](https://windsurf.com/editor/releases)
+- [Brand](https://windsurf.com/brand)
+- [Referrals](https://windsurf.com/refer)
+- [Feature Requests](https://windsurf.canny.io/feature-requests)
+- [Windsurf Directory](https://windsurf.com/editor/directory)
+- [University](https://windsurf.com/university)
+- [Windsurf vs Cursor](https://windsurf.com/compare/windsurf-vs-cursor)
+- [Windsurf vs Copilot](https://windsurf.com/compare/windsurf-vs-github-copilot)
+- [2025 Gartner Magic Quadrant](https://windsurf.com/compare/gartner-mq)
+[Docs](https://docs.windsurf.com)
+[Changelog](https://windsurf.com/changelog)
+[Releases](https://windsurf.com/editor/releases)
+[Brand](https://windsurf.com/brand)
+[Referrals](https://windsurf.com/refer)
+[Feature Requests](https://windsurf.canny.io/feature-requests)
+[Windsurf Directory](https://windsurf.com/editor/directory)
+[University](https://windsurf.com/university)
+[Windsurf vs Cursor](https://windsurf.com/compare/windsurf-vs-cursor)
+[Windsurf vs Copilot](https://windsurf.com/compare/windsurf-vs-github-copilot)
+[2025 Gartner Magic Quadrant](https://windsurf.com/compare/gartner-mq)
+Connect
+- [Upcoming Events](https://luma.com/windsurf)
+- [Hackathons](https://windsurf.com/hackathons)
+- [Community](https://windsurf.com/community)
+- [Students](https://windsurf.com/editor/students)
+[Upcoming Events](https://luma.com/windsurf)
+[Hackathons](https://windsurf.com/hackathons)
+[Community](https://windsurf.com/community)
+[Students](https://windsurf.com/editor/students)
+© 2025 Cognition, Inc. All rights reserved.
+Windsurf Inc.

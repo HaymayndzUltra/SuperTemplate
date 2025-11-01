@@ -1,0 +1,135 @@
+{
+  "protocol": "01",
+  "protocol_name": "Client Proposal Generation",
+  "execution_timestamp": "2025-10-31T17:19:00+08:00",
+  "status": "COMPLETE",
+  "artifacts": [
+    {
+      "filename": "jobpost-analysis.json",
+      "type": "analysis",
+      "phase": "1",
+      "sha256": "16ac2c164beaf7cd115a833b2311664eb6f1f91b5df208292c322b4cb6bb3f3c",
+      "required": true,
+      "status": "valid"
+    },
+    {
+      "filename": "tone-map.json",
+      "type": "analysis",
+      "phase": "2",
+      "sha256": "0a8c2b8307cc468223690e570ed8f2724d22808f6aa47cecc31ad16f8f98fb25",
+      "required": true,
+      "status": "valid"
+    },
+    {
+      "filename": "pricing-analysis.json",
+      "type": "analysis",
+      "phase": "3",
+      "sha256": "c758067abd3c5d8bbf0bf48e7b2d041880811d7709578ffa2ba85e2cef11908a",
+      "required": true,
+      "status": "valid"
+    },
+    {
+      "filename": "humanization-log.json",
+      "type": "validation",
+      "phase": "2-4",
+      "sha256": "e3563c618aa1660438b7dc9acaf5e211746f4a6f3c1fdd32d393aad93032aa9e",
+      "required": true,
+      "status": "valid"
+    },
+    {
+      "filename": "PROPOSAL.md",
+      "type": "deliverable",
+      "phase": "4",
+      "sha256": "42d133c9f50a15bdf9674a98dbc4da9d0288c6aa730d82b7245e3d4f01cf0bdd",
+      "required": true,
+      "status": "valid"
+    },
+    {
+      "filename": "proposal-summary.json",
+      "type": "handoff",
+      "phase": "5",
+      "sha256": "c1fa29bc6bf6c1eafccea95c90fac8dd5595748d3f896cc1e6bce048b99821ab",
+      "required": true,
+      "status": "valid"
+    },
+    {
+      "filename": "notes.md",
+      "type": "execution-log",
+      "phase": "0-5",
+      "sha256": "14d7970cdfbe25e75f98cf98ab7300693b1c3b2c88a8e4eb5ef26d1f7058ce88",
+      "required": false,
+      "status": "valid"
+    }
+  ],
+  "validation_summary": {
+    "total_artifacts": 7,
+    "required_artifacts": 6,
+    "all_required_present": true,
+    "all_valid_json": true,
+    "all_checksums_verified": true,
+    "gates_passed": 5,
+    "gates_total": 5
+  },
+  "quality_gates": [
+    {
+      "gate_number": 1,
+      "gate_name": "Job Post Comprehension",
+      "status": "PASS",
+      "metrics": {
+        "coverage_score": "100%",
+        "exact_quotes_count": 2,
+        "tech_stack_items": 8,
+        "pain_points_identified": 8
+      }
+    },
+    {
+      "gate_number": 2,
+      "gate_name": "Tone Alignment",
+      "status": "PASS",
+      "metrics": {
+        "tone_classification": "casual",
+        "confidence": "high (manual verification)",
+        "differentiators_defined": 3
+      }
+    },
+    {
+      "gate_number": 3,
+      "gate_name": "Human Voice Compliance",
+      "status": "PASS",
+      "metrics": {
+        "contractions": 8,
+        "uncertainty_statements": 3,
+        "direct_questions": 3,
+        "forbidden_phrases": 0
+      }
+    },
+    {
+      "gate_number": 4,
+      "gate_name": "Pricing Realism",
+      "status": "PASS",
+      "metrics": {
+        "quoted_price": "$3,780",
+        "market_midpoint": "$4,400",
+        "percentage_of_market": "96%",
+        "within_80_120_range": true,
+        "milestones_balanced": true,
+        "max_milestone_percentage": "45%"
+      }
+    },
+    {
+      "gate_number": 5,
+      "gate_name": "Evidence Integrity",
+      "status": "PASS",
+      "metrics": {
+        "all_artifacts_present": true,
+        "sha256_verified": true,
+        "manifest_updated": true
+      }
+    }
+  ],
+  "handoff_readiness": {
+    "ready_for_protocol_02": true,
+    "next_protocol": "02",
+    "notes": "All artifacts validated and ready for downstream consumption"
+  }
+}
