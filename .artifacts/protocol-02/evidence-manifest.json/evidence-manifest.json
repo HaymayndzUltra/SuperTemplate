@@ -1,0 +1,85 @@
+{
+  "protocol_id": "02",
+  "protocol_title": "PROTOCOL 02: CLIENT DISCOVERY INITIATION (PROJECT-SCOPING COMPLIANT)",
+  "generated_at": "2025-10-31T09:48:24.615889Z",
+  "automation_coverage": {
+    "referenced_scripts": [
+      "aggregate_evidence_02.py",
+      "check_client_confirmation.py",
+      "search_knowledge_base.py",
+      "validate_discovery_expectations.py",
+      "validate_discovery_objectives.py",
+      "validate_discovery_scope.py",
+      "validate_prerequisites_02.py",
+      "validate_protocol_handoffs.py"
+    ],
+    "missing_scripts": [
+      "check_client_confirmation.py",
+      "search_knowledge_base.py",
+      "validate_discovery_expectations.py",
+      "validate_discovery_objectives.py",
+      "validate_discovery_scope.py",
+      "validate_prerequisites_02.py"
+    ],
+    "coverage": 0.25
+  },
+  "artifacts": [
+    {
+      "path": ".artifacts/protocol-02/client-context-notes.md",
+      "description": "Business objectives and user goals",
+      "status": "generated"
+    },
+    {
+      "path": ".artifacts/protocol-02/client-discovery-form.md",
+      "description": "Structured feature list and requirements",
+      "status": "generated"
+    },
+    {
+      "path": ".artifacts/protocol-02/scope-clarification.md",
+      "description": "Technical preferences and constraints",
+      "status": "generated"
+    },
+    {
+      "path": ".artifacts/protocol-02/timeline-discussion.md",
+      "description": "Delivery expectations and milestones",
+      "status": "generated"
+    },
+    {
+      "path": ".artifacts/protocol-02/communication-plan.md",
+      "description": "Collaboration blueprint",
+      "status": "generated"
+    },
+    {
+      "path": ".artifacts/protocol-02/discovery-recap.md",
+      "description": "Client-approved discovery summary",
+      "status": "generated"
+    }
+  ],
+  "validators": [
+    {
+      "name": "gate_1_objective_alignment",
+      "command": "python3 scripts/validate_gate_02_objectives.py",
+      "status": "pass",
+      "notes": "Objective alignment validated with 100.00% coverage"
+    },
+    {
+      "name": "gate_2_requirement_completeness",
+      "command": "python3 scripts/validate_gate_02_requirements.py",
+      "status": "pass",
+      "notes": "Requirements validated with 100.00% completeness"
+    },
+    {
+      "name": "gate_3_expectation_alignment",
+      "command": "python3 scripts/validate_gate_02_expectations.py",
+      "status": "pass",
+      "notes": "Expectation alignment validated with client approval"
+    },
+    {
+      "name": "gate_4_discovery_confirmation",
+      "command": "python3 scripts/validate_gate_02_confirmation.py",
+      "status": "fail",
+      "notes": "Unresolved blockers detected in recap"
+    }
+  ],
+  "notes": "Evidence aggregated at 2025-10-31T09:48:24.615757Z"
+}

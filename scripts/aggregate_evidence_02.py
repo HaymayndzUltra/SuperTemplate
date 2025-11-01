@@ -44,28 +44,31 @@ def aggregate_evidence(output_dir: Path, protocol_id: str = "02") -> None:
     """Aggregate evidence from all Protocol 02 gates."""
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    data = load_manifest_data(protocol_id)
+    try:
+        data = load_manifest_data(protocol_id)
+    except ValueError:
+        data = None
     
     validators = [
         {
-            "name": "gate_1_objective_alignment",
-            "command": "python3 scripts/validate_gate_02_objectives.py",
-            "script": "scripts/validate_gate_02_objectives.py",
+            "name": "gate_0_pre_call_readiness",
+            "command": "python3 scripts/validate_gate_02_pre_call.py",
+            "script": "scripts/validate_gate_02_pre_call.py",
         },
         {
-            "name": "gate_2_requirement_completeness",
-            "command": "python3 scripts/validate_gate_02_requirements.py",
-            "script": "scripts/validate_gate_02_requirements.py",
+            "name": "gate_1_data_capture",
+            "command": "python3 scripts/validate_gate_02_data_capture.py",
+            "script": "scripts/validate_gate_02_data_capture.py",
         },
         {
-            "name": "gate_3_expectation_alignment",
-            "command": "python3 scripts/validate_gate_02_expectations.py",
-            "script": "scripts/validate_gate_02_expectations.py",
+            "name": "gate_2_recap_approval",
+            "command": "python3 scripts/validate_gate_02_recap.py",
+            "script": "scripts/validate_gate_02_recap.py",
         },
         {
-            "name": "gate_4_discovery_confirmation",
-            "command": "python3 scripts/validate_gate_02_confirmation.py",
-            "script": "scripts/validate_gate_02_confirmation.py",
+            "name": "gate_3_handoff_ready",
+            "command": "python3 scripts/validate_gate_02_handoff.py",
+            "script": "scripts/validate_gate_02_handoff.py",
         },
     ]
     
@@ -80,29 +83,51 @@ def aggregate_evidence(output_dir: Path, protocol_id: str = "02") -> None:
         })
     
     artifacts = [
+        {"path": ".artifacts/protocol-02/discovery-brief.md", "description": "Pre-call summary"},
         {
-            "path": ".artifacts/protocol-02/client-context-notes.md",
-            "description": "Business objectives and user goals",
+            "path": ".artifacts/protocol-02/assumptions-gaps.md",
+            "description": "Assumptions and question tracker",
+        },
+        {
+            "path": ".artifacts/protocol-02/question-bank.md",
+            "description": "Discovery question set",
+        },
+        {
+            "path": ".artifacts/protocol-02/integration-inventory.md",
+            "description": "Integration and dependency inventory",
+        },
+        {"path": ".artifacts/protocol-02/call-agenda.md", "description": "Call agenda & checklist"},
+        {
+            "path": ".artifacts/protocol-02/ready-for-call-summary.md",
+            "description": "Ready-for-call summary",
         },
         {
             "path": ".artifacts/protocol-02/client-discovery-form.md",
-            "description": "Structured feature list and requirements",
+            "description": "Confirmed requirements",
         },
         {
             "path": ".artifacts/protocol-02/scope-clarification.md",
-            "description": "Technical preferences and constraints",
+            "description": "Technical scope and constraints",
         },
         {
             "path": ".artifacts/protocol-02/timeline-discussion.md",
-            "description": "Delivery expectations and milestones",
+            "description": "Timeline and milestones",
         },
         {
             "path": ".artifacts/protocol-02/communication-plan.md",
-            "description": "Collaboration blueprint",
+            "description": "Collaboration plan",
         },
         {
             "path": ".artifacts/protocol-02/discovery-recap.md",
-            "description": "Client-approved discovery summary",
+            "description": "Discovery recap",
+        },
+        {
+            "path": ".artifacts/protocol-02/discovery-approval-log.json",
+            "description": "Approval log",
+        },
+        {
+            "path": ".artifacts/protocol-02/transcripts/",
+            "description": "Transcripts and recordings",
         },
     ]
     
@@ -118,7 +143,17 @@ def aggregate_evidence(output_dir: Path, protocol_id: str = "02") -> None:
     
     manifest_path = output_dir / "evidence-manifest.json"
     notes = f"Evidence aggregated at {datetime.utcnow().isoformat()}Z"
-    write_manifest(manifest_path, data, artifact_results, validator_results, notes)
+    if data is not None:
+        write_manifest(manifest_path, data, artifact_results, validator_results, notes)
+    else:
+        manifest = {
+            "protocol_id": protocol_id,
+            "generated_at": datetime.utcnow().isoformat() + "Z",
+            "artifacts": artifact_results,
+            "validators": validator_results,
+            "notes": notes,
+        }
+        manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     
     print(f"Evidence manifest written to {manifest_path}")
     

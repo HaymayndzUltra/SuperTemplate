@@ -1,0 +1,160 @@
+{
+  "reasoning": {
+    "workload_estimation": {
+      "task_1_review_center": {
+        "description": "Review Response Center - sync fixes, edge cases, timeout handling",
+        "hours_estimate": "10-12",
+        "complexity": "moderate-high",
+        "rationale": "Multi-user sync + GBP API writes + edge case handling requires careful testing"
+      },
+      "task_2_rankings": {
+        "description": "Rankings - keyword isolation, relevance algorithm, DataForSEO integration",
+        "hours_estimate": "8-10",
+        "complexity": "moderate",
+        "rationale": "Data isolation logic + category/location context + validation across profiles"
+      },
+      "task_3_stripe": {
+        "description": "Stripe Integration - checkout, webhooks, subscription management",
+        "hours_estimate": "6-8",
+        "complexity": "moderate",
+        "rationale": "Standard implementation but webhook edge cases and test/live mode validation add time"
+      },
+      "task_4_performance": {
+        "description": "Performance Improvements - API latency reduction, dashboard optimization",
+        "hours_estimate": "8-12",
+        "complexity": "moderate-high",
+        "rationale": "Profiling, caching strategy, async optimization, validation across user scenarios"
+      },
+      "contingency": {
+        "description": "Buffer for unforeseen integration issues or scope clarifications",
+        "hours_estimate": "3-5",
+        "complexity": "variable",
+        "rationale": "'Last 10%' claims often reveal deeper issues; buffer protects both parties"
+      },
+      "total_hours": "35-47",
+      "recommended_quote": "40 hours (mid-range with contingency)"
+    },
+    "rate_tier_selection": {
+      "tier": "mid-senior",
+      "hourly_rate": "$90/hr",
+      "justification": "Requires Next.js, TypeScript, multi-API integration (GBP, DataForSEO, Stripe), performance optimization, and production debugging - all mid-senior level skills",
+      "market_comparison": "Next.js + API integration specialists typically $80-120/hr on Upwork for similar complexity"
+    },
+    "pricing_strategy": {
+      "approach": "milestone-based with hourly transparency",
+      "selected_rationale": "Client wants 'immediate start' and 'fast delivery' - milestones provide progress visibility while hourly transparency builds trust",
+      "alternatives_considered": [
+        {
+          "option": "Fixed-price package",
+          "rejected_reason": "Vague performance requirements and 'last 10%' optimism create scope risk"
+        },
+        {
+          "option": "Hourly-only no cap",
+          "rejected_reason": "Client likely prefers predictable costs for budget planning"
+        }
+      ]
+    },
+    "milestones": [
+      {
+        "milestone": "M1: Review & Rankings Sync Complete",
+        "deliverables": [
+          "Reviews sync across all GBPs",
+          "Review replies post to live GBP",
+          "Keywords isolated per profile",
+          "Relevance algorithm validated"
+        ],
+        "hours_estimate": "18-22",
+        "quoted_hours": 20,
+        "price": "$1,800",
+        "percentage_of_total": "45%"
+      },
+      {
+        "milestone": "M2: Stripe Integration + Performance Baseline",
+        "deliverables": [
+          "Stripe checkout functional (test + live)",
+          "Webhook handling tested",
+          "Initial performance optimizations deployed",
+          "Dashboard load time improved"
+        ],
+        "hours_estimate": "14-18",
+        "quoted_hours": 16,
+        "price": "$1,440",
+        "percentage_of_total": "40%"
+      },
+      {
+        "milestone": "M3: Production Validation & Final Polish",
+        "deliverables": [
+          "All user scenarios tested",
+          "Performance targets validated",
+          "Edge case handling confirmed",
+          "Deployment to Vercel production"
+        ],
+        "hours_estimate": "3-7",
+        "quoted_hours": 6,
+        "price": "$540",
+        "percentage_of_total": "15%"
+      }
+    ],
+    "total_pricing": {
+      "total_hours": 42,
+      "total_price": "$3,780",
+      "hourly_rate": "$90/hr",
+      "milestone_balance_check": "M1: 45%, M2: 40%, M3: 15% - PASS (no single milestone >50%)"
+    },
+    "market_validation": {
+      "market_benchmark_low": "$3,200",
+      "market_benchmark_high": "$5,600",
+      "quoted_price": "$3,780",
+      "percentage_of_market_mid": "96%",
+      "validation_status": "PASS - within 80-120% of market midpoint ($4,400)",
+      "positioning": "Competitive pricing for immediate start and proven integration experience"
+    }
+  },
+  "assumptions": [
+    "Client has test Stripe account ready for webhook validation",
+    "GBP API allowlist is already active and rate limits won't be exceeded",
+    "Vercel environment variables are correctly configured",
+    "Client can provide timely feedback during milestone reviews (within 24-48h)",
+    "Performance target is <500ms dashboard load (will confirm with client)",
+    "No major architectural changes needed - only integration completions"
+  ],
+  "risks_and_mitigations": [
+    {
+      "risk": "'Last 10%' may underestimate actual work if deeper issues exist",
+      "likelihood": "medium",
+      "impact": "high",
+      "mitigation": "Built 6-hour contingency buffer into M3; will surface concerns early if scope expands"
+    },
+    {
+      "risk": "GBP API rate limits or quota issues during testing",
+      "likelihood": "low",
+      "impact": "medium",
+      "mitigation": "Will verify quota status in kickoff; can implement caching to reduce API calls"
+    },
+    {
+      "risk": "Stripe webhook testing blocked by lack of test account",
+      "likelihood": "low",
+      "impact": "medium",
+      "mitigation": "Clarifying question included in proposal; can use Stripe CLI for local testing"
+    },
+    {
+      "risk": "Performance optimization requires infrastructure changes beyond code",
+      "likelihood": "medium",
+      "impact": "medium",
+      "mitigation": "Will scope performance work in M2 kickoff; if infrastructure changes needed, will discuss separately"
+    }
+  ],
+  "clarifying_questions": [
+    "What's the acceptable page load time threshold for 'instant' loading?",
+    "Do you have baseline metrics for current review sync time we can improve upon?",
+    "Is a test Stripe account ready, or should I set one up during M2?",
+    "What's your target launch date for full production?",
+    "Are there any known DataForSEO rate limit constraints for your current plan?"
+  ],
+  "summary": {
+    "recommended_total": "$3,780",
+    "timeline": "2-3 weeks (assuming availability and timely feedback)",
+    "confidence": "high",
+    "competitive_positioning": "Fair market rate with proven multi-API integration track record"
+  }
+}

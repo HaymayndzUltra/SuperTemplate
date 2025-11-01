@@ -1,0 +1,46 @@
+{
+  "target_tone": "casual",
+  "tone_rationale": "Client uses direct language, emojis (1️⃣, 2️⃣), and phrases like 'wrap this up cleanly' indicating informal yet professional style",
+  "required_contraction_count": 3,
+  "required_contractions_minimum": 3,
+  "planned_uncertainty_line": "Assuming the DataForSEO rate limits align with your current traffic, we shouldn't hit throttling issues—but I'd verify the tier limits early to be safe.",
+  "forbidden_phrases_checklist": [
+    "I am excited to ...",
+    "I am confident I can ...",
+    "I would be delighted ...",
+    "I have extensive experience ...",
+    "High-quality work guaranteed",
+    "Looking forward to working with you"
+  ],
+  "forbidden_phrase_scan_result": 0,
+  "counters": {
+    "contractions": 8,
+    "contractions_list": ["you're (implied)", "it's (2x)", "won't (2x)", "shouldn't", "I'll (2x)", "everything's"],
+    "uncertainty_statements": 3,
+    "uncertainty_list": [
+      "Assuming the GBP API allowlist is active and rate limits won't throttle during testing",
+      "likely need request queuing or async retry logic",
+      "Dashboard optimization likely involves Next.js SSR caching"
+    ],
+    "direct_questions": 3,
+    "questions_list": [
+      "but are there any known rate limit constraints on your current DataForSEO plan?",
+      "Can you start Monday?",
+      "or we can just async via Slack/email if that's easier?"
+    ]
+  },
+  "proof_flags": {
+    "workflow_system_mentioned": true,
+    "workflow_system_location": "Section: Why This Workflow Works",
+    "predictive_pattern_inserted": true,
+    "predictive_pattern_reason": "Integration context (API, sync, automation) + no prior client proof listed"
+  },
+  "workflow_demo_triggered": true,
+  "workflow_demo_reason": "no_prior_experience_proof + integration_context",
+  "inserted_at": "Phase 4.3",
+  "humanization_adjustments": {
+    "cadence_breaks": 2,
+    "short_sentences_added": true,
+    "short_sentence_examples": ["You'll see results from Day 1", "everything's traceable"]
+  }
+}
