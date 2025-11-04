@@ -67,6 +67,11 @@ Success is measured by human believability, evidence completeness, and the abili
    * **Evidence:** Cleanup decision captured in the working notes (`notes.md`)
    * **Validation:** Decision to clear or retain is documented in notes.md
 
+3. **`[MUST]` Capture Source Job Post Copy:**
+   * **Action:** Copy the authoritative job post (`/home/haymayndz/SuperTemplate/JOB-POST.md`) into the protocol artifacts directory by running `cp /home/haymayndz/SuperTemplate/JOB-POST.md .artifacts/protocol-01/job-post.md`; if the original path differs, document the adjusted source in `notes.md` and copy that file instead.
+   * **Evidence:** `.artifacts/protocol-01/job-post.md`
+   * **Validation:** File exists, matches the source job post, and path recorded in `notes.md`
+
 ---
 
 ### PHASE 1 — Manual Job Post Extraction (5–10 minutes)

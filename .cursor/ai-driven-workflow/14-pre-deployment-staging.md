@@ -16,7 +16,7 @@
 **[MUST]** Validate presence of upstream artifacts before protocol initiation:
 
 - **`[REQUIRED]`** `QUALITY-AUDIT-PACKAGE.zip` from Protocol 12 – audit readiness evidence
-- **`[REQUIRED]`** `integration-evidence-bundle.zip` from Protocol 11 – integration validation summary
+- **`[REQUIRED]`** `INTEGRATION-EVIDENCE.zip` from Protocol 11 – integration validation summary
 - **`[REQUIRED]`** `UAT-CLOSURE-PACKAGE.zip` from Protocol 13 – stakeholder acceptance proof
 - **`[REQUIRED]`** `.artifacts/pre-deployment/release-manifest.json` (initial draft) from Release Planning
 - **`[REQUIRED]`** Latest deployment scripts (`scripts/deploy_*.sh`, `scripts/rollback_*.sh`) from repository

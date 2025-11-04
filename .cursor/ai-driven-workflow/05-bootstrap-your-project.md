@@ -384,6 +384,10 @@ Maintain structured lessons learned:
 
 ### Output Standards
 **Outputs To:**
+- **Protocol 06:**
+  - `architecture-principles.md` - Required prerequisite for PRD drafting and architectural alignment
+  - `.cursor/context-kit/README.md` - Context summary referenced during PRD context alignment
+
 - **Protocol 08:**
   - `.cursor/context-kit/README.md` - Context documentation for task generation
   - `template-inventory.md` - Available templates for task generation
