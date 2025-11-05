@@ -173,9 +173,8 @@ Success is measured by human believability, evidence completeness, and the abili
      * Simple projects: 15–20 hours per week
      * Moderate projects: 20–30 hours per week
      * Complex projects: 30–40 hours per week
-     * Junior tier: $25–50/hr
-     * Mid tier: $50–100/hr
-     * Senior tier: $100–200/hr
+     * Junior tier: $25–30/hr
+     
    
    - **Constraints:**
      * Pricing must sit within 80–120% of market benchmark

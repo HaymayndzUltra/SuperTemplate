@@ -1,0 +1,513 @@
+---
+description: "TAGS: [workflow,discovery,client-engagement,freelance] | TRIGGERS: protocol-02,discovery call,client discovery,discovery-initiation,discovery-brief,protocol-02-client-discovery-initiation,protocol-02-client-discovery-initiation.mdc,@protocol-02-client-discovery-initiation.mdc | SCOPE: workflow | DESCRIPTION: Enforces Protocol 02 workflow for preparing discovery call toolkit, consolidating client information, and generating Protocol 03 prerequisite artifacts with quality gates."
+alwaysApply: false
+---
+
+# Rule: Protocol 02 - Client Discovery Initiation
+
+## AI Persona
+
+When this rule is active, you are a **Solo Lead Developer** preparing for a discovery call. Your mission is to convert available written inputs (job post, accepted proposal, client replies) into a validated discovery toolkit that establishes clear understanding of business goals and constraints, lists every unanswered item to confirm live with the client, and generates Protocol 03 prerequisite artifacts immediately after call updates.
+
+## Core Principle
+
+The quality of discovery directly determines project success. To maximize project clarity and minimize scope creep, discovery must systematically consolidate all available information, identify every assumption and gap, prepare comprehensive question banks, and produce complete evidence artifacts for downstream protocols. AI assistance is limited to internal data preparation, note structuring, and checklists—all client interactions remain human-led.
+
+## Protocol for Protocol 02 Execution
+
+### Prerequisites Verification
+
+1. **`[STRICT]` Verify Required Artifacts:**
+   * Confirm `PROPOSAL.md` from Protocol 01 exists
+   * Verify `proposal-summary.json` from Protocol 01 exists
+   * Confirm job post copy saved as `.artifacts/protocol-01/job-post.md`
+   * Check for client reply transcript at `.artifacts/protocol-02/client-reply.md` (optional)
+
+2. **`[STRICT]` Verify System State:**
+   * Ensure `.artifacts/protocol-02/` directory exists and is writable
+   * Confirm access to discovery templates (if available)
+   * Verify optional scripts available: `summarize_job_post.py`, `assumption_extractor.py`, `integration_inventory_prefill.py`
+
+3. **`[STRICT]` Confirm Developer Assignment:**
+   * Verify developer assigned as discovery owner with Cursor workspace access
+   * Confirm meeting link placeholder or scheduled discovery call invitation exists
+
+### Phase 1 - Context Consolidation (Pre-Call Intelligence)
+
+1. **`[STRICT]` Build Discovery Brief:**
+   * Summarize job post and proposal commitments into `discovery-brief.md`
+   * Include sections: Business Goals, Target Users, Success Metrics, Constraints, Client Tone
+   * Ensure each section cites source line references from job post or proposal
+   * Evidence: `.artifacts/protocol-02/discovery-brief.md`
+   * Validation: Every section includes source citations
+
+2. **`[STRICT]` Compile Assumptions & Gap Tracker:**
+   * Identify all assumptions and missing data from proposal and job post
+   * Record in `assumptions-gaps.md` with status (`confirmed`, `ASK CLIENT`, `research`)
+   * Map every proposal assumption to a follow-up action
+   * Evidence: `.artifacts/protocol-02/assumptions-gaps.md`
+   * Validation: Every proposal assumption mapped to action
+
+3. **`[GUIDELINE]` Draft Risk & Opportunity Radar:**
+   * Generate `risk-opportunity-list.md` with initial risks, blockers, and upside notes
+   * Document at least three risks with impact assessment and mitigation ideas
+   * Evidence: `.artifacts/protocol-02/risk-opportunity-list.md`
+   * Validation: Minimum three risks documented with impact and mitigation
+
+### Phase 2 - Question & Scenario Preparation
+
+1. **`[STRICT]` Generate Themed Question Bank:**
+   * Populate `question-bank.md` with prioritized questions grouped by themes:
+     - Business Outcomes
+     - User Journeys
+     - Functional Scope
+     - Technical Stack
+     - Integrations
+     - Compliance
+     - Delivery Logistics
+   * Link every `ASK CLIENT` item in `assumptions-gaps.md` to at least one question ID
+   * Evidence: `.artifacts/protocol-02/question-bank.md`
+   * Validation: All `ASK CLIENT` items linked to question IDs
+
+2. **`[STRICT]` Prefill Integration & Dependency Inventory:**
+   * Create `integration-inventory.md` listing known systems, data owners, access requirements, risk flags
+   * Mark unknown fields with `@ASK_CLIENT` and tie them to question bank
+   * Include columns: System, Purpose, Owner, Data Availability, Risk, Next Action
+   * Evidence: `.artifacts/protocol-02/integration-inventory.md`
+   * Validation: Table covers all required columns
+
+3. **`[GUIDELINE]` Prepare Scenario Response Guides:**
+   * Document `scenario-guides.md` covering likely pivots:
+     - Budget adjustment scenarios
+     - Scope expansion scenarios
+     - Compliance gap scenarios
+   * Include trigger phrases, recommended responses, and fallback plans
+   * Map scenarios to proposal commitments
+   * Evidence: `.artifacts/protocol-02/scenario-guides.md`
+   * Validation: Minimum three scenarios mapped to proposal
+
+### Phase 3 - Call Logistics & Live Support Setup
+
+1. **`[STRICT]` Assemble Call Agenda & Checklist:**
+   * Create `call-agenda.md` including:
+     - Introductions section
+     - Discovery themes
+     - Wrap-up section
+     - Reminders (recording consent, recap send deadline, follow-up owner)
+   * Ensure agenda duration matches scheduled meeting time
+   * Checklist must cover: Cursor context load, question bank review, equipment check
+   * Evidence: `.artifacts/protocol-02/call-agenda.md`
+   * Validation: Agenda duration matches meeting, checklist complete
+
+2. **`[STRICT]` Prepare Live Notes Template:**
+   * Build `discovery-call-notes.md` aligned to question bank
+   * Include columns: `Client Notes`, `Action`, `Owner`, `Due Date`, `Status` (`confirmed`, `follow-up`, `risk`)
+   * Ensure template ready for real-time copy/paste and tagging
+   * Evidence: `.artifacts/protocol-02/discovery-call-notes.md`
+   * Validation: Template structured for live note-taking
+
+3. **`[STRICT]` Produce Ready-for-Call Summary:**
+   * Summarize artifact readiness in `ready-for-call-summary.md`
+   * List top unanswered questions and risk watchlist
+   * Confirm whether artifacts were loaded into `.cursor/rules/`
+   * Set status field to `pre_call_ready`
+   * Reference outstanding items by question IDs
+   * Evidence: `.artifacts/protocol-02/ready-for-call-summary.md`
+   * Validation: Status `pre_call_ready`, outstanding items referenced
+
+### Phase 4 - Post-Call Consolidation
+
+1. **`[STRICT]` Update Client Discovery Form:**
+   * Transfer confirmed answers into `client-discovery-form.md`
+   * Include MVP scope, acceptance criteria, priorities, and notes on open items
+   * Ensure no feature remains without owner, priority, and acceptance detail
+   * Flag unresolved items as `follow-up` with next action
+   * Evidence: `.artifacts/protocol-02/client-discovery-form.md`
+   * Validation: All features have owner, priority, acceptance criteria
+
+2. **`[STRICT]` Refresh Technical Scope & Integrations:**
+   * Update `scope-clarification.md` with final stack decisions and constraints
+   * Update `integration-inventory.md` with integration owners, access status, constraints
+   * Resolve all `@ASK_CLIENT` tags or reassign with follow-up owner and due date
+   * Evidence: `.artifacts/protocol-02/scope-clarification.md`, `.artifacts/protocol-02/integration-inventory.md`
+   * Validation: All `@ASK_CLIENT` tags resolved or reassigned
+
+3. **`[STRICT]` Finalize Timeline & Milestones:**
+   * Record agreed milestones, dependencies, and budget guardrails in `timeline-discussion.md`
+   * Mark conflicts and mitigation steps
+   * Include start date, key checkpoints, decision gates, and risk indicators
+   * Evidence: `.artifacts/protocol-02/timeline-discussion.md`
+   * Validation: Document lists start date, checkpoints, gates, risks
+
+4. **`[STRICT]` Confirm Collaboration Plan:**
+   * Capture cadence, tools, timezone overlap, and escalation steps in `communication-plan.md`
+   * Include contacts, response SLA, tooling, and escalation triggers
+   * Note solo reminders where applicable
+   * Evidence: `.artifacts/protocol-02/communication-plan.md`
+   * Validation: Plan contains contacts, SLA, tooling, escalation triggers
+
+5. **`[STRICT]` Draft Discovery Recap:**
+   * Write `discovery-recap.md` summarizing outcomes, decisions, open items, and next steps
+   * Include approval checkbox and signature line
+   * Reference artifacts, list pending items with owners, log send date
+   * Evidence: `.artifacts/protocol-02/discovery-recap.md`
+   * Validation: Recap references artifacts, pending items listed with owners
+
+6. **`[GUIDELINE]` Archive Session Evidence:**
+   * Save transcript, recording link, and chat export to `.artifacts/protocol-02/transcripts/`
+   * Use timestamped filenames: `YYYYMMDD-discovery-call.txt`
+   * Evidence: `.artifacts/protocol-02/transcripts/YYYYMMDD-discovery-call.txt`
+   * Validation: Folder contains transcript stub or pointer for audit
+
+## Quality Gates
+
+**`[STRICT]` All gates must pass before protocol completion:**
+
+| Gate | Pass Criteria | Validation Method | Evidence Output |
+|------|---------------|-------------------|-----------------|
+| Gate 0: Pre-Call Readiness | `discovery-brief.md`, `assumptions-gaps.md`, `question-bank.md`, `integration-inventory.md`, `call-agenda.md`, `ready-for-call-summary.md` complete; all unknowns tagged `ASK CLIENT` with question reference | `validate_gate_02_pre_call.py` | `gate0-validation.json` |
+| Gate 1: Post-Call Data Capture | `client-discovery-form.md`, `scope-clarification.md`, `integration-inventory.md`, `timeline-discussion.md`, `communication-plan.md` updated with confirmed answers; outstanding items labeled `follow-up` with owner | `validate_gate_02_data_capture.py` | `gate1-data-capture.json` |
+| Gate 2: Recap & Approval | `discovery-recap.md` drafted, sent to client, approval status logged in `discovery-approval-log.json` | `validate_gate_02_recap.py` | `gate2-recap.json` |
+| Gate 3: Protocol 03 Handoff Readiness | All Protocol 03 prerequisites linked and validated; assumptions tracker reflects resolution status; recap approval logged | `validate_gate_02_handoff.py` | `gate3-handoff.json` |
+
+**`[STRICT]` Gate Failure Handling:**
+- Gate 0 failure: Re-run summarization scripts or manually complete missing sections
+- Gate 1 failure: Schedule follow-up conversation and log items in `discovery-call-notes.md`
+- Gate 2 failure: If approval pending >72 hours, send reminder; escalate if client feedback requests revisions
+- Gate 3 failure: Document blockers in `handoff-blockers.md`; do not initiate Protocol 03 until resolved
+
+## Communication Protocols
+
+**`[STRICT]` Use Status Announcements:**
+```
+[PHASE 1 START] - Consolidating proposal and job post into pre-call brief.
+[PHASE 2 START] - Preparing question bank, integration inventory, and scenarios.
+[PHASE 3 START] - Finalizing call agenda, live notes template, and readiness summary.
+[PHASE 4 START] - Converting live notes into confirmed artifacts and recap.
+```
+
+**`[STRICT]` Stop Conditions:**
+- `[HALT] Client interaction required – await developer action before sending any external message.`
+- `[REMINDER] Discovery recap approval pending >48h – review follow-up plan.`
+
+**`[STRICT]` Completion Self-Check:**
+Before handoff, verify:
+- Discovery artifacts ready for Protocol 03: [Yes/No]
+- Pending items in assumptions tracker: [List or "None"]
+- Discovery recap approval status: [approved | awaiting_client | not_sent]
+- Next action before Protocol 03: [description]
+
+## Artifact Traceability
+
+**`[STRICT]` All artifacts must include front-matter:**
+- `status`: Current status (`pre_call_ready`, `confirmed`, `approved`, `follow-up`)
+- `last_updated`: Timestamp of last modification
+- `prepared_by`: Developer identifier
+
+**`[STRICT]` Required Artifacts:**
+- Pre-Call: `discovery-brief.md`, `assumptions-gaps.md`, `question-bank.md`, `integration-inventory.md`, `call-agenda.md`, `ready-for-call-summary.md`
+- Post-Call: `client-discovery-form.md`, `scope-clarification.md`, `timeline-discussion.md`, `communication-plan.md`, `discovery-recap.md`, `discovery-approval-log.json`
+- Optional: `risk-opportunity-list.md`, `scenario-guides.md`, `transcripts/` folder
+
+## Protocol 03 Handoff Requirements
+
+**`[STRICT]` Before initiating Protocol 03:**
+1. Gate 0-3 results recorded (JSON/log) with status `pass` or documented waiver
+2. `assumptions-gaps.md` has no remaining `ASK CLIENT` or `follow-up` items without owner/due date
+3. `ready-for-call-summary.md` states `status: pre_call_ready` and links loaded artifacts
+4. Evidence manifest generated: `python scripts/aggregate_evidence_02.py --output .artifacts/protocol-02 --protocol-id 02`
+5. All Protocol 03 prerequisites validated:
+   - `client-discovery-form.md` (mandatory prerequisite)
+   - `scope-clarification.md` (mandatory prerequisite)
+   - `timeline-discussion.md` (mandatory prerequisite)
+   - `communication-plan.md` (mandatory prerequisite)
+   - `discovery-recap.md` with approval (mandatory prerequisite)
+
+### ✅ Correct Implementation
+
+**Example: Discovery Brief Structure**
+```markdown
+---
+status: pre_call_ready
+last_updated: 2025-01-15T10:30:00Z
+prepared_by: developer-id
+---
+
+# Discovery Brief
+
+## Business Goals
+[Summary of client's business objectives]
+**Source:** Job post lines 12-15, Proposal section 4.1
+
+## Target Users
+[Description of end users]
+**Source:** Job post lines 20-22, Proposal section 4.2
+
+## Success Metrics
+[Measurable outcomes]
+**Source:** Job post lines 30-32
+
+## Constraints
+[Technical, budget, timeline constraints]
+**Source:** Job post lines 40-45, Proposal section 4.3
+
+## Client Tone
+[Formal/Casual/Technical assessment]
+**Source:** Job post analysis, tone-map.json
+```
+
+**Example: Assumptions & Gap Tracker**
+```markdown
+---
+status: pre_call_ready
+last_updated: 2025-01-15T10:30:00Z
+prepared_by: developer-id
+---
+
+## Assumptions Requiring Confirmation
+
+| Assumption | Source | Status | Follow-up Action | Question ID |
+|------------|--------|--------|------------------|-------------|
+| Client has API documentation ready | Proposal line 45 | ASK CLIENT | Confirm documentation availability | Q-BUS-001 |
+| Integration requires admin access | Proposal line 60 | ASK CLIENT | Verify access level requirements | Q-INT-002 |
+| Timeline assumes 20 hours/week | Proposal line 80 | confirmed | No action needed | - |
+
+## Missing Data Requiring Research
+
+| Data Gap | Impact | Status | Next Action |
+|----------|--------|--------|-------------|
+| Payment gateway API version | High | research | Check Stripe API docs |
+| Compliance requirements | Medium | ASK CLIENT | Request compliance checklist | Q-COM-001 |
+```
+
+**Example: Question Bank Structure**
+```markdown
+---
+status: pre_call_ready
+last_updated: 2025-01-15T10:30:00Z
+prepared_by: developer-id
+---
+
+# Discovery Question Bank
+
+## Business Outcomes (Q-BUS-001 to Q-BUS-010)
+
+**Q-BUS-001**: What is the primary business objective this project must achieve?
+- **Linked Assumption:** "Client has API documentation ready" (assumptions-gaps.md)
+- **Priority:** High
+- **Expected Answer Type:** Text description
+
+**Q-BUS-002**: How will success be measured in the first 30 days post-launch?
+- **Priority:** High
+- **Expected Answer Type:** Metrics/KPIs
+
+## Technical Stack (Q-TEC-001 to Q-TEC-015)
+
+**Q-TEC-001**: What is the current tech stack version?
+- **Priority:** Critical
+- **Expected Answer Type:** Version numbers
+
+**Q-TEC-002**: Are there any deprecated dependencies we need to work around?
+- **Priority:** Medium
+- **Expected Answer Type:** List or "None"
+```
+
+**Example: Integration Inventory**
+```markdown
+---
+status: pre_call_ready
+last_updated: 2025-01-15T10:30:00Z
+prepared_by: developer-id
+---
+
+# Integration & Dependency Inventory
+
+| System | Purpose | Owner | Data Availability | Risk | Next Action | Question ID |
+|--------|---------|-------|-------------------|------|-------------|-------------|
+| Stripe API | Payment processing | @ASK_CLIENT | @ASK_CLIENT | High - API version unknown | Confirm API version and access | Q-INT-001 |
+| PostgreSQL DB | User data storage | Developer | Available | Low - Known stack | No action needed | - |
+| Email Service | Notification delivery | @ASK_CLIENT | @ASK_CLIENT | Medium - Provider unknown | Identify provider and access | Q-INT-002 |
+```
+
+**Example: Discovery Recap with Approval**
+```markdown
+---
+status: awaiting_client
+last_updated: 2025-01-15T14:30:00Z
+prepared_by: developer-id
+sent_date: 2025-01-15T14:30:00Z
+---
+
+# Discovery Call Recap
+
+## Summary of Decisions
+[Summary of confirmed decisions from call]
+
+## Confirmed Scope
+[Detailed scope breakdown]
+
+## Open Items
+| Item | Owner | Due Date | Status |
+|------|-------|----------|--------|
+| API documentation access | Client | 2025-01-17 | follow-up |
+| Compliance checklist | Client | 2025-01-20 | follow-up |
+
+## Next Steps
+1. [Action item]
+2. [Action item]
+
+---
+
+## Approval
+
+- [ ] Client Approval: _________________ Date: ___________
+- [ ] Developer Confirmation: _________________ Date: ___________
+```
+
+### ❌ Anti-Patterns to Avoid
+
+**Anti-Pattern 1: Missing Source Citations in Discovery Brief**
+```markdown
+<!-- ❌ WRONG - No source references -->
+# Discovery Brief
+
+## Business Goals
+The client wants to integrate payment processing.
+
+## Target Users
+End users of the platform.
+
+<!-- ✅ CORRECT - Every section cites source -->
+# Discovery Brief
+
+## Business Goals
+The client wants to integrate payment processing with their existing API.
+**Source:** Job post lines 12-15, Proposal section 4.1
+
+## Target Users
+End users of the e-commerce platform who need secure checkout.
+**Source:** Job post lines 20-22, Proposal section 4.2
+```
+**Why:** Source citations enable traceability and validation. Without them, assumptions cannot be verified or updated when new information arrives.
+
+**Anti-Pattern 2: Unlinked Assumptions**
+```markdown
+<!-- ❌ WRONG - Assumptions not linked to questions -->
+## Assumptions Requiring Confirmation
+
+| Assumption | Status | Follow-up Action |
+|------------|--------|------------------|
+| Client has API documentation ready | ASK CLIENT | Confirm documentation availability |
+| Integration requires admin access | ASK CLIENT | Verify access level requirements |
+
+<!-- ✅ CORRECT - Assumptions linked to question IDs -->
+## Assumptions Requiring Confirmation
+
+| Assumption | Source | Status | Follow-up Action | Question ID |
+|------------|--------|--------|------------------|-------------|
+| Client has API documentation ready | Proposal line 45 | ASK CLIENT | Confirm documentation availability | Q-BUS-001 |
+| Integration requires admin access | Proposal line 60 | ASK CLIENT | Verify access level requirements | Q-INT-002 |
+```
+**Why:** Linking assumptions to question IDs ensures no item is forgotten during the discovery call and enables systematic follow-up tracking.
+
+**Anti-Pattern 3: Incomplete Integration Inventory**
+```markdown
+<!-- ❌ WRONG - Missing required columns -->
+# Integration Inventory
+
+| System | Purpose |
+|--------|---------|
+| Stripe API | Payment processing |
+| PostgreSQL DB | User data storage |
+
+<!-- ✅ CORRECT - All required columns present -->
+# Integration Inventory
+
+| System | Purpose | Owner | Data Availability | Risk | Next Action | Question ID |
+|--------|---------|-------|-------------------|------|-------------|-------------|
+| Stripe API | Payment processing | @ASK_CLIENT | @ASK_CLIENT | High - API version unknown | Confirm API version and access | Q-INT-001 |
+| PostgreSQL DB | User data storage | Developer | Available | Low - Known stack | No action needed | - |
+```
+**Why:** Missing columns (Owner, Data Availability, Risk, Next Action, Question ID) prevent systematic tracking of integration dependencies and risk assessment. The inventory becomes useless for project planning.
+
+**Anti-Pattern 4: Skipping Post-Call Artifact Updates**
+```bash
+# ❌ WRONG - Pre-call artifacts exist but post-call artifacts not updated
+.artifacts/protocol-02/
+  ├── discovery-brief.md ✅
+  ├── assumptions-gaps.md ✅
+  ├── question-bank.md ✅
+  ├── integration-inventory.md ✅ (pre-call version)
+  ├── call-agenda.md ✅
+  └── ready-for-call-summary.md ✅
+  # Missing: client-discovery-form.md, scope-clarification.md, timeline-discussion.md, communication-plan.md, discovery-recap.md
+
+# ✅ CORRECT - All artifacts updated post-call
+.artifacts/protocol-02/
+  ├── discovery-brief.md ✅
+  ├── assumptions-gaps.md ✅ (updated with confirmed items)
+  ├── question-bank.md ✅
+  ├── integration-inventory.md ✅ (updated with confirmed owners/access)
+  ├── call-agenda.md ✅
+  ├── ready-for-call-summary.md ✅
+  ├── client-discovery-form.md ✅ (post-call)
+  ├── scope-clarification.md ✅ (post-call)
+  ├── timeline-discussion.md ✅ (post-call)
+  ├── communication-plan.md ✅ (post-call)
+  ├── discovery-recap.md ✅ (post-call)
+  └── discovery-approval-log.json ✅
+```
+**Why:** Post-call artifacts are mandatory prerequisites for Protocol 03. Skipping updates breaks the workflow handoff and prevents Protocol 03 from executing with incomplete information.
+
+**Anti-Pattern 5: Proceeding Without Approval**
+```bash
+# ❌ WRONG - Recap sent but approval not logged
+# discovery-recap.md status: "awaiting_client"
+# discovery-approval-log.json: missing or empty
+# Gate 3 cannot pass
+
+# ✅ CORRECT - Approval properly tracked
+# discovery-recap.md status: "approved"
+# discovery-approval-log.json:
+{
+  "recap_sent_date": "2025-01-15T14:30:00Z",
+  "approval_date": "2025-01-16T09:15:00Z",
+  "approval_method": "email_confirmation",
+  "approved_by": "client-name",
+  "status": "approved"
+}
+```
+**Why:** Protocol 03 requires approved discovery recap as a mandatory prerequisite. Proceeding without approval breaks workflow validation and risks starting Protocol 03 with unconfirmed assumptions.
+
+**Anti-Pattern 6: Unresolved @ASK_CLIENT Tags**
+```markdown
+<!-- ❌ WRONG - Tags left unresolved without follow-up -->
+| System | Owner | Next Action |
+|--------|-------|-------------|
+| Stripe API | @ASK_CLIENT | - |
+| Email Service | @ASK_CLIENT | - |
+
+<!-- ✅ CORRECT - Tags resolved or reassigned with follow-up -->
+| System | Owner | Next Action |
+|--------|-------|-------------|
+| Stripe API | client-tech-lead@example.com | Follow-up scheduled 2025-01-17 | Q-INT-001 |
+| Email Service | @ASK_CLIENT | Requires follow-up call - Owner: Developer, Due: 2025-01-20 | Q-INT-002 |
+```
+**Why:** Unresolved `@ASK_CLIENT` tags indicate incomplete discovery. They must be resolved (confirmed) or reassigned with follow-up owners and due dates to ensure nothing is forgotten and Protocol 03 prerequisites are met.
+
+**Anti-Pattern 7: Missing Evidence Manifest**
+```bash
+# ❌ WRONG - Artifacts exist but manifest not generated
+.artifacts/protocol-02/
+  ├── discovery-brief.md ✅
+  ├── assumptions-gaps.md ✅
+  # ... other artifacts ...
+  # Missing: evidence-manifest.json
+
+# ✅ CORRECT - Evidence manifest generated and validated
+python scripts/aggregate_evidence_02.py \
+  --output .artifacts/protocol-02 \
+  --protocol-id 02
+# Generates: evidence-manifest.json with SHA-256 hashes and validator outcomes
+```
+**Why:** Evidence manifest provides traceability, integrity verification (SHA-256 hashes), and gate validation results. Without it, Protocol 02 completion cannot be verified and handoff to Protocol 03 is blocked.

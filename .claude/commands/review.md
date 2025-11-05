@@ -21,7 +21,7 @@ allow_tools:
 `.cursor/ai-driven-workflow/review-protocols/review.md`
 
 **Alternative Execution**: Direct mode selection via quality audit:
-`.cursor/ai-driven-workflow/4-quality-audit.md --mode [MODE]`
+`.cursor/ai-driven-workflow/12-quality-audit.md --mode [MODE]`
 
 The system will automatically:
 1. **Present** interactive protocol selection interface
@@ -43,7 +43,7 @@ The system will automatically:
 ☐ **Pre-Production Security** - Complete validation  
 
 **Based on user selection, execute the corresponding mode via:**
-`.cursor/ai-driven-workflow/4-quality-audit.md --mode [MODE]`
+`.cursor/ai-driven-workflow/12-quality-audit.md --mode [MODE]`
 
 ## 🤖 Execution Mapping
 

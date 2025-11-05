@@ -68,7 +68,7 @@ Do not modify tasks outside the authorized task file or skip quality gates; prog
    - **Acceptance Link:** Task file approval from Protocol 08
    
    * **Halt condition:** Await confirmation if task ambiguity detected.
-   * **Evidence:** `.artifacts/protocol-21/execution-session-log.md`
+   * **Evidence:** `.artifacts/protocol-10/execution-session-log.md`
    * **Validation:** Task clearly identified and logged
 
 2. **`[MUST]` Confirm Recommended Model & Environment:**
@@ -84,12 +84,12 @@ Do not modify tasks outside the authorized task file or skip quality gates; prog
    - **Acceptance Link:** Human confirmation required
    
    * **Halt condition:** Do not start execution until confirmation received.
-   * **Evidence:** `.artifacts/protocol-21/preflight-checklist.json`
+   * **Evidence:** `.artifacts/protocol-10/preflight-checklist.json`
    * **Validation:** Explicit "Go" confirmation documented
 
 3. **`[GUIDELINE]` Note Quality Gate Plan:**
    * **Action:** Outline planned quality checks (tests, linting, audits) in `execution-session-log.md`.
-   * **Evidence:** Updated `.artifacts/protocol-21/execution-session-log.md`
+   * **Evidence:** Updated `.artifacts/protocol-10/execution-session-log.md`
    * **Validation:** Quality plan documented
 
 ### STEP 2: Subtask Execution Loop
@@ -110,7 +110,7 @@ Do not modify tasks outside the authorized task file or skip quality gates; prog
    * **1.3. Announce Context Loading:**
        * **Communication:** 
          > "[RAY CONTEXT LOADED] Subtask {ID} applying rules: {rule list}."
-       * **Evidence:** `.artifacts/protocol-21/context-history.log`
+       * **Evidence:** `.artifacts/protocol-10/context-history.log`
        * **Validation:** Context announcement made
 
 2. **`[MUST]` Execute Subtask:**
@@ -126,7 +126,7 @@ Do not modify tasks outside the authorized task file or skip quality gates; prog
    
    * **2.3. Evidence Capture:**
        * **Action:** Store implementation evidence
-       * **Evidence:** `.artifacts/protocol-21/subtask-evidence/{ID}/`
+       * **Evidence:** `.artifacts/protocol-10/subtask-evidence/{ID}/`
        * **Validation:** Evidence complete and organized
 
 3. **`[MUST]` Update Task File & Commit Strategy:**
@@ -142,7 +142,7 @@ Do not modify tasks outside the authorized task file or skip quality gates; prog
    
    * **3.3. Log Actions:**
        * **Action:** Document all actions taken
-       * **Evidence:** `.artifacts/protocol-21/task-file-diff.patch`
+       * **Evidence:** `.artifacts/protocol-10/task-file-diff.patch`
        * **Validation:** Actions traceable
 
 4. **`[GUIDELINE]` Capture Quick Validation:**
@@ -175,18 +175,18 @@ Do not modify tasks outside the authorized task file or skip quality gates; prog
    
    * **1.3. Resolve Critical Findings:**
        * **Action:** Address all CRITICAL and HIGH severity issues
-       * **Evidence:** `.artifacts/protocol-21/quality-reports/{parentID}.json`
+       * **Evidence:** `.artifacts/protocol-10/quality-reports/{parentID}.json`
        * **Validation:** No unresolved critical issues
 
 2. **`[MUST]` Sync Task State:**
    * **2.1. Run State Update Script:**
-       * **Action:** Execute `python scripts/update_task_state.py --task-file .cursor/tasks/tasks-{feature}.md --task-id {parentID} --status complete --output .artifacts/protocol-21/task-state.json`
+       * **Action:** Execute `python scripts/update_task_state.py --task-file .cursor/tasks/tasks-{feature}.md --task-id {parentID} --status complete --output .artifacts/protocol-10/task-state.json`
        * **Evidence:** Script execution log
        * **Validation:** State updated successfully
    
    * **2.2. Update Task Tracker:**
        * **Action:** Synchronize with external task tracking system
-       * **Evidence:** `.artifacts/protocol-21/task-state.json`
+       * **Evidence:** `.artifacts/protocol-10/task-state.json`
        * **Validation:** Tracker reflects completion
 
 3. **`[MUST]` Document Retrospective Snapshot:**
@@ -202,7 +202,7 @@ Do not modify tasks outside the authorized task file or skip quality gates; prog
    
    * **3.3. Record Commit Decisions:**
        * **Action:** Document commit strategy choices
-       * **Evidence:** `.artifacts/protocol-21/parent-task-retrospective.md`
+       * **Evidence:** `.artifacts/protocol-10/parent-task-retrospective.md`
        * **Validation:** Decisions justified
 
 4. **`[GUIDELINE]` Recommend Commit Strategy:**
@@ -222,12 +222,12 @@ Do not modify tasks outside the authorized task file or skip quality gates; prog
 
 1. **`[MUST]` Record Session Summary:**
    * **Action:** Update `execution-session-log.md` with completed subtasks, quality gate status, CI outcomes, and approvals.
-   * **Evidence:** `.artifacts/protocol-21/execution-session-log.md`
+   * **Evidence:** `.artifacts/protocol-10/execution-session-log.md`
    * **Validation:** Summary comprehensive and accurate
 
 2. **`[MUST]` Archive Evidence:**
-   * **Action:** Ensure subtask artifacts, quality reports, and task diffs stored in `.artifacts/protocol-21/` with manifest `execution-artifact-manifest.json`.
-   * **Evidence:** `.artifacts/protocol-21/execution-artifact-manifest.json`
+   * **Action:** Ensure subtask artifacts, quality reports, and task diffs stored in `.artifacts/protocol-10/` with manifest `execution-artifact-manifest.json`.
+   * **Evidence:** `.artifacts/protocol-10/execution-artifact-manifest.json`
    * **Validation:** All artifacts archived and indexed
 
 3. **`[GUIDELINE]` Prepare Next Session Brief:**
@@ -368,7 +368,7 @@ Maintain lessons learned with structure:
 - **Protocol 15:** `execution-artifact-manifest.json`, `task-state.json` - Evidence for integration testing.
 
 ### 5.3 Artifact Storage Locations:
-- **Primary Evidence:** `.artifacts/protocol-21/` - Primary evidence storage
+- **Primary Evidence:** `.artifacts/protocol-10/` - Primary evidence storage
 - **Task Repository:** `.cursor/tasks/` - Task status source of truth
 
 ---
@@ -382,7 +382,7 @@ Maintain lessons learned with structure:
 - **Evidence:** `preflight-checklist.json`, `execution-session-log.md`
 - **Pass Threshold:** Confirmation from human reviewer and environment diagnostics success.
 - **Failure Handling:** Resolve configuration issues, re-run diagnostics, reconfirm model.
-- **Automation:** `python scripts/validate_preflight.py --input .artifacts/protocol-21/preflight-checklist.json`
+- **Automation:** `python scripts/validate_preflight.py --input .artifacts/protocol-10/preflight-checklist.json`
 
 ### Gate 2: Subtask Compliance Gate
 - **`[STRICT]` Criteria:** Each subtask marked complete with rule references, evidence stored, quick validations run.
@@ -396,14 +396,14 @@ Maintain lessons learned with structure:
 - **Evidence:** `quality-reports/{parentID}.json`, CI logs referenced in session log.
 - **Pass Threshold:** Audit status = PASS, CI workflows success or waivers approved.
 - **Failure Handling:** Address audit findings, rerun quality gate, document waivers.
-- **Automation:** `python scripts/validate_quality_gate.py --report .artifacts/protocol-21/quality-reports/{parentID}.json`
+- **Automation:** `python scripts/validate_quality_gate.py --report .artifacts/protocol-10/quality-reports/{parentID}.json`
 
 ### Gate 4: Session Closure Gate
 - **`[STRICT]` Criteria:** Task state synchronized, evidence manifest updated, next session brief prepared.
 - **Evidence:** `task-state.json`, `execution-artifact-manifest.json`, `execution-session-log.md`
 - **Pass Threshold:** All outputs generated and stored.
 - **Failure Handling:** Regenerate missing artifacts, rerun synchronization script.
-- **Automation:** `python scripts/validate_session_closeout.py --manifest .artifacts/protocol-21/execution-artifact-manifest.json`
+- **Automation:** `python scripts/validate_session_closeout.py --manifest .artifacts/protocol-10/execution-artifact-manifest.json`
 
 ---
 
@@ -418,7 +418,7 @@ Maintain lessons learned with structure:
 [MASTER RAY™ | PHASE 2 START] - "Executing subtasks with governance rules loaded."
 [RAY QUALITY GATE] - "Running comprehensive audit and CI checks for parent task {ID}."
 [MASTER RAY™ | PHASE 4 START] - "Archiving evidence and summarizing session outcomes."
-[MASTER RAY™ | PHASE COMPLETE] - "Execution session closed; evidence archived in .artifacts/protocol-21/."
+[MASTER RAY™ | PHASE COMPLETE] - "Execution session closed; evidence archived in .artifacts/protocol-10/."
 [RAY ERROR] - "Execution halted due to [issue]; awaiting instructions."
 ```
 
@@ -465,36 +465,36 @@ Maintain lessons learned with structure:
 2. **`[MUST]` Quality Gate Automation:**
    * **Action:** Execute quality gate validation scripts
    * **Commands:**
-     - `python scripts/validate_preflight.py --input .artifacts/protocol-21/preflight-checklist.json`
+     - `python scripts/validate_preflight.py --input .artifacts/protocol-10/preflight-checklist.json`
      - `python scripts/validate_subtask_compliance.py --task-file .cursor/tasks/tasks-{feature}.md`
-     - `python scripts/validate_quality_gate.py --report .artifacts/protocol-21/quality-reports/{parentID}.json`
-     - `python scripts/validate_session_closeout.py --manifest .artifacts/protocol-21/execution-artifact-manifest.json`
+     - `python scripts/validate_quality_gate.py --report .artifacts/protocol-10/quality-reports/{parentID}.json`
+     - `python scripts/validate_session_closeout.py --manifest .artifacts/protocol-10/execution-artifact-manifest.json`
    * **Evidence:** Validation reports
    * **Validation:** All gates pass or have waivers
 
 3. **`[MUST]` Evidence Aggregation:**
    * **Action:** Aggregate all protocol evidence
-   * **Command:** `python scripts/aggregate_evidence_3.py --output .artifacts/protocol-21/`
+   * **Command:** `python scripts/aggregate_evidence_3.py --output .artifacts/protocol-10/`
    * **Evidence:** Aggregated evidence report
    * **Validation:** All evidence artifacts present
 
 ### 8.2 CI/CD Integration:
 ```yaml
-name: Protocol 21 Validation
+name: Protocol 10 Validation
 on: [push, pull_request]
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Protocol 21 Gates
+      - name: Run Protocol 10 Gates
         run: python scripts/run_protocol_3_gates.py
 ```
 
 ### 8.3 Manual Fallbacks:
 When automation is unavailable, execute manual validation:
 1. Log manual preflight checks in `manual-preflight.md`.
-2. Perform peer review of subtask evidence; document in `.artifacts/protocol-21/manual-review-notes.md`.
-3. Store manual quality gate approvals in `.artifacts/protocol-21/manual-validation-log.md`.
+2. Perform peer review of subtask evidence; document in `.artifacts/protocol-10/manual-review-notes.md`.
+3. Store manual quality gate approvals in `.artifacts/protocol-10/manual-validation-log.md`.
 
 ---
 
@@ -611,11 +611,11 @@ Protocol adapts based on project context (complexity, domain, constraints). Qual
 
 | Artifact | Location | Purpose | Consumer |
 |----------|----------|---------|----------|
-| `execution-session-log.md` | `.artifacts/protocol-21/` | Session activity log | Protocol 19 |
-| `context-history.log` | `.artifacts/protocol-21/` | Rule/context traceability | Protocol 19 |
-| `quality-reports/{parentID}.json` | `.artifacts/protocol-21/` | Quality gate results | Protocol 15 |
-| `task-state.json` | `.artifacts/protocol-21/` | Task tracker synchronization | Protocol 15 |
-| `execution-artifact-manifest.json` | `.artifacts/protocol-21/` | Evidence catalog | Protocol 15 |
+| `execution-session-log.md` | `.artifacts/protocol-10/` | Session activity log | Protocol 19 |
+| `context-history.log` | `.artifacts/protocol-10/` | Rule/context traceability | Protocol 19 |
+| `quality-reports/{parentID}.json` | `.artifacts/protocol-10/` | Quality gate results | Protocol 15 |
+| `task-state.json` | `.artifacts/protocol-10/` | Task tracker synchronization | Protocol 15 |
+| `execution-artifact-manifest.json` | `.artifacts/protocol-10/` | Evidence catalog | Protocol 15 |
 
 ### 10.3 Traceability Matrix
 
