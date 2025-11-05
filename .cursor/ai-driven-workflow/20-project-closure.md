@@ -278,21 +278,21 @@ Maintain lessons learned with structure:
 - **Evidence**: `.artifacts/protocol-20/deliverable-audit-log.csv`, `PROJECT-DELIVERABLE-REGISTER.xlsx` references.
 - **Pass Threshold**: All deliverables status = `Accepted`.
 - **Failure Handling**: Escalate incomplete deliverables, assign remediation plan, re-run gate.
-- **Automation**: `python scripts/validate_gate_17_deliverables.py --audit .artifacts/protocol-20/deliverable-audit-log.csv`
+- **Automation**: `python scripts/validate_gate_20_deliverables.py --audit .artifacts/protocol-20/deliverable-audit-log.csv`
 
 ### Gate 2: Operational Handover Readiness
 - **Criteria**: Ownership assignments, SLAs, escalation paths confirmed and acknowledged by support leadership.
 - **Evidence**: `.artifacts/protocol-20/operational-handover-record.json`, signed approvals.
 - **Pass Threshold**: 100% services assigned with SLA + escalation contact.
 - **Failure Handling**: Reopen handover meeting, secure missing approvals, rerun validation.
-- **Automation**: `python scripts/validate_gate_17_handover.py --record .artifacts/protocol-20/operational-handover-record.json`
+- **Automation**: `python scripts/validate_gate_20_handover.py --record .artifacts/protocol-20/operational-handover-record.json`
 
 ### Gate 3: Governance Closure Integrity
 - **Criteria**: Portfolio tools updated, tasks closed, archives confirmed.
 - **Evidence**: `.artifacts/protocol-20/governance-closure-report.json`, task tracker export.
 - **Pass Threshold**: All governance items show `Closed` status.
 - **Failure Handling**: Resolve remaining tasks, update records, rerun gate.
-- **Automation**: `python scripts/validate_gate_17_governance.py --report .artifacts/protocol-20/governance-closure-report.json`
+- **Automation**: `python scripts/validate_gate_20_governance.py --report .artifacts/protocol-20/governance-closure-report.json`
 
 ---
 
@@ -343,15 +343,15 @@ Maintain lessons learned with structure:
 ### Validation Scripts:
 ```bash
 # Prerequisite validation
-python scripts/validate_prerequisites_17.py
+python scripts/validate_prerequisites_20.py
 
 # Quality gate automation
-python scripts/validate_gate_17_deliverables.py --audit .artifacts/protocol-20/deliverable-audit-log.csv
-python scripts/validate_gate_17_handover.py --record .artifacts/protocol-20/operational-handover-record.json
-python scripts/validate_gate_17_governance.py --report .artifacts/protocol-20/governance-closure-report.json
+python scripts/validate_gate_20_deliverables.py --audit .artifacts/protocol-20/deliverable-audit-log.csv
+python scripts/validate_gate_20_handover.py --record .artifacts/protocol-20/operational-handover-record.json
+python scripts/validate_gate_20_governance.py --report .artifacts/protocol-20/governance-closure-report.json
 
 # Evidence aggregation
-python scripts/aggregate_evidence_17.py --output .artifacts/protocol-20/
+python scripts/aggregate_evidence_20.py --output .artifacts/protocol-20/
 ```
 
 ### CI/CD Integration:

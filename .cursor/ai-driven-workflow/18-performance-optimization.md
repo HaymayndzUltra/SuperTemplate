@@ -305,28 +305,28 @@ Maintain lessons learned with structure:
 - **Evidence**: `performance-intake-report.json`, `baseline-metrics.csv`, `hypothesis-log.md`.
 - **Pass Threshold**: Baseline completeness ≥ 95%.
 - **Failure Handling**: Fill telemetry gaps; rerun baseline capture before proceeding.
-- **Automation**: `python scripts/validate_gate_14_baseline.py --threshold 0.95`
+- **Automation**: `python scripts/validate_gate_18_baseline.py --threshold 0.95`
 
 ### 6.2 Gate 2: Diagnostic Coverage Gate
 - **Criteria**: Profiling executed for prioritized services; load tests cover peak scenarios; capacity analysis documented.
 - **Evidence**: `profiling-report.md`, `load-test-results.json`, `capacity-analysis.md`.
 - **Pass Threshold**: Diagnostic coverage score ≥ 90%.
 - **Failure Handling**: Extend diagnostics or add scenarios; rerun validation.
-- **Automation**: `python scripts/validate_gate_14_diagnostics.py --coverage 0.90`
+- **Automation**: `python scripts/validate_gate_18_diagnostics.py --coverage 0.90`
 
 ### 6.3 Gate 3: Optimization Validation Gate
 - **Criteria**: Optimization plan approved; validation report shows measurable improvement with no regressions.
 - **Evidence**: `optimization-plan.json`, `optimization-validation-report.json`, `instrumentation-update-log.md`.
 - **Pass Threshold**: Improvement ≥ 15% on targeted metric or documented justification; regression count = 0.
 - **Failure Handling**: Rework optimizations; rollback changes; rerun validation tests.
-- **Automation**: `python scripts/validate_gate_14_optimization.py --improvement-threshold 0.15`
+- **Automation**: `python scripts/validate_gate_18_optimization.py --improvement-threshold 0.15`
 
 ### 6.4 Gate 4: Governance & Communication Gate
 - **Criteria**: SLO updates recorded; performance report published; improvement notes shared.
 - **Evidence**: `slo-update-record.json`, `PERFORMANCE-REPORT.md`, `continuous-improvement-notes.md`.
 - **Pass Threshold**: Documentation completeness ≥ 95%; approvals captured.
 - **Failure Handling**: Obtain missing approvals; finalize report; redistribute communications.
-- **Automation**: `python scripts/validate_gate_14_governance.py --threshold 0.95`
+- **Automation**: `python scripts/validate_gate_18_governance.py --threshold 0.95`
 
 ---
 
@@ -376,14 +376,14 @@ Maintain lessons learned with structure:
 ### 8.1 Validation Scripts:
 ```bash
 # Prerequisite validation
-python scripts/validate_prerequisites_14.py
+python scripts/validate_prerequisites_18.py
 
 # Quality gate automation
-python scripts/validate_gate_14_baseline.py --threshold 0.95
-python scripts/validate_gate_14_optimization.py --improvement-threshold 0.15
+python scripts/validate_gate_18_baseline.py --threshold 0.95
+python scripts/validate_gate_18_optimization.py --improvement-threshold 0.15
 
 # Evidence aggregation
-python scripts/aggregate_evidence_14.py --output .artifacts/performance/
+python scripts/aggregate_evidence_18.py --output .artifacts/performance/
 ```
 
 ### 8.2 CI/CD Integration:

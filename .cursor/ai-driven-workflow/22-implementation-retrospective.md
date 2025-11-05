@@ -277,21 +277,21 @@ Maintain lessons learned with structure:
 - **Evidence**: `.artifacts/protocol-22/session-notes.md`, `.artifacts/protocol-22/theme-matrix.csv`.
 - **Pass Threshold**: Attendance ≥90%, evidence references per theme ≥1.
 - **Failure Handling**: Schedule follow-up session, collect missing input, rerun gate.
-- **Automation**: `python scripts/validate_gate_5_participation.py --notes .artifacts/protocol-22/session-notes.md`
+- **Automation**: `python scripts/validate_gate_22_participation.py --notes .artifacts/protocol-22/session-notes.md`
 
 ### Gate 2: Action Plan Readiness
 - **Criteria**: All critical actions documented with owner, due date, protocol linkage.
 - **Evidence**: `.artifacts/protocol-22/action-register.csv`.
 - **Pass Threshold**: 100% critical actions have owner, due date, follow-up protocol.
 - **Failure Handling**: Assign missing owners, set dates, rerun validation script.
-- **Automation**: `python scripts/validate_gate_5_action_plan.py --register .artifacts/protocol-22/action-register.csv`
+- **Automation**: `python scripts/validate_gate_22_action_plan.py --register .artifacts/protocol-22/action-register.csv`
 
 ### Gate 3: Continuous Improvement Integration
 - **Criteria**: Improvement items routed to downstream protocols/backlogs with confirmation.
 - **Evidence**: `.artifacts/protocol-22/integration-confirmation-log.json` capturing acknowledgements.
 - **Pass Threshold**: 100% actions flagged `High Impact` acknowledged by receiving team.
 - **Failure Handling**: Follow up with owners, document plan, rerun gate.
-- **Automation**: `python scripts/validate_gate_5_integration.py --log .artifacts/protocol-22/integration-confirmation-log.json`
+- **Automation**: `python scripts/validate_gate_22_integration.py --log .artifacts/protocol-22/integration-confirmation-log.json`
 
 ---
 
@@ -342,15 +342,15 @@ Maintain lessons learned with structure:
 ### Validation Scripts:
 ```bash
 # Prerequisite validation
-python scripts/validate_prerequisites_5.py
+python scripts/validate_prerequisites_22.py
 
 # Quality gate automation
-python scripts/validate_gate_5_participation.py --notes .artifacts/protocol-22/session-notes.md
-python scripts/validate_gate_5_action_plan.py --register .artifacts/protocol-22/action-register.csv
-python scripts/validate_gate_5_integration.py --log .artifacts/protocol-22/integration-confirmation-log.json
+python scripts/validate_gate_22_participation.py --notes .artifacts/protocol-22/session-notes.md
+python scripts/validate_gate_22_action_plan.py --register .artifacts/protocol-22/action-register.csv
+python scripts/validate_gate_22_integration.py --log .artifacts/protocol-22/integration-confirmation-log.json
 
 # Evidence aggregation
-python scripts/aggregate_evidence_5.py --output .artifacts/protocol-22/
+python scripts/aggregate_evidence_22.py --output .artifacts/protocol-22/
 ```
 
 ### CI/CD Integration:

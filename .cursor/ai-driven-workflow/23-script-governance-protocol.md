@@ -312,28 +312,28 @@ Maintain lessons learned with structure:
 - **Evidence**: `script-index.json`, `inventory-validation-report.json`.
 - **Pass Threshold**: Completeness ≥ 0.95.
 - **Failure Handling**: Re-run discovery; resolve permissions; document exceptions.
-- **Automation**: `python scripts/validate_gate_8_inventory.py --threshold 0.95`
+- **Automation**: `python scripts/validate_gate_23_inventory.py --threshold 0.95`
 
 ### Gate 2: Documentation & Static Compliance Gate
 - **Criteria**: Documentation coverage ≥ 95%; no blocker severity findings from static analysis.
 - **Evidence**: `documentation-audit.csv`, `static-analysis-report.json`.
 - **Pass Threshold**: Documentation coverage ≥ 0.95; blocker count = 0.
 - **Failure Handling**: Notify script owners; remediate documentation or code issues before proceeding.
-- **Automation**: `python scripts/validate_gate_8_static.py --report .artifacts/scripts/static-analysis-report.json`
+- **Automation**: `python scripts/validate_gate_23_static.py --report .artifacts/scripts/static-analysis-report.json`
 
 ### Gate 3: Artifact Governance Gate
 - **Criteria**: Artifact output paths verified; schema validation success ≥ 98%.
 - **Evidence**: `artifact-compliance-report.json`, schema validation logs.
 - **Pass Threshold**: Compliance score ≥ 0.98.
 - **Failure Handling**: Flag non-compliant scripts; update schemas or script instructions; rerun validation.
-- **Automation**: `python scripts/validate_gate_8_artifacts.py --threshold 0.98`
+- **Automation**: `python scripts/validate_gate_23_artifacts.py --threshold 0.98`
 
 ### Gate 4: Governance Reporting Gate
 - **Criteria**: Scorecard generated; remediation backlog created; insights shared with Protocol 19.
 - **Evidence**: `script-compliance.json`, `remediation-backlog.csv`, governance summary note.
 - **Pass Threshold**: Scorecard validation = true; backlog coverage 100% of non-compliant scripts.
 - **Failure Handling**: Rebuild scorecard; ensure backlog entries mapped to owners; resend summary.
-- **Automation**: `python scripts/validate_gate_8_reporting.py`
+- **Automation**: `python scripts/validate_gate_23_reporting.py`
 
 ---
 
@@ -385,14 +385,14 @@ Maintain lessons learned with structure:
 ### Validation Scripts:
 ```bash
 # Prerequisite validation
-python scripts/validate_prerequisites_8.py
+python scripts/validate_prerequisites_23.py
 
 # Quality gate automation
-python scripts/validate_gate_8_inventory.py --threshold 0.95
-python scripts/validate_gate_8_artifacts.py --threshold 0.98
+python scripts/validate_gate_23_inventory.py --threshold 0.95
+python scripts/validate_gate_23_artifacts.py --threshold 0.98
 
 # Evidence aggregation
-python scripts/aggregate_evidence_8.py --output .artifacts/scripts/
+python scripts/aggregate_evidence_23.py --output .artifacts/scripts/
 ```
 
 ### CI/CD Integration:

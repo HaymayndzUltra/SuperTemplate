@@ -283,21 +283,21 @@ Maintain lessons learned with structure:
 - **Evidence**: `.artifacts/protocol-21/maintenance-backlog.csv`.
 - **Pass Threshold**: All items with severity `High/Critical` include owner and due date.
 - **Failure Handling**: Escalate missing assignments, update backlog, rerun gate.
-- **Automation**: `python scripts/validate_gate_18_backlog.py --input .artifacts/protocol-21/maintenance-backlog.csv`
+- **Automation**: `python scripts/validate_gate_21_backlog.py --input .artifacts/protocol-21/maintenance-backlog.csv`
 
 ### Gate 2: Stakeholder Approval Confirmation
 - **Criteria**: Operations, Support, Product, and Security leads approve the maintenance plan.
 - **Evidence**: `.artifacts/protocol-21/approval-log.csv`.
 - **Pass Threshold**: All required stakeholders status = `Approved`.
 - **Failure Handling**: Address feedback, revise plan, reacquire approvals.
-- **Automation**: `python scripts/validate_gate_18_approvals.py --log .artifacts/protocol-21/approval-log.csv`
+- **Automation**: `python scripts/validate_gate_21_approvals.py --log .artifacts/protocol-21/approval-log.csv`
 
 ### Gate 3: Governance Cadence Activation
 - **Criteria**: Reporting cadence scheduled, dashboards configured, monitoring alerts active.
 - **Evidence**: `.artifacts/protocol-21/governance-cadence-checklist.json`.
 - **Pass Threshold**: Checklist fields marked `Complete`.
 - **Failure Handling**: Configure missing dashboards or schedules, rerun validation.
-- **Automation**: `python scripts/validate_gate_18_governance.py --checklist .artifacts/protocol-21/governance-cadence-checklist.json`
+- **Automation**: `python scripts/validate_gate_21_governance.py --checklist .artifacts/protocol-21/governance-cadence-checklist.json`
 
 ---
 
@@ -348,15 +348,15 @@ Maintain lessons learned with structure:
 ### Validation Scripts:
 ```bash
 # Prerequisite validation
-python scripts/validate_prerequisites_18.py
+python scripts/validate_prerequisites_21.py
 
 # Quality gate automation
-python scripts/validate_gate_18_backlog.py --input .artifacts/protocol-21/maintenance-backlog.csv
-python scripts/validate_gate_18_approvals.py --log .artifacts/protocol-21/approval-log.csv
-python scripts/validate_gate_18_governance.py --checklist .artifacts/protocol-21/governance-cadence-checklist.json
+python scripts/validate_gate_21_backlog.py --input .artifacts/protocol-21/maintenance-backlog.csv
+python scripts/validate_gate_21_approvals.py --log .artifacts/protocol-21/approval-log.csv
+python scripts/validate_gate_21_governance.py --checklist .artifacts/protocol-21/governance-cadence-checklist.json
 
 # Evidence aggregation
-python scripts/aggregate_evidence_18.py --output .artifacts/protocol-21/
+python scripts/aggregate_evidence_21.py --output .artifacts/protocol-21/
 ```
 
 ### CI/CD Integration:

@@ -320,21 +320,21 @@ Maintain lessons learned with structure:
 - **Evidence**: `.artifacts/protocol-19/review-tracker.csv`, `.artifacts/protocol-19/draft-index.json`.
 - **Pass Threshold**: All persona deliverables marked `Approved`.
 - **Failure Handling**: Reassign outstanding reviewers, address feedback, rerun gate.
-- **Automation**: `python scripts/validate_gate_16_completeness.py --tracker .artifacts/protocol-19/review-tracker.csv`
+- **Automation**: `python scripts/validate_gate_19_completeness.py --tracker .artifacts/protocol-19/review-tracker.csv`
 
 ### 6.2 Gate 2: Knowledge Transfer Readiness
 - **Criteria**: Enablement sessions delivered with ≥90% target attendance and zero critical unanswered questions.
 - **Evidence**: `.artifacts/protocol-19/enablement-summary.md`, `.artifacts/protocol-19/knowledge-gap-log.json`.
 - **Pass Threshold**: Attendance ≥90%, unresolved critical questions = 0.
 - **Failure Handling**: Schedule remediation sessions, update documentation, revalidate.
-- **Automation**: `python scripts/validate_gate_16_enablement.py --summary .artifacts/protocol-19/enablement-summary.md`
+- **Automation**: `python scripts/validate_gate_19_enablement.py --summary .artifacts/protocol-19/enablement-summary.md`
 
 ### 6.3 Gate 3: Publication Integrity
 - **Criteria**: All published documents accessible, linked, and version-tagged.
 - **Evidence**: `.artifacts/protocol-19/publication-manifest.json`, automated access check logs.
 - **Pass Threshold**: 100% accessibility checks return `OK`.
 - **Failure Handling**: Fix permissions, rerun publishing automation, retry gate.
-- **Automation**: `python scripts/validate_gate_16_publication.py --manifest .artifacts/protocol-19/publication-manifest.json`
+- **Automation**: `python scripts/validate_gate_19_publication.py --manifest .artifacts/protocol-19/publication-manifest.json`
 
 ---
 
@@ -387,15 +387,15 @@ Maintain lessons learned with structure:
 ### 8.1 Validation Scripts:
 ```bash
 # Prerequisite validation
-python scripts/validate_prerequisites_16.py
+python scripts/validate_prerequisites_19.py
 
 # Quality gate automation
-python scripts/validate_gate_16_completeness.py --tracker .artifacts/protocol-19/review-tracker.csv
-python scripts/validate_gate_16_enablement.py --summary .artifacts/protocol-19/enablement-summary.md
-python scripts/validate_gate_16_publication.py --manifest .artifacts/protocol-19/publication-manifest.json
+python scripts/validate_gate_19_completeness.py --tracker .artifacts/protocol-19/review-tracker.csv
+python scripts/validate_gate_19_enablement.py --summary .artifacts/protocol-19/enablement-summary.md
+python scripts/validate_gate_19_publication.py --manifest .artifacts/protocol-19/publication-manifest.json
 
 # Evidence aggregation
-python scripts/aggregate_evidence_16.py --output .artifacts/protocol-19/
+python scripts/aggregate_evidence_19.py --output .artifacts/protocol-19/
 ```
 
 ### 8.2 CI/CD Integration:

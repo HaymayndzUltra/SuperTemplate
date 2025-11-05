@@ -1,0 +1,79 @@
+{
+  "success": [
+    {
+      "old": "validate_gate_14_baseline.py",
+      "new": "validate_gate_18_baseline.py",
+      "path": "/home/haymayndz/SuperTemplate/scripts/validate_gate_18_baseline.py"
+    },
+    {
+      "old": "validate_gate_14_optimization.py",
+      "new": "validate_gate_18_optimization.py",
+      "path": "/home/haymayndz/SuperTemplate/scripts/validate_gate_18_optimization.py"
+    },
+    {
+      "old": "validate_gate_14_diagnostics.py",
+      "new": "validate_gate_18_diagnostics.py",
+      "path": "/home/haymayndz/SuperTemplate/scripts/validate_gate_18_diagnostics.py"
+    },
+    {
+      "old": "validate_gate_16_completeness.py",
+      "new": "validate_gate_19_completeness.py",
+      "path": "/home/haymayndz/SuperTemplate/scripts/validate_gate_19_completeness.py"
+    },
+    {
+      "old": "validate_gate_16_enablement.py",
+      "new": "validate_gate_19_enablement.py",
+      "path": "/home/haymayndz/SuperTemplate/scripts/validate_gate_19_enablement.py"
+    },
+    {
+      "old": "validate_gate_16_publication.py",
+      "new": "validate_gate_19_publication.py",
+      "path": "/home/haymayndz/SuperTemplate/scripts/validate_gate_19_publication.py"
+    },
+    {
+      "old": "validate_gate_17_deliverables.py",
+      "new": "validate_gate_20_deliverables.py",
+      "path": "/home/haymayndz/SuperTemplate/scripts/validate_gate_20_deliverables.py"
+    },
+    {
+      "old": "validate_gate_17_handover.py",
+      "new": "validate_gate_20_handover.py",
+      "path": "/home/haymayndz/SuperTemplate/scripts/validate_gate_20_handover.py"
+    },
+    {
+      "old": "validate_gate_17_governance.py",
+      "new": "validate_gate_20_governance.py",
+      "path": "/home/haymayndz/SuperTemplate/scripts/validate_gate_20_governance.py"
+    },
+    {
+      "old": "validate_gate_18_backlog.py",
+      "new": "validate_gate_21_backlog.py",
+      "path": "/home/haymayndz/SuperTemplate/scripts/validate_gate_21_backlog.py"
+    },
+    {
+      "old": "validate_gate_18_approvals.py",
+      "new": "validate_gate_21_approvals.py",
+      "path": "/home/haymayndz/SuperTemplate/scripts/validate_gate_21_approvals.py"
+    },
+    {
+      "old": "validate_gate_18_governance.py",
+      "new": "validate_gate_21_governance.py",
+      "path": "/home/haymayndz/SuperTemplate/scripts/validate_gate_21_governance.py"
+    }
+  ],
+  "errors": [],
+  "skipped": [
+    {
+      "file": "validate_gate_14_governance.py",
+      "reason": "Target file already exists"
+    }
+  ],
+  "timestamp": "2025-11-05T23:10:33.336884",
+  "backup_location": "/home/haymayndz/SuperTemplate/.artifacts/phase-0-kickoff/backup/scripts_backup_20251105_231033.tar.gz",
+  "summary": {
+    "total_operations": 13,
+    "successful": 12,
+    "errors": 0,
+    "skipped": 1
+  }
+}
