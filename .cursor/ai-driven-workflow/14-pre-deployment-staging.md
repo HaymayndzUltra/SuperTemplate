@@ -383,6 +383,8 @@ python scripts/validate_prerequisites_10.py
 # Quality gate automation
 python scripts/validate_gate_10_intake.py --drift-threshold low
 python scripts/validate_gate_10_readiness.py --threshold 0.95
+python scripts/validate_gate_10_rehearsal.py --report .artifacts/pre-deployment/rehearsal-report.json
+python scripts/validate_gate_10_security.py --threshold 0.95
 
 # Evidence aggregation
 python scripts/aggregate_evidence_10.py --output .artifacts/pre-deployment/

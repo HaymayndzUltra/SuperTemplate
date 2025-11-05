@@ -396,7 +396,9 @@ python scripts/validate_prerequisites_13.py
 
 # Quality gate automation
 python scripts/validate_gate_13_severity.py --sla 5
+python scripts/validate_gate_13_mitigation.py --log .artifacts/incidents/mitigation-log.json
 python scripts/validate_gate_13_resolution.py --threshold 0.95
+python scripts/validate_gate_13_recovery.py --validation .artifacts/incidents/recovery-validation.json
 
 # Evidence aggregation
 python scripts/aggregate_evidence_13.py --output .artifacts/incidents/

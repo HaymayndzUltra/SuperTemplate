@@ -25,6 +25,12 @@
             "scripts/aggregate_evidence_02.py",
             "scripts/aggregate_evidence_03.py",
             "scripts/aggregate_evidence_4.py",
+            "scripts/aggregate_evidence_18.py",
+            "scripts/aggregate_evidence_19.py",
+            "scripts/aggregate_evidence_20.py",
+            "scripts/aggregate_evidence_21.py",
+            "scripts/aggregate_evidence_22.py",
+            "scripts/aggregate_evidence_23.py",
             "scripts/aggregate_evidence_CR.py",
             "scripts/aggregate_evidence_SR.py",
             "scripts/aggregate_evidence_AR.py"
@@ -40,17 +46,8 @@
         "protocol-04-prerequisites": [
             "scripts/validate_prerequisites_4.py"
         ],
-        "protocol-05-validators": [
-            "scripts/validate_gate_5_participation.py",
-            "scripts/validate_gate_5_action_plan.py",
-            "scripts/validate_gate_5_integration.py"
-        ],
-        "protocol-08-validators": [
-            "scripts/validate_gate_8_inventory.py",
-            "scripts/validate_gate_8_static.py",
-            "scripts/validate_gate_8_artifacts.py",
-            "scripts/validate_gate_8_reporting.py"
-        ],
+        "protocol-05-validators": [],
+        "protocol-08-validators": [],
         "protocol-10-validators": [
             "scripts/validate_gate_10_intake.py",
             "scripts/validate_gate_10_rehearsal.py",
@@ -76,10 +73,10 @@
             "scripts/validate_gate_13_resolution.py"
         ],
         "protocol-14-validators": [
-            "scripts/validate_gate_14_baseline.py",
-            "scripts/validate_gate_14_diagnostics.py",
-            "scripts/validate_gate_14_optimization.py",
-            "scripts/validate_gate_14_governance.py"
+            "scripts/validate_gate_10_intake.py",
+            "scripts/validate_gate_10_rehearsal.py",
+            "scripts/validate_gate_10_security.py",
+            "scripts/validate_gate_10_readiness.py"
         ],
         "protocol-15-validators": [
             "scripts/validate_gate_15_entry.py",
@@ -88,19 +85,84 @@
             "scripts/validate_gate_15_acceptance.py"
         ],
         "protocol-16-validators": [
-            "scripts/validate_gate_16_completeness.py",
-            "scripts/validate_gate_16_enablement.py",
-            "scripts/validate_gate_16_publication.py"
+            "scripts/validate_gate_12_instrumentation.py",
+            "scripts/validate_gate_12_alerts.py",
+            "scripts/validate_gate_12_assurance.py",
+            "scripts/validate_gate_12_handoff.py"
         ],
         "protocol-17-validators": [
-            "scripts/validate_gate_17_deliverables.py",
-            "scripts/validate_gate_17_handover.py",
-            "scripts/validate_gate_17_governance.py"
+            "scripts/validate_gate_13_severity.py",
+            "scripts/validate_gate_13_mitigation.py",
+            "scripts/validate_gate_13_recovery.py",
+            "scripts/validate_gate_13_resolution.py"
+        ],
+        "protocol-18-prerequisites": [
+            "scripts/validate_prerequisites_18.py"
         ],
         "protocol-18-validators": [
-            "scripts/validate_gate_18_backlog.py",
-            "scripts/validate_gate_18_approvals.py",
+            "scripts/validate_gate_18_baseline.py",
+            "scripts/validate_gate_18_diagnostics.py",
+            "scripts/validate_gate_18_optimization.py",
             "scripts/validate_gate_18_governance.py"
+        ],
+        "protocol-18-aggregators": [
+            "scripts/aggregate_evidence_18.py"
+        ],
+        "protocol-19-prerequisites": [
+            "scripts/validate_prerequisites_19.py"
+        ],
+        "protocol-19-validators": [
+            "scripts/validate_gate_19_completeness.py",
+            "scripts/validate_gate_19_enablement.py",
+            "scripts/validate_gate_19_publication.py"
+        ],
+        "protocol-19-aggregators": [
+            "scripts/aggregate_evidence_19.py"
+        ],
+        "protocol-20-prerequisites": [
+            "scripts/validate_prerequisites_20.py"
+        ],
+        "protocol-20-validators": [
+            "scripts/validate_gate_20_deliverables.py",
+            "scripts/validate_gate_20_handover.py",
+            "scripts/validate_gate_20_governance.py"
+        ],
+        "protocol-20-aggregators": [
+            "scripts/aggregate_evidence_20.py"
+        ],
+        "protocol-21-prerequisites": [
+            "scripts/validate_prerequisites_21.py"
+        ],
+        "protocol-21-validators": [
+            "scripts/validate_gate_21_backlog.py",
+            "scripts/validate_gate_21_approvals.py",
+            "scripts/validate_gate_21_governance.py"
+        ],
+        "protocol-21-aggregators": [
+            "scripts/aggregate_evidence_21.py"
+        ],
+        "protocol-22-prerequisites": [
+            "scripts/validate_prerequisites_22.py"
+        ],
+        "protocol-22-validators": [
+            "scripts/validate_gate_22_participation.py",
+            "scripts/validate_gate_22_action_plan.py",
+            "scripts/validate_gate_22_integration.py"
+        ],
+        "protocol-22-aggregators": [
+            "scripts/aggregate_evidence_22.py"
+        ],
+        "protocol-23-prerequisites": [
+            "scripts/validate_prerequisites_23.py"
+        ],
+        "protocol-23-validators": [
+            "scripts/validate_gate_23_inventory.py",
+            "scripts/validate_gate_23_static.py",
+            "scripts/validate_gate_23_artifacts.py",
+            "scripts/validate_gate_23_reporting.py"
+        ],
+        "protocol-23-aggregators": [
+            "scripts/aggregate_evidence_23.py"
         ],
         "protocol-runners": {
             "protocol-00": "scripts/run_protocol_00_gates.py",

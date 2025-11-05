@@ -396,7 +396,9 @@ python scripts/validate_prerequisites_11.py
 
 # Quality gate automation
 python scripts/validate_gate_11_readiness.py --checklist .artifacts/deployment/deployment-readiness-checklist.json
+python scripts/validate_gate_11_freeze.py --freeze-window .artifacts/deployment/freeze-config.json
 python scripts/validate_gate_11_launch.py --validation-threshold 0.95
+python scripts/validate_gate_11_reporting.py --report .artifacts/deployment/DEPLOYMENT-REPORT.md
 
 # Evidence aggregation
 python scripts/aggregate_evidence_11.py --output .artifacts/deployment/

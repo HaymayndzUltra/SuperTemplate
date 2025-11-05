@@ -4,4 +4,4 @@ from gate_stub_framework import run_gate_cli
 
 
 if __name__ == "__main__":
-    raise SystemExit(run_gate_cli("validate_gate_16_enablement"))
+    raise SystemExit(run_gate_cli("validate_gate_19_enablement"))

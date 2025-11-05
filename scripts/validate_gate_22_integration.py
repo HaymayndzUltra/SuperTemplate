@@ -4,4 +4,4 @@ from gate_stub_framework import run_gate_cli
 
 
 if __name__ == "__main__":
-    raise SystemExit(run_gate_cli("validate_gate_5_integration"))
+    raise SystemExit(run_gate_cli("validate_gate_22_integration"))

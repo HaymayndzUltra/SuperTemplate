@@ -379,6 +379,8 @@ python scripts/validate_prerequisites_12.py
 # Quality gate automation
 python scripts/validate_gate_12_instrumentation.py --threshold 0.95
 python scripts/validate_gate_12_handoff.py --threshold 0.95
+python scripts/validate_gate_12_alerts.py --slo-config .artifacts/monitoring/slo-config.json
+python scripts/validate_gate_12_assurance.py --dashboards .artifacts/monitoring/dashboards.json
 
 # Evidence aggregation
 python scripts/aggregate_evidence_12.py --output .artifacts/monitoring/
