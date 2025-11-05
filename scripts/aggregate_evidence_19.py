@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-"""Aggregate evidence for Protocol 18 Performance Optimization & Tuning."""
+#\!/usr/bin/env python3
+"""Aggregate evidence for Protocol 19 Documentation & Knowledge Transfer."""
 
 from __future__ import annotations
 
@@ -11,43 +11,41 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List
 
-PROTOCOL_ID = "18"
-PROTOCOL_NAME = "Performance Optimization & Tuning"
+PROTOCOL_ID = "19"
+PROTOCOL_NAME = "Documentation & Knowledge Transfer"
 
 VALIDATOR_COMMANDS: List[Dict[str, object]] = [
     {
-        "name": "gate_baseline",
-        "script": "scripts/validate_gate_18_baseline.py",
-        "args": ["--threshold", "0.95"],
+        "name": "gate_completeness",
+        "script": "scripts/validate_gate_19_completeness.py",
+        "args": [
+            "--tracker",
+            ".artifacts/protocol-19/review-tracker.csv"
+        ]
     },
     {
-        "name": "gate_optimization",
-        "script": "scripts/validate_gate_18_optimization.py",
-        "args": ["--improvement-threshold", "0.15"],
-    },
+        "name": "gate_enablement",
+        "script": "scripts/validate_gate_19_enablement.py",
+        "args": [
+            "--summary",
+            ".artifacts/protocol-19/enablement-summary.md"
+        ]
+    }
 ]
 
 EXPECTED_ARTIFACTS = [
     {
-        "path": ".artifacts/performance/performance-intake-report.json",
-        "description": "Performance metrics and alerts intake",
+        " path": ".artifacts/protocol-19/documentation-plan.json",
+        "description": "Documentation planning matrix"
     },
     {
-        "path": ".artifacts/performance/baseline-metrics.csv",
-        "description": "Baseline performance metrics",
+        "path": ".artifacts/protocol-19/review-tracker.csv",
+        "description": "Review and approval tracker"
     },
     {
-        "path": ".artifacts/performance/profiling-report.md",
-        "description": "Transaction profiling results",
-    },
-    {
-        "path": ".artifacts/performance/load-test-results.json",
-        "description": "Load test execution results",
-    },
-    {
-        "path": ".artifacts/performance/optimization-validation-report.json",
-        "description": "Optimization validation evidence",
-    },
+        "path": ".artifacts/protocol-19/publication-manifest.json",
+        "description": "Published documentation manifest"
+    }
 ]
 
 
@@ -66,7 +64,7 @@ def _run_validator(command: Dict[str, object]) -> Dict[str, str]:
             "name": str(command["name"]),
             "command": " ".join(cmd),
             "status": status,
-            "notes": notes[:500],  # Truncate long outputs
+            "notes": notes[:500],
         }
     except subprocess.TimeoutExpired:
         return {
@@ -129,7 +127,7 @@ def parse_args(argv: List[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path(".artifacts/performance"),
+        default=Path(".artifacts/protocol-19"),
         help="Output directory for manifest",
     )
     return parser.parse_args(argv)
