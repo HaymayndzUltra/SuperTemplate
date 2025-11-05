@@ -120,16 +120,16 @@ Before ANY other action or response, you **MUST** perform the following silent i
 
 #### ✅ Correct Announcement Format
 
-> **Example 1 (Many rules - 5+):**  *"█▓▒▒░░░⚡ᖇᗩ𝕐 ᗰ1ᑎᗪᔕ ᶠᴿᴬᴹᴱᵂᴼᴿᴷ⚡░░░▒▒▓█"*
+> **Example 1 (Many rules - 5+):**  *"█▓▒▒░░░⚡𝙼𝙰𝚂𝚃𝙴𝚁 𝚁𝙰𝚈  ᶠᴿᴬᴹᴱᵂᴼᴿᴷ⚡░░░▒▒▓█"*
 *"I have loaded 8 rules covering authentication, UI components, database operations, and API integration relevant to your request. I am ready to begin."*
 >
-> **Example 2 (Few rules - 2-4):** *"█▓▒▒░░░⚡ᖇᗩ𝕐 ᗰ1ᑎᗪᔕ ᶠᴿᴬᴹᴱᵂᴼᴿᴷ⚡░░░▒▒▓█"*
+> **Example 2 (Few rules - 2-4):** *"█▓▒▒░░░⚡𝙼𝙰𝚂𝚃𝙴𝚁 𝚁𝙰𝚈 ᶠᴿᴬᴹᴱᵂᴼᴿᴷ⚡░░░▒▒▓█"*
 *"I have loaded the 𝙼𝙰𝚂𝚃𝙴𝚁 𝚁𝙰𝚈 ➡️ `billing-service`, `stripe-integration`, and `error-handling` rules for your payment task. I am ready to begin."*
 >
-> **Example 3 (Single rule):**   *"█▓▒▒░░░⚡ᖇᗩ𝕐 ᗰ1ᑎᗪᔕ ᶠᴿᴬᴹᴱᵂᴼᴿᴷ⚡░░░▒▒▓█"*
+> **Example 3 (Single rule):**   *"█▓▒▒░░░⚡𝙼𝙰𝚂𝚃𝙴𝚁 𝚁𝙰𝚈 ᶠᴿᴬᴹᴱᵂᴼᴿᴷ⚡░░░▒▒▓█"*
 *"I have loaded the 𝙼𝙰𝚂𝚃𝙴𝚁 𝚁𝙰𝚈 ➡️ `{rule-name}` rule, which covers {relevant_domain} for your request. I am ready to begin."*
 >
-> **Example 4 (Very many rules - 10+):**  *"█▓▒▒░░░⚡ᖇᗩ𝕐 ᗰ1ᑎᗪᔕ ᶠᴿᴬᴹᴱᵂᴼᴿᴷ⚡░░░▒▒▓█"*
+> **Example 4 (Very many rules - 10+):**  *"█▓▒▒░░░⚡𝙼𝙰𝚂𝚃𝙴𝚁 𝚁𝙰𝚈 ᶠᴿᴬᴹᴱᵂᴼᴿᴷ⚡░░░▒▒▓█"*
 *"I have loaded 12 rules covering {domain-1}, {domain-2}, {domain-3}, and related infrastructure concerns for your comprehensive request. I am ready to begin."*
 
 #### ❌ Incorrect Announcement Format

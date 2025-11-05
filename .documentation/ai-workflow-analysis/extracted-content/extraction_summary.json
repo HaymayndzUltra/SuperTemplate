@@ -1,0 +1,69 @@
+{
+  "extraction_date": "2025-11-05T16:07:23.855820",
+  "total_pdfs": 9,
+  "results": [
+    {
+      "pdf": "AI workflow analysis.pdf",
+      "pages": 11,
+      "full_text": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis_full_text.txt",
+      "sections": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis_sections.md",
+      "metadata": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis_metadata.json"
+    },
+    {
+      "pdf": "AI workflow analysis (1).pdf",
+      "pages": 4,
+      "full_text": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (1)_full_text.txt",
+      "sections": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (1)_sections.md",
+      "metadata": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (1)_metadata.json"
+    },
+    {
+      "pdf": "AI workflow analysis (2).pdf",
+      "pages": 4,
+      "full_text": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (2)_full_text.txt",
+      "sections": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (2)_sections.md",
+      "metadata": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (2)_metadata.json"
+    },
+    {
+      "pdf": "AI workflow analysis (3).pdf",
+      "pages": 10,
+      "full_text": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (3)_full_text.txt",
+      "sections": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (3)_sections.md",
+      "metadata": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (3)_metadata.json"
+    },
+    {
+      "pdf": "AI workflow analysis (4).pdf",
+      "pages": 9,
+      "full_text": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (4)_full_text.txt",
+      "sections": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (4)_sections.md",
+      "metadata": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (4)_metadata.json"
+    },
+    {
+      "pdf": "AI workflow analysis (5).pdf",
+      "pages": 9,
+      "full_text": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (5)_full_text.txt",
+      "sections": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (5)_sections.md",
+      "metadata": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (5)_metadata.json"
+    },
+    {
+      "pdf": "AI workflow analysis (6).pdf",
+      "pages": 4,
+      "full_text": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (6)_full_text.txt",
+      "sections": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (6)_sections.md",
+      "metadata": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (6)_metadata.json"
+    },
+    {
+      "pdf": "AI workflow analysis (7).pdf",
+      "pages": 4,
+      "full_text": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (7)_full_text.txt",
+      "sections": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (7)_sections.md",
+      "metadata": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (7)_metadata.json"
+    },
+    {
+      "pdf": "AI workflow analysis (8).pdf",
+      "pages": 3,
+      "full_text": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (8)_full_text.txt",
+      "sections": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (8)_sections.md",
+      "metadata": ".documentation/ai-workflow-analysis/extracted-content/AI workflow analysis (8)_metadata.json"
+    }
+  ]
+}
