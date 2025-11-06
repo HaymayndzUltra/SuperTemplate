@@ -1,6 +1,6 @@
 ---
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
+description: Apply instructions from @23-script-governance-protocol.md
+auto_execution_mode: 1
 ---
 
 # PROTOCOL 23 : SCRIPT GOVERNANCE (AUTOMATION QUALITY COMPLIANT)

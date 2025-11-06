@@ -1,36 +1,32 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "23",
-  "validation_timestamp": "2025-11-06T05:29:53.273159Z",
-  "overall_score": 0.7000000000000001,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-11-06T16:43:35.827608Z",
+  "overall_score": 0.8,
+  "validation_status": "warning",
   "issues": [
-    "Less than two workflow steps defined",
-    "Step numbering is not sequential",
-    "Several workflow steps omit explicit action prompts"
+    "Several workflow steps omit explicit action prompts",
+    "Halt conditions rarely documented",
+    "User confirmation steps not described"
   ],
   "recommendations": [
-    "Use '### STEP X' headings for clarity",
-    "Optional or cautionary guidance can highlight operator judgement without blocking validation",
-    "Add rollback or retry guidance for failure scenarios",
-    "Document evidence manifests or registries"
+    "Optional or cautionary guidance can highlight operator judgement without blocking validation"
   ],
   "workflow_structure": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Less than two workflow steps defined",
-      "Step numbering is not sequential"
-    ],
-    "recommendations": [
-      "Use '### STEP X' headings for clarity"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
     "details": {
-      "steps": [],
+      "steps": [
+        1,
+        2,
+        3
+      ],
       "section_present": true,
-      "step_headings": false,
-      "sequential": false,
-      "completeness": false
+      "step_headings": true,
+      "sequential": true,
+      "completeness": true
     }
   },
   "step_definitions": {
@@ -39,7 +35,7 @@
     "issues": [],
     "recommendations": [],
     "details": {
-      "steps": 1,
+      "steps": 3,
       "action_coverage": 1.0,
       "communication_coverage": 1.0,
       "evidence_coverage": 1.0
@@ -58,42 +54,41 @@
       "imperative_balance": true,
       "action_clarity": false,
       "contextual_support": true,
-      "step_count": 1,
-      "imperative_count": 9,
+      "step_count": 3,
+      "imperative_count": 1,
       "action_prompts": 0,
-      "context_prompts": 23,
+      "context_prompts": 9,
       "optional_guidance": 0,
       "cautionary_statements": 0
     }
   },
   "halt_conditions": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [],
-    "recommendations": [
-      "Add rollback or retry guidance for failure scenarios"
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Halt conditions rarely documented",
+      "User confirmation steps not described"
     ],
+    "recommendations": [],
     "details": {
-      "halt_defined": true,
-      "validation_gates": true,
-      "rollback_steps": false,
-      "user_confirmation": true
+      "halt_defined": false,
+      "validation_gates": false,
+      "rollback_steps": true,
+      "user_confirmation": false
     }
   },
   "evidence_tracking": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document evidence manifests or registries"
-    ],
+    "recommendations": [],
     "details": {
       "evidence_tags": true,
       "artifact_locations": true,
-      "manifest": false,
+      "manifest": true,
       "downstream_trace": true,
-      "evidence_mentions": 11,
-      "artifact_mentions": 15
+      "evidence_mentions": 13,
+      "artifact_mentions": 22
     }
   }
 }

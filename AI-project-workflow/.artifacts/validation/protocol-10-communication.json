@@ -1,0 +1,90 @@
+{
+  "validator": "protocol_communication",
+  "protocol_id": "10",
+  "validation_timestamp": "2025-11-06T16:28:58.520934Z",
+  "overall_score": 0.2625,
+  "validation_status": "fail",
+  "issues": [
+    "Phase transition announcements missing",
+    "Missing user interaction prompts: confirmation, clarification, feedback",
+    "Limited progress terminology in communications",
+    "Artifacts not announced or referenced sufficiently"
+  ],
+  "recommendations": [
+    "Add explicit remediation instructions to error prompts"
+  ],
+  "status_announcements": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Phase transition announcements missing"
+    ],
+    "recommendations": [],
+    "details": {
+      "phase_transitions": false,
+      "branded_announcements": false,
+      "completion_callouts": true,
+      "time_estimates": true
+    }
+  },
+  "user_interaction": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Missing user interaction prompts: confirmation, clarification, feedback"
+    ],
+    "recommendations": [],
+    "details": {
+      "confirmation": false,
+      "clarification": false,
+      "decision_points": true,
+      "feedback": false
+    }
+  },
+  "error_messaging": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Add explicit remediation instructions to error prompts"
+    ],
+    "details": {
+      "templates": false,
+      "severity": false,
+      "context": false,
+      "resolution": false
+    }
+  },
+  "progress_tracking": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Limited progress terminology in communications"
+    ],
+    "recommendations": [],
+    "details": {
+      "terms": [
+        "progress",
+        "complete"
+      ],
+      "progress_terms": false,
+      "timeline": false,
+      "current_activity": true,
+      "next_steps": false
+    }
+  },
+  "evidence_communication": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Artifacts not announced or referenced sufficiently"
+    ],
+    "recommendations": [],
+    "details": {
+      "artifact_announcements": false,
+      "format": false,
+      "location": false,
+      "validation": true
+    }
+  }
+}

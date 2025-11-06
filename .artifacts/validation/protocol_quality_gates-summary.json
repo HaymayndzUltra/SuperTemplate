@@ -1,6 +1,6 @@
 {
   "validator": "protocol_quality_gates",
-  "validation_timestamp": "2025-11-06T09:49:07.145912Z",
+  "validation_timestamp": "2025-11-06T09:53:17.205020Z",
   "total_protocols": 1,
   "pass_count": 1,
   "warning_count": 0,
@@ -8,7 +8,7 @@
   "average_score": 1.0,
   "protocols": [
     {
-      "protocol_id": "17",
+      "protocol_id": "23",
       "status": "pass",
       "score": 1.0
     }

@@ -60,3 +60,4 @@ python3 scripts/test_db_connection.py
 **Next Step:** Move to Supabase Auth setup subtask
 
 
+

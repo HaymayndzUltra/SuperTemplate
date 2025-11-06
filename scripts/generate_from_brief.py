@@ -24,66 +24,6 @@ import shlex
 from project_generator.core.brief_parser import BriefParser
 
 
-FRONTEND_RULES = {
-    "nextjs": ["nextjs.mdc", "nextjs-formatting.mdc", "nextjs-rsc-and-client.mdc", "typescript.mdc"],
-    "angular": ["angular.mdc", "typescript.mdc"],
-    "nuxt": ["vue.mdc", "typescript.mdc"],
-    "expo": ["expo.mdc", "react-native.mdc", "typescript.mdc"],
-}
-
-BACKEND_RULES = {
-    "fastapi": ["fastapi.mdc", "python.mdc", "rest-api.mdc", "open-api.mdc"],
-    "django": ["django.mdc", "python.mdc", "rest-api.mdc", "open-api.mdc"],
-    "nestjs": ["nodejs.mdc", "typescript.mdc", "rest-api.mdc", "open-api.mdc"],
-    "go": ["golang.mdc", "nethttp.mdc", "rest-api.mdc", "open-api.mdc"],
-}
-
-DB_ADDONS = {
-    "mongodb": ["mongodb.mdc"],
-    "firebase": ["firebase.mdc"],
-}
-
-COMPLIANCE_RULES = {
-    "hipaa": "industry-compliance-hipaa.mdc",
-    "gdpr": "industry-compliance-gdpr.mdc",
-    "sox": "industry-compliance-sox.mdc",
-    "pci": "industry-compliance-pci.mdc",
-}
-
-
-def write_rules_manifest(manifest_path: Path, names: List[str]) -> None:
-    # Deduplicate while preserving order
-    seen = set()
-    ordered: List[str] = []
-    for n in names:
-        if n not in seen:
-            seen.add(n)
-            ordered.append(n)
-    manifest_path.parent.mkdir(parents=True, exist_ok=True)
-    manifest_path.write_text(json.dumps(ordered, indent=2), encoding="utf-8")
-
-
-def build_fe_manifest(frontend: str, compliance: List[str]) -> List[str]:
-    rules = list(FRONTEND_RULES.get(frontend, []))
-    # Domain rules (focused)
-    rules += [
-        "accessibility.mdc",
-        "nextjs-a11y.mdc" if frontend == "nextjs" else None,
-    ]
-    return [r for r in rules if r]
-
-
-def build_be_manifest(backend: str, database: str, compliance: List[str]) -> List[str]:
-    rules = list(BACKEND_RULES.get(backend, []))
-    rules += DB_ADDONS.get(database, [])
-    # Domain rules common to backends (focused)
-    rules += [
-        "performance.mdc",
-        "observability.mdc",
-    ]
-    return rules
-
-
 def run_argv(argv: list[str], cwd: Path | None = None) -> int:
     try:
         out = subprocess.run(argv, cwd=str(cwd) if cwd else None, check=False, text=True)
@@ -182,10 +122,6 @@ def main() -> None:
         if fe_dir.exists() and args.force:
             import shutil
             shutil.rmtree(fe_dir)
-        manifest = build_fe_manifest(spec.frontend, comp_list)
-        # Write manifest OUTSIDE the target project directory to avoid being deleted by generator --force
-        fe_manifest_path = output_root / "_rules_manifests" / f"{fe_name}.json"
-        write_rules_manifest(fe_manifest_path, manifest)
         fe_argv = [
             python_bin,
             "scripts/generate_client_project.py",
@@ -199,7 +135,6 @@ def main() -> None:
             "--deploy", spec.deploy,
             "--output-dir", str(output_root),
             "--workers", str(args.workers),
-            "--rules-manifest", str(fe_manifest_path),
             "--skip-system-checks",
             "--yes",
         ]
@@ -237,10 +172,6 @@ def main() -> None:
         if be_dir.exists() and args.force:
             import shutil
             shutil.rmtree(be_dir)
-        manifest = build_be_manifest(spec.backend, spec.database, comp_list)
-        # Write manifest OUTSIDE the target project directory to avoid being deleted by generator --force
-        be_manifest_path = output_root / "_rules_manifests" / f"{be_name}.json"
-        write_rules_manifest(be_manifest_path, manifest)
         be_argv = [
             python_bin,
             "scripts/generate_client_project.py",
@@ -254,7 +185,6 @@ def main() -> None:
             "--deploy", spec.deploy,
             "--output-dir", str(output_root),
             "--workers", str(args.workers),
-            "--rules-manifest", str(be_manifest_path),
             "--skip-system-checks",
             "--yes",
         ]

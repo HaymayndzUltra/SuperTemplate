@@ -1,0 +1,110 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "06",
+  "validation_timestamp": "2025-11-06T16:28:58.426316Z",
+  "overall_score": 0.6125,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/aggregate_evidence_06.py, scripts/run_protocol_06_gates.py",
+    "Exit code handling not described"
+  ],
+  "recommendations": [
+    "Register automation commands in scripts/script-registry.json: scripts/ai/calculate_feasibility_score.py, scripts/ai/classify_ai_problem_type.py, scripts/ai/generate_success_metrics.py",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/aggregate_evidence_06.py, scripts/run_protocol_06_gates.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 9,
+      "commands": [
+        "bash\n   # Problem classification",
+        "python scripts/ai/classify_ai_problem_type.py \\",
+        "bash\n   # Feasibility assessment",
+        "python scripts/ai/calculate_feasibility_score.py \\",
+        "bash\n   # Success metrics generation",
+        "python scripts/ai/generate_success_metrics.py \\",
+        "bash\n   # Evidence aggregation",
+        "python scripts/aggregate_evidence_06.py \\",
+        "python scripts/run_protocol_06_gates.py"
+      ],
+      "missing_scripts": [
+        "scripts/aggregate_evidence_06.py",
+        "scripts/run_protocol_06_gates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Register automation commands in scripts/script-registry.json: scripts/ai/calculate_feasibility_score.py, scripts/ai/classify_ai_problem_type.py, scripts/ai/generate_success_metrics.py"
+    ],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate/AI-project-workflow/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 9,
+      "registered_commands": 0,
+      "registration_ratio": 0.0,
+      "unregistered_commands": [
+        "scripts/ai/calculate_feasibility_score.py",
+        "scripts/ai/classify_ai_problem_type.py",
+        "scripts/ai/generate_success_metrics.py"
+      ]
+    }
+  },
+  "execution_context": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 9,
+      "flag_usage": false,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
+    "recommendations": [],
+    "details": {
+      "exit_codes": false,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

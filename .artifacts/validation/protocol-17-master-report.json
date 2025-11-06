@@ -1,13 +1,13 @@
 {
   "validator": "master_validator",
   "protocol_id": "17",
-  "validation_timestamp": "2025-11-06T05:29:53.124505Z",
-  "overall_score": 0.8697916666666666,
+  "validation_timestamp": "2025-11-06T16:43:35.631754Z",
+  "overall_score": 0.9181250000000001,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "pass",
-      "score": 0.9666666666666668
+      "score": 1.0
     },
     "protocol_role": {
       "status": "warning",
@@ -18,20 +18,20 @@
       "score": 0.75
     },
     "protocol_quality_gates": {
-      "status": "fail",
-      "score": 0.8
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.7312500000000001
+      "score": 0.6937500000000001
     },
     "protocol_communication": {
       "status": "pass",
       "score": 1.0
     },
     "protocol_evidence": {
-      "status": "fail",
-      "score": 0.6624999999999999
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_handoff": {
       "status": "pass",
@@ -39,36 +39,29 @@
     },
     "protocol_reasoning": {
       "status": "pass",
-      "score": 0.9624999999999999
+      "score": 0.9249999999999999
     },
     "protocol_reflection": {
       "status": "pass",
-      "score": 0.9500000000000001
+      "score": 0.9375
     }
   },
   "issues": [
-    "Phase assignment not found or invalid in AGENTS.md",
     "Domain expertise keywords missing",
     "Value proposition not captured",
     "Less than two workflow steps defined",
     "Step numbering is not sequential",
     "Several workflow steps omit explicit action prompts",
-    "No gate headings defined",
-    "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_13.py, scripts/validate_prerequisites_13.py",
-    "Protocol evidence directory not referenced",
-    "Traceability gaps: inputs",
+    "Exit code handling not described",
     "Self-awareness statements missing",
-    "Roadmap or future direction not documented"
+    "Knowledge capture gaps: sharing"
   ],
   "recommendations": [
     "Use '### STEP X' headings for clarity",
-    "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/17.yaml when automated gating is expected",
-    "Document waiver/override policies",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
-    "Document how command outputs are captured",
-    "Enhance archival plan with: cleanup, retrieval"
+    "Document how command outputs are captured"
   ]
 }

@@ -1,7 +1,7 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "15",
-  "validation_timestamp": "2025-11-06T05:29:53.048655Z",
+  "validation_timestamp": "2025-11-06T16:43:35.522918Z",
   "overall_score": 0.8,
   "validation_status": "warning",
   "issues": [
@@ -83,8 +83,8 @@
       "artifact_locations": true,
       "manifest": true,
       "downstream_trace": true,
-      "evidence_mentions": 17,
-      "artifact_mentions": 14
+      "evidence_mentions": 27,
+      "artifact_mentions": 27
     }
   }
 }

@@ -1,19 +1,18 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "02",
-  "validation_timestamp": "2025-11-06T05:29:52.533485Z",
+  "validation_timestamp": "2025-11-06T16:43:34.969834Z",
   "basic_information": {
-    "score": 0.6666666666666666,
+    "score": 0.8333333333333334,
     "status": "warning",
     "issues": [
-      "Protocol version not found (semantic versioning expected)",
-      "Phase assignment not found or invalid in AGENTS.md"
+      "Protocol version not found (semantic versioning expected)"
     ],
     "elements_found": {
       "protocol_number": true,
       "protocol_name": "CLIENT DISCOVERY INITIATION",
       "protocol_version": false,
-      "phase_assignment": false,
+      "phase_assignment": "Phase 0",
       "purpose_statement": true,
       "scope_definition": true
     }
@@ -51,7 +50,7 @@
     "status": "fail",
     "issues": [
       "Required section missing: INTEGRATION POINTS",
-      "Required section missing: AUTOMATION HOOKS"
+      "Required section missing: COMMUNICATION PROTOCOLS"
     ],
     "sections_found": {
       "PREREQUISITES": true,
@@ -59,8 +58,8 @@
       "WORKFLOW": true,
       "INTEGRATION POINTS": false,
       "QUALITY GATES": true,
-      "COMMUNICATION PROTOCOLS": true,
-      "AUTOMATION HOOKS": false,
+      "COMMUNICATION PROTOCOLS": false,
+      "AUTOMATION HOOKS": true,
       "HANDOFF CHECKLIST": true,
       "EVIDENCE SUMMARY": true
     },
@@ -71,14 +70,13 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.7155555555555555,
+  "overall_score": 0.7488888888888889,
   "validation_status": "fail",
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
     "INTEGRATION POINTS section not found",
     "Required section missing: INTEGRATION POINTS",
-    "Required section missing: AUTOMATION HOOKS"
+    "Required section missing: COMMUNICATION PROTOCOLS"
   ],
   "recommendations": []
 }

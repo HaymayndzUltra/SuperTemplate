@@ -1,6 +1,6 @@
 ---
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
+description: Apply instructions from @20-project-closure.md
+auto_execution_mode: 1
 ---
 
 # PROTOCOL 20 : PROJECT CLOSURE & HANDOVER (PROGRAM GOVERNANCE COMPLIANT)

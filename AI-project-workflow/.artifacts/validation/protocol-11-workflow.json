@@ -1,0 +1,114 @@
+{
+  "validator": "protocol_workflow",
+  "protocol_id": "11",
+  "validation_timestamp": "2025-11-06T16:28:58.531604Z",
+  "overall_score": 0.4714285714285714,
+  "validation_status": "fail",
+  "issues": [
+    "Not all steps define explicit actions",
+    "Evidence expectations missing in some steps",
+    "Several workflow steps omit explicit action prompts",
+    "Halt conditions rarely documented",
+    "User confirmation steps not described",
+    "Downstream consumer mapping missing"
+  ],
+  "recommendations": [
+    "Document communication prompts per step",
+    "Optional or cautionary guidance can highlight operator judgement without blocking validation",
+    "Add rollback or retry guidance for failure scenarios",
+    "Document evidence manifests or registries"
+  ],
+  "workflow_structure": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "section_present": true,
+      "step_headings": true,
+      "sequential": true,
+      "completeness": true
+    }
+  },
+  "step_definitions": {
+    "score": 0.2857142857142857,
+    "status": "fail",
+    "issues": [
+      "Not all steps define explicit actions",
+      "Evidence expectations missing in some steps"
+    ],
+    "recommendations": [
+      "Document communication prompts per step"
+    ],
+    "details": {
+      "steps": 7,
+      "action_coverage": 0.8571428571428571,
+      "communication_coverage": 0.0,
+      "evidence_coverage": 0.0
+    }
+  },
+  "action_markers": {
+    "score": 0.6666666666666666,
+    "status": "warning",
+    "issues": [
+      "Several workflow steps omit explicit action prompts"
+    ],
+    "recommendations": [
+      "Optional or cautionary guidance can highlight operator judgement without blocking validation"
+    ],
+    "details": {
+      "imperative_balance": true,
+      "action_clarity": false,
+      "contextual_support": true,
+      "step_count": 6,
+      "imperative_count": 3,
+      "action_prompts": 0,
+      "context_prompts": 5,
+      "optional_guidance": 0,
+      "cautionary_statements": 0
+    }
+  },
+  "halt_conditions": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Halt conditions rarely documented",
+      "User confirmation steps not described"
+    ],
+    "recommendations": [
+      "Add rollback or retry guidance for failure scenarios"
+    ],
+    "details": {
+      "halt_defined": false,
+      "validation_gates": false,
+      "rollback_steps": false,
+      "user_confirmation": false
+    }
+  },
+  "evidence_tracking": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Downstream consumer mapping missing"
+    ],
+    "recommendations": [
+      "Document evidence manifests or registries"
+    ],
+    "details": {
+      "evidence_tags": true,
+      "artifact_locations": true,
+      "manifest": false,
+      "downstream_trace": false,
+      "evidence_mentions": 6,
+      "artifact_mentions": 6
+    }
+  }
+}

@@ -1,10 +1,12 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "20",
-  "validation_timestamp": "2025-11-06T05:29:53.187626Z",
-  "overall_score": 0.7928571428571428,
+  "validation_timestamp": "2025-11-06T16:43:35.707456Z",
+  "overall_score": 0.7553571428571428,
   "validation_status": "fail",
-  "issues": [],
+  "issues": [
+    "Exit code handling not described"
+  ],
   "recommendations": [
     "Clarify access and credential requirements",
     "Document how command outputs are captured"
@@ -75,12 +77,14 @@
     }
   },
   "error_handling": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
     "recommendations": [],
     "details": {
-      "exit_codes": true,
+      "exit_codes": false,
       "fallback": true,
       "logging": true,
       "manual_paths": true

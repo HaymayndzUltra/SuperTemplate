@@ -1,26 +1,19 @@
 {
   "validator": "protocol_quality_gates",
   "protocol_id": "22",
-  "validation_timestamp": "2025-11-06T09:10:16.279093Z",
-  "overall_score": 0.6874999999999999,
-  "validation_status": "fail",
-  "issues": [
-    "Insufficient compliance standards referenced"
-  ],
+  "validation_timestamp": "2025-11-06T16:43:35.774242Z",
+  "overall_score": 0.9375,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [
-    "Identify gate types (Prerequisite/Execution/Completion)",
     "Include quantitative metrics for gate evaluation",
-    "Provision config/protocol_gates/22.yaml when automated gating is expected",
-    "Identify notification path for gate failures",
-    "Document waiver/override policies"
+    "Provision config/protocol_gates/22.yaml when automated gating is expected"
   ],
   "gate_definitions": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Identify gate types (Prerequisite/Execution/Completion)"
-    ],
+    "recommendations": [],
     "details": {
       "gates": [
         "1",
@@ -29,7 +22,7 @@
       ],
       "gate_count": true,
       "descriptions": true,
-      "types": false,
+      "types": true,
       "naming": true
     }
   },
@@ -58,37 +51,32 @@
       "scripts": true,
       "ci": true,
       "automation_labels": true,
-      "script_mentions": 9,
+      "script_mentions": 12,
       "gate_config_path": "/home/haymayndz/SuperTemplate/config/protocol_gates/22.yaml",
       "gate_config_present": false
     }
   },
   "failure_handling": {
-    "score": 0.25,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Identify notification path for gate failures",
-      "Document waiver/override policies"
-    ],
+    "recommendations": [],
     "details": {
       "failure_actions": true,
-      "rollback": false,
-      "notification": false,
-      "waivers": false
+      "rollback": true,
+      "notification": true,
+      "waivers": true
     }
   },
   "compliance_integration": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Insufficient compliance standards referenced"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "compliance_terms": false,
+      "compliance_terms": true,
       "automation_hooks": true,
-      "evidence": false,
+      "evidence": true,
       "governance": true
     }
   }

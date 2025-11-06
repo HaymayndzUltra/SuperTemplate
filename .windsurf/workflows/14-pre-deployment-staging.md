@@ -1,6 +1,6 @@
 ---
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
+description: Apply instructions from @14-pre-deployment-staging.md
+auto_execution_mode: 1
 ---
 
 # PROTOCOL 14 : PRE-DEPLOYMENT VALIDATION & STAGING READINESS (RELEASE COMPLIANT)

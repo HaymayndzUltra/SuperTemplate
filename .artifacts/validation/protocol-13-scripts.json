@@ -1,11 +1,12 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "13",
-  "validation_timestamp": "2025-11-06T05:29:52.972517Z",
-  "overall_score": 0.76875,
+  "validation_timestamp": "2025-11-06T16:43:35.437684Z",
+  "overall_score": 0.73125,
   "validation_status": "fail",
   "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/build_uat_toolkit.py, scripts/generate_release_notes.py, scripts/validate_prerequisites_15.py"
+    "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/build_uat_toolkit.py, scripts/generate_release_notes.py, scripts/validate_prerequisites_15.py",
+    "Exit code handling not described"
   ],
   "recommendations": [
     "Document environment/dependency expectations",
@@ -85,12 +86,14 @@
     }
   },
   "error_handling": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
     "recommendations": [],
     "details": {
-      "exit_codes": true,
+      "exit_codes": false,
       "fallback": true,
       "logging": true,
       "manual_paths": true

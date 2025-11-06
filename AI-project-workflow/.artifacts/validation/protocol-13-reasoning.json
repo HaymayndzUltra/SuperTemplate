@@ -1,0 +1,82 @@
+{
+  "validator": "protocol_reasoning",
+  "protocol_id": "13",
+  "validation_timestamp": "2025-11-06T16:28:58.564186Z",
+  "overall_score": 0.375,
+  "validation_status": "fail",
+  "issues": [
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Learning mechanisms not referenced",
+    "Self-awareness statements missing"
+  ],
+  "recommendations": [
+    "Include root-cause analysis guidance"
+  ],
+  "reasoning_patterns": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Reasoning patterns not explicitly named"
+    ],
+    "recommendations": [],
+    "details": {
+      "matches": [],
+      "pattern_terms": false,
+      "explanations": false,
+      "improvement": false,
+      "example_references": false
+    }
+  },
+  "decision_trees": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Decision points insufficiently described"
+    ],
+    "recommendations": [],
+    "details": {
+      "decision_points": false,
+      "criteria": true,
+      "outcomes": true,
+      "logging": true
+    }
+  },
+  "problem_solving_logic": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Include root-cause analysis guidance"
+    ],
+    "details": {
+      "problem_identification": true,
+      "root_cause": false,
+      "solutions": true,
+      "validation": true
+    }
+  },
+  "learning_mechanisms": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Learning mechanisms not referenced"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "meta_cognition": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Self-awareness statements missing"
+    ],
+    "recommendations": [],
+    "details": {
+      "awareness": false,
+      "monitoring": true,
+      "correction": false,
+      "improvement": false
+    }
+  }
+}

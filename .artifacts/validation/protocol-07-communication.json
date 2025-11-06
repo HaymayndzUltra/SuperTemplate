@@ -1,10 +1,11 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "07",
-  "validation_timestamp": "2025-11-06T05:29:52.748205Z",
-  "overall_score": 0.8875,
-  "validation_status": "warning",
+  "validation_timestamp": "2025-11-06T16:43:35.203667Z",
+  "overall_score": 0.775,
+  "validation_status": "fail",
   "issues": [
+    "Missing user interaction prompts: clarification",
     "Limited progress terminology in communications"
   ],
   "recommendations": [],
@@ -21,25 +22,27 @@
     }
   },
   "user_interaction": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Missing user interaction prompts: clarification"
+    ],
     "recommendations": [],
     "details": {
       "confirmation": true,
-      "clarification": true,
+      "clarification": false,
       "decision_points": true,
       "feedback": true
     }
   },
   "error_messaging": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
       "templates": true,
-      "severity": true,
+      "severity": false,
       "context": true,
       "resolution": true
     }

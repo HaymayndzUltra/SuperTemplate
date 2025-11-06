@@ -1,13 +1,13 @@
 {
   "validator": "master_validator",
   "protocol_id": "14",
-  "validation_timestamp": "2025-11-06T05:29:53.044034Z",
-  "overall_score": 0.8670833333333332,
+  "validation_timestamp": "2025-11-06T16:43:35.517217Z",
+  "overall_score": 0.9229166666666666,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
-      "status": "warning",
-      "score": 0.9333333333333332
+      "status": "pass",
+      "score": 0.9666666666666668
     },
     "protocol_role": {
       "status": "warning",
@@ -18,20 +18,20 @@
       "score": 0.8
     },
     "protocol_quality_gates": {
-      "status": "fail",
-      "score": 0.7625
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.7250000000000001
+      "score": 0.6875
     },
     "protocol_communication": {
       "status": "pass",
       "score": 0.9500000000000001
     },
     "protocol_evidence": {
-      "status": "fail",
-      "score": 0.6749999999999998
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_handoff": {
       "status": "pass",
@@ -48,30 +48,21 @@
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
     "Domain expertise keywords missing",
     "Value proposition not captured",
     "Less than two workflow steps defined",
     "Step numbering is not sequential",
     "Several workflow steps omit explicit action prompts",
-    "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_10.py, scripts/refresh_staging_data.py, scripts/update_deployment_checklist.py, scripts/validate_prerequisites_10.py",
-    "Protocol evidence directory not referenced",
-    "Traceability gaps: inputs, outputs",
+    "Exit code handling not described",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
     "Use '### STEP X' headings for clarity",
     "Optional or cautionary guidance can highlight operator judgement without blocking validation",
-    "Identify gate types (Prerequisite/Execution/Completion)",
-    "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/14.yaml when automated gating is expected",
-    "Identify notification path for gate failures",
-    "Document waiver/override policies",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
-    "Document how command outputs are captured",
-    "Optionally reference a manifest file or inventory for quick lookup",
-    "Enhance archival plan with: cleanup, retrieval"
+    "Document how command outputs are captured"
   ]
 }

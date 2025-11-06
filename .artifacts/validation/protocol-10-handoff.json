@@ -1,11 +1,12 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "10",
-  "validation_timestamp": "2025-11-06T05:29:52.872330Z",
-  "overall_score": 0.8500000000000001,
-  "validation_status": "warning",
+  "validation_timestamp": "2025-11-06T16:43:35.324595Z",
+  "overall_score": 0.7625,
+  "validation_status": "fail",
   "issues": [
-    "Checklist lacks sufficient coverage of required items"
+    "Checklist lacks sufficient coverage of required items",
+    "Sign-off guidance missing: approvals"
   ],
   "recommendations": [],
   "checklist_completeness": {
@@ -30,11 +31,11 @@
     "recommendations": [],
     "details": {
       "term_counts": {
-        "validate": 5,
-        "ensure": 4,
-        "confirm": 15,
+        "validate": 2,
+        "ensure": 3,
+        "confirm": 13,
         "verify": 6,
-        "gate": 12
+        "gate": 10
       },
       "verification_terms": true,
       "qa_involvement": true,
@@ -43,12 +44,14 @@
     }
   },
   "stakeholder_signoff": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Sign-off guidance missing: approvals"
+    ],
     "recommendations": [],
     "details": {
-      "approvals": true,
+      "approvals": false,
       "reviewers": true,
       "evidence_reference": true,
       "confirmation": true
@@ -64,7 +67,6 @@
         "log",
         "brief",
         "notes",
-        "transcript",
         "manifest",
         "report"
       ],
@@ -75,15 +77,15 @@
     }
   },
   "next_protocol_alignment": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
       "ready_statements": true,
       "next_commands": true,
       "dependencies": true,
-      "continuation": true
+      "continuation": false
     }
   }
 }

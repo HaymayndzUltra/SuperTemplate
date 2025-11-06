@@ -1,22 +1,25 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "05",
-  "validation_timestamp": "2025-11-06T05:29:52.671179Z",
-  "overall_score": 1.0,
-  "validation_status": "pass",
-  "issues": [],
+  "validation_timestamp": "2025-11-06T16:43:35.115383Z",
+  "overall_score": 0.725,
+  "validation_status": "fail",
+  "issues": [
+    "Sign-off guidance missing: reviewers",
+    "Ready-for-next-protocol statement missing"
+  ],
   "recommendations": [],
   "checklist_completeness": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
-      "item_count": 13,
+      "item_count": 9,
       "items": true,
       "categories": true,
       "dependencies": true,
-      "status_markers": true
+      "status_markers": false
     }
   },
   "verification_procedures": {
@@ -26,11 +29,11 @@
     "recommendations": [],
     "details": {
       "term_counts": {
-        "validate": 7,
-        "ensure": 3,
-        "confirm": 11,
+        "validate": 6,
+        "ensure": 2,
+        "confirm": 10,
         "verify": 0,
-        "gate": 2
+        "gate": 3
       },
       "verification_terms": true,
       "qa_involvement": true,
@@ -39,13 +42,15 @@
     }
   },
   "stakeholder_signoff": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Sign-off guidance missing: reviewers"
+    ],
     "recommendations": [],
     "details": {
       "approvals": true,
-      "reviewers": true,
+      "reviewers": false,
       "evidence_reference": true,
       "confirmation": true
     }
@@ -59,8 +64,6 @@
       "terms": [
         "log",
         "brief",
-        "notes",
-        "transcript",
         "manifest",
         "report"
       ],
@@ -71,15 +74,17 @@
     }
   },
   "next_protocol_alignment": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Ready-for-next-protocol statement missing"
+    ],
     "recommendations": [],
     "details": {
-      "ready_statements": true,
-      "next_commands": true,
-      "dependencies": true,
-      "continuation": true
+      "ready_statements": false,
+      "next_commands": false,
+      "dependencies": false,
+      "continuation": false
     }
   }
 }

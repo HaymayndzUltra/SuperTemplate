@@ -1,0 +1,11 @@
+{
+  "validator": "protocol_communication",
+  "protocol_id": "18",
+  "validation_timestamp": "2025-11-06T16:28:58.578149Z",
+  "overall_score": 0.0,
+  "validation_status": "fail",
+  "issues": [
+    "Protocol file not found for ID 18"
+  ],
+  "recommendations": []
+}

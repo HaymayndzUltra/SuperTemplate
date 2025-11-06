@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: glob
 ---
 
 # AI Agent Instructions - Batch Protocol Reformat
@@ -282,4 +282,3 @@ ls -la /home/haymayndz/AI-DRIVEN-TEMPLATE-TESTING/.artifacts/protocol-reformat/[
 - Last Modified: 2025-10-29
 - Changes: Added intelligent error recovery protocol (analyze, fix, retry before stopping)
 - Purpose: Ensure strict sequential execution of batch protocol reformat operations with resilient error handling
-

@@ -1,29 +1,39 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "02",
-  "validation_timestamp": "2025-11-06T05:29:52.544100Z",
-  "overall_score": 0.175,
+  "validation_timestamp": "2025-11-06T16:43:34.986364Z",
+  "overall_score": 0.7250000000000001,
   "validation_status": "fail",
   "issues": [
-    "AUTOMATION HOOKS section missing",
-    "Automation context missing",
-    "No automation commands available for syntax validation",
-    "Exit code handling not described"
+    "Referenced command paths not found: scripts/validate_prerequisites_02.py, scripts/validate_protocol_02.py"
   ],
   "recommendations": [
-    "Reference scripts/script-registry.json for governance context"
+    "Reference scripts/script-registry.json for governance context",
+    "Document how command outputs are captured"
   ],
   "script_inventory": {
-    "score": 0.0,
-    "status": "fail",
+    "score": 0.8,
+    "status": "warning",
     "issues": [
-      "AUTOMATION HOOKS section missing"
+      "Referenced command paths not found: scripts/validate_prerequisites_02.py, scripts/validate_protocol_02.py"
     ],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "command_count": 4,
+      "commands": [
+        "bash\npython3 scripts/validate_prerequisites_02.py \\",
+        "bash\npython3 scripts/run_protocol_gates.py \\",
+        "bash\npython3 scripts/aggregate_evidence_02.py \\",
+        "bash\npython3 scripts/validate_protocol_02.py \\"
+      ],
+      "missing_scripts": [
+        "scripts/validate_prerequisites_02.py",
+        "scripts/validate_protocol_02.py"
+      ]
+    }
   },
   "registry_alignment": {
-    "score": 0.5,
+    "score": 0.625,
     "status": "fail",
     "issues": [],
     "recommendations": [
@@ -35,42 +45,49 @@
       "registry_reference": false,
       "workflow_mapping": true,
       "ownership": true,
-      "total_commands": 0,
-      "registered_commands": 0,
-      "registration_ratio": 0.0,
+      "total_commands": 4,
+      "registered_commands": 2,
+      "registration_ratio": 0.5,
       "unregistered_commands": []
     }
   },
   "execution_context": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Automation context missing"
-    ],
-    "recommendations": [],
-    "details": {}
-  },
-  "command_syntax": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "No automation commands available for syntax validation"
-    ],
-    "recommendations": [],
-    "details": {}
-  },
-  "error_handling": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Exit code handling not described"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "exit_codes": false,
+      "ci_context": true,
+      "environment": true,
+      "scheduling": true,
+      "permissions": true
+    }
+  },
+  "command_syntax": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 4,
+      "flag_usage": false,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
       "fallback": true,
       "logging": true,
-      "manual_paths": false
+      "manual_paths": true
     }
   }
 }

@@ -1,0 +1,84 @@
+{
+  "validator": "protocol_role",
+  "protocol_id": "09",
+  "validation_timestamp": "2025-11-06T16:28:58.495251Z",
+  "overall_score": 0.775,
+  "validation_status": "fail",
+  "issues": [
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Value proposition not captured",
+    "Output formats not specified"
+  ],
+  "recommendations": [],
+  "role_definition": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Domain expertise keywords missing",
+      "Behavioral traits not articulated"
+    ],
+    "recommendations": [],
+    "details": {
+      "role_title": true,
+      "role_description": true,
+      "domain_expertise": false,
+      "behavioral_traits": false
+    }
+  },
+  "mission_statement": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Value proposition not captured"
+    ],
+    "recommendations": [],
+    "details": {
+      "mission_clarity": true,
+      "scope_boundaries": true,
+      "success_criteria": true,
+      "value_proposition": false
+    }
+  },
+  "constraints_guidelines": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "guardrails": true,
+      "boundaries": true,
+      "workflow_alignment": true,
+      "guardrail_count": 2,
+      "boundary_count": 1,
+      "workflow_links": 12,
+      "optional_guidance": 0
+    }
+  },
+  "output_expectations": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Output formats not specified"
+    ],
+    "recommendations": [],
+    "details": {
+      "format": false,
+      "structure": true,
+      "location": true,
+      "validation": true
+    }
+  },
+  "behavioral_guidance": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "communication_style": true,
+      "decision_making": true,
+      "error_handling": true,
+      "user_interaction": true
+    }
+  }
+}

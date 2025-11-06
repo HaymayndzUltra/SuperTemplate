@@ -1,11 +1,12 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "21",
-  "validation_timestamp": "2025-11-06T05:29:53.213277Z",
-  "overall_score": 0.7833333333333333,
+  "validation_timestamp": "2025-11-06T16:43:35.739540Z",
+  "overall_score": 0.7458333333333333,
   "validation_status": "fail",
   "issues": [
-    "Referenced command paths not found: scripts/discover_automation_candidates.py"
+    "Referenced command paths not found: scripts/discover_automation_candidates.py",
+    "Exit code handling not described"
   ],
   "recommendations": [
     "Clarify access and credential requirements",
@@ -83,12 +84,14 @@
     }
   },
   "error_handling": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
     "recommendations": [],
     "details": {
-      "exit_codes": true,
+      "exit_codes": false,
       "fallback": true,
       "logging": true,
       "manual_paths": true

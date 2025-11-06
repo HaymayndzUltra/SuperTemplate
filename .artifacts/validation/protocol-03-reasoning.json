@@ -1,48 +1,56 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "03",
-  "validation_timestamp": "2025-11-06T05:31:15.306892Z",
-  "overall_score": 1.0,
-  "validation_status": "pass",
-  "issues": [],
-  "recommendations": [],
+  "validation_timestamp": "2025-11-06T16:43:35.043931Z",
+  "overall_score": 0.625,
+  "validation_status": "fail",
+  "issues": [
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Self-awareness statements missing"
+  ],
+  "recommendations": [
+    "Include root-cause analysis guidance"
+  ],
   "reasoning_patterns": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Reasoning patterns not explicitly named"
+    ],
     "recommendations": [],
     "details": {
-      "matches": [
-        "pattern",
-        "heuristic",
-        "strategy"
-      ],
-      "pattern_terms": true,
+      "matches": [],
+      "pattern_terms": false,
       "explanations": true,
-      "improvement": true,
+      "improvement": false,
       "example_references": true
     }
   },
   "decision_trees": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Decision points insufficiently described"
+    ],
     "recommendations": [],
     "details": {
-      "decision_points": true,
+      "decision_points": false,
       "criteria": true,
-      "outcomes": true,
+      "outcomes": false,
       "logging": true
     }
   },
   "problem_solving_logic": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
-    "recommendations": [],
+    "recommendations": [
+      "Include root-cause analysis guidance"
+    ],
     "details": {
       "problem_identification": true,
-      "root_cause": true,
+      "root_cause": false,
       "solutions": true,
       "validation": true
     }
@@ -60,14 +68,16 @@
     }
   },
   "meta_cognition": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Self-awareness statements missing"
+    ],
     "recommendations": [],
     "details": {
-      "awareness": true,
+      "awareness": false,
       "monitoring": true,
-      "correction": true,
+      "correction": false,
       "improvement": true
     }
   }

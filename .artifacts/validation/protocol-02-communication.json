@@ -1,10 +1,12 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "02",
-  "validation_timestamp": "2025-11-06T05:29:52.545879Z",
-  "overall_score": 0.9375,
-  "validation_status": "pass",
-  "issues": [],
+  "validation_timestamp": "2025-11-06T16:43:34.988393Z",
+  "overall_score": 0.5875,
+  "validation_status": "fail",
+  "issues": [
+    "COMMUNICATION PROTOCOLS section missing"
+  ],
   "recommendations": [],
   "status_announcements": {
     "score": 0.75,
@@ -19,25 +21,22 @@
     }
   },
   "user_interaction": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "COMMUNICATION PROTOCOLS section missing"
+    ],
     "recommendations": [],
-    "details": {
-      "confirmation": true,
-      "clarification": true,
-      "decision_points": true,
-      "feedback": true
-    }
+    "details": {}
   },
   "error_messaging": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.5,
+    "status": "fail",
     "issues": [],
     "recommendations": [],
     "details": {
-      "templates": true,
-      "severity": true,
+      "templates": false,
+      "severity": false,
       "context": true,
       "resolution": true
     }

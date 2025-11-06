@@ -1,0 +1,158 @@
+{
+  "validator": "protocol_role",
+  "validation_timestamp": "2025-11-06T10:22:01.955766Z",
+  "total_protocols": 23,
+  "pass_count": 1,
+  "warning_count": 12,
+  "fail_count": 10,
+  "average_score": 0.7913043478260869,
+  "protocols": [
+    {
+      "protocol_id": "01",
+      "status": "fail",
+      "score": 0.75
+    },
+    {
+      "protocol_id": "02",
+      "status": "fail",
+      "score": 0.6375
+    },
+    {
+      "protocol_id": "03",
+      "status": "warning",
+      "score": 0.8125
+    },
+    {
+      "protocol_id": "04",
+      "status": "warning",
+      "score": 0.8125
+    },
+    {
+      "protocol_id": "05",
+      "status": "pass",
+      "score": 0.9375
+    },
+    {
+      "protocol_id": "06",
+      "status": "fail",
+      "score": 0.75
+    },
+    {
+      "protocol_id": "07",
+      "status": "warning",
+      "score": 0.875
+    },
+    {
+      "protocol_id": "08",
+      "status": "fail",
+      "score": 0.75
+    },
+    {
+      "protocol_id": "09",
+      "status": "warning",
+      "score": 0.8125
+    },
+    {
+      "protocol_id": "10",
+      "status": "warning",
+      "score": 0.875
+    },
+    {
+      "protocol_id": "11",
+      "status": "fail",
+      "score": 0.5
+    },
+    {
+      "protocol_id": "12",
+      "status": "fail",
+      "score": 0.75
+    },
+    {
+      "protocol_id": "13",
+      "status": "warning",
+      "score": 0.8125
+    },
+    {
+      "protocol_id": "14",
+      "status": "warning",
+      "score": 0.875
+    },
+    {
+      "protocol_id": "15",
+      "status": "warning",
+      "score": 0.8125
+    },
+    {
+      "protocol_id": "16",
+      "status": "warning",
+      "score": 0.8125
+    },
+    {
+      "protocol_id": "17",
+      "status": "warning",
+      "score": 0.875
+    },
+    {
+      "protocol_id": "18",
+      "status": "warning",
+      "score": 0.875
+    },
+    {
+      "protocol_id": "19",
+      "status": "fail",
+      "score": 0.75
+    },
+    {
+      "protocol_id": "20",
+      "status": "warning",
+      "score": 0.875
+    },
+    {
+      "protocol_id": "21",
+      "status": "fail",
+      "score": 0.75
+    },
+    {
+      "protocol_id": "22",
+      "status": "fail",
+      "score": 0.75
+    },
+    {
+      "protocol_id": "23",
+      "status": "fail",
+      "score": 0.75
+    }
+  ],
+  "dimensions": {
+    "role_definition": {
+      "average_score": 0.5652173913043478,
+      "pass_count": 1,
+      "warning_count": 6,
+      "fail_count": 16
+    },
+    "mission_statement": {
+      "average_score": 0.6195652173913043,
+      "pass_count": 0,
+      "warning_count": 13,
+      "fail_count": 10
+    },
+    "constraints_guidelines": {
+      "average_score": 1.0,
+      "pass_count": 23,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "output_expectations": {
+      "average_score": 1.0,
+      "pass_count": 23,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "behavioral_guidance": {
+      "average_score": 0.967391304347826,
+      "pass_count": 22,
+      "warning_count": 0,
+      "fail_count": 1
+    }
+  }
+}

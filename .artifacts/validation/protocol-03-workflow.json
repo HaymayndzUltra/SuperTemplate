@@ -1,8 +1,8 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "03",
-  "validation_timestamp": "2025-11-06T05:29:52.584711Z",
-  "overall_score": 0.65,
+  "validation_timestamp": "2025-11-06T16:43:35.031128Z",
+  "overall_score": 0.7,
   "validation_status": "fail",
   "issues": [
     "Less than two workflow steps defined",
@@ -11,8 +11,7 @@
   ],
   "recommendations": [
     "Use '### STEP X' headings for clarity",
-    "Add rollback or retry guidance for failure scenarios",
-    "Document evidence manifests or registries"
+    "Add rollback or retry guidance for failure scenarios"
   ],
   "workflow_structure": {
     "score": 0.25,
@@ -56,9 +55,9 @@
       "action_clarity": false,
       "contextual_support": true,
       "step_count": 1,
-      "imperative_count": 23,
+      "imperative_count": 10,
       "action_prompts": 0,
-      "context_prompts": 24,
+      "context_prompts": 23,
       "optional_guidance": 1,
       "cautionary_statements": 1
     }
@@ -78,18 +77,16 @@
     }
   },
   "evidence_tracking": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document evidence manifests or registries"
-    ],
+    "recommendations": [],
     "details": {
       "evidence_tags": true,
       "artifact_locations": true,
-      "manifest": false,
+      "manifest": true,
       "downstream_trace": true,
-      "evidence_mentions": 19,
+      "evidence_mentions": 24,
       "artifact_mentions": 24
     }
   }

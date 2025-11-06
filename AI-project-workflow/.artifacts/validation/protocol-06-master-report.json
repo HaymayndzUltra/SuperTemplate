@@ -1,0 +1,89 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "06",
+  "validation_timestamp": "2025-11-06T16:28:58.446070Z",
+  "overall_score": 0.6809563492063492,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 0.8577777777777778
+    },
+    "protocol_role": {
+      "status": "warning",
+      "score": 0.875
+    },
+    "protocol_workflow": {
+      "status": "fail",
+      "score": 0.6642857142857143
+    },
+    "protocol_quality_gates": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.6125
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.5375
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.18750000000000003
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.7375
+    },
+    "protocol_reasoning": {
+      "status": "fail",
+      "score": 0.5125
+    },
+    "protocol_reflection": {
+      "status": "warning",
+      "score": 0.8250000000000001
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Industry standards not documented",
+    "Required section missing: EVIDENCE SUMMARY",
+    "Domain expertise keywords missing",
+    "Value proposition not captured",
+    "Not all steps define explicit actions",
+    "Evidence expectations missing in some steps",
+    "Several workflow steps omit explicit action prompts",
+    "Halt conditions rarely documented",
+    "Downstream consumer mapping missing",
+    "Referenced command paths not found: scripts/aggregate_evidence_06.py, scripts/run_protocol_06_gates.py",
+    "Exit code handling not described",
+    "Missing user interaction prompts: clarification, feedback",
+    "Limited progress terminology in communications",
+    "Artifacts not announced or referenced sufficiently",
+    "EVIDENCE SUMMARY section missing",
+    "Manifest not documented",
+    "Traceability gaps: inputs, outputs, transformations",
+    "Archival strategy not documented",
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Learning mechanisms incomplete: feedback, improvement_tracking, adaptation",
+    "Self-awareness statements missing",
+    "Continuous improvement gaps: opportunities",
+    "Knowledge capture gaps: lessons",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Document communication prompts per step",
+    "Optional or cautionary guidance can highlight operator judgement without blocking validation",
+    "Add rollback or retry guidance for failure scenarios",
+    "Document evidence manifests or registries",
+    "Provision config/protocol_gates/06.yaml when automated gating is expected",
+    "Register automation commands in scripts/script-registry.json: scripts/ai/calculate_feasibility_score.py, scripts/ai/classify_ai_problem_type.py, scripts/ai/generate_success_metrics.py",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ]
+}

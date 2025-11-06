@@ -1,6 +1,6 @@
 ---
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
+description: Apply instructions from @11-integration-testing.md
+auto_execution_mode: 1
 ---
 
 # PROTOCOL 11 : INTEGRATION TESTING & SYSTEM VALIDATION (QUALITY COMPLIANT)

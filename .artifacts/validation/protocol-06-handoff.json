@@ -1,22 +1,27 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "06",
-  "validation_timestamp": "2025-11-06T05:29:52.713203Z",
-  "overall_score": 1.0,
-  "validation_status": "pass",
-  "issues": [],
+  "validation_timestamp": "2025-11-06T16:52:20.249995Z",
+  "overall_score": 0.7625,
+  "validation_status": "fail",
+  "issues": [
+    "Checklist lacks sufficient coverage of required items",
+    "Sign-off guidance missing: approvals"
+  ],
   "recommendations": [],
   "checklist_completeness": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Checklist lacks sufficient coverage of required items"
+    ],
     "recommendations": [],
     "details": {
-      "item_count": 13,
-      "items": true,
+      "item_count": 0,
+      "items": false,
       "categories": true,
       "dependencies": true,
-      "status_markers": true
+      "status_markers": false
     }
   },
   "verification_procedures": {
@@ -26,11 +31,11 @@
     "recommendations": [],
     "details": {
       "term_counts": {
-        "validate": 17,
-        "ensure": 16,
-        "confirm": 8,
-        "verify": 11,
-        "gate": 6
+        "validate": 14,
+        "ensure": 15,
+        "confirm": 11,
+        "verify": 15,
+        "gate": 8
       },
       "verification_terms": true,
       "qa_involvement": true,
@@ -39,12 +44,14 @@
     }
   },
   "stakeholder_signoff": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Sign-off guidance missing: approvals"
+    ],
     "recommendations": [],
     "details": {
-      "approvals": true,
+      "approvals": false,
       "reviewers": true,
       "evidence_reference": true,
       "confirmation": true
@@ -59,8 +66,6 @@
       "terms": [
         "log",
         "brief",
-        "notes",
-        "transcript",
         "manifest",
         "report"
       ],
@@ -71,15 +76,15 @@
     }
   },
   "next_protocol_alignment": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
       "ready_statements": true,
       "next_commands": true,
       "dependencies": true,
-      "continuation": true
+      "continuation": false
     }
   }
 }

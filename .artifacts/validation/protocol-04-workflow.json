@@ -1,13 +1,14 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "04",
-  "validation_timestamp": "2025-11-06T05:29:52.630179Z",
-  "overall_score": 0.8500000000000001,
+  "validation_timestamp": "2025-11-06T16:43:35.065754Z",
+  "overall_score": 0.8,
   "validation_status": "warning",
   "issues": [
     "Not all steps define explicit actions",
     "Evidence expectations missing in some steps",
-    "Several workflow steps omit explicit action prompts"
+    "Several workflow steps omit explicit action prompts",
+    "Downstream consumer mapping missing"
   ],
   "recommendations": [
     "Document communication prompts per step",
@@ -82,17 +83,19 @@
     }
   },
   "evidence_tracking": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Downstream consumer mapping missing"
+    ],
     "recommendations": [],
     "details": {
       "evidence_tags": true,
       "artifact_locations": true,
       "manifest": true,
-      "downstream_trace": true,
-      "evidence_mentions": 25,
-      "artifact_mentions": 28
+      "downstream_trace": false,
+      "evidence_mentions": 28,
+      "artifact_mentions": 35
     }
   }
 }

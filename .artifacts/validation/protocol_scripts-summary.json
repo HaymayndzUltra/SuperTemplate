@@ -1,0 +1,48 @@
+{
+  "validator": "protocol_scripts",
+  "validation_timestamp": "2025-11-06T10:30:05.000618Z",
+  "total_protocols": 1,
+  "pass_count": 0,
+  "warning_count": 0,
+  "fail_count": 1,
+  "average_score": 0.6053571428571429,
+  "protocols": [
+    {
+      "protocol_id": "01",
+      "status": "fail",
+      "score": 0.6053571428571429
+    }
+  ],
+  "dimensions": {
+    "script_inventory": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "registry_alignment": {
+      "average_score": 0.7142857142857143,
+      "pass_count": 0,
+      "warning_count": 1,
+      "fail_count": 0
+    },
+    "execution_context": {
+      "average_score": 0.25,
+      "pass_count": 0,
+      "warning_count": 0,
+      "fail_count": 1
+    },
+    "command_syntax": {
+      "average_score": 0.25,
+      "pass_count": 0,
+      "warning_count": 0,
+      "fail_count": 1
+    },
+    "error_handling": {
+      "average_score": 0.75,
+      "pass_count": 0,
+      "warning_count": 1,
+      "fail_count": 0
+    }
+  }
+}

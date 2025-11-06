@@ -1,19 +1,18 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "21",
-  "validation_timestamp": "2025-11-06T05:29:53.207539Z",
+  "validation_timestamp": "2025-11-06T16:43:35.732080Z",
   "basic_information": {
-    "score": 0.6666666666666666,
+    "score": 0.8333333333333334,
     "status": "warning",
     "issues": [
-      "Protocol version not found (semantic versioning expected)",
-      "Phase assignment not found or invalid in AGENTS.md"
+      "Protocol version not found (semantic versioning expected)"
     ],
     "elements_found": {
       "protocol_number": true,
       "protocol_name": "Implementation Retrospective",
       "protocol_version": false,
-      "phase_assignment": false,
+      "phase_assignment": "Phase 5",
       "purpose_statement": true,
       "scope_definition": true
     }
@@ -71,11 +70,10 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.9333333333333332,
-  "validation_status": "warning",
+  "overall_score": 0.9666666666666668,
+  "validation_status": "pass",
   "issues": [
-    "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md"
+    "Protocol version not found (semantic versioning expected)"
   ],
   "recommendations": []
 }

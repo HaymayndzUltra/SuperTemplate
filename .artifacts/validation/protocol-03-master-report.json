@@ -1,13 +1,13 @@
 {
   "validator": "master_validator",
   "protocol_id": "03",
-  "validation_timestamp": "2025-11-06T05:29:52.625664Z",
-  "overall_score": 0.8676388888888887,
+  "validation_timestamp": "2025-11-06T16:43:35.060977Z",
+  "overall_score": 0.8184722222222224,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
-      "status": "warning",
-      "score": 0.9333333333333332
+      "status": "pass",
+      "score": 0.9666666666666668
     },
     "protocol_role": {
       "status": "warning",
@@ -15,61 +15,60 @@
     },
     "protocol_workflow": {
       "status": "fail",
-      "score": 0.65
+      "score": 0.7
     },
     "protocol_quality_gates": {
-      "status": "fail",
-      "score": 0.825
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_scripts": {
       "status": "fail",
       "score": 0.6555555555555556
     },
     "protocol_communication": {
-      "status": "pass",
-      "score": 1.0
+      "status": "fail",
+      "score": 0.75
     },
     "protocol_evidence": {
-      "status": "fail",
-      "score": 0.7999999999999999
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_handoff": {
-      "status": "pass",
-      "score": 1.0
+      "status": "fail",
+      "score": 0.75
     },
     "protocol_reasoning": {
-      "status": "pass",
-      "score": 1.0
+      "status": "fail",
+      "score": 0.625
     },
     "protocol_reflection": {
       "status": "pass",
-      "score": 1.0
+      "score": 0.925
     }
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",
     "Success criteria absent from mission",
     "Less than two workflow steps defined",
     "Step numbering is not sequential",
     "Several workflow steps omit explicit action prompts",
-    "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/run_protocol_03_gates.py, scripts/validate_brief_structure.py, scripts/validate_discovery_inputs.py, scripts/validate_prerequisites_03.py, scripts/verify_brief_approvals.py",
-    "Traceability gaps: inputs, outputs"
+    "Missing user interaction prompts: clarification, feedback",
+    "Limited progress terminology in communications",
+    "Sign-off guidance missing: approvals, reviewers",
+    "Reasoning patterns not explicitly named",
+    "Decision points insufficiently described",
+    "Self-awareness statements missing",
+    "Roadmap or future direction not documented"
   ],
   "recommendations": [
     "Use '### STEP X' headings for clarity",
     "Add rollback or retry guidance for failure scenarios",
-    "Document evidence manifests or registries",
-    "Include quantitative metrics for gate evaluation",
-    "Document waiver/override policies",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",
-    "Document storage permissions or access requirements",
-    "Optionally reference a manifest file or inventory for quick lookup",
-    "Enhance archival plan with: cleanup, retrieval"
+    "Include root-cause analysis guidance"
   ]
 }

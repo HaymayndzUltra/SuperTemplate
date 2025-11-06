@@ -1,12 +1,12 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "09",
-  "validation_timestamp": "2025-11-06T05:29:52.820356Z",
-  "overall_score": 0.8875,
-  "validation_status": "warning",
+  "validation_timestamp": "2025-11-06T16:43:35.282462Z",
+  "overall_score": 0.675,
+  "validation_status": "fail",
   "issues": [
-    "Limited progress terminology in communications",
-    "Artifacts not announced or referenced sufficiently"
+    "Missing user interaction prompts: clarification, feedback",
+    "Limited progress terminology in communications"
   ],
   "recommendations": [],
   "status_announcements": {
@@ -22,58 +22,57 @@
     }
   },
   "user_interaction": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Missing user interaction prompts: clarification, feedback"
+    ],
     "recommendations": [],
     "details": {
       "confirmation": true,
-      "clarification": true,
+      "clarification": false,
       "decision_points": true,
-      "feedback": true
+      "feedback": false
     }
   },
   "error_messaging": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
       "templates": true,
-      "severity": true,
+      "severity": false,
       "context": true,
       "resolution": true
     }
   },
   "progress_tracking": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 0.0,
+    "status": "fail",
     "issues": [
       "Limited progress terminology in communications"
     ],
     "recommendations": [],
     "details": {
       "terms": [
-        "complete",
-        "next steps"
+        "complete"
       ],
       "progress_terms": false,
-      "timeline": true,
-      "current_activity": true,
-      "next_steps": true
+      "timeline": false,
+      "current_activity": false,
+      "next_steps": false
     }
   },
   "evidence_communication": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Artifacts not announced or referenced sufficiently"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "artifact_announcements": false,
+      "artifact_announcements": true,
       "format": true,
-      "location": false,
+      "location": true,
       "validation": true
     }
   }

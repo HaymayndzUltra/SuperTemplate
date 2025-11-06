@@ -1,6 +1,6 @@
 ---
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
+description: Apply instructions from @05-bootstrap-your-project.md
+auto_execution_mode: 1
 ---
 
 # PROTOCOL 05: BOOTSTRAP YOUR PROJECT (LEGACY ALIGNMENT COMPLIANT)

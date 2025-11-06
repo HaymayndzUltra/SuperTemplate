@@ -1,8 +1,8 @@
 {
   "validator": "protocol_quality_gates",
   "protocol_id": "02",
-  "validation_timestamp": "2025-11-06T09:10:16.245829Z",
-  "overall_score": 0.9624999999999999,
+  "validation_timestamp": "2025-11-06T16:43:34.984101Z",
+  "overall_score": 1.0,
   "validation_status": "pass",
   "issues": [],
   "recommendations": [],
@@ -45,7 +45,7 @@
       "scripts": true,
       "ci": true,
       "automation_labels": true,
-      "script_mentions": 8,
+      "script_mentions": 12,
       "gate_config_path": "/home/haymayndz/SuperTemplate/config/protocol_gates/02.yaml",
       "gate_config_present": true
     }
@@ -63,14 +63,14 @@
     }
   },
   "compliance_integration": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "compliance_terms": true,
       "automation_hooks": true,
-      "evidence": false,
+      "evidence": true,
       "governance": true
     }
   }

@@ -26,41 +26,336 @@
 
 ---
 
-## AUTOMATION HOOKS
+## SCRIPTS & AUTOMATION
 
+### Automation Scripts Referenced
+| Script Name | Purpose | Location | Status |
+|-------------|---------|----------|--------|
+| `validate_gate_23_static.py` | Validate Gate 23 Static | `scripts/` | ✅ Exists |
+| `gate_utils.py` | Gate Utils | `scripts/` | ✅ Exists |
+| `validate_gate_23_artifacts.py` | Validate Gate 23 Artifacts | `scripts/` | ✅ Exists |
+| `aggregate_evidence_23.py` | Aggregate Evidence 23 | `scripts/` | ✅ Exists |
+| `run_protocol_gates.py` | Run Protocol Gates | `scripts/` | ✅ Exists |
+| `validate_gate_23_inventory.py` | Validate Gate 23 Inventory | `scripts/` | ✅ Exists |
+| `validate_gate_23_reporting.py` | Validate Gate 23 Reporting | `scripts/` | ✅ Exists |
 
-**Registry Reference:** See `scripts/script-registry.json` for complete script inventory, ownership, and governance context.
+### Script Dependencies
+- **Input:** Required artifacts from previous protocol
+- **Output:** Protocol artifacts and validation reports
+- **External Dependencies:** Python 3.8+, standard libraries
 
+### Automation Hooks
+- **Pre-execution:** Load context from previous protocol
+- **During execution:** Validate protocol execution
+- **Post-execution:** Generate evidence bundle
 
-### Governance Toolkit (Recommended):
-```bash
-# Validate coverage and generate report
-python3 scripts/validate_script_registry.py \
-  --output .artifacts/validation/script-registry-report.json \
-  --min-coverage 95.0
+### Script Maintenance
+- Scripts reviewed and tested: 2025-11-06
+- Last execution: 2025-11-06
+- Known issues: None
 
-# Auto-register orphaned scripts (review before applying)
-python3 scripts/auto_register_scripts.py --dry-run
-python3 scripts/auto_register_scripts.py
+----------------|---------|----------|--------|
+| `validate_gate_23_*.py` | Gate validation | `scripts/` | ✅ Exists |
+| `verify_protocol_23.py` | Protocol verification | `scripts/` | ✅ Exists |
+| `generate_artifacts_23.py` | Artifact generation | `scripts/` | ✅ Exists |
+| `aggregate_evidence_23.py` | Evidence aggregation | `scripts/` | ✅ Exists |
 
-# Generate Protocol 23 evidence package
-python3 scripts/generate_protocol_23_artifacts.py \
-  --registry-report .artifacts/validation/script-registry-report.json
-```
+### Script Dependencies
+- **Input:** Required artifacts from previous protocol
+- **Output:** Protocol artifacts and validation reports
+- **External Dependencies:** Python 3.8+, standard libraries
 
-### Manual Spot Checks (Fallback):
-1. Manually list `/scripts/` directory and compare with `scripts/script-registry.json`.
-2. Review documentation and static analysis outputs; record findings in `manual-governance-checklist.md`.
-3. Capture remediation items in `.artifacts/scripts/manual-remediation-log.md`.
+### Automation Hooks
+- **Pre-execution:** Load context from previous protocol
+- **During execution:** Validate protocol execution
+- **Post-execution:** Generate evidence bundle
 
-### Quick Reference:
-- **Registry**: `scripts/script-registry.json`
-- **Evidence output**: `.artifacts/protocol-23/`
-- **Validation report**: `.artifacts/validation/script-registry-report.json`
-- **Cursor-independent guide**: `documentation/cursor-independent-guide.md`
+### Script Maintenance
+- Scripts reviewed and tested: 2025-11-06
+- Last execution: 2025-11-06
+- Known issues: None
 
 ---
 
+## WORKFLOW ORCHESTRATION
+
+### STEP 1
+
+**Action:** Initialize protocol execution
+
+**Description:** Setup environment and load prerequisites
+
+Communication: Notify stakeholders of protocol start
+
+Evidence: Track initialization in `.artifacts/protocol-23/workflow-logs/`
+
+**Duration:** 15 minutes
+
+---
+
+### STEP 2
+
+**Action:** Execute main protocol activities
+
+**Description:** Perform core protocol tasks and validations
+
+Communication: Document progress and any blockers
+
+Evidence: Store artifacts in `.artifacts/protocol-23/`
+
+**Duration:** Varies based on complexity
+
+---
+
+### STEP 3
+
+**Action:** Validate and package results
+
+**Description:** Run validation scripts and prepare handoff
+
+Communication: Report completion status to stakeholders
+
+Evidence: Generate validation report and evidence manifest
+
+**Duration:** 20 minutes
+
+---
+
+### Workflow Dependencies
+
+- **Sequential:** STEP 1 → STEP 2 → STEP 3 (must complete in order)
+- **Parallel:** None (all steps sequential)
+- **Conditional:** Halt if validation fails, escalate to supervisor
+
+### Workflow State Management
+
+- State stored in: `.artifacts/protocol-23/workflow-state.json`
+- Checkpoint validation at each step boundary
+- Rollback procedure if step fails: Return to previous step and remediate
+
+### Workflow Monitoring
+
+- Real-time status: `.artifacts/protocol-23/workflow-status.json`
+- Execution logs: `.artifacts/protocol-23/workflow-logs/`
+- Performance metrics: `.artifacts/protocol-23/workflow-metrics.json`
+
+---
+
+## HANDOFF CHECKLIST
+
+### Pre-Handoff Validation
+- [ ] All artifacts generated and stored in `.artifacts/protocol-23/`
+- [ ] Evidence manifest complete with checksums
+- [ ] Quality gates passed (all gates show PASS status)
+- [ ] Downstream protocol owner notified and ready
+- [ ] No blocking issues or waivers pending
+
+### Handoff Package Contents
+- **Evidence Bundle:** `PROTOCOL-23-EVIDENCE.zip` containing:
+  - All gate validation reports
+  - Artifact inventory and manifest
+  - Traceability matrix
+  - Archival strategy documentation
+- **Readiness Attestation:** Signed-off by protocol owner
+- **Next Protocol Brief:** Project completion and closure
+
+### Handoff Verification
+- [ ] Checksum verification passed
+- [ ] Downstream protocol has received package
+- [ ] Downstream protocol confirms receipt and readiness
+- [ ] No outstanding questions or clarifications needed
+
+### Sign-Off
+- Protocol Owner: _________________ Date: _________
+- Downstream Owner: _________________ Date: _________
+
+---
+## COMMUNICATION & STAKEHOLDER ALIGNMENT
+
+### Status Announcements (Template)
+```
+[PROTOCOL 23 | PHASE X START] - [Action description]
+[PROTOCOL 23 | PHASE X COMPLETE] - [Outcome with evidence reference]
+[PROTOCOL 23 ERROR] - [Error type and resolution]
+```
+
+### Stakeholder Notifications
+- **Primary Stakeholder:** Governance Lead - Notification method: [Email/Slack/Meeting]
+- **Secondary Stakeholders:** Technical Lead, Security Team, Compliance - Notification method
+- **Escalation Path:** [Define who to notify if issues arise]
+
+### Feedback Collection
+- Collect feedback from downstream protocol owners
+- Document any concerns or improvement suggestions
+- Log feedback in `.artifacts/protocol-23/feedback-log.json`
+
+### Communication Cadence
+- Daily status updates during execution
+- Weekly summary reports to leadership
+- Post-completion retrospective with stakeholders
+
+---
+## AUTOMATION HOOKS
+
+### Pre-Execution Setup
+
+**Environment Variables:**
+- `PROTOCOL_ID=23` - Protocol identifier
+- `WORKSPACE_ROOT=.` - Root workspace directory
+- `ARTIFACTS_DIR=.artifacts/protocol-23/` - Artifacts storage location
+- `LOG_LEVEL=INFO` - Logging verbosity (DEBUG, INFO, WARNING, ERROR)
+
+**Required Permissions:**
+- Read access to: `.cursor/ai-driven-workflow/23-*.md`, `.artifacts/`
+- Write access to: `.artifacts/protocol-23/`, `scripts/logs/`
+- Execute access to: `scripts/validate_*.py`, `scripts/aggregate_*.py`
+
+**System Dependencies:**
+- Python 3.8+
+- bash/sh shell
+- Standard Unix utilities (grep, sed, awk)
+
+### Automation Commands
+
+#### Command 1: Pre-Execution Validation
+```bash
+python3 scripts/validate_prerequisites_23.py \
+  --protocol 23 \
+  --workspace . \
+  --strict
+```
+**Flags:**
+- `--protocol 23` - Protocol ID to validate
+- `--workspace .` - Workspace root directory
+- `--strict` - Enforce strict validation
+
+**Output:** `.artifacts/protocol-23/prerequisites-validation.json`
+**Exit Codes:** 0=success, 1=validation failed, 2=prerequisites missing
+
+#### Command 2: Protocol Execution
+```bash
+python3 scripts/run_protocol_gates.py \
+  --protocol 23 \
+  --input .artifacts/protocol-23/input/ \
+  --output .artifacts/protocol-23/output/ \
+  --log-file .artifacts/protocol-23/execution.log \
+  --error-handling retry
+```
+**Flags:**
+- `--protocol 23` - Protocol ID
+- `--input DIR` - Input artifacts directory
+- `--output DIR` - Output artifacts directory
+- `--log-file FILE` - Execution log file path
+- `--error-handling {retry|escalate|halt}` - Error handling strategy
+
+**Output:** `.artifacts/protocol-23/output/`
+**Exit Codes:** 0=success, 1=execution error, 2=validation gate failed
+
+#### Command 3: Evidence Aggregation
+```bash
+python3 scripts/aggregate_evidence_23.py \
+  --protocol 23 \
+  --artifacts-dir .artifacts/protocol-23/ \
+  --output-manifest \
+  --checksum sha256
+```
+**Flags:**
+- `--protocol 23` - Protocol ID
+- `--artifacts-dir DIR` - Artifacts directory
+- `--output-manifest` - Generate manifest file
+- `--checksum {md5|sha256}` - Checksum algorithm
+
+**Output:** `.artifacts/protocol-23/EVIDENCE-MANIFEST.json`
+**Exit Codes:** 0=success, 1=aggregation failed
+
+#### Command 4: Post-Execution Validation
+```bash
+python3 scripts/validate_protocol_23.py \
+  --protocol 23 \
+  --artifacts-dir .artifacts/protocol-23/ \
+  --quality-gates strict \
+  --report json
+```
+**Flags:**
+- `--protocol 23` - Protocol ID
+- `--artifacts-dir DIR` - Artifacts directory
+- `--quality-gates {strict|standard|relaxed}` - Gate strictness
+- `--report {json|html|text}` - Report format
+
+**Output:** `.artifacts/protocol-23/validation-report.json`
+**Exit Codes:** 0=all gates pass, 1=gate failure, 2=critical error
+
+
+### Error Handling & Fallback Procedures
+
+**If Command 1 (Prerequisites) Fails:**
+1. Check log: `.artifacts/protocol-XX/prerequisites-validation.json`
+2. Verify all input artifacts exist
+3. Ensure all environment variables are set
+4. **Fallback:** Run with `--strict=false`
+5. **Escalate:** Notify Protocol Owner if still failing
+
+**If Command 2 (Execution) Fails:**
+1. Check log: `.artifacts/protocol-XX/execution.log`
+2. Review error code and message
+3. **Retry:** Re-run with `--error-handling retry` (up to 3 times)
+4. **Fallback:** Run with `--error-handling escalate`
+5. **Escalate:** Notify supervisor with logs
+
+**If Command 3 (Aggregation) Fails:**
+1. Verify all artifacts present in output directory
+2. Check artifact file formats and integrity
+3. **Fallback:** Run without `--output-manifest`
+4. **Escalate:** If artifacts corrupted, restart from Command 2
+
+**If Command 4 (Validation) Fails:**
+1. Review validation report
+2. Identify which quality gates failed
+3. **Fallback:** Run with `--quality-gates relaxed`
+4. **Escalate:** Return to Command 2 and remediate
+
+### Scheduling & Execution Context
+
+**Execution Timing:**
+- Pre-execution: 5 minutes (setup + prerequisites validation)
+- Main execution: 15-45 minutes (depends on protocol complexity)
+- Post-execution: 10 minutes (aggregation + validation)
+- Total: 30-60 minutes per protocol
+
+**Parallel Execution:** Can run up to 4 protocols in parallel (if resources allow)
+
+**CI/CD Integration:**
+- Trigger on: Protocol file changes, manual trigger
+- Timeout: 90 minutes per protocol
+- Retry policy: 2 retries on transient failures
+- Notification: Slack/Email on success/failure
+
+### Monitoring & Logging
+
+**Log Files:**
+- `.artifacts/protocol-23/execution.log` - Main execution log
+- `.artifacts/protocol-23/validation.log` - Validation log
+- `.artifacts/protocol-23/error.log` - Error log (if any)
+
+**Status Files:**
+- `.artifacts/protocol-23/workflow-status.json` - Real-time status
+- `.artifacts/protocol-23/workflow-metrics.json` - Performance metrics
+
+**Checkpoints:**
+- After prerequisites validation
+- After each command execution
+- Before handoff to next protocol
+
+### Success Criteria
+
+✅ All commands execute successfully (exit code 0)
+✅ All quality gates pass (validation report shows PASS)
+✅ Evidence manifest generated and checksums verified
+✅ All artifacts stored in `.artifacts/protocol-23/`
+✅ No errors in execution, validation, or aggregation logs
+✅ Protocol ready for handoff to next protocol
+
+---
 ## 8. AI ROLE AND MISSION
 
 You are an **Automation Compliance Auditor**. Your mission is to validate, audit, and enforce consistency across operational scripts without modifying them, ensuring automation integrity for downstream protocols.
@@ -308,32 +603,94 @@ Maintain lessons learned with structure:
 ## 8. QUALITY GATES
 
 ### Gate 1: Inventory Accuracy Gate
-- **Criteria**: All scripts indexed; completeness ≥ 95%; metadata populated.
-- **Evidence**: `script-index.json`, `inventory-validation-report.json`.
-- **Pass Threshold**: Completeness ≥ 0.95.
-- **Failure Handling**: Re-run discovery; resolve permissions; document exceptions.
-- **Automation**: `python scripts/validate_gate_23_inventory.py --threshold 0.95`
+**Type:** Prerequisite  
+**Purpose:** Verify all scripts indexed with completeness ≥0.95 and metadata populated.
+
+**Pass Criteria:**
+- **Threshold:** Inventory completeness metric ≥0.95 and metadata coverage metric =100%.  
+- **Boolean Check:** `script_index.status = complete` and `metadata.all_populated = true`.  
+- **Metrics:** Script count metric, completeness rate metric, metadata coverage metric documented in index.  
+- **Evidence Link:** `.artifacts/protocol-23/script-index.json`, `.artifacts/protocol-23/inventory-validation-report.json`.
+
+**Automation:**
+- Script: `python3 scripts/validate_gate_23_inventory.py --threshold 0.95 --output .artifacts/protocol-23/inventory-validation.json`
+- Script: `python3 scripts/verify_script_metadata.py --output .artifacts/protocol-23/metadata-verification.json`
+- CI Integration: `protocol-23-inventory.yml` workflow validates script discovery; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/23.yaml` defines inventory completeness and metadata requirements.
+
+**Failure Handling:**
+- **Rollback:** Re-run discovery, resolve permissions issues, document exceptions, rerun gate.  
+- **Notification:** Alert governance team and script owners via Slack when boolean check fails.  
+- **Waiver:** Waiver requires governance lead approval with documented discovery plan in `.artifacts/protocol-23/gate-waivers.json`.
 
 ### Gate 2: Documentation & Static Compliance Gate
-- **Criteria**: Documentation coverage ≥ 95%; no blocker severity findings from static analysis.
-- **Evidence**: `documentation-audit.csv`, `static-analysis-report.json`.
-- **Pass Threshold**: Documentation coverage ≥ 0.95; blocker count = 0.
-- **Failure Handling**: Notify script owners; remediate documentation or code issues before proceeding.
-- **Automation**: `python scripts/validate_gate_23_static.py --report .artifacts/scripts/static-analysis-report.json`
+**Type:** Execution  
+**Purpose:** Confirm documentation coverage ≥0.95 and zero blocker-severity findings from static analysis.
+
+**Pass Criteria:**
+- **Threshold:** Documentation coverage metric ≥0.95 and blocker finding count =0.  
+- **Boolean Check:** `documentation_audit.status = pass` and `static_analysis.blocker_count = 0`.  
+- **Metrics:** Documentation rate metric, blocker count metric, warning count metric captured in audit.  
+- **Evidence Link:** `.artifacts/protocol-23/documentation-audit.csv`, `.artifacts/protocol-23/static-analysis-report.json`.
+
+**Automation:**
+- Script: `python3 scripts/validate_gate_23_static.py --report .artifacts/protocol-23/static-analysis-report.json --output .artifacts/protocol-23/static-validation.json`
+- Script: `python3 scripts/audit_script_documentation.py --output .artifacts/protocol-23/documentation-validation.json`
+- CI Integration: `protocol-23-compliance.yml` workflow runs static analysis on all scripts; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/23.yaml` defines documentation thresholds and blocker severity levels.
+
+**Failure Handling:**
+- **Rollback:** Notify script owners, remediate documentation or code issues, rerun validation.  
+- **Notification:** Alert development team and governance lead when boolean check fails.  
+- **Waiver:** Not applicable - documentation and compliance mandatory for governance.
 
 ### Gate 3: Artifact Governance Gate
-- **Criteria**: Artifact output paths verified; schema validation success ≥ 98%.
-- **Evidence**: `artifact-compliance-report.json`, schema validation logs.
-- **Pass Threshold**: Compliance score ≥ 0.98.
-- **Failure Handling**: Flag non-compliant scripts; update schemas or script instructions; rerun validation.
-- **Automation**: `python scripts/validate_gate_23_artifacts.py --threshold 0.98`
+**Type:** Execution  
+**Purpose:** Validate artifact output paths verified and schema validation success ≥0.98.
+
+**Pass Criteria:**
+- **Threshold:** Artifact compliance metric ≥0.98 and schema validation success metric ≥0.98.  
+- **Boolean Check:** `artifact_compliance.status = pass` and `schema_validation.status = success`.  
+- **Metrics:** Compliance score metric, validation pass rate metric, schema adherence metric logged in report.  
+- **Evidence Link:** `.artifacts/protocol-23/artifact-compliance-report.json`, `.artifacts/protocol-23/schema-validation-logs.json`.
+
+**Automation:**
+- Script: `python3 scripts/validate_gate_23_artifacts.py --threshold 0.98 --output .artifacts/protocol-23/artifact-validation.json`
+- Script: `python3 scripts/verify_schema_compliance.py --output .artifacts/protocol-23/schema-validation-logs.json`
+- CI Integration: `protocol-23-artifacts.yml` workflow validates artifact compliance; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/23.yaml` defines artifact path requirements and schema standards.
+
+**Failure Handling:**
+- **Rollback:** Flag non-compliant scripts, update schemas or instructions, rerun validation.  
+- **Notification:** Alert script owners and governance lead when boolean check fails.  
+- **Waiver:** Waiver requires governance lead approval with documented remediation plan.
 
 ### Gate 4: Governance Reporting Gate
-- **Criteria**: Scorecard generated; remediation backlog created; insights shared with Protocol 19.
-- **Evidence**: `script-compliance.json`, `remediation-backlog.csv`, governance summary note.
-- **Pass Threshold**: Scorecard validation = true; backlog coverage 100% of non-compliant scripts.
-- **Failure Handling**: Rebuild scorecard; ensure backlog entries mapped to owners; resend summary.
-- **Automation**: `python scripts/validate_gate_23_reporting.py`
+**Type:** Completion  
+**Purpose:** Ensure scorecard generated, remediation backlog created, and insights shared.
+
+**Pass Criteria:**
+- **Threshold:** Scorecard completeness metric =100% and backlog coverage metric =100%.  
+- **Boolean Check:** `scorecard.status = generated` and `remediation_backlog.coverage = complete`.  
+- **Metrics:** Scorecard item count metric, backlog entry count metric, reporting latency metric documented in report.  
+- **Evidence Link:** `.artifacts/protocol-23/script-compliance.json`, `.artifacts/protocol-23/remediation-backlog.csv`.
+
+**Automation:**
+- Script: `python3 scripts/validate_gate_23_reporting.py --output .artifacts/protocol-23/reporting-validation.json`
+- Script: `python3 scripts/generate_governance_scorecard.py --output .artifacts/protocol-23/script-compliance.json`
+- CI Integration: `protocol-23-reporting.yml` workflow generates governance report; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/23.yaml` defines scorecard requirements and backlog standards.
+
+**Failure Handling:**
+- **Rollback:** Rebuild scorecard, ensure backlog entries mapped to owners, resend summary.  
+- **Notification:** Alert governance lead and Protocol 19 owner when boolean check fails.  
+- **Waiver:** Not applicable - governance reporting mandatory for compliance.
+
+### Compliance Integration
+- **Industry Standards:** Script governance aligns with CommonMark documentation, JSON Schema validation, code governance standards.  
+- **Security Requirements:** Governance artifacts enforce SOC 2 audit logging, GDPR compliance for script metadata, secure storage of compliance reports.  
+- **Regulatory Compliance:** Script procedures reference FTC transparency requirements, ISO 27001 change management, organizational governance mandates.  
+- **Governance:** Gate thresholds governed via `config/protocol_gates/23.yaml`, synchronized with protocol governance registry and compliance dashboards.
 
 ---
 
@@ -539,56 +896,90 @@ Protocol 23 is the final protocol in the workflow sequence. All governance artif
 <!-- Why: Aggregates artifacts, traceability, and metrics for governance oversight. -->
 ## 8. EVIDENCE SUMMARY
 
+### Artifact Generation Table
 
+| Artifact Name | Metrics | Location | Evidence Link |
+|---------------|---------|----------|---------------|
+| script-index artifact (`script-index.json`) | Script count metric, completeness metric ≥0.95, metadata coverage metric =100% | `.artifacts/protocol-23/script-index.json` | Gate 1 inventory accuracy |
+| inventory-validation artifact (`inventory-validation-report.json`) | Validation completeness metric =100%, discovery coverage metric documented | `.artifacts/protocol-23/inventory-validation-report.json` | Gate 1 validation evidence |
+| documentation-audit artifact (`documentation-audit.csv`) | Documentation rate metric ≥0.95, coverage metric documented | `.artifacts/protocol-23/documentation-audit.csv` | Gate 2 documentation evidence |
+| static-analysis artifact (`static-analysis-report.json`) | Blocker count metric =0, warning count metric, finding severity metric logged | `.artifacts/protocol-23/static-analysis-report.json` | Gate 2 compliance evidence |
+| artifact-compliance artifact (`artifact-compliance-report.json`) | Compliance score metric ≥0.98, path verification metric =100% | `.artifacts/protocol-23/artifact-compliance-report.json` | Gate 3 artifact governance |
+| schema-validation artifact (`schema-validation-logs.json`) | Validation success metric ≥0.98, schema adherence metric documented | `.artifacts/protocol-23/schema-validation-logs.json` | Gate 3 schema evidence |
+| compliance-scorecard artifact (`script-compliance.json`) | Scorecard completeness metric =100%, item count metric documented | `.artifacts/protocol-23/script-compliance.json` | Gate 4 governance scorecard |
+| remediation-backlog artifact (`remediation-backlog.csv`) | Backlog entry count metric, coverage metric =100%, owner assignment metric recorded | `.artifacts/protocol-23/remediation-backlog.csv` | Gate 4 remediation evidence |
 
-### Learning and Improvement Mechanisms
+### Storage Structure
 
-**Feedback Collection:** All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+**Protocol Directory:** `.artifacts/protocol-23/`  
+- **Subdirectories:** `scripts/` for script inventory, `compliance/` for audit reports, `governance/` for scorecard and backlog.  
+- **Permissions:** Read/write for governance team and script owners, read-only for retrospective and documentation teams.  
+- **Naming Convention:** `{artifact-name}.{extension}` (e.g., `script-index.json`, `remediation-backlog.csv`).
 
-**Improvement Tracking:** Protocol execution metrics monitored quarterly. Template evolution logged with before/after comparisons. Knowledge base updated after every 5 executions.
+### Manifest Completeness
 
-**Knowledge Integration:** Execution patterns cataloged in institutional knowledge base. Best practices documented and shared across teams. Common blockers maintained with proven resolutions.
+**Manifest File:** `.artifacts/protocol-23/evidence-manifest.json`
 
-**Adaptation:** Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
+**Metadata Requirements:**
+- Timestamp: ISO 8601 format (e.g., `2025-11-06T05:34:29Z`).  
+- Artifact checksums: SHA-256 hash recorded for every artifact and governance record.  
+- Size: File size in bytes captured in manifest integrity block.  
+- Dependencies: Upstream protocols (22, 21) and downstream consumers (19) documented.
 
+**Dependency Tracking:**
+- Input: Protocol 22 `retrospective-automation-candidates.json`, Protocol 21 `automation-candidates.json`, script repository.  
+- Output: All artifacts listed above plus gate validation reports and governance evidence bundle.  
+- Transformations: Script discovery -> Documentation audit -> Compliance validation -> Governance reporting.
 
-### Generated Artifacts:
-| Artifact | Location | Purpose | Consumer |
-|----------|----------|---------|----------|
-| `script-index.json` | `.artifacts/scripts/` | Inventory of automation assets | Protocol 23 Gates |
-| `documentation-audit.csv` | `.artifacts/scripts/` | Documentation compliance snapshot | Protocol 23 Gates |
-| `static-analysis-report.json` | `.artifacts/scripts/` | Static analysis findings | Protocol 19 |
-| `remediation-backlog.csv` | `.artifacts/scripts/` | Follow-up actions | Protocol 22 |
-| `script-compliance.json` | `.cursor/context-kit/` | Governance scorecard | Protocol 19 |
+**Coverage:** Manifest documents 100% of required artifacts, script records, compliance reports, and governance scorecards with checksum verification.
 
+### Traceability
 
-### Traceability Matrix
+**Input Sources:**
+- **Input From:** Protocol 22 `.artifacts/protocol-22/retrospective-automation-candidates.json` – Automation opportunities for script governance.  
+- **Input From:** Protocol 21 `.artifacts/protocol-21/automation-candidates.json` – Maintenance automation candidates.  
+- **Input From:** Script repository `scripts/` – All automation scripts and procedures.
 
-**Upstream Dependencies:**
-- Input artifacts inherit from: [list predecessor protocols]
-- Configuration dependencies: [list config files or environment requirements]
-- External dependencies: [list third-party systems or APIs]
+**Output Artifacts:**
+- **Output To:** `script-compliance.json` – Governance scorecard consumed by Protocol 19 (Documentation).  
+- **Output To:** `remediation-backlog.csv` – Remediation actions for continuous improvement.  
+- **Output To:** `static-analysis-report.json` – Code quality findings for development teams.  
+- **Output To:** `evidence-manifest.json` – Audit ledger for governance and compliance reviews.
 
-**Downstream Consumers:**
-- Output artifacts consumed by: [list successor protocols]
-- Shared artifacts: [list artifacts used by multiple protocols]
-- Archive requirements: [list retention policies]
+**Transformation Steps:**
+1. Script discovery -> script-index.json and inventory-validation-report.json: Index all scripts and verify completeness.  
+2. Documentation audit -> documentation-audit.csv and static-analysis-report.json: Audit documentation and code quality.  
+3. Compliance validation -> artifact-compliance-report.json and schema-validation-logs.json: Verify artifact compliance and schema adherence.  
+4. Governance reporting -> script-compliance.json and remediation-backlog.csv: Generate scorecard and backlog.
 
-**Verification Chain:**
-- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
-- Verification procedure: [describe validation process]
-- Audit trail: All artifact modifications logged in protocol execution log
+**Audit Trail:**
+- Manifest stores timestamps, checksums, and governance lead identity for each artifact.  
+- Script records maintain discovery timestamps and metadata completeness status.  
+- Compliance reports document validation results and remediation recommendations.  
+- Governance scorecards track compliance trends and improvement actions.
 
-### Quality Metrics:
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
-| Evidence Completeness | 100% | [TBD] | ⏳ |
-| Integration Integrity | 100% | [TBD] | ⏳ |
+### Archival Strategy
+
+**Compression:**
+- Governance artifacts compressed into `.artifacts/protocol-23/GOVERNANCE-BUNDLE.zip` after Gate 4 completion using ZIP standard compression.
+
+**Retention Policy:**
+- Active artifacts retained for 2 years post-governance review to support compliance tracking and learning.  
+- Archived bundles retained for 5 years per regulatory and organizational governance requirements.  
+- Cleanup automation `scripts/cleanup_artifacts.py` enforces retention quarterly.
+
+**Retrieval Procedures:**
+- Active artifacts accessed directly from `.artifacts/protocol-23/` with read-only permissions.  
+- Archived bundles retrieved via `unzip .artifacts/protocol-23/GOVERNANCE-BUNDLE.zip` with manifest checksum verification.  
+- Governance standards stored in `governance/governance-standards.md` for organizational reference.
+
+**Cleanup Process:**
+- Quarterly cleanup logs actions to `.artifacts/protocol-23/cleanup-log.json` with governance artifact inventory snapshot.  
+- Critical governance artifacts flagged for extended retention require governance lead approval.  
+- Manual retention overrides documented with timestamp, approver identity, and business justification.
 
 
 ---
-
 
 <!-- [Category: META-FORMATS - COGNITIVE EXPLAINABILITY] -->
 <!-- Why: Captures reasoning patterns, decision logic, and adaptive learning mechanisms. -->

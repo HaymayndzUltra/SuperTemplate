@@ -1,18 +1,16 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "17",
-  "validation_timestamp": "2025-11-06T05:29:53.099082Z",
+  "validation_timestamp": "2025-11-06T16:43:35.589049Z",
   "basic_information": {
-    "score": 0.8333333333333334,
-    "status": "warning",
-    "issues": [
-      "Phase assignment not found or invalid in AGENTS.md"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "elements_found": {
       "protocol_number": true,
       "protocol_name": "INCIDENT RESPONSE & ROLLBACK",
       "protocol_version": true,
-      "phase_assignment": false,
+      "phase_assignment": "Phase 4",
       "purpose_statement": true,
       "scope_definition": true
     }
@@ -70,10 +68,8 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.9666666666666668,
+  "overall_score": 1.0,
   "validation_status": "pass",
-  "issues": [
-    "Phase assignment not found or invalid in AGENTS.md"
-  ],
+  "issues": [],
   "recommendations": []
 }

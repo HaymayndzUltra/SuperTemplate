@@ -1,8 +1,8 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "17",
-  "validation_timestamp": "2025-11-06T05:31:15.417055Z",
-  "overall_score": 0.9624999999999999,
+  "validation_timestamp": "2025-11-06T16:43:35.612763Z",
+  "overall_score": 0.9249999999999999,
   "validation_status": "pass",
   "issues": [
     "Self-awareness statements missing"
@@ -61,8 +61,8 @@
     }
   },
   "meta_cognition": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 0.5,
+    "status": "fail",
     "issues": [
       "Self-awareness statements missing"
     ],
@@ -70,7 +70,7 @@
     "details": {
       "awareness": false,
       "monitoring": true,
-      "correction": true,
+      "correction": false,
       "improvement": true
     }
   }

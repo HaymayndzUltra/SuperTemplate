@@ -1,6 +1,6 @@
 ---
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
+description: Apply instructions from @12-quality-audit.md
+auto_execution_mode: 1
 ---
 
 # PROTOCOL 12 : QUALITY AUDIT ORCHESTRATOR (QUALITY ASSURANCE COMPLIANT)

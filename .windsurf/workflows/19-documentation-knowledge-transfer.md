@@ -1,6 +1,6 @@
 ---
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
+description: Apply instructions from @19-documentation-knowledge-transfer.md
+auto_execution_mode: 1
 ---
 
 # PROTOCOL 19 : DOCUMENTATION & KNOWLEDGE TRANSFER (KNOWLEDGE MANAGEMENT COMPLIANT)

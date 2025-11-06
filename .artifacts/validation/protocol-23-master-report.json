@@ -1,84 +1,75 @@
 {
   "validator": "master_validator",
   "protocol_id": "23",
-  "validation_timestamp": "2025-11-06T05:29:53.293510Z",
-  "overall_score": 0.7995833333333333,
+  "validation_timestamp": "2025-11-06T16:43:35.854861Z",
+  "overall_score": 0.8108333333333334,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.9
+      "score": 0.9333333333333332
     },
     "protocol_role": {
       "status": "fail",
       "score": 0.75
     },
     "protocol_workflow": {
-      "status": "fail",
-      "score": 0.7000000000000001
-    },
-    "protocol_quality_gates": {
-      "status": "fail",
-      "score": 0.7958333333333334
-    },
-    "protocol_scripts": {
-      "status": "fail",
-      "score": 0.6875
-    },
-    "protocol_communication": {
       "status": "warning",
       "score": 0.8
     },
-    "protocol_evidence": {
+    "protocol_quality_gates": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "protocol_scripts": {
       "status": "fail",
-      "score": 0.6749999999999998
+      "score": 0.7375000000000002
+    },
+    "protocol_communication": {
+      "status": "warning",
+      "score": 0.8375
+    },
+    "protocol_evidence": {
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_handoff": {
-      "status": "pass",
-      "score": 0.9249999999999999
+      "status": "fail",
+      "score": 0.725
     },
     "protocol_reasoning": {
-      "status": "warning",
-      "score": 0.7875000000000001
+      "status": "fail",
+      "score": 0.5625
     },
     "protocol_reflection": {
-      "status": "pass",
-      "score": 0.9750000000000001
+      "status": "warning",
+      "score": 0.7625000000000002
     }
   },
   "issues": [
     "Protocol name not found or empty",
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",
     "Success criteria absent from mission",
     "Value proposition not captured",
-    "Less than two workflow steps defined",
-    "Step numbering is not sequential",
     "Several workflow steps omit explicit action prompts",
-    "Insufficient compliance standards referenced",
-    "Limited progress terminology in communications",
-    "Protocol evidence directory not referenced",
-    "Traceability gaps: inputs, outputs",
+    "Halt conditions rarely documented",
+    "User confirmation steps not described",
+    "Referenced command paths not found: scripts/validate_protocol_23.py",
+    "Sign-off guidance missing: reviewers",
     "Ready-for-next-protocol statement missing",
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
-    "Self-awareness statements missing"
+    "Self-awareness statements missing",
+    "Retrospective analysis not documented",
+    "Knowledge capture gaps: lessons",
+    "Roadmap or future direction not documented"
   ],
   "recommendations": [
-    "Use '### STEP X' headings for clarity",
     "Optional or cautionary guidance can highlight operator judgement without blocking validation",
-    "Add rollback or retry guidance for failure scenarios",
-    "Document evidence manifests or registries",
-    "Identify gate types (Prerequisite/Execution/Completion)",
     "Provision config/protocol_gates/23.yaml when automated gating is expected",
-    "Reference CI/CD workflow integration for gates",
-    "Document waiver/override policies",
-    "Describe CI/CD context (workflow name, runner, or trigger)",
-    "Document environment/dependency expectations",
-    "Clarify access and credential requirements",
-    "Document how command outputs are captured",
-    "Enhance archival plan with: cleanup, retrieval"
+    "Reference scripts/script-registry.json for governance context",
+    "Document how command outputs are captured"
   ]
 }

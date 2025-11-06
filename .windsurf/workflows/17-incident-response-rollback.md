@@ -1,6 +1,6 @@
 ---
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
+description: Apply instructions from @17-incident-response-rollback.md
+auto_execution_mode: 1
 ---
 
 # PROTOCOL 17: INCIDENT RESPONSE & ROLLBACK (OPERATIONS RESILIENCE COMPLIANT)

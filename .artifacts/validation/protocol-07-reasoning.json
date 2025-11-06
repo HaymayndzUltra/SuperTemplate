@@ -1,15 +1,13 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "07",
-  "validation_timestamp": "2025-11-06T05:31:15.344624Z",
+  "validation_timestamp": "2025-11-06T16:43:35.212315Z",
   "overall_score": 0.7625000000000001,
   "validation_status": "warning",
   "issues": [
     "Reasoning patterns not explicitly named"
   ],
-  "recommendations": [
-    "Include root-cause analysis guidance"
-  ],
+  "recommendations": [],
   "reasoning_patterns": {
     "score": 0.25,
     "status": "fail",
@@ -43,13 +41,11 @@
     "score": 0.75,
     "status": "warning",
     "issues": [],
-    "recommendations": [
-      "Include root-cause analysis guidance"
-    ],
+    "recommendations": [],
     "details": {
       "problem_identification": true,
-      "root_cause": false,
-      "solutions": true,
+      "root_cause": true,
+      "solutions": false,
       "validation": true
     }
   },

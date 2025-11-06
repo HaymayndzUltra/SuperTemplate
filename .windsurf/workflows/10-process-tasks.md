@@ -1,6 +1,6 @@
 ---
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
+description: Apply instructions from @10-process-tasks.md
+auto_execution_mode: 1
 ---
 
 # PROTOCOL 10: CONTROLLED TASK EXECUTION (DELIVERY COMPLIANT)

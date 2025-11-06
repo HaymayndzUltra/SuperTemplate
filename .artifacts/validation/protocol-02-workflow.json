@@ -1,15 +1,14 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "02",
-  "validation_timestamp": "2025-11-06T05:29:52.539566Z",
-  "overall_score": 0.5666666666666667,
+  "validation_timestamp": "2025-11-06T16:43:34.980347Z",
+  "overall_score": 0.6166666666666667,
   "validation_status": "fail",
   "issues": [
     "Less than two workflow steps defined",
     "Step numbering is not sequential",
     "Several workflow steps omit explicit action prompts",
-    "Halt conditions rarely documented",
-    "Downstream consumer mapping missing"
+    "Halt conditions rarely documented"
   ],
   "recommendations": [
     "Use '### STEP X' headings for clarity",
@@ -84,19 +83,17 @@
     }
   },
   "evidence_tracking": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Downstream consumer mapping missing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "evidence_tags": true,
       "artifact_locations": true,
       "manifest": true,
-      "downstream_trace": false,
-      "evidence_mentions": 20,
-      "artifact_mentions": 25
+      "downstream_trace": true,
+      "evidence_mentions": 35,
+      "artifact_mentions": 31
     }
   }
 }

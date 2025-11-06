@@ -1,13 +1,13 @@
 {
   "validator": "master_validator",
   "protocol_id": "22",
-  "validation_timestamp": "2025-11-06T05:29:53.268931Z",
-  "overall_score": 0.8324999999999999,
+  "validation_timestamp": "2025-11-06T16:43:35.822413Z",
+  "overall_score": 0.9029166666666667,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
-      "status": "warning",
-      "score": 0.8
+      "status": "pass",
+      "score": 0.9666666666666668
     },
     "protocol_role": {
       "status": "fail",
@@ -15,23 +15,23 @@
     },
     "protocol_workflow": {
       "status": "fail",
-      "score": 0.65
+      "score": 0.7
     },
     "protocol_quality_gates": {
-      "status": "fail",
-      "score": 0.6874999999999999
+      "status": "pass",
+      "score": 0.9375
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.7875
+      "score": 0.75
     },
     "protocol_communication": {
       "status": "pass",
       "score": 0.9500000000000001
     },
     "protocol_evidence": {
-      "status": "fail",
-      "score": 0.7249999999999999
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_handoff": {
       "status": "pass",
@@ -48,9 +48,6 @@
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
-    "Security requirements not documented",
-    "Regulatory compliance not documented",
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",
     "Success criteria absent from mission",
@@ -59,25 +56,17 @@
     "Step numbering is not sequential",
     "Several workflow steps omit explicit action prompts",
     "User confirmation steps not described",
-    "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/generate_retrospective_report.py",
-    "Traceability gaps: inputs, outputs",
+    "Exit code handling not described",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
     "Use '### STEP X' headings for clarity",
     "Optional or cautionary guidance can highlight operator judgement without blocking validation",
     "Add rollback or retry guidance for failure scenarios",
-    "Document evidence manifests or registries",
-    "Identify gate types (Prerequisite/Execution/Completion)",
     "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/22.yaml when automated gating is expected",
-    "Identify notification path for gate failures",
-    "Document waiver/override policies",
     "Clarify access and credential requirements",
-    "Document how command outputs are captured",
-    "Document storage permissions or access requirements",
-    "Optionally reference a manifest file or inventory for quick lookup",
-    "Enhance archival plan with: cleanup, retrieval"
+    "Document how command outputs are captured"
   ]
 }

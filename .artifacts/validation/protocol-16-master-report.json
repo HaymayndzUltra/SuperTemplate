@@ -1,13 +1,13 @@
 {
   "validator": "master_validator",
   "protocol_id": "16",
-  "validation_timestamp": "2025-11-06T05:29:53.098854Z",
-  "overall_score": 0.8283333333333334,
+  "validation_timestamp": "2025-11-06T16:43:35.588814Z",
+  "overall_score": 0.8554166666666665,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.9
+      "score": 0.9333333333333332
     },
     "protocol_role": {
       "status": "warning",
@@ -18,8 +18,8 @@
       "score": 0.7
     },
     "protocol_quality_gates": {
-      "status": "fail",
-      "score": 0.7625
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_scripts": {
       "status": "fail",
@@ -48,7 +48,6 @@
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
     "Scope definition not found",
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",
@@ -56,8 +55,6 @@
     "Less than two workflow steps defined",
     "Step numbering is not sequential",
     "Several workflow steps omit explicit action prompts",
-    "No gate headings defined",
-    "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_12.py, scripts/validate_prerequisites_12.py",
     "Limited progress terminology in communications",
     "Protocol evidence directory not referenced",
@@ -71,9 +68,7 @@
     "Use '### STEP X' headings for clarity",
     "Optional or cautionary guidance can highlight operator judgement without blocking validation",
     "Add rollback or retry guidance for failure scenarios",
-    "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/16.yaml when automated gating is expected",
-    "Document waiver/override policies",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured",

@@ -1,6 +1,6 @@
 ---
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
+description: Apply instructions from @09-environment-setup-validation.md
+auto_execution_mode: 1
 ---
 
 # PROTOCOL 09: ENVIRONMENT SETUP & VALIDATION (DEVOPS COMPLIANT)

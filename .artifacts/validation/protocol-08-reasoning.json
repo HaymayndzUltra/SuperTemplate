@@ -1,9 +1,9 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "08",
-  "validation_timestamp": "2025-11-06T05:31:15.350834Z",
-  "overall_score": 0.7125,
-  "validation_status": "warning",
+  "validation_timestamp": "2025-11-06T16:43:35.252797Z",
+  "overall_score": 0.675,
+  "validation_status": "fail",
   "issues": [],
   "recommendations": [
     "Include root-cause analysis guidance"
@@ -63,14 +63,14 @@
     }
   },
   "meta_cognition": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
       "awareness": true,
       "monitoring": true,
-      "correction": true,
+      "correction": false,
       "improvement": true
     }
   }

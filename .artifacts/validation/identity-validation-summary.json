@@ -1,0 +1,125 @@
+{
+  "validation_timestamp": "2025-11-06T10:21:50.196883Z",
+  "total_protocols": 23,
+  "pass_count": 2,
+  "warning_count": 18,
+  "fail_count": 3,
+  "average_score": 0.9034782608695653,
+  "protocols": [
+    {
+      "protocol_id": "01",
+      "status": "fail",
+      "score": 0.7244444444444444
+    },
+    {
+      "protocol_id": "02",
+      "status": "fail",
+      "score": 0.7066666666666667
+    },
+    {
+      "protocol_id": "03",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "04",
+      "status": "pass",
+      "score": 0.9666666666666668
+    },
+    {
+      "protocol_id": "05",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "06",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "07",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "08",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "09",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "10",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "11",
+      "status": "fail",
+      "score": 0.7155555555555555
+    },
+    {
+      "protocol_id": "12",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "13",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "14",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "15",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "16",
+      "status": "warning",
+      "score": 0.9
+    },
+    {
+      "protocol_id": "17",
+      "status": "pass",
+      "score": 0.9666666666666668
+    },
+    {
+      "protocol_id": "18",
+      "status": "warning",
+      "score": 0.9
+    },
+    {
+      "protocol_id": "19",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "20",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "21",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "22",
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    {
+      "protocol_id": "23",
+      "status": "warning",
+      "score": 0.9
+    }
+  ]
+}

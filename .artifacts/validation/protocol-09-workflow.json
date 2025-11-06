@@ -1,14 +1,13 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "09",
-  "validation_timestamp": "2025-11-06T05:29:52.813205Z",
+  "validation_timestamp": "2025-11-06T16:43:35.277918Z",
   "overall_score": 0.8,
   "validation_status": "warning",
   "issues": [
     "Not all steps define explicit actions",
     "Evidence expectations missing in some steps",
-    "Several workflow steps omit explicit action prompts",
-    "Downstream consumer mapping missing"
+    "Several workflow steps omit explicit action prompts"
   ],
   "recommendations": [
     "Document communication prompts per step",
@@ -61,41 +60,39 @@
       "action_clarity": false,
       "contextual_support": true,
       "step_count": 4,
-      "imperative_count": 58,
+      "imperative_count": 18,
       "action_prompts": 0,
-      "context_prompts": 24,
+      "context_prompts": 21,
       "optional_guidance": 0,
       "cautionary_statements": 1
     }
   },
   "halt_conditions": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 0.5,
+    "status": "fail",
     "issues": [],
     "recommendations": [
       "Add rollback or retry guidance for failure scenarios"
     ],
     "details": {
       "halt_defined": true,
-      "validation_gates": true,
+      "validation_gates": false,
       "rollback_steps": false,
       "user_confirmation": true
     }
   },
   "evidence_tracking": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Downstream consumer mapping missing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "evidence_tags": true,
       "artifact_locations": true,
       "manifest": true,
-      "downstream_trace": false,
-      "evidence_mentions": 12,
-      "artifact_mentions": 15
+      "downstream_trace": true,
+      "evidence_mentions": 28,
+      "artifact_mentions": 33
     }
   }
 }

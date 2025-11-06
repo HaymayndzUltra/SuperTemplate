@@ -301,3 +301,4 @@ python3 scripts/validate_docs.py
 *This guide provides methods for extracting PDF content and organizing it into comprehensive markdown documentation.*
 
 
+

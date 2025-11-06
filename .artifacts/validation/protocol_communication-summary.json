@@ -1,11 +1,11 @@
 {
   "validator": "protocol_communication",
-  "validation_timestamp": "2025-11-06T05:29:48.749004Z",
+  "validation_timestamp": "2025-11-06T10:21:26.487876Z",
   "total_protocols": 23,
-  "pass_count": 15,
-  "warning_count": 8,
-  "fail_count": 0,
-  "average_score": 0.9298913043478261,
+  "pass_count": 9,
+  "warning_count": 6,
+  "fail_count": 8,
+  "average_score": 0.8489130434782609,
   "protocols": [
     {
       "protocol_id": "01",
@@ -14,48 +14,48 @@
     },
     {
       "protocol_id": "02",
-      "status": "pass",
-      "score": 0.9375
+      "status": "fail",
+      "score": 0.5875
     },
     {
       "protocol_id": "03",
-      "status": "pass",
-      "score": 1.0
+      "status": "fail",
+      "score": 0.7125
     },
     {
       "protocol_id": "04",
-      "status": "pass",
-      "score": 0.9625
+      "status": "fail",
+      "score": 0.7875
     },
     {
       "protocol_id": "05",
-      "status": "pass",
-      "score": 0.9625
+      "status": "fail",
+      "score": 0.7125
     },
     {
       "protocol_id": "06",
-      "status": "pass",
-      "score": 1.0
+      "status": "warning",
+      "score": 0.8250000000000001
     },
     {
       "protocol_id": "07",
-      "status": "warning",
-      "score": 0.8875
+      "status": "fail",
+      "score": 0.775
     },
     {
       "protocol_id": "08",
-      "status": "warning",
-      "score": 0.8875
+      "status": "fail",
+      "score": 0.7125
     },
     {
       "protocol_id": "09",
-      "status": "warning",
-      "score": 0.8875
+      "status": "fail",
+      "score": 0.675
     },
     {
       "protocol_id": "10",
-      "status": "pass",
-      "score": 0.9
+      "status": "fail",
+      "score": 0.775
     },
     {
       "protocol_id": "11",
@@ -131,28 +131,28 @@
       "fail_count": 0
     },
     "user_interaction": {
+      "average_score": 0.7934782608695652,
+      "pass_count": 14,
+      "warning_count": 1,
+      "fail_count": 8
+    },
+    "error_messaging": {
+      "average_score": 0.8152173913043478,
+      "pass_count": 7,
+      "warning_count": 15,
+      "fail_count": 1
+    },
+    "progress_tracking": {
+      "average_score": 0.6195652173913043,
+      "pass_count": 8,
+      "warning_count": 4,
+      "fail_count": 11
+    },
+    "evidence_communication": {
       "average_score": 1.0,
       "pass_count": 23,
       "warning_count": 0,
       "fail_count": 0
-    },
-    "error_messaging": {
-      "average_score": 0.9130434782608695,
-      "pass_count": 15,
-      "warning_count": 8,
-      "fail_count": 0
-    },
-    "progress_tracking": {
-      "average_score": 0.7065217391304348,
-      "pass_count": 9,
-      "warning_count": 6,
-      "fail_count": 8
-    },
-    "evidence_communication": {
-      "average_score": 0.9782608695652174,
-      "pass_count": 22,
-      "warning_count": 0,
-      "fail_count": 1
     }
   }
 }

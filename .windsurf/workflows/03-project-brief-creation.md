@@ -1,6 +1,6 @@
 ---
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
+description: Apply instructions from @03-project-brief-creation.md
+auto_execution_mode: 1
 ---
 
 # PROTOCOL 03: PROJECT BRIEF CREATION (PROJECT-SCOPING COMPLIANT)

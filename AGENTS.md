@@ -7,6 +7,50 @@ Scan project directories → Apply 7-layer analysis → Find 2025 MCP tools → 
 
 ---
 
+## PROTOCOL PHASE ASSIGNMENTS
+
+### Phase 0: Foundation & Discovery (Protocols 01-05)
+- Protocol 01: Client Proposal Generation
+- Protocol 02: Client Discovery Initiation  
+- Protocol 03: Project Brief Creation
+- Protocol 04: Project Bootstrap & Context Engineering
+- Protocol 05: Bootstrap Your Project
+
+### Phase 1-2: AI Project Planning (Protocols 06-09)
+- Protocol 06: AI Use Case Definition & Validation
+- Protocol 07: AI Data Strategy & Requirements Planning
+- Protocol 08: AI Data Collection & Ingestion
+- Protocol 09: AI Data Cleaning & Validation
+
+### Phase 3: AI Model Development (Protocols 10-14)
+- Protocol 10: AI Feature Engineering & Transformation
+- Protocol 11: AI Dataset Preparation & Splitting
+- Protocol 12: AI Algorithm Selection & Baseline Model
+- Protocol 13: AI Model Training & Hyperparameter Tuning
+- Protocol 14: AI Model Validation & Evaluation
+
+### Phase 4: AI Model Testing & Quality Assurance (Protocols 15-17)
+- Protocol 15: AI Model Testing & Edge Case Validation
+- Protocol 16: AI Bias Detection & Fairness Audit
+- Protocol 17: AI Model Explainability & Interpretability
+
+### Phase 5: MLOps & Deployment (Protocols 18-21)
+- Protocol 18: AI Model Packaging & Containerization
+- Protocol 19: AI ML Pipeline Orchestration
+- Protocol 20: AI Model Deployment & Serving
+- Protocol 21: AI Production Integration & API Development
+
+### Phase 6: Monitoring & Governance (Protocols 22-28)
+- Protocol 22: AI Model Performance Monitoring
+- Protocol 23: AI Data Drift & Concept Drift Detection
+- Protocol 24: AI Model Retraining & Update Pipeline
+- Protocol 25: AI Incident Response & Model Rollback
+- Protocol 26: AI Model Governance & Audit Trail
+- Protocol 27: AI Documentation & Knowledge Transfer
+- Protocol 28: AI Project Retrospective & Continuous Improvement
+
+---
+
 ## PART 1: SCAN TARGETS
 .cursor/rules/ [all *.md] .cursor/rules/master-rules/ [all *.md]
 .cursor/rules/common-rules/ [all .md] .cursor/ai-driven-workflow/ [~28 protocol files] scripts/ [.py only] validators-system/ [all subdirs] template-packs/ [structure] *.md (root) [no subdirs]

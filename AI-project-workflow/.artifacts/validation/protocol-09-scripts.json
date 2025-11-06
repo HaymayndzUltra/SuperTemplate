@@ -1,0 +1,103 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "09",
+  "validation_timestamp": "2025-11-06T16:28:58.499395Z",
+  "overall_score": 0.6806818181818182,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/ai/ensure_ml_readiness.py, scripts/ai/prepare_labels.py, scripts/run_protocol_09_gates.py",
+    "Exit code handling not described"
+  ],
+  "recommendations": [
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/ai/ensure_ml_readiness.py, scripts/ai/prepare_labels.py, scripts/run_protocol_09_gates.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 11,
+      "commands": [
+        "bash\n   # Data cleaning execution",
+        "python scripts/ai/clean_data.py \\",
+        "bash\n   # Feature engineering execution",
+        "python scripts/ai/engineer_features.py \\",
+        "bash\n   # Label preparation execution",
+        "python scripts/ai/prepare_labels.py \\",
+        "bash\n   # ML-readiness validation",
+        "python scripts/ai/ensure_ml_readiness.py \\",
+        "bash\n   # Evidence aggregation",
+        "python scripts/aggregate_evidence_09.py \\"
+      ],
+      "missing_scripts": [
+        "scripts/ai/prepare_labels.py",
+        "scripts/ai/ensure_ml_readiness.py",
+        "scripts/run_protocol_09_gates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.8409090909090909,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate/AI-project-workflow/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 11,
+      "registered_commands": 4,
+      "registration_ratio": 0.36363636363636365,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": true,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 11,
+      "flag_usage": false,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
+    "recommendations": [],
+    "details": {
+      "exit_codes": false,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

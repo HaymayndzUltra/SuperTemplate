@@ -1,7 +1,7 @@
 {
   "validator": "protocol_role",
   "protocol_id": "20",
-  "validation_timestamp": "2025-11-06T05:29:53.184348Z",
+  "validation_timestamp": "2025-11-06T16:43:35.703134Z",
   "overall_score": 0.875,
   "validation_status": "warning",
   "issues": [

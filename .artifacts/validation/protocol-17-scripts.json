@@ -1,11 +1,12 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "17",
-  "validation_timestamp": "2025-11-06T05:29:53.105264Z",
-  "overall_score": 0.7312500000000001,
+  "validation_timestamp": "2025-11-06T16:43:35.597374Z",
+  "overall_score": 0.6937500000000001,
   "validation_status": "fail",
   "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_13.py, scripts/validate_prerequisites_13.py"
+    "Referenced command paths not found: scripts/aggregate_evidence_13.py, scripts/validate_prerequisites_13.py",
+    "Exit code handling not described"
   ],
   "recommendations": [
     "Document environment/dependency expectations",
@@ -85,12 +86,14 @@
     }
   },
   "error_handling": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
     "recommendations": [],
     "details": {
-      "exit_codes": true,
+      "exit_codes": false,
       "fallback": true,
       "logging": true,
       "manual_paths": true

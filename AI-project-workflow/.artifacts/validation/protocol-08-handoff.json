@@ -1,0 +1,86 @@
+{
+  "validator": "protocol_handoff",
+  "protocol_id": "08",
+  "validation_timestamp": "2025-11-06T16:28:58.480063Z",
+  "overall_score": 0.6499999999999999,
+  "validation_status": "fail",
+  "issues": [
+    "Sign-off guidance missing: reviewers"
+  ],
+  "recommendations": [],
+  "checklist_completeness": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "item_count": 15,
+      "items": true,
+      "categories": true,
+      "dependencies": false,
+      "status_markers": false
+    }
+  },
+  "verification_procedures": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "term_counts": {
+        "validate": 11,
+        "ensure": 0,
+        "confirm": 1,
+        "verify": 3,
+        "gate": 4
+      },
+      "verification_terms": true,
+      "qa_involvement": true,
+      "automation_reference": true,
+      "evidence_reference": true
+    }
+  },
+  "stakeholder_signoff": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Sign-off guidance missing: reviewers"
+    ],
+    "recommendations": [],
+    "details": {
+      "approvals": true,
+      "reviewers": false,
+      "evidence_reference": true,
+      "confirmation": true
+    }
+  },
+  "documentation_requirements": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "terms": [
+        "log",
+        "manifest",
+        "report"
+      ],
+      "doc_terms": true,
+      "storage": false,
+      "reviewer_docs": true,
+      "format": false
+    }
+  },
+  "next_protocol_alignment": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "ready_statements": true,
+      "next_commands": true,
+      "dependencies": false,
+      "continuation": false
+    }
+  }
+}

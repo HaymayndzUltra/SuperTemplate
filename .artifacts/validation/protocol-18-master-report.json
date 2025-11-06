@@ -1,13 +1,13 @@
 {
   "validator": "master_validator",
   "protocol_id": "18",
-  "validation_timestamp": "2025-11-06T05:29:53.152038Z",
-  "overall_score": 0.8466666666666669,
+  "validation_timestamp": "2025-11-06T16:43:35.666218Z",
+  "overall_score": 0.91875,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.9
+      "score": 0.9333333333333332
     },
     "protocol_role": {
       "status": "warning",
@@ -18,28 +18,28 @@
       "score": 0.8
     },
     "protocol_quality_gates": {
-      "status": "fail",
-      "score": 0.7
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.7916666666666666
+      "score": 0.7541666666666667
     },
     "protocol_communication": {
       "status": "pass",
       "score": 0.9625
     },
     "protocol_evidence": {
-      "status": "fail",
-      "score": 0.6249999999999999
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_handoff": {
       "status": "pass",
       "score": 1.0
     },
     "protocol_reasoning": {
-      "status": "warning",
-      "score": 0.8375
+      "status": "pass",
+      "score": 0.8875000000000001
     },
     "protocol_reflection": {
       "status": "pass",
@@ -48,16 +48,12 @@
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Phase assignment not found or invalid in AGENTS.md",
     "Scope definition not found",
     "Domain expertise keywords missing",
     "Value proposition not captured",
     "Less than two workflow steps defined",
     "Step numbering is not sequential",
-    "No gate headings defined",
-    "Insufficient compliance standards referenced",
-    "Protocol evidence directory not referenced",
-    "Traceability gaps: inputs, outputs",
+    "Exit code handling not described",
     "Reasoning patterns not explicitly named",
     "Roadmap or future direction not documented"
   ],
@@ -65,16 +61,9 @@
     "Use '### STEP X' headings for clarity",
     "Optional or cautionary guidance can highlight operator judgement without blocking validation",
     "Add rollback or retry guidance for failure scenarios",
-    "Identify gate types (Prerequisite/Execution/Completion)",
-    "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/18.yaml when automated gating is expected",
-    "Identify notification path for gate failures",
-    "Document waiver/override policies",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
-    "Document how command outputs are captured",
-    "Document storage permissions or access requirements",
-    "Optionally reference a manifest file or inventory for quick lookup",
-    "Enhance archival plan with: cleanup, retrieval"
+    "Document how command outputs are captured"
   ]
 }

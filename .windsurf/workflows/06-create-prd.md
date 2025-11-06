@@ -1,6 +1,6 @@
 ---
-**MASTER RAY™ AI-Driven Workflow Protocol**
-© 2025 - All Rights Reserved
+description: Apply instructions from @06-create-prd.md
+auto_execution_mode: 1
 ---
 
 # PROTOCOL 06: IMPLEMENTATION-READY PRD CREATION (PLANNING COMPLIANT)
