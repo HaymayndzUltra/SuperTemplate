@@ -1,0 +1,45 @@
+{
+  "protocol_id": "19",
+  "protocol_name": "Documentation & Knowledge Transfer",
+  "generated_at": "2025-11-05T16:17:15.781793Z",
+  "validators": [
+    {
+      "name": "gate_completeness",
+      "command": "/usr/bin/python3 scripts/validate_gate_19_completeness.py --tracker .artifacts/protocol-19/review-tracker.csv",
+      "status": "pass",
+      "notes": "\u2705 validate_gate_19_completeness validation completed"
+    },
+    {
+      "name": "gate_enablement",
+      "command": "/usr/bin/python3 scripts/validate_gate_19_enablement.py --summary .artifacts/protocol-19/enablement-summary.md",
+      "status": "pass",
+      "notes": "\u2705 validate_gate_19_enablement validation completed"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": ".artifacts/protocol-19/documentation-plan.json",
+      "description": "Documentation planning matrix",
+      "status": "exists",
+      "size_bytes": 66
+    },
+    {
+      "path": ".artifacts/protocol-19/review-tracker.csv",
+      "description": "Review and approval tracker",
+      "status": "exists",
+      "size_bytes": 37
+    },
+    {
+      "path": ".artifacts/protocol-19/publication-manifest.json",
+      "description": "Published documentation manifest",
+      "status": "exists",
+      "size_bytes": 52
+    }
+  ],
+  "summary": {
+    "validators_passed": 2,
+    "validators_total": 2,
+    "artifacts_present": 3,
+    "artifacts_total": 3
+  }
+}

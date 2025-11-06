@@ -1,0 +1,83 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "08",
+  "validation_timestamp": "2025-11-05T18:37:49.733571Z",
+  "overall_score": 0.7822916666666668,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 0.8666666666666666
+    },
+    "protocol_role": {
+      "status": "fail",
+      "score": 0.75
+    },
+    "protocol_workflow": {
+      "status": "warning",
+      "score": 0.8
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.7249999999999999
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.76875
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.7125
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.7749999999999999
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.7625
+    },
+    "protocol_reasoning": {
+      "status": "warning",
+      "score": 0.7125
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.9500000000000001
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Industry standards not documented",
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Success criteria absent from mission",
+    "Value proposition not captured",
+    "Not all steps define explicit actions",
+    "Evidence expectations missing in some steps",
+    "Several workflow steps omit explicit action prompts",
+    "Insufficient compliance standards referenced",
+    "Referenced command paths not found: scripts/aggregate_evidence_2.py, scripts/validate_high_level_tasks.py, scripts/validate_prerequisites_2.py, scripts/validate_rule_index.py, scripts/validate_task_decomposition.py",
+    "Missing user interaction prompts: clarification, feedback",
+    "Limited progress terminology in communications",
+    "Traceability gaps: inputs, outputs",
+    "Checklist lacks sufficient coverage of required items",
+    "Sign-off guidance missing: approvals",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Document communication prompts per step",
+    "Add rollback or retry guidance for failure scenarios",
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Include quantitative metrics for gate evaluation",
+    "Provision config/protocol_gates/08.yaml when automated gating is expected",
+    "Identify notification path for gate failures",
+    "Document waiver/override policies",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Enhance archival plan with: cleanup, retrieval",
+    "Include root-cause analysis guidance"
+  ]
+}

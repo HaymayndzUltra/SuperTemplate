@@ -35,7 +35,7 @@ VALIDATOR_COMMANDS: List[Dict[str, object]] = [
 
 EXPECTED_ARTIFACTS = [
     {
-        " path": ".artifacts/protocol-19/documentation-plan.json",
+        "path": ".artifacts/protocol-19/documentation-plan.json",
         "description": "Documentation planning matrix"
     },
     {

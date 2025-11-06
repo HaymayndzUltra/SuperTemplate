@@ -1,0 +1,98 @@
+{
+  "validator": "protocol_workflow",
+  "protocol_id": "07",
+  "validation_timestamp": "2025-11-05T18:37:49.674558Z",
+  "overall_score": 0.8500000000000001,
+  "validation_status": "warning",
+  "issues": [
+    "Not all steps define explicit actions",
+    "Evidence expectations missing in some steps",
+    "Several workflow steps omit explicit action prompts"
+  ],
+  "recommendations": [
+    "Document communication prompts per step",
+    "Add rollback or retry guidance for failure scenarios"
+  ],
+  "workflow_structure": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "steps": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "section_present": true,
+      "step_headings": true,
+      "sequential": true,
+      "completeness": true
+    }
+  },
+  "step_definitions": {
+    "score": 0.8000000000000002,
+    "status": "warning",
+    "issues": [
+      "Not all steps define explicit actions",
+      "Evidence expectations missing in some steps"
+    ],
+    "recommendations": [
+      "Document communication prompts per step"
+    ],
+    "details": {
+      "steps": 5,
+      "action_coverage": 0.8,
+      "communication_coverage": 0.8,
+      "evidence_coverage": 0.8
+    }
+  },
+  "action_markers": {
+    "score": 0.6666666666666666,
+    "status": "warning",
+    "issues": [
+      "Several workflow steps omit explicit action prompts"
+    ],
+    "recommendations": [],
+    "details": {
+      "imperative_balance": true,
+      "action_clarity": false,
+      "contextual_support": true,
+      "step_count": 4,
+      "imperative_count": 19,
+      "action_prompts": 0,
+      "context_prompts": 25,
+      "optional_guidance": 0,
+      "cautionary_statements": 1
+    }
+  },
+  "halt_conditions": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Add rollback or retry guidance for failure scenarios"
+    ],
+    "details": {
+      "halt_defined": true,
+      "validation_gates": true,
+      "rollback_steps": false,
+      "user_confirmation": true
+    }
+  },
+  "evidence_tracking": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "evidence_tags": true,
+      "artifact_locations": true,
+      "manifest": true,
+      "downstream_trace": true,
+      "evidence_mentions": 17,
+      "artifact_mentions": 21
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "21",
+  "validation_timestamp": "2025-11-05T18:37:50.089457Z",
+  "overall_score": 0.7833333333333333,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/discover_automation_candidates.py"
+  ],
+  "recommendations": [
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/discover_automation_candidates.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 9,
+      "commands": [
+        "bash\n# Prerequisite validation",
+        "python scripts/validate_prerequisites_21.py",
+        "python scripts/validate_gate_21_backlog.py --input .artifacts/protocol-21/maintenance-backlog.csv",
+        "python scripts/validate_gate_21_approvals.py --log .artifacts/protocol-21/approval-log.csv",
+        "python scripts/validate_gate_21_governance.py --checklist .artifacts/protocol-21/governance-cadence-checklist.json",
+        "python scripts/aggregate_evidence_21.py --output .artifacts/protocol-21/",
+        "python scripts/run_protocol_18_gates.py",
+        "python\n     from maintenance.forecast import forecast_ticket_volume",
+        "bash\n     python scripts/discover_automation_candidates.py --input .artifacts/protocol-21/maintenance-backlog.csv \\"
+      ],
+      "missing_scripts": [
+        "scripts/discover_automation_candidates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.9166666666666666,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 9,
+      "registered_commands": 6,
+      "registration_ratio": 0.6666666666666666,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": true,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 9,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

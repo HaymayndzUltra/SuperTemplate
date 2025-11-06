@@ -1,0 +1,107 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "01",
+  "validation_timestamp": "2025-11-05T18:37:49.507596Z",
+  "overall_score": 0.06899999999999999,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "fail",
+      "score": 0.6399999999999999
+    },
+    "protocol_role": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_workflow": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_reasoning": {
+      "status": "fail",
+      "score": 0.0
+    },
+    "protocol_reflection": {
+      "status": "fail",
+      "score": 0.05
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "INTEGRATION POINTS section not found",
+    "Industry standards not documented",
+    "Required section missing: INTEGRATION POINTS",
+    "Required section missing: HANDOFF CHECKLIST",
+    "Required section missing: EVIDENCE SUMMARY",
+    "AI ROLE AND MISSION section missing",
+    "Mission statement unavailable",
+    "Constraints do not articulate mandatory guardrails or requirements",
+    "No output documentation found",
+    "Behavioral guidance not documented",
+    "WORKFLOW section missing",
+    "Workflow steps missing",
+    "Action markers absent because workflow missing",
+    "No workflow content to evaluate halt conditions",
+    "Evidence tracking missing from workflow and summary",
+    "QUALITY GATES section missing",
+    "Cannot evaluate pass criteria without gate definitions",
+    "No automation references found",
+    "No gate documentation to evaluate failure handling",
+    "Compliance expectations not described",
+    "AUTOMATION HOOKS section missing",
+    "Unable to evaluate registry alignment without documentation",
+    "Automation context missing",
+    "No automation commands available for syntax validation",
+    "Error handling not documented",
+    "Communication status prompts missing",
+    "COMMUNICATION PROTOCOLS section missing",
+    "Error messaging not documented",
+    "Progress tracking communications missing",
+    "Evidence communication cues missing",
+    "EVIDENCE SUMMARY section missing",
+    "Storage structure not documented",
+    "Manifest not documented",
+    "Traceability information missing",
+    "Archival strategy not documented",
+    "HANDOFF CHECKLIST section missing",
+    "Verification steps not documented",
+    "Stakeholder sign-off section missing",
+    "Documentation requirements not described",
+    "Next protocol alignment missing",
+    "Workflow section missing; cannot evaluate reasoning patterns",
+    "Decision logic not documented",
+    "Problem-solving guidance missing",
+    "Learning mechanisms not referenced",
+    "Meta-cognitive guidance missing",
+    "Retrospective guidance not present",
+    "Improvement loops not described",
+    "Knowledge capture not described",
+    "Future planning not mentioned"
+  ],
+  "recommendations": [
+    "Clarify boundaries or situations to avoid for this mission",
+    "Reference workflow steps when stating guardrails to improve clarity",
+    "Document rollback or recovery approach for changes"
+  ]
+}

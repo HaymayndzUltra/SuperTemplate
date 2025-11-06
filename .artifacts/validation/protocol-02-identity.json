@@ -1,0 +1,91 @@
+{
+  "validator": "protocol_identity",
+  "protocol_id": "02",
+  "validation_timestamp": "2025-11-05T18:37:49.507891Z",
+  "basic_information": {
+    "score": 0.6666666666666666,
+    "status": "warning",
+    "issues": [
+      "Protocol version not found (semantic versioning expected)",
+      "Phase assignment not found or invalid in AGENTS.md"
+    ],
+    "elements_found": {
+      "protocol_number": true,
+      "protocol_name": "CLIENT DISCOVERY INITIATION",
+      "protocol_version": false,
+      "phase_assignment": false,
+      "purpose_statement": true,
+      "scope_definition": true
+    }
+  },
+  "prerequisites": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "categories_found": {
+      "required_artifacts": true,
+      "required_approvals": true,
+      "system_state": true
+    }
+  },
+  "integration_points": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "INTEGRATION POINTS section not found"
+    ],
+    "elements_found": {}
+  },
+  "compliance_standards": {
+    "score": 0.6666666666666666,
+    "status": "warning",
+    "issues": [
+      "Industry standards not documented"
+    ],
+    "categories_found": {
+      "industry_standards": false,
+      "security_requirements": true,
+      "regulatory_compliance": true
+    }
+  },
+  "documentation_quality": {
+    "score": 0.8222222222222223,
+    "status": "fail",
+    "issues": [
+      "Required section missing: INTEGRATION POINTS",
+      "Required section missing: COMMUNICATION PROTOCOLS",
+      "Required section missing: AUTOMATION HOOKS",
+      "Required section missing: EVIDENCE SUMMARY"
+    ],
+    "sections_found": {
+      "PREREQUISITES": true,
+      "AI ROLE AND MISSION": true,
+      "WORKFLOW": true,
+      "INTEGRATION POINTS": false,
+      "QUALITY GATES": true,
+      "COMMUNICATION PROTOCOLS": false,
+      "AUTOMATION HOOKS": false,
+      "HANDOFF CHECKLIST": true,
+      "EVIDENCE SUMMARY": false
+    },
+    "metrics": {
+      "completeness": 0.5555555555555556,
+      "clarity": 1.0,
+      "accessibility": 1.0,
+      "technical_accuracy": 1.0
+    }
+  },
+  "overall_score": 0.6311111111111111,
+  "validation_status": "fail",
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "INTEGRATION POINTS section not found",
+    "Industry standards not documented",
+    "Required section missing: INTEGRATION POINTS",
+    "Required section missing: COMMUNICATION PROTOCOLS",
+    "Required section missing: AUTOMATION HOOKS",
+    "Required section missing: EVIDENCE SUMMARY"
+  ],
+  "recommendations": []
+}

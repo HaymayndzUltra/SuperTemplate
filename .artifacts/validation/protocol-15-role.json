@@ -1,0 +1,85 @@
+{
+  "validator": "protocol_role",
+  "protocol_id": "15",
+  "validation_timestamp": "2025-11-05T18:37:49.918160Z",
+  "overall_score": 0.7749999999999999,
+  "validation_status": "fail",
+  "issues": [
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Value proposition not captured"
+  ],
+  "recommendations": [
+    "Outline decision-making expectations"
+  ],
+  "role_definition": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Domain expertise keywords missing",
+      "Behavioral traits not articulated"
+    ],
+    "recommendations": [],
+    "details": {
+      "role_title": true,
+      "role_description": true,
+      "domain_expertise": false,
+      "behavioral_traits": false
+    }
+  },
+  "mission_statement": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Value proposition not captured"
+    ],
+    "recommendations": [],
+    "details": {
+      "mission_clarity": true,
+      "scope_boundaries": true,
+      "success_criteria": true,
+      "value_proposition": false
+    }
+  },
+  "constraints_guidelines": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "guardrails": true,
+      "boundaries": true,
+      "workflow_alignment": true,
+      "guardrail_count": 14,
+      "boundary_count": 6,
+      "workflow_links": 13,
+      "optional_guidance": 1
+    }
+  },
+  "output_expectations": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "format": true,
+      "structure": true,
+      "location": true,
+      "validation": true
+    }
+  },
+  "behavioral_guidance": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Outline decision-making expectations"
+    ],
+    "details": {
+      "communication_style": true,
+      "decision_making": false,
+      "error_handling": true,
+      "user_interaction": true
+    }
+  }
+}

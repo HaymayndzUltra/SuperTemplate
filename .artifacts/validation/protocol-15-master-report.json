@@ -1,0 +1,82 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "15",
+  "validation_timestamp": "2025-11-05T18:37:49.941606Z",
+  "overall_score": 0.7945833333333334,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 0.8
+    },
+    "protocol_role": {
+      "status": "fail",
+      "score": 0.7749999999999999
+    },
+    "protocol_workflow": {
+      "status": "warning",
+      "score": 0.8
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.8
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.7833333333333333
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.7625000000000001
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.6249999999999999
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.7375
+    },
+    "protocol_reasoning": {
+      "status": "pass",
+      "score": 0.9125000000000001
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.9500000000000001
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Industry standards not documented",
+    "Regulatory compliance not documented",
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated",
+    "Value proposition not captured",
+    "Less than two workflow steps defined",
+    "Step numbering is not sequential",
+    "Several workflow steps omit explicit action prompts",
+    "No gate headings defined",
+    "Insufficient compliance standards referenced",
+    "Referenced command paths not found: scripts/aggregate_evidence_11.py, scripts/validate_prerequisites_11.py",
+    "Missing user interaction prompts: clarification, decision_points, feedback",
+    "Protocol evidence directory not referenced",
+    "Traceability gaps: inputs, outputs",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Self-awareness statements missing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Outline decision-making expectations",
+    "Use '### STEP X' headings for clarity",
+    "Include quantitative metrics for gate evaluation",
+    "Provision config/protocol_gates/15.yaml when automated gating is expected",
+    "Document waiver/override policies",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Optionally reference a manifest file or inventory for quick lookup",
+    "Enhance archival plan with: cleanup, retrieval"
+  ]
+}

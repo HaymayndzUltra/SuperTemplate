@@ -1,0 +1,91 @@
+{
+  "validator": "protocol_handoff",
+  "protocol_id": "12",
+  "validation_timestamp": "2025-11-05T18:37:49.837361Z",
+  "overall_score": 0.675,
+  "validation_status": "fail",
+  "issues": [
+    "Checklist lacks sufficient coverage of required items",
+    "Sign-off guidance missing: reviewers, confirmation",
+    "Documentation expectations under-specified"
+  ],
+  "recommendations": [],
+  "checklist_completeness": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Checklist lacks sufficient coverage of required items"
+    ],
+    "recommendations": [],
+    "details": {
+      "item_count": 0,
+      "items": false,
+      "categories": true,
+      "dependencies": true,
+      "status_markers": false
+    }
+  },
+  "verification_procedures": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "term_counts": {
+        "validate": 2,
+        "ensure": 1,
+        "confirm": 3,
+        "verify": 1,
+        "gate": 3
+      },
+      "verification_terms": true,
+      "qa_involvement": true,
+      "automation_reference": true,
+      "evidence_reference": true
+    }
+  },
+  "stakeholder_signoff": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Sign-off guidance missing: reviewers, confirmation"
+    ],
+    "recommendations": [],
+    "details": {
+      "approvals": true,
+      "reviewers": false,
+      "evidence_reference": true,
+      "confirmation": false
+    }
+  },
+  "documentation_requirements": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Documentation expectations under-specified"
+    ],
+    "recommendations": [],
+    "details": {
+      "terms": [
+        "log",
+        "report"
+      ],
+      "doc_terms": false,
+      "storage": true,
+      "reviewer_docs": true,
+      "format": true
+    }
+  },
+  "next_protocol_alignment": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "ready_statements": true,
+      "next_commands": true,
+      "dependencies": true,
+      "continuation": false
+    }
+  }
+}

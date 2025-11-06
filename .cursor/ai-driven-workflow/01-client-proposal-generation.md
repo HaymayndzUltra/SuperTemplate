@@ -57,6 +57,11 @@ Success is measured by human believability, evidence completeness, and the abili
 <!-- [Category: EXECUTION-BASIC] -->
 <!-- Why: Simple 2-step environment setup with no complex decisions -->
 
+**[REASONING]:**
+- **Decision Logic:** IF prerequisites incomplete THEN pause protocol ELSE proceed with artifact setup
+- **Why Environment First:** Clean working state prevents artifact collision and ensures traceability from the start
+- **Pattern Applied:** "Fail-fast validation" - detect blockers before investing time in downstream phases
+
 1. **`[MUST]` Confirm Prerequisites and Create Working Note:**
    * **Action:** Verify all prerequisites are met and create a fresh timestamped working note.
    * **Evidence:** `.artifacts/protocol-01/notes.md`
@@ -80,6 +85,15 @@ Success is measured by human believability, evidence completeness, and the abili
 <!-- Why: Structured extraction with 3 detailed substeps and JSON schema definition -->
 
 **Objective:** Capture verifiable facts directly from the post; never infer yet.
+
+**[REASONING]:**
+- **Heuristic Applied:** "Extract before interpret" - ground all analysis in verbatim client language to prevent premature assumptions
+- **Decision Tree:**
+  * IF exact quotes found AND pain points explicit THEN proceed to tone calibration
+  * IF requirements vague OR scope ambiguous THEN flag for follow-up questions BEFORE drafting
+  * IF red flags detected (unrealistic budget/timeline) THEN document mitigation strategy in notes
+- **Problem-Solving Pattern:** When client language is unclear, prefer bracketing vague statements with `[interpretation_needed: true]` over guessing intent
+- **Root Cause Prevention:** Misaligned proposals often stem from skipping verbatim extraction; this phase enforces evidence-based analysis
 
 1. **`[MUST]` Extract and Document Job Post Details:**
 
@@ -120,6 +134,16 @@ Success is measured by human believability, evidence completeness, and the abili
 <!-- Why: Straightforward workflow with script execution and documentation, no critical decisions -->
 
 **Objective:** Decide how a human would respond.
+
+**[REASONING]:**
+- **Meta-Cognitive Check:** "Am I mirroring the client's communication style or forcing my own template?"
+- **Self-Awareness:** Recognize when defaulting to familiar patterns instead of adapting to client context
+- **Decision Criteria:**
+  * Formal tone IF job post uses corporate language AND budget >$10k
+  * Casual tone IF job post uses conversational phrasing OR startup context
+  * Technical tone IF heavy tech stack AND engineering hiring manager detected
+- **Why Tone Matters:** Mismatched tone triggers subconscious rejection; alignment builds instant trust
+- **Learning Mechanism:** Compare past proposal acceptance rates against tone-match accuracy to refine calibration heuristics; track which tone strategies correlate with client responses and adjust decision criteria based on empirical data
 
 1. **`[MUST]` Run Tone Calibration:**
    * **Action:** Execute tone calibration script (or manual analysis if offline) to produce `tone-map.json`.
@@ -209,6 +233,18 @@ Success is measured by human believability, evidence completeness, and the abili
 
 **Objective:** Draft `PROPOSAL.md` using anti-template structure while sounding human.
 
+**[REASONING]:**
+- **Core Principle:** "Show understanding before pitching competence"
+- **Decision Tree:**
+  * IF client emphasizes speed THEN prioritize timeline in opening
+  * IF client lists failed past projects THEN address pain points explicitly in interpretation bullets
+  * IF client asks for examples THEN lead with approach mini-scenario
+- **Problem-Solving Strategy:** When lacking direct portfolio proof, substitute with predictive system evidence (workflow transparency beats past case studies for trust)
+- **Risk Mitigation:**
+  * Risk: Sounding robotic → Mitigation: Enforce ≥3 contractions + ≥1 uncertainty statement
+  * Risk: Over-promising → Mitigation: Use conditional language ("If X, then Y") in interpretation bullets
+- **Meta-Cognition:** After drafting, ask "Would I believe this if I received it?" If hesitation exists, inject one concrete detail or timeframe
+
 1. **`[MUST]` Draft Proposal Following Anti-Template Structure:**
 
    * **4.1. Opening Observation (≤100 words):**
@@ -285,6 +321,13 @@ Success is measured by human believability, evidence completeness, and the abili
 <!-- [Category: EXECUTION-BASIC] -->
 <!-- Why: Straightforward 4-step validation checklist -->
 
+**[REASONING]:**
+- **Quality Gate Philosophy:** "Catch failures before client sees them"
+- **Decision Logic:** IF any gate fails THEN remediate immediately ELSE package for handoff
+- **Problem-Solving Pattern:** When validation fails, trace back to originating phase and fix at source (don't patch in Phase 5)
+- **Automation Justification:** Manual review misses forbidden phrases and structural inconsistencies; scripts enforce objectivity
+- **Validation Chain:** Prerequisites → Structure → Voice → Pricing → Evidence → SHA integrity
+
 1. **`[MUST]` Run Automation Scripts:**
    * **Action:** Execute validation scripts (see Automation Hooks) to verify structure, voice compliance, pricing realism, and evidence completeness
    * **Evidence:** Script execution logs
@@ -318,6 +361,146 @@ Success is measured by human believability, evidence completeness, and the abili
 | Gate 5: Evidence Integrity | Guarantee downstream artifacts exist and validate | All artifacts present with SHA, manifest updated | `aggregate_evidence_01.py` + `validate_evidence_manifest.py` |
 
 Any failure requires documented remediation before proceeding.
+
+---
+
+## RETROSPECTIVE ANALYSIS & CONTINUOUS IMPROVEMENT
+
+### Post-Execution Review
+
+After completing Protocol 01, conduct a retrospective to capture learnings and improve future runs:
+
+1. **What Worked Well:**
+   - Record successful patterns (e.g., "Extracting verbatim quotes prevented scope misalignment")
+   - Document time savings from automation scripts
+   - Note client responses that validated tone strategy
+
+2. **What Didn't Work:**
+   - Identify phases that exceeded time estimates and analyze why
+   - Flag validation failures and their root causes
+   - Document any manual workarounds needed (potential automation candidates)
+
+3. **Improvement Actions:**
+   - Update forbidden phrase list if new AI tells detected
+   - Refine pricing heuristics based on acceptance/rejection patterns
+   - Enhance tone calibration script with edge cases discovered
+
+**Evidence:** `.artifacts/protocol-01/retrospective-log.json` with structured improvement items
+
+### Continuous Improvement Loop
+
+**Feedback Integration:**
+- Track proposal acceptance rate and correlate with tone-match accuracy, pricing realism, and humanization scores
+- Review client feedback on proposals (both accepted and rejected) to identify recurring gaps
+- Update validation thresholds based on empirical success rates
+
+**Improvement Opportunities:**
+- Identify automation candidates from manual workarounds documented in retrospectives
+- Spot patterns in validation failures to refine quality gates
+- Recognize tone calibration edge cases for script enhancement
+- Capture lessons learned from client objections to strengthen future proposals
+
+**System Evolution:**
+- Quarterly review of validation scripts to ensure alignment with current AI detection heuristics
+- Bi-weekly review of forbidden phrase list as LLM output patterns evolve
+- Monthly audit of artifact completeness to prevent downstream protocol failures
+- **Impact Assessment:** Track how script updates affect proposal acceptance rates and validation pass rates; document measurable improvements in `.artifacts/protocol-01/impact-log.json`
+
+**Rollback Strategy:**
+- If updated validation rules introduce false positives, revert to prior version and document edge cases in `protocol-evolution-notes.md`
+- Maintain versioned backups of all automation scripts in `.artifacts/protocol-01/script-versions/`
+
+---
+
+## KNOWLEDGE CAPTURE & ORGANIZATIONAL LEARNING
+
+### Protocol Execution Insights
+
+Document key insights after each run to build institutional knowledge:
+
+1. **Client Pattern Recognition:**
+   - Track job post characteristics that correlate with proposal acceptance (industry, budget range, tone type, tech stack complexity)
+   - Identify client red flags that predict scope creep or payment issues
+   - Build a reference library of high-performing proposal examples organized by industry/tone/budget
+
+2. **Automation Enhancements:**
+   - Log manual steps that could be automated (candidate scripts for future development)
+   - Document edge cases where automation failed and required human override
+   - Track script execution time to identify performance bottlenecks
+
+3. **Decision Rationale Archive:**
+   - For each proposal, record key decisions (pricing strategy, tone choice, differentiators selected) and their outcomes
+   - Link decisions to validation scores and client responses for future reference
+   - Build a decision tree reference guide based on historical patterns
+
+**Evidence Location:** `.artifacts/protocol-01/knowledge-base/` with categorized markdown files for each insight type
+
+### Lessons Learned & Knowledge Sharing
+
+**Knowledge Base Structure:**
+- Maintain a centralized knowledge base in `.artifacts/protocol-01/knowledge-base/` with:
+  - `lessons-learned.md`: Post-mortem insights from failed and successful proposals
+  - `client-patterns.md`: Industry-specific communication patterns and preferences
+  - `automation-wins.md`: Scripts and workflows that saved significant time
+  - `edge-cases.md`: Unusual scenarios and how they were resolved
+
+**Sharing Mechanism:**
+- Weekly review sessions to share insights across protocol runs
+- Update master documentation with proven patterns from knowledge base
+- Cross-reference lessons learned in protocol retrospectives for continuity
+
+---
+
+## FUTURE PLANNING & ROADMAP
+
+### Protocol Enhancement Roadmap
+
+**Roadmap Overview:**
+This roadmap outlines planned enhancements to Protocol 01 across three timeframes, prioritized by impact on proposal acceptance rates and workflow efficiency.
+
+**Short-Term (Next 3 Runs):**
+- Refine tone calibration script to handle mixed tone signals (e.g., technical job post with casual phrasing)
+- Add automated budget validation against market benchmarks using scraped rate data
+- Implement proposal template A/B testing to optimize acceptance rates
+
+**Medium-Term (Next Quarter):**
+- Develop AI-detection bypass validator using latest detection tool APIs (GPTZero, Originality.ai)
+- Build client response tracker to correlate proposal characteristics with acceptance rates
+- Create proposal variant generator for A/B testing different opening strategies
+
+**Long-Term (6–12 Months):**
+- Integrate with CRM system to automate proposal delivery and follow-up
+- Develop predictive model for proposal acceptance probability based on historical data
+- Build automated pricing optimizer using regression analysis on past accepted proposals
+
+### Resource Requirements
+
+**Technical Dependencies:**
+- Python 3.8+ for validation scripts
+- Access to market rate APIs (Upwork, Freelancer) for pricing benchmarks
+- Storage for artifact history (≥10GB for 100+ protocol runs)
+
+**Human Resources:**
+- 30-60 minutes per protocol run (current state)
+- 15-20 minutes after automation enhancements (target state)
+- Quarterly review sessions for continuous improvement (2-3 hours each)
+
+### Success Metrics & Targets
+
+**Current Baseline:**
+- Proposal acceptance rate: Track across 20+ runs to establish baseline
+- Validation pass rate: Track gate failures per phase
+- Time per phase: Current estimates vs actual execution time
+
+**Target Improvements:**
+- Proposal acceptance rate: +20% within 3 months via tone optimization and humanization refinement
+- Validation first-pass rate: 90%+ (reduce rework cycles)
+- Time reduction: 30% decrease via automation enhancements
+
+**Governance Alignment:**
+- All proposals must pass lint threshold (0 critical issues) as defined in `gates_config.yaml`
+- Evidence integrity maintained at 100% (all 6 artifacts present and validated)
+- Human voice compliance score ≥0.95 (contractions, uncertainty, forbidden phrase scan)
 
 ---
 

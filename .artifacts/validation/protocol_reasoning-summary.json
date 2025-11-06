@@ -1,0 +1,48 @@
+{
+  "validator": "protocol_reasoning",
+  "validation_timestamp": "2025-11-06T03:40:17.311025Z",
+  "total_protocols": 1,
+  "pass_count": 1,
+  "warning_count": 0,
+  "fail_count": 0,
+  "average_score": 0.85,
+  "protocols": [
+    {
+      "protocol_id": "01",
+      "status": "pass",
+      "score": 0.85
+    }
+  ],
+  "dimensions": {
+    "reasoning_patterns": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "decision_trees": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "problem_solving_logic": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "learning_mechanisms": {
+      "average_score": 0.0,
+      "pass_count": 0,
+      "warning_count": 0,
+      "fail_count": 1
+    },
+    "meta_cognition": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "07",
+  "validation_timestamp": "2025-11-05T18:37:49.677681Z",
+  "overall_score": 0.7285714285714286,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/aggregate_evidence_6.py, scripts/validate_design_handoff.py, scripts/validate_prerequisites_6.py"
+  ],
+  "recommendations": [
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/aggregate_evidence_6.py, scripts/validate_design_handoff.py, scripts/validate_prerequisites_6.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 7,
+      "commands": [
+        "python scripts/validate_prerequisites_6.py",
+        "python scripts/validate_brief.py --path PROJECT-BRIEF.md --output .artifacts/protocol-07/source-alignment-report.json",
+        "python scripts/plan_from_brief.py --brief PROJECT-BRIEF.md --output .artifacts/protocol-07/architecture-boundaries.json",
+        "python scripts/validate_workflow_integration.py --design .artifacts/protocol-07/TECHNICAL-DESIGN.md --output .artifacts/protocol-07/design-validation-report.json",
+        "python scripts/validate_design_handoff.py --input .artifacts/protocol-07/task-generation-input.json",
+        "python scripts/aggregate_evidence_6.py --output .artifacts/protocol-07/",
+        "python scripts/run_protocol_6_gates.py"
+      ],
+      "missing_scripts": [
+        "scripts/validate_prerequisites_6.py",
+        "scripts/validate_design_handoff.py",
+        "scripts/aggregate_evidence_6.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.8928571428571428,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 7,
+      "registered_commands": 4,
+      "registration_ratio": 0.5714285714285714,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 7,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

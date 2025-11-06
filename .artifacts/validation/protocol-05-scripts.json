@@ -1,0 +1,105 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "05",
+  "validation_timestamp": "2025-11-05T18:37:49.611000Z",
+  "overall_score": 0.7150000000000001,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/aggregate_evidence_05.py, scripts/run_protocol_05_gates.py, scripts/validate_prerequisites_05.py, scripts/validate_principles.py, scripts/validate_repo_mapping.py, scripts/validate_rule_metadata.py"
+  ],
+  "recommendations": [
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/aggregate_evidence_05.py, scripts/run_protocol_05_gates.py, scripts/validate_prerequisites_05.py, scripts/validate_principles.py, scripts/validate_repo_mapping.py, scripts/validate_rule_metadata.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 10,
+      "commands": [
+        "python scripts/validate_prerequisites_05.py",
+        "bash\n     python scripts/validate_rule_metadata.py --path .cursor/rules/",
+        "python scripts/validate_repo_mapping.py --structure .artifacts/protocol-05/repo-structure.txt",
+        "python scripts/validate_principles.py --input .artifacts/protocol-05/theme-findings.json",
+        "python scripts/rules_audit_quick.py --output .artifacts/protocol-05/rule-audit-final.md",
+        "python scripts/aggregate_evidence_05.py --output .artifacts/protocol-05/",
+        "python scripts/run_protocol_05_gates.py",
+        "python scripts/normalize_project_rules.py --target .cursor/rules/",
+        "python scripts/rules_audit_quick.py --output .artifacts/protocol-05/rule-audit-report.md",
+        "bash\n   python -c \"from project_generator.template_registry import TemplateRegistry; print(TemplateRegistry.list_all())\" \\"
+      ],
+      "missing_scripts": [
+        "scripts/validate_prerequisites_05.py",
+        "scripts/validate_rule_metadata.py",
+        "scripts/validate_repo_mapping.py",
+        "scripts/validate_principles.py",
+        "scripts/aggregate_evidence_05.py",
+        "scripts/run_protocol_05_gates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.825,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 10,
+      "registered_commands": 3,
+      "registration_ratio": 0.3,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 10,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

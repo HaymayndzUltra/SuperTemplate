@@ -1,0 +1,188 @@
+{
+  "validator": "master_validator",
+  "validation_timestamp": "2025-11-05T18:37:50.163414Z",
+  "total_protocols": 23,
+  "pass_count": 0,
+  "warning_count": 0,
+  "fail_count": 23,
+  "average_score": 0.737787612146308,
+  "protocols": [
+    {
+      "protocol_id": "01",
+      "status": "fail",
+      "score": 0.06899999999999999
+    },
+    {
+      "protocol_id": "02",
+      "status": "fail",
+      "score": 0.4814444444444444
+    },
+    {
+      "protocol_id": "03",
+      "status": "fail",
+      "score": 0.7609722222222222
+    },
+    {
+      "protocol_id": "04",
+      "status": "fail",
+      "score": 0.8057142857142855
+    },
+    {
+      "protocol_id": "05",
+      "status": "fail",
+      "score": 0.8100119047619048
+    },
+    {
+      "protocol_id": "06",
+      "status": "fail",
+      "score": 0.7696428571428571
+    },
+    {
+      "protocol_id": "07",
+      "status": "fail",
+      "score": 0.8170238095238096
+    },
+    {
+      "protocol_id": "08",
+      "status": "fail",
+      "score": 0.7822916666666668
+    },
+    {
+      "protocol_id": "09",
+      "status": "fail",
+      "score": 0.7664583333333334
+    },
+    {
+      "protocol_id": "10",
+      "status": "fail",
+      "score": 0.835
+    },
+    {
+      "protocol_id": "11",
+      "status": "fail",
+      "score": 0.6872698412698413
+    },
+    {
+      "protocol_id": "12",
+      "status": "fail",
+      "score": 0.7766666666666666
+    },
+    {
+      "protocol_id": "13",
+      "status": "fail",
+      "score": 0.7752083333333333
+    },
+    {
+      "protocol_id": "14",
+      "status": "fail",
+      "score": 0.7766666666666666
+    },
+    {
+      "protocol_id": "15",
+      "status": "fail",
+      "score": 0.7945833333333334
+    },
+    {
+      "protocol_id": "16",
+      "status": "fail",
+      "score": 0.7754166666666665
+    },
+    {
+      "protocol_id": "17",
+      "status": "fail",
+      "score": 0.8093749999999998
+    },
+    {
+      "protocol_id": "18",
+      "status": "fail",
+      "score": 0.7862500000000001
+    },
+    {
+      "protocol_id": "19",
+      "status": "fail",
+      "score": 0.785
+    },
+    {
+      "protocol_id": "20",
+      "status": "fail",
+      "score": 0.8051190476190475
+    },
+    {
+      "protocol_id": "21",
+      "status": "fail",
+      "score": 0.7862500000000001
+    },
+    {
+      "protocol_id": "22",
+      "status": "fail",
+      "score": 0.7495833333333334
+    },
+    {
+      "protocol_id": "23",
+      "status": "fail",
+      "score": 0.7641666666666665
+    }
+  ],
+  "validators": {
+    "protocol_identity": {
+      "average_score": 0.812463768115942,
+      "pass_count": 0,
+      "warning_count": 18,
+      "fail_count": 5
+    },
+    "protocol_role": {
+      "average_score": 0.7521739130434782,
+      "pass_count": 1,
+      "warning_count": 10,
+      "fail_count": 12
+    },
+    "protocol_workflow": {
+      "average_score": 0.7114906832298137,
+      "pass_count": 0,
+      "warning_count": 10,
+      "fail_count": 13
+    },
+    "protocol_quality_gates": {
+      "average_score": 0.7309782608695651,
+      "pass_count": 0,
+      "warning_count": 3,
+      "fail_count": 20
+    },
+    "protocol_scripts": {
+      "average_score": 0.6995738440303658,
+      "pass_count": 0,
+      "warning_count": 1,
+      "fail_count": 22
+    },
+    "protocol_communication": {
+      "average_score": 0.7076086956521739,
+      "pass_count": 0,
+      "warning_count": 5,
+      "fail_count": 18
+    },
+    "protocol_evidence": {
+      "average_score": 0.6652173913043476,
+      "pass_count": 0,
+      "warning_count": 3,
+      "fail_count": 20
+    },
+    "protocol_handoff": {
+      "average_score": 0.6875,
+      "pass_count": 0,
+      "warning_count": 0,
+      "fail_count": 23
+    },
+    "protocol_reasoning": {
+      "average_score": 0.7119565217391306,
+      "pass_count": 2,
+      "warning_count": 13,
+      "fail_count": 8
+    },
+    "protocol_reflection": {
+      "average_score": 0.898913043478261,
+      "pass_count": 20,
+      "warning_count": 2,
+      "fail_count": 1
+    }
+  }
+}

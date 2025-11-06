@@ -1,0 +1,76 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "02",
+  "validation_timestamp": "2025-11-05T18:37:49.515624Z",
+  "overall_score": 0.175,
+  "validation_status": "fail",
+  "issues": [
+    "AUTOMATION HOOKS section missing",
+    "Automation context missing",
+    "No automation commands available for syntax validation",
+    "Exit code handling not described"
+  ],
+  "recommendations": [
+    "Reference scripts/script-registry.json for governance context"
+  ],
+  "script_inventory": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "AUTOMATION HOOKS section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "registry_alignment": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Reference scripts/script-registry.json for governance context"
+    ],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": false,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 0,
+      "registered_commands": 0,
+      "registration_ratio": 0.0,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Automation context missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "command_syntax": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "No automation commands available for syntax validation"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "error_handling": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Exit code handling not described"
+    ],
+    "recommendations": [],
+    "details": {
+      "exit_codes": false,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": false
+    }
+  }
+}

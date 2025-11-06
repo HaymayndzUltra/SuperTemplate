@@ -1,0 +1,79 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "05",
+  "validation_timestamp": "2025-11-05T18:37:49.637886Z",
+  "overall_score": 0.8100119047619048,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 0.9333333333333332
+    },
+    "protocol_role": {
+      "status": "pass",
+      "score": 0.9375
+    },
+    "protocol_workflow": {
+      "status": "warning",
+      "score": 0.8142857142857143
+    },
+    "protocol_quality_gates": {
+      "status": "fail",
+      "score": 0.7874999999999999
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.7150000000000001
+    },
+    "protocol_communication": {
+      "status": "fail",
+      "score": 0.7125
+    },
+    "protocol_evidence": {
+      "status": "warning",
+      "score": 0.8125
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.7124999999999999
+    },
+    "protocol_reasoning": {
+      "status": "warning",
+      "score": 0.8
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.8750000000000001
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Value proposition not captured",
+    "Not all steps define explicit actions",
+    "Evidence expectations missing in some steps",
+    "Several workflow steps omit explicit action prompts",
+    "Insufficient compliance standards referenced",
+    "Referenced command paths not found: scripts/aggregate_evidence_05.py, scripts/run_protocol_05_gates.py, scripts/validate_prerequisites_05.py, scripts/validate_principles.py, scripts/validate_repo_mapping.py, scripts/validate_rule_metadata.py",
+    "Missing user interaction prompts: clarification, feedback",
+    "Limited progress terminology in communications",
+    "Traceability gaps: inputs, outputs",
+    "Checklist lacks sufficient coverage of required items",
+    "Sign-off guidance missing: approvals, reviewers",
+    "Reasoning patterns not explicitly named",
+    "Self-awareness statements missing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Document communication prompts per step",
+    "Add rollback or retry guidance for failure scenarios",
+    "Identify gate types (Prerequisite/Execution/Completion)",
+    "Provision config/protocol_gates/05.yaml when automated gating is expected",
+    "Identify notification path for gate failures",
+    "Document waiver/override policies",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Enhance archival plan with: cleanup"
+  ]
+}

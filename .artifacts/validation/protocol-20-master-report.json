@@ -1,0 +1,82 @@
+{
+  "validator": "master_validator",
+  "protocol_id": "20",
+  "validation_timestamp": "2025-11-05T18:37:50.080978Z",
+  "overall_score": 0.8051190476190475,
+  "validation_status": "fail",
+  "validators": {
+    "protocol_identity": {
+      "status": "warning",
+      "score": 0.8333333333333333
+    },
+    "protocol_role": {
+      "status": "warning",
+      "score": 0.875
+    },
+    "protocol_workflow": {
+      "status": "fail",
+      "score": 0.65
+    },
+    "protocol_quality_gates": {
+      "status": "warning",
+      "score": 0.8625
+    },
+    "protocol_scripts": {
+      "status": "fail",
+      "score": 0.7928571428571428
+    },
+    "protocol_communication": {
+      "status": "warning",
+      "score": 0.8125
+    },
+    "protocol_evidence": {
+      "status": "fail",
+      "score": 0.7749999999999999
+    },
+    "protocol_handoff": {
+      "status": "fail",
+      "score": 0.7
+    },
+    "protocol_reasoning": {
+      "status": "warning",
+      "score": 0.8
+    },
+    "protocol_reflection": {
+      "status": "pass",
+      "score": 0.9500000000000001
+    }
+  },
+  "issues": [
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Scope definition not found",
+    "Industry standards not documented",
+    "Domain expertise keywords missing",
+    "Value proposition not captured",
+    "Less than two workflow steps defined",
+    "Step numbering is not sequential",
+    "Several workflow steps omit explicit action prompts",
+    "Insufficient compliance standards referenced",
+    "Missing user interaction prompts: clarification",
+    "Limited progress terminology in communications",
+    "Traceability gaps: inputs, outputs",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Documentation expectations under-specified",
+    "Reasoning patterns not explicitly named",
+    "Self-awareness statements missing",
+    "Roadmap or future direction not documented"
+  ],
+  "recommendations": [
+    "Use '### STEP X' headings for clarity",
+    "Optional or cautionary guidance can highlight operator judgement without blocking validation",
+    "Add rollback or retry guidance for failure scenarios",
+    "Document evidence manifests or registries",
+    "Include quantitative metrics for gate evaluation",
+    "Provision config/protocol_gates/20.yaml when automated gating is expected",
+    "Document waiver/override policies",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Optionally reference a manifest file or inventory for quick lookup",
+    "Enhance archival plan with: cleanup, retrieval"
+  ]
+}

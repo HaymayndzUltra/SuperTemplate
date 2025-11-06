@@ -1,0 +1,94 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "23",
+  "validation_timestamp": "2025-11-05T18:37:50.144141Z",
+  "overall_score": 0.6875,
+  "validation_status": "fail",
+  "issues": [],
+  "recommendations": [
+    "Describe CI/CD context (workflow name, runner, or trigger)",
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "command_count": 8,
+      "commands": [
+        "bash\n# Validate coverage and generate report",
+        "python3 scripts/validate_script_registry.py \\",
+        "python3 scripts/auto_register_scripts.py --dry-run",
+        "python3 scripts/auto_register_scripts.py",
+        "python3 scripts/generate_protocol_23_artifacts.py \\",
+        "python3 scripts/validate_script_registry.py --min-coverage 95.0 --fail-on-orphans",
+        "python\n     categories = classify_scripts(script_index)",
+        "python3 scripts/generate_protocol_23_artifacts.py --output-dir .artifacts/protocol-23"
+      ],
+      "missing_scripts": []
+    }
+  },
+  "registry_alignment": {
+    "score": 0.9375,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 8,
+      "registered_commands": 6,
+      "registration_ratio": 0.75,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Describe CI/CD context (workflow name, runner, or trigger)",
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": false,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 8,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

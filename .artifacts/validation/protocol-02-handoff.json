@@ -1,0 +1,92 @@
+{
+  "validator": "protocol_handoff",
+  "protocol_id": "02",
+  "validation_timestamp": "2025-11-05T18:37:49.520841Z",
+  "overall_score": 0.5125,
+  "validation_status": "fail",
+  "issues": [
+    "Checklist lacks sufficient coverage of required items",
+    "Sign-off guidance missing: approvals, reviewers, confirmation",
+    "Ready-for-next-protocol statement missing"
+  ],
+  "recommendations": [],
+  "checklist_completeness": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Checklist lacks sufficient coverage of required items"
+    ],
+    "recommendations": [],
+    "details": {
+      "item_count": 4,
+      "items": false,
+      "categories": true,
+      "dependencies": false,
+      "status_markers": false
+    }
+  },
+  "verification_procedures": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "term_counts": {
+        "validate": 0,
+        "ensure": 0,
+        "confirm": 5,
+        "verify": 0,
+        "gate": 2
+      },
+      "verification_terms": true,
+      "qa_involvement": true,
+      "automation_reference": true,
+      "evidence_reference": true
+    }
+  },
+  "stakeholder_signoff": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Sign-off guidance missing: approvals, reviewers, confirmation"
+    ],
+    "recommendations": [],
+    "details": {
+      "approvals": false,
+      "reviewers": false,
+      "evidence_reference": true,
+      "confirmation": false
+    }
+  },
+  "documentation_requirements": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "terms": [
+        "log",
+        "brief",
+        "manifest"
+      ],
+      "doc_terms": true,
+      "storage": true,
+      "reviewer_docs": true,
+      "format": true
+    }
+  },
+  "next_protocol_alignment": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Ready-for-next-protocol statement missing"
+    ],
+    "recommendations": [],
+    "details": {
+      "ready_statements": false,
+      "next_commands": true,
+      "dependencies": false,
+      "continuation": false
+    }
+  }
+}

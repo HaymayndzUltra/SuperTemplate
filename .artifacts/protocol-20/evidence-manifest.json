@@ -1,0 +1,45 @@
+{
+  "protocol_id": "20",
+  "protocol_name": "Project Closure & Handover",
+  "generated_at": "2025-11-05T16:17:31.672686Z",
+  "validators": [
+    {
+      "name": "gate_deliverables",
+      "command": "/usr/bin/python3 scripts/validate_gate_20_deliverables.py --audit .artifacts/protocol-20/deliverable-audit-log.csv",
+      "status": "pass",
+      "notes": "\u2705 validate_gate_20_deliverables validation completed"
+    },
+    {
+      "name": "gate_handover",
+      "command": "/usr/bin/python3 scripts/validate_gate_20_handover.py --record .artifacts/protocol-20/operational-handover-record.json",
+      "status": "pass",
+      "notes": "\u2705 validate_gate_20_handover validation completed"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": ".artifacts/protocol-20/deliverable-audit-log.csv",
+      "description": "Deliverable completion audit",
+      "status": "exists",
+      "size_bytes": 41
+    },
+    {
+      "path": ".artifacts/protocol-20/operational-handover-record.json",
+      "description": "Operational handover evidence",
+      "status": "exists",
+      "size_bytes": 61
+    },
+    {
+      "path": ".artifacts/protocol-20/stakeholder-acceptance.md",
+      "description": "Stakeholder sign-offs",
+      "status": "exists",
+      "size_bytes": 60
+    }
+  ],
+  "summary": {
+    "validators_passed": 2,
+    "validators_total": 2,
+    "artifacts_present": 3,
+    "artifacts_total": 3
+  }
+}

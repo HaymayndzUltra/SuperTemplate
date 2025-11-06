@@ -1,0 +1,73 @@
+{
+  "validator": "protocol_reasoning",
+  "protocol_id": "01",
+  "validation_timestamp": "2025-11-06T03:40:17.302236Z",
+  "overall_score": 0.85,
+  "validation_status": "pass",
+  "issues": [
+    "Learning mechanisms not referenced"
+  ],
+  "recommendations": [],
+  "reasoning_patterns": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "matches": [
+        "pattern",
+        "heuristic",
+        "strategy"
+      ],
+      "pattern_terms": true,
+      "explanations": true,
+      "improvement": true,
+      "example_references": true
+    }
+  },
+  "decision_trees": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "decision_points": true,
+      "criteria": true,
+      "outcomes": true,
+      "logging": true
+    }
+  },
+  "problem_solving_logic": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "problem_identification": true,
+      "root_cause": true,
+      "solutions": true,
+      "validation": true
+    }
+  },
+  "learning_mechanisms": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Learning mechanisms not referenced"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "meta_cognition": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "awareness": true,
+      "monitoring": true,
+      "correction": true,
+      "improvement": true
+    }
+  }
+}

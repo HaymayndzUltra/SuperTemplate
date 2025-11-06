@@ -1,0 +1,94 @@
+{
+  "validator": "protocol_quality_gates",
+  "protocol_id": "02",
+  "validation_timestamp": "2025-11-05T18:37:49.514240Z",
+  "overall_score": 0.5291666666666667,
+  "validation_status": "fail",
+  "issues": [
+    "Numeric thresholds missing for gates",
+    "Insufficient compliance standards referenced"
+  ],
+  "recommendations": [
+    "Include quantitative metrics for gate evaluation",
+    "Document executable automation commands for gates",
+    "Document waiver/override policies"
+  ],
+  "gate_definitions": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "gates": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "gate_count": true,
+      "descriptions": true,
+      "types": true,
+      "naming": true
+    }
+  },
+  "pass_criteria": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Numeric thresholds missing for gates"
+    ],
+    "recommendations": [
+      "Include quantitative metrics for gate evaluation"
+    ],
+    "details": {
+      "thresholds": false,
+      "boolean": true,
+      "metrics": false,
+      "evidence_links": false
+    }
+  },
+  "automation": {
+    "score": 0.3333333333333333,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document executable automation commands for gates"
+    ],
+    "details": {
+      "scripts": false,
+      "ci": true,
+      "automation_labels": false,
+      "script_mentions": 0,
+      "gate_config_path": "/home/haymayndz/SuperTemplate/config/protocol_gates/02.yaml",
+      "gate_config_present": true
+    }
+  },
+  "failure_handling": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Document waiver/override policies"
+    ],
+    "details": {
+      "failure_actions": true,
+      "rollback": true,
+      "notification": true,
+      "waivers": false
+    }
+  },
+  "compliance_integration": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [
+      "Insufficient compliance standards referenced"
+    ],
+    "recommendations": [],
+    "details": {
+      "compliance_terms": false,
+      "automation_hooks": true,
+      "evidence": false,
+      "governance": false
+    }
+  }
+}

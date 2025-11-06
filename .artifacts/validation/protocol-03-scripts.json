@@ -1,0 +1,103 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "03",
+  "validation_timestamp": "2025-11-05T18:37:49.543322Z",
+  "overall_score": 0.6555555555555556,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/run_protocol_03_gates.py, scripts/validate_brief_structure.py, scripts/validate_discovery_inputs.py, scripts/validate_prerequisites_03.py, scripts/verify_brief_approvals.py"
+  ],
+  "recommendations": [
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/run_protocol_03_gates.py, scripts/validate_brief_structure.py, scripts/validate_discovery_inputs.py, scripts/validate_prerequisites_03.py, scripts/verify_brief_approvals.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 9,
+      "commands": [
+        "bash\n   # Prerequisite validation",
+        "python scripts/validate_prerequisites_03.py",
+        "bash\n   # Quality gate automation",
+        "python scripts/validate_discovery_inputs.py \\",
+        "bash\n   python scripts/validate_brief_structure.py \\",
+        "bash\n   python scripts/verify_brief_approvals.py \\",
+        "bash\n   # Evidence aggregation",
+        "python scripts/aggregate_evidence_03.py \\",
+        "python scripts/run_protocol_03_gates.py"
+      ],
+      "missing_scripts": [
+        "scripts/validate_prerequisites_03.py",
+        "scripts/validate_discovery_inputs.py",
+        "scripts/validate_brief_structure.py",
+        "scripts/verify_brief_approvals.py",
+        "scripts/run_protocol_03_gates.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.7777777777777778,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 9,
+      "registered_commands": 1,
+      "registration_ratio": 0.1111111111111111,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.25,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 9,
+      "flag_usage": false,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

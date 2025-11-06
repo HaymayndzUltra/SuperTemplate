@@ -1,0 +1,98 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "09",
+  "validation_timestamp": "2025-11-05T18:37:49.741805Z",
+  "overall_score": 0.78125,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/aggregate_evidence_7.py, scripts/package_environment_assets.py, scripts/validate_prerequisites_7.py"
+  ],
+  "recommendations": [
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/aggregate_evidence_7.py, scripts/package_environment_assets.py, scripts/validate_prerequisites_7.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 8,
+      "commands": [
+        "python scripts/validate_prerequisites_7.py",
+        "python scripts/doctor.py --strict --output .artifacts/protocol-09/environment-diagnostics.json",
+        "python scripts/scaffold_phase_artifacts.py --phase env --output .artifacts/protocol-09/env-configuration-report.json",
+        "bash scripts/install_and_test.sh --smoke",
+        "python scripts/package_environment_assets.py --output .artifacts/protocol-09/environment-onboarding.zip",
+        "python scripts/aggregate_evidence_7.py --output .artifacts/protocol-09/",
+        "python scripts/run_protocol_7_gates.py",
+        "bash scripts/setup.sh --non-interactive"
+      ],
+      "missing_scripts": [
+        "scripts/validate_prerequisites_7.py",
+        "scripts/package_environment_assets.py",
+        "scripts/aggregate_evidence_7.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.90625,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 8,
+      "registered_commands": 5,
+      "registration_ratio": 0.625,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Clarify access and credential requirements"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": true,
+      "scheduling": false,
+      "permissions": false
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 8,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}

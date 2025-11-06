@@ -1,0 +1,45 @@
+{
+  "protocol_id": "21",
+  "protocol_name": "Continuous Maintenance & Support Planning",
+  "generated_at": "2025-11-05T16:17:38.515567Z",
+  "validators": [
+    {
+      "name": "gate_backlog",
+      "command": "/usr/bin/python3 scripts/validate_gate_21_backlog.py --input .artifacts/protocol-21/maintenance-backlog.csv",
+      "status": "pass",
+      "notes": "\u2705 validate_gate_21_backlog validation completed"
+    },
+    {
+      "name": "gate_approvals",
+      "command": "/usr/bin/python3 scripts/validate_gate_21_approvals.py --log .artifacts/protocol-21/approval-log.csv",
+      "status": "pass",
+      "notes": "\u2705 validate_gate_21_approvals validation completed"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": ".artifacts/protocol-21/maintenance-backlog.csv",
+      "description": "Consolidated maintenance backlog",
+      "status": "exists",
+      "size_bytes": 36
+    },
+    {
+      "path": ".artifacts/protocol-21/approval-log.csv",
+      "description": "Stakeholder approval evidence",
+      "status": "exists",
+      "size_bytes": 47
+    },
+    {
+      "path": ".artifacts/protocol-21/automation-candidates.json",
+      "description": "Automation opportunities",
+      "status": "exists",
+      "size_bytes": 54
+    }
+  ],
+  "summary": {
+    "validators_passed": 2,
+    "validators_total": 2,
+    "artifacts_present": 3,
+    "artifacts_total": 3
+  }
+}

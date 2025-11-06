@@ -1,0 +1,69 @@
+{
+  "validator": "protocol_role",
+  "protocol_id": "11",
+  "validation_timestamp": "2025-11-05T18:37:49.798687Z",
+  "overall_score": 0.5,
+  "validation_status": "fail",
+  "issues": [
+    "AI ROLE AND MISSION section missing",
+    "Mission statement unavailable"
+  ],
+  "recommendations": [],
+  "role_definition": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "AI ROLE AND MISSION section missing"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "mission_statement": {
+    "score": 0.0,
+    "status": "fail",
+    "issues": [
+      "Mission statement unavailable"
+    ],
+    "recommendations": [],
+    "details": {}
+  },
+  "constraints_guidelines": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "guardrails": true,
+      "boundaries": true,
+      "workflow_alignment": true,
+      "guardrail_count": 12,
+      "boundary_count": 8,
+      "workflow_links": 9,
+      "optional_guidance": 0
+    }
+  },
+  "output_expectations": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "format": true,
+      "structure": true,
+      "location": true,
+      "validation": true
+    }
+  },
+  "behavioral_guidance": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "communication_style": true,
+      "decision_making": true,
+      "error_handling": true,
+      "user_interaction": true
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "protocol_id": "23",
+  "protocol_name": "Script Governance",
+  "generated_at": "2025-11-05T16:18:06.484083Z",
+  "validators": [
+    {
+      "name": "gate_inventory",
+      "command": "/usr/bin/python3 scripts/validate_gate_23_inventory.py --threshold 0.95",
+      "status": "pass",
+      "notes": "\u2705 validate_gate_23_inventory validation completed"
+    },
+    {
+      "name": "gate_artifacts",
+      "command": "/usr/bin/python3 scripts/validate_gate_23_artifacts.py --threshold 0.98",
+      "status": "pass",
+      "notes": "\u2705 validate_gate_23_artifacts validation completed"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": ".artifacts/scripts/script-index.json",
+      "description": "Complete script inventory",
+      "status": "exists",
+      "size_bytes": 1103
+    },
+    {
+      "path": ".artifacts/scripts/static-analysis-report.json",
+      "description": "Static analysis findings",
+      "status": "exists",
+      "size_bytes": 973
+    },
+    {
+      "path": ".artifacts/scripts/script-compliance.json",
+      "description": "Governance scorecard",
+      "status": "exists",
+      "size_bytes": 45
+    }
+  ],
+  "summary": {
+    "validators_passed": 2,
+    "validators_total": 2,
+    "artifacts_present": 3,
+    "artifacts_total": 3
+  }
+}

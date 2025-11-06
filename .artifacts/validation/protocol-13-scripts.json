@@ -1,0 +1,99 @@
+{
+  "validator": "protocol_scripts",
+  "protocol_id": "13",
+  "validation_timestamp": "2025-11-05T18:37:49.861829Z",
+  "overall_score": 0.76875,
+  "validation_status": "fail",
+  "issues": [
+    "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/build_uat_toolkit.py, scripts/generate_release_notes.py, scripts/validate_prerequisites_15.py"
+  ],
+  "recommendations": [
+    "Document environment/dependency expectations",
+    "Document how command outputs are captured"
+  ],
+  "script_inventory": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [
+      "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/build_uat_toolkit.py, scripts/generate_release_notes.py, scripts/validate_prerequisites_15.py"
+    ],
+    "recommendations": [],
+    "details": {
+      "command_count": 8,
+      "commands": [
+        "bash\n# Prerequisite validation",
+        "python scripts/validate_prerequisites_15.py",
+        "python scripts/validate_gate_15_entry.py --checklist .artifacts/uat/uat-entry-checklist.json",
+        "python scripts/validate_gate_15_defects.py --register .artifacts/uat/uat-defect-register.csv",
+        "python scripts/aggregate_evidence_15.py --output .artifacts/uat/",
+        "python scripts/run_protocol_15_gates.py",
+        "bash\n     python scripts/build_uat_toolkit.py --scenarios config/uat-scenarios.yaml --output .artifacts/uat/uat-toolkit-manifest.json",
+        "bash\n       python scripts/generate_release_notes.py --source .artifacts/uat/feedback-notebook.md --output .artifacts/uat/release-notes-draft.md"
+      ],
+      "missing_scripts": [
+        "scripts/validate_prerequisites_15.py",
+        "scripts/aggregate_evidence_15.py",
+        "scripts/build_uat_toolkit.py",
+        "scripts/generate_release_notes.py"
+      ]
+    }
+  },
+  "registry_alignment": {
+    "score": 0.84375,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 8,
+      "registered_commands": 3,
+      "registration_ratio": 0.375,
+      "unregistered_commands": []
+    }
+  },
+  "execution_context": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations"
+    ],
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": true
+    }
+  },
+  "command_syntax": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
+    ],
+    "details": {
+      "command_count": 8,
+      "flag_usage": true,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
+  },
+  "error_handling": {
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "exit_codes": true,
+      "fallback": true,
+      "logging": true,
+      "manual_paths": true
+    }
+  }
+}
