@@ -1,13 +1,13 @@
 {
   "validator": "master_validator",
   "protocol_id": "13",
-  "validation_timestamp": "2025-11-05T18:37:49.882588Z",
-  "overall_score": 0.7752083333333333,
+  "validation_timestamp": "2025-11-06T05:29:52.995494Z",
+  "overall_score": 0.8206249999999999,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
-      "status": "fail",
-      "score": 0.7333333333333333
+      "status": "warning",
+      "score": 0.8
     },
     "protocol_role": {
       "status": "warning",
@@ -26,16 +26,16 @@
       "score": 0.76875
     },
     "protocol_communication": {
-      "status": "warning",
-      "score": 0.8125
+      "status": "pass",
+      "score": 0.9249999999999999
     },
     "protocol_evidence": {
       "status": "fail",
       "score": 0.6749999999999998
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.7250000000000001
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reasoning": {
       "status": "warning",
@@ -49,7 +49,6 @@
   "issues": [
     "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
-    "Industry standards not documented",
     "Security requirements not documented",
     "Regulatory compliance not documented",
     "Domain expertise keywords missing",
@@ -60,13 +59,9 @@
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/build_uat_toolkit.py, scripts/generate_release_notes.py, scripts/validate_prerequisites_15.py",
-    "Missing user interaction prompts: clarification",
     "Limited progress terminology in communications",
     "Protocol evidence directory not referenced",
     "Traceability gaps: inputs, outputs",
-    "Checklist lacks sufficient coverage of required items",
-    "Sign-off guidance missing: confirmation",
-    "Documentation expectations under-specified",
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
     "Self-awareness statements missing",

@@ -1,21 +1,21 @@
 {
   "validator": "master_validator",
   "protocol_id": "02",
-  "validation_timestamp": "2025-11-05T18:37:49.534940Z",
-  "overall_score": 0.4814444444444444,
+  "validation_timestamp": "2025-11-06T05:29:52.578478Z",
+  "overall_score": 0.7436388888888888,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "fail",
-      "score": 0.6311111111111111
+      "score": 0.7155555555555555
     },
     "protocol_role": {
       "status": "fail",
-      "score": 0.6375
+      "score": 0.75
     },
     "protocol_workflow": {
       "status": "fail",
-      "score": 0.5166666666666666
+      "score": 0.5666666666666667
     },
     "protocol_quality_gates": {
       "status": "fail",
@@ -26,41 +26,36 @@
       "score": 0.175
     },
     "protocol_communication": {
-      "status": "fail",
-      "score": 0.35
+      "status": "pass",
+      "score": 0.9375
     },
     "protocol_evidence": {
       "status": "fail",
-      "score": 0.22500000000000003
+      "score": 0.7625
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.5125
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reasoning": {
-      "status": "fail",
-      "score": 0.5375
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reflection": {
-      "status": "warning",
-      "score": 0.7
+      "status": "pass",
+      "score": 1.0
     }
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
     "INTEGRATION POINTS section not found",
-    "Industry standards not documented",
     "Required section missing: INTEGRATION POINTS",
-    "Required section missing: COMMUNICATION PROTOCOLS",
     "Required section missing: AUTOMATION HOOKS",
-    "Required section missing: EVIDENCE SUMMARY",
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",
     "Mission lacks scope boundaries or guardrails",
     "Success criteria absent from mission",
-    "Communication style guidance missing",
-    "Error handling guidance absent",
     "Less than two workflow steps defined",
     "Step numbering is not sequential",
     "Several workflow steps omit explicit action prompts",
@@ -72,35 +67,17 @@
     "Automation context missing",
     "No automation commands available for syntax validation",
     "Exit code handling not described",
-    "COMMUNICATION PROTOCOLS section missing",
-    "Limited progress terminology in communications",
-    "Evidence communication cues missing",
-    "EVIDENCE SUMMARY section missing",
-    "Manifest not documented",
-    "Traceability gaps: inputs, outputs",
-    "Archival strategy not documented",
-    "Checklist lacks sufficient coverage of required items",
-    "Sign-off guidance missing: approvals, reviewers, confirmation",
-    "Ready-for-next-protocol statement missing",
-    "Reasoning patterns not explicitly named",
-    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
-    "Self-awareness statements missing",
-    "Continuous improvement gaps: opportunities",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing",
-    "Roadmap or future direction not documented"
+    "Traceability gaps: inputs, outputs"
   ],
   "recommendations": [
-    "Outline decision-making expectations",
     "Use '### STEP X' headings for clarity",
     "Document communication prompts per step",
-    "Optional or cautionary guidance can highlight operator judgement without blocking validation",
     "Add rollback or retry guidance for failure scenarios",
-    "Document evidence manifests or registries",
     "Include quantitative metrics for gate evaluation",
     "Document executable automation commands for gates",
     "Document waiver/override policies",
     "Reference scripts/script-registry.json for governance context",
-    "Include root-cause analysis guidance",
-    "Document rollback or recovery approach for changes"
+    "Document timestamps or hashes for manifest entries",
+    "Enhance archival plan with: cleanup, compression, retrieval"
   ]
 }

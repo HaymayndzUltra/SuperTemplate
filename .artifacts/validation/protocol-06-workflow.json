@@ -1,7 +1,7 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "06",
-  "validation_timestamp": "2025-11-05T18:37:49.642812Z",
+  "validation_timestamp": "2025-11-06T05:29:52.696340Z",
   "overall_score": 0.8,
   "validation_status": "warning",
   "issues": [
@@ -64,9 +64,9 @@
       "action_clarity": false,
       "contextual_support": true,
       "step_count": 4,
-      "imperative_count": 21,
+      "imperative_count": 78,
       "action_prompts": 0,
-      "context_prompts": 25,
+      "context_prompts": 26,
       "optional_guidance": 0,
       "cautionary_statements": 0
     }
@@ -97,8 +97,8 @@
       "artifact_locations": true,
       "manifest": false,
       "downstream_trace": true,
-      "evidence_mentions": 16,
-      "artifact_mentions": 23
+      "evidence_mentions": 18,
+      "artifact_mentions": 24
     }
   }
 }

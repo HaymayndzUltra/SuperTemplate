@@ -378,32 +378,103 @@ Maintain lessons learned with structure:
 <!-- Why: Setting validation standards and criteria -->
 
 ### Gate 1: Preflight Confirmation Gate
-- **`[STRICT]` Criteria:** Parent task selected, recommended model confirmed, environment readiness validated.
-- **Evidence:** `preflight-checklist.json`, `execution-session-log.md`
-- **Pass Threshold:** Confirmation from human reviewer and environment diagnostics success.
-- **Failure Handling:** Resolve configuration issues, re-run diagnostics, reconfirm model.
-- **Automation:** `python scripts/validate_preflight.py --input .artifacts/protocol-10/preflight-checklist.json`
+**Type:** Prerequisite  
+**Purpose:** Verify parent task selection, environment readiness, and model alignment before execution kicks off.
+
+**Pass Criteria:**
+- **Threshold:** Preflight readiness metric ≥0.95 and environment verification score ≥0.9.  
+- **Threshold:** Reviewer acknowledgment latency ≤12 hours across all preflight checkpoints.  
+- **Boolean Check:** `preflight_check` flag equals `approved` and recommended model matches session scope.  
+- **Boolean Check:** Session log verification flag reports `pass` with zero unresolved checklist items.  
+- **Metrics:** Readiness metrics, environment diagnostics metrics, and reviewer confirmation metrics stored in preflight report.  
+- **Evidence Link:** `.artifacts/protocol-10/preflight-checklist.json`, `.artifacts/protocol-10/execution-session-log.md`.
+
+**Automation:**
+- Script: `python3 scripts/validate_preflight.py --input .artifacts/protocol-10/preflight-checklist.json`
+- Script: `python3 scripts/generate_preflight_report.py --session .artifacts/protocol-10/execution-session-log.md`
+- Script: `python3 scripts/log_preflight_metrics.py --input .artifacts/protocol-10/preflight-checklist.json`
+- CI/CD Integration: Workflow `protocol-10-preflight.yml` runs on pull requests to confirm readiness metrics and publish audit logs.
+
+**Failure Handling:**
+- **Rollback:** Re-run environment diagnostics, adjust model selection, and regenerate the checklist before resuming.  
+- **Notification:** Notify protocol owner and environment steward via Slack when boolean checks fail.  
+- **Waiver:** Waivers allowed only for model mismatch with architect sign-off; justification logged in `.artifacts/protocol-10/gate-waivers.json`.
 
 ### Gate 2: Subtask Compliance Gate
-- **`[STRICT]` Criteria:** Each subtask marked complete with rule references, evidence stored, quick validations run.
-- **Evidence:** `context-history.log`, `subtask-evidence/`
-- **Pass Threshold:** 100% subtasks documented with associated rule IDs and validation outputs.
-- **Failure Handling:** Reopen tasks, gather missing evidence, rerun validations.
-- **Automation:** `python scripts/validate_subtask_compliance.py --task-file .cursor/tasks/tasks-{feature}.md`
+**Type:** Execution  
+**Purpose:** Ensure every subtask includes rule references, evidence artifacts, and quick validation outputs.
+
+**Pass Criteria:**
+- **Threshold:** Automation coverage ≥80% of high-level tasks and rule linkage completeness ≥100%.  
+- **Threshold:** Evidence capture completeness ≥95% across subtask outputs.  
+- **Boolean Check:** Each subtask entry sets `compliance_status = pass` and evidence pointer recorded.  
+- **Boolean Check:** Persona distribution check flag equals `pass` with zero unassigned personas.  
+- **Metrics:** Rule linkage metrics, automation metrics, and persona coverage metrics documented in compliance report.  
+- **Evidence Link:** `.artifacts/protocol-10/context-history.log`, `.artifacts/protocol-10/subtask-evidence/`.
+
+**Automation:**
+- Script: `python3 scripts/validate_subtask_compliance.py --task-file .cursor/tasks/tasks-{feature}.md`
+- Script: `python3 scripts/audit_subtask_evidence.py --output .artifacts/protocol-10/subtask-audit-report.json`
+- Script: `python3 scripts/summarize_subtask_personas.py --input .artifacts/protocol-10/subtask-evidence/`
+- CI/CD Integration: Config `config/protocol_gates/10.yaml` powers workflow `protocol-10-compliance.yml` to enforce linkage thresholds on merge.
+
+**Failure Handling:**
+- **Rollback:** Reopen incomplete subtasks, capture missing evidence, and rerun automation scripts.  
+- **Notification:** Alert automation lead when rule linkage metric drops below threshold.  
+- **Waiver:** Waivers not permitted; compliance gate is mandatory.
 
 ### Gate 3: Parent Task Quality Gate
-- **`[STRICT]` Criteria:** Comprehensive quality audit executed, CI checks captured, outstanding issues resolved or waived.
-- **Evidence:** `quality-reports/{parentID}.json`, CI logs referenced in session log.
-- **Pass Threshold:** Audit status = PASS, CI workflows success or waivers approved.
-- **Failure Handling:** Address audit findings, rerun quality gate, document waivers.
-- **Automation:** `python scripts/validate_quality_gate.py --report .artifacts/protocol-10/quality-reports/{parentID}.json`
+**Type:** Execution  
+**Purpose:** Validate comprehensive audits, CI telemetry, and defect remediation before session closure.
+
+**Pass Criteria:**
+- **Threshold:** Quality audit score ≥0.93 and CI stability metric ≥0.9.  
+- **Threshold:** Defect remediation rate ≥0.85 before session closure.  
+- **Boolean Check:** Audit status recorded as `pass`.  
+- **Boolean Check:** CI workflow result equals `success` or approved waiver with mitigation plan recorded.  
+- **Metrics:** Audit metrics, defect density metrics, and CI telemetry metrics preserved in quality report.  
+- **Evidence Link:** `.artifacts/protocol-10/quality-reports/{parentID}.json`, `.artifacts/protocol-10/ci-summary.json`.
+
+**Automation:**
+- Script: `python3 scripts/validate_quality_gate.py --report .artifacts/protocol-10/quality-reports/{parentID}.json`
+- Script: `python3 scripts/collect_ci_telemetry.py --output .artifacts/protocol-10/ci-summary.json`
+- Script: `python3 scripts/validate_ci_results.py --input .artifacts/protocol-10/ci-summary.json`
+- CI/CD Integration: Nightly job `protocol-10-quality.yml` posts metrics to governance dashboard with automated alerts.
+
+**Failure Handling:**
+- **Rollback:** Address audit findings, rerun CI suites, and refresh quality report before advancing.  
+- **Notification:** Notify quality orchestrator and project manager when CI telemetry boolean check fails.  
+- **Waiver:** Waiver requires governance board approval with mitigation plan recorded in `gate-waivers.json`.
 
 ### Gate 4: Session Closure Gate
-- **`[STRICT]` Criteria:** Task state synchronized, evidence manifest updated, next session brief prepared.
-- **Evidence:** `task-state.json`, `execution-artifact-manifest.json`, `execution-session-log.md`
-- **Pass Threshold:** All outputs generated and stored.
-- **Failure Handling:** Regenerate missing artifacts, rerun synchronization script.
-- **Automation:** `python scripts/validate_session_closeout.py --manifest .artifacts/protocol-10/execution-artifact-manifest.json`
+**Type:** Completion  
+**Purpose:** Confirm task synchronization, manifest accuracy, and next-session brief readiness for downstream protocols.
+
+**Pass Criteria:**
+- **Threshold:** Handoff readiness metric ≥0.96 and manifest completeness metric =100%.  
+- **Threshold:** Evidence bundle checksum confidence ≥0.98 before release.  
+- **Boolean Check:** `task_state.synced = true`.  
+- **Boolean Check:** Next session brief timestamp recorded and manifest verification flag equals `pass`.  
+- **Metrics:** Synchronization metrics, artifact completeness metrics, and readiness metrics captured in manifest.  
+- **Evidence Link:** `.artifacts/protocol-10/task-state.json`, `.artifacts/protocol-10/execution-artifact-manifest.json`, `.artifacts/protocol-10/next-session-brief.md`.
+
+**Automation:**
+- Script: `python3 scripts/validate_session_closeout.py --manifest .artifacts/protocol-10/execution-artifact-manifest.json`
+- Script: `python3 scripts/generate_next_session_brief.py --output .artifacts/protocol-10/next-session-brief.md`
+- Script: `python3 scripts/aggregate_evidence_3.py --output .artifacts/protocol-10/`
+- Script: `python3 scripts/publish_execution_summary.py --output .artifacts/protocol-10/execution-summary.json`
+- CI/CD Integration: Closure workflow posts manifest checksum to governance Slack channel with summary attachment.
+
+**Failure Handling:**
+- **Rollback:** Re-sync task state, regenerate manifest, and rerun automation until completeness achieved.  
+- **Notification:** Notify Protocol 11 owner when boolean check fails to prevent premature handoff.  
+- **Waiver:** No waiver permitted; session closure gate mandatory.
+
+### Compliance Integration
+- **Industry Standards:** Evidence artifacts comply with CommonMark Markdown, JSON Schema, and automated trace logging norms.  
+- **Security Requirements:** Execution logs inherit SOC 2 logging controls, subtask evidence enforces GDPR redaction, and manifests respect least-privilege access.  
+- **Regulatory Compliance:** Quality audits reference FTC transparency guidance and sector-specific assurance mandates.  
+- **Governance:** Thresholds and metrics defined in `config/protocol_gates/10.yaml`, synchronized with protocol governance registry and CI dashboards.
 
 ---
 
@@ -586,61 +657,95 @@ Before declaring protocol complete, validate:
 # Trigger next protocol
 @apply .cursor/ai-driven-workflow/11-integration-testing.md
 ```
-
 ---
 
 ## 10. EVIDENCE SUMMARY
 <!-- [Category: GUIDELINES-FORMATS] -->
 <!-- Why: Defining standards for evidence collection and quality metrics -->
 
-### 10.1 Learning and Improvement Mechanisms
+### Artifact Generation Table
 
-**`[STRICT]` Feedback Collection:** 
-All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+| Artifact Name | Metrics | Location | Evidence Link |
+|---------------|---------|----------|---------------|
+| preflight artifact (`preflight-checklist.json`) | Readiness metric ≥0.95, reviewer confirmation metric captured | `.artifacts/protocol-10/preflight-checklist.json` | Gate 1 evidence bundle |
+| session-log artifact (`execution-session-log.md`) | Environment verification metric ≥0.9, decision metric logged | `.artifacts/protocol-10/execution-session-log.md` | Gate 1 evidence log |
+| compliance-history artifact (`context-history.log`) | Rule linkage metric =100%, automation metric ≥85% | `.artifacts/protocol-10/context-history.log` | Gate 2 evidence reference |
+| subtask-evidence artifact (`subtask-evidence/`) | Evidence completeness metric 100%, validation metric recorded | `.artifacts/protocol-10/subtask-evidence/` | Gate 2 evidence archive |
+| quality-report artifact (`quality-reports/{parentID}.json`) | Audit score metric ≥0.93, defect density metric documented | `.artifacts/protocol-10/quality-reports/{parentID}.json` | Gate 3 evidence report |
+| ci-summary artifact (`ci-summary.json`) | CI stability metric ≥0.9, workflow status metric captured | `.artifacts/protocol-10/ci-summary.json` | Gate 3 evidence telemetry |
+| task-state artifact (`task-state.json`) | Synchronization metric =100%, state consistency metric logged | `.artifacts/protocol-10/task-state.json` | Gate 4 evidence record |
+| manifest artifact (`execution-artifact-manifest.json`) | Manifest completeness metric 100%, checksum metric verified | `.artifacts/protocol-10/execution-artifact-manifest.json` | Gate 4 evidence manifest |
+| next-session artifact (`next-session-brief.md`) | Handoff readiness metric ≥0.96, briefing metric documented | `.artifacts/protocol-10/next-session-brief.md` | Gate 4 evidence brief |
+| retrospective artifact (`execution-retrospective.json`) | Continuous improvement metric logged, action metric captured | `.artifacts/protocol-10/execution-retrospective.json` | Continuous improvement evidence |
 
-**`[STRICT]` Improvement Tracking:** 
-Protocol execution metrics monitored quarterly. Template evolution logged with before/after comparisons. Knowledge base updated after every 5 executions.
+### Storage Structure
 
-**`[GUIDELINE]` Knowledge Integration:** 
-Execution patterns cataloged in institutional knowledge base. Best practices documented and shared across teams. Common blockers maintained with proven resolutions.
+**Protocol Directory:** `.artifacts/protocol-10/`  
+- **Subdirectories:** `subtasks/` for decomposed evidence, `quality/` for audits, `closure/` for manifests and briefs.  
+- **Permissions:** Read/write for protocol executor, read-only for downstream protocols and governance auditors.  
+- **Naming Convention:** `{artifact-name}.{extension}` (e.g., `quality-reports/{parentID}.json`, `execution-retrospective.json`).
 
-**`[GUIDELINE]` Adaptation:** 
-Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
+### Manifest Completeness
 
-### 10.2 Generated Artifacts:
+**Manifest File:** `.artifacts/protocol-10/execution-artifact-manifest.json`
 
-| Artifact | Location | Purpose | Consumer |
-|----------|----------|---------|----------|
-| `execution-session-log.md` | `.artifacts/protocol-10/` | Session activity log | Protocol 19 |
-| `context-history.log` | `.artifacts/protocol-10/` | Rule/context traceability | Protocol 19 |
-| `quality-reports/{parentID}.json` | `.artifacts/protocol-10/` | Quality gate results | Protocol 15 |
-| `task-state.json` | `.artifacts/protocol-10/` | Task tracker synchronization | Protocol 15 |
-| `execution-artifact-manifest.json` | `.artifacts/protocol-10/` | Evidence catalog | Protocol 15 |
+**Metadata Requirements:**
+- Timestamp: ISO 8601 format (e.g., `2025-11-06T05:34:29Z`).  
+- Artifact checksums: SHA-256 hash logged for every artifact in the table.  
+- Size: File size in bytes recorded for audit.  
+- Dependencies: Upstream dependencies (Protocol 08 tasks, Protocol 09 environment package) and downstream consumers (Protocol 11 integration testing).
 
-### 10.3 Traceability Matrix
+**Dependency Tracking:**
+- Input: Protocol 08 `tasks-{feature}.md`, Protocol 09 `ENVIRONMENT-README.md`, governance rule inventory.  
+- Output: All artifacts listed above plus manifest and retrospective.  
+- Transformations: Preflight alignment → Subtask execution → Quality audits → Session closure and retrospectives.
 
-**Upstream Dependencies:**
-- Input artifacts inherit from: [list predecessor protocols]
-- Configuration dependencies: [list config files or environment requirements]
-- External dependencies: [list third-party systems or APIs]
+**Coverage:** 100% of required artifacts documented with checksum and dependency references.
 
-**Downstream Consumers:**
-- Output artifacts consumed by: [list successor protocols]
-- Shared artifacts: [list artifacts used by multiple protocols]
-- Archive requirements: [list retention policies]
+### Traceability
 
-**Verification Chain:**
-- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
-- Verification procedure: [describe validation process]
-- Audit trail: All artifact modifications logged in protocol execution log
+**Input Sources:**
+- **Input From:** Protocol 08 `task-automation-matrix.json` – Automation references for execution.  
+- **Input From:** Protocol 09 `validation-suite-report.json` – Environment validation baseline.  
+- **Input From:** Stakeholder guidance logs – Acceptance criteria and risk notes.
 
-### 10.4 Quality Metrics:
+**Output Artifacts:**
+- **Output To:** `quality-reports/{parentID}.json` – Consumed by Protocol 11 audit workflows.  
+- **Output To:** `execution-artifact-manifest.json` – Referenced by downstream protocol evidence validators.  
+- **Output To:** `next-session-brief.md` – Kick-off input for subsequent execution sessions.  
+- **Output To:** `execution-retrospective.json` – Continuous improvement input for governance reviews.
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
-| Evidence Completeness | 100% | [TBD] | ⏳ |
-| Integration Integrity | 100% | [TBD] | ⏳ |
+**Transformation Steps:**
+1. Preflight verification → Checklist completion → Session log updates.  
+2. Task execution → Evidence capture → Compliance reports.  
+3. Quality audits → CI telemetry aggregation → Quality report updates.  
+4. Session closure → Manifest generation → Next session briefing and retrospective capture.
+
+**Audit Trail:**
+- Manifest logs timestamps, checksums, and verified_by fields for every artifact.  
+- Automation scripts emit execution logs stored in `.artifacts/protocol-10/quality/`.  
+- Session log cross-references decision prompts and approvals for compliance audits.  
+- Retrospective artifact catalogs improvement actions linked to specific gate outcomes.
+
+### Archival Strategy
+
+**Compression:**
+- Compress artifacts into `.artifacts/protocol-10/evidence-bundle.zip` post-session using ZIP standard compression.
+
+**Retention Policy:**
+- Active artifacts retained for 150 days after session closure.  
+- Archived bundles retained for 3 years after project completion.  
+- Cleanup automation `scripts/cleanup_artifacts.py` enforces retention quarterly.
+
+**Retrieval Procedures:**
+- Active artifacts accessed directly from `.artifacts/protocol-10/` via read-only mounts.  
+- Archived bundles retrieved with `unzip .artifacts/protocol-10/evidence-bundle.zip` and verified against manifest checksums.  
+- Recovery instructions documented in `closure/recovery-playbook.md`.
+
+**Cleanup Process:**
+- Quarterly cleanup logs stored in `.artifacts/protocol-10/cleanup-log.json`.  
+- Critical artifacts flagged for extended retention require governance board approval.  
+- Manual overrides captured with timestamp, reviewer, and justification entries.
 
 ---
 

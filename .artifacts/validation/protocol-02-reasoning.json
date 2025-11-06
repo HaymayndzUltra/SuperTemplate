@@ -1,30 +1,26 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "02",
-  "validation_timestamp": "2025-11-05T18:37:49.522684Z",
-  "overall_score": 0.5375,
-  "validation_status": "fail",
-  "issues": [
-    "Reasoning patterns not explicitly named",
-    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
-    "Self-awareness statements missing"
-  ],
-  "recommendations": [
-    "Include root-cause analysis guidance"
-  ],
+  "validation_timestamp": "2025-11-06T05:31:15.296502Z",
+  "overall_score": 1.0,
+  "validation_status": "pass",
+  "issues": [],
+  "recommendations": [],
   "reasoning_patterns": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Reasoning patterns not explicitly named"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "matches": [],
-      "pattern_terms": false,
-      "explanations": false,
+      "matches": [
+        "pattern",
+        "heuristic",
+        "strategy"
+      ],
+      "pattern_terms": true,
+      "explanations": true,
       "improvement": true,
-      "example_references": false
+      "example_references": true
     }
   },
   "decision_trees": {
@@ -40,45 +36,39 @@
     }
   },
   "problem_solving_logic": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Include root-cause analysis guidance"
-    ],
+    "recommendations": [],
     "details": {
       "problem_identification": true,
-      "root_cause": false,
+      "root_cause": true,
       "solutions": true,
       "validation": true
     }
   },
   "learning_mechanisms": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "feedback": false,
-      "improvement_tracking": false,
-      "knowledge_base": false,
-      "adaptation": false
+      "feedback": true,
+      "improvement_tracking": true,
+      "knowledge_base": true,
+      "adaptation": true
     }
   },
   "meta_cognition": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Self-awareness statements missing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "awareness": false,
+      "awareness": true,
       "monitoring": true,
       "correction": true,
-      "improvement": false
+      "improvement": true
     }
   }
 }

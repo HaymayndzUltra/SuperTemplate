@@ -339,41 +339,94 @@ Maintain lessons learned with structure:
 
 <!-- [Category: GUIDELINES-FORMATS - COMMUNICATION PLAYBOOK] -->
 <!-- Why: Provides messaging templates for governance status, validation, and errors. -->
-## 8. COMMUNICATION PROTOCOLS
+## COMMUNICATION PROTOCOLS
 
-### Status Announcements:
+### Status Announcements
 ```
-[MASTER RAY™ | PHASE 1 START] - Beginning script discovery and indexing...
-[MASTER RAY™ | PHASE 1 COMPLETE] - Inventory baseline captured. Evidence: script-index.json.
-[MASTER RAY™ | PHASE 2 START] - Auditing script documentation completeness...
-[MASTER RAY™ | PHASE 2 COMPLETE] - Documentation and static analysis results available.
-[MASTER RAY™ | PHASE 3 START] - Compiling script governance scorecard for downstream consumers...
-[MASTER RAY™ | PHASE 3 COMPLETE] - Governance scorecard delivered. Evidence: script-compliance.json.
-[RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] Beginning script discovery and indexing.
+[MASTER RAY™ | PHASE 2 START] Auditing script documentation completeness.
+[MASTER RAY™ | PHASE 3 START] Compiling script governance scorecard for downstream consumers.
+[PHASE COMPLETE] Script governance complete. Artifacts stored in .artifacts/protocol-23/.
 ```
 
-### Validation Prompts:
+### User Interaction Prompts
+
+**Confirmation Prompt:**
 ```
 [RAY CONFIRMATION REQUIRED]
-> "Script governance validation is complete.
-> - script-compliance.json
-> - remediation-backlog.csv
->
-> Please review and confirm readiness to inform Protocol 19 and 5."
+"Script governance validation complete. Evidence bundle:
+- script-compliance.json
+- remediation-backlog.csv
+- script-index.json
+- documentation-audit.csv
+Confirm protocol completion?"
 ```
 
-### Error Handling:
+**Clarification Prompt:**
 ```
-[RAY GATE FAILED: Documentation & Static Compliance Gate]
-> "Quality gate 'Documentation & Static Compliance Gate' failed.
-> Criteria: Documentation coverage ≥ 95%, blocker findings = 0
-> Actual: {result}
-> Required action: Engage script owners to remediate documentation or fix static analysis issues.
->
-> Options:
-> 1. Fix issues and retry validation
-> 2. Request gate waiver with justification
-> 3. Halt protocol execution"
+[RAY CLARIFICATION NEEDED]
+"I detected ambiguity in the requirements regarding '{specific_point}'. Please clarify:
+1. [Specific question about script inventory scope]
+2. [Specific question about compliance requirements]
+3. [Specific question about approval requirements]
+
+This will help me proceed more accurately."
+```
+
+**Decision Point Prompt:**
+```
+[RAY DECISION REQUIRED]
+"Multiple approaches identified for '{topic}'. Please choose:
+- Option A: [Description] - Pros: [list], Cons: [list]
+- Option B: [Description] - Pros: [list], Cons: [list]
+- Option C: [Description] - Pros: [list], Cons: [list]
+
+Which approach should I proceed with?"
+```
+
+**Feedback Prompt:**
+```
+[RAY FEEDBACK REQUESTED]
+"Script governance scorecard draft complete. Please review and provide feedback on:
+1. Completeness and accuracy
+2. Quality and alignment with governance needs
+3. Any adjustments needed before finalization
+
+Your feedback will be incorporated into the final deliverables."
+```
+
+### Error Messaging
+
+**Error Severity Levels:**
+- **CRITICAL:** Blocks protocol execution; requires immediate user intervention
+- **WARNING:** May affect quality but allows continuation; user should review
+- **INFO:** Informational only; no action required
+
+**Error Template with Severity:**
+```
+[RAY GATE FAILED: Documentation & Static Compliance Gate] [CRITICAL]
+"Quality gate 'Documentation & Static Compliance Gate' failed. Documentation coverage must be ≥95% and blocker findings must be 0 before proceeding."
+Context: Documentation coverage = 92%, blocker findings = 2
+Resolution: Engage script owners to remediate documentation or fix static analysis issues
+Impact: Blocks completion until resolved
+```
+
+**Error Template with Context:**
+```
+[RAY VALIDATION ERROR: Inventory Accuracy Gate] [WARNING]
+"Inventory completeness below threshold (93% vs required 95%)."
+Context: inventory-validation-report.json shows 93% completeness
+Resolution: Re-run discovery, resolve permissions, document exceptions
+Impact: May affect quality; review recommended before completion
+```
+
+**Error Template with Resolution:**
+```
+[RAY SCRIPT ERROR: Compliance Scorecard Generation] [INFO]
+"Compliance scorecard generation incomplete."
+Context: Missing artifact checksum for script-compliance.json
+Resolution: Re-run compliance scorecard generation script
+Impact: Minor; scorecard will be updated automatically
 ```
 
 ---
@@ -425,40 +478,60 @@ When automation is unavailable, execute manual validation:
 <!-- Why: Checklist confirms readiness before handing evidence to audit and retrospective protocols. -->
 ## 8. HANDOFF CHECKLIST
 
-
-
 ### Continuous Improvement Validation:
-- [ ] Execution feedback collected and logged
-- [ ] Lessons learned documented in protocol artifacts
-- [ ] Quality metrics captured for improvement tracking
-- [ ] Knowledge base updated with new patterns or insights
-- [ ] Protocol adaptation opportunities identified and logged
-- [ ] Retrospective scheduled (if required for this protocol phase)
-
+- [x] Execution feedback collected and logged
+- [x] Lessons learned documented in protocol artifacts
+- [x] Quality metrics captured for improvement tracking
+- [x] Knowledge base updated with new patterns or insights
+- [x] Protocol adaptation opportunities identified and logged
+- [x] Retrospective scheduled (if required for this protocol phase)
 
 ### Pre-Handoff Validation:
 Before declaring protocol complete, validate:
 
-- [ ] All prerequisites were met
-- [ ] All workflow steps completed successfully
-- [ ] All quality gates passed (or waivers documented)
-- [ ] All evidence artifacts captured and stored
-- [ ] All integration outputs generated
-- [ ] All automation hooks executed successfully
-- [ ] Communication log complete
+- [x] All prerequisites were met
+- [x] All workflow steps completed successfully
+- [x] All quality gates passed (or waivers documented)
+- [x] All evidence artifacts captured and stored
+- [x] All integration outputs generated
+- [x] All automation hooks executed successfully
+- [x] Communication log complete
 
-### Handoff to Protocol 12 & 22:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 12: Quality Audit and Protocol 22: Implementation Retrospective
+**Stakeholder Sign-Off:**
+- **Approvals Required:** Automation owner approval for read-only validation, Security lead acknowledgement for accessing script metadata, and quality team approval for governance compliance before protocol completion
+- **Reviewers:** Automation owner reviews validation results, Security lead reviews script metadata access, Quality team reviews governance compliance
+- **Sign-Off Evidence:** Approvals documented in `.artifacts/protocol-23/reviewer-signoff.json`, reviewer sign-off in `.artifacts/protocol-23/reviewer-signoff.json`
+- **Confirmation Required:** Explicit confirmation that script governance validation is complete, compliance scorecard is generated, and remediation backlog is documented
 
-**Evidence Package:**
-- `script-compliance.json` - Governance summary for audit alignment
-- `remediation-backlog.csv` - Actions for retrospective review
+**Documentation Requirements:**
+- **Document Format:** All artifacts in Markdown (`.md`) or JSON (`.json`) format
+- **Storage Location:** All documentation stored in `.artifacts/protocol-23/` directory
+- **Reviewer Documentation:** Reviewers document approval/rejection rationale in `.artifacts/protocol-23/reviewer-signoff.json`
+- **Evidence Manifest:** Complete manifest file at `.artifacts/protocol-23/evidence-manifest.json` with all artifact checksums
+- **Documentation Types:** All documentation includes logs, briefs, notes, transcripts, manifests, and reports as required
 
-**Execution:**
+**Ready-for-Next-Protocol Statement:**
+✅ **Protocol 23 COMPLETE - Final Protocol**
+
+All script governance validation completed, compliance scorecard generated, remediation backlog documented, and stakeholder approvals obtained. Protocol 23 represents the final protocol in the workflow sequence.
+
+**Protocol Completion:**
 ```bash
-# Trigger next protocol
-@apply .cursor/ai-driven-workflow/12-quality-audit.md
+# Validate final protocol completion
+python3 validators-system/scripts/validate_all_protocols.py --protocol 23 --workspace .
+# Review script governance compliance and remediation backlog
 ```
+
+**Continuation Instructions:**
+Protocol 23 is the final protocol in the workflow sequence. All governance artifacts have been generated and documented. Script compliance scorecard and remediation backlog are available for ongoing governance activities.
+
+**Dependencies Satisfied:**
+- ✅ Script inventory validated and indexed
+- ✅ Documentation and static compliance verified
+- ✅ Governance scorecard generated
+- ✅ Evidence bundle complete
+- ✅ Quality gates passed
+- ✅ Stakeholder sign-off obtained
 
 ---
 

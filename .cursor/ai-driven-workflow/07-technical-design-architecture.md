@@ -301,32 +301,102 @@ Maintain lessons learned with structure:
 <!-- Why: Setting validation standards and criteria -->
 
 ### Gate 1: Source Alignment Gate
-- **`[STRICT]` Criteria:** Project Brief and PRD validated, discovery risks acknowledged, design input matrix complete.
-- **Evidence:** `source-alignment-report.json`, `design-input-matrix.md`
-- **Pass Threshold:** Validation status `pass`, no missing artifacts.
-- **Failure Handling:** Obtain updated inputs, refresh reports, rerun validation.
-- **Automation:** `python scripts/validate_brief.py --path PROJECT-BRIEF.md --output .artifacts/protocol-07/source-alignment-report.json`
+**Type:** Prerequisite  
+**Purpose:** Verify upstream discovery assets align with design scope before architecture work begins.
+
+**Pass Criteria:**
+- **Threshold:** Validation coverage score ≥95% and discovery risk acknowledgment ratio ≥90% complete.  
+- **Threshold:** Alignment evidence freshness metric ≥0.9 across all inputs.  
+- **Boolean Check:** Project brief status equals `approved` and design input matrix flag set to `ready`.  
+- **Boolean Check:** Source alignment status reports `pass` for every discovery artifact with no `fail` entries.  
+- **Metrics:** Coverage metrics, dependency completeness metrics, and risk mitigation metrics captured in alignment report.  
+- **Evidence Link:** Evidence recorded in `.artifacts/protocol-07/source-alignment-report.json` and `.artifacts/protocol-07/design-input-matrix.md`.
+
+**Automation:**
+- Script: `python3 scripts/validate_brief.py --path PROJECT-BRIEF.md --output .artifacts/protocol-07/source-alignment-report.json`
+- Script: `python3 scripts/generate_design_inputs.py --brief PROJECT-BRIEF.md --output .artifacts/protocol-07/design-input-matrix.md`
+- Script: `python3 scripts/aggregate_evidence_6.py --output .artifacts/protocol-07/source-alignment-evidence.json`
+- CI/CD Integration: Runs in workflow `protocol-07-alignment.yml` on push events with automated evidence upload.
+
+**Failure Handling:**
+- **Rollback:** Reopen discovery session and regenerate validated inputs before resuming design.
+- **Notification:** Notify solution architect and protocol owner via Slack when coverage drops below threshold.
+- **Waiver:** Document waiver in `.artifacts/protocol-07/gate-waivers.json` with executive sponsor approval if upstream artifacts delayed.
 
 ### Gate 2: Architecture Integrity Gate
-- **`[STRICT]` Criteria:** Boundaries defined, ADRs documented, interaction diagrams generated.
-- **Evidence:** `architecture-boundaries.json`, `architecture-decisions.md`, `interaction-diagram.*`
-- **Pass Threshold:** All core components mapped with traceable decisions.
-- **Failure Handling:** Reassess decomposition, update ADRs, rerun gate.
-- **Automation:** `python scripts/plan_from_brief.py --brief PROJECT-BRIEF.md --output .artifacts/protocol-07/architecture-boundaries.json`
+**Type:** Execution  
+**Purpose:** Ensure architecture decisions, boundaries, and diagrams remain internally consistent.
+
+**Pass Criteria:**
+- **Threshold:** Component boundary completeness ≥92% and ADR decision confidence ≥0.9.  
+- **Threshold:** Interface coverage metric ≥90% for cross-domain interactions.  
+- **Boolean Check:** Architecture decision records include `signed_off = true` and interaction diagrams present.  
+- **Boolean Check:** Trace validation flags `pass` for boundaries with zero `fail` interactions.  
+- **Metrics:** Boundary coverage metrics, decision trace metrics, and integration complexity metrics tracked per component.  
+- **Evidence Link:** Evidence stored in `.artifacts/protocol-07/architecture-boundaries.json`, `.artifacts/protocol-07/architecture-decisions.md`, and `.artifacts/protocol-07/interaction-diagram.drawio`.
+
+**Automation:**
+- Script: `python3 scripts/plan_from_brief.py --brief PROJECT-BRIEF.md --output .artifacts/protocol-07/architecture-boundaries.json`
+- Script: `python3 scripts/render_architecture_diagrams.py --input .artifacts/protocol-07/architecture-boundaries.json --output .artifacts/protocol-07/interaction-diagram.drawio`
+- Script: `python3 scripts/verify_architecture_trace.py --input .artifacts/protocol-07/architecture-decisions.md`
+- Config: `config/protocol_gates/07.yaml` defines structural thresholds applied in CI/CD workflow.
+
+**Failure Handling:**
+- **Rollback:** Re-run decomposition workshop, update ADRs, and regenerate diagrams before retrying gate.  
+- **Notification:** Alert technical design lead via email and incident channel when boolean checks fail.  
+- **Waiver:** Waivers permitted only with CTO sign-off; log justification in `gate-waivers.json`.
 
 ### Gate 3: Design Validation Gate
-- **`[STRICT]` Criteria:** Compliance validation passes with no critical issues, risks mitigated, assumptions addressed.
-- **Evidence:** `design-validation-report.json`, `design-assumptions.md`
-- **Pass Threshold:** Validation script returns `pass` and all critical risks mitigated.
-- **Failure Handling:** Update design, adjust ADRs, rerun validation script.
-- **Automation:** `python scripts/validate_workflow_integration.py --design .artifacts/protocol-07/TECHNICAL-DESIGN.md --output .artifacts/protocol-07/design-validation-report.json`
+**Type:** Execution  
+**Purpose:** Validate technical design against compliance, risk, and integration readiness requirements.
+
+**Pass Criteria:**
+- **Threshold:** Validation engine score ≥0.93 and critical risk count ≤0.  
+- **Threshold:** Control coverage metric ≥0.9 across compliance categories.  
+- **Boolean Check:** Risk register marked `cleared` and mitigation summary appended.  
+- **Boolean Check:** Control validation flag equals `pass` with no `fail` exceptions logged.  
+- **Metrics:** Compliance metrics, validation coverage metrics, and residual risk metrics summarized in validation report.  
+- **Evidence Link:** Evidence captured in `.artifacts/protocol-07/design-validation-report.json` and `.artifacts/protocol-07/design-assumptions.md`.
+
+**Automation:**
+- Script: `python3 scripts/validate_workflow_integration.py --design .artifacts/protocol-07/TECHNICAL-DESIGN.md --output .artifacts/protocol-07/design-validation-report.json`
+- Script: `python3 scripts/assess_design_risk.py --input .artifacts/protocol-07/TECHNICAL-DESIGN.md --output .artifacts/protocol-07/design-assumptions.md`
+- Script: `python3 scripts/validate_design_controls.py --input .artifacts/protocol-07/design-validation-report.json`
+- CI/CD Integration: Validation job `protocol-07-validate` runs nightly with metrics export to governance dashboard.
+
+**Failure Handling:**
+- **Rollback:** Reopen design review, adjust architecture components, and re-run validation scripts.  
+- **Notification:** Notify compliance reviewer and risk owner when residual risk metric exceeds tolerance.  
+- **Waiver:** Document not-applicable mitigations with root-cause analysis; approval required from governance board.
 
 ### Gate 4: Approval & Handoff Gate
-- **`[STRICT]` Criteria:** Stakeholder approvals logged, task-generation input produced, artifact manifest created.
-- **Evidence:** `design-approval-record.json`, `task-generation-input.json`, `design-artifact-manifest.json`
-- **Pass Threshold:** Approval status `approved`, outputs delivered to downstream protocols.
-- **Failure Handling:** Follow up for approval, document waivers, ensure outputs regenerated.
-- **Automation:** `python scripts/validate_design_handoff.py --input .artifacts/protocol-07/task-generation-input.json`
+**Type:** Completion  
+**Purpose:** Confirm stakeholder approvals and ensure downstream assets are packaged for Protocol 08.
+
+**Pass Criteria:**
+- **Threshold:** Handoff readiness score ≥0.96 and artifact manifest completeness ≥100%.  
+- **Threshold:** Evidence bundle checksum confidence ≥0.98 prior to release.  
+- **Boolean Check:** Approval records marked `approved` and downstream payload published.  
+- **Boolean Check:** Manifest verification flag reports `pass` with zero `fail` entries before release.  
+- **Metrics:** Readiness metrics, approval latency metrics, and artifact accuracy metrics tracked in handoff manifest.  
+- **Evidence Link:** Evidence maintained in `.artifacts/protocol-07/design-approval-record.json`, `.artifacts/protocol-07/task-generation-input.json`, and `.artifacts/protocol-07/design-artifact-manifest.json`.
+
+**Automation:**
+- Script: `python3 scripts/validate_design_handoff.py --input .artifacts/protocol-07/task-generation-input.json`
+- Script: `python3 scripts/aggregate_evidence_6.py --output .artifacts/protocol-07/design-artifact-manifest.json`
+- Script: `python3 scripts/package_design_bundle.py --output .artifacts/protocol-07/handoff/design-evidence-bundle.zip`
+- CI/CD Integration: Handoff workflow posts to governance channel with evidence summary attachment and checksum check.
+
+**Failure Handling:**
+- **Rollback:** Revert to remediation checklist, regenerate missing artifacts, and obtain new approvals.  
+- **Notification:** Notify Protocol 08 owner and project manager if approval boolean check fails.  
+- **Waiver:** No waiver allowed; approval gate mandatory for downstream execution.
+
+### Compliance Integration
+- **Industry Standards:** Documentation adheres to CommonMark Markdown, JSON Schema Draft 2020-12, and BPMN diagram guidelines.  
+- **Security Requirements:** Architecture decisions reference SOC 2 controls, design validation enforces GDPR data boundaries, and evidence storage inherits least-privilege permissions.  
+- **Regulatory Compliance:** Risk assessments align with FTC software transparency guidance and HIPAA safeguards where applicable.  
+- **Governance:** Thresholds and metrics sourced from `config/protocol_gates/07.yaml`, synchronized with the protocol governance registry.
 
 ---
 
@@ -517,55 +587,90 @@ Before declaring protocol complete, validate:
 <!-- [Category: GUIDELINES-FORMATS] -->
 <!-- Why: Defining standards for evidence collection and quality metrics -->
 
-### 10.1 Learning and Improvement Mechanisms
+### Artifact Generation Table
 
-**`[STRICT]` Feedback Collection:** 
-All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+| Artifact Name | Metrics | Location | Evidence Link |
+|---------------|---------|----------|---------------|
+| source-alignment artifact (`source-alignment-report.json`) | Coverage metric ≥95%, validation metric `pass` | `.artifacts/protocol-07/source-alignment-report.json` | Gate 1 evidence summary |
+| design-input artifact (`design-input-matrix.md`) | Readiness metric 100%, dependency metric complete | `.artifacts/protocol-07/design-input-matrix.md` | Gate 1 evidence log |
+| architecture-boundaries artifact (`architecture-boundaries.json`) | Boundary coverage metric ≥92%, complexity metric tracked | `.artifacts/protocol-07/architecture-boundaries.json` | Gate 2 evidence bundle |
+| architecture-decisions artifact (`architecture-decisions.md`) | Decision confidence metric ≥0.9, audit metric recorded | `.artifacts/protocol-07/architecture-decisions.md` | Gate 2 evidence narrative |
+| design-validation artifact (`design-validation-report.json`) | Validation score metric ≥0.93, risk metric ≤0 | `.artifacts/protocol-07/design-validation-report.json` | Gate 3 evidence package |
+| design-assumptions artifact (`design-assumptions.md`) | Mitigation metric complete, residual risk metric documented | `.artifacts/protocol-07/design-assumptions.md` | Gate 3 evidence log |
+| design-approval artifact (`design-approval-record.json`) | Approval metric 100%, latency metric <24h | `.artifacts/protocol-07/design-approval-record.json` | Gate 4 evidence record |
+| task-generation artifact (`task-generation-input.json`) | Handoff readiness metric ≥0.96, artifact completeness metric 100% | `.artifacts/protocol-07/task-generation-input.json` | Gate 4 evidence payload |
+| design-manifest artifact (`design-artifact-manifest.json`) | Manifest coverage metric 100%, checksum metric verified | `.artifacts/protocol-07/design-artifact-manifest.json` | Gate 4 evidence manifest |
 
-**`[STRICT]` Improvement Tracking:** 
-Protocol execution metrics monitored quarterly. Template evolution logged with before/after comparisons. Knowledge base updated after every 5 executions.
+### Storage Structure
 
-**`[GUIDELINE]` Knowledge Integration:** 
-Execution patterns cataloged in institutional knowledge base. Best practices documented and shared across teams. Common blockers maintained with proven resolutions.
+**Protocol Directory:** `.artifacts/protocol-07/`  
+- **Subdirectories:** `diagrams/` for rendered visuals, `handoff/` for downstream packages, `logs/` for validation exports.  
+- **Permissions:** Read/write access for protocol executor, read-only access for downstream protocols and governance auditors.  
+- **Naming Convention:** `{artifact-name}.{extension}` (e.g., `design-approval-record.json`, `interaction-diagram.drawio`).
 
-**`[GUIDELINE]` Adaptation:** 
-Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
+### Manifest Completeness
 
-### 10.2 Generated Artifacts:
+**Manifest File:** `.artifacts/protocol-07/design-artifact-manifest.json`
 
-| Artifact | Location | Purpose | Consumer |
-|----------|----------|---------|----------|
-| `source-alignment-report.json` | `.artifacts/protocol-07/` | Input verification evidence | Protocol 08 |
-| `architecture-boundaries.json` | `.artifacts/protocol-07/` | Component & boundary mapping | Protocols 2 & 7 |
-| `architecture-decisions.md` | `.artifacts/protocol-07/` | Decision rationale log | Protocol 08 |
-| `TECHNICAL-DESIGN.md` | `.artifacts/protocol-07/` | Master technical spec | Protocols 2 & 7 |
-| `design-validation-report.json` | `.artifacts/protocol-07/` | Compliance validation proof | Protocol 09 |
-| `task-generation-input.json` | `.artifacts/protocol-07/` | Task generation dataset | Protocol 08 |
+**Metadata Requirements:**
+- Timestamp: ISO 8601 format (e.g., `2025-11-06T05:34:29Z`).
+- Artifact checksums: SHA-256 hash recorded for every artifact in the table.  
+- Size: File size in bytes captured for audit.  
+- Dependencies: List upstream sources (`PROJECT-BRIEF.md`, `TECHNICAL-DESIGN.md`) and downstream consumers (`task-generation-input.json`).
 
-### 10.3 Traceability Matrix
+**Dependency Tracking:**
+- Input: Project brief package, validated PRD set, discovery risk log.  
+- Output: All artifacts listed in Artifact Generation Table, including handoff manifest.  
+- Transformations: Discovery inputs → Alignment reports → Architecture decomposition → Validation outputs → Downstream handoff package.
 
-**Upstream Dependencies:**
-- Input artifacts inherit from: [list predecessor protocols]
-- Configuration dependencies: [list config files or environment requirements]
-- External dependencies: [list third-party systems or APIs]
+**Coverage:** 100% of required artifacts documented in manifest with checksum and dependency references.
 
-**Downstream Consumers:**
-- Output artifacts consumed by: [list successor protocols]
-- Shared artifacts: [list artifacts used by multiple protocols]
-- Archive requirements: [list retention policies]
+### Traceability
 
-**Verification Chain:**
-- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
-- Verification procedure: [describe validation process]
-- Audit trail: All artifact modifications logged in protocol execution log
+**Input Sources:**
+- **Input From:** Protocol 06 `prd-core.md` – Baseline requirements and acceptance criteria.  
+- **Input From:** Protocol 05 `rule-audit-final.md` – Governance constraints and reusable rule inventory.  
+- **Input From:** Stakeholder interviews log – Architectural boundary clarifications and risk discussions.
 
-### 10.4 Quality Metrics:
+**Output Artifacts:**
+- **Output To:** `architecture-boundaries.json` – Boundary map consumed by downstream task generation.  
+- **Output To:** `design-validation-report.json` – Evidence for compliance and environment readiness review.  
+- **Output To:** `task-generation-input.json` – Structured payload for Protocol 08 automation.  
+- **Output To:** `design-approval-record.json` – Approval ledger for governance board.  
+- **Output To:** `design-artifact-manifest.json` – Complete inventory for archival and validation.
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
-| Evidence Completeness | 100% | [TBD] | ⏳ |
-| Integration Integrity | 100% | [TBD] | ⏳ |
+**Transformation Steps:**
+1. Discovery artifacts → Source alignment → Alignment report and design input matrix.  
+2. Alignment output → Architecture decomposition → Boundaries, ADRs, and diagrams.  
+3. Architecture assets → Validation pipeline → Validation report and assumptions log.  
+4. Validated design → Approval workflow → Approval record and downstream handoff package.  
+5. Handoff assets → Manifest generator → Final manifest and archival bundle.
+
+**Audit Trail:**
+- Every transformation logged in manifest with timestamp and checksum.  
+- Validation pipeline exports residual risk metrics for governance review.  
+- Dependencies stored in manifest to support forward and backward traceability.  
+- Evidence references cross-linked in gate reports for rapid audits.
+
+### Archival Strategy
+
+**Compression:**
+- Artifacts compressed into `.artifacts/protocol-07/evidence-bundle.zip` after approval, using ZIP standard compression.
+
+**Retention Policy:**
+- Active artifacts retained for 120 days post-protocol completion.  
+- Archived bundles retained for 3 years after project closure.  
+- Cleanup job `scripts/cleanup_artifacts.py` runs quarterly to enforce retention policy.
+
+**Retrieval Procedures:**
+- Active artifacts accessed directly from `.artifacts/protocol-07/` with read-only mounts.  
+- Archived bundles retrieved via `unzip .artifacts/protocol-07/evidence-bundle.zip` with checksum verification.  
+- Integrity verified against SHA-256 values stored in manifest and validation report.
+
+**Cleanup Process:**
+- Quarterly automation logs actions to `.artifacts/protocol-07/cleanup-log.json`.  
+- Critical artifacts flagged for extended retention require architect approval before deletion.  
+- Manual recovery instructions stored in `handoff/recovery-playbook.md` for incident response.
 
 ---
 

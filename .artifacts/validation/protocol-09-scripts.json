@@ -1,11 +1,12 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "09",
-  "validation_timestamp": "2025-11-05T18:37:49.741805Z",
-  "overall_score": 0.78125,
+  "validation_timestamp": "2025-11-06T05:29:52.818761Z",
+  "overall_score": 0.7437499999999999,
   "validation_status": "fail",
   "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_7.py, scripts/package_environment_assets.py, scripts/validate_prerequisites_7.py"
+    "Referenced command paths not found: scripts/aggregate_evidence_7.py, scripts/package_environment_assets.py, scripts/validate_prerequisites_7.py",
+    "Exit code handling not described"
   ],
   "recommendations": [
     "Clarify access and credential requirements",
@@ -84,12 +85,14 @@
     }
   },
   "error_handling": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
     "recommendations": [],
     "details": {
-      "exit_codes": true,
+      "exit_codes": false,
       "fallback": true,
       "logging": true,
       "manual_paths": true

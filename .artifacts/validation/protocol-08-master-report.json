@@ -1,13 +1,13 @@
 {
   "validator": "master_validator",
   "protocol_id": "08",
-  "validation_timestamp": "2025-11-05T18:37:49.733571Z",
-  "overall_score": 0.7822916666666668,
+  "validation_timestamp": "2025-11-06T05:29:52.804612Z",
+  "overall_score": 0.8152083333333332,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8666666666666666
+      "score": 0.9333333333333332
     },
     "protocol_role": {
       "status": "fail",
@@ -26,16 +26,16 @@
       "score": 0.76875
     },
     "protocol_communication": {
-      "status": "fail",
-      "score": 0.7125
+      "status": "warning",
+      "score": 0.8875
     },
     "protocol_evidence": {
       "status": "fail",
       "score": 0.7749999999999999
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.7625
+      "status": "warning",
+      "score": 0.8500000000000001
     },
     "protocol_reasoning": {
       "status": "warning",
@@ -49,7 +49,6 @@
   "issues": [
     "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
-    "Industry standards not documented",
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",
     "Success criteria absent from mission",
@@ -59,11 +58,9 @@
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_2.py, scripts/validate_high_level_tasks.py, scripts/validate_prerequisites_2.py, scripts/validate_rule_index.py, scripts/validate_task_decomposition.py",
-    "Missing user interaction prompts: clarification, feedback",
     "Limited progress terminology in communications",
     "Traceability gaps: inputs, outputs",
     "Checklist lacks sufficient coverage of required items",
-    "Sign-off guidance missing: approvals",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [

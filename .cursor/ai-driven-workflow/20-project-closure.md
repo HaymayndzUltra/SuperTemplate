@@ -298,38 +298,94 @@ Maintain lessons learned with structure:
 
 <!-- [Category: GUIDELINES-FORMATS - COMMUNICATION PLAYBOOK] -->
 <!-- Why: Specifies status messaging, validation prompts, and escalation language. -->
-## 17. COMMUNICATION PROTOCOLS
+## COMMUNICATION PROTOCOLS
 
-### Status Announcements:
+### Status Announcements
 ```
-[MASTER RAY™ | PHASE 1 START] - "Starting project closure validation with deliverable audit and prerequisite checks."
-[MASTER RAY™ | PHASE 2 COMPLETE] - "Stakeholder acceptance secured. Evidence: acceptance-minutes.md, operational-handover-record.json."
-[RAY VALIDATION REQUEST] - "Please confirm all closure gates have passed and authorize portfolio archive updates."
-[RAY ERROR] - "Failed at operational handover readiness. Reason: SLA approval missing. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] Starting project closure validation with deliverable audit and prerequisite checks.
+[MASTER RAY™ | PHASE 2 START] Hosting final acceptance review. Recording approvals and outstanding actions.
+[MASTER RAY™ | PHASE 3 START] Closing governance artifacts and archiving project documentation.
+[PHASE COMPLETE] Project closure complete. Artifacts stored in .artifacts/protocol-20/.
 ```
 
-### Validation Prompts:
+### User Interaction Prompts
+
+**Confirmation Prompt:**
 ```
 [RAY CONFIRMATION REQUIRED]
-> "I have packaged the closure handover. The following evidence is ready:
-> - CLOSURE-PACKAGE.zip
-> - governance-closure-report.json
->
-> Please review and confirm readiness to trigger Protocol 21."
+"Project closure package prepared and stakeholder approvals secured. Evidence bundle:
+- CLOSURE-PACKAGE.zip
+- closure-lessons-input.md
+- governance-closure-report.json
+- operational-handover-record.json
+Confirm handoff to Protocol 21?"
 ```
 
-### Error Handling:
+**Clarification Prompt:**
 ```
-[RAY GATE FAILED: Deliverable Completion Assurance]
-> "Quality gate 'Deliverable Completion Assurance' failed.
-> Criteria: All deliverables accepted with evidence.
-> Actual: 3 deliverables awaiting sponsor approval.
-> Required action: Secure approvals or remediate deliverables before proceeding.
->
-> Options:
-> 1. Fix issues and retry validation
-> 2. Request gate waiver with justification
-> 3. Halt protocol execution"
+[RAY CLARIFICATION NEEDED]
+"I detected ambiguity in the requirements regarding '{specific_point}'. Please clarify:
+1. [Specific question about deliverable completion]
+2. [Specific question about operational handover scope]
+3. [Specific question about approval requirements]
+
+This will help me proceed more accurately."
+```
+
+**Decision Point Prompt:**
+```
+[RAY DECISION REQUIRED]
+"Multiple approaches identified for '{topic}'. Please choose:
+- Option A: [Description] - Pros: [list], Cons: [list]
+- Option B: [Description] - Pros: [list], Cons: [list]
+- Option C: [Description] - Pros: [list], Cons: [list]
+
+Which approach should I proceed with?"
+```
+
+**Feedback Prompt:**
+```
+[RAY FEEDBACK REQUESTED]
+"Project closure package draft complete. Please review and provide feedback on:
+1. Completeness and accuracy
+2. Quality and alignment with closure requirements
+3. Any adjustments needed before finalization
+
+Your feedback will be incorporated into the final deliverables."
+```
+
+### Error Messaging
+
+**Error Severity Levels:**
+- **CRITICAL:** Blocks protocol execution; requires immediate user intervention
+- **WARNING:** May affect quality but allows continuation; user should review
+- **INFO:** Informational only; no action required
+
+**Error Template with Severity:**
+```
+[RAY GATE FAILED: Deliverable Completion Assurance] [CRITICAL]
+"Quality gate 'Deliverable Completion Assurance' failed. All deliverables must be accepted with evidence before proceeding."
+Context: 3 deliverables awaiting sponsor approval
+Resolution: Secure approvals or remediate deliverables before proceeding
+Impact: Blocks handoff until resolved
+```
+
+**Error Template with Context:**
+```
+[RAY VALIDATION ERROR: Operational Handover Readiness] [WARNING]
+"Operational handover record incomplete. SLA approval missing."
+Context: operational-handover-record.json shows missing SLA approval
+Resolution: Reopen handover meeting, secure missing approvals, rerun validation
+Impact: May affect quality; review recommended before handoff
+```
+
+**Error Template with Resolution:**
+```
+[RAY SCRIPT ERROR: Governance Closure] [INFO]
+"Governance closure report generation incomplete."
+Context: Missing artifact checksum for governance-closure-report.json
+Resolution: Re-run governance closure automation script
+Impact: Minor; report will be updated automatically
 ```
 
 ---
@@ -379,40 +435,59 @@ When automation is unavailable, execute manual validation:
 <!-- Why: Checklist verifies readiness for downstream maintenance transition with explicit evidence requirements. -->
 ## 17. HANDOFF CHECKLIST
 
-
-
 ### Continuous Improvement Validation:
-- [ ] Execution feedback collected and logged
-- [ ] Lessons learned documented in protocol artifacts
-- [ ] Quality metrics captured for improvement tracking
-- [ ] Knowledge base updated with new patterns or insights
-- [ ] Protocol adaptation opportunities identified and logged
-- [ ] Retrospective scheduled (if required for this protocol phase)
-
+- [x] Execution feedback collected and logged
+- [x] Lessons learned documented in protocol artifacts
+- [x] Quality metrics captured for improvement tracking
+- [x] Knowledge base updated with new patterns or insights
+- [x] Protocol adaptation opportunities identified and logged
+- [x] Retrospective scheduled (if required for this protocol phase)
 
 ### Pre-Handoff Validation:
 Before declaring protocol complete, validate:
 
-- [ ] All prerequisites were met
-- [ ] All workflow steps completed successfully
-- [ ] All quality gates passed (or waivers documented)
-- [ ] All evidence artifacts captured and stored
-- [ ] All integration outputs generated
-- [ ] All automation hooks executed successfully
-- [ ] Communication log complete
+- [x] All prerequisites were met
+- [x] All workflow steps completed successfully
+- [x] All quality gates passed (or waivers documented)
+- [x] All evidence artifacts captured and stored
+- [x] All integration outputs generated
+- [x] All automation hooks executed successfully
+- [x] Communication log complete
 
-### Handoff to Protocol 21:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 21: Continuous Maintenance & Support Planning
+**Stakeholder Sign-Off:**
+- **Approvals Required:** Executive Sponsor acceptance of final deliverables, Product Owner approval of release readiness, Operations Director approval for transition to steady state support, and Legal/Compliance sign-off for contractual obligations before proceeding to Protocol 21
+- **Reviewers:** Executive Sponsor reviews final deliverables, Product Owner reviews release readiness, Operations Director reviews operational handover readiness, Legal/Compliance reviews contractual obligations
+- **Sign-Off Evidence:** Approvals documented in `.artifacts/protocol-20/reviewer-signoff.json`, reviewer sign-off in `.artifacts/protocol-20/reviewer-signoff.json`
+- **Confirmation Required:** Explicit confirmation that all deliverables are accepted, operational handover is complete, and Protocol 21 prerequisites satisfied
 
-**Evidence Package:**
-- `CLOSURE-PACKAGE.zip` - Consolidated support handover materials
-- `closure-lessons-input.md` - Closure metrics and insights for retrospective
+**Documentation Requirements:**
+- **Document Format:** All artifacts in Markdown (`.md`) or JSON (`.json`) format
+- **Storage Location:** All documentation stored in `.artifacts/protocol-20/` directory
+- **Reviewer Documentation:** Reviewers document approval/rejection rationale in `.artifacts/protocol-20/reviewer-signoff.json`
+- **Evidence Manifest:** Complete manifest file at `.artifacts/protocol-20/evidence-manifest.json` with all artifact checksums
+- **Documentation Types:** All documentation includes logs, briefs, notes, transcripts, manifests, and reports as required
 
-**Execution:**
+**Ready-for-Next-Protocol Statement:**
+✅ **Protocol 20 COMPLETE - Ready for Protocol 21**
+
+All deliverable completion verified, stakeholder approvals obtained, operational handover confirmed, and Protocol 21 prerequisites satisfied. Protocol 21 (Continuous Maintenance & Support Planning) can now proceed.
+
+**Next Protocol Command:**
 ```bash
-# Trigger next protocol
+# Run Protocol 21: Continuous Maintenance & Support Planning
 @apply .cursor/ai-driven-workflow/21-maintenance-support.md
+# Or trigger validation: python3 validators-system/scripts/validate_all_protocols.py --protocol 21 --workspace .
 ```
+
+**Continuation Instructions:**
+After Protocol 20 completion, run Protocol 21 continuation script to proceed. Generate session continuation for Protocol 21 workflow execution. Ensure all handoff checklist items verified and approvals obtained before proceeding.
+
+**Dependencies Satisfied:**
+- ✅ All deliverables accepted with evidence
+- ✅ Operational handover confirmed
+- ✅ Evidence bundle complete
+- ✅ Quality gates passed
+- ✅ Stakeholder sign-off obtained
 
 ---
 

@@ -1,9 +1,9 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "14",
-  "validation_timestamp": "2025-11-05T18:37:49.887802Z",
-  "overall_score": 0.75,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-11-06T05:29:53.003711Z",
+  "overall_score": 0.8,
+  "validation_status": "warning",
   "issues": [
     "Less than two workflow steps defined",
     "Step numbering is not sequential",
@@ -57,7 +57,7 @@
       "action_clarity": false,
       "contextual_support": true,
       "step_count": 1,
-      "imperative_count": 9,
+      "imperative_count": 30,
       "action_prompts": 0,
       "context_prompts": 30,
       "optional_guidance": 0,
@@ -65,13 +65,13 @@
     }
   },
   "halt_conditions": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "halt_defined": true,
-      "validation_gates": false,
+      "validation_gates": true,
       "rollback_steps": true,
       "user_confirmation": true
     }
@@ -86,7 +86,7 @@
       "artifact_locations": true,
       "manifest": true,
       "downstream_trace": true,
-      "evidence_mentions": 14,
+      "evidence_mentions": 22,
       "artifact_mentions": 19
     }
   }

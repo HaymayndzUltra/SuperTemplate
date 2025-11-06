@@ -291,33 +291,86 @@ Maintain lessons learned with structure:
 
 ---
 
-## 6. QUALITY GATES
+## QUALITY GATES
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Setting validation standards and criteria -->
 
 ### Gate 1: Discovery Evidence Verification
-**[STRICT]** This gate validates prerequisite artifact completeness.
-- **Criteria**: All prerequisite artifacts validated, discrepancies resolved, validation report status = PASS.
-- **Evidence**: `.artifacts/protocol-03/project-brief-validation-report.json`
-- **Pass Threshold**: Validation score ≥ 0.95.
-- **Failure Handling**: Re-open discovery with client, update artifacts, rerun validation.
-- **Automation**: `python scripts/validate_discovery_inputs.py --input .artifacts/protocol-02/ --output .artifacts/protocol-03/project-brief-validation-report.json`
+**Type:** Prerequisite  
+**Purpose:** Confirm discovery deliverables from Protocol 02 meet fidelity requirements before drafting the brief.  
+**Pass Criteria:**
+- **Threshold:** Validation score ≥0.95 in `project-brief-validation-report.json`; discrepancy metric ≤1 open item.  
+- **Boolean Check:** `project-brief-validation-report.json` field `status` equals `PASS`.  
+- **Metrics:** Report captures evidence completeness metric and discrepancy count metric.  
+- **Evidence Link:** Validated against `.artifacts/protocol-03/project-brief-validation-report.json`.  
+**Automation:**
+- Script: `python3 scripts/validate_discovery_inputs.py --input .artifacts/protocol-02/ --output .artifacts/protocol-03/project-brief-validation-report.json`.  
+- Script: `python3 scripts/validate_prerequisites_03.py --log .artifacts/protocol-03/prerequisites-log.json`.  
+- CI Integration: `real-validation-pipeline.yml` invokes discovery verification on push; failures gate pull requests.  
+- Config: `config/protocol_gates/03.yaml` defines validation-score thresholds and discrepancy limits.  
+**Failure Handling:**
+- **Rollback:** Reopen discovery artifacts, resolve flagged discrepancies, and rerun validation script.  
+- **Notification:** Alert Protocol 02 owner and solutions architect via governance channel when validation score drops below threshold.  
+- **Waiver:** Waivers stored in `.artifacts/protocol-03/gate-waivers.json` with executive sponsor approval before proceeding.
 
 ### Gate 2: Structural Integrity
-**[STRICT]** This gate validates brief structure and content completeness.
-- **Criteria**: Every brief section populated, traceability map references source artifacts, glossary present.
-- **Evidence**: `.artifacts/protocol-03/PROJECT-BRIEF.md`, `.artifacts/protocol-03/traceability-map.json`
-- **Pass Threshold**: Structural validator returns `pass` with coverage ≥ 100%.
-- **Failure Handling**: Fill missing sections, update traceability, rerun validator.
-- **Automation**: `python scripts/validate_brief_structure.py --input .artifacts/protocol-03/PROJECT-BRIEF.md --report .artifacts/protocol-03/brief-structure-report.json`
+**Type:** Execution  
+**Purpose:** Guarantee PROJECT-BRIEF structure, traceability, and glossary conform to template.  
+**Pass Criteria:**
+- **Threshold:** Structural coverage metric ≥100%; unresolved section metric = 0.  
+- **Boolean Check:** `traceability-map.json` references all major brief sections.  
+- **Metrics:** `brief-structure-report.json` captures section coverage metric, glossary completeness metric.  
+- **Evidence Link:** Validated against `.artifacts/protocol-03/PROJECT-BRIEF.md` and `.artifacts/protocol-03/traceability-map.json`.  
+**Automation:**
+- Script: `python3 scripts/validate_brief_structure.py --input .artifacts/protocol-03/PROJECT-BRIEF.md --report .artifacts/protocol-03/brief-structure-report.json`.  
+- Script: `python3 scripts/traceability_mapper.py --brief .artifacts/protocol-03/PROJECT-BRIEF.md --output .artifacts/protocol-03/traceability-map.json`.  
+- CI Integration: Structural validation stage runs on `ubuntu-latest` with artefact upload to validation dashboard.  
+- Config: `config/protocol_gates/03.yaml` stores structural coverage minimums and glossary requirements.  
+**Failure Handling:**
+- **Rollback:** Update missing sections, regenerate traceability map, rerun structural validator before handoff.  
+- **Notification:** Notify product owner when structure coverage metric falls below 100%.  
+- **Waiver:** Exceptional waivers require architecture council sign-off and must document compensating controls.
 
 ### Gate 3: Approval Compliance
-**[STRICT]** This gate validates approval collection and recording.
-- **Criteria**: Client and internal approvals recorded with timestamps and references.
-- **Evidence**: `.artifacts/protocol-03/BRIEF-APPROVAL-RECORD.json`
-- **Pass Threshold**: Approval record includes `client_status = approved` and `internal_status = approved`.
-- **Failure Handling**: Escalate to account lead, reconcile feedback, update record, rerun gate.
-- **Automation**: `python scripts/verify_brief_approvals.py --input .artifacts/protocol-03/BRIEF-APPROVAL-RECORD.json`
+**Type:** Execution  
+**Purpose:** Ensure client and internal approvals captured with timestamps for legal compliance.  
+**Pass Criteria:**
+- **Threshold:** Approval completion rate metric ≥90% within 48 hours; pending approvals metric ≤1.  
+- **Boolean Check:** `.artifacts/protocol-03/BRIEF-APPROVAL-RECORD.json` entries include both `client_status: approved` and `internal_status: approved`.  
+- **Metrics:** `approval-tracker.json` logs approval latency metric and reminder count metric.  
+- **Evidence Link:** Evidence validated against `.artifacts/protocol-03/BRIEF-APPROVAL-RECORD.json`.  
+**Automation:**
+- Script: `python3 scripts/verify_brief_approvals.py --input .artifacts/protocol-03/BRIEF-APPROVAL-RECORD.json --output .artifacts/protocol-03/approval-tracker.json`.  
+- Script: `python3 scripts/send_approval_reminders.py --record .artifacts/protocol-03/BRIEF-APPROVAL-RECORD.json`.  
+- CI Integration: Nightly workflow posts approval status summary to `.artifacts/validation/protocol_quality_gates-summary.json`.  
+- Config: `config/protocol_gates/03.yaml` codifies approval latency and reminder thresholds.  
+**Failure Handling:**
+- **Rollback:** Pause Protocol 04 activation, reconcile feedback with stakeholders, rerun approval verification.  
+- **Notification:** Escalate to account lead and governance queue if approval pending beyond SLA.  
+- **Waiver:** Not applicable – approvals mandatory unless executive override logged with legal review.
+
+### Gate 4: Handoff Integrity
+**Type:** Completion  
+**Purpose:** Validate that packaged brief artifacts meet downstream readiness for Protocol 04 and Protocol 06.  
+**Pass Criteria:**
+- **Threshold:** Handoff readiness score ≥0.97 in evidence manifest; downstream dependency metric = pass.  
+- **Boolean Check:** Handoff checklist confirms `status: ready_for_protocol_04`.  
+- **Metrics:** `handoff-verification.json` documents readiness metric, dependency resolution metric, checksum metric.  
+- **Evidence Link:** Validated against `.artifacts/protocol-03/handoff-verification.json` and `.artifacts/protocol-03/evidence-manifest.json`.  
+**Automation:**
+- Script: `python3 scripts/aggregate_evidence_03.py --output .artifacts/protocol-03/ --protocol-id 03`.  
+- Script: `python3 scripts/run_protocol_03_gates.py --report .artifacts/protocol-03/handoff-verification.json`.  
+- CI Integration: `script-registry-enforcement.yml` confirms aggregator registered and executed before merge.  
+- Config: `config/protocol_gates/03.yaml` defines readiness score threshold and required artifacts list.  
+**Failure Handling:**
+- **Rollback:** Regenerate missing artifacts, resolve dependency gaps, rerun aggregator prior to downstream notification.  
+- **Notification:** Inform Protocol 04 owner of handoff delay and share blocker summary.  
+- **Waiver:** Emergency waiver documented in `gate-waivers.json` with CTO approval and mitigation steps.
+
+### Compliance Integration
+- **Industry Standards:** CommonMark Markdown, JSON Schema validation, YAML configuration standards applied to brief assets.  
+- **Security Requirements:** SOC2-aligned access controls, GDPR-safe handling of client data, encryption at rest for approval logs.  
+- **Regulatory Compliance:** FTC disclosure alignment for commitments, ISO 9001 documentation retention, audit readiness for governance reviews.  
+- **Governance:** Gate thresholds governed via `config/protocol_gates/03.yaml`; automation telemetry captured in `.artifacts/validation/protocol_quality_gates-summary.json` and protocol governance dashboards.
 
 ---
 
@@ -515,69 +568,91 @@ jobs:
 
 ---
 
-## 10. EVIDENCE SUMMARY
+## EVIDENCE SUMMARY
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Defining standards for evidence collection and quality metrics -->
 
-### Learning and Improvement Mechanisms
+### Artifact Generation Table
 
-**[STRICT]** All artifacts must generate feedback for continuous improvement:
+| Artifact Name | Metrics | Location | Evidence Link |
+|---------------|---------|----------|---------------|
+| project-brief-validation-report.json | Validation score ≥0.95, discrepancy metric ≤1 | `.artifacts/protocol-03/project-brief-validation-report.json` | Gate 1 discovery verification |
+| PROJECT-BRIEF.md | Section coverage metric = 100%, glossary completeness metric = pass | `.artifacts/protocol-03/PROJECT-BRIEF.md` | Gate 2 structural integrity |
+| traceability-map.json | Traceability link count metric ≥ all major sections, dependency metric = pass | `.artifacts/protocol-03/traceability-map.json` | Gate 2 structural integrity |
+| BRIEF-APPROVAL-RECORD.json | Approval latency metric ≤48h, reminder metric ≤2 | `.artifacts/protocol-03/BRIEF-APPROVAL-RECORD.json` | Gate 3 approval compliance |
+| technical-baseline.json | Architecture coverage metric ≥90%, risk flag metric documented | `.artifacts/protocol-03/technical-baseline.json` | Gate 4 handoff integrity |
+| brief-structure-report.json | Structural score metric ≥100%, unresolved section metric = 0 | `.artifacts/protocol-03/brief-structure-report.json` | Gate 2 structural integrity |
+| evidence-manifest.json | Artifact count metric = full list, checksum verification metric = pass | `.artifacts/protocol-03/evidence-manifest.json` | Gate 4 handoff integrity |
 
-**Feedback Collection:** All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+### Storage Structure
 
-**Improvement Tracking:** Protocol execution metrics monitored quarterly. Template evolution logged with before/after comparisons. Knowledge base updated after every 5 executions.
+**Protocol Directory:** `.artifacts/protocol-03/`  
+- **Subdirectories:** `patterns/`, `knowledge-base/`, and optional `approvals/` for signed evidence.  
+- **Permissions:** Read/write for protocol executor and solutions architect, read-only for downstream protocols and governance.  
+- **Naming Convention:** `{artifact-name}.{extension}` (e.g., `PROJECT-BRIEF.md`, `brief-structure-report.json`).
 
-**Knowledge Integration:** Execution patterns cataloged in institutional knowledge base. Best practices documented and shared across teams. Common blockers maintained with proven resolutions.
+### Manifest Completeness
 
-**Adaptation:** Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
+**Manifest File:** `.artifacts/protocol-03/evidence-manifest.json`
 
-### Generated Artifacts:
+**Metadata Requirements:**
+- Timestamp: ISO 8601 format (e.g., `2025-11-06T05:34:29Z`).  
+- Artifact checksums: SHA-256 hash for every artifact and validator log.  
+- Size: File size in bytes recorded in manifest `integrity` block.  
+- Dependencies: Upstream sources listed with protocol references and downstream consumers.  
 
-**[STRICT]** The following artifacts must be generated and validated:
+**Dependency Tracking:**
+- Input: `.artifacts/protocol-02/` discovery assets, Protocol 01 proposal context, template registry metadata.  
+- Output: All artifacts in Artifact Generation Table plus `approval-tracker.json`, `handoff-verification.json`.  
+- Transformations: Discovery validation → Brief drafting → Structural validation → Approval capture → Handoff packaging.  
 
-| Artifact | Location | Purpose | Consumer | Verification Owner |
-|----------|----------|---------|----------|-------------------|
-| `project-brief-validation-report.json` | `.artifacts/protocol-03/` | Proof of discovery alignment | Protocol 04 | Solutions Architect |
-| `PROJECT-BRIEF.md` | `.artifacts/protocol-03/` | Authoritative brief | Protocols 04 & 06 | Product Owner |
-| `traceability-map.json` | `.artifacts/protocol-03/` | Source linkage for brief content | Protocol 06 | Technical Lead |
-| `BRIEF-APPROVAL-RECORD.json` | `.artifacts/protocol-03/` | Approval evidence | Protocol 04 | Account Manager |
-| `technical-baseline.json` | `.artifacts/protocol-03/` | Technical summary for design | Protocol 06 | Technical Lead |
-| `validation-issues.md` | `.artifacts/protocol-03/` | Discrepancy documentation | Internal | Solutions Architect |
-| `context-summary.md` | `.artifacts/protocol-03/` | Quick reference context | Internal | Product Owner |
-| `brief-structure-report.json` | `.artifacts/protocol-03/` | Structural validation results | CI/CD | Automation |
+**Coverage:** Manifest documents 100% of required artifacts, validators, and approvals with checksum confirmation.
 
-### Traceability Matrix
+### Traceability
 
-**Upstream Dependencies:**
-- Input artifacts inherit from: Protocol 01, Protocol 02
-- Configuration dependencies: `.templates/briefs/`, `scripts/script-registry.json`
-- External dependencies: None
+**Input Sources:**
+- **Input From:** `.artifacts/protocol-02/client-discovery-form.md` – Client-approved requirements baseline.  
+- **Input From:** `.artifacts/protocol-02/scope-clarification.md` – Technical constraints feeding architecture sections.  
 
-**Downstream Consumers:**
-- Output artifacts consumed by: Protocol 04, Protocol 06
-- Shared artifacts: `PROJECT-BRIEF.md`, `technical-baseline.json`
-- Archive requirements: 7-year retention per compliance
+**Output Artifacts:**
+- **Output To:** `PROJECT-BRIEF.md` – Canonical brief for Protocols 04 and 06.  
+- **Output To:** `technical-baseline.json` – Architecture summary consumed by Protocol 06.  
+- **Output To:** `context-summary.md` – Quick reference digest for stakeholders.  
+- **Output To:** `BRIEF-APPROVAL-RECORD.json` – Legal evidence of approvals.  
+- **Output To:** `evidence-manifest.json` – Comprehensive audit ledger.  
 
-**Verification Chain:**
-- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
-- Verification procedure: Run validation scripts for each quality gate
-- Audit trail: All artifact modifications logged in protocol execution log
+**Transformation Steps:**
+1. Discovery evidence → project-brief-validation-report.json: Validate completeness metrics.  
+2. Validated inputs → PROJECT-BRIEF.md: Assemble structured narrative with traceability markers.  
+3. Brief content → traceability-map.json: Generate linkage map from sections to sources.  
+4. Brief + approvals → BRIEF-APPROVAL-RECORD.json: Capture sign-off metadata.  
+5. Full bundle → evidence-manifest.json: Aggregate artifacts, metrics, and checksums.  
 
-### Quality Metrics:
+**Audit Trail:**
+- Manifest logs timestamps, checksum hashes, and verification owners for every artifact.  
+- Approval tracker retains notification history and escalation records.  
+- Handoff verification records downstream requirements and validation outcomes.  
+- Execution log captures script outputs and validation decisions.
 
-**[STRICT]** Track and maintain the following quality metrics:
+### Archival Strategy
 
-| Metric | Target | Baseline | Current | Status | Trend |
-|--------|--------|----------|---------|--------|-------|
-| Gate 1 Pass Rate | ≥ 95% | [TBD] | [TBD] | ⏳ Pending | - |
-| Gate 2 Pass Rate | ≥ 95% | [TBD] | [TBD] | ⏳ Pending | - |
-| Gate 3 Pass Rate | ≥ 95% | [TBD] | [TBD] | ⏳ Pending | - |
-| Evidence Completeness | 100% | [TBD] | [TBD] | ⏳ Pending | - |
-| Integration Integrity | 100% | [TBD] | [TBD] | ⏳ Pending | - |
-| Brief Assembly Time (hours) | ≤ 4 | [TBD] | [TBD] | ⏳ Pending | - |
-| Approval Collection Time (days) | ≤ 2 | [TBD] | [TBD] | ⏳ Pending | - |
+**Compression:**
+- Artifacts compressed into `.artifacts/protocol-03/evidence-bundle.zip` after approval completion and Protocol 04 acknowledgment.  
+- Compression uses ZIP with AES-256 option when enabled to protect client data.  
 
-**Quality Gate History:** `.artifacts/protocol-03/gate-history.json`
+**Retention Policy:**
+- Active artifacts retained for 180 days post-brief approval to support revisions.  
+- Archived bundles retained for 5 years to satisfy ISO 9001 and client contract retention clauses.  
+- Cleanup automation runs quarterly; retention exceptions logged for regulated industries.  
+
+**Retrieval Procedures:**
+- Active artifacts accessed directly with manifest cross-check before modification.  
+- Archived bundles restored from `evidence-bundle.zip`; verify checksums before circulation.  
+- Governance portal references manifest entries for audit-ready retrieval.  
+
+**Cleanup Process:**
+- Quarterly script appends deletion summary to `.artifacts/protocol-03/cleanup-log.json` with checksum snapshot.  
+- Critical artifacts flagged `extended_retention: true` remain until legal clearance.  
+- Governance officer reviews cleanup log and signs off in `.artifacts/protocol-03/retention-approvals.json`.
 
 ---
 

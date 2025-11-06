@@ -1,13 +1,13 @@
 {
   "validator": "master_validator",
   "protocol_id": "22",
-  "validation_timestamp": "2025-11-05T18:37:50.136677Z",
-  "overall_score": 0.7495833333333334,
+  "validation_timestamp": "2025-11-06T05:29:53.268931Z",
+  "overall_score": 0.8324999999999999,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
-      "status": "fail",
-      "score": 0.7333333333333333
+      "status": "warning",
+      "score": 0.8
     },
     "protocol_role": {
       "status": "fail",
@@ -26,20 +26,20 @@
       "score": 0.7875
     },
     "protocol_communication": {
-      "status": "warning",
-      "score": 0.8125
+      "status": "pass",
+      "score": 0.9500000000000001
     },
     "protocol_evidence": {
       "status": "fail",
       "score": 0.7249999999999999
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.7
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reasoning": {
-      "status": "fail",
-      "score": 0.675
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reflection": {
       "status": "pass",
@@ -49,7 +49,6 @@
   "issues": [
     "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
-    "Industry standards not documented",
     "Security requirements not documented",
     "Regulatory compliance not documented",
     "Domain expertise keywords missing",
@@ -62,14 +61,7 @@
     "User confirmation steps not described",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/generate_retrospective_report.py",
-    "Missing user interaction prompts: clarification",
-    "Limited progress terminology in communications",
     "Traceability gaps: inputs, outputs",
-    "Sign-off guidance missing: approvals, reviewers, confirmation",
-    "Documentation expectations under-specified",
-    "Reasoning patterns not explicitly named",
-    "Decision points insufficiently described",
-    "Self-awareness statements missing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [

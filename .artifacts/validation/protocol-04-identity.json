@@ -1,7 +1,7 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "04",
-  "validation_timestamp": "2025-11-05T18:37:49.565854Z",
+  "validation_timestamp": "2025-11-06T05:29:52.625870Z",
   "basic_information": {
     "score": 0.8333333333333334,
     "status": "warning",
@@ -39,13 +39,11 @@
     }
   },
   "compliance_standards": {
-    "score": 0.6666666666666666,
-    "status": "warning",
-    "issues": [
-      "Industry standards not documented"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "categories_found": {
-      "industry_standards": false,
+      "industry_standards": true,
       "security_requirements": true,
       "regulatory_compliance": true
     }
@@ -72,11 +70,10 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.9,
-  "validation_status": "warning",
+  "overall_score": 0.9666666666666668,
+  "validation_status": "pass",
   "issues": [
-    "Phase assignment not found or invalid in AGENTS.md",
-    "Industry standards not documented"
+    "Phase assignment not found or invalid in AGENTS.md"
   ],
   "recommendations": []
 }

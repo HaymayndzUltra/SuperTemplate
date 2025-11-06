@@ -362,35 +362,84 @@ Maintain structured lessons learned:
 
 ## QUALITY GATES
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Setting validation standards and criteria -->
 
-### Gate 1: Brief Validation Gate
-- **Criteria:** Project Brief validation report status = PASS and approvals present
-- **Evidence:** `.artifacts/protocol-04/brief-validation-report.json`
-- **Pass Threshold:** Validation score ≥ 0.95
-- **Failure Handling:** Request updated brief, remediate missing approvals, rerun validation
-- **Automation:** `python scripts/validate_brief.py --path PROJECT-BRIEF.md --output .artifacts/protocol-04/brief-validation-report.json`
+### Gate 1: Brief Validation
+**Type:** Prerequisite  
+**Purpose:** Verify approved Project Brief artifacts before bootstrap operations begin.  
+**Pass Criteria:**
+- **Threshold:** Validation score ≥0.95 in `brief-validation-report.json`; approval coverage metric ≥90%.  
+- **Boolean Check:** `.artifacts/protocol-04/brief-validation-report.json` field `status` equals `PASS`.  
+- **Metrics:** Report records validation score metric, approval completeness metric, discrepancy metric.  
+- **Evidence Link:** Validated against `.artifacts/protocol-04/brief-validation-report.json` and `.artifacts/protocol-03/BRIEF-APPROVAL-RECORD.json`.  
+**Automation:**
+- Script: `python3 scripts/validate_brief.py --path .artifacts/protocol-03/PROJECT-BRIEF.md --output .artifacts/protocol-04/brief-validation-report.json`.  
+- Script: `python3 scripts/validate_prerequisites_04.py --log .artifacts/protocol-04/prerequisites-log.json`.  
+- CI Integration: `real-validation-pipeline.yml` executes brief validation stage on push.  
+- Config: `config/protocol_gates/04.yaml` defines validation score thresholds and approval metrics.  
+**Failure Handling:**
+- **Rollback:** Return to Protocol 03 owners, remediate discrepancies, rerun validation script.  
+- **Notification:** Notify solutions architect and bootstrap lead when validation score <0.95.  
+- **Waiver:** Waivers recorded in `.artifacts/protocol-04/gate-waivers.json` with executive sponsor approval.
 
-### Gate 2: Environment & Rule Integrity Gate
-- **Criteria:** Environment doctor passes and rule audit reports no critical issues
-- **Evidence:** `.artifacts/protocol-04/environment-report.json`, `.artifacts/protocol-04/rule-audit-report.md`
-- **Pass Threshold:** Doctor script exit code 0 and audit severity ≤ Medium
-- **Failure Handling:** Remediate missing dependencies or rule errors, document fixes, rerun gate
-- **Automation:** `python scripts/rules_audit_quick.py --output .artifacts/protocol-04/rule-audit-report.md`
+### Gate 2: Environment & Rule Integrity
+**Type:** Execution  
+**Purpose:** Ensure environment setup and governance rules are compliant before scaffold generation.  
+**Pass Criteria:**
+- **Threshold:** Environment doctor compliance score ≥0.92; rule audit severity metric ≤Medium.  
+- **Boolean Check:** `.artifacts/protocol-04/environment-report.json` shows `status: healthy`.  
+- **Metrics:** `environment-report.json` logs dependency coverage metric, toolchain readiness metric; `rule-audit-report.md` includes policy compliance metric.  
+- **Evidence Link:** Validated against `.artifacts/protocol-04/environment-report.json` and `.artifacts/protocol-04/rule-audit-report.md`.  
+**Automation:**
+- Script: `python3 scripts/rules_audit_quick.py --output .artifacts/protocol-04/rule-audit-report.md`.  
+- Script: `python3 scripts/environment_doctor.py --output .artifacts/protocol-04/environment-report.json`.  
+- CI Integration: `script-registry-enforcement.yml` asserts both scripts registered before approvals.  
+- Config: `config/protocol_gates/04.yaml` stores environment thresholds and audit severity caps.  
+**Failure Handling:**
+- **Rollback:** Correct tooling issues, update governance rules, rerun diagnostics prior to scaffold generation.  
+- **Notification:** Escalate to DevOps lead if doctor score <0.92 or audit severity exceeds Medium.  
+- **Waiver:** Only permitted for non-production demos with CTO sign-off and documented mitigation.
 
-### Gate 3: Scaffold Validation Gate
-- **Criteria:** Scaffold manifest matches registry, validation report status = PASS
-- **Evidence:** `.artifacts/protocol-04/bootstrap-manifest.json`, `.artifacts/protocol-04/scaffold-validation-report.json`
-- **Pass Threshold:** Validator returns compliance ≥ 98%
-- **Failure Handling:** Regenerate scaffold with corrected parameters, rerun validation
-- **Automation:** `python scripts/validate_scaffold.py --manifest .artifacts/protocol-04/bootstrap-manifest.json`
+### Gate 3: Scaffold Validation
+**Type:** Execution  
+**Purpose:** Confirm generated scaffold assets align with registry definitions and quality standards.  
+**Pass Criteria:**
+- **Threshold:** Scaffold compliance metric ≥98%; checksum variance metric = 0.  
+- **Boolean Check:** `.artifacts/protocol-04/scaffold-validation-report.json` entry `status` equals `pass`.  
+- **Metrics:** `scaffold-validation-report.json` documents registry coverage metric, dependency generation metric, checksum metric.  
+- **Evidence Link:** Validated against `.artifacts/protocol-04/bootstrap-manifest.json` and `.artifacts/protocol-04/scaffold-validation-report.json`.  
+**Automation:**
+- Script: `python3 scripts/validate_scaffold.py --manifest .artifacts/protocol-04/bootstrap-manifest.json --output .artifacts/protocol-04/scaffold-validation-report.json`.  
+- Script: `python3 scripts/bootstrap_registry_compare.py --manifest .artifacts/protocol-04/bootstrap-manifest.json --registry template-packs/registry.yaml`.  
+- CI Integration: Scaffold validation job runs on `ubuntu-latest`, posting metrics to validation summaries.  
+- Config: `config/protocol_gates/04.yaml` codifies registry coverage minimums.  
+**Failure Handling:**
+- **Rollback:** Regenerate scaffold with corrected parameters, purge invalid assets, rerun validator.  
+- **Notification:** Ping product owner when compliance metric falls below 98%.  
+- **Waiver:** Not applicable—scaffold compliance mandatory for downstream alignment.
 
-### Gate 4: Context Validation Gate
-- **Criteria:** Evidence manager initialized, workflow validation success, governance status updated
-- **Evidence:** `.artifacts/protocol-04/evidence-manifest.json`, `.artifacts/protocol-04/workflow-validation-report.json`, `.cursor/context-kit/governance-status.md`
-- **Pass Threshold:** Workflow validator returns `pass` and documentation updated
-- **Failure Handling:** Address validation errors, refresh context kit documentation, rerun gate
-- **Automation:** `python scripts/validate_workflows.py --mode bootstrap --output .artifacts/protocol-04/workflow-validation-report.json`
+### Gate 4: Context Validation
+**Type:** Completion  
+**Purpose:** Validate context kit, workflow configuration, and evidence bundling prior to handoff.  
+**Pass Criteria:**
+- **Threshold:** Workflow validation score ≥0.96; evidence manifest completeness metric = 100%.  
+- **Boolean Check:** `.cursor/context-kit/governance-status.md` lists `status: synchronized`.  
+- **Metrics:** `workflow-validation-report.json` captures automation readiness metric, governance sync metric; manifest logs checksum metric.  
+- **Evidence Link:** Validated against `.artifacts/protocol-04/workflow-validation-report.json`, `.cursor/context-kit/governance-status.md`, and `.artifacts/protocol-04/evidence-manifest.json`.  
+**Automation:**
+- Script: `python3 scripts/validate_workflows.py --mode bootstrap --output .artifacts/protocol-04/workflow-validation-report.json`.  
+- Script: `python3 scripts/aggregate_evidence_04.py --output .artifacts/protocol-04 --protocol-id 04`.  
+- CI Integration: Nightly workflow sync publishes metrics to `.artifacts/validation/protocol_quality_gates-summary.json`.  
+- Config: `config/protocol_gates/04.yaml` defines workflow validation thresholds and manifest requirements.  
+**Failure Handling:**
+- **Rollback:** Re-run context synchronization, refresh governance status, rebuild evidence manifest before handoff.  
+- **Notification:** Inform Protocol 05 owner if readiness metrics fall below thresholds.  
+- **Waiver:** Only granted for sandbox environments; document mitigation in `gate-waivers.json`.
+
+### Compliance Integration
+- **Industry Standards:** CommonMark Markdown, JSON Schema validation, YAML configuration standards applied to bootstrap artifacts.  
+- **Security Requirements:** SOC2-aligned logging for automation outputs, GDPR-compliant handling of client identifiers, encrypted storage for archives.  
+- **Regulatory Compliance:** FTC-compliant disclosure of automation scope, ISO 9001 retention practices, audit readiness per governance charter.  
+- **Governance:** Gate metrics governed by `config/protocol_gates/04.yaml`; automation telemetry synced to protocol governance dashboard and `.artifacts/validation/protocol_quality_gates-summary.json`.
 
 ---
 
@@ -591,71 +640,92 @@ Before declaring protocol complete, validate:
 
 ## EVIDENCE SUMMARY
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Defining standards for evidence collection and quality metrics -->
 
-### Learning and Improvement Mechanisms
+### Artifact Generation Table
 
-#### Feedback Collection Standards
-- **Artifact Feedback:** All artifacts generate feedback for continuous improvement
-- **Quality Gate Tracking:** Historical logs maintain gate outcome patterns
-- **Pattern Analysis:** Regular analysis for threshold calibration
+| Artifact Name | Metrics | Location | Evidence Link |
+|---------------|---------|----------|---------------|
+| brief-validation-report.json | Validation score ≥0.95, approval coverage metric ≥90% | `.artifacts/protocol-04/brief-validation-report.json` | Gate 1 brief validation |
+| environment-report.json | Environment compliance score ≥0.92, dependency coverage metric logged | `.artifacts/protocol-04/environment-report.json` | Gate 2 environment integrity |
+| rule-audit-report.md | Policy compliance metric ≤Medium severity, rule alignment metric recorded | `.artifacts/protocol-04/rule-audit-report.md` | Gate 2 environment integrity |
+| bootstrap-manifest.json | Scaffold inventory metric = complete, checksum metric verified | `.artifacts/protocol-04/bootstrap-manifest.json` | Gate 3 scaffold validation |
+| scaffold-validation-report.json | Compliance metric ≥98%, dependency generation metric documented | `.artifacts/protocol-04/scaffold-validation-report.json` | Gate 3 scaffold validation |
+| workflow-validation-report.json | Workflow validation score ≥0.96, governance sync metric = pass | `.artifacts/protocol-04/workflow-validation-report.json` | Gate 4 context validation |
+| evidence-manifest.json | Artifact count metric = 100%, checksum verification metric = pass | `.artifacts/protocol-04/evidence-manifest.json` | Gate 4 context validation |
+| governance-status.md | Governance status boolean = synchronized, telemetry metric recorded | `.cursor/context-kit/governance-status.md` | Gate 4 context validation |
+| pre-bootstrap-context.zip | Archive integrity metric documented, retention metric recorded | `.artifacts/protocol-04/pre-bootstrap-context.zip` | Archival compliance evidence |
 
-#### Improvement Tracking Standards
-- **Execution Metrics:** Quarterly monitoring of protocol performance
-- **Template Evolution:** Change logging with before/after comparisons
-- **Knowledge Updates:** Knowledge base refresh after every 5 executions
+### Storage Structure
 
-#### Knowledge Integration Standards
-- **Pattern Cataloging:** Execution patterns stored in institutional knowledge base
-- **Best Practice Documentation:** Proven approaches shared across teams
-- **Blocker Resolution:** Common issues maintained with proven solutions
+**Protocol Directory:** `.artifacts/protocol-04/`  
+- **Subdirectories:** `logs/`, `archives/`, optional `knowledge-base/` for improvement notes.  
+- **Permissions:** Read/write for bootstrap executor and governance reviewer, read-only for downstream protocols (05, 08, 23).  
+- **Naming Convention:** `{artifact-name}.{extension}` (e.g., `scaffold-validation-report.json`, `rule-audit-report.md`).
 
-#### Adaptation Standards
-- **Context Adaptation:** Protocol adjusts based on project complexity, domain, constraints
-- **Threshold Tuning:** Quality gates adjust dynamically based on risk tolerance
-- **Workflow Optimization:** Efficiency improvements based on historical data
+### Manifest Completeness
 
-### Generated Artifacts
-| Artifact | Location | Purpose | Consumer |
-|----------|----------|---------|----------|
-| `brief-validation-report.json` | `.artifacts/protocol-04/` | Confirmation of brief integrity | Protocol 05 |
-| `environment-report.json` | `.artifacts/protocol-04/` | Toolchain validation evidence | Protocol 05 |
-| `bootstrap-manifest.json` | `.artifacts/protocol-04/` | Generated scaffold inventory | Protocols 05 & 02 |
-| `scaffold-validation-report.json` | `.artifacts/protocol-04/` | Scaffold compliance verification | Protocol 02 |
-| `workflow-validation-report.json` | `.artifacts/protocol-04/` | Context validation evidence | Protocol 05 |
-| `technical-baseline.json` | `.artifacts/protocol-04/` | Technical stack definition | Protocol 02 |
-| `rule-audit-report.md` | `.artifacts/protocol-04/` | Governance rule audit results | Internal review |
-| `pre-bootstrap-context.zip` | `.artifacts/protocol-04/` | Context kit backup for rollback | Recovery procedures |
-| `evidence-manifest.json` | `.artifacts/protocol-04/` | Evidence tracking initialization | Protocol 05 |
-| `governance-status.md` | `.cursor/context-kit/` | Context kit governance summary | Protocol 05 |
+**Manifest File:** `.artifacts/protocol-04/evidence-manifest.json`
 
-### Traceability Matrix
+**Metadata Requirements:**
+- Timestamp: ISO 8601 format (e.g., `2025-11-06T05:34:29Z`).  
+- Artifact checksums: SHA-256 hash stored for every artifact and archive.  
+- Size: File size in bytes captured within manifest integrity block.  
+- Dependencies: Upstream protocols and scripts recorded for traceability.  
 
-#### Upstream Dependencies
-- **Input Artifacts:** Inherited from Protocol 03 (PROJECT-BRIEF.md, validation reports, approval records)
-- **Configuration Dependencies:** Scripts directory, environment tools, governance rules
-- **External Dependencies:** Python runtime, development tools, network access
+**Dependency Tracking:**
+- Input: `PROJECT-BRIEF.md`, `technical-baseline.json`, governance rules, script registry entries.  
+- Output: All artifacts listed above plus automation logs (`gate*-*.json`, `prerequisites-log.json`).  
+- Transformations: Brief validation → environment checks → scaffold generation → workflow validation → evidence aggregation.  
 
-#### Downstream Consumers
-- **Output Consumers:** Protocol 05 (primary), Protocol 02 (secondary)
-- **Shared Artifacts:** Context kit used by multiple protocols
-- **Archive Requirements:** 90-day retention for evidence artifacts
+**Coverage:** Manifest documents 100% of required artifacts, automation logs, and archives with checksum confirmation and dependency mapping.
 
-#### Verification Chain
-- **Artifact Integrity:** SHA-256 checksum, timestamp, verified_by field
-- **Verification Procedure:** Automated validation via scripts, manual review for exceptions
-- **Audit Trail:** All modifications logged in protocol execution log
+### Traceability
 
-### Quality Metrics
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
-| Gate 2 Pass Rate | ≥ 90% | [TBD] | ⏳ |
-| Gate 3 Pass Rate | ≥ 98% | [TBD] | ⏳ |
-| Gate 4 Pass Rate | ≥ 95% | [TBD] | ⏳ |
-| Evidence Completeness | 100% | [TBD] | ⏳ |
-| Integration Integrity | 100% | [TBD] | ⏳ |
-| Automation Success Rate | ≥ 95% | [TBD] | ⏳ |
+**Input Sources:**
+- **Input From:** `.artifacts/protocol-03/PROJECT-BRIEF.md` – Approved project scope driving bootstrap.  
+- **Input From:** `config/protocol_gates/04.yaml` – Governance thresholds controlling automation decisions.  
+
+**Output Artifacts:**
+- **Output To:** `bootstrap-manifest.json` – Assets consumed by Protocol 05 deployment tasks.  
+- **Output To:** `workflow-validation-report.json` – Readiness evidence for downstream automation.  
+- **Output To:** `governance-status.md` – Context state for Protocols 05 and 23.  
+- **Output To:** `pre-bootstrap-context.zip` – Rollback package referenced by recovery workflows.  
+- **Output To:** `evidence-manifest.json` – Audit ledger for governance oversight.  
+
+**Transformation Steps:**
+1. Brief inputs → brief-validation-report.json: Score alignment metrics.  
+2. Environment checks → environment-report.json: Capture tool readiness metrics.  
+3. Rule audits → rule-audit-report.md: Document compliance status.  
+4. Scaffold generation → bootstrap-manifest.json & scaffold-validation-report.json: Record asset metrics and registry compliance.  
+5. Workflow synchronization → workflow-validation-report.json & governance-status.md: Validate operational readiness.  
+6. Artifact aggregation → evidence-manifest.json & pre-bootstrap-context.zip: Bundle evidence and archives.  
+
+**Audit Trail:**
+- Manifest logs timestamps, checksum hashes, and verification owners.  
+- Automation scripts append execution logs to `.artifacts/protocol-04/logs/automation.log`.  
+- Governance status updates recorded with author and timestamp in `governance-status.md`.  
+- Retention actions captured in `.artifacts/protocol-04/cleanup-log.json`.
+
+### Archival Strategy
+
+**Compression:**
+- Artifacts compressed into `.artifacts/protocol-04/pre-bootstrap-context.zip` after Gate 4 passes.  
+- Compression format: ZIP with AES-256 option for sensitive configuration files.  
+
+**Retention Policy:**
+- Active artifacts retained for 150 days post-bootstrap to support remediation.  
+- Archived bundles retained for 4 years per governance retention schedule.  
+- Cleanup automation runs quarterly; retention exceptions flagged with justification.  
+
+**Retrieval Procedures:**
+- Active artifacts accessed directly with manifest cross-reference.  
+- Archived bundles retrieved from `archives/` subdirectory; verify checksums before redeployment.  
+- Integrity verification uses manifest checksum field and recorded SHA signatures.  
+
+**Cleanup Process:**
+- Quarterly cleanup script logs removals in `.artifacts/protocol-04/cleanup-log.json` with checksum snapshot.  
+- Critical artifacts flagged `extended_retention: true` persist until compliance team approval.  
+- Governance officer signs retention review in `.artifacts/protocol-04/retention-approvals.json`.
 
 ---
 

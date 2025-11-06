@@ -1,8 +1,8 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "02",
-  "validation_timestamp": "2025-11-05T18:37:49.512189Z",
-  "overall_score": 0.5166666666666666,
+  "validation_timestamp": "2025-11-06T05:29:52.539566Z",
+  "overall_score": 0.5666666666666667,
   "validation_status": "fail",
   "issues": [
     "Less than two workflow steps defined",
@@ -14,9 +14,7 @@
   "recommendations": [
     "Use '### STEP X' headings for clarity",
     "Document communication prompts per step",
-    "Optional or cautionary guidance can highlight operator judgement without blocking validation",
-    "Add rollback or retry guidance for failure scenarios",
-    "Document evidence manifests or registries"
+    "Add rollback or retry guidance for failure scenarios"
   ],
   "workflow_structure": {
     "score": 0.25,
@@ -56,18 +54,16 @@
     "issues": [
       "Several workflow steps omit explicit action prompts"
     ],
-    "recommendations": [
-      "Optional or cautionary guidance can highlight operator judgement without blocking validation"
-    ],
+    "recommendations": [],
     "details": {
       "imperative_balance": true,
       "action_clarity": false,
       "contextual_support": true,
       "step_count": 1,
-      "imperative_count": 13,
+      "imperative_count": 39,
       "action_prompts": 0,
-      "context_prompts": 19,
-      "optional_guidance": 0,
+      "context_prompts": 24,
+      "optional_guidance": 1,
       "cautionary_statements": 0
     }
   },
@@ -88,21 +84,19 @@
     }
   },
   "evidence_tracking": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
       "Downstream consumer mapping missing"
     ],
-    "recommendations": [
-      "Document evidence manifests or registries"
-    ],
+    "recommendations": [],
     "details": {
       "evidence_tags": true,
       "artifact_locations": true,
-      "manifest": false,
+      "manifest": true,
       "downstream_trace": false,
-      "evidence_mentions": 16,
-      "artifact_mentions": 17
+      "evidence_mentions": 20,
+      "artifact_mentions": 25
     }
   }
 }

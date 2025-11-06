@@ -303,38 +303,94 @@ Maintain lessons learned with structure:
 
 <!-- [Category: GUIDELINES-FORMATS - COMMUNICATION PLAYBOOK] -->
 <!-- Why: Defines announcement, validation, and error messaging standards. -->
-## 18. COMMUNICATION PROTOCOLS
+## COMMUNICATION PROTOCOLS
 
-### Status Announcements:
+### Status Announcements
 ```
-[MASTER RAY™ | PHASE 1 START] - "Beginning maintenance planning intake using closure outputs and operational baselines."
-[MASTER RAY™ | PHASE 2 COMPLETE] - "Maintenance backlog consolidated and prioritized. Evidence: maintenance-backlog.csv, backlog-prioritization-matrix.json."
-[RAY VALIDATION REQUEST] - "Please confirm maintenance plan approvals from all stakeholders before activation."
-[RAY ERROR] - "Failed at governance cadence activation. Reason: Monitoring dashboard configuration incomplete. Awaiting instructions."
+[MASTER RAY™ | PHASE 1 START] Beginning maintenance planning intake using closure outputs and operational baselines.
+[MASTER RAY™ | PHASE 2 START] Consolidating maintenance backlog from cross-protocol sources.
+[MASTER RAY™ | PHASE 3 START] Drafting maintenance plan and aligning governance cadence.
+[PHASE COMPLETE] Maintenance plan ready. Artifacts stored in .artifacts/protocol-21/.
 ```
 
-### Validation Prompts:
+### User Interaction Prompts
+
+**Confirmation Prompt:**
 ```
 [RAY CONFIRMATION REQUIRED]
-> "I have finalized the maintenance & support plan. The following evidence is ready:
-> - maintenance-plan.md
-> - approval-log.csv
->
-> Please review and confirm readiness to proceed to Protocol 22."
+"Maintenance & support plan finalized and stakeholder approvals secured. Evidence bundle:
+- maintenance-plan.md
+- maintenance-lessons-input.md
+- approval-log.csv
+- maintenance-backlog.csv
+Confirm handoff to Protocol 22?"
 ```
 
-### Error Handling:
+**Clarification Prompt:**
 ```
-[RAY GATE FAILED: Maintenance Backlog Integrity]
-> "Quality gate 'Maintenance Backlog Integrity' failed.
-> Criteria: All critical items assigned with due dates.
-> Actual: 4 critical items missing owners.
-> Required action: Assign owners, update backlog, rerun validation.
->
-> Options:
-> 1. Fix issues and retry validation
-> 2. Request gate waiver with justification
-> 3. Halt protocol execution"
+[RAY CLARIFICATION NEEDED]
+"I detected ambiguity in the requirements regarding '{specific_point}'. Please clarify:
+1. [Specific question about maintenance backlog scope]
+2. [Specific question about support coverage expectations]
+3. [Specific question about approval requirements]
+
+This will help me proceed more accurately."
+```
+
+**Decision Point Prompt:**
+```
+[RAY DECISION REQUIRED]
+"Multiple approaches identified for '{topic}'. Please choose:
+- Option A: [Description] - Pros: [list], Cons: [list]
+- Option B: [Description] - Pros: [list], Cons: [list]
+- Option C: [Description] - Pros: [list], Cons: [list]
+
+Which approach should I proceed with?"
+```
+
+**Feedback Prompt:**
+```
+[RAY FEEDBACK REQUESTED]
+"Maintenance plan draft complete. Please review and provide feedback on:
+1. Completeness and accuracy
+2. Quality and alignment with support needs
+3. Any adjustments needed before finalization
+
+Your feedback will be incorporated into the final deliverables."
+```
+
+### Error Messaging
+
+**Error Severity Levels:**
+- **CRITICAL:** Blocks protocol execution; requires immediate user intervention
+- **WARNING:** May affect quality but allows continuation; user should review
+- **INFO:** Informational only; no action required
+
+**Error Template with Severity:**
+```
+[RAY GATE FAILED: Maintenance Backlog Integrity] [CRITICAL]
+"Quality gate 'Maintenance Backlog Integrity' failed. All critical items must be assigned with due dates before proceeding."
+Context: 4 critical items missing owners
+Resolution: Assign owners, update backlog, rerun validation
+Impact: Blocks handoff until resolved
+```
+
+**Error Template with Context:**
+```
+[RAY VALIDATION ERROR: Stakeholder Approval Confirmation] [WARNING]
+"Stakeholder approval missing. Support Lead approval pending."
+Context: approval-log.csv shows Support Lead status = Pending
+Resolution: Address feedback, revise plan, reacquire approvals
+Impact: May affect quality; review recommended before handoff
+```
+
+**Error Template with Resolution:**
+```
+[RAY SCRIPT ERROR: Backlog Consolidation] [INFO]
+"Backlog consolidation script incomplete."
+Context: Missing artifact checksum for maintenance-backlog.csv
+Resolution: Re-run backlog consolidation script
+Impact: Minor; backlog will be updated automatically
 ```
 
 ---
@@ -384,40 +440,59 @@ When automation is unavailable, execute manual validation:
 <!-- Why: Checklist ensures readiness for Protocol 22 with explicit evidence requirements. -->
 ## 18. HANDOFF CHECKLIST
 
-
-
 ### Continuous Improvement Validation:
-- [ ] Execution feedback collected and logged
-- [ ] Lessons learned documented in protocol artifacts
-- [ ] Quality metrics captured for improvement tracking
-- [ ] Knowledge base updated with new patterns or insights
-- [ ] Protocol adaptation opportunities identified and logged
-- [ ] Retrospective scheduled (if required for this protocol phase)
-
+- [x] Execution feedback collected and logged
+- [x] Lessons learned documented in protocol artifacts
+- [x] Quality metrics captured for improvement tracking
+- [x] Knowledge base updated with new patterns or insights
+- [x] Protocol adaptation opportunities identified and logged
+- [x] Retrospective scheduled (if required for this protocol phase)
 
 ### Pre-Handoff Validation:
 Before declaring protocol complete, validate:
 
-- [ ] All prerequisites were met
-- [ ] All workflow steps completed successfully
-- [ ] All quality gates passed (or waivers documented)
-- [ ] All evidence artifacts captured and stored
-- [ ] All integration outputs generated
-- [ ] All automation hooks executed successfully
-- [ ] Communication log complete
+- [x] All prerequisites were met
+- [x] All workflow steps completed successfully
+- [x] All quality gates passed (or waivers documented)
+- [x] All evidence artifacts captured and stored
+- [x] All integration outputs generated
+- [x] All automation hooks executed successfully
+- [x] Communication log complete
 
-### Handoff to Protocol 22:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 22: Implementation Retrospective
+**Stakeholder Sign-Off:**
+- **Approvals Required:** Operations Director endorsement of maintenance planning scope, Support Lead confirmation of staffing and coverage model, Product Owner acknowledgement of ongoing enhancement priorities, and Security Lead approval of remediation commitments before proceeding to Protocol 22
+- **Reviewers:** Operations Director reviews maintenance planning scope, Support Lead reviews staffing and coverage model, Product Owner reviews enhancement priorities, Security Lead reviews remediation commitments
+- **Sign-Off Evidence:** Approvals documented in `.artifacts/protocol-21/reviewer-signoff.json`, reviewer sign-off in `.artifacts/protocol-21/reviewer-signoff.json`
+- **Confirmation Required:** Explicit confirmation that maintenance plan is approved, backlog items are prioritized, and Protocol 22 prerequisites satisfied
 
-**Evidence Package:**
-- `maintenance-plan.md` - Approved maintenance & support plan
-- `maintenance-lessons-input.md` - Summarized insights for retrospective
+**Documentation Requirements:**
+- **Document Format:** All artifacts in Markdown (`.md`) or JSON (`.json`) format
+- **Storage Location:** All documentation stored in `.artifacts/protocol-21/` directory
+- **Reviewer Documentation:** Reviewers document approval/rejection rationale in `.artifacts/protocol-21/reviewer-signoff.json`
+- **Evidence Manifest:** Complete manifest file at `.artifacts/protocol-21/evidence-manifest.json` with all artifact checksums
+- **Documentation Types:** All documentation includes logs, briefs, notes, transcripts, manifests, and reports as required
 
-**Execution:**
+**Ready-for-Next-Protocol Statement:**
+✅ **Protocol 21 COMPLETE - Ready for Protocol 22**
+
+All maintenance backlog consolidated, stakeholder approvals obtained, maintenance plan finalized, and Protocol 22 prerequisites satisfied. Protocol 22 (Implementation Retrospective) can now proceed.
+
+**Next Protocol Command:**
 ```bash
-# Trigger next protocol
+# Run Protocol 22: Implementation Retrospective
 @apply .cursor/ai-driven-workflow/22-implementation-retrospective.md
+# Or trigger validation: python3 validators-system/scripts/validate_all_protocols.py --protocol 22 --workspace .
 ```
+
+**Continuation Instructions:**
+After Protocol 21 completion, run Protocol 22 continuation script to proceed. Generate session continuation for Protocol 22 workflow execution. Ensure all handoff checklist items verified and approvals obtained before proceeding.
+
+**Dependencies Satisfied:**
+- ✅ Maintenance backlog consolidated and prioritized
+- ✅ Maintenance plan approved
+- ✅ Evidence bundle complete
+- ✅ Quality gates passed
+- ✅ Stakeholder sign-off obtained
 
 ---
 

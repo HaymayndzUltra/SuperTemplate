@@ -1,17 +1,17 @@
 {
   "validator": "master_validator",
   "protocol_id": "16",
-  "validation_timestamp": "2025-11-05T18:37:49.968985Z",
-  "overall_score": 0.7754166666666665,
+  "validation_timestamp": "2025-11-06T05:29:53.098854Z",
+  "overall_score": 0.8283333333333334,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8333333333333333
+      "score": 0.9
     },
     "protocol_role": {
-      "status": "fail",
-      "score": 0.7749999999999999
+      "status": "warning",
+      "score": 0.8125
     },
     "protocol_workflow": {
       "status": "fail",
@@ -26,16 +26,16 @@
       "score": 0.7833333333333333
     },
     "protocol_communication": {
-      "status": "fail",
-      "score": 0.7875
+      "status": "pass",
+      "score": 0.9625
     },
     "protocol_evidence": {
       "status": "fail",
       "score": 0.575
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.75
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reasoning": {
       "status": "warning",
@@ -50,7 +50,6 @@
     "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
     "Scope definition not found",
-    "Industry standards not documented",
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",
     "Value proposition not captured",
@@ -60,19 +59,15 @@
     "No gate headings defined",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_12.py, scripts/validate_prerequisites_12.py",
-    "Missing user interaction prompts: clarification, decision_points",
     "Limited progress terminology in communications",
     "Protocol evidence directory not referenced",
     "Traceability gaps: inputs, outputs",
-    "Sign-off guidance missing: reviewers, confirmation",
-    "Documentation expectations under-specified",
     "Reasoning patterns not explicitly named",
     "Decision points insufficiently described",
     "Self-awareness statements missing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
-    "Outline decision-making expectations",
     "Use '### STEP X' headings for clarity",
     "Optional or cautionary guidance can highlight operator judgement without blocking validation",
     "Add rollback or retry guidance for failure scenarios",

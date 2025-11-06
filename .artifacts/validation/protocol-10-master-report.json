@@ -1,13 +1,13 @@
 {
   "validator": "master_validator",
   "protocol_id": "10",
-  "validation_timestamp": "2025-11-05T18:37:49.795164Z",
-  "overall_score": 0.835,
+  "validation_timestamp": "2025-11-06T05:29:52.891122Z",
+  "overall_score": 0.8629166666666667,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8666666666666666
+      "score": 0.9333333333333332
     },
     "protocol_role": {
       "status": "warning",
@@ -26,16 +26,16 @@
       "score": 0.7625000000000001
     },
     "protocol_communication": {
-      "status": "fail",
-      "score": 0.775
+      "status": "pass",
+      "score": 0.9
     },
     "protocol_evidence": {
       "status": "fail",
       "score": 0.7749999999999999
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.7625
+      "status": "warning",
+      "score": 0.8500000000000001
     },
     "protocol_reasoning": {
       "status": "warning",
@@ -49,7 +49,6 @@
   "issues": [
     "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
-    "Industry standards not documented",
     "Domain expertise keywords missing",
     "Value proposition not captured",
     "Not all steps define explicit actions",
@@ -57,11 +56,9 @@
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_3.py, scripts/validate_preflight.py, scripts/validate_prerequisites_3.py, scripts/validate_quality_gate.py, scripts/validate_session_closeout.py, scripts/validate_subtask_compliance.py",
-    "Missing user interaction prompts: clarification, feedback",
     "Limited progress terminology in communications",
     "Traceability gaps: inputs, outputs",
     "Checklist lacks sufficient coverage of required items",
-    "Sign-off guidance missing: approvals",
     "Reasoning patterns not explicitly named",
     "Self-awareness statements missing"
   ],

@@ -1,12 +1,11 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "09",
-  "validation_timestamp": "2025-11-05T18:37:49.747416Z",
-  "overall_score": 0.7625,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-11-06T05:29:52.827907Z",
+  "overall_score": 0.8500000000000001,
+  "validation_status": "warning",
   "issues": [
-    "Checklist lacks sufficient coverage of required items",
-    "Sign-off guidance missing: approvals"
+    "Checklist lacks sufficient coverage of required items"
   ],
   "recommendations": [],
   "checklist_completeness": {
@@ -31,11 +30,11 @@
     "recommendations": [],
     "details": {
       "term_counts": {
-        "validate": 3,
-        "ensure": 0,
-        "confirm": 5,
-        "verify": 5,
-        "gate": 4
+        "validate": 19,
+        "ensure": 12,
+        "confirm": 9,
+        "verify": 24,
+        "gate": 10
       },
       "verification_terms": true,
       "qa_involvement": true,
@@ -44,14 +43,12 @@
     }
   },
   "stakeholder_signoff": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Sign-off guidance missing: approvals"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "approvals": false,
+      "approvals": true,
       "reviewers": true,
       "evidence_reference": true,
       "confirmation": true
@@ -65,6 +62,9 @@
     "details": {
       "terms": [
         "log",
+        "brief",
+        "notes",
+        "transcript",
         "manifest",
         "report"
       ],
@@ -75,15 +75,15 @@
     }
   },
   "next_protocol_alignment": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "ready_statements": true,
       "next_commands": true,
       "dependencies": true,
-      "continuation": false
+      "continuation": true
     }
   }
 }

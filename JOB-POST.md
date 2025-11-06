@@ -1,60 +1,27 @@
-Summary
-Looking for an experienced Next.js / Full Stack Developer to finish the remaining integration and sync tasks for my SaaS platform, Surfa - an AI-powered Local SEO tool that connects with Google Business Profile (GBP) and DataForSEO APIs.
+Responsibilities:
+• Assist in integrating OpenAI APIs with a FastAPI backend
+• Support Stripe billing setup and webhook testing
+• Help with debugging, data validation, and log analysis
+• Collaborate via GitHub and Discord for daily progress updates
 
-The core app is already functional and deployed (GBP-allowlisted + DataForSEO verified). I now need help completing the last 10% so it’s fully production-ready and stable for all users.
+Requirements:
+• Basic to intermediate Python skills
+• Familiarity with FastAPI or Flask
+• Understanding of REST APIs, PostgreSQL, and JSON
+• Interest in AI or health-tech products
+• Availability during Pakistan Standard Time (GMT+5)
 
-What’s Working Now:
+Nice to Have:
+• Experience with Next.js or frontend integration testing
+• Exposure to OpenAI / ElevenLabs APIs
+• Familiarity with Stripe or webhooks
 
-- Full Google OAuth + multi-GBP connection flow (Dashboard, Listings, Reports)
-- Dynamic insights via GBP API
-- Keyword tracking + suggestions via DataForSEO
-- Deployed on Vercel with working environment variables
-- Reviews and metrics load correctly on the developer’s side
+Details:
+• Type: Remote, part-time (minimum 20 hrs/week)
+• Duration: 1–2 months (extendable)
+• Future Opportunity: Potential for long-term contract.
 
-
-Remaining Tasks:
-
-1️⃣ Review Response Center
-
-- Ensure reviews sync and display correctly for all user GBPs, not just mine.
-- Make sure review replies posted inside Surfa are synced to the actual GBP profile.
-- Fix edge cases where reviews take too long to fetch or time out.
-
-2️⃣ Rankings (DataForSEO)
-
-- Improve suggested keywords relevance (use GBP categories + location context).
-- Ensure tracked keywords are isolated to each GBP - not shared across profiles.
-- Confirm all data (rank, change, volume, status) is dynamic and accurate.
-
-3️⃣ Stripe Integration
-
-- Implement Stripe checkout/subscriptions (plans already set up in env).
-- Add webhook handling for successful payments + user access levels.
-
-4️⃣ Performance Improvements
-
-- Make Dashboard and pages load instantly after login (reduce API latency).
-- Optimize review sync time and general API call speed.
-
-Tech Stack:
-
-- Next.js / React / TypeScript
-- Supabase (Auth + DB)
-- Google Business Profile API (allowlisted)
-- DataForSEO API
-- Stripe API (already configured in .env)
-- Vercel Hosting
-
-Ideal Candidate:
-- 3-5+ years with Next.js/Supabase/Stripe/Google APIs
-- Proven experience debugging API sync issues
-- Able to start immediately and deliver results fast
-- Communicates clearly with short, frequent updates
-
-If you’re confident you can wrap this up cleanly and make Surfa fully production-ready, apply and mention how soon you can start.
-
-Deliverables
-- Fully dynamic, production-ready build on Vercel
-- Reviews + Rankings sync correctly across all GBPs
-- Stripe billing flow tested in both test & live mode
-- Fast loading (no need to refresh Dashboard/Reports)
+To Apply:
+1. A short intro about yourself and your current studies or background
+2. GitHub link or sample code (even small projects are fine)
+3. Your weekly availability

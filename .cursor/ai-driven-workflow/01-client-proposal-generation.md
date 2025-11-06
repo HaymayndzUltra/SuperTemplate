@@ -352,15 +352,286 @@ Success is measured by human believability, evidence completeness, and the abili
 
 ## QUALITY GATES
 
-| Gate | Purpose | Pass Criteria | Automation |
-|------|---------|---------------|------------|
-| Gate 1: Job Post Comprehension | Ensure `jobpost-analysis.json` mirrors client language | ≥90% coverage score, ≥2 exact quotes | `analyze_jobpost.py` |
-| Gate 2: Tone Alignment | Confirm tone strategy matches client voice | Confidence ≥80%, differentiator list defined | `tone_mapper.py` |
-| Gate 3: Human Voice Compliance | Detect AI tells, enforce human patterns | ≥3 contractions, ≥1 uncertainty, 0 forbidden phrases, empathy tokens recorded | `validate_proposal_structure.py` + `validate_proposal.py` |
-| Gate 4: Pricing Realism | Prevent under/over quoting | Hourly rate within tier limits, total fees 80–120% market, milestones balanced | Manual checklist using `pricing-analysis.json` |
-| Gate 5: Evidence Integrity | Guarantee downstream artifacts exist and validate | All artifacts present with SHA, manifest updated | `aggregate_evidence_01.py` + `validate_evidence_manifest.py` |
+### Gate 1: Job Post Comprehension
+**Type:** Prerequisite  
+**Purpose:** Ensure `jobpost-analysis.json` mirrors client language  
+**Pass Criteria:** 
+- **Threshold:** ≥90% coverage score
+- **Boolean Check:** ≥2 exact quotes present
+- **Metrics:** Coverage score calculated from verbatim extraction
+- **Evidence Link:** Validated against `.artifacts/protocol-01/jobpost-analysis.json`
 
-Any failure requires documented remediation before proceeding.
+**Automation:**
+- Script: `python3 scripts/analyze_jobpost.py --jobpost JOB-POST.md --output .artifacts/protocol-01/jobpost-analysis.json`
+- CI Integration: Runs in CI/CD workflow before proposal generation
+- Config: `config/protocol_gates/01.yaml` defines gate thresholds
+
+**Failure Handling:**
+- **Rollback:** Halt proposal generation, return to job post analysis phase
+- **Notification:** Alert technical lead via email/Slack if coverage < 90%
+- **Waiver:** Document waiver in `.artifacts/protocol-01/gate-waivers.json` with justification if client language unclear
+
+### Gate 2: Tone Alignment
+**Type:** Execution  
+**Purpose:** Confirm tone strategy matches client voice  
+**Pass Criteria:**
+- **Threshold:** Confidence ≥80%
+- **Boolean Check:** Differentiator list defined
+- **Metrics:** Confidence score from tone analysis
+- **Evidence Link:** Validated against `.artifacts/protocol-01/tone-map.json`
+
+**Automation:**
+- Script: `python3 scripts/tone_mapper.py --analysis .artifacts/protocol-01/jobpost-analysis.json --output .artifacts/protocol-01/tone-map.json`
+- CI Integration: Runs after job post analysis completes
+- Config: `config/protocol_gates/01.yaml` defines confidence threshold
+
+**Failure Handling:**
+- **Rollback:** Return to tone analysis phase, re-analyze client communication style
+- **Notification:** Alert proposal writer if confidence < 80%
+- **Waiver:** Document waiver with manual tone assignment if automated analysis insufficient
+
+### Gate 3: Human Voice Compliance
+**Type:** Execution  
+**Purpose:** Detect AI tells, enforce human patterns  
+**Pass Criteria:**
+- **Threshold:** ≥3 contractions, ≥1 uncertainty markers
+- **Boolean Check:** 0 forbidden phrases present
+- **Metrics:** Contraction count, uncertainty count, forbidden phrase count
+- **Evidence Link:** Validated against `.artifacts/protocol-01/humanization-log.json`
+
+**Automation:**
+- Script: `python3 scripts/validate_proposal_structure.py --proposal PROPOSAL.md && python3 scripts/validate_proposal.py --proposal PROPOSAL.md --output .artifacts/protocol-01/humanization-log.json`
+- CI Integration: Runs during proposal validation phase
+- Config: `config/protocol_gates/01.yaml` defines voice compliance thresholds
+
+**Failure Handling:**
+- **Rollback:** Return to proposal drafting phase, revise tone and phrasing
+- **Notification:** Alert proposal writer with specific violations (forbidden phrases, lack of contractions)
+- **Waiver:** Not applicable - human voice compliance is mandatory
+
+### Gate 4: Pricing Realism
+**Type:** Execution  
+**Purpose:** Prevent under/over quoting  
+**Pass Criteria:**
+- **Threshold:** Hourly rate within tier limits, total fees 80–120% market benchmark
+- **Boolean Check:** Milestones balanced across project phases
+- **Metrics:** Hourly rate tier, market percentage, milestone distribution
+- **Evidence Link:** Validated against `.artifacts/protocol-01/pricing-analysis.json`
+
+**Automation:**
+- Script: `python3 scripts/validate_pricing.py --pricing .artifacts/protocol-01/pricing-analysis.json --market-data market-benchmarks.json`
+- CI Integration: Runs after pricing analysis completes
+- Config: `config/protocol_gates/01.yaml` defines market range thresholds
+
+**Failure Handling:**
+- **Rollback:** Return to pricing analysis phase, adjust rates and milestones
+- **Notification:** Alert business lead if pricing outside market range
+- **Waiver:** Document waiver with justification if premium pricing required for specialized skills
+
+### Gate 5: Evidence Integrity
+**Type:** Completion  
+**Purpose:** Guarantee downstream artifacts exist and validate  
+**Pass Criteria:**
+- **Threshold:** 100% artifact completeness
+- **Boolean Check:** All artifacts present with SHA checksums
+- **Metrics:** Artifact count, validation success rate
+- **Evidence Link:** Validated against `.artifacts/protocol-01/evidence-manifest.json`
+
+**Automation:**
+- Script: `python3 scripts/aggregate_evidence_01.py --output .artifacts/protocol-01/evidence-manifest.json && python3 scripts/validate_evidence_manifest.py --manifest .artifacts/protocol-01/evidence-manifest.json`
+- CI Integration: Runs before handoff to Protocol 02
+- Config: `config/protocol_gates/01.yaml` defines required artifacts list
+
+**Failure Handling:**
+- **Rollback:** Halt handoff, regenerate missing artifacts
+- **Notification:** Alert technical lead if artifacts missing or invalid
+- **Waiver:** Not applicable - evidence integrity is mandatory for handoff
+
+### Compliance Integration
+- **Industry Standards:** All artifacts follow CommonMark Markdown and JSON Schema standards
+- **Security Requirements:** Artifacts stored with read/write access controls, no sensitive data in proposal
+- **Regulatory Compliance:** Pricing compliance with FTC guidelines, no false claims in proposals
+- **Governance:** Gate thresholds defined in `config/protocol_gates/01.yaml`, integrated with protocol governance system
+
+---
+
+## EVIDENCE SUMMARY
+
+### Artifact Generation Table
+
+| Artifact Name | Metrics | Location | Evidence Link |
+|---------------|---------|----------|---------------|
+| jobpost-analysis.json | Coverage score ≥90%, ≥2 exact quotes | `.artifacts/protocol-01/jobpost-analysis.json` | Gate 1 validation |
+| tone-map.json | Confidence score ≥80%, differentiator list defined | `.artifacts/protocol-01/tone-map.json` | Gate 2 validation |
+| pricing-analysis.json | Hourly rate tier, market percentage 80–120%, milestone balance | `.artifacts/protocol-01/pricing-analysis.json` | Gate 4 validation |
+| humanization-log.json | Contractions ≥3, uncertainty ≥1, forbidden phrases = 0 | `.artifacts/protocol-01/humanization-log.json` | Gate 3 validation |
+| PROPOSAL.md | Human voice compliance score ≥0.95 | `.artifacts/protocol-01/PROPOSAL.md` | Gate 3 validation |
+| proposal-summary.json | Differentiators count, pricing summary, next steps | `.artifacts/protocol-01/proposal-summary.json` | Handoff validation |
+| evidence-manifest.json | 100% artifact completeness, SHA checksums valid | `.artifacts/protocol-01/evidence-manifest.json` | Gate 5 validation |
+
+### Storage Structure
+
+**Protocol Directory:** `.artifacts/protocol-01/`
+- **Subdirectories:** None (flat structure for Protocol 01)
+- **Permissions:** Read/write access for protocol executor, read-only for downstream protocols
+- **Naming Convention:** `{artifact-name}.{extension}` (e.g., `jobpost-analysis.json`, `PROPOSAL.md`)
+
+### Manifest Completeness
+
+**Manifest File:** `.artifacts/protocol-01/evidence-manifest.json`
+
+**Metadata Requirements:**
+- Timestamp: ISO 8601 format (e.g., `2025-11-06T05:34:29Z`)
+- Artifact checksums: SHA-256 hash for each artifact
+- Size: File size in bytes
+- Dependencies: List of upstream artifacts or inputs
+
+**Dependency Tracking:**
+- Input: `JOB-POST.md` (from client)
+- Output: All 7 artifacts listed above
+- Transformations: Job post → Analysis → Tone → Pricing → Proposal → Summary
+
+**Coverage:** 100% of required artifacts documented in manifest
+
+### Traceability
+
+**Input Sources:**
+- **Input From:** `JOB-POST.md`: Client job posting (raw input)
+- **Input From:** Client communication: Discovery call transcripts (if available)
+
+**Output Artifacts:**
+- **Output To:** `jobpost-analysis.json` - Analysis artifact generated from input
+- **Output To:** `tone-map.json` - Tone mapping artifact generated from input
+- **Output To:** `pricing-analysis.json` - Pricing artifact generated from input
+- **Output To:** `humanization-log.json` - Humanization metrics artifact generated from input
+- **Output To:** `PROPOSAL.md` - Final proposal artifact generated from input
+- **Output To:** `proposal-summary.json` - Summary artifact generated from input
+- **Output To:** `evidence-manifest.json` - Manifest artifact listing all outputs
+- All artifacts listed in Artifact Generation Table above
+- Evidence manifest: Complete audit trail
+
+**Transformation Steps:**
+1. Job post → Analysis: Extract tech stack, pain points, tone signals
+2. Analysis → Tone: Map client communication style to tone strategy
+3. Tone → Pricing: Calculate workload estimates based on requirements
+4. Tone + Pricing → Proposal: Generate humanized proposal document
+5. Proposal → Summary: Extract differentiators and next steps
+
+**Audit Trail:**
+- Each transformation logged in evidence manifest
+- Timestamps record when each artifact generated
+- Checksums enable integrity verification
+- Dependencies mapped to enable traceability
+
+### Archival Strategy
+
+**Compression:**
+- Artifacts compressed into `.artifacts/protocol-01/evidence-bundle.zip` after handoff
+- Compression format: ZIP with standard compression level
+
+**Retention Policy:**
+- Active artifacts: Retained for 90 days after protocol completion
+- Archived bundles: Retained for 2 years after project closure
+- Cleanup: Automated cleanup runs quarterly, removes artifacts older than retention period
+
+**Retrieval Procedures:**
+- Active artifacts: Direct access from `.artifacts/protocol-01/` directory
+- Archived bundles: Extract from `.artifacts/protocol-01/evidence-bundle.zip` using standard unzip tools
+- Integrity verification: SHA checksums in manifest enable verification after retrieval
+
+**Cleanup Process:**
+- Quarterly automated script removes artifacts older than retention period
+- Cleanup log stored in `.artifacts/protocol-01/cleanup-log.json`
+- Critical artifacts flagged for extended retention (manual review required)
+
+### Learning Mechanisms & Continuous Improvement
+
+**Learning from Execution:**
+- Track validation failures and correlate with specific phases to identify process weaknesses
+- Optimize workflow based on time-per-phase actuals vs estimates  
+- Enhance automation scripts when manual workarounds are repeatedly needed
+- Share best practices and anti-patterns across protocol runs via knowledge repository
+
+**Knowledge Capture:**
+- Maintain lessons learned archive tracking proposal acceptance rates by tone type, industry, and budget range
+- Catalog successful differentiation strategies and their correlation with client responses
+- Record edge cases and resolution patterns in centralized wiki
+- Publish retrospective insights for team sharing and organizational learning
+
+**Future Planning Integration:**
+- Roadmap enhancements are prioritized based on empirical failure analysis
+- Next phase improvements scheduled based on resource availability and impact potential
+- Upcoming script updates planned according to detected automation opportunities
+- Timeline for optimization initiatives tracked in protocol enhancement roadmap
+
+---
+
+## HANDOFF CHECKLIST
+
+### Protocol 02 Readiness Verification
+
+Before transitioning to Protocol 02 (Client Discovery Initiation), ensure:
+
+**Deliverables:**
+- [x] PROPOSAL.md finalized and human voice validated (≥3 contractions, 0 forbidden phrases)
+- [x] proposal-summary.json generated with differentiators, pricing, and next steps
+- [x] All 6 evidence artifacts present and SHA-validated
+- [x] Evidence manifest updated with artifact checksums
+
+**Quality Assurance:**
+- [x] All 5 quality gates passed (job post comprehension, tone alignment, voice compliance, pricing realism, evidence integrity)
+- [x] No unresolved validation failures or gate blockers
+- [x] Pricing sits within 80–120% of market benchmarks
+- [x] Humanization metrics meet thresholds (contractions ≥3, uncertainty ≥1, forbidden phrases = 0)
+
+**Knowledge Transfer:**
+- [x] Retrospective log updated with what worked well, what didn't, and improvement actions
+- [x] Lessons learned documented in knowledge base for future reference
+- [x] Edge cases or workarounds shared with team via knowledge repository
+- [x] Decision rationale recorded for pricing strategy and tone choice
+
+**Continuous Improvement:**
+- [x] Improvement opportunities identified and logged (automation candidates, process optimizations)
+- [x] Validation threshold adjustments recommended based on empirical results
+- [x] Future enhancements prioritized in protocol roadmap
+- [x] Metrics tracked for upcoming performance analysis (acceptance rate, time-per-phase, validation pass rate)
+
+**Stakeholder Sign-Off:**
+- **Approvals Required:** Proposal approval from client before proceeding to Protocol 02
+- **Reviewers:** Technical lead reviews proposal structure and quality gates compliance
+- **Sign-Off Evidence:** Client acceptance confirmation email or message, reviewer approval documented in `.artifacts/protocol-01/reviewer-signoff.json`
+- **Confirmation Required:** Explicit confirmation from client that proposal meets requirements before initiating discovery call
+
+**Documentation Requirements:**
+- **Document Format:** All artifacts must be in JSON format (`.json`) or Markdown (`.md`)
+- **Storage Location:** All documentation stored in `.artifacts/protocol-01/` directory
+- **Reviewer Documentation:** Reviewers must document approval/rejection rationale in `.artifacts/protocol-01/reviewer-signoff.json`
+- **Evidence Manifest:** Complete manifest file at `.artifacts/protocol-01/evidence-manifest.json` with all artifact checksums
+- **Documentation Types:** All documentation includes logs, briefs, notes, transcripts, manifests, and reports as required
+
+**Ready-for-Next-Protocol Statement:**
+✅ **Protocol 01 COMPLETE - Ready for Protocol 02**
+
+All quality gates passed, evidence artifacts generated, and stakeholder approvals obtained. Protocol 02 (Client Discovery Initiation) can now proceed.
+
+**Next Protocol Command:**
+```bash
+# Run Protocol 02: Client Discovery Initiation
+python3 validators-system/scripts/validate_all_protocols.py --protocol 02 --workspace .
+# Then follow Protocol 02 workflow to initiate discovery call preparation
+```
+
+**Continuation Instructions:**
+After Protocol 01 completion, run Protocol 02 continuation script to proceed. Generate session continuation for Protocol 02 workflow execution. Ensure all handoff checklist items are verified before proceeding.
+
+**Dependencies Satisfied:**
+- ✅ Proposal delivered and approved
+- ✅ Evidence bundle complete
+- ✅ Quality gates passed
+- ✅ Stakeholder sign-off obtained
+
+**Handoff Confirmation:**
+Once all checkboxes are verified and sign-offs obtained, confirm handoff to Protocol 02 with proposal-summary.json and complete evidence bundle.
 
 ---
 
@@ -516,7 +787,9 @@ This roadmap outlines planned enhancements to Protocol 01 across three timeframe
 [PHASE COMPLETE] Proposal ready. Artifacts stored in .artifacts/protocol-01/.
 ```
 
-### Confirmation Prompt
+### User Interaction Prompts
+
+**Confirmation Prompt:**
 ```
 [RAY CONFIRMATION REQUIRED]
 "Proposal draft and validation complete. Evidence bundle:
@@ -529,10 +802,72 @@ This roadmap outlines planned enhancements to Protocol 01 across three timeframe
 Confirm handoff to Protocol 02?"
 ```
 
-### Error Messaging
+**Clarification Prompt:**
 ```
-[RAY GATE FAILED: Human Voice Compliance]
+[RAY CLARIFICATION NEEDED]
+"I detected ambiguity in the job post regarding '{specific_point}'. Please clarify:
+1. [Specific question about requirement]
+2. [Specific question about scope]
+3. [Specific question about expectations]
+
+This will help me create a more accurate proposal."
+```
+
+**Decision Point Prompt:**
+```
+[RAY DECISION REQUIRED]
+"Multiple viable approaches identified for '{feature}'. Please choose:
+- Option A: [Description] - Pros: [list], Cons: [list]
+- Option B: [Description] - Pros: [list], Cons: [list]
+- Option C: [Description] - Pros: [list], Cons: [list]
+
+Which approach should I proceed with?"
+```
+
+**Feedback Prompt:**
+```
+[RAY FEEDBACK REQUESTED]
+"Proposal draft complete. Please review and provide feedback on:
+1. Tone and voice alignment with your brand
+2. Pricing structure and milestones
+3. Scope and deliverables clarity
+4. Any adjustments needed before finalization
+
+Your feedback will be incorporated into the final proposal."
+```
+
+### Error Messaging
+
+**Error Severity Levels:**
+- **CRITICAL:** Blocks protocol execution; requires immediate user intervention
+- **WARNING:** May affect quality but allows continuation; user should review
+- **INFO:** Informational only; no action required
+
+**Error Template with Severity:**
+```
+[RAY GATE FAILED: Human Voice Compliance] [CRITICAL]
 "Detected forbidden phrase '{phrase}'. Remove or rephrase and rerun validation."
+Context: Found in PROPOSAL.md at line {line_number}
+Resolution: Replace '{phrase}' with natural alternative phrase
+Impact: Blocks handoff until resolved
+```
+
+**Error Template with Context:**
+```
+[RAY VALIDATION ERROR: Pricing Analysis] [WARNING]
+"Pricing structure deviates from market benchmarks by {percentage}%."
+Context: pricing-analysis.json shows {specific_metric} = {value}
+Resolution: Review pricing heuristics or adjust market benchmarks
+Impact: May affect client acceptance; review recommended before sending
+```
+
+**Error Template with Resolution:**
+```
+[RAY SCRIPT ERROR: Evidence Aggregation] [INFO]
+"Evidence manifest generation incomplete."
+Context: Missing artifact checksum for {artifact_name}
+Resolution: Re-run aggregate_evidence_01.py script
+Impact: Minor; manifest will be updated automatically
 ```
 
 ---

@@ -350,32 +350,102 @@ Maintain lessons learned with structure:
 <!-- Why: Setting validation standards and criteria -->
 
 ### Gate 1: Context Preparation Gate
-- **`[STRICT]` Criteria:** Rule index generated, task context summarized, personas identified.
-- **Evidence:** `rule-index.json`, `task-context.md`, `task-personas.json`
-- **Pass Threshold:** Rule index coverage ≥ 95% of rule directories.
-- **Failure Handling:** Rebuild index, verify metadata completeness, rerun gate.
-- **Automation:** `python scripts/validate_rule_index.py --input .artifacts/protocol-08/rule-index.json`
+**Type:** Prerequisite  
+**Purpose:** Confirm discovery context, rule coverage, and persona inventory before generating detailed tasks.
+
+**Pass Criteria:**
+- **Threshold:** Rule index coverage ≥95% and persona readiness score ≥0.9.  
+- **Threshold:** Context freshness metric ≥0.9 across rule and persona data.  
+- **Boolean Check:** Task context summary flag set to `complete` and stakeholder persona list verified.  
+- **Boolean Check:** Rule index audit flag equals `pass` with zero stale entries detected.  
+- **Metrics:** Coverage metrics, persona completeness metrics, and context freshness metrics captured in preparation report.  
+- **Evidence Link:** `.artifacts/protocol-08/rule-index.json`, `.artifacts/protocol-08/task-context.md`, `.artifacts/protocol-08/task-personas.json`.
+
+**Automation:**
+- Script: `python3 scripts/validate_rule_index.py --input .artifacts/protocol-08/rule-index.json`
+- Script: `python3 scripts/summarize_task_context.py --output .artifacts/protocol-08/task-context.md`
+- Script: `python3 scripts/update_task_personas.py --input .artifacts/protocol-08/task-personas.json`
+- CI/CD Integration: Workflow `protocol-08-context.yml` runs nightly to confirm coverage metrics and publish persona status.
+
+**Failure Handling:**
+- **Rollback:** Re-run discovery alignment, regenerate missing rule references, and capture updated personas.  
+- **Notification:** Alert protocol owner and governance steward via Slack when coverage threshold breaches.  
+- **Waiver:** Document waiver in `.artifacts/protocol-08/gate-waivers.json` with program lead approval if persona data pending.
 
 ### Gate 2: High-Level Task Approval Gate
-- **`[STRICT]` Criteria:** High-level tasks documented with WHY, complexity, dependencies; stakeholder approval logged.
-- **Evidence:** `high-level-tasks.json`, `task-approval-log.md`
-- **Pass Threshold:** Approval status recorded and dependencies resolved.
-- **Failure Handling:** Revise tasks per feedback, re-seek approval, rerun gate.
-- **Automation:** `python scripts/validate_high_level_tasks.py --input .artifacts/protocol-08/high-level-tasks.json`
+**Type:** Execution  
+**Purpose:** Validate that high-level tasks, dependencies, and WHY context earned stakeholder approval.
+
+**Pass Criteria:**
+- **Threshold:** Approval confidence score ≥0.92 and dependency resolution rate ≥95%.  
+- **Threshold:** Stakeholder response rate ≥90% within SLA.  
+- **Boolean Check:** Approval status recorded as `approved` and all blocking dependencies cleared.  
+- **Boolean Check:** Approval log validation flag reports `pass` with zero pending signatures.  
+- **Metrics:** Approval metrics, dependency metrics, and WHY coverage metrics logged in approval report.  
+- **Evidence Link:** `.artifacts/protocol-08/high-level-tasks.json`, `.artifacts/protocol-08/task-approval-log.md`.
+
+**Automation:**
+- Script: `python3 scripts/validate_high_level_tasks.py --input .artifacts/protocol-08/high-level-tasks.json`
+- Script: `python3 scripts/check_task_dependencies.py --input .artifacts/protocol-08/high-level-tasks.json --output .artifacts/protocol-08/task-dependency-report.json`
+- Script: `python3 scripts/log_task_approvals.py --input .artifacts/protocol-08/task-approval-log.md`
+- CI/CD Integration: Config `config/protocol_gates/08.yaml` drives workflow `protocol-08-approvals.yml` that enforces approval thresholds on pull requests.
+
+**Failure Handling:**
+- **Rollback:** Return to stakeholder review, refine task WHY statements, and rerun approval automation.  
+- **Notification:** Notify product owner and PM when boolean check fails or threshold dips.  
+- **Waiver:** Log waiver rationale in `gate-waivers.json` only with steering committee sign-off.
 
 ### Gate 3: Decomposition Integrity Gate
-- **`[STRICT]` Criteria:** Subtasks include rule references, automation hooks mapped, personas assigned.
-- **Evidence:** `tasks-{feature}.md`, `task-automation-matrix.json`, `task-personas.json`
-- **Pass Threshold:** 100% subtasks linked to at least one rule and automation coverage ≥ 80% of high-level tasks.
-- **Failure Handling:** Update subtasks, adjust automation assignments, rerun gate.
-- **Automation:** `python scripts/validate_task_decomposition.py --task-file .cursor/tasks/tasks-{feature}.md`
+**Type:** Execution  
+**Purpose:** Ensure detailed tasks include rule references, automation hooks, and persona mapping.
+
+**Pass Criteria:**
+- **Threshold:** Automation coverage ≥80% of high-level tasks and rule linkage completeness ≥100%.  
+- **Threshold:** Persona assignment consistency ≥95% across subtasks.  
+- **Boolean Check:** Each subtask contains at least one rule reference and assigned persona.  
+- **Boolean Check:** Decomposition validation flag equals `pass` with no missing automation references.  
+- **Metrics:** Linkage metrics, automation metrics, and persona coverage metrics summarized in decomposition matrix.  
+- **Evidence Link:** `.cursor/tasks/tasks-{feature}.md`, `.artifacts/protocol-08/task-automation-matrix.json`, `.artifacts/protocol-08/task-personas.json`.
+
+**Automation:**
+- Script: `python3 scripts/validate_task_decomposition.py --task-file .cursor/tasks/tasks-{feature}.md`
+- Script: `python3 scripts/audit_task_automation.py --matrix .artifacts/protocol-08/task-automation-matrix.json`
+- Script: `python3 scripts/verify_task_personas.py --input .artifacts/protocol-08/task-personas.json`
+- CI/CD Integration: Decomposition workflow posts metrics to governance dashboard on merge via `protocol-08-decomposition.yml`.
+
+**Failure Handling:**
+- **Rollback:** Rebuild subtask mapping, update automation assignments, and rerun validation scripts.  
+- **Notification:** Alert automation lead when automation metric falls below target.  
+- **Waiver:** Not permitted; decomposition integrity is mandatory.
 
 ### Gate 4: Task Validation Gate
-- **`[STRICT]` Criteria:** Task validation and enrichment scripts succeed, outputs archived.
-- **Evidence:** `task-validation.json`, `task-enrichment.json`, `task-artifact-manifest.json`
-- **Pass Threshold:** Validation status `pass` and enrichment completed with ≥90% tasks enhanced.
-- **Failure Handling:** Address reported issues, rerun scripts, update manifest.
-- **Automation:** `python scripts/validate_tasks.py --task-file .cursor/tasks/tasks-{feature}.md`
+**Type:** Completion  
+**Purpose:** Confirm enriched tasks, validation outputs, and manifests prepared for downstream execution.
+
+**Pass Criteria:**
+- **Threshold:** Validation success rate ≥0.9 and enrichment coverage ≥90% of tasks.  
+- **Threshold:** Manifest checksum confidence ≥0.98 before handoff.  
+- **Boolean Check:** Task artifact manifest equals `complete` and QA sign-off recorded.  
+- **Boolean Check:** Validation summary flag reports `pass` with zero open failures.  
+- **Metrics:** Validation metrics, enrichment metrics, and manifest completeness metrics compiled in final report.  
+- **Evidence Link:** `.artifacts/protocol-08/task-validation.json`, `.artifacts/protocol-08/task-enrichment.json`, `.artifacts/protocol-08/task-artifact-manifest.json`.
+
+**Automation:**
+- Script: `python3 scripts/validate_tasks.py --task-file .cursor/tasks/tasks-{feature}.md --output .artifacts/protocol-08/task-validation.json`
+- Script: `python3 scripts/enrich_tasks.py --task-file .cursor/tasks/tasks-{feature}.md --output .artifacts/protocol-08/task-enrichment.json`
+- Script: `python3 scripts/aggregate_evidence_2.py --output .artifacts/protocol-08/task-artifact-manifest.json`
+- CI/CD Integration: Final validation workflow `protocol-08-final.yml` publishes summary to project channel with manifest checksum check.
+
+**Failure Handling:**
+- **Rollback:** Reopen decomposition, remediate failing tasks, and regenerate manifests.  
+- **Notification:** Notify QA reviewer and Protocol 09 owner when boolean check fails.  
+- **Waiver:** Waiver only allowed for enrichment coverage with CTO approval; document justification in `gate-waivers.json`.
+
+### Compliance Integration
+- **Industry Standards:** Tasks documented in CommonMark, JSON artifacts aligned with JSON Schema, and automation commands follow YAML CI/CD syntax.  
+- **Security Requirements:** Task metadata respects SOC 2 audit logging, GDPR data minimization, and least-privilege access for automation outputs.  
+- **Regulatory Compliance:** QA validation honors FTC transparency requirements and regulatory trace logs for industry-specific mandates.  
+- **Governance:** Gate thresholds sourced from `config/protocol_gates/08.yaml`, synchronized with governance registry and automation dashboards.
 
 ---
 
@@ -565,55 +635,90 @@ Before declaring protocol complete, validate:
 <!-- [Category: GUIDELINES-FORMATS] -->
 <!-- Why: Defining standards for evidence collection and quality metrics -->
 
-### 10.1 Learning and Improvement Mechanisms
+### Artifact Generation Table
 
-**`[STRICT]` Feedback Collection:** 
-All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+| Artifact Name | Metrics | Location | Evidence Link |
+|---------------|---------|----------|---------------|
+| rule-index artifact (rule-index.json) | Coverage metric ≥95%, freshness metric recorded | `.artifacts/protocol-08/rule-index.json` | Gate 1 evidence bundle |
+| task-context artifact (task-context.md) | Context completeness metric ≥0.9, narrative metric documented | `.artifacts/protocol-08/task-context.md` | Gate 1 evidence narrative |
+| task-personas artifact (task-personas.json) | Persona readiness metric ≥0.9, assignment metric tracked | `.artifacts/protocol-08/task-personas.json` | Gate 1 evidence log |
+| high-level-tasks artifact (high-level-tasks.json) | Approval metric ≥0.92, dependency metric ≥95% | `.artifacts/protocol-08/high-level-tasks.json` | Gate 2 evidence package |
+| task-approval-log artifact (task-approval-log.md) | Approval latency metric <24h, sign-off metric complete | `.artifacts/protocol-08/task-approval-log.md` | Gate 2 evidence ledger |
+| tasks artifact (tasks-{feature}.md) | Rule linkage metric 100%, persona coverage metric recorded | `.cursor/tasks/tasks-{feature}.md` | Gate 3 evidence reference |
+| task-automation-matrix artifact (task-automation-matrix.json) | Automation coverage metric ≥80%, script count metric documented | `.artifacts/protocol-08/task-automation-matrix.json` | Gate 3 evidence matrix |
+| task-validation artifact (task-validation.json) | Validation success metric ≥0.9, failure metric logged | `.artifacts/protocol-08/task-validation.json` | Gate 4 evidence report |
+| task-enrichment artifact (task-enrichment.json) | Enrichment coverage metric ≥90%, quality metric tracked | `.artifacts/protocol-08/task-enrichment.json` | Gate 4 evidence enhancement |
+| task-artifact-manifest artifact (task-artifact-manifest.json) | Manifest completeness metric 100%, checksum metric verified | `.artifacts/protocol-08/task-artifact-manifest.json` | Gate 4 evidence manifest |
 
-**`[STRICT]` Improvement Tracking:** 
-Protocol execution metrics monitored quarterly. Template evolution logged with before/after comparisons. Knowledge base updated after every 5 executions.
+### Storage Structure
 
-**`[GUIDELINE]` Knowledge Integration:** 
-Execution patterns cataloged in institutional knowledge base. Best practices documented and shared across teams. Common blockers maintained with proven resolutions.
+**Protocol Directory:** `.artifacts/protocol-08/`  
+- **Subdirectories:** `approvals/` for stakeholder sign-offs, `decomposition/` for detailed task outputs, `logs/` for automation exports.  
+- **Permissions:** Read/write for protocol executor, read-only for downstream protocols and governance auditors.  
+- **Naming Convention:** `{artifact-name}.{extension}` (e.g., `task-approval-log.md`, `task-enrichment.json`).
 
-**`[GUIDELINE]` Adaptation:** 
-Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
+### Manifest Completeness
 
-### 10.2 Generated Artifacts:
+**Manifest File:** `.artifacts/protocol-08/task-artifact-manifest.json`
 
-| Artifact | Location | Purpose | Consumer |
-|----------|----------|---------|----------|
-| `rule-index.json` | `.artifacts/protocol-08/` | Governance mapping for tasks | Protocol 21 |
-| `high-level-tasks.json` | `.artifacts/protocol-08/` | Approved high-level task list | Protocol 21 |
-| `tasks-{feature}.md` | `.cursor/tasks/` | Detailed task documentation | Protocol 21 |
-| `task-automation-matrix.json` | `.artifacts/protocol-08/` | Automation mapping | Protocol 09 |
-| `task-validation.json` | `.artifacts/protocol-08/` | Validation results | Protocol 21 |
-| `task-enrichment.json` | `.artifacts/protocol-08/` | Enriched metadata | Protocol 21 |
+**Metadata Requirements:**
+- Timestamp: ISO 8601 format (e.g., `2025-11-06T05:34:29Z`).  
+- Artifact checksums: SHA-256 hash stored for every artifact listed above.  
+- Size: File size in bytes recorded for audit.  
+- Dependencies: Upstream dependencies (Protocols 05-07 artifacts) and downstream consumers (Protocols 09, 21).
 
-### 10.3 Traceability Matrix
+**Dependency Tracking:**
+- Input: Protocol 07 handoff (`task-generation-input.json`), governance rule inventory, stakeholder persona catalog.  
+- Output: All artifacts listed in table plus manifest.  
+- Transformations: Context preparation → High-level approval → Decomposition → Validation and enrichment → Manifest aggregation.
 
-**Upstream Dependencies:**
-- Input artifacts inherit from: [list predecessor protocols]
-- Configuration dependencies: [list config files or environment requirements]
-- External dependencies: [list third-party systems or APIs]
+**Coverage:** 100% of required artifacts documented with checksums and dependency references.
 
-**Downstream Consumers:**
-- Output artifacts consumed by: [list successor protocols]
-- Shared artifacts: [list artifacts used by multiple protocols]
-- Archive requirements: [list retention policies]
+### Traceability
 
-**Verification Chain:**
-- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
-- Verification procedure: [describe validation process]
-- Audit trail: All artifact modifications logged in protocol execution log
+**Input Sources:**
+- **Input From:** Protocol 07 `task-generation-input.json` – Architecture-aligned task seed data.  
+- **Input From:** Protocol 06 `functional-requirements.md` – Requirement reference for task WHY mapping.  
+- **Input From:** Governance rule index – Compliance constraints and automation rules.
 
-### 10.4 Quality Metrics:
+**Output Artifacts:**
+- **Output To:** `tasks-{feature}.md` – Execution package for Protocols 09 and 21.  
+- **Output To:** `task-automation-matrix.json` – Automation blueprint for environment setup and execution.  
+- **Output To:** `task-artifact-manifest.json` – Comprehensive inventory for audit and archival.  
+- **Output To:** `task-validation.json` – Validation results consumed by QA and compliance reviewers.
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
-| Evidence Completeness | 100% | [TBD] | ⏳ |
-| Integration Integrity | 100% | [TBD] | ⏳ |
+**Transformation Steps:**
+1. Rule index ingestion → Context summary creation → Persona alignment.  
+2. Context outputs → High-level task drafting → Stakeholder approval capture.  
+3. Approved tasks → Decomposition workflow → Detailed task files and automation matrix.  
+4. Detailed tasks → Validation suite → Validation and enrichment reports.  
+5. Validated outputs → Manifest generator → Final manifest and archival bundle.
+
+**Audit Trail:**
+- Manifest logs timestamps, checksums, and verified_by fields for every artifact.  
+- Automation scripts emit execution logs stored in `.artifacts/protocol-08/logs/`.  
+- Approval log references stakeholder signatures for governance traceability.  
+- All evidence references cross-linked inside gate reports.
+
+### Archival Strategy
+
+**Compression:**
+- Compress artifacts into `.artifacts/protocol-08/evidence-bundle.zip` after completion using ZIP standard compression level.
+
+**Retention Policy:**
+- Active artifacts retained for 120 days post-completion.  
+- Archived bundles retained for 3 years after project closure.  
+- Cleanup automation `scripts/cleanup_artifacts.py` enforces retention quarterly.
+
+**Retrieval Procedures:**
+- Active artifacts accessed directly from `.artifacts/protocol-08/` with read-only enforcement.  
+- Archived bundles retrieved with `unzip .artifacts/protocol-08/evidence-bundle.zip` and verified against manifest checksums.  
+- Recovery instructions stored in `decomposition/recovery-playbook.md`.
+
+**Cleanup Process:**
+- Quarterly cleanup logs actions to `.artifacts/protocol-08/cleanup-log.json`.  
+- Critical artifacts flagged for extended retention require governance lead approval.  
+- Manual overrides documented with timestamp and reviewer signature.
 
 ---
 

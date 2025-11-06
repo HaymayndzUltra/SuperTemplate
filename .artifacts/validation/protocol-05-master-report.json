@@ -1,8 +1,8 @@
 {
   "validator": "master_validator",
   "protocol_id": "05",
-  "validation_timestamp": "2025-11-05T18:37:49.637886Z",
-  "overall_score": 0.8100119047619048,
+  "validation_timestamp": "2025-11-06T05:29:52.689221Z",
+  "overall_score": 0.8637619047619047,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
@@ -26,16 +26,16 @@
       "score": 0.7150000000000001
     },
     "protocol_communication": {
-      "status": "fail",
-      "score": 0.7125
+      "status": "pass",
+      "score": 0.9625
     },
     "protocol_evidence": {
       "status": "warning",
       "score": 0.8125
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.7124999999999999
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reasoning": {
       "status": "warning",
@@ -55,11 +55,7 @@
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_05.py, scripts/run_protocol_05_gates.py, scripts/validate_prerequisites_05.py, scripts/validate_principles.py, scripts/validate_repo_mapping.py, scripts/validate_rule_metadata.py",
-    "Missing user interaction prompts: clarification, feedback",
-    "Limited progress terminology in communications",
     "Traceability gaps: inputs, outputs",
-    "Checklist lacks sufficient coverage of required items",
-    "Sign-off guidance missing: approvals, reviewers",
     "Reasoning patterns not explicitly named",
     "Self-awareness statements missing",
     "Roadmap or future direction not documented"

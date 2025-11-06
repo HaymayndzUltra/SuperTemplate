@@ -1,53 +1,49 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "22",
-  "validation_timestamp": "2025-11-05T18:37:50.125094Z",
-  "overall_score": 0.675,
-  "validation_status": "fail",
-  "issues": [
-    "Reasoning patterns not explicitly named",
-    "Decision points insufficiently described",
-    "Self-awareness statements missing"
-  ],
+  "validation_timestamp": "2025-11-06T05:31:15.441458Z",
+  "overall_score": 1.0,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [],
   "reasoning_patterns": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Reasoning patterns not explicitly named"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "matches": [],
-      "pattern_terms": false,
+      "matches": [
+        "pattern",
+        "heuristic",
+        "strategy"
+      ],
+      "pattern_terms": true,
       "explanations": true,
       "improvement": true,
       "example_references": true
     }
   },
   "decision_trees": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Decision points insufficiently described"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "decision_points": false,
+      "decision_points": true,
       "criteria": true,
-      "outcomes": false,
+      "outcomes": true,
       "logging": true
     }
   },
   "problem_solving_logic": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
-      "problem_identification": false,
+      "problem_identification": true,
       "root_cause": true,
-      "solutions": false,
+      "solutions": true,
       "validation": true
     }
   },
@@ -64,14 +60,12 @@
     }
   },
   "meta_cognition": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Self-awareness statements missing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "awareness": false,
+      "awareness": true,
       "monitoring": true,
       "correction": true,
       "improvement": true

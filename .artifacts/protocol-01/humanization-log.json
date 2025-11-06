@@ -1,0 +1,32 @@
+{
+  "target_tone": "casual",
+  "required_contraction_count": 3,
+  "planned_uncertainty_line": "If we're talking health-tech, I'd want to clarify HIPAA considerations early—assuming that's relevant.",
+  "forbidden_phrases_checklist": {
+    "I am excited to": false,
+    "I am confident I can": false,
+    "I would be delighted": false,
+    "I have extensive experience": false,
+    "High-quality work guaranteed": false,
+    "Looking forward to working with you": false
+  },
+  "contractions_used": 5,
+  "uncertainty_statements": 2,
+  "direct_questions": 1,
+  "word_count": 227,
+  "workflow_demo_triggered": true,
+  "workflow_demo_reason": "no_prior_experience_proof + integration_context",
+  "inserted_at": "Phase 4.3",
+  "humanization_adjustments": {
+    "cadence_breaks": 2,
+    "short_sentences_added": true
+  },
+  "structure_compliance": {
+    "opening_observation": true,
+    "interpretation_bullets": true,
+    "approach_mini_scenario": true,
+    "predictive_system_evidence": true,
+    "proof_via_system": true,
+    "next_step_cta": true
+  }
+}

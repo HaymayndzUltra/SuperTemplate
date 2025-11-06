@@ -1,60 +1,85 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "01",
-  "validation_timestamp": "2025-11-05T18:37:49.504926Z",
-  "overall_score": 0.0,
-  "validation_status": "fail",
-  "issues": [
-    "HANDOFF CHECKLIST section missing",
-    "Verification steps not documented",
-    "Stakeholder sign-off section missing",
-    "Documentation requirements not described",
-    "Next protocol alignment missing"
-  ],
+  "validation_timestamp": "2025-11-06T05:29:52.509809Z",
+  "overall_score": 1.0,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [],
   "checklist_completeness": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "HANDOFF CHECKLIST section missing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "item_count": 16,
+      "items": true,
+      "categories": true,
+      "dependencies": true,
+      "status_markers": true
+    }
   },
   "verification_procedures": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Verification steps not documented"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "term_counts": {
+        "validate": 3,
+        "ensure": 5,
+        "confirm": 10,
+        "verify": 2,
+        "gate": 12
+      },
+      "verification_terms": true,
+      "qa_involvement": true,
+      "automation_reference": true,
+      "evidence_reference": true
+    }
   },
   "stakeholder_signoff": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Stakeholder sign-off section missing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "approvals": true,
+      "reviewers": true,
+      "evidence_reference": true,
+      "confirmation": true
+    }
   },
   "documentation_requirements": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Documentation requirements not described"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "terms": [
+        "log",
+        "brief",
+        "notes",
+        "transcript",
+        "manifest",
+        "report"
+      ],
+      "doc_terms": true,
+      "storage": true,
+      "reviewer_docs": true,
+      "format": true
+    }
   },
   "next_protocol_alignment": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Next protocol alignment missing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "ready_statements": true,
+      "next_commands": true,
+      "dependencies": true,
+      "continuation": true
+    }
   }
 }

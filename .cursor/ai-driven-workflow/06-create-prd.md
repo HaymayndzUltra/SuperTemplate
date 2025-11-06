@@ -45,8 +45,34 @@ Do not write production code or modify repositories; deliver documentation only.
 <!-- [Category: EXECUTION-BASIC] -->
 <!-- Why: Simple workflow steps for feature intent and architectural mapping -->
 
+**Reasoning Pattern:** Align-before-elaborate heuristic — systematically validate feature intent and architectural placement before elaborating requirements. This prevents wasted effort on requirements that don't align with architectural constraints.
+
+**Pattern Improvement:** Track alignment failures to identify common gaps between feature intent and architectural constraints. Refine layer detection logic based on execution feedback. Iteratively improve architectural mapping templates.
+
+**Example Scenario:** When confirming feature intent, determine if effort is net-new feature or modification. If intent unclear, halt and request stakeholder clarification. Then map feature to architectural layer (frontend, backend, data pipeline) using discovery inputs and architecture principles. Therefore, requirements elaboration proceeds with validated architectural context, preventing downstream rework.
+
+**Strategy Rationale:** Because PRD serves as implementation contract between product and engineering, ensuring alignment with architectural constraints before requirements elaboration prevents engineering conflicts. This systematic alignment reduces PRD rework and accelerates implementation.
+
+**Meta-Cognitive Check:** Before confirming feature intent, assess your own limitations:
+- **Awareness:** Recognize that feature intent may be ambiguous or conflicting, requiring stakeholder clarification
+- **Limitations:** Understand that architectural layer detection may require technical lead validation if constraints are unclear
+- **Capacity:** Acknowledge that context alignment may require multiple stakeholder consultations, delaying requirements elaboration
+- **Correction:** Be prepared to escalate unclear intent to product owner or technical lead for resolution
+
+**Decision Tree:** When aligning context:
+- **IF** feature intent is clear (net-new or modification) → Proceed to architectural mapping
+- **ELSE IF** feature intent is ambiguous → Halt and request stakeholder clarification, document in `prd-context.json`
+- **IF** architectural layer detected and technical lead approved → Proceed to requirements elaboration
+- **IF** layer detection unclear → Document constraints and request technical lead validation
+- **THEN** Capture stakeholder goals aligned with project brief
+
 1. **`[MUST]` Confirm Feature Intent:**
    * **Action:** Determine whether the effort is a net-new feature or modification; capture rationale in `prd-context.json`.
+   * **Reasoning:** Apply align-before-elaborate pattern — validate feature intent before proceeding to requirements elaboration. Use decision tree above to determine next steps based on intent clarity.
+   * **Problem-Solving:** If intent is unclear:
+  1. **Root Cause:** Identify why intent is ambiguous (stakeholder communication gap, incomplete discovery, or scope change)
+  2. **Solution:** Document ambiguity in `prd-context.json` and request clarification from product owner. If clarification delayed, mark as `REQUIRES_INPUT` and proceed with architecture mapping tentatively
+  3. **Validation:** Verify stakeholder confirmation recorded in JSON file before proceeding
    * **Communication:** 
      > "[MASTER RAY™ | PHASE 1 START] - Validating feature intent and architectural placement."
    * **Halt condition:** Await stakeholder clarification if intent unclear.
@@ -55,6 +81,12 @@ Do not write production code or modify repositories; deliver documentation only.
 
 2. **`[MUST]` Map to Architectural Layer:**
    * **Action:** Use discovery inputs and architecture principles to identify primary implementation layer (e.g., frontend, backend, data pipeline) and announce detected layer.
+   * **Reasoning:** Use architectural layer detection pattern — systematically map feature to implementation layer using discovery inputs and architecture principles. This ensures requirements elaboration aligns with architectural constraints.
+   * **Decision Criteria:** When mapping to layer:
+  - **IF** feature primarily affects user interface → Map to frontend layer
+  - **ELSE IF** feature primarily affects business logic/APIs → Map to backend layer
+  - **IF** feature primarily affects data processing → Map to data pipeline layer
+  - **IF** feature spans multiple layers → Document primary layer and secondary dependencies
    * **Communication:** 
      > "Detected primary implementation layer: [layer]. Constraints: [communication, technology, governance]."
    * **Evidence:** `.artifacts/protocol-06/layer-detection.md`
@@ -62,6 +94,7 @@ Do not write production code or modify repositories; deliver documentation only.
 
 3. **`[GUIDELINE]` Capture Stakeholder Goals:**
    * **Action:** Summarize business goals, KPIs, and success metrics in `stakeholder-goals.md` for quick reference.
+   * **Reasoning:** Apply goals distillation pattern — extract key stakeholder goals from discovery inputs into concise reference document. This enables quick context retrieval during requirements elaboration.
    * **Evidence:** `.artifacts/protocol-06/stakeholder-goals.md`
    * **Validation:** Goals aligned with project brief
 
@@ -69,8 +102,26 @@ Do not write production code or modify repositories; deliver documentation only.
 <!-- [Category: EXECUTION-BASIC] -->
 <!-- Why: Straightforward requirements gathering and documentation -->
 
+**Reasoning Pattern:** Elaborate-with-validation strategy — systematically gather user narratives, functional requirements, and technical specs while validating completeness and alignment with architectural constraints. This ensures implementation-ready PRD that engineering can execute without ambiguity.
+
+**Example Scenario:** When gathering user narratives, elicit user stories aligned with detected architectural layer. If frontend layer detected, focus on UI/UX stories; if backend layer, focus on API and business logic stories. Then define functional requirements with acceptance criteria and specify technical requirements with API contracts. Therefore, PRD contains complete, actionable requirements aligned with architecture.
+
+**Strategy Rationale:** Because PRD serves as implementation contract, ensuring requirements are complete and aligned with architecture prevents engineering rework. This systematic elaboration ensures all requirements are actionable and traceable to user needs.
+
+**Decision Tree:** When elaborating requirements:
+- **IF** user stories gathered and personas covered → Proceed to functional requirements
+- **ELSE IF** user stories incomplete → Request additional user input or document assumptions
+- **IF** functional requirements defined with acceptance criteria → Proceed to technical requirements
+- **IF** technical requirements specified with API contracts → Proceed to risk planning
+- **THEN** Validate all requirements align with architectural layer and stakeholder goals
+
 1. **`[MUST]` Gather User Narratives:**
    * **Action:** Elicit user stories and personas aligned with detected layer; store in `user-stories.md`.
+   * **Reasoning:** Apply user-centric elaboration pattern — gather user stories aligned with architectural layer. This ensures requirements reflect user needs while respecting architectural constraints.
+   * **Problem-Solving:** If user stories incomplete:
+  1. **Root Cause:** Identify why stories are incomplete (user unavailability, persona gaps, or layer misalignment)
+  2. **Solution:** Document incomplete stories with assumptions, request user interviews, or refine personas based on discovery inputs
+  3. **Validation:** Verify user stories cover all identified personas before proceeding
    * **Communication:** 
      > "[PHASE 2] - Capturing user stories and personas for PRD foundation."
    * **Evidence:** `.artifacts/protocol-06/user-stories.md`
@@ -78,11 +129,21 @@ Do not write production code or modify repositories; deliver documentation only.
 
 2. **`[MUST]` Define Functional Requirements:**
    * **Action:** Detail feature behavior, workflows, acceptance criteria, and non-functional requirements in `functional-requirements.md`.
+   * **Reasoning:** Use systematic functional specification pattern — detail feature behavior with acceptance criteria to ensure requirements are testable and complete. This enables validation that implementation meets requirements.
+   * **Problem-Solving:** If functional requirements ambiguous:
+  1. **Root Cause:** Identify why requirements are ambiguous (behavior undefined, acceptance criteria missing, or workflow incomplete)
+  2. **Solution:** Elaborate ambiguous requirements with examples, refine acceptance criteria with measurable outcomes, or request stakeholder clarification
+  3. **Validation:** Verify all features have acceptance criteria defined before proceeding
    * **Evidence:** `.artifacts/protocol-06/functional-requirements.md`
    * **Validation:** All features have acceptance criteria defined
 
 3. **`[MUST]` Specify Technical Requirements:**
    * **Action:** Document API contracts, data models, integration points, security considerations, and system interactions in `technical-specs.md`.
+   * **Reasoning:** Apply technical specification pattern — document technical interfaces and constraints to guide engineering implementation. Use root cause analysis to ensure technical requirements address underlying architectural constraints.
+   * **Problem-Solving:** When specifying technical requirements:
+  1. **Root Cause:** Identify underlying technical constraints (API limitations, data model constraints, or integration dependencies)
+  2. **Solution:** Document technical requirements that address root constraints (e.g., "API must support pagination due to high data volume" addresses performance constraint)
+  3. **Validation:** Verify technical requirements reviewed by architecture team before proceeding
    * **Communication:** 
      > "Documenting technical interfaces and constraints to guide engineering."
    * **Evidence:** `.artifacts/protocol-06/technical-specs.md`
@@ -90,6 +151,8 @@ Do not write production code or modify repositories; deliver documentation only.
 
 4. **`[GUIDELINE]` Populate Decision Matrix:**
    * **Action:** Maintain architectural decision matrix linking need types to implementation targets.
+   * **Reasoning:** Use decision matrix pattern — systematically link user needs to implementation targets with constraints and notes. This enables traceability between requirements and implementation decisions.
+   * **Evidence:** `.artifacts/protocol-06/decision-matrix.md`
    
    **Example (DO):**
    ```markdown
@@ -102,8 +165,26 @@ Do not write production code or modify repositories; deliver documentation only.
 <!-- [Category: EXECUTION-BASIC] -->
 <!-- Why: Simple risk assessment and validation planning steps -->
 
+**Reasoning Pattern:** Plan-before-assemble heuristic — systematically consolidate risks, define validation criteria, and align timeline before assembling PRD. This ensures PRD includes complete risk mitigation and validation planning.
+
+**Example Scenario:** When consolidating risks, aggregate risks from discovery into risk log and include new risks identified during requirements elaboration. Then define acceptance tests and validation criteria that are measurable and achievable. Finally, align timeline with business objectives. Therefore, PRD assembly includes complete risk and validation planning, enabling smooth implementation.
+
+**Strategy Rationale:** Because PRD serves as implementation contract, including risk mitigation and validation planning ensures implementation addresses risks and validates success. This systematic planning prevents implementation surprises and ensures validation success.
+
+**Decision Tree:** When planning risks and validation:
+- **IF** risks consolidated with mitigation plans → Proceed to validation criteria definition
+- **ELSE IF** high-severity risks lack mitigation → Document mitigation gaps and request stakeholder input
+- **IF** validation criteria defined and measurable → Proceed to timeline alignment
+- **IF** timeline aligns with business objectives → Proceed to PRD assembly
+- **THEN** Verify all high-severity risks have mitigation plans
+
 1. **`[MUST]` Consolidate Risks and Assumptions:**
    * **Action:** Aggregate risks, assumptions, and mitigations from discovery into `risk-assumption-log.md`; include new items identified during elaboration.
+   * **Reasoning:** Apply risk consolidation pattern — systematically aggregate risks from discovery and requirements elaboration into unified risk log. Use root cause analysis to ensure mitigation strategies address underlying causes.
+   * **Problem-Solving:** When consolidating risks:
+  1. **Root Cause:** Identify underlying cause of each risk (e.g., "API rate limiting risk" → Root cause: "Third-party API has strict rate limits")
+  2. **Solution:** Develop mitigation that addresses root cause (e.g., "Implement caching layer to reduce API calls")
+  3. **Validation:** Verify all high-severity risks have mitigation plans before proceeding
    * **Communication:** 
      > "[PHASE 3] - Updating risk and assumption log for PRD readiness."
    * **Evidence:** `.artifacts/protocol-06/risk-assumption-log.md`
@@ -111,11 +192,17 @@ Do not write production code or modify repositories; deliver documentation only.
 
 2. **`[MUST]` Define Acceptance & Validation Criteria:**
    * **Action:** Establish measurable acceptance tests, KPIs, and validation steps in `validation-plan.md`.
+   * **Reasoning:** Use measurable validation pattern — establish acceptance tests and KPIs that are measurable and achievable. This enables validation that implementation meets requirements.
+   * **Problem-Solving:** If validation criteria ambiguous:
+  1. **Root Cause:** Identify why criteria are ambiguous (KPIs undefined, acceptance tests not measurable, or validation steps unclear)
+  2. **Solution:** Define measurable KPIs (e.g., "API response time < 200ms"), create testable acceptance criteria (e.g., "User can complete checkout in < 2 minutes"), and specify validation steps
+  3. **Validation:** Verify validation criteria are measurable and achievable before proceeding
    * **Evidence:** `.artifacts/protocol-06/validation-plan.md`
    * **Validation:** Validation criteria are measurable and achievable
 
 3. **`[GUIDELINE]` Align Timeline & Release Strategy:**
    * **Action:** Outline milestones, release phases, and rollout strategy referencing `timeline-discussion.md`.
+   * **Reasoning:** Apply timeline alignment pattern — align PRD timeline with business objectives and release strategy. This ensures PRD supports business goals and enables smooth rollout.
    * **Evidence:** `.artifacts/protocol-06/timeline-discussion.md`
    * **Validation:** Timeline aligns with business objectives
 
@@ -123,8 +210,27 @@ Do not write production code or modify repositories; deliver documentation only.
 <!-- [Category: EXECUTION-BASIC] -->
 <!-- Why: Straightforward document assembly and automation execution -->
 
+**Reasoning Pattern:** Assemble-with-validation strategy — systematically compile PRD sections, generate assets, and validate quality before finalization. This ensures PRD is complete, traceable, and implementation-ready.
+
+**Example Scenario:** When assembling PRD, compile context, requirements, risks, and validation sections into PRD document. Then run automation scripts to generate supporting artifacts (user stories, schemas, APIs). Finally, validate PRD quality with automation script. If validation fails, remediate and rerun. Therefore, PRD is complete, validated, and ready for engineering execution.
+
+**Strategy Rationale:** Because PRD serves as implementation contract, ensuring PRD is complete and validated before handoff prevents engineering rework. This systematic assembly and validation ensures PRD quality and implementation readiness.
+
+**Decision Tree:** When assembling PRD:
+- **IF** all mandatory sections populated → Proceed to asset generation
+- **ELSE IF** mandatory sections incomplete → Halt and request completion or document gaps
+- **IF** assets generated successfully → Proceed to PRD validation
+- **IF** PRD validation passes (score ≥ 85/100) → Proceed to traceability mapping
+- **ELSE IF** validation fails → Remediate issues and rerun validation
+- **THEN** Verify PRD contains all required sections and passes validation
+
 1. **`[MUST]` Assemble PRD Document:**
    * **Action:** Compile context, requirements, risks, and validation sections into `prd-{feature}.md` following standard template.
+   * **Reasoning:** Apply systematic assembly pattern — compile all PRD sections from validated inputs into unified document. Use decision tree above to determine when to proceed based on section completeness.
+   * **Problem-Solving:** If mandatory sections incomplete:
+  1. **Root Cause:** Identify why sections are incomplete (content missing, stakeholder input delayed, or template gaps)
+  2. **Solution:** Document incomplete sections with placeholder text and follow-up plan, or request stakeholder completion before proceeding
+  3. **Validation:** Verify PRD contains all required sections before proceeding
    * **Communication:** 
      > "[PHASE 4] - Assembling implementation-ready PRD."
    * **Halt condition:** Pause if any mandatory section lacks confirmed content.
@@ -133,6 +239,11 @@ Do not write production code or modify repositories; deliver documentation only.
 
 2. **`[MUST]` Generate PRD Assets:**
    * **Action:** Run `python scripts/generate_prd_assets.py --prd .artifacts/protocol-06/prd-{feature}.md --output .artifacts/protocol-06/prd-assets/` to create supporting artifacts (user stories, schemas, APIs).
+   * **Reasoning:** Use automation pattern — generate supporting artifacts from PRD to enable engineering implementation. This automation reduces manual effort and ensures consistency.
+   * **Problem-Solving:** If asset generation fails:
+  1. **Root Cause:** Identify why generation failed (script error, PRD format issue, or missing dependencies)
+  2. **Solution:** Fix script errors, correct PRD format, or install missing dependencies, then rerun generation
+  3. **Validation:** Verify all asset files generated successfully before proceeding
    * **Communication:** 
      > "[RAY AUTOMATION] PRD assets generated and archived."
    * **Evidence:** `.artifacts/protocol-06/prd-assets/`
@@ -140,6 +251,11 @@ Do not write production code or modify repositories; deliver documentation only.
 
 3. **`[MUST]` Validate PRD Quality:**
    * **Action:** Execute `python scripts/validate_prd_gate.py --prd .artifacts/protocol-06/prd-{feature}.md --output .artifacts/protocol-06/prd-validation.json` ensuring completeness and alignment.
+   * **Reasoning:** Apply validation-before-handoff pattern — validate PRD quality before proceeding to handoff. Use decision tree above to determine when to proceed based on validation results.
+   * **Problem-Solving:** If validation fails:
+  1. **Root Cause:** Identify why validation failed (completeness gaps, alignment issues, or quality threshold not met)
+  2. **Solution:** Remediate validation failures (complete missing sections, fix alignment issues, or improve quality), then rerun validation
+  3. **Validation:** Verify PRD validation score ≥ 85/100 before proceeding
    * **Communication:** 
      > "PRD validation status: {status} - Score: {score}/100."
    * **Evidence:** `.artifacts/protocol-06/prd-validation.json`
@@ -147,6 +263,7 @@ Do not write production code or modify repositories; deliver documentation only.
 
 4. **`[GUIDELINE]` Record Traceability:**
    * **Action:** Map PRD sections to source discovery artifacts in `prd-traceability.json`.
+   * **Reasoning:** Use traceability pattern — document source references for all PRD content to enable auditability and future updates. This ensures PRD remains synchronized with discovery evidence.
    * **Evidence:** `.artifacts/protocol-06/prd-traceability.json`
    * **Validation:** All PRD content traceable to source artifacts
 
@@ -291,28 +408,66 @@ Maintain lessons learned with structure:
 
 ## 6. QUALITY GATES
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Setting validation standards and criteria -->
 
-### Gate 1: Context Alignment Gate
-- **`[STRICT]` Criteria:** Feature intent confirmed, layer detection approved, stakeholder goals documented.
-- **Evidence:** `prd-context.json`, `layer-detection.md`, `stakeholder-goals.md`
-- **Pass Threshold:** Stakeholder confirmation recorded; detected layer accuracy acknowledged.
-- **Failure Handling:** Re-engage stakeholders, update documents, rerun gate.
-- **Automation:** `python scripts/validate_prd_context.py --input .artifacts/protocol-06/prd-context.json`
+### Gate 1: Context Alignment
+**Type:** Prerequisite  
+**Purpose:** Verify feature intent, architectural layer detection, and stakeholder goals before drafting detailed requirements.  
+**Pass Criteria:**
+- **Threshold:** Context alignment score ≥0.94; stakeholder alignment metric ≥90%.  
+- **Boolean Check:** `stakeholder-goals.md` front matter `confirmation: true`.  
+- **Metrics:** `prd-context.json` logs intent coverage metric, `layer-detection.md` records detection accuracy metric.  
+- **Evidence Link:** `.artifacts/protocol-06/prd-context.json`, `.artifacts/protocol-06/layer-detection.md`, `.artifacts/protocol-06/stakeholder-goals.md`.  
+**Automation:**
+- Script: `python3 scripts/validate_prd_context.py --input .artifacts/protocol-06/prd-context.json --output .artifacts/protocol-06/context-validation.json`.  
+- Script: `python3 scripts/validate_prerequisites_1.py --log .artifacts/protocol-06/prerequisites-log.json`.  
+- CI Integration: Context validation stage runs via `real-validation-pipeline.yml` and posts metrics to validation summary.  
+- Config: `config/protocol_gates/06.yaml` defines context score thresholds and stakeholder confirmation requirements.  
+**Failure Handling:**
+- **Rollback:** Re-engage stakeholders, update context artifacts, rerun validation scripts.  
+- **Notification:** Alert product owner if context alignment score <0.94.  
+- **Waiver:** Documented in `.artifacts/protocol-06/gate-waivers.json` with head of product approval when timeline-critical.
 
-### Gate 2: Requirements Completeness Gate
-- **`[STRICT]` Criteria:** User stories, functional requirements, technical specs completed with acceptance criteria.
-- **Evidence:** `user-stories.md`, `functional-requirements.md`, `technical-specs.md`
-- **Pass Threshold:** Requirements coverage ≥ 95% and traceability established.
-- **Failure Handling:** Address gaps, update documents, rerun validation.
-- **Automation:** `python scripts/validate_prd_requirements.py --dir .artifacts/protocol-06/`
+### Gate 2: Requirements Completeness
+**Type:** Execution  
+**Purpose:** Ensure requirements artifacts are comprehensive, traceable, and acceptance-ready.  
+**Pass Criteria:**
+- **Threshold:** Requirements coverage metric ≥95%; traceability completeness metric ≥0.92.  
+- **Boolean Check:** `functional-requirements.md` metadata `status: complete`.  
+- **Metrics:** `requirements-validation.json` records story coverage metric, acceptance criteria metric, dependency trace metric.  
+- **Evidence Link:** `.artifacts/protocol-06/user-stories.md`, `.artifacts/protocol-06/functional-requirements.md`, `.artifacts/protocol-06/technical-specs.md`.  
+**Automation:**
+- Script: `python3 scripts/validate_prd_requirements.py --dir .artifacts/protocol-06/ --output .artifacts/protocol-06/requirements-validation.json`.  
+- Script: `python3 scripts/traceability_matrix.py --input .artifacts/protocol-06/functional-requirements.md --output .artifacts/protocol-06/prd-traceability.json`.  
+- CI Integration: Requirements validation job runs on `ubuntu-latest`, reporting metrics to `.artifacts/validation/protocol_quality_gates-summary.json`.  
+- Config: `config/protocol_gates/06.yaml` captures coverage and traceability thresholds.  
+**Failure Handling:**
+- **Rollback:** Address requirement gaps, expand acceptance criteria, regenerate validation report before proceeding.  
+- **Notification:** Notify engineering lead when coverage metric below threshold or traceability gaps detected.  
+- **Waiver:** Not permitted; completeness mandatory.
 
-### Gate 3: Validation Readiness Gate
-- **`[STRICT]` Criteria:** Risk log updated, validation plan defined, PRD assets generated and validated.
-- **Evidence:** `risk-assumption-log.md`, `validation-plan.md`, `prd-validation.json`
-- **Pass Threshold:** PRD validation score ≥ 85/100.
-- **Failure Handling:** Remediate findings, rerun automation, capture waivers if necessary.
-- **Automation:** `python scripts/validate_prd_gate.py --prd .artifacts/protocol-06/prd-{feature}.md --output .artifacts/protocol-06/prd-validation.json`
+### Gate 3: Validation Readiness
+**Type:** Completion  
+**Purpose:** Confirm risks, validation plan, and PRD assets meet readiness standards for downstream design and execution.  
+**Pass Criteria:**
+- **Threshold:** PRD validation score ≥0.88; risk mitigation coverage metric ≥90%; validation plan completeness metric ≥95%.  
+- **Boolean Check:** `prd-validation.json` field `status: pass`.  
+- **Metrics:** `prd-validation.json` captures scenario pass rate metric, risk closure metric; `validation-plan.md` includes test coverage metric.  
+- **Evidence Link:** `.artifacts/protocol-06/risk-assumption-log.md`, `.artifacts/protocol-06/validation-plan.md`, `.artifacts/protocol-06/prd-validation.json`.  
+**Automation:**
+- Script: `python3 scripts/validate_prd_gate.py --prd .artifacts/protocol-06/prd-{feature}.md --output .artifacts/protocol-06/prd-validation.json`.  
+- Script: `python3 scripts/aggregate_evidence_1.py --output .artifacts/protocol-06/ --protocol-id 06`.  
+- CI Integration: Validation readiness stage integrated with pipeline to publish scores to governance dashboard.  
+- Config: `config/protocol_gates/06.yaml` defines validation score thresholds and mitigation expectations.  
+**Failure Handling:**
+- **Rollback:** Update risk mitigations, expand validation scenarios, rerun automation until thresholds met.  
+- **Notification:** Escalate to product and QA leads if validation score <0.88.  
+- **Waiver:** Only allowed for pilot releases with CTO and QA signatures; log in `gate-waivers.json` with mitigation plan.
+
+### Compliance Integration
+- **Industry Standards:** CommonMark Markdown and JSON Schema for PRD artifacts, YAML for configuration descriptors.  
+- **Security Requirements:** SOC2-aligned storage of PRD assets, GDPR-compliant handling of user data references, encrypted archives for validation logs.  
+- **Regulatory Compliance:** FTC-aligned feature claims, ISO 9001 retention for validation evidence, accessibility compliance tracking via validation-plan.md.  
+- **Governance:** Gate criteria driven by `config/protocol_gates/06.yaml`; automation telemetry stored in `.artifacts/validation/protocol_quality_gates-summary.json` and protocol governance dashboards.
 
 ---
 
@@ -500,57 +655,91 @@ Before declaring protocol complete, validate:
 
 ## 10. EVIDENCE SUMMARY
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Defining standards for evidence collection and quality metrics -->
 
-### 10.1 Learning and Improvement Mechanisms
+### 10.1 Artifact Generation Table
 
-**`[STRICT]` Feedback Collection:** 
-All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+| Artifact Name | Metrics | Location | Evidence Link |
+|---------------|---------|----------|---------------|
+| prd-context.json | Context alignment metric ≥0.94, stakeholder alignment ≥90% | `.artifacts/protocol-06/prd-context.json` | Gate 1 context alignment |
+| layer-detection.md | Detection accuracy metric ≥0.9, coverage metric documented | `.artifacts/protocol-06/layer-detection.md` | Gate 1 context alignment |
+| stakeholder-goals.md | Stakeholder confirmation metric = true, goal coverage metric ≥95% | `.artifacts/protocol-06/stakeholder-goals.md` | Gate 1 context alignment |
+| user-stories.md | Story coverage metric ≥95%, persona coverage metric recorded | `.artifacts/protocol-06/user-stories.md` | Gate 2 requirements completeness |
+| functional-requirements.md | Acceptance criteria metric ≥95%, traceability metric ≥0.92 | `.artifacts/protocol-06/functional-requirements.md` | Gate 2 requirements completeness |
+| technical-specs.md | Interface completeness metric ≥0.9, dependency metric documented | `.artifacts/protocol-06/technical-specs.md` | Gate 2 requirements completeness |
+| prd-validation.json | Validation score ≥0.88, risk mitigation metric ≥90% | `.artifacts/protocol-06/prd-validation.json` | Gate 3 validation readiness |
+| validation-plan.md | Test coverage metric ≥95%, regression readiness metric recorded | `.artifacts/protocol-06/validation-plan.md` | Gate 3 validation readiness |
+| evidence-manifest.json | Artifact count metric = 100%, checksum verification metric = pass | `.artifacts/protocol-06/evidence-manifest.json` | Aggregated evidence validator |
 
-**`[STRICT]` Improvement Tracking:** 
-Protocol execution metrics monitored quarterly. Template evolution logged with before/after comparisons. Knowledge base updated after every 5 executions.
+### 10.2 Storage Structure
 
-**`[GUIDELINE]` Knowledge Integration:** 
-Execution patterns cataloged in institutional knowledge base. Best practices documented and shared across teams. Common blockers maintained with proven resolutions.
+**Protocol Directory:** `.artifacts/protocol-06/`  
+- **Subdirectories:** `prd-assets/`, `logs/`, `approvals/`, optional `knowledge-base/`.  
+- **Permissions:** Read/write for product owner and protocol executor; read-only for downstream protocols (07, 08) and governance reviewers.  
+- **Naming Convention:** `{artifact-name}.{extension}` (e.g., `risk-assumption-log.md`, `requirements-validation.json`).
 
-**`[GUIDELINE]` Adaptation:** 
-Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
+### 10.3 Manifest Completeness
 
-### 10.2 Generated Artifacts:
+**Manifest File:** `.artifacts/protocol-06/evidence-manifest.json`
 
-| Artifact | Location | Purpose | Consumer |
-|----------|----------|---------|----------|
-| `prd-context.json` | `.artifacts/protocol-06/` | Intent and layer alignment | Protocol 06 |
-| `user-stories.md` | `.artifacts/protocol-06/` | Persona narratives | Protocol 02 |
-| `functional-requirements.md` | `.artifacts/protocol-06/` | Behavioral specification | Protocols 02 & 06 |
-| `technical-specs.md` | `.artifacts/protocol-06/` | API/data details | Protocol 06 |
-| `prd-{feature}.md` | `.artifacts/protocol-06/` | Implementation-ready PRD | Protocol 02 |
-| `prd-validation.json` | `.artifacts/protocol-06/` | Quality validation evidence | Protocol 06 |
+**Metadata Requirements:**
+- Timestamp: ISO 8601 format (e.g., `2025-11-06T05:34:29Z`).  
+- Artifact checksums: SHA-256 hash recorded for every artifact, report, and archive.  
+- Size: File size in bytes listed for each artifact in manifest integrity block.  
+- Dependencies: Upstream protocol references (03, 04, 05) and downstream consumers (07, 08) explicitly mapped.  
 
-### 10.3 Traceability Matrix
+**Dependency Tracking:**
+- Input: `PROJECT-BRIEF.md`, `bootstrap-manifest.json`, `architecture-principles.md`, market research briefs.  
+- Output: All artifacts in table plus `requirements-validation.json`, `context-validation.json`, `prd-traceability.json`, and `prd-assets/technical-baseline.json`.  
+- Transformations: Context alignment → requirements elaboration → validation readiness → evidence aggregation.  
 
-**Upstream Dependencies:**
-- Input artifacts inherit from: [list predecessor protocols]
-- Configuration dependencies: [list config files or environment requirements]
-- External dependencies: [list third-party systems or APIs]
+**Coverage:** Manifest captures 100% of artifacts, automation outputs, and approvals with checksum verification and dependency linkage.
 
-**Downstream Consumers:**
-- Output artifacts consumed by: [list successor protocols]
-- Shared artifacts: [list artifacts used by multiple protocols]
-- Archive requirements: [list retention policies]
+### 10.4 Traceability
 
-**Verification Chain:**
-- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
-- Verification procedure: [describe validation process]
-- Audit trail: All artifact modifications logged in protocol execution log
+**Input Sources:**
+- **Input From:** `.cursor/context-kit/governance-status.md` – Governance constraints applied during PRD definition.  
+- **Input From:** `.artifacts/protocol-05/architecture-principles.md` – Architectural guardrails shaping requirements.  
 
-### 10.4 Quality Metrics:
+**Output Artifacts:**
+- **Output To:** `technical-specs.md` – Consumed by Protocol 07 for design activities.  
+- **Output To:** `prd-{feature}.md` – Reference for Protocol 02 task generation.  
+- **Output To:** `prd-traceability.json` – Supports QA planning and audit reviews.  
+- **Output To:** `risk-assumption-log.md` – Feeds risk management process in downstream protocols.  
+- **Output To:** `evidence-manifest.json` – Audit ledger for governance.  
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
-| Evidence Completeness | 100% | [TBD] | ⏳ |
-| Integration Integrity | 100% | [TBD] | ⏳ |
+**Transformation Steps:**
+1. Inputs → prd-context.json: Map strategy, stakeholders, and constraints.  
+2. Context → user-stories.md / functional-requirements.md: Elaborate user journeys and system behaviors.  
+3. Requirements → technical-specs.md: Translate behaviors into technical interfaces.  
+4. Specs + risks → validation-plan.md / prd-validation.json: Define tests and validate readiness.  
+5. Outputs → evidence-manifest.json: Aggregate artifacts, checksums, dependencies.  
+
+**Audit Trail:**
+- Manifest logs timestamps, checksum hashes, verification owners.  
+- Automation logs appended to `.artifacts/protocol-06/logs/automation.log`.  
+- Approvals stored in `.artifacts/protocol-06/approvals/` with signatures.  
+- Cleanup actions recorded in `.artifacts/protocol-06/cleanup-log.json` for retention audits.
+
+### 10.5 Archival Strategy
+
+**Compression:**
+- Artifacts archived into `.artifacts/protocol-06/archives/prd-bundle.zip` after Gate 3 passes.  
+- Compression format: ZIP with AES-256 encryption for sensitive product data.  
+
+**Retention Policy:**
+- Active artifacts retained for 210 days post-launch or until superseded.  
+- Archived bundles retained for 5 years in compliance with product governance policy.  
+- Cleanup automation runs bi-annually; exceptions flagged for extended retention.  
+
+**Retrieval Procedures:**
+- Active artifacts accessed directly with manifest cross-check.  
+- Archived bundles restored from `archives/` directory, integrity verified against manifest hashes.  
+- Retrieval logged in `.artifacts/protocol-06/retention-approvals.json`.  
+
+**Cleanup Process:**
+- Bi-annual cleanup script updates `.artifacts/protocol-06/cleanup-log.json` with removed artifact list, sizes, and hashes.  
+- Artifacts marked `extended_retention: true` persist until compliance officer approval.  
+- Governance sign-off captured in retention approvals file.
 
 ---
 

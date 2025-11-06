@@ -1,13 +1,13 @@
 {
   "validator": "master_validator",
   "protocol_id": "11",
-  "validation_timestamp": "2025-11-05T18:37:49.822228Z",
-  "overall_score": 0.6872698412698413,
+  "validation_timestamp": "2025-11-06T05:29:52.938402Z",
+  "overall_score": 0.8051865079365079,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "fail",
-      "score": 0.5155555555555555
+      "score": 0.5822222222222222
     },
     "protocol_role": {
       "status": "fail",
@@ -26,31 +26,30 @@
       "score": 0.7571428571428571
     },
     "protocol_communication": {
-      "status": "fail",
-      "score": 0.675
+      "status": "pass",
+      "score": 0.9500000000000001
     },
     "protocol_evidence": {
       "status": "fail",
-      "score": 0.7249999999999999
+      "score": 0.7749999999999999
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.675
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reasoning": {
-      "status": "fail",
-      "score": 0.6125
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reflection": {
-      "status": "warning",
-      "score": 0.8250000000000001
+      "status": "pass",
+      "score": 0.9000000000000001
     }
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
     "INTEGRATION POINTS section not found",
-    "Industry standards not documented",
     "Security requirements not documented",
     "Regulatory compliance not documented",
     "Required section missing: AI ROLE AND MISSION",
@@ -62,15 +61,7 @@
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_9.py, scripts/generate_artifact_manifest.py, scripts/run_contract_tests.py, scripts/validate_environment.py, scripts/validate_prerequisites_9.py",
-    "Missing user interaction prompts: confirmation, clarification",
-    "Limited progress terminology in communications",
     "Traceability gaps: inputs, outputs",
-    "Checklist lacks sufficient coverage of required items",
-    "Sign-off guidance missing: reviewers, confirmation",
-    "Documentation expectations under-specified",
-    "Reasoning patterns not explicitly named",
-    "Decision points insufficiently described",
-    "Self-awareness statements missing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
@@ -82,7 +73,6 @@
     "Clarify access and credential requirements",
     "Document how command outputs are captured",
     "Optionally reference a manifest file or inventory for quick lookup",
-    "Enhance archival plan with: cleanup, retrieval",
-    "Include root-cause analysis guidance"
+    "Enhance archival plan with: cleanup, retrieval"
   ]
 }

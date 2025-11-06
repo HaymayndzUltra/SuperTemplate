@@ -1,0 +1,55 @@
+{
+  "exact_quotes": [
+    "Assist in integrating OpenAI APIs with a FastAPI backend",
+    "Support Stripe billing setup and webhook testing",
+    "Help with debugging, data validation, and log analysis",
+    "Collaborate via GitHub and Discord for daily progress updates",
+    "Type: Remote, part-time (minimum 20 hrs/week)",
+    "Duration: 1–2 months (extendable)",
+    "Future Opportunity: Potential for long-term contract"
+  ],
+  "tech_stack": [
+    "Python",
+    "FastAPI",
+    "OpenAI APIs",
+    "Stripe",
+    "PostgreSQL",
+    "REST APIs",
+    "JSON",
+    "GitHub",
+    "Discord",
+    "Next.js (nice to have)",
+    "ElevenLabs APIs (nice to have)"
+  ],
+  "pain_points": [
+    "Debugging issues",
+    "Data validation challenges",
+    "Log analysis needs",
+    "API integration complexity",
+    "Webhook testing requirements"
+  ],
+  "tone_type": "casual",
+  "urgency_signals": [
+    "Daily progress updates",
+    "Minimum 20 hrs/week",
+    "1–2 months duration"
+  ],
+  "vague_requirements": [
+    {
+      "client_says": "Basic to intermediate Python skills",
+      "interpretation_needed": true,
+      "clarification": "What specific Python level? Any minimum years of experience?"
+    },
+    {
+      "client_says": "Interest in AI or health-tech products",
+      "interpretation_needed": true,
+      "clarification": "Is this a health-tech product? Domain context would help"
+    },
+    {
+      "client_says": "Potential for long-term contract",
+      "interpretation_needed": true,
+      "clarification": "What criteria determine long-term contract eligibility?"
+    }
+  ]
+}
+

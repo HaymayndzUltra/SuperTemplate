@@ -1,7 +1,7 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "22",
-  "validation_timestamp": "2025-11-05T18:37:50.109703Z",
+  "validation_timestamp": "2025-11-06T05:29:53.230959Z",
   "basic_information": {
     "score": 0.6666666666666666,
     "status": "warning",
@@ -11,7 +11,7 @@
     ],
     "elements_found": {
       "protocol_number": true,
-      "protocol_name": "**[MASTER RAY\u2122 | PROTOCOL COMPLETE]** Ready for Protocol 23: Script Governance Protocol",
+      "protocol_name": "Script Governance Protocol",
       "protocol_version": false,
       "phase_assignment": false,
       "purpose_statement": true,
@@ -40,15 +40,14 @@
     }
   },
   "compliance_standards": {
-    "score": 0.0,
+    "score": 0.3333333333333333,
     "status": "fail",
     "issues": [
-      "Industry standards not documented",
       "Security requirements not documented",
       "Regulatory compliance not documented"
     ],
     "categories_found": {
-      "industry_standards": false,
+      "industry_standards": true,
       "security_requirements": false,
       "regulatory_compliance": false
     }
@@ -75,12 +74,11 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.7333333333333333,
-  "validation_status": "fail",
+  "overall_score": 0.8,
+  "validation_status": "warning",
   "issues": [
     "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
-    "Industry standards not documented",
     "Security requirements not documented",
     "Regulatory compliance not documented"
   ],

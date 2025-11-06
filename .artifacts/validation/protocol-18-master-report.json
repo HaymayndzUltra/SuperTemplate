@@ -1,17 +1,17 @@
 {
   "validator": "master_validator",
   "protocol_id": "18",
-  "validation_timestamp": "2025-11-05T18:37:50.027779Z",
-  "overall_score": 0.7862500000000001,
+  "validation_timestamp": "2025-11-06T05:29:53.152038Z",
+  "overall_score": 0.8466666666666669,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8333333333333333
+      "score": 0.9
     },
     "protocol_role": {
       "status": "warning",
-      "score": 0.8374999999999999
+      "score": 0.875
     },
     "protocol_workflow": {
       "status": "warning",
@@ -26,16 +26,16 @@
       "score": 0.7916666666666666
     },
     "protocol_communication": {
-      "status": "fail",
-      "score": 0.725
+      "status": "pass",
+      "score": 0.9625
     },
     "protocol_evidence": {
       "status": "fail",
       "score": 0.6249999999999999
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.7375
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reasoning": {
       "status": "warning",
@@ -50,22 +50,18 @@
     "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
     "Scope definition not found",
-    "Industry standards not documented",
     "Domain expertise keywords missing",
     "Value proposition not captured",
     "Less than two workflow steps defined",
     "Step numbering is not sequential",
     "No gate headings defined",
     "Insufficient compliance standards referenced",
-    "Missing user interaction prompts: clarification, decision_points, feedback",
     "Protocol evidence directory not referenced",
     "Traceability gaps: inputs, outputs",
-    "Sign-off guidance missing: approvals, reviewers, confirmation",
     "Reasoning patterns not explicitly named",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
-    "Outline decision-making expectations",
     "Use '### STEP X' headings for clarity",
     "Optional or cautionary guidance can highlight operator judgement without blocking validation",
     "Add rollback or retry guidance for failure scenarios",

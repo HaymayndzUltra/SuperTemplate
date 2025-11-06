@@ -1,28 +1,34 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "02",
-  "validation_timestamp": "2025-11-05T18:37:49.519280Z",
-  "overall_score": 0.22500000000000003,
+  "validation_timestamp": "2025-11-06T05:32:27.798500Z",
+  "overall_score": 0.7625,
   "validation_status": "fail",
   "issues": [
-    "EVIDENCE SUMMARY section missing",
-    "Manifest not documented",
-    "Traceability gaps: inputs, outputs",
-    "Archival strategy not documented"
+    "Traceability gaps: inputs, outputs"
   ],
-  "recommendations": [],
+  "recommendations": [
+    "Document timestamps or hashes for manifest entries",
+    "Enhance archival plan with: cleanup, compression, retrieval"
+  ],
   "artifact_generation": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "EVIDENCE SUMMARY section missing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "table_present": true,
+      "artifact_column": true,
+      "metrics_column": true,
+      "row_coverage": true,
+      "table_rows": 7,
+      "artifact_mentions": 8,
+      "metric_mentions": 4
+    }
   },
   "storage_structure": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
@@ -36,17 +42,24 @@
       "protocol_directory": true,
       "subdirectories": true,
       "permissions": true,
-      "naming": false
+      "naming": true
     }
   },
   "manifest_completeness": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Manifest not documented"
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Document timestamps or hashes for manifest entries"
     ],
-    "recommendations": [],
-    "details": {}
+    "details": {
+      "manifest_reference": true,
+      "metadata": false,
+      "dependencies": true,
+      "coverage": true,
+      "metadata_mentions": 0,
+      "dependency_mentions": 1
+    }
   },
   "traceability": {
     "score": 0.5,
@@ -63,12 +76,19 @@
     }
   },
   "archival": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
-    "issues": [
-      "Archival strategy not documented"
+    "issues": [],
+    "recommendations": [
+      "Enhance archival plan with: cleanup, compression, retrieval"
     ],
-    "recommendations": [],
-    "details": {}
+    "details": {
+      "compression": false,
+      "retention": true,
+      "retrieval": false,
+      "cleanup": false,
+      "compression_mentions": 0,
+      "retention_mentions": 1
+    }
   }
 }

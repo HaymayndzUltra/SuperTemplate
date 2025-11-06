@@ -1,12 +1,10 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "06",
-  "validation_timestamp": "2025-11-05T18:37:49.662151Z",
-  "overall_score": 0.9500000000000001,
+  "validation_timestamp": "2025-11-06T05:31:39.427130Z",
+  "overall_score": 0.9750000000000001,
   "validation_status": "pass",
-  "issues": [
-    "Roadmap or future direction not documented"
-  ],
+  "issues": [],
   "recommendations": [],
   "retrospective_analysis": {
     "score": 1.0,
@@ -57,14 +55,12 @@
     }
   },
   "future_planning": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Roadmap or future direction not documented"
-    ],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "roadmap": false,
+      "roadmap": true,
       "priorities": false,
       "resources": true,
       "timeline": true

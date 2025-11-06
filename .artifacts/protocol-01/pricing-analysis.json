@@ -1,0 +1,76 @@
+{
+  "project_complexity": "moderate",
+  "estimated_hours_per_week": 25,
+  "duration_weeks": 6,
+  "total_hours": 150,
+  "rate_tier": "junior",
+  "hourly_rate": 28,
+  "milestone_breakdown": [
+    {
+      "milestone": "OpenAI API Integration & FastAPI Setup",
+      "hours": 40,
+      "percentage": 27,
+      "cap": 1120,
+      "description": "Complete OpenAI API integration with FastAPI backend, including error handling and basic validation"
+    },
+    {
+      "milestone": "Stripe Billing Setup & Webhook Testing",
+      "hours": 35,
+      "percentage": 23,
+      "cap": 980,
+      "description": "Stripe integration setup, webhook configuration, and comprehensive testing"
+    },
+    {
+      "milestone": "Debugging, Validation & Log Analysis",
+      "hours": 40,
+      "percentage": 27,
+      "cap": 1120,
+      "description": "Ongoing debugging support, data validation improvements, and log analysis tools"
+    },
+    {
+      "milestone": "Integration Testing & Documentation",
+      "hours": 35,
+      "percentage": 23,
+      "cap": 980,
+      "description": "End-to-end testing, documentation, and handover preparation"
+    }
+  ],
+  "total_fee": 4200,
+  "market_benchmark_range": {
+    "low": 3360,
+    "high": 5040,
+    "percentage_of_benchmark": 100
+  },
+  "assumptions": [
+    "Client provides clear API keys and access credentials",
+    "Frontend team available for integration testing coordination",
+    "Database schema already established or minimal changes needed",
+    "OpenAI API use cases are well-defined",
+    "Stripe account setup and access provided by client"
+  ],
+  "risk_notes": [
+    {
+      "risk": "Vague requirements around 'basic to intermediate' Python skills may indicate scope uncertainty",
+      "mitigation": "Document assumptions clearly and propose clarifying questions in proposal",
+      "impact": "medium"
+    },
+    {
+      "risk": "Webhook testing dependencies on external services could cause delays",
+      "mitigation": "Include buffer time in milestone 2 and propose staging environment setup",
+      "impact": "low"
+    },
+    {
+      "risk": "Part-time availability (20 hrs/week) may require flexible scheduling",
+      "mitigation": "Emphasize daily Discord sync and clear communication channels",
+      "impact": "low"
+    }
+  ],
+  "clarifying_questions": [
+    "What specific OpenAI API endpoints or models need integration?",
+    "Is there existing Stripe integration code we should build upon?",
+    "What's the current FastAPI backend structure and version?",
+    "Are there specific data validation requirements or schemas we should follow?",
+    "What's the preferred log analysis tool or format?"
+  ]
+}
+

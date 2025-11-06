@@ -1,16 +1,14 @@
 {
   "validator": "protocol_role",
   "protocol_id": "17",
-  "validation_timestamp": "2025-11-05T18:37:49.972273Z",
-  "overall_score": 0.8374999999999999,
+  "validation_timestamp": "2025-11-06T05:29:53.101310Z",
+  "overall_score": 0.875,
   "validation_status": "warning",
   "issues": [
     "Domain expertise keywords missing",
     "Value proposition not captured"
   ],
-  "recommendations": [
-    "Outline decision-making expectations"
-  ],
+  "recommendations": [],
   "role_definition": {
     "score": 0.75,
     "status": "warning",
@@ -67,15 +65,13 @@
     }
   },
   "behavioral_guidance": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Outline decision-making expectations"
-    ],
+    "recommendations": [],
     "details": {
       "communication_style": true,
-      "decision_making": false,
+      "decision_making": true,
       "error_handling": true,
       "user_interaction": true
     }

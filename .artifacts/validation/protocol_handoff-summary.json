@@ -1,0 +1,158 @@
+{
+  "validator": "protocol_handoff",
+  "validation_timestamp": "2025-11-06T05:29:48.129913Z",
+  "total_protocols": 23,
+  "pass_count": 19,
+  "warning_count": 4,
+  "fail_count": 0,
+  "average_score": 0.9706521739130435,
+  "protocols": [
+    {
+      "protocol_id": "01",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "02",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "03",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "04",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "05",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "06",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "07",
+      "status": "warning",
+      "score": 0.8500000000000001
+    },
+    {
+      "protocol_id": "08",
+      "status": "warning",
+      "score": 0.8500000000000001
+    },
+    {
+      "protocol_id": "09",
+      "status": "warning",
+      "score": 0.8500000000000001
+    },
+    {
+      "protocol_id": "10",
+      "status": "warning",
+      "score": 0.8500000000000001
+    },
+    {
+      "protocol_id": "11",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "12",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "13",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "14",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "15",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "16",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "17",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "18",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "19",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "20",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "21",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "22",
+      "status": "pass",
+      "score": 1.0
+    },
+    {
+      "protocol_id": "23",
+      "status": "pass",
+      "score": 0.9249999999999999
+    }
+  ],
+  "dimensions": {
+    "checklist_completeness": {
+      "average_score": 0.9130434782608695,
+      "pass_count": 19,
+      "warning_count": 0,
+      "fail_count": 4
+    },
+    "verification_procedures": {
+      "average_score": 1.0,
+      "pass_count": 23,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "stakeholder_signoff": {
+      "average_score": 1.0,
+      "pass_count": 23,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "documentation_requirements": {
+      "average_score": 1.0,
+      "pass_count": 23,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "next_protocol_alignment": {
+      "average_score": 0.9782608695652174,
+      "pass_count": 22,
+      "warning_count": 0,
+      "fail_count": 1
+    }
+  }
+}

@@ -1,17 +1,16 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "23",
-  "validation_timestamp": "2025-11-05T18:37:50.149285Z",
-  "overall_score": 0.7,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-11-06T05:29:53.280786Z",
+  "overall_score": 0.9249999999999999,
+  "validation_status": "pass",
   "issues": [
-    "Sign-off guidance missing: approvals, reviewers, confirmation",
-    "Documentation expectations under-specified"
+    "Ready-for-next-protocol statement missing"
   ],
   "recommendations": [],
   "checklist_completeness": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
@@ -19,7 +18,7 @@
       "items": true,
       "categories": true,
       "dependencies": true,
-      "status_markers": false
+      "status_markers": true
     }
   },
   "verification_procedures": {
@@ -29,11 +28,11 @@
     "recommendations": [],
     "details": {
       "term_counts": {
-        "validate": 4,
+        "validate": 7,
         "ensure": 2,
-        "confirm": 1,
+        "confirm": 3,
         "verify": 1,
-        "gate": 6
+        "gate": 7
       },
       "verification_terms": true,
       "qa_involvement": true,
@@ -42,47 +41,49 @@
     }
   },
   "stakeholder_signoff": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Sign-off guidance missing: approvals, reviewers, confirmation"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "approvals": false,
-      "reviewers": false,
+      "approvals": true,
+      "reviewers": true,
       "evidence_reference": true,
-      "confirmation": false
+      "confirmation": true
     }
   },
   "documentation_requirements": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Documentation expectations under-specified"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "terms": [
         "log",
+        "brief",
+        "notes",
+        "transcript",
+        "manifest",
         "report"
       ],
-      "doc_terms": false,
+      "doc_terms": true,
       "storage": true,
       "reviewer_docs": true,
       "format": true
     }
   },
   "next_protocol_alignment": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [],
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Ready-for-next-protocol statement missing"
+    ],
     "recommendations": [],
     "details": {
-      "ready_statements": true,
-      "next_commands": true,
+      "ready_statements": false,
+      "next_commands": false,
       "dependencies": true,
-      "continuation": false
+      "continuation": true
     }
   }
 }

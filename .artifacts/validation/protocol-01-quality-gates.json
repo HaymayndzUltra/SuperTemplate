@@ -1,60 +1,78 @@
 {
   "validator": "protocol_quality_gates",
   "protocol_id": "01",
-  "validation_timestamp": "2025-11-05T18:37:49.503360Z",
-  "overall_score": 0.0,
-  "validation_status": "fail",
-  "issues": [
-    "QUALITY GATES section missing",
-    "Cannot evaluate pass criteria without gate definitions",
-    "No automation references found",
-    "No gate documentation to evaluate failure handling",
-    "Compliance expectations not described"
-  ],
+  "validation_timestamp": "2025-11-06T05:35:15.147879Z",
+  "overall_score": 0.9624999999999999,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [],
   "gate_definitions": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "QUALITY GATES section missing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "gates": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "gate_count": true,
+      "descriptions": true,
+      "types": true,
+      "naming": true
+    }
   },
   "pass_criteria": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Cannot evaluate pass criteria without gate definitions"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "thresholds": true,
+      "boolean": true,
+      "metrics": true,
+      "evidence_links": true
+    }
   },
   "automation": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "No automation references found"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "scripts": true,
+      "ci": true,
+      "automation_labels": true,
+      "script_mentions": 19,
+      "gate_config_path": "/home/haymayndz/SuperTemplate/config/protocol_gates/01.yaml",
+      "gate_config_present": true
+    }
   },
   "failure_handling": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "No gate documentation to evaluate failure handling"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "failure_actions": true,
+      "rollback": true,
+      "notification": true,
+      "waivers": true
+    }
   },
   "compliance_integration": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Compliance expectations not described"
-    ],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "compliance_terms": true,
+      "automation_hooks": true,
+      "evidence": false,
+      "governance": true
+    }
   }
 }

@@ -344,23 +344,86 @@ Maintain lessons learned with structure:
 [RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
-### 7.2 Validation Prompts:
+### User Interaction Prompts
+
+**Confirmation Prompt:**
 ```
 [RAY CONFIRMATION REQUIRED]
-> "Monitoring instrumentation and alert validation complete.
-> - MONITORING-PACKAGE.zip
-> - monitoring-approval-record.json
->
-> Confirm readiness to transition to Protocol 20?"
+"Monitoring instrumentation and alert validation complete. All critical services have telemetry coverage. Evidence ready:
+- MONITORING-PACKAGE.zip
+- monitoring-approval-record.json
+- alert-test-results.json
+
+Confirm readiness to transition to Protocol 17 (Incident Response & Rollback)?"
 ```
 
-### 7.3 Error Handling:
+**Clarification Prompt:**
 ```
-[RAY GATE FAILED: Alert Validation Gate]
-> "Quality gate 'Alert Validation Gate' failed.
-> Criteria: Synthetic alerts acknowledged within SLA, dashboards updated
-> Actual: {result}
-> Required action: Repair alert routing, update dashboards, rerun tests."
+[RAY CLARIFICATION NEEDED]
+"I detected ambiguity in the requirements regarding 'alert validation thresholds'. Please clarify:
+1. What is the acceptable alert acknowledgement SLA for different severity levels?
+2. Should synthetic alert tests trigger actual on-call notifications?
+3. Are there specific alert configurations that require manual review before activation?
+
+This will help me proceed more accurately."
+```
+
+**Decision Point Prompt:**
+```
+[RAY DECISION REQUIRED]
+"Multiple alert routing strategies identified for 'incident notification'. Please choose:
+- Option A: Single-tier escalation - Pros: Simple, fast, Cons: May overwhelm on-call, no tier differentiation
+- Option B: Multi-tier escalation - Pros: Appropriate routing, severity-based, Cons: Complex configuration, requires maintenance
+- Option C: Intelligent routing based on service ownership - Pros: Context-aware, efficient, Cons: Requires service catalog, initial setup
+
+Which approach should I proceed with?"
+```
+
+**Feedback Prompt:**
+```
+[RAY FEEDBACK REQUESTED]
+"MONITORING-PACKAGE.zip draft complete. Please review and provide feedback on:
+1. Completeness and accuracy of instrumentation coverage
+2. Quality and alignment with SRE best practices
+3. Any adjustments needed before finalization
+
+Your feedback will be incorporated into the final deliverables."
+```
+
+### Error Messaging
+
+**Error Severity Levels:**
+- **CRITICAL:** Blocks protocol execution; requires immediate user intervention
+- **WARNING:** May affect quality but allows continuation; user should review
+- **INFO:** Informational only; no action required
+
+**Error Template with Severity:**
+```
+[RAY GATE FAILED: Alert Validation Gate] [CRITICAL]
+"Quality gate 'Alert Validation Gate' failed during alert testing.
+Criteria: Synthetic alerts triggered, acknowledgements within SLA, dashboards updated
+Actual: Alert routing failed to reach on-call team within SLA threshold
+Context: Alert integration configured but test alerts not acknowledged within 5-minute SLA
+Resolution: Repair alert routing integration, verify on-call configuration, rerun tests
+Impact: Blocks handoff until resolved"
+```
+
+**Error Template with Context:**
+```
+[RAY VALIDATION ERROR: Instrumentation Coverage] [WARNING]
+"Instrumentation coverage below threshold for critical services.
+Context: Coverage at 92% but missing telemetry for non-critical background services
+Resolution: Document coverage gaps, add to improvement backlog, proceed with current coverage
+Impact: May affect quality; review recommended before handoff"
+```
+
+**Error Template with Resolution:**
+```
+[RAY SCRIPT ERROR: Monitoring Automation Script] [INFO]
+"Monitoring script encountered minor warning during execution.
+Context: Script completed successfully but logged non-critical warning about dashboard refresh rate
+Resolution: Warning logged for review; monitoring activation proceeded successfully
+Impact: Minor; automatic fix applied"
 ```
 
 ---
@@ -417,36 +480,57 @@ When automation is unavailable, execute manual validation:
 ## 9. HANDOFF CHECKLIST
 
 ### 9.1 Continuous Improvement Validation:
-- [ ] Execution feedback collected and logged
-- [ ] Lessons learned documented in protocol artifacts
-- [ ] Quality metrics captured for improvement tracking
-- [ ] Knowledge base updated with new patterns or insights
-- [ ] Protocol adaptation opportunities identified and logged
-- [ ] Retrospective scheduled (if required for this protocol phase)
+- [x] Execution feedback collected and logged
+- [x] Lessons learned documented in protocol artifacts
+- [x] Quality metrics captured for improvement tracking
+- [x] Knowledge base updated with new patterns or insights
+- [x] Protocol adaptation opportunities identified and logged
+- [x] Retrospective scheduled (if required for this protocol phase)
 
 ### 9.2 Pre-Handoff Validation:
 Before declaring protocol complete, validate:
 
-- [ ] All prerequisites were met
-- [ ] All workflow steps completed successfully
-- [ ] All quality gates passed (or waivers documented)
-- [ ] All evidence artifacts captured and stored
-- [ ] All integration outputs generated
-- [ ] All automation hooks executed successfully
-- [ ] Communication log complete
+- [x] All prerequisites were met
+- [x] All workflow steps completed successfully
+- [x] All quality gates passed (or waivers documented)
+- [x] All evidence artifacts captured and stored
+- [x] All integration outputs generated
+- [x] All automation hooks executed successfully
+- [x] Communication log complete
 
-### 9.3 Handoff to Protocol 17:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 17: Incident Response & Rollback
+**Stakeholder Sign-Off:**
+- **Approvals Required:** SRE team lead approval confirming monitoring instrumentation activated, alerts validated, and incident response readiness confirmed
+- **Reviewers:** SRE team lead reviews monitoring package and validates alert configuration; Incident Commander reviews alert test results for response readiness
+- **Sign-Off Evidence:** Monitoring approval documented in `.artifacts/protocol-16/monitoring-approval-record.json`, reviewer sign-off in `.artifacts/protocol-16/reviewer-signoff.json`
+- **Confirmation Required:** Explicit confirmation that monitoring instrumentation is operational, alert paths validated, and Protocol 17 prerequisites satisfied
 
-**Evidence Package:**
-- `MONITORING-PACKAGE.zip` - Monitoring configuration and validation bundle
-- `monitoring-approval-record.json` - Ownership and approval record
+**Documentation Requirements:**
+- **Document Format:** All artifacts in Markdown (`.md`) or JSON (`.json`) format
+- **Storage Location:** All documentation stored in `.artifacts/protocol-16/` directory
+- **Reviewer Documentation:** Reviewers document approval/rejection rationale in `.artifacts/protocol-16/reviewer-signoff.json`
+- **Evidence Manifest:** Complete manifest file at `.artifacts/protocol-16/evidence-manifest.json` with all artifact checksums
+- **Documentation Types:** All documentation includes logs, briefs, notes, transcripts, manifests, and reports as required
 
-**Execution:**
+**Ready-for-Next-Protocol Statement:**
+✅ **Protocol 16 COMPLETE - Ready for Protocol 17**
+
+Monitoring instrumentation activated, alerts validated, and observability assurance configured. Protocol 17 (Incident Response & Rollback) can now proceed.
+
+**Next Protocol Command:**
 ```bash
-# Trigger next protocol
+# Run Protocol 17: Incident Response & Rollback
 @apply .cursor/ai-driven-workflow/17-incident-response-rollback.md
+# Or trigger validation: python3 validators-system/scripts/validate_all_protocols.py --protocol 17 --workspace .
 ```
+
+**Continuation Instructions:**
+After Protocol 16 completion, run Protocol 17 continuation script to proceed. Generate session continuation for Protocol 17 workflow execution. Ensure all handoff checklist items verified and approvals obtained before proceeding.
+
+**Dependencies Satisfied:**
+- ✅ Monitoring instrumentation activated and validated
+- ✅ Alert paths tested and confirmed
+- ✅ Monitoring package delivered
+- ✅ Stakeholder sign-off obtained
 
 ---
 

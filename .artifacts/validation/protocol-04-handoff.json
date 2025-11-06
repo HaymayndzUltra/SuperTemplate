@@ -1,27 +1,22 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "04",
-  "validation_timestamp": "2025-11-05T18:37:49.581479Z",
-  "overall_score": 0.7124999999999999,
-  "validation_status": "fail",
-  "issues": [
-    "Checklist lacks sufficient coverage of required items",
-    "Sign-off guidance missing: approvals, reviewers"
-  ],
+  "validation_timestamp": "2025-11-06T05:29:52.639594Z",
+  "overall_score": 1.0,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [],
   "checklist_completeness": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Checklist lacks sufficient coverage of required items"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "item_count": 0,
-      "items": false,
+      "item_count": 13,
+      "items": true,
       "categories": true,
       "dependencies": true,
-      "status_markers": false
+      "status_markers": true
     }
   },
   "verification_procedures": {
@@ -31,11 +26,11 @@
     "recommendations": [],
     "details": {
       "term_counts": {
-        "validate": 6,
-        "ensure": 3,
-        "confirm": 6,
-        "verify": 4,
-        "gate": 4
+        "validate": 8,
+        "ensure": 4,
+        "confirm": 4,
+        "verify": 1,
+        "gate": 2
       },
       "verification_terms": true,
       "qa_involvement": true,
@@ -44,15 +39,13 @@
     }
   },
   "stakeholder_signoff": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Sign-off guidance missing: approvals, reviewers"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "approvals": false,
-      "reviewers": false,
+      "approvals": true,
+      "reviewers": true,
       "evidence_reference": true,
       "confirmation": true
     }
@@ -66,6 +59,8 @@
       "terms": [
         "log",
         "brief",
+        "notes",
+        "transcript",
         "manifest",
         "report"
       ],
@@ -76,15 +71,15 @@
     }
   },
   "next_protocol_alignment": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "ready_statements": true,
       "next_commands": true,
       "dependencies": true,
-      "continuation": false
+      "continuation": true
     }
   }
 }

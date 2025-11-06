@@ -1,12 +1,10 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "18",
-  "validation_timestamp": "2025-11-05T18:37:50.007983Z",
-  "overall_score": 0.725,
-  "validation_status": "fail",
-  "issues": [
-    "Missing user interaction prompts: clarification, decision_points, feedback"
-  ],
+  "validation_timestamp": "2025-11-06T05:29:53.132170Z",
+  "overall_score": 0.9625,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [],
   "status_announcements": {
     "score": 1.0,
@@ -21,27 +19,25 @@
     }
   },
   "user_interaction": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Missing user interaction prompts: clarification, decision_points, feedback"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "confirmation": true,
-      "clarification": false,
-      "decision_points": false,
-      "feedback": false
+      "clarification": true,
+      "decision_points": true,
+      "feedback": true
     }
   },
   "error_messaging": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "templates": true,
-      "severity": false,
+      "severity": true,
       "context": true,
       "resolution": true
     }

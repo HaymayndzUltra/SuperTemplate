@@ -1,17 +1,17 @@
 {
   "validator": "master_validator",
   "protocol_id": "17",
-  "validation_timestamp": "2025-11-05T18:37:49.998295Z",
-  "overall_score": 0.8093749999999998,
+  "validation_timestamp": "2025-11-06T05:29:53.124505Z",
+  "overall_score": 0.8697916666666666,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
-      "status": "warning",
-      "score": 0.9
+      "status": "pass",
+      "score": 0.9666666666666668
     },
     "protocol_role": {
       "status": "warning",
-      "score": 0.8374999999999999
+      "score": 0.875
     },
     "protocol_workflow": {
       "status": "fail",
@@ -26,16 +26,16 @@
       "score": 0.7312500000000001
     },
     "protocol_communication": {
-      "status": "fail",
-      "score": 0.7625000000000001
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_evidence": {
       "status": "fail",
       "score": 0.6624999999999999
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.7375
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reasoning": {
       "status": "pass",
@@ -48,7 +48,6 @@
   },
   "issues": [
     "Phase assignment not found or invalid in AGENTS.md",
-    "Industry standards not documented",
     "Domain expertise keywords missing",
     "Value proposition not captured",
     "Less than two workflow steps defined",
@@ -57,15 +56,12 @@
     "No gate headings defined",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_13.py, scripts/validate_prerequisites_13.py",
-    "Missing user interaction prompts: clarification, decision_points, feedback",
     "Protocol evidence directory not referenced",
     "Traceability gaps: inputs",
-    "Sign-off guidance missing: approvals, reviewers, confirmation",
     "Self-awareness statements missing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
-    "Outline decision-making expectations",
     "Use '### STEP X' headings for clarity",
     "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/17.yaml when automated gating is expected",

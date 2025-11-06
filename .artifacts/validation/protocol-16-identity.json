@@ -1,7 +1,7 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "16",
-  "validation_timestamp": "2025-11-05T18:37:49.941912Z",
+  "validation_timestamp": "2025-11-06T05:29:53.071252Z",
   "basic_information": {
     "score": 0.5,
     "status": "fail",
@@ -12,7 +12,7 @@
     ],
     "elements_found": {
       "protocol_number": true,
-      "protocol_name": "**[MASTER RAY\u2122 | PROTOCOL COMPLETE]** Ready for Protocol 17: Incident Response & Rollback",
+      "protocol_name": "Incident Response & Rollback",
       "protocol_version": false,
       "phase_assignment": false,
       "purpose_statement": true,
@@ -41,13 +41,11 @@
     }
   },
   "compliance_standards": {
-    "score": 0.6666666666666666,
-    "status": "warning",
-    "issues": [
-      "Industry standards not documented"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "categories_found": {
-      "industry_standards": false,
+      "industry_standards": true,
       "security_requirements": true,
       "regulatory_compliance": true
     }
@@ -74,13 +72,12 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.8333333333333333,
+  "overall_score": 0.9,
   "validation_status": "warning",
   "issues": [
     "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
-    "Scope definition not found",
-    "Industry standards not documented"
+    "Scope definition not found"
   ],
   "recommendations": []
 }

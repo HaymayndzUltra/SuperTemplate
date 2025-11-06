@@ -1,12 +1,10 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "01",
-  "validation_timestamp": "2025-11-06T03:40:17.302236Z",
-  "overall_score": 0.85,
+  "validation_timestamp": "2025-11-06T05:31:15.285908Z",
+  "overall_score": 1.0,
   "validation_status": "pass",
-  "issues": [
-    "Learning mechanisms not referenced"
-  ],
+  "issues": [],
   "recommendations": [],
   "reasoning_patterns": {
     "score": 1.0,
@@ -50,13 +48,16 @@
     }
   },
   "learning_mechanisms": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Learning mechanisms not referenced"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "feedback": true,
+      "improvement_tracking": true,
+      "knowledge_base": true,
+      "adaptation": true
+    }
   },
   "meta_cognition": {
     "score": 1.0,

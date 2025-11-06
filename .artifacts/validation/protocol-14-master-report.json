@@ -1,21 +1,21 @@
 {
   "validator": "master_validator",
   "protocol_id": "14",
-  "validation_timestamp": "2025-11-05T18:37:49.914965Z",
-  "overall_score": 0.7766666666666666,
+  "validation_timestamp": "2025-11-06T05:29:53.044034Z",
+  "overall_score": 0.8670833333333332,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.8666666666666666
+      "score": 0.9333333333333332
     },
     "protocol_role": {
       "status": "warning",
       "score": 0.875
     },
     "protocol_workflow": {
-      "status": "fail",
-      "score": 0.75
+      "status": "warning",
+      "score": 0.8
     },
     "protocol_quality_gates": {
       "status": "fail",
@@ -26,20 +26,20 @@
       "score": 0.7250000000000001
     },
     "protocol_communication": {
-      "status": "fail",
-      "score": 0.775
+      "status": "pass",
+      "score": 0.9500000000000001
     },
     "protocol_evidence": {
       "status": "fail",
       "score": 0.6749999999999998
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.7250000000000001
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reasoning": {
-      "status": "fail",
-      "score": 0.6625000000000001
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_reflection": {
       "status": "pass",
@@ -49,7 +49,6 @@
   "issues": [
     "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
-    "Industry standards not documented",
     "Domain expertise keywords missing",
     "Value proposition not captured",
     "Less than two workflow steps defined",
@@ -57,15 +56,8 @@
     "Several workflow steps omit explicit action prompts",
     "Insufficient compliance standards referenced",
     "Referenced command paths not found: scripts/aggregate_evidence_10.py, scripts/refresh_staging_data.py, scripts/update_deployment_checklist.py, scripts/validate_prerequisites_10.py",
-    "Missing user interaction prompts: clarification",
     "Protocol evidence directory not referenced",
     "Traceability gaps: inputs, outputs",
-    "Checklist lacks sufficient coverage of required items",
-    "Sign-off guidance missing: confirmation",
-    "Documentation expectations under-specified",
-    "Reasoning patterns not explicitly named",
-    "Decision points insufficiently described",
-    "Self-awareness statements missing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
@@ -80,7 +72,6 @@
     "Clarify access and credential requirements",
     "Document how command outputs are captured",
     "Optionally reference a manifest file or inventory for quick lookup",
-    "Enhance archival plan with: cleanup, retrieval",
-    "Include root-cause analysis guidance"
+    "Enhance archival plan with: cleanup, retrieval"
   ]
 }

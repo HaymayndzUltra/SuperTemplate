@@ -1,0 +1,28 @@
+{
+  "differentiators": [
+    "FastAPI + OpenAI Integration Experience",
+    "Real-time Collaboration Workflow",
+    "Predictive System Evidence",
+    "Part-time Availability Alignment"
+  ],
+  "pricing_summary": {
+    "total_fee": 4200,
+    "hourly_rate": 28,
+    "total_hours": 150,
+    "duration_weeks": 6,
+    "milestones": 4
+  },
+  "next_steps": [
+    "Quick call this week during Pakistan Standard Time evenings",
+    "Alternative: Start with async questions via Discord"
+  ],
+  "client_availability_match": true,
+  "tech_stack_alignment": [
+    "FastAPI",
+    "OpenAI APIs",
+    "Stripe",
+    "PostgreSQL",
+    "REST APIs"
+  ]
+}
+

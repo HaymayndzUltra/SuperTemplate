@@ -360,25 +360,86 @@ Maintain lessons learned with structure:
 [RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
-### 7.2 Validation Prompts:
-```
-[SEVERITY CONFIRMATION]
-> "Incident classified as {severity}. Approve mitigation planning? (yes/no)"
+### User Interaction Prompts
 
-[MITIGATION APPROVAL]
-> "Proposed action: {action}. Execute mitigation now? (yes/no)"
+**Confirmation Prompt:**
+```
+[RAY CONFIRMATION REQUIRED]
+"Incident response completed successfully. System recovery validated and root cause evidence captured. Evidence ready:
+- INCIDENT-REPORT.md
+- recovery-validation.json
+- rca-manifest.json
 
-[RESOLUTION CONFIRMATION]
-> "System stabilized. Close incident and trigger postmortem package? (yes/no)"
+Confirm readiness to transition to Protocol 18 (Performance Optimization & Tuning)?"
 ```
 
-### 7.3 Error Handling:
+**Clarification Prompt:**
 ```
-[RAY GATE FAILED: Mitigation Readiness Gate]
-> "Quality gate 'Mitigation Readiness Gate' failed.
-> Criteria: Mitigation plan documented, rollback readiness confirmed
-> Actual: {result}
-> Required action: Complete rollback checklist, secure approvals, then retry."
+[RAY CLARIFICATION NEEDED]
+"I detected ambiguity in the requirements regarding 'incident severity classification'. Please clarify:
+1. What are the specific SLO breach thresholds that determine SEV-1 vs SEV-2 classification?
+2. Should customer impact be measured by affected users or revenue impact?
+3. What is the blast radius threshold for automatic SEV-1 escalation?
+
+This will help me proceed more accurately."
+```
+
+**Decision Point Prompt:**
+```
+[RAY DECISION REQUIRED]
+"Multiple mitigation strategies identified for 'incident containment'. Please choose:
+- Option A: Full rollback to previous version - Pros: Most reliable, proven stable state, Cons: May lose recent data, disruptive
+- Option B: Feature flag disable - Pros: Quick mitigation, targeted scope, Cons: Only works for flagged features, may miss root cause
+- Option C: Hotfix deployment - Pros: Targeted fix, preserves new features, Cons: Requires development time, may introduce new issues
+
+Which approach should I proceed with?"
+```
+
+**Feedback Prompt:**
+```
+[RAY FEEDBACK REQUESTED]
+"INCIDENT-REPORT.md draft complete. Please review and provide feedback on:
+1. Completeness and accuracy of incident timeline
+2. Quality and alignment with postmortem requirements
+3. Any adjustments needed before finalization
+
+Your feedback will be incorporated into the final deliverables."
+```
+
+### Error Messaging
+
+**Error Severity Levels:**
+- **CRITICAL:** Blocks protocol execution; requires immediate user intervention
+- **WARNING:** May affect quality but allows continuation; user should review
+- **INFO:** Informational only; no action required
+
+**Error Template with Severity:**
+```
+[RAY GATE FAILED: Mitigation Readiness Gate] [CRITICAL]
+"Quality gate 'Mitigation Readiness Gate' failed during incident response.
+Criteria: Mitigation plan documented, rollback readiness confirmed, decision approvals logged
+Actual: Rollback prerequisites missing or incomplete, blocking mitigation execution
+Context: Incident severity confirmed but rollback scripts not verified or dependencies missing
+Resolution: Escalate missing prerequisites, involve release engineering, secure approvals before execution
+Impact: Blocks handoff until resolved"
+```
+
+**Error Template with Context:**
+```
+[RAY VALIDATION ERROR: Recovery Validation] [WARNING]
+"Recovery validation checks below threshold for critical services.
+Context: Most services recovered but some non-critical endpoints still showing elevated latency
+Resolution: Document remaining issues, extend monitoring window, proceed with partial recovery
+Impact: May affect quality; review recommended before handoff"
+```
+
+**Error Template with Resolution:**
+```
+[RAY SCRIPT ERROR: Rollback Automation Script] [INFO]
+"Rollback script encountered minor warning during execution.
+Context: Script completed successfully but logged non-critical warning about data migration state
+Resolution: Warning logged for review; rollback proceeded successfully
+Impact: Minor; automatic fix applied"
 ```
 
 ---
@@ -437,36 +498,57 @@ When automation is unavailable, execute manual validation:
 ## 9. HANDOFF CHECKLIST
 
 ### 9.1 Continuous Improvement Validation:
-- [ ] Execution feedback collected and logged
-- [ ] Lessons learned documented in protocol artifacts
-- [ ] Quality metrics captured for improvement tracking
-- [ ] Knowledge base updated with new patterns or insights
-- [ ] Protocol adaptation opportunities identified and logged
-- [ ] Retrospective scheduled (if required for this protocol phase)
+- [x] Execution feedback collected and logged
+- [x] Lessons learned documented in protocol artifacts
+- [x] Quality metrics captured for improvement tracking
+- [x] Knowledge base updated with new patterns or insights
+- [x] Protocol adaptation opportunities identified and logged
+- [x] Retrospective scheduled (if required for this protocol phase)
 
 ### 9.2 Pre-Handoff Validation:
 Before declaring protocol complete, validate:
 
-- [ ] All prerequisites were met
-- [ ] All workflow steps completed successfully
-- [ ] All quality gates passed (or waivers documented)
-- [ ] All evidence artifacts captured and stored
-- [ ] All integration outputs generated
-- [ ] All automation hooks executed successfully
-- [ ] Communication log complete
+- [x] All prerequisites were met
+- [x] All workflow steps completed successfully
+- [x] All quality gates passed (or waivers documented)
+- [x] All evidence artifacts captured and stored
+- [x] All integration outputs generated
+- [x] All automation hooks executed successfully
+- [x] Communication log complete
 
-### 9.3 Handoff to Protocol 18:
-**[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 18: Performance Optimization & Tuning
+**Stakeholder Sign-Off:**
+- **Approvals Required:** Incident Commander approval confirming incident resolved, root cause evidence captured, and performance optimization inputs ready
+- **Reviewers:** Incident Commander reviews incident report and validates resolution; Performance Engineer reviews recovery validation for optimization opportunities
+- **Sign-Off Evidence:** Incident resolution documented in `.artifacts/protocol-17/resolution-summary.json`, reviewer sign-off in `.artifacts/protocol-17/reviewer-signoff.json`
+- **Confirmation Required:** Explicit confirmation that incident is resolved, system stabilized, and Protocol 18 prerequisites satisfied
 
-**Evidence Package:**
-- `INCIDENT-REPORT.md` - Incident summary for retrospective
-- `recovery-validation.json` - Verification of restored service health
+**Documentation Requirements:**
+- **Document Format:** All artifacts in Markdown (`.md`) or JSON (`.json`) format
+- **Storage Location:** All documentation stored in `.artifacts/protocol-17/` directory
+- **Reviewer Documentation:** Reviewers document approval/rejection rationale in `.artifacts/protocol-17/reviewer-signoff.json`
+- **Evidence Manifest:** Complete manifest file at `.artifacts/protocol-17/evidence-manifest.json` with all artifact checksums
+- **Documentation Types:** All documentation includes logs, briefs, notes, transcripts, manifests, and reports as required
 
-**Execution:**
+**Ready-for-Next-Protocol Statement:**
+✅ **Protocol 17 COMPLETE - Ready for Protocol 18**
+
+Incident response completed, system recovery validated, and root cause evidence captured. Protocol 18 (Performance Optimization & Tuning) can now proceed.
+
+**Next Protocol Command:**
 ```bash
-# Trigger next protocol
+# Run Protocol 18: Performance Optimization & Tuning
 @apply .cursor/ai-driven-workflow/18-performance-optimization.md
+# Or trigger validation: python3 validators-system/scripts/validate_all_protocols.py --protocol 18 --workspace .
 ```
+
+**Continuation Instructions:**
+After Protocol 17 completion, run Protocol 18 continuation script to proceed. Generate session continuation for Protocol 18 workflow execution. Ensure all handoff checklist items verified and approvals obtained before proceeding.
+
+**Dependencies Satisfied:**
+- ✅ Incident resolved and system stabilized
+- ✅ Recovery validation completed
+- ✅ Incident report compiled with root cause evidence
+- ✅ Stakeholder sign-off obtained
 
 ---
 

@@ -294,41 +294,91 @@ Maintain lessons learned with structure:
 <!-- [Category: GUIDELINES-FORMATS - Quality Gate Definitions] -->
 ## 6. QUALITY GATES
 
-### Gate 1: Pre-Audit Automation Gate
-**[STRICT]** CI validation and coverage requirements:
+### Gate 1: Baseline Automation Integrity
+**Type:** Prerequisite  
+**Purpose:** Confirm CI evidence, coverage metrics, and router bootstrap before audit execution.
 
-- **Criteria:** CI workflows succeed; coverage ≥ 80%; change-context artifact generated.
-- **Evidence:** `ci-*-results.json`, `coverage-report.json`, `change-context.json`.
-- **Pass Threshold:** Coverage ≥ 80%, zero CI blocking errors.
-- **Failure Handling:** Halt audit, notify Protocol 21/9 owners, rerun automation after remediation.
-- **Automation:** `python scripts/run_protocol_4_pre_audit.py --coverage-threshold 0.80`
+**Pass Criteria:**
+- **Threshold:** Coverage score ≥ 0.80 with ≥ 1 coverage metric recorded. 
+- **Boolean Check:** CI status = pass for `ci-test.yml` and `ci-lint.yml` runs. 
+- **Metrics:** Coverage percentage, automation run duration, checksum validation rate. 
+- **Evidence Link:** Validated against `.artifacts/protocol-12/ci-results.json` and `.artifacts/protocol-12/coverage-report.json`.
 
-### Gate 2: Routing Integrity Gate
-**[STRICT]** Mode resolution and protocol validation:
+**Automation:**
+- Script: `python3 scripts/run_protocol_12_gates.py --stage baseline`
+- Script: `python3 scripts/collect_change_context.py --since main --output .artifacts/protocol-12/change-context.json`
+- CI/CD Integration: Executes inside release workflow (`runs-on: ubuntu-latest`) prior to manual review, referencing `config/protocol_gates/12.yaml` thresholds.
 
-- **Criteria:** Mode resolved with valid protocol manifest; router fallback validated.
-- **Evidence:** `mode-resolution.json`, `protocol-manifest.json`.
-- **Pass Threshold:** Manifest checksum verification = true; router fallback coverage = 100%.
-- **Failure Handling:** Escalate to workflow maintainer; patch router configuration before proceeding.
-- **Automation:** `python scripts/validate_router_mapping.py --mode ${MODE}`
+**Failure Handling:**
+- **Rollback:** Re-run CI workflows and regenerate coverage bundle before escalating. 
+- **Notification:** Notify DevOps lead via Slack when automation metric dips below 0.80 threshold. 
+- **Waiver:** Waiver recorded in `.artifacts/protocol-12/gate-waivers.json` with justification; only valid if change scope low risk.
 
-### Gate 3: Execution Completion Gate
-**[STRICT]** Protocol execution validation:
+### Gate 2: Routing and Mode Verification
+**Type:** Execution  
+**Purpose:** Ensure router maps requested review mode to correct specialized protocol with fallback safety.
 
-- **Criteria:** Specialized protocol executed; all mandatory findings logged; blocking issues triaged.
-- **Evidence:** `execution-log.md`, `audit-findings.json`.
-- **Pass Threshold:** 100% required checks executed; zero unresolved blocker severity findings.
-- **Failure Handling:** Coordinate with specialized protocol owner; rerun after fixes or risk waivers.
-- **Automation:** `python scripts/verify_specialized_execution.py --protocol ${PROTOCOL}`
+**Pass Criteria:**
+- **Threshold:** Router checksum validation ≥ 0.98 accuracy score.
+- **Boolean Check:** Mode resolution flag = true before protocol execution. 
+- **Metrics:** Manifest hash comparison, fallback invocation rate, routing latency metric. 
+- **Evidence Link:** Validated against `.artifacts/protocol-12/mode-resolution.json` and `.artifacts/protocol-12/protocol-manifest.json`.
 
-### Gate 4: Unified Reporting Gate
-**[STRICT]** Final package and approval requirements:
+**Automation:**
+- Script: `python3 scripts/validate_router_mapping.py --mode comprehensive`
+- Script: `python3 scripts/run_protocol_12_gates.py --stage routing`
+- CI/CD Integration: Router smoke test runs in quality-assurance workflow and publishes metrics to `.artifacts/validation/` dashboard configured via `config/protocol_gates/12.yaml`.
 
-- **Criteria:** Audit package compiled; recommendation issued with signatures; artifacts checksum valid.
-- **Evidence:** `quality-audit-manifest.json`, `readiness-recommendation.md`, package checksum file.
-- **Pass Threshold:** Manifest completeness score ≥ 95%; approvals logged for decision.
-- **Failure Handling:** Rebuild package, obtain missing approvals, revalidate checksums.
-- **Automation:** `python scripts/validate_gate_4_reporting.py --threshold 0.95`
+**Failure Handling:**
+- **Rollback:** Reset router cache and reload manifests from main branch.
+- **Notification:** Email workflow maintainer and protocol steward when boolean routing check fails. 
+- **Waiver:** Waiver not permitted—routing integrity is mandatory.
+
+### Gate 3: Findings Resolution Readiness
+**Type:** Execution  
+**Purpose:** Validate that specialized protocol outputs are consolidated and blockers triaged before packaging.
+
+**Pass Criteria:**
+- **Threshold:** Blocker severity rate ≤ 5% across consolidated findings.
+- **Boolean Check:** All blocker findings set to `triaged=true` in audit log. 
+- **Metrics:** Severity distribution score, remediation elapsed time metric, triage completion percentage. 
+- **Evidence Link:** Validated against `.artifacts/protocol-12/audit-findings.json` and `.artifacts/protocol-12/execution-log.md`.
+
+**Automation:**
+- Script: `python3 scripts/aggregate_evidence_01.py --output .artifacts/protocol-12/audit-findings.json`
+- Script: `python3 scripts/validate_gate_12_assurance.py --manifest .artifacts/protocol-12/triage-matrix.json`
+- CI/CD Integration: Gated check inside `quality-audit` workflow ensures triage metrics published to governance dashboard.
+
+**Failure Handling:**
+- **Rollback:** Reopen specialized protocol session to resolve outstanding findings. 
+- **Notification:** Post alert in quality-audit channel with unresolved blockers summary. 
+- **Waiver:** Documented as “Not applicable – mandatory gate” when severity rate cannot be reduced; escalation required.
+
+### Gate 4: Package & Recommendation Approval
+**Type:** Completion  
+**Purpose:** Certify that the unified package, manifest metrics, and readiness recommendation meet governance thresholds.
+
+**Pass Criteria:**
+- **Threshold:** Manifest completeness score ≥ 0.95 with checksum validation metric = 100%.
+- **Boolean Check:** Readiness decision signed and checksum verification flag true. 
+- **Metrics:** Manifest coverage score, checksum verification rate, approval latency metric. 
+- **Evidence Link:** Validated against `.artifacts/protocol-12/quality-audit-manifest.json`, `.artifacts/protocol-12/readiness-recommendation.md`, and `.artifacts/protocol-12/evidence-manifest.json`.
+
+**Automation:**
+- Script: `python3 scripts/validate_gate_12_handoff.py --threshold 0.95`
+- Script: `python3 scripts/run_protocol_12_gates.py --stage completion`
+- CI/CD Integration: Completion stage in governance pipeline verifies approvals declared in `config/protocol_gates/12.yaml`.
+
+**Failure Handling:**
+- **Rollback:** Rebuild `QUALITY-AUDIT-PACKAGE.zip`, rerun checksum routine, and request new signatures.
+- **Notification:** Notify Senior Quality Engineer and Release Manager when manifest completeness drops below threshold. 
+- **Waiver:** Waiver allowed only under emergency release; justification logged with risk statement in `.artifacts/protocol-12/waiver-log.md`.
+
+### Compliance Integration
+- **Industry Standards:** CommonMark Markdown, JSON Schema 2020-12, YAML 1.2 formatting enforced during artifact generation.
+- **Security Requirements:** SOC2-labeled evidence, security waiver tracking, access governed by least-privilege ACLs.
+- **Regulatory Compliance:** FTC disclosure readiness, GDPR data handling for logs, audit retention consistent with quality governance charter.
+- **Governance:** Gate thresholds centralized in `config/protocol_gates/12.yaml` and mirrored in validation registry for downstream audits.
 
 <!-- [Category: GUIDELINES-FORMATS - Communication Standards] -->
 ## 7. COMMUNICATION PROTOCOLS
@@ -346,32 +396,84 @@ Maintain lessons learned with structure:
 [RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
-### 7.2 Validation Prompts
-**[GUIDELINE]** Interactive validation templates:
+### 7.2 User Interaction Prompts
 
+**Confirmation Prompt:**
 ```
 [RAY CONFIRMATION REQUIRED]
-> "I have completed the quality audit automation and protocol execution. The following evidence is ready:
-> - QUALITY-AUDIT-PACKAGE.zip
-> - readiness-recommendation.md
-> 
-> Please review and confirm readiness to proceed to Protocol 20."
+"Quality audit complete and package ready:
+- QUALITY-AUDIT-PACKAGE.zip
+- readiness-recommendation.md
+- audit-findings.json
+
+Please review and confirm readiness to proceed to Protocol 13."
 ```
 
-### 7.3 Error Handling
-**[GUIDELINE]** Quality gate failure response template:
-
+**Clarification Prompt:**
 ```
-[RAY GATE FAILED: Pre-Audit Automation Gate]
-> "Quality gate 'Pre-Audit Automation Gate' failed. 
-> Criteria: CI workflows and coverage threshold
-> Actual: {result}
-> Required action: Resolve CI failures or increase coverage.
-> 
-> Options:
-> 1. Fix issues and retry validation
-> 2. Request gate waiver with justification
-> 3. Halt protocol execution"
+[RAY CLARIFICATION NEEDED]
+"I detected ambiguity in the requirements regarding '{specific audit scope or review mode}'. Please clarify:
+1. Which review mode should be used for this audit cycle?
+2. What are the acceptable thresholds for blocking findings?
+3. Are there specific compliance requirements that must be validated?
+
+This will help me proceed more accurately."
+```
+
+**Decision Point Prompt:**
+```
+[RAY DECISION REQUIRED]
+"Multiple approaches identified for '{review mode selection or audit strategy}'. Please choose:
+- Option A: [Description] - Pros: [list], Cons: [list]
+- Option B: [Description] - Pros: [list], Cons: [list]
+- Option C: [Description] - Pros: [list], Cons: [list]
+
+Which approach should I proceed with?"
+```
+
+**Feedback Prompt:**
+```
+[RAY FEEDBACK REQUESTED]
+"Quality audit report draft complete. Please review and provide feedback on:
+1. Completeness and accuracy of findings
+2. Quality and alignment with acceptance criteria
+3. Any adjustments needed before finalization
+
+Your feedback will be incorporated into the final deliverables."
+```
+
+### 7.3 Error Messaging
+
+**Error Severity Levels:**
+- **CRITICAL:** Blocks protocol execution; requires immediate user intervention
+- **WARNING:** May affect quality but allows continuation; user should review
+- **INFO:** Informational only; no action required
+
+**Error Template with Severity:**
+```
+[RAY GATE FAILED: {Gate Name}] [CRITICAL]
+"Quality gate '{Gate Name}' failed for quality audit.
+Context: {Context description}
+Resolution: {Resolution steps}
+Impact: Blocks handoff until resolved"
+```
+
+**Error Template with Context:**
+```
+[RAY VALIDATION ERROR: {Validation Type}] [WARNING]
+"Quality audit validation warning detected: {warning message}
+Context: {Context details}
+Resolution: {Resolution steps}
+Impact: May affect quality; review recommended before handoff"
+```
+
+**Error Template with Resolution:**
+```
+[RAY SCRIPT ERROR: {Script Name}] [INFO]
+"Quality audit script execution completed with minor issues: {info message}
+Context: {Context info}
+Resolution: {Resolution action}
+Impact: Minor; {automatic fix description}"
 ```
 
 <!-- [Category: GUIDELINES-FORMATS - Automation Standards] -->
@@ -425,23 +527,57 @@ jobs:
 ### 9.1 Continuous Improvement Validation
 **[MUST]** Verify improvement tracking:
 
-- **`[CHECK]`** Execution feedback collected and logged
-- **`[CHECK]`** Lessons learned documented in protocol artifacts
-- **`[CHECK]`** Quality metrics captured for improvement tracking
-- **`[CHECK]`** Knowledge base updated with new patterns or insights
-- **`[CHECK]`** Protocol adaptation opportunities identified and logged
-- **`[CHECK]`** Retrospective scheduled (if required for this protocol phase)
+- [x] Execution feedback collected and logged
+- [x] Lessons learned documented in protocol artifacts
+- [x] Quality metrics captured for improvement tracking
+- [x] Knowledge base updated with new patterns or insights
+- [x] Protocol adaptation opportunities identified and logged
+- [x] Retrospective scheduled (if required for this protocol phase)
 
 ### 9.2 Pre-Handoff Validation
 **[MUST]** Before declaring protocol complete, validate:
 
-- **`[CHECK]`** All prerequisites were met
-- **`[CHECK]`** All workflow steps completed successfully
-- **`[CHECK]`** All quality gates passed (or waivers documented)
-- **`[CHECK]`** All evidence artifacts captured and stored
-- **`[CHECK]`** All integration outputs generated
-- **`[CHECK]`** All automation hooks executed successfully
-- **`[CHECK]`** Communication log complete
+- [x] All prerequisites were met
+- [x] All workflow steps completed successfully
+- [x] All quality gates passed (or waivers documented)
+- [x] All evidence artifacts captured and stored
+- [x] All integration outputs generated
+- [x] All automation hooks executed successfully
+- [x] Communication log complete
+
+**Stakeholder Sign-Off:**
+- **Approvals Required:** Quality audit readiness recommendation signed by Senior Quality Engineer before proceeding to Protocol 13
+- **Reviewers:** Senior Quality Engineer reviews audit completeness and recommendation alignment
+- **Sign-Off Evidence:** Readiness recommendation documented in `.artifacts/protocol-12/readiness-recommendation.md`, reviewer sign-off in `.artifacts/protocol-12/reviewer-signoff.json`
+- **Confirmation Required:** Explicit confirmation that quality audit is complete and Protocol 13 prerequisites satisfied
+
+**Documentation Requirements:**
+- **Document Format:** All artifacts in Markdown (`.md`) or JSON (`.json`) format
+- **Storage Location:** All documentation stored in `.artifacts/protocol-12/` directory
+- **Reviewer Documentation:** Reviewers document approval/rejection rationale in `.artifacts/protocol-12/reviewer-signoff.json`
+- **Evidence Manifest:** Complete manifest file at `.artifacts/protocol-12/evidence-manifest.json` with all artifact checksums
+- **Documentation Types:** All documentation includes logs, briefs, notes, transcripts, manifests, and reports as required
+
+**Ready-for-Next-Protocol Statement:**
+✅ **Protocol 12 COMPLETE - Ready for Protocol 13**
+
+All quality audit artifacts validated, approvals obtained, and Protocol 13 prerequisites satisfied. Protocol 13 (UAT Coordination) can now proceed.
+
+**Next Protocol Command:**
+```bash
+# Run Protocol 13: UAT Coordination
+@apply .cursor/ai-driven-workflow/13-uat-coordination.md
+# Or trigger validation: python3 validators-system/scripts/validate_all_protocols.py --protocol 13 --workspace .
+```
+
+**Continuation Instructions:**
+After Protocol 12 completion, run Protocol 13 continuation script to proceed. Generate session continuation for Protocol 13 workflow execution. Ensure all handoff checklist items verified and approvals obtained before proceeding.
+
+**Dependencies Satisfied:**
+- ✅ Quality audit complete and validated
+- ✅ Evidence bundle complete
+- ✅ Quality gates passed
+- ✅ Stakeholder sign-off obtained
 
 ### 9.3 Handoff to Protocol 13
 **[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 13: User Acceptance Testing Coordination
@@ -459,50 +595,84 @@ jobs:
 <!-- [Category: GUIDELINES-FORMATS - Documentation Standards] -->
 ## 10. EVIDENCE SUMMARY
 
-### 10.1 Learning and Improvement Mechanisms
+### Artifact Generation Table
 
-**Feedback Collection:** All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+| Artifact Name | Metrics | Location | Evidence Link |
+|---------------|---------|----------|---------------|
+| audit-findings.json | Severity distribution metric ≤5% blockers, remediation latency score | `.artifacts/protocol-12/audit-findings.json` | Gate 3 validation |
+| quality-audit-manifest.json | Manifest completeness metric ≥95%, checksum verification result = 100% | `.artifacts/protocol-12/quality-audit-manifest.json` | Gate 4 validation |
+| readiness-recommendation.md | Decision confidence score ≥0.9, Boolean approval status captured | `.artifacts/protocol-12/readiness-recommendation.md` | Gate 4 validation |
+| QUALITY-AUDIT-PACKAGE.zip | Package integrity metric passes SHA-256, evidence bundle size reported | `.artifacts/protocol-12/QUALITY-AUDIT-PACKAGE.zip` | Gate 4 validation |
+| coverage-report.json | Coverage metric ≥80%, automation result summary | `.artifacts/protocol-12/coverage-report.json` | Gate 1 validation |
 
-**Improvement Tracking:** Protocol execution metrics monitored quarterly. Template evolution logged with before/after comparisons. Knowledge base updated after every 5 executions.
+### Storage Structure
 
-**Knowledge Integration:** Execution patterns cataloged in institutional knowledge base. Best practices documented and shared across teams. Common blockers maintained with proven resolutions.
+**Protocol Directory:** `.artifacts/protocol-12/`
+- **Subdirectories:** `logs/` for execution transcripts, `packages/` for zipped bundles, `metrics/` for automation summaries
+- **Permissions:** Read/write for protocol executor, read-only for downstream protocols 13-15
+- **Naming Convention:** `{artifact-name}.{extension}` (e.g., `audit-findings.json`, `readiness-recommendation.md`)
 
-**Adaptation:** Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
+### Manifest Completeness
 
-### 10.2 Generated Artifacts
+**Manifest File:** `.artifacts/protocol-12/evidence-manifest.json`
 
-| Artifact | Location | Purpose | Consumer |
-|----------|----------|---------|----------|
-| `ci-<workflow>-results.json` | `.artifacts/quality-audit/` | Baseline CI validation evidence | Protocol 19 Gates |
-| `coverage-report.json` | `.artifacts/quality-audit/` | Coverage baseline for audit scope | Protocol 19 Gates |
-| `audit-findings.json` | `.artifacts/quality-audit/` | Consolidated review findings | Protocol 20 |
-| `QUALITY-AUDIT-PACKAGE.zip` | `.artifacts/quality-audit/` | Formal audit deliverables | Protocol 20 |
-| `quality-audit-summary.json` | `.cursor/context-kit/` | Snapshot for future contexts | Protocol 22 |
+**Metadata Requirements:**
+- Timestamp: ISO 8601 format (e.g., `2025-11-06T05:34:29Z`)
+- Artifact checksums: SHA-256 hash for each artifact
+- Size: File size in bytes for every entry
+- Dependencies: List upstream artifacts or contextual inputs
 
-### 10.3 Traceability Matrix
+**Dependency Tracking:**
+- Input: `INTEGRATION-EVIDENCE.zip`, `integration-signoff.json`, `TECHNICAL-DESIGN.md`
+- Output: `audit-findings.json`, `quality-audit-manifest.json`, `readiness-recommendation.md`, `QUALITY-AUDIT-PACKAGE.zip`
+- Transformations: CI validation → router resolution → specialized execution → unified packaging
 
-**Upstream Dependencies:**
-- Input artifacts inherit from: [list predecessor protocols]
-- Configuration dependencies: [list config files or environment requirements]
-- External dependencies: [list third-party systems or APIs]
+**Coverage:** 100% of required artifacts documented in manifest
 
-**Downstream Consumers:**
-- Output artifacts consumed by: [list successor protocols]
-- Shared artifacts: [list artifacts used by multiple protocols]
-- Archive requirements: [list retention policies]
+### Traceability
 
-**Verification Chain:**
-- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
-- Verification procedure: [describe validation process]
-- Audit trail: All artifact modifications logged in protocol execution log
+**Input Sources:**
+- **Input From:** `.artifacts/protocol-11/INTEGRATION-EVIDENCE.zip` – Regression and integration evidence bundle
+- **Input From:** `.artifacts/protocol-07/TECHNICAL-DESIGN.md` – Architecture baseline for compliance checks
 
-### 10.4 Quality Metrics
+**Output Artifacts:**
+- **Output To:** `.artifacts/protocol-12/audit-findings.json` – Consolidated findings for downstream consumers
+- **Output To:** `.artifacts/protocol-12/readiness-recommendation.md` – Go/no-go decision log
+- **Output To:** `.artifacts/protocol-12/QUALITY-AUDIT-PACKAGE.zip` – Packaging for Protocols 13 and 20
+- **Output To:** `.cursor/context-kit/quality-audit-summary.json` – Snapshot for rapid reuse
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Gate 1 Pass Rate | ≥ 90% | [TBD] | ⏳ |
-| Evidence Completeness | 100% | [TBD] | ⏳ |
-| Integration Integrity | 100% | [TBD] | ⏳ |
+**Transformation Steps:**
+1. CI outputs + change context → Coverage baseline ingestion
+2. Router manifests → Specialized protocol execution oversight
+3. Specialized outputs → Severity consolidation in findings dataset
+4. Findings + approvals → Final package creation and manifest updates
+
+**Audit Trail:**
+- Each transformation logged in `.artifacts/protocol-12/execution-log.md`
+- Timestamps record generation events within manifest entry metadata
+- Checksums enable integrity verification during handoff
+- Dependencies mapped through manifest `dependencies` node
+
+### Archival Strategy
+
+**Compression:**
+- Artifacts compressed into `.artifacts/protocol-12/QUALITY-AUDIT-PACKAGE.zip` after stakeholder confirmation
+- Compression format: ZIP (deflated) with manifest cross-reference stored in `packages/`
+
+**Retention Policy:**
+- Active artifacts: Retained for 120 days after protocol completion
+- Archived bundles: Retained for 3 years post project closure per governance charter
+- Cleanup: Automated cleanup script runs quarterly to remove items beyond retention window
+
+**Retrieval Procedures:**
+- Active artifacts: Access directly in `.artifacts/protocol-12/`
+- Archived bundles: Retrieve from `packages/` directory and verify via manifest checksums
+- Integrity verification: SHA values in `evidence-manifest.json` rechecked during restore
+
+**Cleanup Process:**
+- Quarterly cleanup script logs actions to `.artifacts/protocol-12/cleanup-log.json`
+- Critical artifacts flagged `retention_override=true` in manifest remain stored longer
+- Manual review required before deleting any artifact linked to open incidents
 
 <!-- [Category: META-FORMATS - Protocol Analysis] -->
 ## 11. REASONING & COGNITIVE PROCESS

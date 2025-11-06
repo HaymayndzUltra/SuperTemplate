@@ -1,16 +1,14 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "17",
-  "validation_timestamp": "2025-11-05T18:37:49.984927Z",
-  "overall_score": 0.7375,
-  "validation_status": "fail",
-  "issues": [
-    "Sign-off guidance missing: approvals, reviewers, confirmation"
-  ],
+  "validation_timestamp": "2025-11-06T05:29:53.111031Z",
+  "overall_score": 1.0,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [],
   "checklist_completeness": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
@@ -18,7 +16,7 @@
       "items": true,
       "categories": true,
       "dependencies": true,
-      "status_markers": false
+      "status_markers": true
     }
   },
   "verification_procedures": {
@@ -28,9 +26,9 @@
     "recommendations": [],
     "details": {
       "term_counts": {
-        "validate": 3,
-        "ensure": 0,
-        "confirm": 6,
+        "validate": 6,
+        "ensure": 1,
+        "confirm": 9,
         "verify": 2,
         "gate": 1
       },
@@ -41,17 +39,15 @@
     }
   },
   "stakeholder_signoff": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Sign-off guidance missing: approvals, reviewers, confirmation"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "approvals": false,
-      "reviewers": false,
+      "approvals": true,
+      "reviewers": true,
       "evidence_reference": true,
-      "confirmation": false
+      "confirmation": true
     }
   },
   "documentation_requirements": {
@@ -62,6 +58,9 @@
     "details": {
       "terms": [
         "log",
+        "brief",
+        "notes",
+        "transcript",
         "manifest",
         "report"
       ],
@@ -72,15 +71,15 @@
     }
   },
   "next_protocol_alignment": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "ready_statements": true,
       "next_commands": true,
       "dependencies": true,
-      "continuation": false
+      "continuation": true
     }
   }
 }

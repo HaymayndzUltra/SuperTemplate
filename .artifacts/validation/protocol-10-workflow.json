@@ -1,7 +1,7 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "10",
-  "validation_timestamp": "2025-11-05T18:37:49.766985Z",
+  "validation_timestamp": "2025-11-06T05:29:52.862124Z",
   "overall_score": 0.8333333333333333,
   "validation_status": "warning",
   "issues": [

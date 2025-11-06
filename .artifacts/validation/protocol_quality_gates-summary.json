@@ -1,0 +1,48 @@
+{
+  "validator": "protocol_quality_gates",
+  "validation_timestamp": "2025-11-06T06:09:21.237153Z",
+  "total_protocols": 1,
+  "pass_count": 1,
+  "warning_count": 0,
+  "fail_count": 0,
+  "average_score": 1.0,
+  "protocols": [
+    {
+      "protocol_id": "06",
+      "status": "pass",
+      "score": 1.0
+    }
+  ],
+  "dimensions": {
+    "gate_definitions": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "pass_criteria": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "automation": {
+      "average_score": 1.0,
+      "pass_count": 0,
+      "warning_count": 1,
+      "fail_count": 0
+    },
+    "failure_handling": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    },
+    "compliance_integration": {
+      "average_score": 1.0,
+      "pass_count": 1,
+      "warning_count": 0,
+      "fail_count": 0
+    }
+  }
+}

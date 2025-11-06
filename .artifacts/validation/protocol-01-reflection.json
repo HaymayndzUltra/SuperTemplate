@@ -1,14 +1,10 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "01",
-  "validation_timestamp": "2025-11-06T03:40:18.429273Z",
-  "overall_score": 0.8,
-  "validation_status": "warning",
-  "issues": [
-    "Continuous improvement gaps: opportunities",
-    "Knowledge capture gaps: lessons, knowledge_base, sharing",
-    "Roadmap or future direction not documented"
-  ],
+  "validation_timestamp": "2025-11-06T05:31:39.371824Z",
+  "overall_score": 1.0,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [],
   "retrospective_analysis": {
     "score": 1.0,
@@ -23,14 +19,12 @@
     }
   },
   "continuous_improvement": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Continuous improvement gaps: opportunities"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "opportunities": false,
+      "opportunities": true,
       "plans": true,
       "tracking": true,
       "evidence": true
@@ -49,28 +43,24 @@
     }
   },
   "knowledge_capture": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Knowledge capture gaps: lessons, knowledge_base, sharing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "lessons": false,
-      "knowledge_base": false,
+      "lessons": true,
+      "knowledge_base": true,
       "storage": true,
-      "sharing": false
+      "sharing": true
     }
   },
   "future_planning": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Roadmap or future direction not documented"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "roadmap": false,
+      "roadmap": true,
       "priorities": true,
       "resources": true,
       "timeline": true

@@ -409,35 +409,84 @@ Maintain structured lessons learned:
 
 ## QUALITY GATES
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Setting validation standards and criteria -->
 
-### Gate 1: Governance Activation Gate
-- **Criteria:** Cursor rule migration completed, metadata validated, tooling confirmation logged
-- **Evidence:** `.artifacts/protocol-05/rule-migration-report.md`, `.artifacts/protocol-05/tooling-confirmation.log`
-- **Pass Threshold:** All migrated files contain valid YAML frontmatter
-- **Failure Handling:** Remediate missing metadata, rerun migration steps, document corrections
-- **Automation:** `python scripts/validate_rule_metadata.py --path .cursor/rules/`
+### Gate 1: Governance Activation
+**Type:** Prerequisite  
+**Purpose:** Confirm rule migration and tooling readiness before legacy bootstrap alignment.  
+**Pass Criteria:**
+- **Threshold:** Metadata compliance score ≥0.95; YAML frontmatter completeness metric = pass.  
+- **Boolean Check:** `.artifacts/protocol-05/tooling-confirmation.log` records `status: verified`.  
+- **Metrics:** `rule-migration-report.md` captures migration coverage metric and error resolution metric.  
+- **Evidence Link:** Evidence validated against `.artifacts/protocol-05/rule-migration-report.md` and `.artifacts/protocol-05/tooling-confirmation.log`.  
+**Automation:**
+- Script: `python3 scripts/validate_rule_metadata.py --path .cursor/rules/ --output .artifacts/protocol-05/rule-metadata-validation.json`.  
+- Script: `python3 scripts/validate_prerequisites_05.py --log .artifacts/protocol-05/prerequisites-log.json`.  
+- CI Integration: Governance activation job runs via `script-registry-enforcement.yml` to block merges on failures.  
+- Config: `config/protocol_gates/05.yaml` defines metadata thresholds and required tooling confirmations.  
+**Failure Handling:**
+- **Rollback:** Re-run migration with corrected metadata, regenerate tooling logs, revalidate before proceeding.  
+- **Notification:** Alert governance steward when metadata compliance <0.95 or tooling status not verified.  
+- **Waiver:** Waiver entries stored in `.artifacts/protocol-05/gate-waivers.json` with CTO approval if emergency alignment required.
 
-### Gate 2: Repository Mapping Gate
-- **Criteria:** Repository structure captured, analysis plan approved by user, detected stack file generated
-- **Evidence:** `.artifacts/protocol-05/repo-structure.txt`, `.artifacts/protocol-05/analysis-plan.md`, `.cursor/bootstrap/detected-stack.json`
-- **Pass Threshold:** User approval recorded and stack detection coverage ≥ 90%
-- **Failure Handling:** Revise analysis plan, gather missing files, rerun detection
-- **Automation:** `python scripts/validate_repo_mapping.py --structure .artifacts/protocol-05/repo-structure.txt`
+### Gate 2: Repository Mapping
+**Type:** Execution  
+**Purpose:** Ensure repository topology and analysis plan authenticated prior to thematic investigation.  
+**Pass Criteria:**
+- **Threshold:** Stack detection coverage ≥90%; approval turnaround metric ≤24h.  
+- **Boolean Check:** `.artifacts/protocol-05/analysis-plan.md` front matter `status: approved`.  
+- **Metrics:** `repo-structure.txt` annotated with directory coverage metric; `detected-stack.json` records technology confidence metric.  
+- **Evidence Link:** Evidence validated against `.artifacts/protocol-05/repo-structure.txt`, `.artifacts/protocol-05/analysis-plan.md`, and `.cursor/bootstrap/detected-stack.json`.  
+**Automation:**
+- Script: `python3 scripts/validate_repo_mapping.py --structure .artifacts/protocol-05/repo-structure.txt --output .artifacts/protocol-05/repo-mapping-validation.json`.  
+- Script: `python3 scripts/detect_stack.py --input .artifacts/protocol-05/repo-structure.txt --output .cursor/bootstrap/detected-stack.json`.  
+- CI Integration: Repository mapping validation runs on `ubuntu-latest` to surface coverage metrics in validation summaries.  
+- Config: `config/protocol_gates/05.yaml` stores minimum coverage and approval SLA expectations.  
+**Failure Handling:**
+- **Rollback:** Update repository walk-through, adjust analysis plan, rerun detection before continuing.  
+- **Notification:** Notify project owner if approval turnaround exceeds SLA or coverage metric falls below 90%.  
+- **Waiver:** Documented with justification for partial mapping in `gate-waivers.json` and time-bound remediation plan.
 
-### Gate 3: Principle Validation Gate
-- **Criteria:** Investigation themes approved, findings documented, validation brief acknowledged by user
-- **Evidence:** `.artifacts/protocol-05/investigation-themes.md`, `.artifacts/protocol-05/theme-findings.json`, `.artifacts/protocol-05/validation-brief.md`
-- **Pass Threshold:** User confirmation recorded; outstanding questions < 3 critical items
-- **Failure Handling:** Address feedback, update findings, rerun gate
-- **Automation:** `python scripts/validate_principles.py --input .artifacts/protocol-05/theme-findings.json`
+### Gate 3: Principle Validation
+**Type:** Execution  
+**Purpose:** Validate thematic findings and principle synthesis prior to documentation updates.  
+**Pass Criteria:**
+- **Threshold:** Principle validation score ≥0.92; unresolved critical questions ≤2.  
+- **Boolean Check:** `.artifacts/protocol-05/validation-brief.md` includes `user_confirmation: true`.  
+- **Metrics:** `theme-findings.json` records principle alignment metric and risk flag metric.  
+- **Evidence Link:** Evidence validated against `.artifacts/protocol-05/investigation-themes.md`, `.artifacts/protocol-05/theme-findings.json`, and `.artifacts/protocol-05/validation-brief.md`.  
+**Automation:**
+- Script: `python3 scripts/validate_principles.py --input .artifacts/protocol-05/theme-findings.json --output .artifacts/protocol-05/principle-validation-report.json`.  
+- Script: `python3 scripts/notify_validation_status.py --brief .artifacts/protocol-05/validation-brief.md`.  
+- CI Integration: Nightly validation pipeline posts principle metrics to `.artifacts/validation/protocol_quality_gates-summary.json`.  
+- Config: `config/protocol_gates/05.yaml` defines minimum validation score and critical question thresholds.  
+**Failure Handling:**
+- **Rollback:** Conduct follow-up analysis, amend findings, rerun validator until metrics achieved.  
+- **Notification:** Ping stakeholder to reconfirm validation when confirmation not present.  
+- **Waiver:** Not applicable—principle validation mandatory for legacy alignment.
 
-### Gate 4: Governance Alignment Gate
-- **Criteria:** Documentation updates approved, rule audit final report passes, template inventory generated
-- **Evidence:** `.artifacts/protocol-05/documentation-plan.md`, `.artifacts/protocol-05/rule-audit-final.md`, `.cursor/context-kit/template-inventory.md`
-- **Pass Threshold:** Rule audit severity ≤ Medium and documentation approvals recorded
-- **Failure Handling:** Resolve audit findings, update docs/rules, rerun validation
-- **Automation:** `python scripts/rules_audit_quick.py --output .artifacts/protocol-05/rule-audit-final.md`
+### Gate 4: Governance Alignment
+**Type:** Completion  
+**Purpose:** Confirm documentation updates, rule audit outcomes, and template catalog readiness for downstream protocols.  
+**Pass Criteria:**
+- **Threshold:** Rule audit severity metric ≤Medium; template inventory coverage metric ≥95%.  
+- **Boolean Check:** `.cursor/context-kit/template-inventory.md` front matter `status: published`.  
+- **Metrics:** `rule-audit-final.md` captures compliance score metric and remediation metric; `documentation-plan.md` logs approval metric.  
+- **Evidence Link:** Evidence validated against `.artifacts/protocol-05/documentation-plan.md`, `.artifacts/protocol-05/rule-audit-final.md`, and `.cursor/context-kit/template-inventory.md`.  
+**Automation:**
+- Script: `python3 scripts/rules_audit_quick.py --output .artifacts/protocol-05/rule-audit-final.md`.  
+- Script: `python3 scripts/aggregate_evidence_05.py --output .artifacts/protocol-05 --protocol-id 05`.  
+- CI Integration: Governance alignment stage updates protocol governance dashboard with pass/fail telemetry.  
+- Config: `config/protocol_gates/05.yaml` codifies audit severity thresholds and template coverage requirements.  
+**Failure Handling:**
+- **Rollback:** Resolve audit findings, regenerate documentation plan, rebuild template inventory.  
+- **Notification:** Notify governance council when audit severity >Medium or inventory coverage drops.  
+- **Waiver:** Waiver allowed only with governance council approval; mitigation plan logged in `gate-waivers.json`.
+
+### Compliance Integration
+- **Industry Standards:** CommonMark Markdown for documentation, JSON Schema for validation data, YAML for governance configurations.  
+- **Security Requirements:** SOC2-aligned access controls on rule directories, GDPR-compliant handling of user approvals, encrypted storage for template archives.  
+- **Regulatory Compliance:** FTC-compliant disclosure of governance changes, ISO 9001 retention for documentation plans, auditability aligned with internal governance charter.  
+- **Governance:** Gate thresholds managed via `config/protocol_gates/05.yaml`; automation telemetry surfaced in `.artifacts/validation/protocol_quality_gates-summary.json` and governance dashboards.
 
 ---
 
@@ -645,73 +694,92 @@ Before declaring protocol complete, validate:
 
 ## EVIDENCE SUMMARY
 <!-- [Category: GUIDELINES-FORMATS] -->
-<!-- Why: Defining standards for evidence collection and quality metrics -->
 
-### Learning and Improvement Mechanisms
+### Artifact Generation Table
 
-#### Feedback Collection Standards
-- **Artifact Feedback:** All artifacts generate feedback for continuous improvement
-- **Quality Gate Tracking:** Historical logs maintain gate outcome patterns
-- **Pattern Analysis:** Regular analysis for threshold calibration
+| Artifact Name | Metrics | Location | Evidence Link |
+|---------------|---------|----------|---------------|
+| rule-migration-report.md | Metadata compliance metric ≥0.95, error resolution metric documented | `.artifacts/protocol-05/rule-migration-report.md` | Evidence link: Gate 1 governance activation |
+| tooling-confirmation.log | Tooling verification metric = pass, automation health metric recorded | `.artifacts/protocol-05/tooling-confirmation.log` | Evidence link: Gate 1 governance activation |
+| repo-structure.txt | Directory coverage metric ≥90%, annotation metric captured | `.artifacts/protocol-05/repo-structure.txt` | Evidence link: Gate 2 repository mapping |
+| analysis-plan.md | Approval turnaround metric ≤24h, stakeholder confirmation metric logged | `.artifacts/protocol-05/analysis-plan.md` | Evidence link: Gate 2 repository mapping |
+| theme-findings.json | Principle alignment metric ≥0.92, risk flag metric ≤2 | `.artifacts/protocol-05/theme-findings.json` | Evidence link: Gate 3 principle validation |
+| validation-brief.md | User confirmation metric = true, reminder cadence metric ≤2 | `.artifacts/protocol-05/validation-brief.md` | Evidence link: Gate 3 principle validation |
+| rule-audit-final.md | Compliance score metric ≥0.9, severity metric ≤Medium | `.artifacts/protocol-05/rule-audit-final.md` | Evidence link: Gate 4 governance alignment |
+| template-inventory.md | Template coverage metric ≥95%, freshness metric recorded | `.cursor/context-kit/template-inventory.md` | Evidence link: Gate 4 governance alignment |
+| evidence-manifest.json | Artifact count metric = 100%, checksum verification metric = pass | `.artifacts/protocol-05/evidence-manifest.json` | Evidence link: Aggregated evidence validator |
 
-#### Improvement Tracking Standards
-- **Execution Metrics:** Quarterly monitoring of protocol performance
-- **Template Evolution:** Change logging with before/after comparisons
-- **Knowledge Updates:** Knowledge base refresh after every 5 executions
+### Storage Structure
 
-#### Knowledge Integration Standards
-- **Pattern Cataloging:** Execution patterns stored in institutional knowledge base
-- **Best Practice Documentation:** Proven approaches shared across teams
-- **Blocker Resolution:** Common issues maintained with proven solutions
+**Protocol Directory:** `.artifacts/protocol-05/`  
+- **Subdirectories:** `archives/`, `logs/`, optional `knowledge-base/` for lessons learned.  
+- **Permissions:** Read/write for protocol executor and governance reviewer, read-only for downstream protocols (02, 08, 23).  
+- **Naming Convention:** `{artifact-name}.{extension}` (e.g., `rule-migration-report.md`, `repo-mapping-validation.json`).
 
-#### Adaptation Standards
-- **Context Adaptation:** Protocol adjusts based on project complexity, domain, constraints
-- **Threshold Tuning:** Quality gates adjust dynamically based on risk tolerance
-- **Workflow Optimization:** Efficiency improvements based on historical data
+### Manifest Completeness
 
-### Generated Artifacts
-| Artifact | Location | Purpose | Consumer |
-|----------|----------|---------|----------|
-| `rule-migration-report.md` | `.artifacts/protocol-05/` | Proof of governance activation | Protocol 23 |
-| `analysis-plan.md` | `.artifacts/protocol-05/` | Approved repository analysis scope | Protocol 08 |
-| `theme-findings.json` | `.artifacts/protocol-05/` | Captured architectural principles | Protocol 04-CD |
-| `rule-audit-final.md` | `.artifacts/protocol-05/` | Final rule validation evidence | Protocol 23 |
-| `template-inventory.md` | `.cursor/context-kit/` | Template availability summary | Protocol 08 |
-| `repo-structure.txt` | `.artifacts/protocol-05/` | Repository mapping documentation | Protocol 08 |
-| `detected-stack.json` | `.cursor/bootstrap/` | Technology stack identification | Protocol 08 |
-| `validation-brief.md` | `.artifacts/protocol-05/` | User validation checkpoint | Audit trail |
-| `architecture-principles.md` | `.artifacts/protocol-05/` | Synthesized principles | Protocol 02/24 |
-| `documentation-plan.md` | `.artifacts/protocol-05/` | README update strategy | Documentation |
-| `investigation-themes.md` | `.artifacts/protocol-05/` | Thematic analysis framework | Protocol 08 |
-| `README.md` | `.cursor/context-kit/` | Context kit documentation | Multiple protocols |
+**Manifest File:** `.artifacts/protocol-05/evidence-manifest.json`
 
-### Traceability Matrix
+**Metadata Requirements:**
+- Timestamp: ISO 8601 format (e.g., `2025-11-06T05:34:29Z`).  
+- Artifact checksums: SHA-256 hash for every artifact, automation report, and archive.  
+- Size: File size (bytes) captured within manifest integrity block.  
+- Dependencies: Upstream sources (Protocols 03 & 04) and downstream consumers (02, 08, 23) listed explicitly.  
 
-#### Upstream Dependencies
-- **Input Artifacts:** Inherited from Protocol 04 (bootstrap-manifest.json, governance-status.md) and Protocol 03 (PROJECT-BRIEF.md)
-- **Configuration Dependencies:** Scripts directory, Cursor editor (optional), rule directories
-- **External Dependencies:** Python runtime, shell command execution, file system access
+**Dependency Tracking:**
+- Input: `bootstrap-manifest.json`, `governance-status.md`, `PROJECT-BRIEF.md`, script registry entries.  
+- Output: Artifacts listed in table plus `gate*-*.json`, `prerequisites-log.json`, and archives in `archives/`.  
+- Transformations: Governance activation → repository mapping → thematic synthesis → documentation alignment → evidence aggregation.  
 
-#### Downstream Consumers
-- **Output Consumers:** Protocol 08 (primary), Protocol 23 (governance), Protocol 02 or 24 (discovery)
-- **Shared Artifacts:** Context kit used by multiple protocols
-- **Archive Requirements:** 90-day retention for evidence artifacts
+**Coverage:** Manifest documents 100% of required artifacts, validation logs, and archives with checksum verification and dependency mapping.
 
-#### Verification Chain
-- **Artifact Integrity:** SHA-256 checksum, timestamp, verified_by field
-- **Verification Procedure:** Automated validation via scripts, manual review for user approvals
-- **Audit Trail:** All modifications logged in protocol execution log
+### Traceability
 
-### Quality Metrics
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Gate 1 Pass Rate | ≥ 95% | [TBD] | ⏳ |
-| Gate 2 Pass Rate | ≥ 90% | [TBD] | ⏳ |
-| Gate 3 Pass Rate | ≥ 85% | [TBD] | ⏳ |
-| Gate 4 Pass Rate | ≥ 95% | [TBD] | ⏳ |
-| Evidence Completeness | 100% | [TBD] | ⏳ |
-| Integration Integrity | 100% | [TBD] | ⏳ |
-| User Approval Rate | ≥ 90% | [TBD] | ⏳ |
+**Input Sources:**
+- **Input From:** `.artifacts/protocol-04/bootstrap-manifest.json` – Bootstrap assets informing repository mapping.  
+- **Input From:** `.cursor/context-kit/governance-status.md` – Current governance state guiding documentation updates.  
+
+**Output Artifacts:**
+- **Output To:** `analysis-plan.md` – Approved scope for Protocol 08 investigations.  
+- **Output To:** `architecture-principles.md` – Canonical principles for Protocols 02/24.  
+- **Output To:** `template-inventory.md` – Template catalog leveraged by Protocol 08.  
+- **Output To:** `rule-audit-final.md` – Governance evidence for Protocol 23.  
+- **Output To:** `evidence-manifest.json` – Audit-ready ledger for governance oversight.  
+
+**Transformation Steps:**
+1. Governance state → rule-migration-report.md: Document migration metrics and resolve defects.  
+2. Repository discovery → repo-structure.txt / detected-stack.json: Capture topology and tech stack metrics.  
+3. Thematic investigation → theme-findings.json: Compile architecture principles with validation metrics.  
+4. Stakeholder confirmation → validation-brief.md: Log approvals and outstanding questions.  
+5. Documentation updates → rule-audit-final.md & template-inventory.md: Record governance alignment metrics.  
+6. Evidence bundling → evidence-manifest.json: Aggregate artifacts with checksums and dependency links.  
+
+**Audit Trail:**
+- Manifest logs timestamps, hash values, verification owners for each artifact.  
+- Automation logs stored in `.artifacts/protocol-05/logs/automation.log`.  
+- Waivers and approvals captured in `gate-waivers.json` and `validation-brief.md`.  
+- Cleanup actions appended to `.artifacts/protocol-05/cleanup-log.json` for retention tracking.
+
+### Archival Strategy
+
+**Compression:**
+- Artifacts archived into `.artifacts/protocol-05/archives/governance-bundle.zip` after Gate 4 completion.  
+- Compression format: ZIP with AES-256 encryption for governance-sensitive files.  
+
+**Retention Policy:**
+- Active artifacts retained for 180 days post-execution to support remediation.  
+- Archived bundles retained for 4 years per governance policy; exceptions flagged for extended retention.  
+- Cleanup automation scheduled quarterly; retention reviews documented with governance officer sign-off.  
+
+**Retrieval Procedures:**
+- Active artifacts accessed directly with manifest cross-check before distribution.  
+- Archived bundles restored from `archives/` directory; verify checksums against manifest before reuse.  
+- Integrity verification uses recorded SHA values and approval logs.  
+
+**Cleanup Process:**
+- Quarterly script updates `.artifacts/protocol-05/cleanup-log.json` with removed artifact list, sizes, and hashes.  
+- Artifacts flagged `extended_retention: true` persist until governance review completes.  
+- Retention decisions recorded in `.artifacts/protocol-05/retention-approvals.json` with reviewer signature.
 
 ---
 

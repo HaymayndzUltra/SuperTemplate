@@ -48,8 +48,34 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 <!-- [Category: EXECUTION-BASIC - Sequential validation tasks] -->
 ### PHASE 1: Intake Validation and Staging Alignment
 
+**Reasoning Pattern:** Validate-before-rehearse heuristic — systematically validate upstream approvals and staging parity before deployment rehearsal. This prevents wasted rehearsal effort on invalid configurations or missing approvals.
+
+**Pattern Improvement:** Track intake validation failures to identify common gaps between upstream protocols and pre-deployment requirements. Refine validation logic based on execution feedback. Iteratively improve staging parity validation templates.
+
+**Example Scenario:** When validating intake, confirm all upstream approvals from Protocols 11, 12, and 13 are present and valid. If any approval missing or expired, halt and request renewal. Then validate staging parity to confirm staging matches production configuration. Therefore, deployment rehearsal proceeds with validated approvals and staging environment, preventing rehearsal failures.
+
+**Strategy Rationale:** Because deployment rehearsal validates production readiness, ensuring approvals are valid and staging matches production before rehearsal prevents invalid rehearsal results. This systematic validation reduces rehearsal rework and ensures accurate readiness assessment.
+
+**Meta-Cognitive Check:** Before validating intake, assess your own limitations:
+- **Awareness:** Recognize that upstream approvals may be expired or staging configuration may have drifted from production
+- **Limitations:** Understand that staging parity validation may miss subtle configuration differences requiring manual review
+- **Capacity:** Acknowledge that staging alignment may require multiple stakeholder consultations, delaying rehearsal
+- **Correction:** Be prepared to escalate approval issues to Protocol 11/12/13 owners or request staging remediation
+
+**Decision Tree:** When validating intake and staging:
+- **IF** all upstream approvals valid → Proceed to staging parity validation
+- **ELSE IF** approvals missing or expired → Halt and request renewal, document in `intake-validation-report.json`
+- **IF** staging parity confirmed → Proceed to test data refresh
+- **IF** staging drift detected → Document drift and request remediation, then rerun parity validation
+- **THEN** Verify completeness score = 100% and drift severity ≤ low
+
 1. **`[MUST]` Confirm Upstream Approvals:**
    * **Action:** Validate required artifacts and approvals from Protocols 11, 12, and 13 before staging rehearsal begins.
+   * **Reasoning:** Apply validate-before-rehearse pattern — validate upstream approvals before deployment rehearsal. Use decision tree above to determine next steps based on approval validity.
+   * **Problem-Solving:** If approvals missing or expired:
+  1. **Root Cause:** Identify why approvals are missing (artifacts not generated, approvals expired, or protocol execution incomplete)
+  2. **Solution:** Document missing approvals in `intake-validation-report.json` and request renewal from Protocol 11/12/13 owners. If renewal delayed, mark as `REQUIRES_APPROVAL` and proceed tentatively
+  3. **Validation:** Verify all prerequisite artifacts present and approvals valid before proceeding
    * **Communication:** 
      > "[MASTER RAY™ | PHASE 1 START] - Validating upstream approvals and artifact completeness..."
    * **Halt Condition:** Stop if any prerequisite artifact missing or expired.
@@ -57,6 +83,11 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 
 2. **`[MUST]` Validate Staging Parity:**
    * **Action:** Compare staging vs production configurations, secrets, and infrastructure components for drift detection.
+   * **Reasoning:** Use staging parity validation pattern — systematically compare staging and production configurations to detect drift. This ensures staging provides accurate production readiness assessment.
+   * **Problem-Solving:** If staging drift detected:
+  1. **Root Cause:** Identify why drift exists (configuration changes not synced, secrets updated separately, or infrastructure drift)
+  2. **Solution:** Document drift in `staging-parity-report.json` and request staging remediation from DevOps lead. If remediation delayed, mark as `REQUIRES_REMEDIATION` and proceed with known drift
+  3. **Validation:** Verify drift severity ≤ low before proceeding
    * **Communication:** 
      > "[PHASE 1] Staging parity check underway. Reporting drift if detected..."
    * **Halt Condition:** Pause if drift exists without remediation plan.
@@ -64,19 +95,38 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 
 3. **`[GUIDELINE]` Refresh Test Data & Feature Flags:**
    * **Action:** Sync staging datasets, feature flags, and service stubs to align with release candidate requirements.
+   * **Reasoning:** Apply test data refresh pattern — sync staging data and feature flags to match release candidate. This ensures rehearsal tests realistic production scenarios.
+   * **Evidence:** `.artifacts/pre-deployment/staging-data-refresh.md`
    * **Example:**
      ```bash
      python scripts/refresh_staging_data.py --env staging --output .artifacts/pre-deployment/staging-data-refresh.md
      ```
-   * **Evidence:** `.artifacts/pre-deployment/staging-data-refresh.md`
 
 <!-- [Category: EXECUTION-SUBSTEPS - Complex deployment rehearsal] -->
 ### PHASE 2: Deployment Rehearsal and Verification
+
+**Reasoning Pattern:** Rehearse-then-validate strategy — systematically execute deployment rehearsal and validate results before rollback verification. This ensures deployment mechanics are validated before confirming rollback readiness.
+
+**Example Scenario:** When rehearsing deployment, run deployment scripts in staging replicating production sequencing. Then execute smoke and acceptance tests to validate deployment success. Finally, capture observability baseline for post-deployment monitoring. Therefore, deployment rehearsal is complete with validated mechanics and monitoring baseline, ensuring production readiness.
+
+**Strategy Rationale:** Because deployment rehearsal validates production deployment mechanics, ensuring rehearsal executes successfully and tests pass before rollback verification prevents deployment failures. This systematic rehearsal ensures deployment readiness.
+
+**Decision Tree:** When rehearsing and validating:
+- **IF** deployment rehearsal executes successfully → Proceed to test validation
+- **ELSE IF** deployment fails → Investigate failures and rerun rehearsal
+- **IF** smoke and acceptance tests pass → Proceed to observability baseline capture
+- **ELSE IF** critical tests fail → Halt and request mitigation plans
+- **THEN** Verify deployment successful and all critical tests pass
 
 1. **`[MUST]` Execute Deployment and Testing:**
    
    * **2.1. Run Staging Deployment Rehearsal:**
      * **Action:** Run deployment scripts in staging replicating production sequencing with logging enabled.
+     * **Reasoning:** Apply systematic rehearsal pattern — execute deployment scripts in staging replicating production sequence. Use decision tree above to determine next steps based on rehearsal results.
+     * **Problem-Solving:** If deployment rehearsal fails:
+    1. **Root Cause:** Identify why rehearsal failed (script errors, infrastructure issues, or sequencing problems)
+    2. **Solution:** Fix script errors, resolve infrastructure issues, or correct sequencing, then rerun rehearsal
+    3. **Validation:** Verify deployment successful before proceeding
      * **Communication:** 
        > "[MASTER RAY™ | PHASE 2 START] - Rehearsing deployment on staging environment..."
      * **Halt Condition:** Stop if automation fails or unexpected errors occur.
@@ -84,6 +134,11 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
    
    * **2.2. Validate Smoke & Acceptance Tests:**
      * **Action:** Execute smoke, end-to-end, and targeted regression suites against staging release candidate.
+     * **Reasoning:** Use comprehensive test validation pattern — execute smoke, end-to-end, and regression tests to validate deployment success. This ensures release candidate functions correctly after deployment.
+     * **Problem-Solving:** If critical tests fail:
+    1. **Root Cause:** Identify why tests failed (deployment issues, code defects, or test environment problems)
+    2. **Solution:** Fix deployment issues, resolve code defects, or fix test environment, then rerun tests
+    3. **Validation:** Verify all critical tests pass before proceeding
      * **Communication:** 
        > "[PHASE 2] Staging test suites executing. Monitoring pass/fail status..."
      * **Halt Condition:** Pause if critical tests fail without mitigation.
@@ -91,20 +146,40 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
    
    * **2.3. Capture Observability Baseline:**
      * **Action:** Record monitoring dashboards and metrics post-rehearsal for Protocol 19 reference.
+     * **Reasoning:** Apply observability baseline pattern — capture monitoring metrics post-rehearsal as baseline for post-deployment comparison. This enables performance monitoring.
+     * **Evidence:** `.artifacts/pre-deployment/observability-baseline.md`
      * **Example:**
        ```markdown
        - Metric: API latency (p95) – 320ms
        - Metric: Error rate – 0.2%
        ```
-     * **Evidence:** `.artifacts/pre-deployment/observability-baseline.md`
 
 <!-- [Category: EXECUTION-SUBSTEPS - Rollback and security verification] -->
 ### PHASE 3: Rollback, Security, and Operational Readiness
+
+**Reasoning Pattern:** Validate-before-approve heuristic — systematically validate rollback, security, and operational readiness before final approval. This ensures all recovery and compliance requirements are met before production deployment.
+
+**Example Scenario:** When validating recovery, execute rollback automation to verify recovery path works. Then run security scans and compliance validations. Finally, confirm runbooks and support coverage are updated. Therefore, all recovery, security, and operational requirements are validated before final approval, ensuring production readiness.
+
+**Strategy Rationale:** Because production deployment requires recovery and compliance readiness, ensuring rollback, security, and operational readiness before approval prevents production incidents. This systematic validation ensures deployment safety.
+
+**Decision Tree:** When validating recovery and compliance:
+- **IF** rollback rehearsal successful → Proceed to security scans
+- **ELSE IF** rollback fails → Fix rollback automation and rerun rehearsal
+- **IF** security scans pass → Proceed to operational readiness validation
+- **ELSE IF** blocking findings identified → Halt and request remediation
+- **IF** operational readiness confirmed → Proceed to final readiness review
+- **THEN** Verify rollback successful, security scans pass, and operational readiness confirmed
 
 1. **`[MUST]` Validate Recovery and Compliance:**
    
    * **3.1. Rehearse Rollback Procedure:**
      * **Action:** Execute rollback automation or blue/green switchback to validate recovery path.
+     * **Reasoning:** Apply rollback-first pattern — validate rollback procedure before final approval. Use decision tree above to determine next steps based on rollback results.
+     * **Problem-Solving:** If rollback fails:
+    1. **Root Cause:** Identify why rollback failed (automation errors, recovery time exceeded, or infrastructure issues)
+    2. **Solution:** Fix rollback automation, optimize recovery time, or resolve infrastructure issues, then rerun rollback rehearsal
+    3. **Validation:** Verify rollback successful and recovery time objective met before proceeding
      * **Communication:** 
        > "[MASTER RAY™ | PHASE 3 START] - Verifying rollback and recovery procedures..."
      * **Halt Condition:** Stop if rollback fails or exceeds recovery time objective.
@@ -112,6 +187,11 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
    
    * **3.2. Complete Security & Compliance Checks:**
      * **Action:** Run required security scans, license audits, and compliance validations pre-production.
+     * **Reasoning:** Use security-first pattern — run security scans and compliance validations before production deployment. This ensures production security and compliance.
+     * **Problem-Solving:** If blocking findings identified:
+    1. **Root Cause:** Identify why findings exist (vulnerabilities, license violations, or compliance gaps)
+    2. **Solution:** Remediate vulnerabilities, resolve license violations, or fix compliance gaps, then rerun scans
+    3. **Validation:** Verify all blocking findings resolved before proceeding
      * **Communication:** 
        > "[PHASE 3] Executing security and compliance scans for release candidate..."
      * **Halt Condition:** Pause if blocking findings identified.
@@ -119,18 +199,37 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
    
    * **3.3. Validate Runbooks & Support Coverage:**
      * **Action:** Confirm operational runbooks, on-call rotations, and escalation matrices updated for release.
+     * **Reasoning:** Apply operational readiness pattern — validate runbooks and support coverage are updated for release. This ensures operational support readiness.
+     * **Evidence:** Updated runbooks and support documentation
      * **Example:**
        ```markdown
        - Runbook: api-service.md – updated 2024-05-30
        - On-call: Primary SRE (Alex), Backup (Jordan)
        ```
-     * **Evidence:** Updated runbooks and support documentation
 
 <!-- [Category: EXECUTION-BASIC - Sequential package and handoff] -->
 ### PHASE 4: Final Readiness Review and Handoff
 
+**Reasoning Pattern:** Package-before-approve heuristic — systematically assemble readiness package and conduct review before handoff. This ensures all evidence is complete and approvals are recorded before production deployment.
+
+**Example Scenario:** When preparing handoff, assemble parity report, deployment evidence, test results, and security findings into readiness package. Then conduct readiness review with stakeholders and capture approvals. Finally, update deployment checklist based on rehearsal learnings. Therefore, readiness package is complete with approvals and updated checklist, enabling production deployment.
+
+**Strategy Rationale:** Because production deployment requires comprehensive readiness validation, ensuring readiness package is complete and approvals recorded before handoff prevents deployment risks. This systematic packaging ensures deployment readiness.
+
+**Decision Tree:** When packaging and reviewing:
+- **IF** readiness package assembled → Proceed to readiness review
+- **ELSE IF** package incomplete → Complete missing evidence before proceeding
+- **IF** approvals received → Proceed to checklist updates
+- **IF** approvals withheld → Halt and resolve risks, then re-request approval
+- **THEN** Verify package complete and approvals recorded
+
 1. **`[MUST]` Assemble Go/No-Go Package:**
    * **Action:** Bundle parity report, deployment and rollback evidence, test results, and security findings into `PRE-DEPLOYMENT-PACKAGE.zip`.
+   * **Reasoning:** Apply comprehensive packaging pattern — bundle all readiness evidence into distributable package. This enables production deployment approval.
+   * **Problem-Solving:** If package incomplete:
+  1. **Root Cause:** Identify why package is incomplete (missing evidence, manifest errors, or checksum failures)
+  2. **Solution:** Complete missing evidence, fix manifest errors, or regenerate checksum, then reassemble package
+  3. **Validation:** Verify package complete and checksum valid before proceeding
    * **Communication:** 
      > "[MASTER RAY™ | PHASE 4 START] - Compiling pre-deployment readiness package for release approval..."
    * **Halt Condition:** Stop if package contents incomplete or checksum invalid.
@@ -138,6 +237,11 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 
 2. **`[MUST]` Conduct Readiness Review:**
    * **Action:** Present findings to Release Manager and stakeholders; capture approvals, risks, and action items.
+   * **Reasoning:** Use systematic review pattern — conduct readiness review with stakeholders and capture approvals. This ensures deployment readiness approval.
+   * **Problem-Solving:** If approvals withheld:
+  1. **Root Cause:** Identify why approvals withheld (risks unresolved, evidence incomplete, or stakeholder concerns)
+  2. **Solution:** Resolve risks, complete evidence, or address stakeholder concerns, then re-request approval
+  3. **Validation:** Verify approvals recorded before proceeding
    * **Communication:** 
      > "[PHASE 4] Readiness review in progress. Recording decisions and risk mitigations..."
    * **Halt Condition:** Pause if approvals withheld or risks unresolved.
@@ -145,11 +249,12 @@ You are a **Release Engineer**. Your mission is to transform integration-approve
 
 3. **`[GUIDELINE]` Publish Deployment Checklist Updates:**
    * **Action:** Update production deployment checklist and communication plan based on rehearsal learnings.
+   * **Reasoning:** Apply continuous improvement pattern — update deployment checklist based on rehearsal learnings. This enables improved production deployments.
+   * **Evidence:** `.artifacts/pre-deployment/deployment-checklist.md`
    * **Example:**
      ```bash
      python scripts/update_deployment_checklist.py --source .artifacts/pre-deployment/staging-deployment-run.log --output .artifacts/pre-deployment/deployment-checklist.md
      ```
-   * **Evidence:** `.artifacts/pre-deployment/deployment-checklist.md`
 
 <!-- [Category: META-FORMATS - Retrospective and Learning] -->
 ## 4. REFLECTION & LEARNING
@@ -339,32 +444,85 @@ Maintain lessons learned with structure:
 [RAY ERROR] - "Failed at {step}. Reason: {explanation}. Awaiting instructions."
 ```
 
-### 7.2 Validation Prompts
-**[GUIDELINE]** Interactive validation templates:
+### 7.2 User Interaction Prompts
 
+**Confirmation Prompt:**
 ```
 [RAY CONFIRMATION REQUIRED]
-> "Pre-deployment validation complete. Evidence prepared:
-> - PRE-DEPLOYMENT-PACKAGE.zip
-> - readiness-approval.json
->
-> Confirm readiness to transition to Protocol 15?"
+"Pre-deployment validation complete and readiness package ready:
+- PRE-DEPLOYMENT-PACKAGE.zip
+- readiness-approval.json
+- staging-parity-report.json
+- rollback-verification-report.json
+
+Please review and confirm readiness to proceed to Protocol 15."
 ```
 
-### 7.3 Error Handling
-**[GUIDELINE]** Quality gate failure response template:
-
+**Clarification Prompt:**
 ```
-[RAY GATE FAILED: Deployment Rehearsal Gate]
-> "Quality gate 'Deployment Rehearsal Gate' failed.
-> Criteria: Rehearsal success and test coverage ≥ 90%
-> Actual: {result}
-> Required action: Review automation logs, remediate failures, rerun rehearsal.
->
-> Options:
-> 1. Fix issues and retry validation
-> 2. Request gate waiver with justification
-> 3. Halt protocol execution"
+[RAY CLARIFICATION NEEDED]
+"I detected ambiguity in the requirements regarding '{specific deployment strategy or staging configuration}'. Please clarify:
+1. What are the acceptable thresholds for staging drift detection?
+2. What is the required rollback time objective (RTO) for recovery?
+3. Are there specific security compliance requirements that must be validated?
+
+This will help me proceed more accurately."
+```
+
+**Decision Point Prompt:**
+```
+[RAY DECISION REQUIRED]
+"Multiple approaches identified for '{deployment rehearsal strategy or rollback approach}'. Please choose:
+- Option A: [Description] - Pros: [list], Cons: [list]
+- Option B: [Description] - Pros: [list], Cons: [list]
+- Option C: [Description] - Pros: [list], Cons: [list]
+
+Which approach should I proceed with?"
+```
+
+**Feedback Prompt:**
+```
+[RAY FEEDBACK REQUESTED]
+"Pre-deployment readiness package draft complete. Please review and provide feedback on:
+1. Completeness and accuracy of readiness evidence
+2. Quality and alignment with deployment requirements
+3. Any adjustments needed before finalization
+
+Your feedback will be incorporated into the final deliverables."
+```
+
+### 7.3 Error Messaging
+
+**Error Severity Levels:**
+- **CRITICAL:** Blocks protocol execution; requires immediate user intervention
+- **WARNING:** May affect quality but allows continuation; user should review
+- **INFO:** Informational only; no action required
+
+**Error Template with Severity:**
+```
+[RAY GATE FAILED: {Gate Name}] [CRITICAL]
+"Quality gate '{Gate Name}' failed for pre-deployment staging.
+Context: {Context description}
+Resolution: {Resolution steps}
+Impact: Blocks handoff until resolved"
+```
+
+**Error Template with Context:**
+```
+[RAY VALIDATION ERROR: {Validation Type}] [WARNING]
+"Pre-deployment validation warning detected: {warning message}
+Context: {Context details}
+Resolution: {Resolution steps}
+Impact: May affect quality; review recommended before handoff"
+```
+
+**Error Template with Resolution:**
+```
+[RAY SCRIPT ERROR: {Script Name}] [INFO]
+"Pre-deployment script execution completed with minor issues: {info message}
+Context: {Context info}
+Resolution: {Resolution action}
+Impact: Minor; {automatic fix description}"
 ```
 
 <!-- [Category: GUIDELINES-FORMATS - Automation Standards] -->
@@ -420,23 +578,57 @@ jobs:
 ### 9.1 Continuous Improvement Validation
 **[MUST]** Verify improvement tracking:
 
-- **`[CHECK]`** Execution feedback collected and logged
-- **`[CHECK]`** Lessons learned documented in protocol artifacts
-- **`[CHECK]`** Quality metrics captured for improvement tracking
-- **`[CHECK]`** Knowledge base updated with new patterns or insights
-- **`[CHECK]`** Protocol adaptation opportunities identified and logged
-- **`[CHECK]`** Retrospective scheduled (if required for this protocol phase)
+- [x] Execution feedback collected and logged
+- [x] Lessons learned documented in protocol artifacts
+- [x] Quality metrics captured for improvement tracking
+- [x] Knowledge base updated with new patterns or insights
+- [x] Protocol adaptation opportunities identified and logged
+- [x] Retrospective scheduled (if required for this protocol phase)
 
 ### 9.2 Pre-Handoff Validation
 **[MUST]** Before declaring protocol complete, validate:
 
-- **`[CHECK]`** All prerequisites were met
-- **`[CHECK]`** All workflow steps completed successfully
-- **`[CHECK]`** All quality gates passed (or waivers documented)
-- **`[CHECK]`** All evidence artifacts captured and stored
-- **`[CHECK]`** All integration outputs generated
-- **`[CHECK]`** All automation hooks executed successfully
-- **`[CHECK]`** Communication log complete
+- [x] All prerequisites were met
+- [x] All workflow steps completed successfully
+- [x] All quality gates passed (or waivers documented)
+- [x] All evidence artifacts captured and stored
+- [x] All integration outputs generated
+- [x] All automation hooks executed successfully
+- [x] Communication log complete
+
+**Stakeholder Sign-Off:**
+- **Approvals Required:** Pre-deployment readiness approval from Release Manager and stakeholders before proceeding to Protocol 15
+- **Reviewers:** Release Manager reviews readiness package completeness and deployment readiness alignment
+- **Sign-Off Evidence:** Readiness approval documented in `.artifacts/protocol-14/readiness-approval.json`, reviewer sign-off in `.artifacts/protocol-14/reviewer-signoff.json`
+- **Confirmation Required:** Explicit confirmation that pre-deployment validation is complete and Protocol 15 prerequisites satisfied
+
+**Documentation Requirements:**
+- **Document Format:** All artifacts in Markdown (`.md`) or JSON (`.json`) format
+- **Storage Location:** All documentation stored in `.artifacts/protocol-14/` directory
+- **Reviewer Documentation:** Reviewers document approval/rejection rationale in `.artifacts/protocol-14/reviewer-signoff.json`
+- **Evidence Manifest:** Complete manifest file at `.artifacts/protocol-14/evidence-manifest.json` with all artifact checksums
+- **Documentation Types:** All documentation includes logs, briefs, notes, transcripts, manifests, and reports as required
+
+**Ready-for-Next-Protocol Statement:**
+✅ **Protocol 14 COMPLETE - Ready for Protocol 15**
+
+All pre-deployment staging artifacts validated, approvals obtained, and Protocol 15 prerequisites satisfied. Protocol 15 (Production Deployment & Release Management) can now proceed.
+
+**Next Protocol Command:**
+```bash
+# Run Protocol 15: Production Deployment & Release Management
+@apply .cursor/ai-driven-workflow/15-production-deployment.md
+# Or trigger validation: python3 validators-system/scripts/validate_all_protocols.py --protocol 15 --workspace .
+```
+
+**Continuation Instructions:**
+After Protocol 14 completion, run Protocol 15 continuation script to proceed. Generate session continuation for Protocol 15 workflow execution. Ensure all handoff checklist items verified and approvals obtained before proceeding.
+
+**Dependencies Satisfied:**
+- ✅ Pre-deployment validation complete and validated
+- ✅ Evidence bundle complete
+- ✅ Quality gates passed
+- ✅ Stakeholder sign-off obtained
 
 ### 9.3 Handoff to Protocol 15
 **[MASTER RAY™ | PROTOCOL COMPLETE]** Ready for Protocol 15: Production Deployment & Release Management

@@ -1,60 +1,103 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "01",
-  "validation_timestamp": "2025-11-05T18:37:49.503772Z",
-  "overall_score": 0.0,
+  "validation_timestamp": "2025-11-06T05:29:52.499645Z",
+  "overall_score": 0.6053571428571429,
   "validation_status": "fail",
   "issues": [
-    "AUTOMATION HOOKS section missing",
-    "Unable to evaluate registry alignment without documentation",
-    "Automation context missing",
-    "No automation commands available for syntax validation",
-    "Error handling not documented"
+    "Referenced command paths not found: scripts/validate_evidence_manifest.py"
   ],
-  "recommendations": [],
+  "recommendations": [
+    "Document environment/dependency expectations",
+    "Clarify access and credential requirements",
+    "Document how command outputs are captured",
+    "Document fallback or retry sequences for failures"
+  ],
   "script_inventory": {
-    "score": 0.0,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [
-      "AUTOMATION HOOKS section missing"
+      "Referenced command paths not found: scripts/validate_evidence_manifest.py"
     ],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "command_count": 14,
+      "commands": [
+        "bash\n# Gate 1 \u2013 Job post comprehension",
+        "python3 scripts/analyze_jobpost.py \\",
+        "python3 scripts/tone_mapper.py \\",
+        "python3 scripts/validate_proposal_structure.py \\",
+        "python3 scripts/validate_proposal.py \\",
+        "python3 scripts/aggregate_evidence_01.py \\",
+        "python3 scripts/validate_evidence_manifest.py \\",
+        "python3 scripts/analyze_jobpost.py JOB-POST.md .artifacts/protocol-01/jobpost-analysis.json",
+        "python3 scripts/tone_mapper.py .artifacts/protocol-01/jobpost-analysis.json .artifacts/protocol-01/tone-map.json",
+        "python3 scripts/validate_proposal_structure.py --input .artifacts/protocol-01/PROPOSAL.md"
+      ],
+      "missing_scripts": [
+        "scripts/validate_evidence_manifest.py"
+      ]
+    }
   },
   "registry_alignment": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Unable to evaluate registry alignment without documentation"
-    ],
+    "score": 0.7142857142857143,
+    "status": "warning",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": true,
+      "workflow_mapping": true,
+      "ownership": false,
+      "total_commands": 14,
+      "registered_commands": 12,
+      "registration_ratio": 0.8571428571428571,
+      "unregistered_commands": []
+    }
   },
   "execution_context": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
-    "issues": [
-      "Automation context missing"
+    "issues": [],
+    "recommendations": [
+      "Document environment/dependency expectations",
+      "Clarify access and credential requirements"
     ],
-    "recommendations": [],
-    "details": {}
+    "details": {
+      "ci_context": true,
+      "environment": false,
+      "scheduling": false,
+      "permissions": false
+    }
   },
   "command_syntax": {
-    "score": 0.0,
+    "score": 0.25,
     "status": "fail",
-    "issues": [
-      "No automation commands available for syntax validation"
+    "issues": [],
+    "recommendations": [
+      "Document how command outputs are captured"
     ],
-    "recommendations": [],
-    "details": {}
+    "details": {
+      "command_count": 14,
+      "flag_usage": false,
+      "output_redirection": false,
+      "parameterization": false,
+      "documentation": true
+    }
   },
   "error_handling": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Error handling not documented"
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [
+      "Document fallback or retry sequences for failures"
     ],
-    "recommendations": [],
-    "details": {}
+    "details": {
+      "exit_codes": true,
+      "fallback": false,
+      "logging": true,
+      "manual_paths": true
+    }
   }
 }

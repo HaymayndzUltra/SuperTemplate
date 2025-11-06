@@ -1,20 +1,16 @@
 {
   "validator": "protocol_role",
   "protocol_id": "02",
-  "validation_timestamp": "2025-11-05T18:37:49.510341Z",
-  "overall_score": 0.6375,
+  "validation_timestamp": "2025-11-06T05:29:52.537154Z",
+  "overall_score": 0.75,
   "validation_status": "fail",
   "issues": [
     "Domain expertise keywords missing",
     "Behavioral traits not articulated",
     "Mission lacks scope boundaries or guardrails",
-    "Success criteria absent from mission",
-    "Communication style guidance missing",
-    "Error handling guidance absent"
+    "Success criteria absent from mission"
   ],
-  "recommendations": [
-    "Outline decision-making expectations"
-  ],
+  "recommendations": [],
   "role_definition": {
     "score": 0.5,
     "status": "fail",
@@ -54,10 +50,10 @@
       "guardrails": true,
       "boundaries": true,
       "workflow_alignment": true,
-      "guardrail_count": 14,
-      "boundary_count": 7,
-      "workflow_links": 4,
-      "optional_guidance": 0
+      "guardrail_count": 38,
+      "boundary_count": 14,
+      "workflow_links": 5,
+      "optional_guidance": 1
     }
   },
   "output_expectations": {
@@ -73,19 +69,14 @@
     }
   },
   "behavioral_guidance": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Communication style guidance missing",
-      "Error handling guidance absent"
-    ],
-    "recommendations": [
-      "Outline decision-making expectations"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
     "details": {
-      "communication_style": false,
-      "decision_making": false,
-      "error_handling": false,
+      "communication_style": true,
+      "decision_making": true,
+      "error_handling": true,
       "user_interaction": true
     }
   }
