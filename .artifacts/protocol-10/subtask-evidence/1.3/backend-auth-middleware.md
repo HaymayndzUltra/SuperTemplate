@@ -77,3 +77,4 @@ async def protected_route(user: dict = Depends(get_current_user)):
 
 **Next Step:** Integration layer - Configure Supabase Auth
 
+

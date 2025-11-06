@@ -1,17 +1,11 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "03",
-  "validation_timestamp": "2025-11-06T05:32:27.802523Z",
-  "overall_score": 0.7999999999999999,
-  "validation_status": "fail",
-  "issues": [
-    "Traceability gaps: inputs, outputs"
-  ],
-  "recommendations": [
-    "Document storage permissions or access requirements",
-    "Optionally reference a manifest file or inventory for quick lookup",
-    "Enhance archival plan with: cleanup, retrieval"
-  ],
+  "validation_timestamp": "2025-11-06T09:10:10.078819Z",
+  "overall_score": 1.0,
+  "validation_status": "pass",
+  "issues": [],
+  "recommendations": [],
   "artifact_generation": {
     "score": 1.0,
     "status": "pass",
@@ -22,18 +16,16 @@
       "artifact_column": true,
       "metrics_column": true,
       "row_coverage": true,
-      "table_rows": 25,
-      "artifact_mentions": 16,
-      "metric_mentions": 11
+      "table_rows": 7,
+      "artifact_mentions": 15,
+      "metric_mentions": 21
     }
   },
   "storage_structure": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document storage permissions or access requirements"
-    ],
+    "recommendations": [],
     "details": {
       "directories": [
         ".artifacts/protocol-03/",
@@ -44,7 +36,7 @@
       ],
       "protocol_directory": true,
       "subdirectories": true,
-      "permissions": false,
+      "permissions": true,
       "naming": true
     }
   },
@@ -52,44 +44,40 @@
     "score": 1.0,
     "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Optionally reference a manifest file or inventory for quick lookup"
-    ],
+    "recommendations": [],
     "details": {
-      "manifest_reference": false,
-      "metadata": 2,
-      "dependencies": 3,
-      "coverage": 9
+      "manifest_reference": true,
+      "metadata": true,
+      "dependencies": true,
+      "coverage": true,
+      "metadata_mentions": 13,
+      "dependency_mentions": 15
     }
   },
   "traceability": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Traceability gaps: inputs, outputs"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "inputs": false,
-      "outputs": false,
+      "inputs": true,
+      "outputs": true,
       "transformations": true,
       "audit": true
     }
   },
   "archival": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Enhance archival plan with: cleanup, retrieval"
-    ],
+    "recommendations": [],
     "details": {
       "compression": true,
       "retention": true,
-      "retrieval": false,
-      "cleanup": false,
-      "compression_mentions": 1,
-      "retention_mentions": 1
+      "retrieval": true,
+      "cleanup": true,
+      "compression_mentions": 8,
+      "retention_mentions": 8
     }
   }
 }

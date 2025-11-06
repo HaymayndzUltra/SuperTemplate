@@ -1,16 +1,11 @@
 {
   "validator": "protocol_quality_gates",
   "protocol_id": "03",
-  "validation_timestamp": "2025-11-06T05:32:28.487692Z",
-  "overall_score": 0.825,
-  "validation_status": "fail",
-  "issues": [
-    "Insufficient compliance standards referenced"
-  ],
-  "recommendations": [
-    "Include quantitative metrics for gate evaluation",
-    "Document waiver/override policies"
-  ],
+  "validation_timestamp": "2025-11-06T09:10:16.248228Z",
+  "overall_score": 1.0,
+  "validation_status": "pass",
+  "issues": [],
+  "recommendations": [],
   "gate_definitions": {
     "score": 1.0,
     "status": "pass",
@@ -20,7 +15,8 @@
       "gates": [
         "1",
         "2",
-        "3"
+        "3",
+        "4"
       ],
       "gate_count": true,
       "descriptions": true,
@@ -29,16 +25,14 @@
     }
   },
   "pass_criteria": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Include quantitative metrics for gate evaluation"
-    ],
+    "recommendations": [],
     "details": {
       "thresholds": true,
       "boolean": true,
-      "metrics": false,
+      "metrics": true,
       "evidence_links": true
     }
   },
@@ -51,34 +45,30 @@
       "scripts": true,
       "ci": true,
       "automation_labels": true,
-      "script_mentions": 9,
+      "script_mentions": 14,
       "gate_config_path": "/home/haymayndz/SuperTemplate/config/protocol_gates/03.yaml",
       "gate_config_present": true
     }
   },
   "failure_handling": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document waiver/override policies"
-    ],
+    "recommendations": [],
     "details": {
       "failure_actions": true,
-      "rollback": false,
+      "rollback": true,
       "notification": true,
-      "waivers": false
+      "waivers": true
     }
   },
   "compliance_integration": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Insufficient compliance standards referenced"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "compliance_terms": false,
+      "compliance_terms": true,
       "automation_hooks": true,
       "evidence": true,
       "governance": true

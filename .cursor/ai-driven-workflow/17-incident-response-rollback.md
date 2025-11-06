@@ -316,33 +316,95 @@ Maintain lessons learned with structure:
 <!-- Why: Defines validation standards and criteria, not executing validation -->
 ## 6. QUALITY GATES
 
-### 6.1 Gate 1: Severity Alignment Gate
-- **Criteria**: Incident severity agreed upon; stakeholders notified; intake log complete.
-- **Evidence**: `severity-assessment.json`, `communication-log.md`.
-- **Pass Threshold**: Severity consensus recorded; notifications sent within SLA.
-- **Failure Handling**: Reassess severity with on-call team; delay mitigation until consensus.
-- **Automation**: `python scripts/validate_gate_13_severity.py --sla 5`
+### Gate 1: Severity Alignment Gate
+**Type:** Prerequisite  
+**Purpose:** Verify incident severity agreed upon and stakeholders notified within SLA.
 
-### 6.2 Gate 2: Mitigation Readiness Gate
-- **Criteria**: Mitigation plan documented; rollback readiness confirmed; decision approvals logged.
-- **Evidence**: `mitigation-plan.md`, `rollback-readiness-checklist.json`, `decision-log.json`.
-- **Pass Threshold**: All rollback prerequisites verified; decision approvals = 100%.
-- **Failure Handling**: Escalate missing prerequisites; involve release engineering before execution.
-- **Automation**: `python scripts/validate_gate_13_mitigation.py`
+**Pass Criteria:**
+- **Threshold:** Severity consensus metric ≥100% and notification latency metric ≤5 minutes.  
+- **Boolean Check:** `severity_assessment.status = consensus` and `communication_log.notifications_sent = true`.  
+- **Metrics:** Consensus rate metric, notification latency metric, stakeholder count metric documented in log.  
+- **Evidence Link:** `.artifacts/protocol-17/severity-assessment.json`, `.artifacts/protocol-17/communication-log.md`.
 
-### 6.3 Gate 3: Recovery Validation Gate
-- **Criteria**: Mitigation executed successfully; recovery validation passed; timeline updated.
-- **Evidence**: `mitigation-execution-report.json`, `recovery-validation.json`, `incident-timeline.md`.
-- **Pass Threshold**: Recovery validation success rate ≥ 95% of critical checks.
-- **Failure Handling**: Re-run mitigation or escalate severity; consider alternate rollback strategy.
-- **Automation**: `python scripts/validate_gate_13_recovery.py --threshold 0.95`
+**Automation:**
+- Script: `python3 scripts/validate_gate_13_severity.py --sla 5 --output .artifacts/protocol-17/severity-validation.json`
+- Script: `python3 scripts/verify_stakeholder_notifications.py --output .artifacts/protocol-17/notification-log.json`
+- CI Integration: `protocol-17-severity.yml` workflow validates severity on incident creation; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/17.yaml` defines severity thresholds and notification SLAs.
 
-### 6.4 Gate 4: Resolution & Documentation Gate
-- **Criteria**: Resolution summary recorded; root cause evidence archived; incident report drafted.
-- **Evidence**: `resolution-summary.json`, `rca-manifest.json`, `INCIDENT-REPORT.md`.
-- **Pass Threshold**: Documentation completeness ≥ 95%; required stakeholders informed.
-- **Failure Handling**: Collect missing evidence; schedule follow-up review before closure.
-- **Automation**: `python scripts/validate_gate_13_resolution.py --threshold 0.95`
+**Failure Handling:**
+- **Rollback:** Reassess severity with on-call team, delay mitigation until consensus achieved.  
+- **Notification:** Alert incident commander and on-call lead via Slack when boolean check fails.  
+- **Waiver:** Not applicable - severity consensus mandatory for incident response.
+
+### Gate 2: Mitigation Readiness Gate
+**Type:** Execution  
+**Purpose:** Confirm mitigation plan documented and rollback readiness verified before execution.
+
+**Pass Criteria:**
+- **Threshold:** Rollback prerequisite coverage metric ≥100% and decision approval metric ≥100%.  
+- **Boolean Check:** `rollback_readiness.status = verified` and `decision_log.approvals = complete`.  
+- **Metrics:** Prerequisite count metric, approval latency metric, readiness score metric captured in checklist.  
+- **Evidence Link:** `.artifacts/protocol-17/mitigation-plan.md`, `.artifacts/protocol-17/rollback-readiness-checklist.json`, `.artifacts/protocol-17/decision-log.json`.
+
+**Automation:**
+- Script: `python3 scripts/validate_gate_13_mitigation.py --output .artifacts/protocol-17/mitigation-validation.json`
+- Script: `python3 scripts/verify_rollback_prerequisites.py --output .artifacts/protocol-17/rollback-checklist.json`
+- CI Integration: `protocol-17-mitigation.yml` workflow validates readiness before mitigation; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/17.yaml` defines prerequisite requirements and approval thresholds.
+
+**Failure Handling:**
+- **Rollback:** Escalate missing prerequisites, involve release engineering before mitigation execution.  
+- **Notification:** Alert release manager and incident commander when boolean check fails.  
+- **Waiver:** Waiver requires incident commander and release manager approval with documented risk assessment.
+
+### Gate 3: Recovery Validation Gate
+**Type:** Execution  
+**Purpose:** Validate mitigation executed successfully and recovery validation passed critical checks.
+
+**Pass Criteria:**
+- **Threshold:** Recovery validation success metric ≥0.95 and incident timeline metric complete.  
+- **Boolean Check:** `recovery_validation.status = success` and `mitigation_execution.status = complete`.  
+- **Metrics:** Validation pass rate metric, critical check count metric, recovery time metric logged in report.  
+- **Evidence Link:** `.artifacts/protocol-17/mitigation-execution-report.json`, `.artifacts/protocol-17/recovery-validation.json`, `.artifacts/protocol-17/incident-timeline.md`.
+
+**Automation:**
+- Script: `python3 scripts/validate_gate_13_recovery.py --threshold 0.95 --output .artifacts/protocol-17/recovery-validation.json`
+- Script: `python3 scripts/update_incident_timeline.py --output .artifacts/protocol-17/incident-timeline.md`
+- CI Integration: `protocol-17-recovery.yml` workflow validates recovery post-mitigation; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/17.yaml` defines recovery validation thresholds and critical check list.
+
+**Failure Handling:**
+- **Rollback:** Re-run mitigation or escalate severity, consider alternate rollback strategy.  
+- **Notification:** Alert incident commander and SRE lead when boolean check fails.  
+- **Waiver:** Waiver requires incident commander approval with documented recovery plan.
+
+### Gate 4: Resolution & Documentation Gate
+**Type:** Completion  
+**Purpose:** Ensure resolution summary recorded and root cause evidence archived before closure.
+
+**Pass Criteria:**
+- **Threshold:** Documentation completeness metric ≥0.95 and stakeholder notification metric ≥100%.  
+- **Boolean Check:** `incident_report.status = complete` and `rca_manifest.status = archived`.  
+- **Metrics:** Documentation coverage metric, RCA evidence count metric, stakeholder confirmation metric documented in manifest.  
+- **Evidence Link:** `.artifacts/protocol-17/resolution-summary.json`, `.artifacts/protocol-17/rca-manifest.json`, `.artifacts/protocol-17/INCIDENT-REPORT.md`.
+
+**Automation:**
+- Script: `python3 scripts/validate_gate_13_resolution.py --threshold 0.95 --output .artifacts/protocol-17/resolution-validation.json`
+- Script: `python3 scripts/archive_rca_evidence.py --output .artifacts/protocol-17/rca-manifest.json`
+- CI Integration: `protocol-17-resolution.yml` workflow finalizes incident documentation; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/17.yaml` defines documentation requirements and RCA archival standards.
+
+**Failure Handling:**
+- **Rollback:** Collect missing evidence, schedule follow-up review before closure.  
+- **Notification:** Alert incident commander and retrospective owner when boolean check fails.  
+- **Waiver:** Not applicable - incident documentation mandatory for postmortem and learning.
+
+### Compliance Integration
+- **Industry Standards:** Incident response aligns with CommonMark documentation, JSON Schema validation, incident management standards.  
+- **Security Requirements:** Incident artifacts enforce SOC 2 audit logging, GDPR compliance for sensitive incident data, encrypted storage for RCA evidence.  
+- **Regulatory Compliance:** Incident procedures reference FTC breach notification requirements, ISO 27001 incident management, HIPAA incident response timelines.  
+- **Governance:** Gate thresholds governed via `config/protocol_gates/17.yaml`, synchronized with protocol governance registry and incident management dashboards.
 
 ---
 
@@ -556,48 +618,92 @@ After Protocol 17 completion, run Protocol 18 continuation script to proceed. Ge
 <!-- Why: Documentation standards and metrics tracking -->
 ## 10. EVIDENCE SUMMARY
 
-### 10.1 Learning and Improvement Mechanisms
+### Artifact Generation Table
 
-**Feedback Collection:** All artifacts generate feedback for continuous improvement. Quality gate outcomes tracked in historical logs for pattern analysis and threshold calibration.
+| Artifact Name | Metrics | Location | Evidence Link |
+|---------------|---------|----------|---------------|
+| severity-assessment artifact (`severity-assessment.json`) | Consensus rate metric =100%, severity level metric documented | `.artifacts/protocol-17/severity-assessment.json` | Gate 1 severity alignment |
+| communication-log artifact (`communication-log.md`) | Notification latency metric <=5min, stakeholder count metric logged | `.artifacts/protocol-17/communication-log.md` | Gate 1 notification evidence |
+| mitigation-plan artifact (`mitigation-plan.md`) | Strategy completeness metric >=95%, risk assessment metric documented | `.artifacts/protocol-17/mitigation-plan.md` | Gate 2 mitigation readiness |
+| rollback-checklist artifact (`rollback-readiness-checklist.json`) | Prerequisite coverage metric =100%, readiness score metric recorded | `.artifacts/protocol-17/rollback-readiness-checklist.json` | Gate 2 rollback evidence |
+| decision-log artifact (`decision-log.json`) | Approval coverage metric =100%, decision latency metric logged | `.artifacts/protocol-17/decision-log.json` | Gate 2 approval evidence |
+| execution-report artifact (`mitigation-execution-report.json`) | Execution success metric =100%, duration metric tracked | `.artifacts/protocol-17/mitigation-execution-report.json` | Gate 3 execution evidence |
+| recovery-validation artifact (`recovery-validation.json`) | Validation pass rate metric >=0.95, critical check count metric documented | `.artifacts/protocol-17/recovery-validation.json` | Gate 3 recovery evidence |
+| timeline artifact (`incident-timeline.md`) | Timeline completeness metric =100%, event count metric logged | `.artifacts/protocol-17/incident-timeline.md` | Gate 3 timeline evidence |
+| resolution-summary artifact (`resolution-summary.json`) | Summary completeness metric >=95%, action item count metric recorded | `.artifacts/protocol-17/resolution-summary.json` | Gate 4 resolution evidence |
+| rca-manifest artifact (`rca-manifest.json`) | RCA evidence count metric >=3, archive status metric =complete | `.artifacts/protocol-17/rca-manifest.json` | Gate 4 RCA evidence |
+| incident-report artifact (`INCIDENT-REPORT.md`) | Report completeness metric >=95%, section coverage metric documented | `.artifacts/protocol-17/INCIDENT-REPORT.md` | Gate 4 final report |
 
-**Improvement Tracking:** Protocol execution metrics monitored quarterly. Template evolution logged with before/after comparisons. Knowledge base updated after every 5 executions.
+### Storage Structure
 
-**Knowledge Integration:** Execution patterns cataloged in institutional knowledge base. Best practices documented and shared across teams. Common blockers maintained with proven resolutions.
+**Protocol Directory:** `.artifacts/protocol-17/`  
+- **Subdirectories:** `incident-logs/` for execution traces, `rca-evidence/` for root cause analysis, `approvals/` for decision records.  
+- **Permissions:** Read/write for incident commander and SRE team, read-only for retrospective and monitoring teams.  
+- **Naming Convention:** `{artifact-name}.{extension}` (e.g., `mitigation-execution-report.json`, `INCIDENT-REPORT.md`).
 
-**Adaptation:** Protocol adapts based on project context (complexity, domain, constraints). Quality gate thresholds adjust dynamically based on risk tolerance. Workflow optimizations applied based on historical efficiency data.
+### Manifest Completeness
 
-### 10.2 Generated Artifacts:
-| Artifact | Location | Purpose | Consumer |
-|----------|----------|---------|----------|
-| `incident-intake-log.md` | `.artifacts/incidents/` | Captures alert signals and timestamps | Protocol 20 Gates |
-| `mitigation-plan.md` | `.artifacts/incidents/` | Documents containment strategy | Protocol 20 Gates |
-| `recovery-validation.json` | `.artifacts/incidents/` | Confirms system stabilization | Protocol 22 |
-| `INCIDENT-REPORT.md` | `.artifacts/incidents/` | Incident summary and actions | Protocol 22 |
-| `rca-manifest.json` | `.artifacts/incidents/` | Root cause evidence index | Protocol 22 |
+**Manifest File:** `.artifacts/protocol-17/evidence-manifest.json`
 
-### 10.3 Traceability Matrix
+**Metadata Requirements:**
+- Timestamp: ISO 8601 format (e.g., `2025-11-06T05:34:29Z`).  
+- Artifact checksums: SHA-256 hash recorded for every artifact and RCA evidence.  
+- Size: File size in bytes captured in manifest integrity block.  
+- Dependencies: Upstream protocols (16, 15) and downstream consumers (18, 22) documented.
 
-**Upstream Dependencies:**
-- Input artifacts inherit from: [list predecessor protocols]
-- Configuration dependencies: [list config files or environment requirements]
-- External dependencies: [list third-party systems or APIs]
+**Dependency Tracking:**
+- Input: Protocol 16 `MONITORING-PACKAGE.zip`, Protocol 15 `deployment-health-log.md`, production monitoring alerts.  
+- Output: All artifacts listed above plus gate validation reports and incident evidence bundle.  
+- Transformations: Severity assessment -> Mitigation planning -> Recovery validation -> Resolution documentation.
 
-**Downstream Consumers:**
-- Output artifacts consumed by: [list successor protocols]
-- Shared artifacts: [list artifacts used by multiple protocols]
-- Archive requirements: [list retention policies]
+**Coverage:** Manifest documents 100% of required artifacts, incident logs, RCA evidence, and approval records with checksum verification.
 
-**Verification Chain:**
-- Each artifact includes: SHA-256 checksum, timestamp, verified_by field
-- Verification procedure: [describe validation process]
-- Audit trail: All artifact modifications logged in protocol execution log
+### Traceability
 
-### 10.4 Quality Metrics:
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Gate 3 Pass Rate | ≥ 95% | [TBD] | ⏳ |
-| Evidence Completeness | 100% | [TBD] | ⏳ |
-| Integration Integrity | 100% | [TBD] | ⏳ |
+**Input Sources:**
+- **Input From:** Protocol 16 `.artifacts/protocol-16/MONITORING-PACKAGE.zip` – Alert signals triggering incident response.  
+- **Input From:** Protocol 15 `.artifacts/protocol-15/deployment-health-log.md` – Deployment baseline for incident context.  
+- **Input From:** Production monitoring `config/alert-rules.yaml` – Alert definitions and severity mappings.
+
+**Output Artifacts:**
+- **Output To:** `INCIDENT-REPORT.md` – Incident summary consumed by Protocol 22 (Retrospective).  
+- **Output To:** `rca-manifest.json` – Root cause evidence for retrospective analysis and learning.  
+- **Output To:** `recovery-validation.json` – Recovery metrics for Protocol 16 (Monitoring) tuning.  
+- **Output To:** `incident-timeline.md` – Timeline for postmortem and stakeholder communication.  
+- **Output To:** `evidence-manifest.json` – Audit ledger for governance and compliance reviews.
+
+**Transformation Steps:**
+1. Alert signals -> severity-assessment.json and communication-log.md: Assess severity and notify stakeholders.  
+2. Severity consensus -> mitigation-plan.md and rollback-readiness-checklist.json: Plan mitigation and verify readiness.  
+3. Mitigation execution -> mitigation-execution-report.json and recovery-validation.json: Execute and validate recovery.  
+4. Recovery confirmation -> resolution-summary.json and rca-manifest.json: Document resolution and archive RCA.  
+5. Evidence bundling -> evidence-manifest.json and INCIDENT-REPORT.md: Compile final incident report.
+
+**Audit Trail:**
+- Manifest stores timestamps, checksums, and incident commander identity for each artifact.  
+- Decision logs retain approval signatures and decision rationale.  
+- Execution reports preserve mitigation steps and recovery metrics.  
+- RCA evidence maintains root cause findings and remediation actions.
+
+### Archival Strategy
+
+**Compression:**
+- Incident artifacts compressed into `.artifacts/protocol-17/INCIDENT-EVIDENCE-BUNDLE.zip` after Gate 4 completion using ZIP standard compression.
+
+**Retention Policy:**
+- Active artifacts retained for 1 year post-incident to support ongoing monitoring and learning.  
+- Archived bundles retained for 5 years per SOC 2 and incident management compliance.  
+- Cleanup automation `scripts/cleanup_artifacts.py` enforces retention quarterly.
+
+**Retrieval Procedures:**
+- Active artifacts accessed directly from `.artifacts/protocol-17/` with read-only permissions.  
+- Archived bundles retrieved via `unzip .artifacts/protocol-17/INCIDENT-EVIDENCE-BUNDLE.zip` with manifest checksum verification.  
+- Incident playbook stored in `incident-logs/incident-playbook.md` for future reference.
+
+**Cleanup Process:**
+- Quarterly cleanup logs actions to `.artifacts/protocol-17/cleanup-log.json` with incident artifact inventory snapshot.  
+- Critical incident artifacts flagged for extended retention require incident commander approval.  
+- Manual retention overrides documented with timestamp, approver identity, and business justification.
 
 ---
 

@@ -418,7 +418,8 @@ jobs:
 **Automation:**
 - Script: `python3 scripts/validate_environment.py --env integration --output .artifacts/protocol-11/environment-parity-report.json`
 - Script: `python3 scripts/validate_prerequisites_9.py --output .artifacts/protocol-11/integration-environment-checklist.json`
-- CI Integration: `protocol-11-env.yml` workflow validates parity on every merge to integration branch.
+- CI Integration: `protocol-11-env.yml` workflow validates parity on every merge to integration branch; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/11.yaml` defines environment parity thresholds and drift limits.
 
 **Failure Handling:**
 - **Rollback:** Reconcile environment differences, refresh credentials, and rerun parity scripts.  
@@ -438,7 +439,8 @@ jobs:
 **Automation:**
 - Script: `python3 scripts/run_contract_tests.py --env integration --output .artifacts/protocol-11/contract-validation-results.json`
 - Script: `python3 scripts/check_schema_drift.py --output .artifacts/protocol-11/schema-drift-log.json`
-- Config: `config/protocol_gates/11.yaml` defines contract thresholds consumed by CI.
+- CI Integration: `protocol-11-contracts.yml` workflow executes contract validation on pull requests; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/11.yaml` defines contract thresholds consumed by CI and schema drift tolerances.
 
 **Failure Handling:**
 - **Rollback:** Address failing contracts, update schemas, and rerun tests before proceeding.  
@@ -456,10 +458,11 @@ jobs:
 - **Evidence Link:** `.artifacts/protocol-11/test-execution-report.json`, `.artifacts/protocol-11/ci-telemetry.json`, `.artifacts/protocol-11/defect-log.csv`.
 
 **Automation:**
-- Command: `pytest -m integration --json-report --json-report-file .artifacts/protocol-11/test-execution-report.json`
+- Script: `python3 scripts/run_integration_suite.py --json-report --json-report-file .artifacts/protocol-11/test-execution-report.json`
 - Script: `python3 scripts/collect_ci_telemetry.py --output .artifacts/protocol-11/ci-telemetry.json`
 - Script: `python3 scripts/aggregate_evidence_9.py --output .artifacts/protocol-11/`
-- CI Integration: Nightly job `protocol-11-suite.yml` posts metrics to governance dashboard.
+- CI Integration: Nightly job `protocol-11-suite.yml` posts metrics to governance dashboard; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/11.yaml` defines pass rate thresholds and defect density limits.
 
 **Failure Handling:**
 - **Rollback:** Investigate failures, remediate defects, and rerun suite until thresholds met.  
@@ -480,7 +483,8 @@ jobs:
 - Script: `python3 scripts/generate_artifact_manifest.py --input .artifacts/protocol-11/ --output .artifacts/protocol-11/integration-evidence-manifest.json`
 - Script: `python3 scripts/package_integration_bundle.py --output .artifacts/protocol-11/INTEGRATION-EVIDENCE.zip`
 - Script: `python3 scripts/generate_next_protocol_brief.py --protocol 12 --output .artifacts/protocol-11/next-protocol-brief.md`
-- CI Integration: Handoff workflow posts summary and checksums to governance Slack channel.
+- CI Integration: Handoff workflow posts summary and checksums to governance Slack channel; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/11.yaml` defines handoff completeness thresholds and manifest requirements.
 
 **Failure Handling:**
 - **Rollback:** Regenerate incomplete artifacts, obtain outstanding sign-offs, and rerun manifest generation.  

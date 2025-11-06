@@ -143,3 +143,4 @@ Once migration is executed manually:
 
 **SQL file ready for manual execution:** `backend/migration_72348313369a_initial_schema.sql`
 
+

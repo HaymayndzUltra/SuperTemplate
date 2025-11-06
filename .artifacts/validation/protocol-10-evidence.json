@@ -1,28 +1,24 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "10",
-  "validation_timestamp": "2025-11-06T05:32:27.829342Z",
-  "overall_score": 0.7749999999999999,
-  "validation_status": "fail",
-  "issues": [
-    "Traceability gaps: inputs, outputs"
-  ],
-  "recommendations": [
-    "Enhance archival plan with: cleanup, retrieval"
-  ],
+  "validation_timestamp": "2025-11-06T09:10:10.108860Z",
+  "overall_score": 1.0,
+  "validation_status": "pass",
+  "issues": [],
+  "recommendations": [],
   "artifact_generation": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "table_present": true,
       "artifact_column": true,
-      "metrics_column": false,
+      "metrics_column": true,
       "row_coverage": true,
       "table_rows": 10,
-      "artifact_mentions": 5,
-      "metric_mentions": 4
+      "artifact_mentions": 17,
+      "metric_mentions": 24
     }
   },
   "storage_structure": {
@@ -54,38 +50,34 @@
       "metadata": true,
       "dependencies": true,
       "coverage": true,
-      "metadata_mentions": 2,
-      "dependency_mentions": 2
+      "metadata_mentions": 11,
+      "dependency_mentions": 15
     }
   },
   "traceability": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Traceability gaps: inputs, outputs"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "inputs": false,
-      "outputs": false,
+      "inputs": true,
+      "outputs": true,
       "transformations": true,
       "audit": true
     }
   },
   "archival": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Enhance archival plan with: cleanup, retrieval"
-    ],
+    "recommendations": [],
     "details": {
       "compression": true,
       "retention": true,
-      "retrieval": false,
-      "cleanup": false,
-      "compression_mentions": 1,
-      "retention_mentions": 1
+      "retrieval": true,
+      "cleanup": true,
+      "compression_mentions": 10,
+      "retention_mentions": 5
     }
   }
 }

@@ -300,33 +300,95 @@ Maintain lessons learned with structure:
 <!-- Why: Defines validation standards and criteria, not executing validation -->
 ## 6. QUALITY GATES
 
-### 6.1 Gate 1: Instrumentation Coverage Gate
-- **Criteria**: All critical services have telemetry coverage; monitoring requirements documented.
-- **Evidence**: `monitoring-requirements.md`, `instrumentation-audit.json`.
-- **Pass Threshold**: Coverage completeness ≥ 95%.
-- **Failure Handling**: Engage service owners to implement missing instrumentation; rerun audit.
-- **Automation**: `python scripts/validate_gate_12_instrumentation.py --threshold 0.95`
+### Gate 1: Instrumentation Coverage Gate
+**Type:** Prerequisite  
+**Purpose:** Verify all critical services have telemetry coverage and monitoring requirements documented.
 
-### 6.2 Gate 2: Alert Validation Gate
-- **Criteria**: Synthetic alerts triggered; acknowledgements within SLA; dashboards updated.
-- **Evidence**: `dashboard-config.md`, `alert-test-results.json`.
-- **Pass Threshold**: Alert acknowledgement time ≤ target SLA; dashboard validation score ≥ 90%.
-- **Failure Handling**: Fix routing/integration issues; rerun tests before proceeding.
-- **Automation**: `python scripts/validate_gate_12_alerts.py --sla 5`
+**Pass Criteria:**
+- **Threshold:** Coverage completeness metric ≥0.95 and instrumentation audit score ≥0.90.  
+- **Boolean Check:** `instrumentation_audit.status = pass` and `coverage_metric = complete`.  
+- **Metrics:** Coverage completeness metric, service count metric, telemetry metric documented in audit.  
+- **Evidence Link:** `.artifacts/protocol-16/monitoring-requirements.md`, `.artifacts/protocol-16/instrumentation-audit.json`.
 
-### 6.3 Gate 3: Observability Assurance Gate
-- **Criteria**: Ongoing schedule defined; alert tuning documented; improvement backlog created.
-- **Evidence**: `observability-schedule.json`, `alert-tuning-report.md`, `improvement-backlog.md`.
-- **Pass Threshold**: Schedule coverage = 100%; backlog entries logged for all gaps.
-- **Failure Handling**: Define schedule, add backlog actions, repeat validation.
-- **Automation**: `python scripts/validate_gate_12_assurance.py`
+**Automation:**
+- Script: `python3 scripts/validate_gate_12_instrumentation.py --threshold 0.95 --output .artifacts/protocol-16/instrumentation-audit.json`
+- Script: `python3 scripts/audit_service_telemetry.py --output .artifacts/protocol-16/telemetry-coverage-report.json`
+- CI Integration: `protocol-16-instrumentation.yml` workflow validates coverage on every deployment; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/16.yaml` defines coverage thresholds and telemetry requirements.
 
-### 6.4 Gate 4: Monitoring Handoff Gate
-- **Criteria**: Monitoring package compiled; approvals recorded; downstream protocols notified.
-- **Evidence**: `MONITORING-PACKAGE.zip`, `monitoring-package-manifest.json`, `monitoring-approval-record.json`.
-- **Pass Threshold**: Manifest completeness ≥ 95%; approvals 100% captured.
-- **Failure Handling**: Rebuild package, obtain approvals, resend notifications.
-- **Automation**: `python scripts/validate_gate_12_handoff.py --threshold 0.95`
+**Failure Handling:**
+- **Rollback:** Engage service owners to implement missing instrumentation, rerun audit before proceeding.  
+- **Notification:** Alert SRE team and service owners via Slack when boolean check fails.  
+- **Waiver:** Waiver requires SRE lead approval with documented mitigation in `.artifacts/protocol-16/gate-waivers.json`.
+
+### Gate 2: Alert Validation Gate
+**Type:** Execution  
+**Purpose:** Confirm synthetic alerts trigger successfully and acknowledgements occur within SLA.
+
+**Pass Criteria:**
+- **Threshold:** Alert acknowledgement time ≤target SLA and dashboard validation score ≥0.90.  
+- **Boolean Check:** `alert_tests.status = success` and `dashboard_validation.status = pass`.  
+- **Metrics:** Acknowledgement latency metric, dashboard score metric, alert routing metric captured in test results.  
+- **Evidence Link:** `.artifacts/protocol-16/alert-test-results.json`, `.artifacts/protocol-16/dashboard-config.md`.
+
+**Automation:**
+- Script: `python3 scripts/validate_gate_12_alerts.py --sla 5 --output .artifacts/protocol-16/alert-test-results.json`
+- Script: `python3 scripts/validate_dashboard_config.py --output .artifacts/protocol-16/dashboard-validation.json`
+- CI Integration: `protocol-16-alerts.yml` workflow runs alert tests on every config change; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/16.yaml` defines alert SLA thresholds and dashboard requirements.
+
+**Failure Handling:**
+- **Rollback:** Fix routing/integration issues, rerun alert tests before proceeding.  
+- **Notification:** Notify on-call team and SRE lead when boolean check fails.  
+- **Waiver:** Not applicable - alert validation mandatory for production readiness.
+
+### Gate 3: Observability Assurance Gate
+**Type:** Execution  
+**Purpose:** Ensure ongoing observability schedule defined and alert tuning documented.
+
+**Pass Criteria:**
+- **Threshold:** Schedule coverage metric =100% and backlog completeness metric ≥0.95.  
+- **Boolean Check:** `observability_schedule.status = defined` and `improvement_backlog.status = documented`.  
+- **Metrics:** Schedule coverage metric, backlog entry count metric, tuning recommendation metric logged.  
+- **Evidence Link:** `.artifacts/protocol-16/observability-schedule.json`, `.artifacts/protocol-16/alert-tuning-report.md`, `.artifacts/protocol-16/improvement-backlog.md`.
+
+**Automation:**
+- Script: `python3 scripts/validate_gate_12_assurance.py --output .artifacts/protocol-16/assurance-validation.json`
+- Script: `python3 scripts/generate_improvement_backlog.py --output .artifacts/protocol-16/improvement-backlog.md`
+- CI Integration: `protocol-16-assurance.yml` workflow validates schedule and backlog; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/16.yaml` defines schedule requirements and backlog thresholds.
+
+**Failure Handling:**
+- **Rollback:** Define schedule, add backlog actions, repeat validation before handoff.  
+- **Notification:** Alert SRE lead and observability team when boolean check fails.  
+- **Waiver:** Waiver requires SRE director approval with documented ongoing monitoring plan.
+
+### Gate 4: Monitoring Handoff Gate
+**Type:** Completion  
+**Purpose:** Validate monitoring package compiled with approvals recorded for downstream protocols.
+
+**Pass Criteria:**
+- **Threshold:** Manifest completeness metric ≥0.95 and approval coverage metric ≥100%.  
+- **Boolean Check:** `monitoring_package.status = ready` and `approvals.status = complete`.  
+- **Metrics:** Package completeness metric, artifact count metric, approval latency metric documented in manifest.  
+- **Evidence Link:** `.artifacts/protocol-16/MONITORING-PACKAGE.zip`, `.artifacts/protocol-16/monitoring-package-manifest.json`, `.artifacts/protocol-16/monitoring-approval-record.json`.
+
+**Automation:**
+- Script: `python3 scripts/validate_gate_12_handoff.py --threshold 0.95 --output .artifacts/protocol-16/handoff-validation.json`
+- Script: `python3 scripts/package_monitoring_bundle.py --output .artifacts/protocol-16/MONITORING-PACKAGE.zip`
+- CI Integration: `protocol-16-handoff.yml` workflow compiles package and posts approval status; runs-on ubuntu-latest.
+- Config: `config/protocol_gates/16.yaml` defines handoff completeness and approval requirements.
+
+**Failure Handling:**
+- **Rollback:** Rebuild package, obtain missing approvals, resend notifications before handoff.  
+- **Notification:** Alert Protocol 17 owner and SRE lead when boolean check fails.  
+- **Waiver:** Not applicable - monitoring handoff mandatory for incident response readiness.
+
+### Compliance Integration
+- **Industry Standards:** Monitoring aligns with CommonMark documentation, JSON Schema validation, OpenTelemetry standards.  
+- **Security Requirements:** Monitoring artifacts enforce SOC 2 audit logging, GDPR compliance for sensitive metrics, encrypted storage for alert credentials.  
+- **Regulatory Compliance:** Alert procedures reference FTC transparency requirements, ISO 27001 security monitoring, incident response compliance.  
+- **Governance:** Gate thresholds governed via `config/protocol_gates/16.yaml`, synchronized with protocol governance registry and SRE dashboards.
 
 ---
 

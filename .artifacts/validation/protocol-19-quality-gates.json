@@ -1,48 +1,39 @@
 {
   "validator": "protocol_quality_gates",
   "protocol_id": "19",
-  "validation_timestamp": "2025-11-06T05:32:28.509162Z",
-  "overall_score": 0.6624999999999999,
-  "validation_status": "fail",
-  "issues": [
-    "No gate headings defined",
-    "Insufficient compliance standards referenced"
-  ],
+  "validation_timestamp": "2025-11-06T09:10:16.275798Z",
+  "overall_score": 0.9624999999999999,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [
-    "Identify gate types (Prerequisite/Execution/Completion)",
-    "Include quantitative metrics for gate evaluation",
-    "Provision config/protocol_gates/19.yaml when automated gating is expected",
-    "Identify notification path for gate failures",
-    "Document waiver/override policies"
+    "Provision config/protocol_gates/19.yaml when automated gating is expected"
   ],
   "gate_definitions": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "No gate headings defined"
-    ],
-    "recommendations": [
-      "Identify gate types (Prerequisite/Execution/Completion)"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
     "details": {
-      "gates": [],
-      "gate_count": false,
+      "gates": [
+        "1",
+        "2",
+        "3"
+      ],
+      "gate_count": true,
       "descriptions": true,
-      "types": false,
+      "types": true,
       "naming": true
     }
   },
   "pass_criteria": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Include quantitative metrics for gate evaluation"
-    ],
+    "recommendations": [],
     "details": {
       "thresholds": true,
       "boolean": true,
-      "metrics": false,
+      "metrics": true,
       "evidence_links": true
     }
   },
@@ -63,29 +54,24 @@
     }
   },
   "failure_handling": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Identify notification path for gate failures",
-      "Document waiver/override policies"
-    ],
+    "recommendations": [],
     "details": {
       "failure_actions": true,
       "rollback": true,
-      "notification": false,
-      "waivers": false
+      "notification": true,
+      "waivers": true
     }
   },
   "compliance_integration": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Insufficient compliance standards referenced"
-    ],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "compliance_terms": false,
+      "compliance_terms": true,
       "automation_hooks": true,
       "evidence": false,
       "governance": true

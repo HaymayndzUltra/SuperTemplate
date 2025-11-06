@@ -1,18 +1,11 @@
 {
   "validator": "protocol_quality_gates",
   "protocol_id": "02",
-  "validation_timestamp": "2025-11-06T05:32:28.486711Z",
-  "overall_score": 0.5291666666666667,
-  "validation_status": "fail",
-  "issues": [
-    "Numeric thresholds missing for gates",
-    "Insufficient compliance standards referenced"
-  ],
-  "recommendations": [
-    "Include quantitative metrics for gate evaluation",
-    "Document executable automation commands for gates",
-    "Document waiver/override policies"
-  ],
+  "validation_timestamp": "2025-11-06T09:10:16.245829Z",
+  "overall_score": 0.9624999999999999,
+  "validation_status": "pass",
+  "issues": [],
+  "recommendations": [],
   "gate_definitions": {
     "score": 1.0,
     "status": "pass",
@@ -20,10 +13,10 @@
     "recommendations": [],
     "details": {
       "gates": [
-        "0",
         "1",
         "2",
-        "3"
+        "3",
+        "4"
       ],
       "gate_count": true,
       "descriptions": true,
@@ -32,63 +25,53 @@
     }
   },
   "pass_criteria": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Numeric thresholds missing for gates"
-    ],
-    "recommendations": [
-      "Include quantitative metrics for gate evaluation"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
     "details": {
-      "thresholds": false,
+      "thresholds": true,
       "boolean": true,
-      "metrics": false,
-      "evidence_links": false
+      "metrics": true,
+      "evidence_links": true
     }
   },
   "automation": {
-    "score": 0.3333333333333333,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document executable automation commands for gates"
-    ],
+    "recommendations": [],
     "details": {
-      "scripts": false,
+      "scripts": true,
       "ci": true,
-      "automation_labels": false,
-      "script_mentions": 0,
+      "automation_labels": true,
+      "script_mentions": 8,
       "gate_config_path": "/home/haymayndz/SuperTemplate/config/protocol_gates/02.yaml",
       "gate_config_present": true
     }
   },
   "failure_handling": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document waiver/override policies"
-    ],
+    "recommendations": [],
     "details": {
       "failure_actions": true,
       "rollback": true,
       "notification": true,
-      "waivers": false
+      "waivers": true
     }
   },
   "compliance_integration": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Insufficient compliance standards referenced"
-    ],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "compliance_terms": false,
+      "compliance_terms": true,
       "automation_hooks": true,
       "evidence": false,
-      "governance": false
+      "governance": true
     }
   }
 }
