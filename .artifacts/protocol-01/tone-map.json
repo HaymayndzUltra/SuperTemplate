@@ -1,11 +1,68 @@
 {
-  "sentiment_score": 0.35,
-  "subjectivity_score": 0.65,
-  "tone_classification": "casual",
+  "tone_type": "technical",
   "confidence": 0.85,
-  "strategy": "Match collaborative, friendly tone with practical focus on execution and daily communication",
-  "analysis_timestamp": "2025-01-27T[timestamp]"
+  "strategy": "technical-but-approachable with collaborative emphasis",
+  "analysis": {
+    "formality_level": "semi-formal",
+    "technical_depth": "high",
+    "communication_style": "collaborative",
+    "client_persona": "technical_lead_or_founder",
+    "reasoning": "Job post uses specific technical terminology (FastAPI, webhooks, REST APIs) combined with approachable language (assist, support, help). Client values collaboration (daily updates via GitHub/Discord) and seeks hands-on technical help rather than just oversight."
+  },
+  "tone_indicators": {
+    "formal_signals": [
+      "Responsibilities:",
+      "Requirements:",
+      "Details:",
+      "To Apply:"
+    ],
+    "casual_signals": [
+      "Assist in",
+      "Support",
+      "Help with",
+      "even small projects are fine"
+    ],
+    "technical_signals": [
+      "FastAPI backend",
+      "webhook testing",
+      "REST APIs",
+      "PostgreSQL",
+      "OpenAI APIs"
+    ]
+  },
+  "recommended_response_tone": {
+    "primary": "technical-but-approachable",
+    "secondary": "collaborative",
+    "avoid": ["overly-corporate", "sales-heavy", "generic"],
+    "emphasis": [
+      "Show technical understanding of stack",
+      "Demonstrate problem-solving ability",
+      "Highlight collaboration experience",
+      "Keep it practical and direct"
+    ]
+  },
+  "voice_calibration": {
+    "contraction_target": 4,
+    "technical_jargon": "appropriate",
+    "sentence_length": "medium",
+    "question_inclusion": true,
+    "uncertainty_marker": "conditional_statements_preferred"
+  },
+  "strategy_details": {
+    "response_approach": "technical-but-approachable",
+    "key_tactics": [
+      "Mirror client's technical terminology (FastAPI, webhooks, OpenAI APIs)",
+      "Show practical problem-solving (specific examples of integration patterns)",
+      "Use conditional language to demonstrate critical thinking",
+      "Emphasize collaboration and daily communication",
+      "Avoid generic claims, focus on concrete workflows"
+    ],
+    "differentiation": [
+      "Workflow transparency with validation gates",
+      "Structured approach with week-by-week breakdown",
+      "API integration experience specific to OpenAI/Stripe",
+      "Flexible collaboration style matching client's GitHub/Discord preference"
+    ],
+    "execution_plan": "Lead with understanding of technical challenges, provide concrete week-by-week scenario, demonstrate workflow without over-promising"
+  }
 }
-
-
-

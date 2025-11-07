@@ -21,8 +21,10 @@ Discovery Phase
  - Respect `.cursorignore` when present to avoid indexing excluded paths.
 
 Analysis Phase
-- Determine project type: frontend, backend, fullstack, or monorepo (multi-app).
-- Identify primary frameworks/languages (e.g., React, Next.js, Vue, Svelte, Node/Express/Nest, Python/FastAPI/Django, Go, Java/Spring, etc.).
+- Determine project type: frontend, backend, fullstack, AI/ML, or monorepo (multi-app).
+- Identify primary frameworks/languages (e.g., React, Next.js, Vue, Svelte, Node/Express/Nest, Python/FastAPI/Django, Go, Java/Spring, LangChain, OpenAI, Anthropic, etc.).
+- Detect AI/ML patterns: LangChain agents, RAG pipelines, vector databases, prompt engineering.
+- Identify databases: PostgreSQL, MongoDB, Redis, Pinecone, Weaviate, ChromaDB, Supabase.
 - Map gaps: missing project-specific rules, unclear areas from brief/agents.
 - Plan rule set(s) to generate per detected stack and structure.
 
@@ -34,6 +36,14 @@ Generation Phase
 - For backend projects, create:
   - `{project-path}/.cursor/rules/project-rules/{framework}-backend-architecture.mdc`
     - API layering, DTO/validation, persistence patterns, auth flows, observability, testing.
+- For AI/ML projects, create:
+  - `{project-path}/.cursor/rules/project-rules/ai-ml-architecture.mdc`
+    - LangChain patterns, prompt engineering, RAG pipelines, vector DB integration, agent workflows.
+  - `{project-path}/.cursor/rules/project-rules/ai-testing-validation.mdc`
+    - LLM testing strategies, prompt validation, embedding quality checks, evaluation metrics.
+- For database-heavy projects, create:
+  - `{project-path}/.cursor/rules/project-rules/database-patterns.mdc`
+    - Schema design, query optimization, migration patterns, connection pooling.
 - For fullstack/monorepo projects, create both frontend and backend rule files, plus integration conventions:
   - `{project-path}/.cursor/rules/project-rules/fullstack-integration-conventions.mdc`
     - API contracts, shared types, error taxonomy, env/config strategy, local dev.
@@ -41,8 +51,11 @@ Generation Phase
 Flags & Options (optional)
 - `--frontend-only`: Limit generation to frontend rules.
 - `--backend-only`: Limit generation to backend rules.
+- `--ai-ml-only`: Limit generation to AI/ML rules (LangChain, OpenAI, RAG patterns).
+- `--database-only`: Limit generation to database rules (schema, queries, migrations).
 - `--include-tests`: Emit testing guidance sections/examples.
-- `--stack <react|next|vue|svelte|fastapi|django|express|nest|spring|go|rust>`: Hint detected stack.
+- `--stack <react|next|vue|svelte|fastapi|django|express|nest|spring|go|rust|langchain>`: Hint detected stack.
+- `--vector-db <pinecone|weaviate|chromadb|qdrant|supabase>`: Specify vector database for AI projects.
 - `--monorepo`: Force per-app rule emission to `apps/*` or `packages/*`.
 - `--dry-run`: Produce a summary of intended files without writing.
 - `--overwrite`: Allow overwriting existing project-rule files.
@@ -136,6 +149,24 @@ Usage Examples
    - Outputs:
      - `.cursor/rules/project-rules/fastapi-backend-architecture.mdc`
    - Notes: API layering, validation, persistence, auth, observability
+
+3) AI/ML Project (LangChain + RAG)
+   - Inputs detected: `requirements.txt` with `langchain`, `openai`, `pinecone-client`, `chromadb`
+   - Outputs:
+     - `.cursor/rules/project-rules/ai-ml-architecture.mdc`
+     - `.cursor/rules/project-rules/ai-testing-validation.mdc`
+     - `.cursor/rules/project-rules/database-patterns.mdc` (for vector DB)
+   - Notes: LangChain patterns, prompt engineering, RAG pipelines, vector DB integration, testing strategies
+
+4) Fullstack AI App (Next.js + FastAPI + Supabase + OpenAI)
+   - Inputs detected: `package.json` (Next.js), `pyproject.toml` (FastAPI), `.env` (Supabase, OpenAI keys)
+   - Outputs:
+     - `.cursor/rules/project-rules/nextjs-app-structure.mdc`
+     - `.cursor/rules/project-rules/fastapi-backend-architecture.mdc`
+     - `.cursor/rules/project-rules/ai-ml-architecture.mdc`
+     - `.cursor/rules/project-rules/database-patterns.mdc`
+     - `.cursor/rules/project-rules/fullstack-integration-conventions.mdc`
+   - Notes: Complete full-stack AI app with frontend, backend API, AI features, and database patterns
 
 When to Run (Unified Workflow)
 - Phase 0: Bootstrap & Context Engineering — run to scaffold baseline rules

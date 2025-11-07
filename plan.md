@@ -1,3 +1,15 @@
+**Prompt:** Pakireview ulit ang planong ito at sundin ang mga hakbang sa ibaba:
+1. I-cross-check ang nilalaman sa `/home/haymayndz/SuperTemplate/AI-project-workflow` at `/home/haymayndz/SuperTemplate/.cursor/ai-driven-workflow` para malaman kung paano sila sumusuporta o kumokontra sa kasalukuyang assessment.
+2. Ilatag ang napansing gaps, overlaps, at kulang na automation/validators base sa dalawang directory na iyon.
+3. Gumawa ng consolidated analysis section na nagha-highlight kung alin sa 23 protocols ang kailangan pang i-refine o dagdagan para maging AI-ready.
+4. Maghanda ng final recommendation summary (strategic level) at isang implementation plan na naka-breakdown sa phased actions, owners, dependencies, at timeline hints.
+5. Ilista ang mga kinakailangang artifacts at evidence na dapat i-produce sa bawat phase (e.g., ADRs, risk logs, change-request forms, validator scripts).
+
+**Deliverables:**
+- Updated analysis section (insert within this document) na nagre-reference sa parehong directories.
+- Final recommendation summary.
+- Detailed implementation plan table o bullet list.
+
 Review of AI Project Workflow and Suggested Enhancements
 Overview of Provided Workflow and Summary
 

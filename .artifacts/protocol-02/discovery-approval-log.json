@@ -1,0 +1,11 @@
+{
+  "protocol_id": "02",
+  "protocol_name": "Client Discovery Initiation",
+  "log_created": "2025-11-06T05:40:00Z",
+  "log_last_updated": "2025-11-06T05:40:00Z",
+  "approval_entries": [],
+  "status": "awaiting_discovery_call",
+  "notes": "This log will be populated after discovery call and recap are sent to client for approval.",
+  "instructions": "Add entry after sending discovery-recap.md to client. Update status when client approves."
+}
+
