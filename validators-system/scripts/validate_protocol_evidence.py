@@ -39,13 +39,14 @@ class ProtocolEvidenceValidator:
         "archival",
     ]
 
-    def __init__(self, workspace_root: Path) -> None:
+    def __init__(self, workspace_root: Path, protocol_dir: Path = None) -> None:
         self.workspace_root = workspace_root
+        self.protocol_dir = protocol_dir
         self.output_dir = workspace_root / ".artifacts" / "validation"
 
     def validate_protocol(self, protocol_id: str) -> Dict[str, Any]:
         result = build_base_result(self.KEY, protocol_id)
-        protocol_file = get_protocol_file(self.workspace_root, protocol_id)
+        protocol_file = get_protocol_file(self.workspace_root, protocol_id, self.protocol_dir)
         if not protocol_file:
             result["issues"].append(f"Protocol file not found for ID {protocol_id}")
             return result
@@ -289,7 +290,8 @@ class ProtocolEvidenceValidator:
 
 def run_cli(args: argparse.Namespace) -> int:
     workspace_root = Path(args.workspace).resolve()
-    validator = ProtocolEvidenceValidator(workspace_root)
+    protocol_dir = Path(args.protocol_dir).resolve() if args.protocol_dir else None
+    validator = ProtocolEvidenceValidator(workspace_root, protocol_dir)
     results: List[Dict[str, Any]] = []
 
     if args.protocol:
@@ -332,6 +334,7 @@ def main() -> None:
     )
     parser.add_argument("--report", action="store_true", help="Generate summary report")
     parser.add_argument("--workspace", default=".", help="Workspace root (defaults to current directory)")
+    parser.add_argument("--protocol-dir", help="Custom protocol directory path (default: .cursor/ai-driven-workflow)")
 
     args = parser.parse_args()
     exit_code = run_cli(args)

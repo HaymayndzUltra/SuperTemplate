@@ -1,21 +1,27 @@
 {
   "validator": "protocol_role",
   "protocol_id": "06",
-  "validation_timestamp": "2025-11-06T16:52:20.224833Z",
-  "overall_score": 1.0,
-  "validation_status": "pass",
-  "issues": [],
+  "validation_timestamp": "2025-11-07T18:39:48.666410Z",
+  "overall_score": 0.875,
+  "validation_status": "warning",
+  "issues": [
+    "Domain expertise keywords missing",
+    "Behavioral traits not articulated"
+  ],
   "recommendations": [],
   "role_definition": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Domain expertise keywords missing",
+      "Behavioral traits not articulated"
+    ],
     "recommendations": [],
     "details": {
       "role_title": true,
       "role_description": true,
-      "domain_expertise": true,
-      "behavioral_traits": true
+      "domain_expertise": false,
+      "behavioral_traits": false
     }
   },
   "mission_statement": {
@@ -39,10 +45,10 @@
       "guardrails": true,
       "boundaries": true,
       "workflow_alignment": true,
-      "guardrail_count": 77,
-      "boundary_count": 7,
-      "workflow_links": 12,
-      "optional_guidance": 0
+      "guardrail_count": 52,
+      "boundary_count": 11,
+      "workflow_links": 38,
+      "optional_guidance": 1
     }
   },
   "output_expectations": {

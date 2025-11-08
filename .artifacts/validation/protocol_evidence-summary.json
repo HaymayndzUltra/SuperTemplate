@@ -1,16 +1,16 @@
 {
   "validator": "protocol_evidence",
-  "validation_timestamp": "2025-11-06T09:53:16.079393Z",
+  "validation_timestamp": "2025-11-08T21:11:10.942448Z",
   "total_protocols": 1,
   "pass_count": 1,
   "warning_count": 0,
   "fail_count": 0,
-  "average_score": 1.0,
+  "average_score": 0.925,
   "protocols": [
     {
-      "protocol_id": "23",
+      "protocol_id": "05b",
       "status": "pass",
-      "score": 1.0
+      "score": 0.925
     }
   ],
   "dimensions": {
@@ -33,15 +33,15 @@
       "fail_count": 0
     },
     "traceability": {
-      "average_score": 1.0,
-      "pass_count": 1,
-      "warning_count": 0,
+      "average_score": 0.75,
+      "pass_count": 0,
+      "warning_count": 1,
       "fail_count": 0
     },
     "archival": {
-      "average_score": 1.0,
-      "pass_count": 1,
-      "warning_count": 0,
+      "average_score": 0.75,
+      "pass_count": 0,
+      "warning_count": 1,
       "fail_count": 0
     }
   }

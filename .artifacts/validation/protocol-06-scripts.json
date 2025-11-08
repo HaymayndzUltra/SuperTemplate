@@ -1,11 +1,12 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "06",
-  "validation_timestamp": "2025-11-06T16:52:20.235684Z",
-  "overall_score": 0.8500000000000001,
-  "validation_status": "warning",
+  "validation_timestamp": "2025-11-07T18:39:48.773487Z",
+  "overall_score": 0.6821428571428572,
+  "validation_status": "fail",
   "issues": [],
   "recommendations": [
+    "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured"
   ],
@@ -15,21 +16,24 @@
     "issues": [],
     "recommendations": [],
     "details": {
-      "command_count": 7,
+      "command_count": 14,
       "commands": [
-        "python scripts/validate_prerequisites_1.py",
-        "python scripts/validate_prd_context.py --input .artifacts/protocol-06/prd-context.json --output .artifacts/protocol-06/context-validation.json",
-        "python scripts/validate_prd_requirements.py --dir .artifacts/protocol-06/ --output .artifacts/protocol-06/requirements-validation.json",
-        "python scripts/validate_prd_gate.py --prd .artifacts/protocol-06/prd-{feature}.md --output .artifacts/protocol-06/prd-validation.json",
-        "python scripts/aggregate_evidence_1.py --output .artifacts/protocol-06/ --protocol-id 06",
-        "python scripts/run_protocol_1_gates.py",
-        "python scripts/generate_prd_assets.py --prd .artifacts/protocol-06/prd-{feature}.md --output .artifacts/protocol-06/prd-assets/"
+        "bash\n# Extract AI ideas from project brief and discovery notes",
+        "python scripts/ai/parse_intake_ideas.py \\",
+        "python scripts/ai/deduplicate_ideas.py \\",
+        "bash\n# Generate structured use case specifications from templates",
+        "python scripts/ai/shape_specifications.py \\",
+        "bash\n# Calculate technical feasibility scores",
+        "python scripts/ai/score_feasibility.py \\",
+        "python scripts/ai/assess_risks.py \\",
+        "bash\n# Generate weighted prioritization matrix",
+        "python scripts/ai/prioritize_matrix.py \\"
       ],
       "missing_scripts": []
     }
   },
   "registry_alignment": {
-    "score": 1.0,
+    "score": 0.9107142857142857,
     "status": "pass",
     "issues": [],
     "recommendations": [],
@@ -39,38 +43,39 @@
       "registry_reference": true,
       "workflow_mapping": true,
       "ownership": true,
-      "total_commands": 7,
-      "registered_commands": 7,
-      "registration_ratio": 1.0,
+      "total_commands": 14,
+      "registered_commands": 9,
+      "registration_ratio": 0.6428571428571429,
       "unregistered_commands": []
     }
   },
   "execution_context": {
-    "score": 0.5,
+    "score": 0.25,
     "status": "fail",
     "issues": [],
     "recommendations": [
+      "Document environment/dependency expectations",
       "Clarify access and credential requirements"
     ],
     "details": {
       "ci_context": true,
-      "environment": true,
+      "environment": false,
       "scheduling": false,
       "permissions": false
     }
   },
   "command_syntax": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 0.25,
+    "status": "fail",
     "issues": [],
     "recommendations": [
       "Document how command outputs are captured"
     ],
     "details": {
-      "command_count": 7,
-      "flag_usage": true,
+      "command_count": 14,
+      "flag_usage": false,
       "output_redirection": false,
-      "parameterization": true,
+      "parameterization": false,
       "documentation": true
     }
   },

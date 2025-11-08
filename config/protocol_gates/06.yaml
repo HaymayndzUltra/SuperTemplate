@@ -1,0 +1,15 @@
+gates:
+  - id: gate_1
+    name: "Primary Validation Gate"
+    threshold: 0.95
+    enabled: true
+    automation:
+      script: "scripts/ai/validate_gate_${id}_1.py"
+      on_failure: "halt"
+  - id: gate_2  
+    name: "Secondary Validation Gate"
+    threshold: 0.90
+    enabled: true
+    automation:
+      script: "scripts/ai/validate_gate_${id}_2.py"
+      on_failure: "warning"

@@ -1,8 +1,8 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "06",
-  "validation_timestamp": "2025-11-06T16:52:20.228121Z",
-  "overall_score": 0.8500000000000001,
+  "validation_timestamp": "2025-11-07T18:39:48.700004Z",
+  "overall_score": 0.8444444444444446,
   "validation_status": "warning",
   "issues": [
     "Not all steps define explicit actions",
@@ -10,9 +10,7 @@
     "Several workflow steps omit explicit action prompts"
   ],
   "recommendations": [
-    "Document communication prompts per step",
-    "Optional or cautionary guidance can highlight operator judgement without blocking validation",
-    "Add rollback or retry guidance for failure scenarios"
+    "Document communication prompts per step"
   ],
   "workflow_structure": {
     "score": 1.0,
@@ -24,7 +22,8 @@
         1,
         2,
         3,
-        4
+        4,
+        5
       ],
       "section_present": true,
       "step_headings": true,
@@ -33,7 +32,7 @@
     }
   },
   "step_definitions": {
-    "score": 0.8000000000000002,
+    "score": 0.7777777777777778,
     "status": "warning",
     "issues": [
       "Not all steps define explicit actions",
@@ -43,10 +42,10 @@
       "Document communication prompts per step"
     ],
     "details": {
-      "steps": 5,
-      "action_coverage": 0.8,
-      "communication_coverage": 0.8,
-      "evidence_coverage": 0.8
+      "steps": 6,
+      "action_coverage": 0.8333333333333334,
+      "communication_coverage": 0.6666666666666666,
+      "evidence_coverage": 0.8333333333333334
     }
   },
   "action_markers": {
@@ -55,18 +54,16 @@
     "issues": [
       "Several workflow steps omit explicit action prompts"
     ],
-    "recommendations": [
-      "Optional or cautionary guidance can highlight operator judgement without blocking validation"
-    ],
+    "recommendations": [],
     "details": {
       "imperative_balance": true,
       "action_clarity": false,
       "contextual_support": true,
-      "step_count": 4,
-      "imperative_count": 78,
+      "step_count": 5,
+      "imperative_count": 44,
       "action_prompts": 0,
-      "context_prompts": 26,
-      "optional_guidance": 0,
+      "context_prompts": 28,
+      "optional_guidance": 1,
       "cautionary_statements": 0
     }
   },
@@ -74,13 +71,11 @@
     "score": 0.75,
     "status": "warning",
     "issues": [],
-    "recommendations": [
-      "Add rollback or retry guidance for failure scenarios"
-    ],
+    "recommendations": [],
     "details": {
       "halt_defined": true,
-      "validation_gates": true,
-      "rollback_steps": false,
+      "validation_gates": false,
+      "rollback_steps": true,
       "user_confirmation": true
     }
   },
@@ -94,8 +89,8 @@
       "artifact_locations": true,
       "manifest": true,
       "downstream_trace": true,
-      "evidence_mentions": 23,
-      "artifact_mentions": 36
+      "evidence_mentions": 25,
+      "artifact_mentions": 14
     }
   }
 }

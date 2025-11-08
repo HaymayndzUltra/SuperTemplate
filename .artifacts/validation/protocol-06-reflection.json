@@ -1,10 +1,12 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "06",
-  "validation_timestamp": "2025-11-06T16:52:20.270803Z",
-  "overall_score": 0.9750000000000001,
+  "validation_timestamp": "2025-11-07T18:39:48.964176Z",
+  "overall_score": 0.9625,
   "validation_status": "pass",
-  "issues": [],
+  "issues": [
+    "Knowledge capture gaps: sharing"
+  ],
   "recommendations": [],
   "retrospective_analysis": {
     "score": 1.0,
@@ -43,25 +45,27 @@
     }
   },
   "knowledge_capture": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Knowledge capture gaps: sharing"
+    ],
     "recommendations": [],
     "details": {
       "lessons": true,
       "knowledge_base": true,
       "storage": true,
-      "sharing": true
+      "sharing": false
     }
   },
   "future_planning": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
       "roadmap": true,
-      "priorities": false,
+      "priorities": true,
       "resources": true,
       "timeline": true
     }

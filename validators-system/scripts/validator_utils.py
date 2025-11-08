@@ -41,10 +41,16 @@ class DimensionEvaluation:
         }
 
 
-def get_protocol_file(workspace_root: Path, protocol_id: str) -> Optional[Path]:
-    """Return the markdown file for a protocol id."""
+def get_protocol_file(workspace_root: Path, protocol_id: str, protocol_dir: Optional[Path] = None) -> Optional[Path]:
+    """Return the markdown file for a protocol id.
+    
+    Args:
+        workspace_root: Root directory of the workspace
+        protocol_id: Protocol ID to find (e.g., '06')
+        protocol_dir: Optional custom protocol directory. If not provided, defaults to .cursor/ai-driven-workflow
+    """
 
-    workflow_dir = workspace_root / ".cursor" / "ai-driven-workflow"
+    workflow_dir = protocol_dir if protocol_dir else workspace_root / ".cursor" / "ai-driven-workflow"
     if not workflow_dir.exists():
         return None
     matches = sorted(workflow_dir.glob(f"{protocol_id}-*.md"))

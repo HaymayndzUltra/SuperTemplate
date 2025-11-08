@@ -1,48 +1,39 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "08",
-  "validation_timestamp": "2025-11-06T16:43:35.241609Z",
-  "overall_score": 0.76875,
+  "validation_timestamp": "2025-11-07T18:56:35.387026Z",
+  "overall_score": 0.6971153846153846,
   "validation_status": "fail",
-  "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_2.py, scripts/validate_high_level_tasks.py, scripts/validate_prerequisites_2.py, scripts/validate_rule_index.py, scripts/validate_task_decomposition.py"
-  ],
+  "issues": [],
   "recommendations": [
     "Document environment/dependency expectations",
-    "Clarify access and credential requirements",
     "Document how command outputs are captured"
   ],
   "script_inventory": {
     "score": 1.0,
     "status": "pass",
-    "issues": [
-      "Referenced command paths not found: scripts/aggregate_evidence_2.py, scripts/validate_high_level_tasks.py, scripts/validate_prerequisites_2.py, scripts/validate_rule_index.py, scripts/validate_task_decomposition.py"
-    ],
+    "issues": [],
     "recommendations": [],
     "details": {
-      "command_count": 8,
+      "command_count": 13,
       "commands": [
-        "python scripts/validate_prerequisites_2.py",
-        "python scripts/validate_rule_index.py --input .artifacts/protocol-08/rule-index.json",
-        "python scripts/validate_high_level_tasks.py --input .artifacts/protocol-08/high-level-tasks.json",
-        "python scripts/validate_task_decomposition.py --task-file .cursor/tasks/tasks-{feature}.md",
-        "python scripts/validate_tasks.py --task-file .cursor/tasks/tasks-{feature}.md --output .artifacts/protocol-08/task-validation.json",
-        "python scripts/enrich_tasks.py --task-file .cursor/tasks/tasks-{feature}.md --output .artifacts/protocol-08/task-enrichment.json",
-        "python scripts/aggregate_evidence_2.py --output .artifacts/protocol-08/",
-        "python scripts/run_protocol_2_gates.py"
+        "bash\n# Validate data source connections",
+        "python scripts/ai/validate_data_sources.py --config AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/source-config.yaml",
+        "python scripts/ai/test_storage_access.py --path AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/raw-data/",
+        "bash\n# Generate ETL configuration",
+        "python scripts/ai/generate_etl_config.py --strategy AI-project-workflow/.artifacts/protocol-07-ai-data-strategy-planning/data-strategy.json",
+        "python scripts/ai/setup_streaming_pipeline.py --config AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/etl-config.yaml",
+        "bash\n# Execute data ingestion",
+        "python scripts/ai/execute_ingestion.py --config AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/etl-config.yaml",
+        "python scripts/ai/validate_data_quality.py --input AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/raw-data/ --output AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/quality-metrics.json",
+        "python scripts/ai/profile_dataset.py --input AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/raw-data/ --output AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/profiling-reports/"
       ],
-      "missing_scripts": [
-        "scripts/validate_prerequisites_2.py",
-        "scripts/validate_rule_index.py",
-        "scripts/validate_high_level_tasks.py",
-        "scripts/validate_task_decomposition.py",
-        "scripts/aggregate_evidence_2.py"
-      ]
+      "missing_scripts": []
     }
   },
   "registry_alignment": {
-    "score": 0.84375,
-    "status": "warning",
+    "score": 0.6730769230769231,
+    "status": "fail",
     "issues": [],
     "recommendations": [],
     "details": {
@@ -50,53 +41,52 @@
       "registry_available": true,
       "registry_reference": true,
       "workflow_mapping": true,
-      "ownership": true,
-      "total_commands": 8,
-      "registered_commands": 3,
-      "registration_ratio": 0.375,
+      "ownership": false,
+      "total_commands": 13,
+      "registered_commands": 9,
+      "registration_ratio": 0.6923076923076923,
       "unregistered_commands": []
     }
   },
   "execution_context": {
-    "score": 0.25,
+    "score": 0.5,
     "status": "fail",
     "issues": [],
     "recommendations": [
-      "Document environment/dependency expectations",
-      "Clarify access and credential requirements"
+      "Document environment/dependency expectations"
     ],
     "details": {
       "ci_context": true,
       "environment": false,
       "scheduling": false,
-      "permissions": false
+      "permissions": true
     }
   },
   "command_syntax": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 0.5,
+    "status": "fail",
     "issues": [],
     "recommendations": [
       "Document how command outputs are captured"
     ],
     "details": {
-      "command_count": 8,
+      "command_count": 13,
       "flag_usage": true,
       "output_redirection": false,
-      "parameterization": true,
+      "parameterization": false,
       "documentation": true
     }
   },
   "error_handling": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
       "exit_codes": true,
       "fallback": true,
       "logging": true,
-      "manual_paths": true
+      "manual_paths": false
     }
   }
 }

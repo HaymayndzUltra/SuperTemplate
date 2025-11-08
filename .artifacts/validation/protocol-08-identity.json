@@ -1,7 +1,7 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "08",
-  "validation_timestamp": "2025-11-06T16:43:35.231281Z",
+  "validation_timestamp": "2025-11-07T18:39:49.400075Z",
   "basic_information": {
     "score": 0.8333333333333334,
     "status": "warning",
@@ -10,7 +10,7 @@
     ],
     "elements_found": {
       "protocol_number": true,
-      "protocol_name": "TECHNICAL TASK GENERATION",
+      "protocol_name": "AI DATA COLLECTION & INGESTION",
       "protocol_version": false,
       "phase_assignment": "Phase 1-2",
       "purpose_statement": true,
@@ -28,13 +28,15 @@
     }
   },
   "integration_points": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Data formats not specified"
+    ],
     "elements_found": {
       "input_sources": true,
       "output_destinations": true,
-      "data_formats": true,
+      "data_formats": false,
       "storage_locations": true
     }
   },
@@ -70,10 +72,11 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.9666666666666668,
-  "validation_status": "pass",
+  "overall_score": 0.9166666666666667,
+  "validation_status": "warning",
   "issues": [
-    "Protocol version not found (semantic versioning expected)"
+    "Protocol version not found (semantic versioning expected)",
+    "Data formats not specified"
   ],
   "recommendations": []
 }
