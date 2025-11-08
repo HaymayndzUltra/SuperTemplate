@@ -37,9 +37,9 @@ class ProtocolIdentityValidator:
     
     VALID_PHASES = ["Phase 0", "Phase 1-2", "Phase 3", "Phase 4", "Phase 5", "Phase 6"]
     
-    def __init__(self, workspace_root: Path):
+    def __init__(self, workspace_root: Path, protocol_dir: Path = None):
         self.workspace_root = workspace_root
-        self.protocols_dir = workspace_root / ".cursor" / "ai-driven-workflow"
+        self.protocols_dir = protocol_dir if protocol_dir else workspace_root / ".cursor" / "ai-driven-workflow"
         self.agents_file = workspace_root / "AGENTS.md"
         self.output_dir = workspace_root / ".artifacts" / "validation"
         
@@ -633,11 +633,16 @@ def main():
         default=".",
         help="Workspace root directory"
     )
+    parser.add_argument(
+        "--protocol-dir",
+        help="Custom protocol directory path (default: .cursor/ai-driven-workflow)"
+    )
     
     args = parser.parse_args()
     
     workspace_root = Path(args.workspace).resolve()
-    validator = ProtocolIdentityValidator(workspace_root)
+    protocol_dir = Path(args.protocol_dir).resolve() if args.protocol_dir else None
+    validator = ProtocolIdentityValidator(workspace_root, protocol_dir)
     
     all_results = []
     

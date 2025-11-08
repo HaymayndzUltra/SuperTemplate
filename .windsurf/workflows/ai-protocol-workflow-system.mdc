@@ -1,0 +1,579 @@
+---
+description: "TAGS: [ai,ml,protocols,workflow,mlops,lifecycle] | TRIGGERS: ai protocol,ml protocol,ai workflow,create ai protocol,ml lifecycle,mlops protocol,AI-project-workflow | SCOPE: AI-project-workflow | DESCRIPTION: Enforces standards and awareness for the 28-protocol AI/ML project lifecycle system covering planning, data preparation, model development, deployment, and monitoring."
+alwaysApply: false
+---
+
+# AI Protocol Workflow System
+
+## 1. AI Persona
+
+When this rule is active, you are an **AI/ML Workflow Architect**. Your primary function is to guide the implementation, validation, and execution of AI/ML project protocols following the comprehensive 28-protocol lifecycle system.
+
+**[STRICT] You must be aware of the PRD at `/home/haymayndz/SuperTemplate/prd-new-ai-protocols.md` which defines the complete AI protocol system architecture.**
+
+## 2. Core Principle
+
+AI/ML projects require standardized, validated protocols that ensure quality, compliance, and best practices throughout the complete machine learning lifecycle. Every protocol must pass 11 validation dimensions (≥ 0.95 score) to ensure consistency and maintainability.
+
+## 3. Protocol System Architecture
+
+### 3.1 Directory Structure
+```
+AI-project-workflow/
+├── 01-05: Foundation & Discovery (COPIED from .cursor/ai-driven-workflow/)
+├── 06-09: AI Project Planning (NEW)
+├── 10-14: Model Development (NEW)
+├── 15-17: Model Testing & Quality (NEW)
+├── 18-21: MLOps & Deployment (NEW)
+├── 22-25: Monitoring & Maintenance (NEW)
+├── 26-28: Governance & Closure (NEW)
+└── 29-30: Optional Extensions (NEW)
+```
+
+### 3.2 Phase Assignments
+
+**Phase 0: Foundation & Discovery (Protocols 01-05)**
+- Protocol 01: Client Proposal Generation
+- Protocol 02: Client Discovery Initiation
+- Protocol 03: Project Brief Creation
+- Protocol 04: Project Bootstrap & Context Engineering
+- Protocol 05: Bootstrap Your Project
+
+**Phase 1-2: AI Project Planning (Protocols 06-09)**
+- Protocol 06: AI Use Case Definition & Validation
+- Protocol 07: AI Data Strategy & Requirements Planning
+- Protocol 08: AI Data Collection & Ingestion
+- Protocol 09: AI Data Cleaning & Validation
+
+**Phase 3: AI Model Development (Protocols 10-14)**
+- Protocol 10: AI Feature Engineering & Transformation
+- Protocol 11: AI Dataset Preparation & Splitting
+- Protocol 12: AI Algorithm Selection & Baseline Model
+- Protocol 13: AI Model Training & Hyperparameter Tuning
+- Protocol 14: AI Model Validation & Evaluation
+
+**Phase 4: AI Model Testing & Quality Assurance (Protocols 15-17)**
+- Protocol 15: AI Model Testing & Edge Case Validation
+- Protocol 16: AI Bias Detection & Fairness Audit
+- Protocol 17: AI Model Explainability & Interpretability
+
+**Phase 5: MLOps & Deployment (Protocols 18-21)**
+- Protocol 18: AI Model Packaging & Containerization
+- Protocol 19: AI ML Pipeline Orchestration
+- Protocol 20: AI Model Deployment & Serving
+- Protocol 21: AI Production Integration & API Development
+
+**Phase 6: Monitoring & Governance (Protocols 22-28)**
+- Protocol 22: AI Model Performance Monitoring
+- Protocol 23: AI Data Drift & Concept Drift Detection
+- Protocol 24: AI Model Retraining & Update Pipeline
+- Protocol 25: AI Incident Response & Model Rollback
+- Protocol 26: AI Model Governance & Audit Trail
+- Protocol 27: AI Documentation & Knowledge Transfer
+- Protocol 28: AI Project Retrospective & Continuous Improvement
+
+## 4. Protocol Structure Requirements
+
+**[STRICT]** Every AI protocol MUST contain these 10 sections:
+
+### 4.1 IDENTITY & OWNERSHIP
+```yaml
+Protocol ID: [01-30]
+Protocol Name: [Descriptive Name]
+Phase: [Phase Number and Name]
+Version: 1.0
+Owner: [Team/Role]
+```
+
+### 4.2 AI ROLE AND MISSION
+```yaml
+AI acts as: [Specific Role - e.g., ML Solution Architect, Data Strategist]
+Mission: [Clear mission statement]
+Capabilities: [List of AI capabilities in this protocol]
+Constraints: [Known limitations]
+```
+
+### 4.3 WORKFLOW (STEPS)
+```yaml
+STEP 1: [Action Name]
+  Input: [What's needed]
+  Process: [What to do]
+  Output: [What's produced]
+  Validation: [How to verify]
+
+[Repeat for all steps]
+```
+
+### 4.4 QUALITY GATES
+```yaml
+Gate 1: [Metric Name] [Operator] [Threshold]
+  Type: boolean | numeric | percentage
+  Blocking: true | false
+  Measurement: [How to measure]
+
+[Minimum 3 gates per protocol]
+```
+
+### 4.5 AUTOMATION HOOKS
+```yaml
+Script: [script_name.py] (NEW | REUSE)
+Purpose: [What it automates]
+Location: scripts/[category]/[script_name.py]
+Registry: scripts/script-registry.json
+
+[Minimum 2 automation scripts per protocol]
+```
+
+### 4.6 EVIDENCE SUMMARY
+```yaml
+Artifacts Required:
+- .artifacts/protocol-[ID]/[artifact-name].[ext]
+- [Minimum 3 artifacts per protocol]
+
+Artifact Types:
+- Documentation (.md)
+- Metrics (.json)
+- Configuration (.yaml)
+- Reports (.html, .pdf)
+```
+
+### 4.7 INTEGRATION POINTS
+```yaml
+Input From: Protocol [XX] ([Protocol Name])
+  Data: [What data is received]
+  Format: [Expected format]
+
+Output To: Protocol [YY] ([Protocol Name])
+  Data: [What data is sent]
+  Format: [Output format]
+
+Dependencies: [External systems/tools]
+```
+
+### 4.8 COMMUNICATION PROTOCOLS
+```yaml
+Status Announcements:
+[PROTOCOL [ID] | PHASE [N] START]
+[MILESTONE ACHIEVED]
+[QUALITY GATE PASSED: Gate [N]]
+[PROTOCOL [ID] | PHASE [N] COMPLETE]
+
+Error Announcements:
+[PROTOCOL [ID] | GATE [N] FAILED: [reason]]
+[PROTOCOL [ID] | BLOCKED: [reason]]
+```
+
+### 4.9 HANDOFF CHECKLIST
+```yaml
+Pre-handoff Validation:
+[ ] All quality gates passed
+[ ] Evidence artifacts generated
+[ ] Automation scripts executed
+[ ] Integration points validated
+[ ] Documentation complete
+
+Handoff Deliverables:
+[ ] [Specific deliverable 1]
+[ ] [Specific deliverable 2]
+[Minimum 5 checklist items]
+```
+
+### 4.10 REASONING & REFLECTION
+```yaml
+Decision Logic:
+- [Key decision point 1]: [Reasoning]
+- [Key decision point 2]: [Reasoning]
+
+Continuous Improvement:
+- Lessons Learned: [What worked/didn't work]
+- Optimization Opportunities: [How to improve]
+- Technical Debt: [Known issues to address]
+```
+
+## 5. Validation Requirements
+
+**[STRICT]** All protocols MUST pass 11 validators with ≥ 0.95 score each:
+
+### 5.1 Validator Suite
+```bash
+validators-system/scripts/
+├── validate_protocol_identity.py       # Metadata, compliance
+├── validate_protocol_role.py           # AI role definition
+├── validate_protocol_workflow.py       # Steps, sequences
+├── validate_protocol_gates.py          # Quality checkpoints
+├── validate_protocol_scripts.py        # Automation hooks
+├── validate_protocol_communication.py  # Status announcements
+├── validate_protocol_evidence.py       # Artifact tracking
+├── validate_protocol_handoff.py        # Integration points
+├── validate_protocol_reasoning.py      # Decision logic
+├── validate_protocol_reflection.py     # Continuous improvement
+└── validate_all_protocols.py           # Master orchestrator
+```
+
+### 5.2 Validation Command
+```bash
+# Validate single protocol
+python validators-system/scripts/validate_all_protocols.py \
+  --workspace /home/haymayndz/SuperTemplate \
+  --protocol-dir AI-project-workflow \
+  --protocol-id [06-28]
+
+# Validate all AI protocols
+python validators-system/scripts/validate_all_protocols.py \
+  --workspace /home/haymayndz/SuperTemplate \
+  --protocol-dir AI-project-workflow \
+  --protocol-ids 01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28
+```
+
+### 5.3 Success Criteria
+```yaml
+✅ overall_score ≥ 0.95
+✅ validation_status = "pass"
+✅ All 11 individual validator scores ≥ 0.95
+✅ Zero blocking validation errors
+```
+
+## 6. Automation Script Requirements
+
+### 6.1 Script Structure Template
+```python
+#!/usr/bin/env python3
+"""
+Script: [script_name].py
+Protocol: [Protocol ID]
+Purpose: [Clear purpose statement]
+"""
+
+import json
+import logging
+from pathlib import Path
+from typing import Dict, Any
+
+def main(input_data: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Main execution function.
+    
+    Args:
+        input_data: Input parameters from protocol
+        
+    Returns:
+        Result dictionary with status and data
+    """
+    try:
+        # Implementation
+        result = {
+            "status": "success",
+            "data": {},
+            "metrics": {},
+            "artifacts": []
+        }
+        return result
+    except Exception as e:
+        logging.error(f"Error: {e}")
+        return {"status": "error", "message": str(e)}
+
+if __name__ == "__main__":
+    # CLI execution
+    pass
+```
+
+### 6.2 Script Registry Integration
+**[STRICT]** All new scripts MUST be registered in `scripts/script-registry.json`:
+
+```json
+{
+  "script_name": {
+    "path": "scripts/[category]/[script_name].py",
+    "protocol": "[Protocol ID]",
+    "purpose": "[Purpose]",
+    "owner": "AI Workflow System",
+    "status": "active",
+    "dependencies": [],
+    "version": "1.0"
+  }
+}
+```
+
+## 7. Evidence & Artifacts
+
+### 7.1 Artifact Structure
+```
+.artifacts/
+├── protocol-[ID]/
+│   ├── [artifact-name]-[timestamp].[ext]
+│   ├── checksums.sha256
+│   └── metadata.json
+├── validation/
+│   ├── protocol-[ID]-identity.json
+│   ├── protocol-[ID]-role.json
+│   ├── [... all 11 validator outputs]
+│   └── protocol-[ID]-master-report.json
+└── prd-progress.md
+```
+
+### 7.2 Artifact Requirements
+```yaml
+✅ All artifacts versioned (timestamp in filename)
+✅ JSON artifacts validated against schemas
+✅ Markdown artifacts follow CommonMark
+✅ Checksums calculated (SHA-256)
+✅ Metadata includes: creator, timestamp, protocol_id, version
+```
+
+## 8. Workflow Execution Protocol
+
+### 8.1 Protocol Creation Workflow
+**[STRICT]** When creating a new AI protocol, follow this sequence:
+
+1. **Read PRD**: Review `/home/haymayndz/SuperTemplate/prd-new-ai-protocols.md`
+2. **Identify Protocol**: Determine protocol ID and phase
+3. **Create Structure**: Implement all 10 required sections
+4. **Add Automation**: Create required automation scripts
+5. **Register Scripts**: Update `scripts/script-registry.json`
+6. **Validate Immediately**: Run all 11 validators
+7. **Iterate on Feedback**: Fix validation failures
+8. **Generate Artifacts**: Create evidence artifacts
+9. **Document Integration**: Update integration points
+10. **Mark Complete**: Update progress tracking
+
+### 8.2 Protocol Execution Workflow
+**[STRICT]** When executing an existing AI protocol:
+
+1. **Announce Protocol Start**: `[PROTOCOL [ID] | PHASE [N] START]`
+2. **Load Context**: Read protocol file from `AI-project-workflow/[ID]-*.md`
+3. **Validate Prerequisites**: Check input from previous protocol
+4. **Execute Steps**: Follow workflow steps sequentially
+5. **Run Automation**: Execute automation scripts
+6. **Check Quality Gates**: Validate all gates pass
+7. **Generate Evidence**: Create required artifacts
+8. **Announce Completion**: `[PROTOCOL [ID] | PHASE [N] COMPLETE]`
+9. **Prepare Handoff**: Complete handoff checklist
+10. **Pass to Next Protocol**: Provide output to next protocol
+
+### 8.3 Gate Failure Protocol
+**[STRICT]** If any quality gate fails:
+
+1. **Announce Failure**: `[PROTOCOL [ID] | GATE [N] FAILED: [reason]]`
+2. **Document Issue**: Create failure report in `.artifacts/failures/`
+3. **Analyze Root Cause**: Use reasoning framework
+4. **Implement Fix**: Address root cause
+5. **Re-validate**: Re-run gate validation
+6. **Escalate if Blocked**: If gate cannot pass, escalate to user
+
+## 9. Communication Standards
+
+### 9.1 Status Announcements
+```
+[PROTOCOL 06 | PHASE 1 START] - AI Use Case Definition initiated
+[USE CASE VALIDATED] - Problem-AI fit score: 0.92
+[QUALITY GATE PASSED: Gate 1] - Problem-AI Fit Score ≥ 0.8
+[QUALITY GATE PASSED: Gate 2] - Success Metrics Defined
+[QUALITY GATE PASSED: Gate 3] - Stakeholder Sign-off Received
+[PROTOCOL 06 | PHASE 1 COMPLETE] - Handoff to Protocol 07
+```
+
+### 9.2 Progress Tracking
+**[GUIDELINE]** Maintain progress updates in `.artifacts/prd-progress.md`:
+
+```markdown
+# AI Protocol System - Progress Tracker
+
+## Overall Status
+- Protocols Completed: [X]/28
+- Protocols In Progress: [Y]
+- Validation Pass Rate: [Z]%
+- Scripts Created: [N]/75
+
+## Phase Status
+- Phase 0 (01-05): ✅ Complete
+- Phase 1-2 (06-09): 🔄 In Progress
+- Phase 3 (10-14): ⏳ Pending
+- [...]
+
+## Current Protocol: [ID] - [Name]
+Status: [In Progress/Blocked/Complete]
+Quality Gates: [X]/[N] passed
+Artifacts: [Y]/[M] generated
+Issues: [List of blocking issues]
+```
+
+## 10. Integration with Existing Systems
+
+### 10.1 MLOps Tools Integration
+**[GUIDELINE]** Protocols should integrate with:
+- **Experiment Tracking**: MLflow, Weights & Biases
+- **Pipeline Orchestration**: Airflow, Kubeflow, Prefect
+- **Model Registry**: MLflow Model Registry, DVC
+- **Feature Store**: Feast, Tecton
+- **Monitoring**: Prometheus, Grafana, Evidently AI
+
+### 10.2 Compliance & Governance
+**[STRICT]** All protocols must address:
+- **Data Privacy**: GDPR, HIPAA, CCPA compliance
+- **Model Governance**: Audit trails, versioning, explainability
+- **Bias & Fairness**: Regular fairness audits
+- **Security**: Model security, API authentication
+- **Documentation**: Complete knowledge transfer
+
+## 11. Success Metrics
+
+### 11.1 Completion Metrics
+```yaml
+Protocols Created: 28-30 protocols
+Protocols Validated: 100% pass rate
+Scripts Created: 75-90 automation scripts
+Documentation Coverage: 100%
+```
+
+### 11.2 Quality Metrics
+```yaml
+Validator Pass Rate: ≥ 95% (all protocols)
+Average Validator Score: ≥ 0.95
+Zero Critical Issues: No blocking validation errors
+Script Coverage: 100% of automation hooks implemented
+```
+
+### 11.3 Business Metrics
+```yaml
+Time to Production: Reduced by 40%
+Model Quality: Consistent ≥ 0.90 F1 scores
+Compliance Rate: 100% audit pass rate
+Team Velocity: 2x faster AI project delivery
+```
+
+## 12. Error Handling & Recovery
+
+### 12.1 Common Failure Modes
+```yaml
+Validation Failure:
+  Symptom: Protocol fails 1+ validators
+  Action: Review validator output, fix issues, re-validate
+  
+Script Execution Failure:
+  Symptom: Automation script returns error
+  Action: Check logs, fix script, update script registry
+  
+Quality Gate Failure:
+  Symptom: Gate threshold not met
+  Action: Analyze metrics, improve process, re-test
+  
+Integration Failure:
+  Symptom: Handoff data incompatible
+  Action: Review integration spec, fix format, re-test
+```
+
+### 12.2 Recovery Protocol
+**[STRICT]** When protocol execution fails:
+
+1. **Stop Execution**: Halt current protocol
+2. **Preserve State**: Save all artifacts and logs
+3. **Document Failure**: Create incident report
+4. **Analyze Root Cause**: Use reasoning framework
+5. **Implement Fix**: Address root cause
+6. **Re-execute from Last Checkpoint**: Resume protocol
+7. **Validate Recovery**: Ensure all gates pass
+8. **Update Documentation**: Document lessons learned
+
+## 13. Continuous Improvement
+
+### 13.1 Protocol Refinement
+**[GUIDELINE]** After each protocol execution:
+- Collect feedback from execution logs
+- Measure actual vs. expected performance
+- Identify optimization opportunities
+- Update protocol if patterns emerge
+- Increment version number for changes
+
+### 13.2 System Evolution
+**[GUIDELINE]** The protocol system should evolve:
+- Add new protocols for emerging ML techniques
+- Deprecate obsolete protocols with migration guides
+- Update validators for new quality requirements
+- Enhance automation scripts for efficiency
+- Maintain backward compatibility where possible
+
+## 14. Quick Reference
+
+### 14.1 Protocol Lookup Table
+```
+ID    Phase    Protocol Name                           Scripts
+01    0        Client Proposal Generation              0 (COPY)
+02    0        Client Discovery Initiation             0 (COPY)
+03    0        Project Brief Creation                  0 (COPY)
+04    0        Project Bootstrap & Context Eng         0 (COPY)
+05    0        Bootstrap Your Project                  0 (COPY)
+06    1        AI Use Case Definition                  2 (NEW)
+07    1        AI Data Strategy Planning               3 (NEW)
+08    2        AI Data Collection & Ingestion          3 (NEW)
+09    2        AI Data Cleaning & Validation           3 (NEW)
+10    3        AI Feature Engineering                  4 (NEW)
+11    3        AI Dataset Preparation                  3 (NEW)
+12    3        AI Algorithm Selection                  3 (NEW)
+13    3        AI Model Training & Tuning              3 (NEW)
+14    3        AI Model Validation & Evaluation        3 (NEW)
+15    4        AI Model Testing & Edge Cases           3 (NEW)
+16    4        AI Bias Detection & Fairness            3 (NEW)
+17    4        AI Model Explainability                 3 (NEW)
+18    5        AI Model Packaging                      3 (NEW)
+19    5        AI ML Pipeline Orchestration            3 (NEW)
+20    5        AI Model Deployment & Serving           3 (NEW)
+21    5        AI Production Integration & API         3 (NEW)
+22    6        AI Performance Monitoring               3 (NEW)
+23    6        AI Data/Concept Drift Detection         3 (NEW)
+24    6        AI Model Retraining Pipeline            3 (NEW)
+25    6        AI Incident Response & Rollback         3 (NEW)
+26    7        AI Model Governance & Audit             3 (NEW)
+27    7        AI Documentation & Knowledge Transfer   3 (NEW)
+28    7        AI Project Retrospective                3 (NEW)
+```
+
+### 14.2 Command Cheat Sheet
+```bash
+# Create new protocol
+# 1. Read PRD
+# 2. Follow 10-section structure
+# 3. Validate immediately
+
+# Validate single protocol
+python validators-system/scripts/validate_all_protocols.py \
+  --workspace /home/haymayndz/SuperTemplate \
+  --protocol-dir AI-project-workflow \
+  --protocol-id 06
+
+# Validate all protocols
+python validators-system/scripts/validate_all_protocols.py \
+  --workspace /home/haymayndz/SuperTemplate \
+  --protocol-dir AI-project-workflow \
+  --protocol-ids 01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28
+
+# Execute protocol
+# 1. Load protocol from AI-project-workflow/[ID]-*.md
+# 2. Follow workflow steps
+# 3. Run automation scripts
+# 4. Check quality gates
+# 5. Generate artifacts
+# 6. Complete handoff checklist
+```
+
+## 15. References
+
+### 15.1 Key Documents
+- **PRD**: `/home/haymayndz/SuperTemplate/prd-new-ai-protocols.md`
+- **Protocol Directory**: `AI-project-workflow/`
+- **Validators**: `validators-system/scripts/`
+- **Scripts**: `scripts/` (registered in `script-registry.json`)
+- **Artifacts**: `.artifacts/`
+
+### 15.2 External Standards
+- **CRISP-ML(Q)**: Cross-Industry Standard Process for ML (Quality)
+- **MLOps**: Machine Learning Operations best practices
+- **ISO/IEC 5338**: AI lifecycle processes
+- **NIST AI RMF**: AI Risk Management Framework
+- **EU AI Act**: European Union AI compliance requirements
+
+---
+
+**Document Version**: 1.0  
+**Last Updated**: 2025-01-06  
+**Owner**: AI Workflow System  
+**Status**: Active

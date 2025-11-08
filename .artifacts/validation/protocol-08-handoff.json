@@ -1,24 +1,21 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "08",
-  "validation_timestamp": "2025-11-06T16:43:35.249892Z",
-  "overall_score": 0.7625,
-  "validation_status": "fail",
+  "validation_timestamp": "2025-11-07T18:39:49.666863Z",
+  "overall_score": 0.8125,
+  "validation_status": "warning",
   "issues": [
-    "Checklist lacks sufficient coverage of required items",
-    "Sign-off guidance missing: approvals"
+    "Documentation expectations under-specified"
   ],
   "recommendations": [],
   "checklist_completeness": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Checklist lacks sufficient coverage of required items"
-    ],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "item_count": 0,
-      "items": false,
+      "item_count": 49,
+      "items": true,
       "categories": true,
       "dependencies": true,
       "status_markers": false
@@ -31,11 +28,11 @@
     "recommendations": [],
     "details": {
       "term_counts": {
-        "validate": 3,
+        "validate": 20,
         "ensure": 1,
-        "confirm": 4,
-        "verify": 4,
-        "gate": 4
+        "confirm": 9,
+        "verify": 5,
+        "gate": 1
       },
       "verification_terms": true,
       "qa_involvement": true,
@@ -44,44 +41,43 @@
     }
   },
   "stakeholder_signoff": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Sign-off guidance missing: approvals"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "approvals": false,
+      "approvals": true,
       "reviewers": true,
       "evidence_reference": true,
       "confirmation": true
     }
   },
   "documentation_requirements": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Documentation expectations under-specified"
+    ],
     "recommendations": [],
     "details": {
       "terms": [
         "log",
-        "manifest",
         "report"
       ],
-      "doc_terms": true,
+      "doc_terms": false,
       "storage": true,
       "reviewer_docs": true,
       "format": true
     }
   },
   "next_protocol_alignment": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 0.5,
+    "status": "fail",
     "issues": [],
     "recommendations": [],
     "details": {
       "ready_statements": true,
-      "next_commands": true,
+      "next_commands": false,
       "dependencies": true,
       "continuation": false
     }

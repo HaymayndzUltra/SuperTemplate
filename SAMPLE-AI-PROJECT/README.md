@@ -67,3 +67,4 @@ This is a fullstack AI application with:
 - Supabase for user data and chat history
 - LangChain for complex AI workflows
 
+

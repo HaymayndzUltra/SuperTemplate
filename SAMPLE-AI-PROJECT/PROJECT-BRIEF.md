@@ -66,3 +66,4 @@ Building an enterprise-grade conversational AI platform that combines RAG (Retri
 - **Database**: Supabase Cloud
 - **Vector DB**: Pinecone Cloud
 
+

@@ -1,39 +1,39 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "07",
-  "validation_timestamp": "2025-11-06T16:43:35.212315Z",
-  "overall_score": 0.7625000000000001,
+  "validation_timestamp": "2025-11-07T18:39:49.315452Z",
+  "overall_score": 0.8125,
   "validation_status": "warning",
   "issues": [
-    "Reasoning patterns not explicitly named"
+    "Learning mechanisms incomplete: improvement_tracking, adaptation"
   ],
   "recommendations": [],
   "reasoning_patterns": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Reasoning patterns not explicitly named"
-    ],
-    "recommendations": [],
-    "details": {
-      "matches": [
-        "pattern"
-      ],
-      "pattern_terms": false,
-      "explanations": true,
-      "improvement": false,
-      "example_references": false
-    }
-  },
-  "decision_trees": {
     "score": 1.0,
     "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
+      "matches": [
+        "pattern",
+        "heuristic",
+        "strategy"
+      ],
+      "pattern_terms": true,
+      "explanations": true,
+      "improvement": true,
+      "example_references": true
+    }
+  },
+  "decision_trees": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
       "decision_points": true,
       "criteria": true,
-      "outcomes": true,
+      "outcomes": false,
       "logging": true
     }
   },
@@ -50,15 +50,17 @@
     }
   },
   "learning_mechanisms": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Learning mechanisms incomplete: improvement_tracking, adaptation"
+    ],
     "recommendations": [],
     "details": {
       "feedback": true,
-      "improvement_tracking": true,
+      "improvement_tracking": false,
       "knowledge_base": true,
-      "adaptation": true
+      "adaptation": false
     }
   },
   "meta_cognition": {

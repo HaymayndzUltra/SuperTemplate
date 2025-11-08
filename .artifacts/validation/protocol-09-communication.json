@@ -1,38 +1,33 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "09",
-  "validation_timestamp": "2025-11-06T16:43:35.282462Z",
-  "overall_score": 0.675,
-  "validation_status": "fail",
-  "issues": [
-    "Missing user interaction prompts: clarification, feedback",
-    "Limited progress terminology in communications"
-  ],
+  "validation_timestamp": "2025-11-07T18:39:49.985552Z",
+  "overall_score": 0.8875000000000001,
+  "validation_status": "warning",
+  "issues": [],
   "recommendations": [],
   "status_announcements": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
       "phase_transitions": true,
-      "branded_announcements": true,
+      "branded_announcements": false,
       "completion_callouts": true,
       "time_estimates": true
     }
   },
   "user_interaction": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Missing user interaction prompts: clarification, feedback"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "confirmation": true,
-      "clarification": false,
+      "clarification": true,
       "decision_points": true,
-      "feedback": false
+      "feedback": true
     }
   },
   "error_messaging": {
@@ -41,27 +36,31 @@
     "issues": [],
     "recommendations": [],
     "details": {
-      "templates": true,
-      "severity": false,
+      "templates": false,
+      "severity": true,
       "context": true,
       "resolution": true
     }
   },
   "progress_tracking": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Limited progress terminology in communications"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "terms": [
-        "complete"
+        "progress",
+        "percent",
+        "%",
+        "complete",
+        "remaining",
+        "current activity",
+        "next steps"
       ],
-      "progress_terms": false,
-      "timeline": false,
-      "current_activity": false,
-      "next_steps": false
+      "progress_terms": true,
+      "timeline": true,
+      "current_activity": true,
+      "next_steps": true
     }
   },
   "evidence_communication": {

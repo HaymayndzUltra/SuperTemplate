@@ -1,0 +1,124 @@
+{
+  "scripts": [
+    {
+      "id": "parse_intake_ideas",
+      "path": "scripts/ai/parse_intake_ideas.py",
+      "purpose": "Extract AI use case ideas from project brief",
+      "owner": "protocol-06",
+      "version": "1.0.0",
+      "status": "active",
+      "lastReview": "2025-11-08",
+      "dependencies": []
+    },
+    {
+      "id": "deduplicate_ideas",
+      "path": "scripts/ai/deduplicate_ideas.py",
+      "purpose": "Remove duplicates and merge similar candidates",
+      "owner": "protocol-06",
+      "version": "1.0.0",
+      "status": "active",
+      "lastReview": "2025-11-08",
+      "dependencies": []
+    },
+    {
+      "id": "shape_specifications",
+      "path": "scripts/ai/shape_specifications.py",
+      "purpose": "Generate structured specifications",
+      "owner": "protocol-06",
+      "version": "1.0.0",
+      "status": "active",
+      "lastReview": "2025-11-08",
+      "dependencies": []
+    },
+    {
+      "id": "score_feasibility",
+      "path": "scripts/ai/score_feasibility.py",
+      "purpose": "Calculate feasibility scores",
+      "owner": "protocol-06",
+      "version": "1.0.0",
+      "status": "active",
+      "lastReview": "2025-11-08",
+      "dependencies": []
+    },
+    {
+      "id": "assess_risks",
+      "path": "scripts/ai/assess_risks.py",
+      "purpose": "Assess AI-specific risks",
+      "owner": "protocol-06",
+      "version": "1.0.0",
+      "status": "active",
+      "lastReview": "2025-11-08",
+      "dependencies": []
+    },
+    {
+      "id": "prioritize_matrix",
+      "path": "scripts/ai/prioritize_matrix.py",
+      "purpose": "Generate prioritization matrix",
+      "owner": "protocol-06",
+      "version": "1.0.0",
+      "status": "active",
+      "lastReview": "2025-11-08",
+      "dependencies": []
+    },
+    {
+      "id": "optimize_selection",
+      "path": "scripts/ai/optimize_selection.py",
+      "purpose": "Recommend optimal selection",
+      "owner": "protocol-06",
+      "version": "1.0.0",
+      "status": "active",
+      "lastReview": "2025-11-08",
+      "dependencies": []
+    },
+    {
+      "id": "assemble_final_specs",
+      "path": "scripts/ai/assemble_final_specs.py",
+      "purpose": "Assemble final specifications",
+      "owner": "protocol-06",
+      "version": "1.0.0",
+      "status": "active",
+      "lastReview": "2025-11-08",
+      "dependencies": []
+    },
+    {
+      "id": "create_handoff_package",
+      "path": "scripts/ai/create_handoff_package.py",
+      "purpose": "Create handoff package",
+      "owner": "protocol-06",
+      "version": "1.0.0",
+      "status": "active",
+      "lastReview": "2025-11-08",
+      "dependencies": []
+    },
+    {
+      "id": "validate_ingestion_quality",
+      "path": "scripts/ai/validate_ingestion_quality.py",
+      "purpose": "Protocol 08 Gate 3: Validate data ingestion quality (completeness ≥95%, schema ≥90%)",
+      "owner": "protocol-08",
+      "version": "1.0.0",
+      "status": "active",
+      "lastReview": "2025-11-08",
+      "dependencies": ["pathlib", "json", "argparse"]
+    },
+    {
+      "id": "validate_compliance",
+      "path": "scripts/ai/validate_compliance.py",
+      "purpose": "Protocol 08 Gate 4: Validate GDPR/HIPAA compliance and PII detection",
+      "owner": "protocol-08",
+      "version": "1.0.0",
+      "status": "active",
+      "lastReview": "2025-11-08",
+      "dependencies": ["pathlib", "json", "re", "argparse"]
+    },
+    {
+      "id": "validate_documentation",
+      "path": "scripts/ai/validate_documentation.py",
+      "purpose": "Protocol 08 Gate 5: Validate documentation completeness and artifact presence",
+      "owner": "protocol-08",
+      "version": "1.0.0",
+      "status": "active",
+      "lastReview": "2025-11-08",
+      "dependencies": ["pathlib", "json", "argparse"]
+    }
+  ]
+}

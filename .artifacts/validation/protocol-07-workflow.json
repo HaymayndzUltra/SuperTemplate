@@ -1,8 +1,8 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "07",
-  "validation_timestamp": "2025-11-06T16:43:35.198334Z",
-  "overall_score": 0.8500000000000001,
+  "validation_timestamp": "2025-11-07T18:39:49.098063Z",
+  "overall_score": 0.8499999999999999,
   "validation_status": "warning",
   "issues": [
     "Not all steps define explicit actions",
@@ -11,7 +11,7 @@
   ],
   "recommendations": [
     "Document communication prompts per step",
-    "Add rollback or retry guidance for failure scenarios"
+    "Optional or cautionary guidance can highlight operator judgement without blocking validation"
   ],
   "workflow_structure": {
     "score": 1.0,
@@ -32,8 +32,8 @@
     }
   },
   "step_definitions": {
-    "score": 0.8000000000000002,
-    "status": "warning",
+    "score": 0.6,
+    "status": "fail",
     "issues": [
       "Not all steps define explicit actions",
       "Evidence expectations missing in some steps"
@@ -44,7 +44,7 @@
     "details": {
       "steps": 5,
       "action_coverage": 0.8,
-      "communication_coverage": 0.8,
+      "communication_coverage": 0.2,
       "evidence_coverage": 0.8
     }
   },
@@ -54,30 +54,30 @@
     "issues": [
       "Several workflow steps omit explicit action prompts"
     ],
-    "recommendations": [],
+    "recommendations": [
+      "Optional or cautionary guidance can highlight operator judgement without blocking validation"
+    ],
     "details": {
       "imperative_balance": true,
       "action_clarity": false,
       "contextual_support": true,
       "step_count": 4,
-      "imperative_count": 19,
+      "imperative_count": 60,
       "action_prompts": 0,
-      "context_prompts": 25,
+      "context_prompts": 17,
       "optional_guidance": 0,
-      "cautionary_statements": 1
+      "cautionary_statements": 0
     }
   },
   "halt_conditions": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Add rollback or retry guidance for failure scenarios"
-    ],
+    "recommendations": [],
     "details": {
       "halt_defined": true,
       "validation_gates": true,
-      "rollback_steps": false,
+      "rollback_steps": true,
       "user_confirmation": true
     }
   },
@@ -91,8 +91,8 @@
       "artifact_locations": true,
       "manifest": true,
       "downstream_trace": true,
-      "evidence_mentions": 29,
-      "artifact_mentions": 30
+      "evidence_mentions": 20,
+      "artifact_mentions": 5
     }
   }
 }

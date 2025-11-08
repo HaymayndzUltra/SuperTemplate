@@ -1,24 +1,26 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "06",
-  "validation_timestamp": "2025-11-06T16:52:20.243090Z",
-  "overall_score": 1.0,
-  "validation_status": "pass",
-  "issues": [],
+  "validation_timestamp": "2025-11-07T18:39:48.844299Z",
+  "overall_score": 0.8875000000000001,
+  "validation_status": "warning",
+  "issues": [
+    "Traceability gaps: outputs"
+  ],
   "recommendations": [],
   "artifact_generation": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
       "table_present": true,
       "artifact_column": true,
-      "metrics_column": true,
+      "metrics_column": false,
       "row_coverage": true,
-      "table_rows": 9,
-      "artifact_mentions": 18,
-      "metric_mentions": 24
+      "table_rows": 11,
+      "artifact_mentions": 4,
+      "metric_mentions": 3
     }
   },
   "storage_structure": {
@@ -28,10 +30,7 @@
     "recommendations": [],
     "details": {
       "directories": [
-        ".artifacts/protocol-06/",
-        ".artifacts/protocol-06/",
-        ".artifacts/protocol-06/",
-        ".artifacts/protocol-06/",
+        ".artifacts/protocol-05/",
         ".artifacts/protocol-06/"
       ],
       "protocol_directory": true,
@@ -50,18 +49,20 @@
       "metadata": true,
       "dependencies": true,
       "coverage": true,
-      "metadata_mentions": 14,
-      "dependency_mentions": 17
+      "metadata_mentions": 4,
+      "dependency_mentions": 2
     }
   },
   "traceability": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Traceability gaps: outputs"
+    ],
     "recommendations": [],
     "details": {
       "inputs": true,
-      "outputs": true,
+      "outputs": false,
       "transformations": true,
       "audit": true
     }
@@ -76,8 +77,8 @@
       "retention": true,
       "retrieval": true,
       "cleanup": true,
-      "compression_mentions": 10,
-      "retention_mentions": 8
+      "compression_mentions": 1,
+      "retention_mentions": 1
     }
   }
 }

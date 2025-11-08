@@ -1,70 +1,71 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "07",
-  "validation_timestamp": "2025-11-06T16:43:35.202434Z",
-  "overall_score": 0.7285714285714286,
+  "validation_timestamp": "2025-11-07T18:39:49.167745Z",
+  "overall_score": 0.6624999999999999,
   "validation_status": "fail",
   "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_6.py, scripts/validate_design_handoff.py, scripts/validate_prerequisites_6.py"
+    "Exit code handling not described"
   ],
   "recommendations": [
-    "Document environment/dependency expectations",
+    "Reference scripts/script-registry.json for governance context",
+    "Register automation commands in scripts/script-registry.json: scripts/ai/calculate_data_volume.py, scripts/ai/compliance_mapper.py, scripts/ai/validate_strategy_completeness.py",
     "Clarify access and credential requirements",
     "Document how command outputs are captured"
   ],
   "script_inventory": {
     "score": 1.0,
     "status": "pass",
-    "issues": [
-      "Referenced command paths not found: scripts/aggregate_evidence_6.py, scripts/validate_design_handoff.py, scripts/validate_prerequisites_6.py"
-    ],
+    "issues": [],
     "recommendations": [],
     "details": {
       "command_count": 7,
       "commands": [
-        "python scripts/validate_prerequisites_6.py",
-        "python scripts/validate_brief.py --path PROJECT-BRIEF.md --output .artifacts/protocol-07/source-alignment-report.json",
-        "python scripts/plan_from_brief.py --brief PROJECT-BRIEF.md --output .artifacts/protocol-07/architecture-boundaries.json",
-        "python scripts/validate_workflow_integration.py --design .artifacts/protocol-07/TECHNICAL-DESIGN.md --output .artifacts/protocol-07/design-validation-report.json",
-        "python scripts/validate_design_handoff.py --input .artifacts/protocol-07/task-generation-input.json",
-        "python scripts/aggregate_evidence_6.py --output .artifacts/protocol-07/",
-        "python scripts/run_protocol_6_gates.py"
+        "python scripts/ai/calculate_data_volume.py --use-cases [file] --output [file]",
+        "python scripts/ai/compliance_mapper.py --datasets [file] --regulations [file]",
+        "python scripts/ai/validate_strategy_completeness.py --protocol 07",
+        "bash\n# Calculate minimum data requirements",
+        "python scripts/ai/calculate_data_volume.py \\",
+        "python scripts/ai/compliance_mapper.py \\",
+        "python scripts/ai/validate_strategy_completeness.py \\"
       ],
-      "missing_scripts": [
-        "scripts/validate_prerequisites_6.py",
-        "scripts/validate_design_handoff.py",
-        "scripts/aggregate_evidence_6.py"
-      ]
+      "missing_scripts": []
     }
   },
   "registry_alignment": {
-    "score": 0.8928571428571428,
-    "status": "warning",
-    "issues": [],
-    "recommendations": [],
-    "details": {
-      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
-      "registry_available": true,
-      "registry_reference": true,
-      "workflow_mapping": true,
-      "ownership": true,
-      "total_commands": 7,
-      "registered_commands": 4,
-      "registration_ratio": 0.5714285714285714,
-      "unregistered_commands": []
-    }
-  },
-  "execution_context": {
-    "score": 0.25,
+    "score": 0.5,
     "status": "fail",
     "issues": [],
     "recommendations": [
-      "Document environment/dependency expectations",
+      "Reference scripts/script-registry.json for governance context",
+      "Register automation commands in scripts/script-registry.json: scripts/ai/calculate_data_volume.py, scripts/ai/compliance_mapper.py, scripts/ai/validate_strategy_completeness.py"
+    ],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "registry_available": true,
+      "registry_reference": false,
+      "workflow_mapping": true,
+      "ownership": true,
+      "total_commands": 7,
+      "registered_commands": 0,
+      "registration_ratio": 0.0,
+      "unregistered_commands": [
+        "scripts/ai/calculate_data_volume.py",
+        "scripts/ai/compliance_mapper.py",
+        "scripts/ai/validate_strategy_completeness.py"
+      ]
+    }
+  },
+  "execution_context": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
       "Clarify access and credential requirements"
     ],
     "details": {
       "ci_context": true,
-      "environment": false,
+      "environment": true,
       "scheduling": false,
       "permissions": false
     }
@@ -85,12 +86,14 @@
     }
   },
   "error_handling": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Exit code handling not described"
+    ],
     "recommendations": [],
     "details": {
-      "exit_codes": true,
+      "exit_codes": false,
       "fallback": true,
       "logging": true,
       "manual_paths": true

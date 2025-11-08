@@ -1,65 +1,66 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "08",
-  "validation_timestamp": "2025-11-06T16:43:35.252797Z",
-  "overall_score": 0.675,
-  "validation_status": "fail",
-  "issues": [],
-  "recommendations": [
-    "Include root-cause analysis guidance"
+  "validation_timestamp": "2025-11-07T18:39:49.701490Z",
+  "overall_score": 0.7749999999999999,
+  "validation_status": "warning",
+  "issues": [
+    "Learning mechanisms incomplete: improvement_tracking, adaptation"
   ],
+  "recommendations": [],
   "reasoning_patterns": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [],
-    "recommendations": [],
-    "details": {
-      "matches": [
-        "pattern",
-        "strategy"
-      ],
-      "pattern_terms": true,
-      "explanations": true,
-      "improvement": false,
-      "example_references": false
-    }
-  },
-  "decision_trees": {
     "score": 0.75,
     "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
-      "decision_points": true,
-      "criteria": true,
-      "outcomes": false,
-      "logging": true
+      "matches": [
+        "pattern",
+        "heuristic",
+        "strategy"
+      ],
+      "pattern_terms": true,
+      "explanations": true,
+      "improvement": false,
+      "example_references": true
     }
   },
-  "problem_solving_logic": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [],
-    "recommendations": [
-      "Include root-cause analysis guidance"
-    ],
-    "details": {
-      "problem_identification": true,
-      "root_cause": false,
-      "solutions": false,
-      "validation": true
-    }
-  },
-  "learning_mechanisms": {
+  "decision_trees": {
     "score": 1.0,
     "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
+      "decision_points": true,
+      "criteria": true,
+      "outcomes": true,
+      "logging": true
+    }
+  },
+  "problem_solving_logic": {
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "problem_identification": true,
+      "root_cause": true,
+      "solutions": false,
+      "validation": true
+    }
+  },
+  "learning_mechanisms": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Learning mechanisms incomplete: improvement_tracking, adaptation"
+    ],
+    "recommendations": [],
+    "details": {
       "feedback": true,
-      "improvement_tracking": true,
+      "improvement_tracking": false,
       "knowledge_base": true,
-      "adaptation": true
+      "adaptation": false
     }
   },
   "meta_cognition": {
@@ -70,8 +71,8 @@
     "details": {
       "awareness": true,
       "monitoring": true,
-      "correction": false,
-      "improvement": true
+      "correction": true,
+      "improvement": false
     }
   }
 }
