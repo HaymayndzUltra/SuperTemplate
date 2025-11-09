@@ -105,7 +105,7 @@ def prevalidate_quality_gates(section_content: str) -> List[Dict[str, Any]]:
     issues = []
     
     # Check 1: Gate count
-    gate_headers = re.findall(r'^###\s+Gate\s+\d+:', section_content, re.MULTILINE)
+    gate_headers = re.findall(r'^###\s+Gate\s+\d+:.*$', section_content, re.MULTILINE)
     if len(gate_headers) < 2:
         issues.append({
             "check": "gate_count",

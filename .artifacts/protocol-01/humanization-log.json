@@ -1,73 +1,49 @@
 {
   "target_tone": "technical",
-  "required_contraction_count": 4,
-  "planned_uncertainty_line": "If you're working with a specific webhook flow or want to prioritize certain API endpoints, we can adjust the approach.",
+  "required_contractions": 3,
+  "planned_uncertainty_line": "I'm not entirely sure what format you need for the reports yet, but we can nail that down in the discovery call.",
   "forbidden_phrases_checklist": [
-    "I am excited to ...",
-    "I am confident I can ...",
-    "I would be delighted ...",
-    "I have extensive experience ...",
+    "I am excited to",
+    "I am confident I can",
+    "I would be delighted",
+    "I have extensive experience",
     "High-quality work guaranteed",
     "Looking forward to working with you"
   ],
-  "humanization_strategy": {
-    "approach": "technical-authenticity",
-    "tactics": [
-      "Use specific technical references from the job post",
-      "Include conditional language (if/assuming) for unclear requirements",
-      "Ask clarifying questions to show critical thinking",
-      "Reference workflow/process without over-promising",
-      "Keep tone collaborative rather than sales-focused"
-    ],
-    "voice_adjustments": {
-      "contractions": ["we're", "you're", "I've", "that's"],
-      "rhythm_breaks": 2,
-      "short_emphasis_sentences": ["Clear structure matters.", "Evidence at every step."]
-    }
-  },
+  "filipino_english_particles": [
+    "already",
+    "actually",
+    "not yet",
+    "still"
+  ],
   "workflow_demo_triggered": true,
-  "workflow_demo_reason": "API_integration_context + validation_gates_emphasis",
-  "inserted_at": "Phase 4.3 - How I Work section",
+  "workflow_demo_reason": "existing_working_solution + integration_context",
+  "inserted_at": "Phase 4.3",
   "humanization_adjustments": {
     "cadence_breaks": 2,
     "short_sentences_added": true,
-    "specific_sentences": ["Clear structure matters.", "Everything's traceable."]
+    "contractions_used": 5,
+    "uncertainty_markers": 2,
+    "direct_questions": 3
   },
-  "differentiation_strategy": "predictive_system_evidence_pattern",
-  "final_metrics": {
-    "contraction_count": 8,
-    "contractions_found": ["I'm", "You're", "you're", "I've", "aren't", "That's", "Everything's"],
-    "uncertainty_markers": 1,
-    "uncertainty_statements": ["If you're working with a specific webhook flow or want to prioritize certain API endpoints first, we can adjust the approach."],
-    "direct_questions": 1,
-    "question_examples": ["Let me know if you'd like to see sample code or discuss the specific OpenAI/Stripe flows you're targeting."],
-    "forbidden_phrases_detected": 0,
-    "forbidden_phrase_scan": "PASS - No forbidden phrases found",
-    "technical_assertions_backed": true,
-    "backing_examples": [
-      "Week-by-week breakdown with specific tasks",
-      "Specific webhook events listed (invoice.paid, subscription.updated)",
-      "Concrete tools mentioned (Stripe CLI, PostgreSQL)"
+  "validation_counters": {
+    "contractions_count": 11,
+    "contractions_found": ["I'm", "you're", "isn't", "it's", "that's", "what's", "we'll", "I'll", "can't", "don't", "won't"],
+    "uncertainty_count": 2,
+    "uncertainty_markers": ["I'm not entirely sure", "probably S3 or similar"],
+    "direct_questions_count": 4,
+    "direct_questions": [
+      "What's your current transcription latency baseline and target?",
+      "For reports, what specific data points matter most to your users?",
+      "Are the bugs documented already, or should I expect some discovery work?",
+      "What works for you?"
     ],
-    "word_count": 320,
-    "word_count_note": "Exceeds suggested 180-220 to accommodate comprehensive week-by-week breakdown; maintains readability",
-    "readability_time": "90 seconds",
-    "attachments": 0
+    "forbidden_phrases_found": 0
   },
-  "empathy_tokens": 4,
-  "empathy_examples": [
-    "I've worked through similar patterns before",
-    "the parts where API response handling meets webhook validation can get tricky",
-    "That flexibility matters when timelines are tight",
-    "We can sync on Discord or GitHub—whatever works better for your workflow"
-  ],
-  "human_voice_compliance_score": 0.97,
-  "compliance_details": {
-    "contractions": "PASS (8 found, ≥3 required)",
-    "uncertainty": "PASS (1 found, ≥1 required)",
-    "questions": "PASS (1 found, ≥1 required)",
-    "forbidden_phrases": "PASS (0 found)",
-    "technical_backing": "PASS (all assertions supported)",
-    "overall": "PASS"
+  "proof_flags": {
+    "existing_solution_mentioned": true,
+    "repo_link_avoided": true,
+    "fixed_price_stated": true,
+    "customization_willingness": true
   }
 }

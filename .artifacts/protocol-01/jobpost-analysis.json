@@ -1,97 +1,48 @@
 {
   "exact_quotes": [
-    "Assist in integrating OpenAI APIs with a FastAPI backend",
-    "Support Stripe billing setup and webhook testing",
-    "Help with debugging, data validation, and log analysis",
-    "Collaborate via GitHub and Discord for daily progress updates",
-    "Minimum 20 hrs/week"
+    "The module performs live transcription but requires improvements to reduce latency, save interview recordings and transcripts, enable playback, and generate detailed interview reports.",
+    "You'll also be responsible for fixing existing bugs to ensure a stable, production-ready release."
   ],
   "tech_stack": [
-    "Python",
-    "FastAPI",
-    "Flask",
-    "REST APIs",
-    "PostgreSQL",
-    "JSON",
-    "OpenAI APIs",
-    "Stripe",
-    "GitHub",
-    "Discord",
-    "Next.js",
-    "ElevenLabs APIs",
-    "Webhooks"
+    "React.js",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "MERN stack",
+    "AI transcription (Whisper/Deepgram/AssemblyAI)",
+    "GitLab CI/CD",
+    "Real-time audio streaming"
   ],
   "pain_points": [
-    "Need assistance with OpenAI API integration into FastAPI backend",
-    "Requires Stripe billing setup and webhook testing support",
-    "Needs help with debugging, data validation, and log analysis",
-    "Looking for collaborative developer who can provide daily progress updates"
+    "High transcription latency affecting user experience",
+    "Missing recording and transcript storage functionality",
+    "No playback capability in current implementation",
+    "Need for structured interview report generation",
+    "Existing bugs affecting system stability",
+    "Production deployment readiness concerns"
   ],
   "tone_type": "technical",
   "urgency_signals": [
-    "minimum 20 hrs/week",
-    "daily progress updates",
-    "1-2 months (extendable)",
-    "part-time remote position"
+    "production-ready release",
+    "stable",
+    "under deadlines",
+    "Loom video (required)"
   ],
   "vague_requirements": [
     {
-      "client_says": "Basic to intermediate Python skills",
+      "client_says": "detailed interview reports",
       "interpretation_needed": true,
-      "clarification": "What specific Python proficiency level or years of experience are you targeting?"
+      "clarification": "What specific data points and format? (timestamps, insights, sentiment, export format)"
     },
     {
-      "client_says": "Support Stripe billing setup and webhook testing",
+      "client_says": "reduce latency",
       "interpretation_needed": true,
-      "clarification": "Are you looking for complete Stripe integration from scratch or assistance with specific webhook endpoints?"
+      "clarification": "Current baseline and target latency not specified"
     },
     {
-      "client_says": "Future Opportunity: Potential for long-term contract",
+      "client_says": "fixing existing bugs",
       "interpretation_needed": true,
-      "clarification": "What would the long-term scope look like beyond the initial 1-2 months?"
-    }
-  ],
-  "budget_signals": {
-    "duration": "1-2 months",
-    "hours_per_week": "minimum 20",
-    "commitment": "part-time",
-    "extension_possibility": true
-  },
-  "red_flags": [],
-  "objectives": [
-    "Integrate OpenAI APIs with existing FastAPI backend",
-    "Setup Stripe billing system with webhook functionality",
-    "Provide debugging and data validation support",
-    "Maintain daily collaboration via GitHub and Discord"
-  ],
-  "deliverables": [
-    "Functional OpenAI API endpoints in FastAPI",
-    "Stripe subscription billing with tested webhooks",
-    "PostgreSQL data validation and query optimization",
-    "Documentation and knowledge transfer",
-    "Daily progress updates and code reviews"
-  ],
-  "tone_signals": {
-    "formality": "semi-formal",
-    "technical_depth": "high",
-    "urgency_level": "moderate",
-    "collaboration_emphasis": "high"
-  },
-  "risks": [
-    {
-      "risk": "Scope creep in debugging support",
-      "severity": "medium",
-      "mitigation": "Time-box debugging sessions, track hours per milestone"
-    },
-    {
-      "risk": "Unclear webhook requirements",
-      "severity": "low",
-      "mitigation": "Clarify specific webhook events needed in kickoff call"
-    },
-    {
-      "risk": "Timezone coordination challenges",
-      "severity": "low",
-      "mitigation": "Client mentions PST availability, developer in Pakistan (GMT+5)"
+      "clarification": "Bug inventory not provided, discovery work expected"
     }
   ]
 }

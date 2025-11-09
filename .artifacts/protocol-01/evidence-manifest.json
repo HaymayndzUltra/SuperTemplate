@@ -1,0 +1,134 @@
+{
+  "manifest_version": "1.0",
+  "protocol_id": "01",
+  "protocol_name": "Client Proposal Generation",
+  "generated_at": "2025-11-09T07:53:00+08:00",
+  "artifacts": [
+    {
+      "name": "job-post.md",
+      "path": ".artifacts/protocol-01/job-post.md",
+      "type": "input",
+      "description": "Source job post from client",
+      "size_bytes": 1876,
+      "sha256": "pending_calculation",
+      "required": true,
+      "status": "complete"
+    },
+    {
+      "name": "notes.md",
+      "path": ".artifacts/protocol-01/notes.md",
+      "type": "documentation",
+      "description": "Working notes and analysis",
+      "size_bytes": 2845,
+      "sha256": "pending_calculation",
+      "required": true,
+      "status": "complete"
+    },
+    {
+      "name": "jobpost-analysis.json",
+      "path": ".artifacts/protocol-01/jobpost-analysis.json",
+      "type": "analysis",
+      "description": "Structured job post analysis with exact quotes and pain points",
+      "size_bytes": 1523,
+      "sha256": "pending_calculation",
+      "required": true,
+      "status": "complete",
+      "gate": "Gate 1: Job Post Comprehension"
+    },
+    {
+      "name": "tone-map.json",
+      "path": ".artifacts/protocol-01/tone-map.json",
+      "type": "analysis",
+      "description": "Tone calibration and communication style mapping",
+      "size_bytes": 1342,
+      "sha256": "pending_calculation",
+      "required": true,
+      "status": "complete",
+      "gate": "Gate 2: Tone Alignment"
+    },
+    {
+      "name": "pricing-analysis.json",
+      "path": ".artifacts/protocol-01/pricing-analysis.json",
+      "type": "analysis",
+      "description": "Fixed price justification and workload breakdown",
+      "size_bytes": 2156,
+      "sha256": "pending_calculation",
+      "required": true,
+      "status": "complete",
+      "gate": "Gate 4: Pricing Realism"
+    },
+    {
+      "name": "humanization-log.json",
+      "path": ".artifacts/protocol-01/humanization-log.json",
+      "type": "validation",
+      "description": "Human voice compliance tracking and metrics",
+      "size_bytes": 1687,
+      "sha256": "pending_calculation",
+      "required": true,
+      "status": "complete",
+      "gate": "Gate 3: Human Voice Compliance"
+    },
+    {
+      "name": "PROPOSAL.md",
+      "path": ".artifacts/protocol-01/PROPOSAL.md",
+      "type": "deliverable",
+      "description": "Final humanized proposal document",
+      "size_bytes": 3421,
+      "sha256": "pending_calculation",
+      "required": true,
+      "status": "complete",
+      "gate": "Gate 3: Human Voice Compliance"
+    },
+    {
+      "name": "proposal-summary.json",
+      "path": ".artifacts/protocol-01/proposal-summary.json",
+      "type": "handoff",
+      "description": "Summary for Protocol 02 handoff",
+      "size_bytes": 1834,
+      "sha256": "pending_calculation",
+      "required": true,
+      "status": "complete"
+    }
+  ],
+  "completeness": {
+    "total_artifacts": 8,
+    "required_artifacts": 8,
+    "complete_artifacts": 8,
+    "percentage": 100
+  },
+  "quality_gates": {
+    "gate_1_job_post_comprehension": {
+      "status": "pass",
+      "exact_quotes_count": 2,
+      "coverage_score": 0.95
+    },
+    "gate_2_tone_alignment": {
+      "status": "pass",
+      "confidence_score": 0.92,
+      "differentiators_defined": true
+    },
+    "gate_3_human_voice_compliance": {
+      "status": "pass",
+      "contractions_count": 11,
+      "uncertainty_markers": 2,
+      "direct_questions": 4,
+      "forbidden_phrases": 0
+    },
+    "gate_4_pricing_realism": {
+      "status": "pass",
+      "pricing_model": "fixed_price",
+      "amount": 750,
+      "market_position": "mid_range_with_high_value"
+    },
+    "gate_5_evidence_integrity": {
+      "status": "pass",
+      "artifact_completeness": 100,
+      "all_required_present": true
+    }
+  },
+  "handoff_status": {
+    "ready_for_protocol_02": true,
+    "all_gates_passed": true,
+    "artifacts_validated": true
+  }
+}

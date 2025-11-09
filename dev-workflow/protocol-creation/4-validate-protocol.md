@@ -312,16 +312,25 @@ For each failure or critical warning:
    def classify_issue(issue):
        message = issue['message'].lower()
        
-       if 'missing' in message or 'not found' in message:
-           return 'MISSING_CONTENT'
-       elif 'count' in message or 'minimum' in message:
-           return 'INSUFFICIENT_COUNT'
+       # Check for compound patterns first (most specific)
+       if ('missing' in message or 'not found' in message) and 'pattern' in message:
+           # "Missing pattern" = pattern mismatch, not missing content
+           return 'PATTERN_MISMATCH'
+       elif ('missing' in message or 'not found' in message) and 'keyword' in message:
+           # "Missing keyword" = keyword missing, not missing content
+           return 'KEYWORD_MISSING'
+       # Check specific patterns (high priority)
        elif 'pattern' in message or 'expected' in message:
            return 'PATTERN_MISMATCH'
-       elif 'syntax' in message or 'format' in message:
-           return 'FORMAT_ERROR'
        elif 'keyword' in message or 'must contain' in message:
            return 'KEYWORD_MISSING'
+       elif 'count' in message or 'minimum' in message:
+           return 'INSUFFICIENT_COUNT'
+       elif 'syntax' in message or 'format' in message:
+           return 'FORMAT_ERROR'
+       # Check generic patterns last (lower priority)
+       elif 'missing' in message or 'not found' in message:
+           return 'MISSING_CONTENT'
        else:
            return 'UNKNOWN'
    ```
