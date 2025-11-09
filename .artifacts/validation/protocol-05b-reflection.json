@@ -1,12 +1,11 @@
 {
   "validator": "protocol_reflection",
   "protocol_id": "05b",
-  "validation_timestamp": "2025-11-08T21:25:08.773222Z",
-  "overall_score": 0.8999999999999999,
+  "validation_timestamp": "2025-11-09T12:24:40.273914Z",
+  "overall_score": 0.8875,
   "validation_status": "pass",
   "issues": [
-    "Knowledge capture gaps: knowledge_base, sharing",
-    "Roadmap or future direction not documented"
+    "Knowledge capture gaps: sharing"
   ],
   "recommendations": [],
   "retrospective_analysis": {
@@ -34,27 +33,27 @@
     }
   },
   "system_evolution": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
       "version_history": true,
       "rationale": true,
-      "impact": true,
+      "impact": false,
       "rollback": true
     }
   },
   "knowledge_capture": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [
-      "Knowledge capture gaps: knowledge_base, sharing"
+      "Knowledge capture gaps: sharing"
     ],
     "recommendations": [],
     "details": {
       "lessons": true,
-      "knowledge_base": false,
+      "knowledge_base": true,
       "storage": true,
       "sharing": false
     }
@@ -62,13 +61,11 @@
   "future_planning": {
     "score": 0.75,
     "status": "warning",
-    "issues": [
-      "Roadmap or future direction not documented"
-    ],
+    "issues": [],
     "recommendations": [],
     "details": {
-      "roadmap": false,
-      "priorities": true,
+      "roadmap": true,
+      "priorities": false,
       "resources": true,
       "timeline": true
     }

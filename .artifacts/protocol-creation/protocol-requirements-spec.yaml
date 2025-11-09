@@ -1,0 +1,616 @@
+version: "1.0"
+generated_date: "2025-01-09"
+source: "Analysis of 10 validator scripts"
+purpose: "Complete requirements specification for AI protocol creation"
+
+validators:
+  - name: "identity"
+    file: "validate_protocol_identity.py"
+    pass_threshold: 0.95
+    warning_threshold: 0.80
+    dimensions:
+      - name: "basic_information"
+        line: 127
+        weight: 0.2
+        checks:
+          - name: "protocol_number"
+            pattern: "PROTOCOL \\d+"
+            location: "header"
+            required: true
+            line: 140
+          - name: "protocol_name"
+            pattern: "PROTOCOL \\d+:\\s*([^\\n(]+)"
+            location: "header"
+            required: true
+            line: 148
+          - name: "protocol_version"
+            pattern: "v\\d+\\.\\d+\\.\\d+|version\\s*:\\s*\\d+\\.\\d+\\.\\d+"
+            location: "anywhere"
+            required: true
+            line: 157
+          - name: "phase_assignment"
+            pattern: "Phase [0-9-]+"
+            location: "AGENTS.md reference"
+            required: true
+            line: 167
+          - name: "purpose_statement"
+            pattern: "(?:\\*\\*)?(Purpose|Mission)(?:\\*\\*)?\\s*[:：]\\s*([^\\n]+)"
+            location: "early sections"
+            required: true
+            min_length: 20
+            line: 176
+          - name: "scope_definition"
+            pattern: "SCOPE|BOUNDARIES"
+            location: "anywhere"
+            required: true
+            line: 189
+      - name: "prerequisites"
+        line: 209
+        weight: 0.2
+        checks:
+          - name: "required_artifacts"
+            pattern: "Required Artifacts"
+            location: "PREREQUISITES section"
+            required: true
+            line: 229
+          - name: "required_approvals"
+            pattern: "Required Approvals|Approvals"
+            location: "PREREQUISITES section"
+            required: true
+            line: 237
+          - name: "system_state"
+            pattern: "System State|Environment|Dependencies"
+            location: "PREREQUISITES section"
+            required: true
+            line: 245
+      - name: "integration_points"
+        line: 265
+        weight: 0.2
+        checks:
+          - name: "input_sources"
+            pattern: "Inputs From|INPUT"
+            location: "INTEGRATION POINTS section"
+            required: true
+            line: 285
+          - name: "output_destinations"
+            pattern: "Outputs To|OUTPUT"
+            location: "INTEGRATION POINTS section"
+            required: true
+            line: 293
+          - name: "data_formats"
+            pattern: "\\.md|\\.json|\\.yaml|\\.yml"
+            location: "INTEGRATION POINTS section"
+            required: true
+            line: 301
+          - name: "storage_locations"
+            pattern: "\\.artifacts|Storage"
+            location: "INTEGRATION POINTS section"
+            required: true
+            line: 310
+      - name: "compliance_standards"
+        line: 330
+        weight: 0.2
+        checks:
+          - name: "industry_standards"
+            pattern: "CommonMark|JSON Schema|YAML|Markdown"
+            location: "anywhere"
+            required: true
+            line: 350
+          - name: "security_requirements"
+            pattern: "HIPAA|SOC2|GDPR|security|compliance"
+            location: "anywhere"
+            required: true
+            line: 359
+          - name: "regulatory_compliance"
+            pattern: "FDA|FTC|regulatory|compliance"
+            location: "anywhere"
+            required: true
+            line: 368
+      - name: "documentation_quality"
+        line: 389
+        weight: 0.2
+        checks:
+          - name: "required_sections"
+            pattern: "PREREQUISITES|AI ROLE AND MISSION|WORKFLOW|INTEGRATION POINTS|QUALITY GATES|COMMUNICATION PROTOCOLS|AUTOMATION HOOKS|HANDOFF CHECKLIST|EVIDENCE SUMMARY"
+            location: "headers"
+            required: true
+            min_count: 9
+            line: 402
+
+  - name: "role"
+    file: "validate_protocol_role.py"
+    pass_threshold: 0.9
+    warning_threshold: 0.8
+    dimensions:
+      - name: "role_definition"
+        line: 93
+        weight: 0.25
+        checks:
+          - name: "role_title"
+            pattern: "You are a|You are an"
+            location: "AI ROLE AND MISSION section"
+            required: true
+            line: 101
+          - name: "role_description"
+            pattern: "multi-line description"
+            location: "AI ROLE AND MISSION section"
+            required: true
+            min_length: 60
+            line: 103
+          - name: "domain_expertise"
+            pattern: "domain|expertise|industry|capability"
+            location: "AI ROLE AND MISSION section"
+            required: true
+            line: 105
+          - name: "behavioral_traits"
+            pattern: "empat|strateg|rigor|evidence|governance"
+            location: "AI ROLE AND MISSION section"
+            required: true
+            line: 108
+      - name: "mission_statement"
+        line: 129
+        weight: 0.25
+        checks:
+          - name: "mission_clarity"
+            pattern: "mission"
+            location: "AI ROLE AND MISSION section"
+            required: true
+            line: 136
+          - name: "scope_boundaries"
+            pattern: "within|only|do not|boundar|scope"
+            location: "AI ROLE AND MISSION section"
+            required: true
+            line: 138
+          - name: "success_criteria"
+            pattern: "success|complete|validation|evidence"
+            location: "AI ROLE AND MISSION section"
+            required: true
+            line: 139
+          - name: "value_proposition"
+            pattern: "client|value|impact|benefit|outcome"
+            location: "AI ROLE AND MISSION section"
+            required: true
+            line: 140
+      - name: "constraints_guidelines"
+        line: 157
+        weight: 0.2
+        checks:
+          - name: "guardrails"
+            pattern: "must|require|ensure|strict"
+            location: "AI ROLE AND MISSION or WORKFLOW sections"
+            required: true
+            line: 165
+          - name: "boundaries"
+            pattern: "avoid|within|limit|scope|never|do not"
+            location: "AI ROLE AND MISSION or WORKFLOW sections"
+            required: true
+            line: 170
+          - name: "workflow_alignment"
+            pattern: "step\\s+\\d+|phase|workflow"
+            location: "AI ROLE AND MISSION or WORKFLOW sections"
+            required: true
+            line: 173
+      - name: "output_expectations"
+        line: 208
+        weight: 0.15
+        checks:
+          - name: "format"
+            pattern: "\\.md|\\.json|\\.yaml|markdown"
+            location: "WORKFLOW, EVIDENCE, or HANDOFF sections"
+            required: true
+            line: 218
+          - name: "structure"
+            pattern: "section|table|manifest|template"
+            location: "WORKFLOW, EVIDENCE, or HANDOFF sections"
+            required: true
+            line: 220
+          - name: "location"
+            pattern: "\\.artifacts/|storage"
+            location: "WORKFLOW, EVIDENCE, or HANDOFF sections"
+            required: true
+            line: 221
+          - name: "validation"
+            pattern: "validate|quality|threshold|gate"
+            location: "WORKFLOW, EVIDENCE, or HANDOFF sections"
+            required: true
+            line: 222
+      - name: "behavioral_guidance"
+        line: 239
+        weight: 0.15
+        checks:
+          - name: "communication_style"
+            pattern: "tone|announce|status|communication"
+            location: "AI ROLE AND MISSION or COMMUNICATION sections"
+            required: true
+            line: 247
+          - name: "decision_making"
+            pattern: "decide|choose|go/no-go|option"
+            location: "AI ROLE AND MISSION or COMMUNICATION sections"
+            required: true
+            line: 249
+          - name: "error_handling"
+            pattern: "error|halt"
+            location: "AI ROLE AND MISSION or COMMUNICATION sections"
+            required: true
+            line: 250
+          - name: "user_interaction"
+            pattern: "confirm|reply|ask|request"
+            location: "AI ROLE AND MISSION or COMMUNICATION sections"
+            required: true
+            line: 251
+
+  - name: "workflow"
+    file: "validate_protocol_workflow.py"
+    pass_threshold: 0.9
+    warning_threshold: 0.8
+    dimensions:
+      - name: "workflow_structure"
+        line: 88
+        weight: 0.2
+        checks:
+          - name: "step_headings"
+            pattern: "STEP\\s+(\\d+)"
+            location: "WORKFLOW section"
+            required: true
+            min_count: 2
+            line: 100
+          - name: "sequential"
+            pattern: "sequential numbering"
+            location: "WORKFLOW section"
+            required: true
+            line: 102
+          - name: "completeness"
+            pattern: "### STEP"
+            location: "WORKFLOW section"
+            required: true
+            line: 103
+      - name: "step_definitions"
+        line: 118
+        weight: 0.25
+        checks:
+          - name: "action_coverage"
+            pattern: "\\*\\*Action\\*\\*:"
+            location: "WORKFLOW steps"
+            required: true
+            line: 126
+          - name: "communication_coverage"
+            pattern: "Communication:"
+            location: "WORKFLOW steps"
+            required: true
+            line: 127
+          - name: "evidence_coverage"
+            pattern: "Evidence:"
+            location: "WORKFLOW steps"
+            required: true
+            line: 128
+      - name: "action_markers"
+        line: 150
+        weight: 0.15
+        checks:
+          - name: "imperative_balance"
+            pattern: "\\[(?:MUST|CRITICAL)\\]|\\bmust\\b|\\brequire|\\bensure"
+            location: "WORKFLOW section"
+            required: true
+            line: 158
+          - name: "action_clarity"
+            pattern: "\\*\\*Action\\*\\*|Action:\\s"
+            location: "WORKFLOW section"
+            required: true
+            line: 160
+          - name: "contextual_support"
+            pattern: "Communication:|Evidence:|Halt condition|status"
+            location: "WORKFLOW section"
+            required: true
+            line: 162
+      - name: "halt_conditions"
+        line: 198
+        weight: 0.2
+        checks:
+          - name: "halt_defined"
+            pattern: "Halt condition|halt|stop if"
+            location: "WORKFLOW section"
+            required: true
+            min_count: 2
+            line: 209
+          - name: "validation_gates"
+            pattern: "gate"
+            location: "WORKFLOW section"
+            required: true
+            line: 210
+          - name: "rollback_steps"
+            pattern: "rollback|retry"
+            location: "WORKFLOW section"
+            required: true
+            line: 211
+          - name: "user_confirmation"
+            pattern: "confirm|approval"
+            location: "WORKFLOW section"
+            required: true
+            line: 212
+      - name: "evidence_tracking"
+        line: 228
+        weight: 0.2
+        checks:
+          - name: "evidence_tags"
+            pattern: "evidence"
+            location: "WORKFLOW or EVIDENCE sections"
+            required: true
+            min_count: 3
+            line: 241
+          - name: "artifact_locations"
+            pattern: "\\.artifacts/"
+            location: "WORKFLOW or EVIDENCE sections"
+            required: true
+            min_count: 2
+            line: 242
+          - name: "manifest"
+            pattern: "manifest"
+            location: "WORKFLOW or EVIDENCE sections"
+            required: true
+            line: 243
+          - name: "downstream_trace"
+            pattern: "consumer|outputs to"
+            location: "WORKFLOW or EVIDENCE sections"
+            required: true
+            line: 244
+
+required_sections:
+  - name: "PREREQUISITES"
+    required: true
+    validator: "identity"
+    subsections:
+      - "Required Artifacts"
+      - "Required Approvals" 
+      - "System State"
+  - name: "AI ROLE AND MISSION"
+    required: true
+    validator: "role"
+    subsections:
+      - "Role Definition"
+      - "Mission Statement"
+      - "Constraints & Guidelines"
+      - "Output Expectations"
+      - "Behavioral Guidance"
+  - name: "WORKFLOW"
+    required: true
+    validator: "workflow"
+    subsections:
+      - "Workflow Structure"
+      - "Step Definitions"
+      - "Action Markers"
+      - "Halt Conditions"
+      - "Evidence Tracking"
+  - name: "INTEGRATION POINTS"
+    required: true
+    validator: "identity"
+    subsections:
+      - "Input Sources"
+      - "Output Destinations"
+      - "Data Formats"
+      - "Storage Locations"
+  - name: "QUALITY GATES"
+    required: true
+    validator: "gates"
+    subsections:
+      - "Gate Definitions"
+      - "Pass Criteria"
+      - "Automation Integration"
+      - "Failure Handling"
+      - "Compliance Integration"
+  - name: "COMMUNICATION PROTOCOLS"
+    required: true
+    validator: "communication"
+    subsections:
+      - "Status Announcements"
+      - "User Interaction"
+      - "Error Messaging"
+      - "Progress Tracking"
+      - "Evidence Communication"
+  - name: "AUTOMATION HOOKS"
+    required: true
+    validator: "scripts"
+    subsections:
+      - "Script Inventory"
+      - "Registry Alignment"
+      - "Execution Context"
+      - "Command Syntax"
+      - "Error Handling"
+  - name: "HANDOFF CHECKLIST"
+    required: true
+    validator: "handoff"
+    subsections:
+      - "Checklist Completeness"
+      - "Verification Procedures"
+      - "Stakeholder Sign-off"
+      - "Documentation Requirements"
+      - "Next Protocol Alignment"
+  - name: "EVIDENCE SUMMARY"
+    required: true
+    validator: "evidence"
+    subsections:
+      - "Artifact Generation"
+      - "Storage Structure"
+      - "Manifest Completeness"
+      - "Traceability"
+      - "Archival"
+
+validation_criteria:
+  overall_pass_threshold: 0.95
+  critical_failures:
+    - "missing_required_sections"
+    - "invalid_protocol_number"
+    - "no_ai_role_definition"
+    - "insufficient_workflow_steps"
+    - "no_quality_gates"
+    - "no_evidence_table"
+    - "no_handoff_checklist"
+  
+  minimum_counts:
+    workflow_steps: 2
+    quality_gates: 2
+    checklist_items: 6
+    script_commands: 3
+    evidence_artifacts: 2
+    communication_prompts: 3
+
+content_patterns:
+  required_keywords:
+    prerequisites:
+      - "Required Artifacts"
+      - "Required Approvals"
+      - "System State"
+    ai_role:
+      - "You are a"
+      - "mission"
+      - "domain"
+      - "expertise"
+      - "value"
+      - "boundaries"
+    workflow:
+      - "STEP"
+      - "**Action:**"
+      - "evidence"
+      - "because"
+      - "pattern"
+      - "decision"
+    integration_points:
+      - "Inputs From"
+      - "Outputs To"
+      - ".artifacts/"
+    quality_gates:
+      - "Gate"
+      - "Pass Threshold"
+      - "≥"
+      - "score"
+      - "automation"
+      - "rollback"
+    communication:
+      - "MASTER RAY"
+      - "PHASE"
+      - "Reply"
+      - "ERROR"
+      - "progress"
+      - "currently"
+    automation:
+      - "python3"
+      - "scripts/"
+      - "--"
+      - ">"
+      - "script-registry"
+      - "CI/CD"
+    handoff:
+      - "- [ ]"
+      - "verify"
+      - "approval"
+      - "reviewer"
+      - "Ready for Protocol"
+    evidence:
+      - "artifact"
+      - "metric"
+      - ".artifacts/protocol-"
+
+automation_requirements:
+  script_registry:
+    required: true
+    file: "scripts/script-registry.json"
+    fields:
+      - "purpose"
+      - "owner"
+      - "version"
+      - "dependencies"
+  
+  ci_cd_integration:
+    required: true
+    elements:
+      - "github workflow reference"
+      - "runner environment"
+      - "trigger conditions"
+      - "secret requirements"
+  
+  quality_gate_automation:
+    required: true
+    config_dir: "config/protocol_gates/"
+    elements:
+      - "executable validation scripts"
+      - "automated reporting"
+      - "failure notifications"
+
+evidence_requirements:
+  artifact_generation:
+    minimum_count: 2
+    storage_pattern: ".artifacts/protocol-{ID}/"
+    naming_convention: "include timestamp"
+    formats:
+      - "human-readable (.md)"
+      - "machine-readable (.json)"
+  
+  evidence_table_format:
+    headers:
+      - "Artifact"
+      - "Location"
+      - "Evidence Type"
+      - "Metrics"
+    separator: "|"
+    minimum_rows: 2
+
+communication_standards:
+  status_announcements:
+    format: "[PROTOCOL XX | PHASE Y START] - [description]"
+    elements:
+      - "protocol_id"
+      - "phase"
+      - "description"
+  
+  error_messages:
+    format: "[PROTOCOL XX | GATE N FAILED: reason] - [impact]"
+    elements:
+      - "error_type"
+      - "context"
+      - "required_action"
+  
+  progress_tracking:
+    elements:
+      - "current_activity"
+      - "percentage_estimate"
+      - "next_steps"
+      - "blocker_notification"
+
+quality_assurance:
+  pre_validation_checklist:
+    - "all_9_sections_present"
+    - "protocol_number_matches_agents"
+    - "ai_role_includes_you_are"
+    - "workflow_has_2_steps"
+    - "quality_gates_have_thresholds"
+    - "evidence_summary_has_table"
+    - "handoff_has_6_items"
+    - "referenced_scripts_exist"
+    - "artifacts_paths_correct"
+    - "communication_templates_complete"
+  
+  validation_execution:
+    validators_required: 10
+    minimum_score: 0.95
+    critical_failures_allowed: 0
+    warnings_limit: 3
+
+handoff_requirements:
+  readiness_criteria:
+    - "all_quality_gates_passed"
+    - "evidence_artifacts_generated"
+    - "handoff_checklist_completed"
+    - "next_protocol_dependencies_identified"
+    - "stakeholder_signoff_obtained"
+  
+  package_contents:
+    - "protocol_file_complete"
+    - "validation_reports"
+    - "evidence_artifacts"
+    - "automation_scripts"
+    - "configuration_files"
+  
+  next_protocol_triggers:
+    - "@apply_command_references"
+    - "session_continuation_scripts"
+    - "dependency_fulfillment"
+    - "resource_allocation"

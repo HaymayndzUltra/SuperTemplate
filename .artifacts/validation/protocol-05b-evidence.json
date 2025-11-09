@@ -1,15 +1,11 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "05b",
-  "validation_timestamp": "2025-11-08T21:25:08.739231Z",
-  "overall_score": 0.925,
+  "validation_timestamp": "2025-11-09T12:24:40.249116Z",
+  "overall_score": 1.0,
   "validation_status": "pass",
-  "issues": [
-    "Traceability gaps: outputs"
-  ],
-  "recommendations": [
-    "Enhance archival plan with: cleanup"
-  ],
+  "issues": [],
+  "recommendations": [],
   "artifact_generation": {
     "score": 1.0,
     "status": "pass",
@@ -20,9 +16,9 @@
       "artifact_column": true,
       "metrics_column": true,
       "row_coverage": true,
-      "table_rows": 26,
-      "artifact_mentions": 1,
-      "metric_mentions": 12
+      "table_rows": 12,
+      "artifact_mentions": 13,
+      "metric_mentions": 8
     }
   },
   "storage_structure": {
@@ -51,37 +47,33 @@
       "metadata": true,
       "dependencies": true,
       "coverage": true,
-      "metadata_mentions": 4,
-      "dependency_mentions": 2
+      "metadata_mentions": 9,
+      "dependency_mentions": 8
     }
   },
   "traceability": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Traceability gaps: outputs"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
       "inputs": true,
-      "outputs": false,
+      "outputs": true,
       "transformations": true,
       "audit": true
     }
   },
   "archival": {
-    "score": 0.75,
-    "status": "warning",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Enhance archival plan with: cleanup"
-    ],
+    "recommendations": [],
     "details": {
       "compression": true,
       "retention": true,
       "retrieval": true,
-      "cleanup": false,
-      "compression_mentions": 4,
+      "cleanup": true,
+      "compression_mentions": 9,
       "retention_mentions": 5
     }
   }

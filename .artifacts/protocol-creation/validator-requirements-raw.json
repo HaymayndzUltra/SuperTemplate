@@ -1,0 +1,1553 @@
+{
+  "validate_protocol_identity": {
+    "file": "validate_protocol_identity.py",
+    "pass_threshold": 0.95,
+    "warning_threshold": 0.80,
+    "dimensions": {
+      "basic_information": {
+        "line": 127,
+        "weight": 0.2,
+        "checks": {
+          "protocol_number": {
+            "pattern": "PROTOCOL \\d+",
+            "location": "header",
+            "required": true,
+            "line": 140
+          },
+          "protocol_name": {
+            "pattern": "PROTOCOL \\d+:\\s*([^\\n(]+)",
+            "location": "header", 
+            "required": true,
+            "line": 148
+          },
+          "protocol_version": {
+            "pattern": "v\\d+\\.\\d+\\.\\d+|version\\s*:\\s*\\d+\\.\\d+\\.\\d+",
+            "location": "anywhere",
+            "required": true,
+            "line": 157
+          },
+          "phase_assignment": {
+            "pattern": "Phase [0-9-]+",
+            "location": "AGENTS.md reference",
+            "required": true,
+            "line": 167
+          },
+          "purpose_statement": {
+            "pattern": "(?:\\*\\*)?(Purpose|Mission)(?:\\*\\*)?\\s*[:：]\\s*([^\\n]+)",
+            "location": "early sections",
+            "required": true,
+            "min_length": 20,
+            "line": 176
+          },
+          "scope_definition": {
+            "pattern": "SCOPE|BOUNDARIES",
+            "location": "anywhere",
+            "required": true,
+            "line": 189
+          }
+        }
+      },
+      "prerequisites": {
+        "line": 209,
+        "weight": 0.2,
+        "checks": {
+          "required_artifacts": {
+            "pattern": "Required Artifacts",
+            "location": "PREREQUISITES section",
+            "required": true,
+            "line": 229
+          },
+          "required_approvals": {
+            "pattern": "Required Approvals|Approvals",
+            "location": "PREREQUISITES section",
+            "required": true,
+            "line": 237
+          },
+          "system_state": {
+            "pattern": "System State|Environment|Dependencies",
+            "location": "PREREQUISITES section",
+            "required": true,
+            "line": 245
+          }
+        }
+      },
+      "integration_points": {
+        "line": 265,
+        "weight": 0.2,
+        "checks": {
+          "input_sources": {
+            "pattern": "Inputs From|INPUT",
+            "location": "INTEGRATION POINTS section",
+            "required": true,
+            "line": 285
+          },
+          "output_destinations": {
+            "pattern": "Outputs To|OUTPUT",
+            "location": "INTEGRATION POINTS section",
+            "required": true,
+            "line": 293
+          },
+          "data_formats": {
+            "pattern": "\\.md|\\.json|\\.yaml|\\.yml",
+            "location": "INTEGRATION POINTS section",
+            "required": true,
+            "line": 301
+          },
+          "storage_locations": {
+            "pattern": "\\.artifacts|Storage",
+            "location": "INTEGRATION POINTS section",
+            "required": true,
+            "line": 310
+          }
+        }
+      },
+      "compliance_standards": {
+        "line": 330,
+        "weight": 0.2,
+        "checks": {
+          "industry_standards": {
+            "pattern": "CommonMark|JSON Schema|YAML|Markdown",
+            "location": "anywhere",
+            "required": true,
+            "line": 350
+          },
+          "security_requirements": {
+            "pattern": "HIPAA|SOC2|GDPR|security|compliance",
+            "location": "anywhere",
+            "required": true,
+            "line": 359
+          },
+          "regulatory_compliance": {
+            "pattern": "FDA|FTC|regulatory|compliance",
+            "location": "anywhere",
+            "required": true,
+            "line": 368
+          }
+        }
+      },
+      "documentation_quality": {
+        "line": 389,
+        "weight": 0.2,
+        "checks": {
+          "required_sections": {
+            "pattern": "PREREQUISITES|AI ROLE AND MISSION|WORKFLOW|INTEGRATION POINTS|QUALITY GATES|COMMUNICATION PROTOCOLS|AUTOMATION HOOKS|HANDOFF CHECKLIST|EVIDENCE SUMMARY",
+            "location": "headers",
+            "required": true,
+            "min_count": 9,
+            "line": 402
+          }
+        }
+      }
+    }
+  },
+  "validate_protocol_role": {
+    "file": "validate_protocol_role.py",
+    "pass_threshold": 0.9,
+    "warning_threshold": 0.8,
+    "dimensions": {
+      "role_definition": {
+        "line": 93,
+        "weight": 0.25,
+        "checks": {
+          "role_title": {
+            "pattern": "You are a|You are an",
+            "location": "AI ROLE AND MISSION section",
+            "required": true,
+            "line": 101
+          },
+          "role_description": {
+            "pattern": "multi-line description",
+            "location": "AI ROLE AND MISSION section",
+            "required": true,
+            "min_length": 60,
+            "line": 103
+          },
+          "domain_expertise": {
+            "pattern": "domain|expertise|industry|capability",
+            "location": "AI ROLE AND MISSION section",
+            "required": true,
+            "line": 105
+          },
+          "behavioral_traits": {
+            "pattern": "empat|strateg|rigor|evidence|governance",
+            "location": "AI ROLE AND MISSION section",
+            "required": true,
+            "line": 108
+          }
+        }
+      },
+      "mission_statement": {
+        "line": 129,
+        "weight": 0.25,
+        "checks": {
+          "mission_clarity": {
+            "pattern": "mission",
+            "location": "AI ROLE AND MISSION section",
+            "required": true,
+            "line": 136
+          },
+          "scope_boundaries": {
+            "pattern": "within|only|do not|boundar|scope",
+            "location": "AI ROLE AND MISSION section",
+            "required": true,
+            "line": 138
+          },
+          "success_criteria": {
+            "pattern": "success|complete|validation|evidence",
+            "location": "AI ROLE AND MISSION section",
+            "required": true,
+            "line": 139
+          },
+          "value_proposition": {
+            "pattern": "client|value|impact|benefit|outcome",
+            "location": "AI ROLE AND MISSION section",
+            "required": true,
+            "line": 140
+          }
+        }
+      },
+      "constraints_guidelines": {
+        "line": 157,
+        "weight": 0.2,
+        "checks": {
+          "guardrails": {
+            "pattern": "must|require|ensure|strict",
+            "location": "AI ROLE AND MISSION or WORKFLOW sections",
+            "required": true,
+            "line": 165
+          },
+          "boundaries": {
+            "pattern": "avoid|within|limit|scope|never|do not",
+            "location": "AI ROLE AND MISSION or WORKFLOW sections",
+            "required": true,
+            "line": 170
+          },
+          "workflow_alignment": {
+            "pattern": "step\\s+\\d+|phase|workflow",
+            "location": "AI ROLE AND MISSION or WORKFLOW sections",
+            "required": true,
+            "line": 173
+          }
+        }
+      },
+      "output_expectations": {
+        "line": 208,
+        "weight": 0.15,
+        "checks": {
+          "format": {
+            "pattern": "\\.md|\\.json|\\.yaml|markdown",
+            "location": "WORKFLOW, EVIDENCE, or HANDOFF sections",
+            "required": true,
+            "line": 218
+          },
+          "structure": {
+            "pattern": "section|table|manifest|template",
+            "location": "WORKFLOW, EVIDENCE, or HANDOFF sections",
+            "required": true,
+            "line": 220
+          },
+          "location": {
+            "pattern": "\\.artifacts/|storage",
+            "location": "WORKFLOW, EVIDENCE, or HANDOFF sections",
+            "required": true,
+            "line": 221
+          },
+          "validation": {
+            "pattern": "validate|quality|threshold|gate",
+            "location": "WORKFLOW, EVIDENCE, or HANDOFF sections",
+            "required": true,
+            "line": 222
+          }
+        }
+      },
+      "behavioral_guidance": {
+        "line": 239,
+        "weight": 0.15,
+        "checks": {
+          "communication_style": {
+            "pattern": "tone|announce|status|communication",
+            "location": "AI ROLE AND MISSION or COMMUNICATION sections",
+            "required": true,
+            "line": 247
+          },
+          "decision_making": {
+            "pattern": "decide|choose|go/no-go|option",
+            "location": "AI ROLE AND MISSION or COMMUNICATION sections",
+            "required": true,
+            "line": 249
+          },
+          "error_handling": {
+            "pattern": "error|halt",
+            "location": "AI ROLE AND MISSION or COMMUNICATION sections",
+            "required": true,
+            "line": 250
+          },
+          "user_interaction": {
+            "pattern": "confirm|reply|ask|request",
+            "location": "AI ROLE AND MISSION or COMMUNICATION sections",
+            "required": true,
+            "line": 251
+          }
+        }
+      }
+    }
+  },
+  "validate_protocol_workflow": {
+    "file": "validate_protocol_workflow.py",
+    "pass_threshold": 0.9,
+    "warning_threshold": 0.8,
+    "dimensions": {
+      "workflow_structure": {
+        "line": 88,
+        "weight": 0.2,
+        "checks": {
+          "step_headings": {
+            "pattern": "STEP\\s+(\\d+)",
+            "location": "WORKFLOW section",
+            "required": true,
+            "min_count": 2,
+            "line": 100
+          },
+          "sequential": {
+            "pattern": "sequential numbering",
+            "location": "WORKFLOW section",
+            "required": true,
+            "line": 102
+          },
+          "completeness": {
+            "pattern": "### STEP",
+            "location": "WORKFLOW section",
+            "required": true,
+            "line": 103
+          }
+        }
+      },
+      "step_definitions": {
+        "line": 118,
+        "weight": 0.25,
+        "checks": {
+          "action_coverage": {
+            "pattern": "\\*\\*Action\\*\\*:",
+            "location": "WORKFLOW steps",
+            "required": true,
+            "line": 126
+          },
+          "communication_coverage": {
+            "pattern": "Communication:",
+            "location": "WORKFLOW steps",
+            "required": true,
+            "line": 127
+          },
+          "evidence_coverage": {
+            "pattern": "Evidence:",
+            "location": "WORKFLOW steps",
+            "required": true,
+            "line": 128
+          }
+        }
+      },
+      "action_markers": {
+        "line": 150,
+        "weight": 0.15,
+        "checks": {
+          "imperative_balance": {
+            "pattern": "\\[(?:MUST|CRITICAL)\\]|\\bmust\\b|\\brequire|\\bensure",
+            "location": "WORKFLOW section",
+            "required": true,
+            "line": 158
+          },
+          "action_clarity": {
+            "pattern": "\\*\\*Action\\*\\*|Action:\\s",
+            "location": "WORKFLOW section",
+            "required": true,
+            "line": 160
+          },
+          "contextual_support": {
+            "pattern": "Communication:|Evidence:|Halt condition|status",
+            "location": "WORKFLOW section",
+            "required": true,
+            "line": 162
+          }
+        }
+      },
+      "halt_conditions": {
+        "line": 198,
+        "weight": 0.2,
+        "checks": {
+          "halt_defined": {
+            "pattern": "Halt condition|halt|stop if",
+            "location": "WORKFLOW section",
+            "required": true,
+            "min_count": 2,
+            "line": 209
+          },
+          "validation_gates": {
+            "pattern": "gate",
+            "location": "WORKFLOW section",
+            "required": true,
+            "line": 210
+          },
+          "rollback_steps": {
+            "pattern": "rollback|retry",
+            "location": "WORKFLOW section",
+            "required": true,
+            "line": 211
+          },
+          "user_confirmation": {
+            "pattern": "confirm|approval",
+            "location": "WORKFLOW section",
+            "required": true,
+            "line": 212
+          }
+        }
+      },
+      "evidence_tracking": {
+        "line": 228,
+        "weight": 0.2,
+        "checks": {
+          "evidence_tags": {
+            "pattern": "evidence",
+            "location": "WORKFLOW or EVIDENCE sections",
+            "required": true,
+            "min_count": 3,
+            "line": 241
+          },
+          "artifact_locations": {
+            "pattern": "\\.artifacts/",
+            "location": "WORKFLOW or EVIDENCE sections",
+            "required": true,
+            "min_count": 2,
+            "line": 242
+          },
+          "manifest": {
+            "pattern": "manifest",
+            "location": "WORKFLOW or EVIDENCE sections",
+            "required": true,
+            "line": 243
+          },
+          "downstream_trace": {
+            "pattern": "consumer|outputs to",
+            "location": "WORKFLOW or EVIDENCE sections",
+            "required": true,
+            "line": 244
+          }
+        }
+      }
+    }
+  },
+  "validate_protocol_gates": {
+    "file": "validate_protocol_gates.py",
+    "pass_threshold": 0.92,
+    "warning_threshold": 0.85,
+    "dimensions": {
+      "gate_definitions": {
+        "line": 89,
+        "weight": 0.25,
+        "checks": {
+          "gate_count": {
+            "pattern": "###\\s+Gate\\s+(\\d+)",
+            "location": "QUALITY GATES section",
+            "required": true,
+            "min_count": 2,
+            "line": 100
+          },
+          "descriptions": {
+            "pattern": "- \\*\\*Criteria\\*\\*:|Criteria:",
+            "location": "QUALITY GATES section",
+            "required": true,
+            "line": 101
+          },
+          "types": {
+            "pattern": "Prerequisite|Execution|Completion",
+            "location": "QUALITY GATES section",
+            "required": true,
+            "line": 102
+          },
+          "naming": {
+            "pattern": "numeric gate names",
+            "location": "QUALITY GATES section",
+            "required": true,
+            "line": 104
+          }
+        }
+      },
+      "pass_criteria": {
+        "line": 119,
+        "weight": 0.25,
+        "checks": {
+          "thresholds": {
+            "pattern": "Pass Threshold|threshold|≥|>=",
+            "location": "QUALITY GATES section",
+            "required": true,
+            "min_count": 2,
+            "line": 130
+          },
+          "boolean": {
+            "pattern": "status|pass|fail",
+            "location": "QUALITY GATES section",
+            "required": true,
+            "min_count": 2,
+            "line": 131
+          },
+          "metrics": {
+            "pattern": "score|confidence|rate|percentage",
+            "location": "QUALITY GATES section",
+            "required": true,
+            "min_count": 3,
+            "line": 132
+          },
+          "evidence_links": {
+            "pattern": "evidence",
+            "location": "QUALITY GATES section",
+            "required": true,
+            "min_count": 3,
+            "line": 133
+          }
+        }
+      },
+      "automation": {
+        "line": 147,
+        "weight": 0.2,
+        "checks": {
+          "scripts": {
+            "pattern": "python3?\\s+scripts/",
+            "location": "QUALITY GATES or AUTOMATION sections",
+            "required": true,
+            "min_count": 2,
+            "line": 160
+          },
+          "ci": {
+            "pattern": "CI/CD|workflow|runs-on",
+            "location": "QUALITY GATES or AUTOMATION sections",
+            "required": true,
+            "line": 161
+          },
+          "automation_labels": {
+            "pattern": "Automation|automation",
+            "location": "QUALITY GATES or AUTOMATION sections",
+            "required": true,
+            "line": 162
+          }
+        }
+      },
+      "failure_handling": {
+        "line": 187,
+        "weight": 0.15,
+        "checks": {
+          "failure_actions": {
+            "pattern": "Failure Handling|on fail|if fails|fallback",
+            "location": "QUALITY GATES section",
+            "required": true,
+            "min_count": 2,
+            "line": 199
+          },
+          "rollback": {
+            "pattern": "rollback|remediation|re-run",
+            "location": "QUALITY GATES section",
+            "required": true,
+            "line": 200
+          },
+          "notification": {
+            "pattern": "notify|alert|escalate",
+            "location": "QUALITY GATES section",
+            "required": true,
+            "line": 201
+          },
+          "waivers": {
+            "pattern": "waiver|override",
+            "location": "QUALITY GATES section",
+            "required": true,
+            "line": 202
+          }
+        }
+      },
+      "compliance_integration": {
+        "line": 218,
+        "weight": 0.15,
+        "checks": {
+          "compliance_terms": {
+            "pattern": "hipaa|soc2|gdpr|iso|pci|fedramp|security|regulatory",
+            "location": "QUALITY GATES or AUTOMATION sections",
+            "required": true,
+            "min_count": 2,
+            "line": 231
+          },
+          "automation_hooks": {
+            "pattern": "check|validate|enforce|audit",
+            "location": "QUALITY GATES or AUTOMATION sections",
+            "required": true,
+            "min_count": 2,
+            "line": 233
+          },
+          "evidence": {
+            "pattern": "report",
+            "location": "QUALITY GATES or AUTOMATION sections",
+            "required": true,
+            "line": 234
+          },
+          "governance": {
+            "pattern": "governance|policy",
+            "location": "QUALITY GATES or AUTOMATION sections",
+            "required": true,
+            "line": 235
+          }
+        }
+      }
+    }
+  },
+  "validate_protocol_scripts": {
+    "file": "validate_protocol_scripts.py",
+    "pass_threshold": 0.9,
+    "warning_threshold": 0.8,
+    "dimensions": {
+      "script_inventory": {
+        "line": 96,
+        "weight": 0.25,
+        "checks": {
+          "command_count": {
+            "pattern": "python3?|bash commands",
+            "location": "AUTOMATION HOOKS section",
+            "required": true,
+            "min_count": 3,
+            "line": 117
+          },
+          "script_paths": {
+            "pattern": "(?:\\./)?scripts/[\\w\\-/\\.+]+",
+            "location": "AUTOMATION HOOKS section",
+            "required": true,
+            "line": 120
+          }
+        }
+      },
+      "registry_alignment": {
+        "line": 127,
+        "weight": 0.2,
+        "checks": {
+          "registry_reference": {
+            "pattern": "script-registry|registry|register|orchestrator",
+            "location": "AUTOMATION or WORKFLOW sections",
+            "required": true,
+            "line": 139
+          },
+          "workflow_mapping": {
+            "pattern": "scripts/",
+            "location": "AUTOMATION or WORKFLOW sections",
+            "required": true,
+            "line": 142
+          },
+          "ownership": {
+            "pattern": "owner|responsible|team",
+            "location": "AUTOMATION or WORKFLOW sections",
+            "required": true,
+            "line": 143
+          }
+        }
+      },
+      "execution_context": {
+        "line": 189,
+        "weight": 0.2,
+        "checks": {
+          "ci_context": {
+            "pattern": "ci/cd|workflow|github|runs-on|pipeline",
+            "location": "AUTOMATION HOOKS section",
+            "required": true,
+            "line": 195
+          },
+          "environment": {
+            "pattern": "environment|docker|venv|dependencies|requirements",
+            "location": "AUTOMATION HOOKS section",
+            "required": true,
+            "line": 196
+          },
+          "scheduling": {
+            "pattern": "cron|schedule|trigger|event",
+            "location": "AUTOMATION HOOKS section",
+            "required": true,
+            "line": 197
+          },
+          "permissions": {
+            "pattern": "permission|token|secrets|access",
+            "location": "AUTOMATION HOOKS section",
+            "required": true,
+            "line": 198
+          }
+        }
+      },
+      "command_syntax": {
+        "line": 220,
+        "weight": 0.2,
+        "checks": {
+          "flag_usage": {
+            "pattern": "--",
+            "location": "AUTOMATION HOOKS section",
+            "required": true,
+            "line": 229
+          },
+          "output_redirection": {
+            "pattern": ">|\\||&&",
+            "location": "AUTOMATION HOOKS section",
+            "required": true,
+            "line": 230
+          },
+          "parameterization": {
+            "pattern": "\\{|\\}|\\$\\(",
+            "location": "AUTOMATION HOOKS section",
+            "required": true,
+            "line": 231
+          },
+          "documentation": {
+            "pattern": "```",
+            "location": "AUTOMATION HOOKS section",
+            "required": true,
+            "line": 237
+          }
+        }
+      },
+      "error_handling": {
+        "line": 251,
+        "weight": 0.15,
+        "checks": {
+          "exit_codes": {
+            "pattern": "exit",
+            "location": "AUTOMATION, WORKFLOW, or EVIDENCE sections",
+            "required": true,
+            "line": 264
+          },
+          "fallback": {
+            "pattern": "fallback|retry",
+            "location": "AUTOMATION, WORKFLOW, or EVIDENCE sections",
+            "required": true,
+            "line": 265
+          },
+          "logging": {
+            "pattern": "log",
+            "location": "AUTOMATION, WORKFLOW, or EVIDENCE sections",
+            "required": true,
+            "min_count": 2,
+            "line": 266
+          },
+          "manual_paths": {
+            "pattern": "manual",
+            "location": "AUTOMATION, WORKFLOW, or EVIDENCE sections",
+            "required": true,
+            "line": 267
+          }
+        }
+      }
+    }
+  },
+  "validate_protocol_communication": {
+    "file": "validate_protocol_communication.py",
+    "pass_threshold": 0.9,
+    "warning_threshold": 0.8,
+    "dimensions": {
+      "status_announcements": {
+        "line": 89,
+        "weight": 0.25,
+        "checks": {
+          "phase_transitions": {
+            "pattern": "PHASE\\s+\\d|PHASE [A-Z]|PHASE COMPLETE",
+            "location": "COMMUNICATION or WORKFLOW sections",
+            "required": true,
+            "min_count": 3,
+            "line": 102
+          },
+          "branded_announcements": {
+            "pattern": "MASTER RAY",
+            "location": "COMMUNICATION or WORKFLOW sections",
+            "required": true,
+            "min_count": 1,
+            "line": 103
+          },
+          "completion_callouts": {
+            "pattern": "COMPLETE|READY",
+            "location": "COMMUNICATION or WORKFLOW sections",
+            "required": true,
+            "min_count": 1,
+            "line": 104
+          },
+          "time_estimates": {
+            "pattern": "ETA|duration|time",
+            "location": "COMMUNICATION or WORKFLOW sections",
+            "required": true,
+            "line": 105
+          }
+        }
+      },
+      "user_interaction": {
+        "line": 119,
+        "weight": 0.25,
+        "checks": {
+          "confirmation": {
+            "pattern": "Reply|Confirm|Choose|Select",
+            "location": "COMMUNICATION PROTOCOLS section",
+            "required": true,
+            "line": 131
+          },
+          "clarification": {
+            "pattern": "clarify|specify|provide",
+            "location": "COMMUNICATION PROTOCOLS section",
+            "required": true,
+            "line": 132
+          },
+          "decision_points": {
+            "pattern": "option|choose|decision",
+            "location": "COMMUNICATION PROTOCOLS section",
+            "required": true,
+            "line": 133
+          },
+          "feedback": {
+            "pattern": "feedback|review|does this",
+            "location": "COMMUNICATION PROTOCOLS section",
+            "required": true,
+            "line": 134
+          }
+        }
+      },
+      "error_messaging": {
+        "line": 147,
+        "weight": 0.2,
+        "checks": {
+          "templates": {
+            "pattern": "\\[RAY .*ERROR\\]|ERROR|FAILED",
+            "location": "COMMUNICATION or WORKFLOW sections",
+            "required": true,
+            "min_count": 1,
+            "line": 160
+          },
+          "severity": {
+            "pattern": "CRITICAL|HIGH|WARNING",
+            "location": "COMMUNICATION or WORKFLOW sections",
+            "required": true,
+            "min_count": 1,
+            "line": 161
+          },
+          "context": {
+            "pattern": "Details|Criteria|Actual",
+            "location": "COMMUNICATION or WORKFLOW sections",
+            "required": true,
+            "min_count": 1,
+            "line": 162
+          },
+          "resolution": {
+            "pattern": "Required action|Resolve|Fix|remediation",
+            "location": "COMMUNICATION or WORKFLOW sections",
+            "required": true,
+            "min_count": 1,
+            "line": 163
+          }
+        }
+      },
+      "progress_tracking": {
+        "line": 175,
+        "weight": 0.15,
+        "checks": {
+          "progress_terms": {
+            "pattern": "progress|percent|%|complete|remaining|current activity|next steps",
+            "location": "COMMUNICATION or WORKFLOW sections",
+            "required": true,
+            "min_count": 3,
+            "line": 187
+          },
+          "timeline": {
+            "pattern": "timeline|schedule|next",
+            "location": "COMMUNICATION or WORKFLOW sections",
+            "required": true,
+            "line": 188
+          },
+          "current_activity": {
+            "pattern": "currently|now",
+            "location": "COMMUNICATION or WORKFLOW sections",
+            "required": true,
+            "line": 189
+          },
+          "next_steps": {
+            "pattern": "next",
+            "location": "COMMUNICATION or WORKFLOW sections",
+            "required": true,
+            "line": 190
+          }
+        }
+      },
+      "evidence_communication": {
+        "line": 202,
+        "weight": 0.15,
+        "checks": {
+          "artifact_announcements": {
+            "pattern": "\\.artifacts/",
+            "location": "COMMUNICATION or EVIDENCE sections",
+            "required": true,
+            "min_count": 2,
+            "line": 215
+          },
+          "format": {
+            "pattern": "markdown|json|yaml|manifest",
+            "location": "COMMUNICATION or EVIDENCE sections",
+            "required": true,
+            "min_count": 1,
+            "line": 216
+          },
+          "location": {
+            "pattern": "stored in|location|repository",
+            "location": "COMMUNICATION or EVIDENCE sections",
+            "required": true,
+            "min_count": 1,
+            "line": 217
+          },
+          "validation": {
+            "pattern": "validation|status|pass",
+            "location": "COMMUNICATION or EVIDENCE sections",
+            "required": true,
+            "min_count": 1,
+            "line": 218
+          }
+        }
+      }
+    }
+  },
+  "validate_protocol_evidence": {
+    "file": "validate_protocol_evidence.py",
+    "pass_threshold": 0.9,
+    "warning_threshold": 0.8,
+    "dimensions": {
+      "artifact_generation": {
+        "line": 89,
+        "weight": 0.3,
+        "checks": {
+          "table_present": {
+            "pattern": "\\|.*\\|",
+            "location": "EVIDENCE SUMMARY section",
+            "required": true,
+            "line": 102
+          },
+          "artifact_column": {
+            "pattern": "artifact",
+            "location": "EVIDENCE SUMMARY table header",
+            "required": true,
+            "line": 104
+          },
+          "metrics_column": {
+            "pattern": "metric|evidence|result",
+            "location": "EVIDENCE SUMMARY table header",
+            "required": true,
+            "line": 105
+          },
+          "row_coverage": {
+            "pattern": "table rows|artifact mentions",
+            "location": "EVIDENCE SUMMARY section",
+            "required": true,
+            "min_rows": 2,
+            "min_artifacts": 3,
+            "line": 106
+          }
+        }
+      },
+      "storage_structure": {
+        "line": 126,
+        "weight": 0.2,
+        "checks": {
+          "protocol_directory": {
+            "pattern": "\\.artifacts/protocol-\\d+/",
+            "location": "EVIDENCE or WORKFLOW sections",
+            "required": true,
+            "line": 139
+          },
+          "subdirectories": {
+            "pattern": "/[\\w-]+/",
+            "location": "EVIDENCE or WORKFLOW sections",
+            "required": true,
+            "line": 140
+          },
+          "permissions": {
+            "pattern": "read|write|access",
+            "location": "EVIDENCE or WORKFLOW sections",
+            "required": true,
+            "line": 141
+          },
+          "naming": {
+            "pattern": "naming|convention|structure",
+            "location": "EVIDENCE or WORKFLOW sections",
+            "required": true,
+            "line": 142
+          }
+        }
+      },
+      "manifest_completeness": {
+        "line": 156,
+        "weight": 0.2,
+        "checks": {
+          "manifest_reference": {
+            "pattern": "manifest|inventory|index",
+            "location": "EVIDENCE SUMMARY section",
+            "required": false,
+            "line": 167
+          },
+          "metadata": {
+            "pattern": "timestamp|size|hash|checksum",
+            "location": "EVIDENCE SUMMARY section",
+            "required": false,
+            "line": 163
+          },
+          "dependencies": {
+            "pattern": "dependency|input|output",
+            "location": "EVIDENCE SUMMARY section",
+            "required": false,
+            "line": 164
+          },
+          "coverage": {
+            "pattern": "100%|complete",
+            "location": "EVIDENCE SUMMARY section",
+            "required": false,
+            "line": 165
+          }
+        }
+      },
+      "traceability": {
+        "line": 201,
+        "weight": 0.15,
+        "checks": {
+          "inputs": {
+            "pattern": "Inputs? From",
+            "location": "EVIDENCE, WORKFLOW, or HANDOFF sections",
+            "required": true,
+            "line": 214
+          },
+          "outputs": {
+            "pattern": "Outputs? To",
+            "location": "EVIDENCE, WORKFLOW, or HANDOFF sections",
+            "required": true,
+            "line": 215
+          },
+          "transformations": {
+            "pattern": "transform|derive|generate",
+            "location": "EVIDENCE, WORKFLOW, or HANDOFF sections",
+            "required": true,
+            "line": 216
+          },
+          "audit": {
+            "pattern": "audit|log|history",
+            "location": "EVIDENCE, WORKFLOW, or HANDOFF sections",
+            "required": true,
+            "line": 217
+          }
+        }
+      },
+      "archival": {
+        "line": 230,
+        "weight": 0.15,
+        "checks": {
+          "compression": {
+            "pattern": "zip|archive|compress",
+            "location": "EVIDENCE SUMMARY section",
+            "required": false,
+            "line": 249
+          },
+          "retention": {
+            "pattern": "retention|retain|30 days|90 days|duration",
+            "location": "EVIDENCE SUMMARY section",
+            "required": false,
+            "line": 250
+          },
+          "retrieval": {
+            "pattern": "retrieve|access|restore",
+            "location": "EVIDENCE SUMMARY section",
+            "required": false,
+            "line": 251
+          },
+          "cleanup": {
+            "pattern": "cleanup|delete|purge",
+            "location": "EVIDENCE SUMMARY section",
+            "required": false,
+            "line": 252
+          }
+        }
+      }
+    }
+  },
+  "validate_protocol_handoff": {
+    "file": "validate_protocol_handoff.py",
+    "pass_threshold": 0.9,
+    "warning_threshold": 0.8,
+    "dimensions": {
+      "checklist_completeness": {
+        "line": 89,
+        "weight": 0.3,
+        "checks": {
+          "items": {
+            "pattern": "- \\[ \\]|- \\[x\\]|- \\[[^\\]]\\]",
+            "location": "HANDOFF CHECKLIST section",
+            "required": true,
+            "min_count": 6,
+            "line": 100
+          },
+          "categories": {
+            "pattern": "Prerequisite|Workflow|Quality|Evidence|Integration|Automation",
+            "location": "HANDOFF CHECKLIST section",
+            "required": true,
+            "min_count": 3,
+            "line": 101
+          },
+          "dependencies": {
+            "pattern": "before|after|next",
+            "location": "HANDOFF CHECKLIST section",
+            "required": true,
+            "line": 102
+          },
+          "status_markers": {
+            "pattern": "\\[x\\]|\\[✓",
+            "location": "HANDOFF CHECKLIST section",
+            "required": true,
+            "line": 103
+          }
+        }
+      },
+      "verification_procedures": {
+        "line": 115,
+        "weight": 0.2,
+        "checks": {
+          "verification_terms": {
+            "pattern": "validate|ensure|confirm|verify|gate",
+            "location": "HANDOFF or WORKFLOW sections",
+            "required": true,
+            "min_count": 4,
+            "line": 128
+          },
+          "qa_involvement": {
+            "pattern": "QA|quality|review",
+            "location": "HANDOFF or WORKFLOW sections",
+            "required": true,
+            "line": 129
+          },
+          "automation_reference": {
+            "pattern": "automation|script|command",
+            "location": "HANDOFF or WORKFLOW sections",
+            "required": true,
+            "line": 130
+          },
+          "evidence_reference": {
+            "pattern": "evidence",
+            "location": "HANDOFF or WORKFLOW sections",
+            "required": true,
+            "min_count": 2,
+            "line": 131
+          }
+        }
+      },
+      "stakeholder_signoff": {
+        "line": 143,
+        "weight": 0.2,
+        "checks": {
+          "approvals": {
+            "pattern": "approval|sign-off|sign off|authorization",
+            "location": "HANDOFF CHECKLIST section",
+            "required": true,
+            "line": 155
+          },
+          "reviewers": {
+            "pattern": "reviewer|lead|stakeholder",
+            "location": "HANDOFF CHECKLIST section",
+            "required": true,
+            "line": 156
+          },
+          "evidence_reference": {
+            "pattern": "evidence|package|manifest",
+            "location": "HANDOFF CHECKLIST section",
+            "required": true,
+            "line": 157
+          },
+          "confirmation": {
+            "pattern": "confirm|acknowledge",
+            "location": "HANDOFF CHECKLIST section",
+            "required": true,
+            "line": 158
+          }
+        }
+      },
+      "documentation_requirements": {
+        "line": 171,
+        "weight": 0.15,
+        "checks": {
+          "doc_terms": {
+            "pattern": "log|brief|notes|transcript|manifest|report",
+            "location": "HANDOFF or EVIDENCE sections",
+            "required": true,
+            "min_count": 3,
+            "line": 184
+          },
+          "storage": {
+            "pattern": "stored|save|archive",
+            "location": "HANDOFF or EVIDENCE sections",
+            "required": true,
+            "line": 185
+          },
+          "reviewer_docs": {
+            "pattern": "reviewer|handoff|summary",
+            "location": "HANDOFF or EVIDENCE sections",
+            "required": true,
+            "line": 186
+          },
+          "format": {
+            "pattern": "\\.md|\\.json|\\.yaml",
+            "location": "HANDOFF or EVIDENCE sections",
+            "required": true,
+            "line": 187
+          }
+        }
+      },
+      "next_protocol_alignment": {
+        "line": 199,
+        "weight": 0.15,
+        "checks": {
+          "ready_statements": {
+            "pattern": "Ready for Protocol",
+            "location": "HANDOFF CHECKLIST section",
+            "required": true,
+            "line": 211
+          },
+          "next_commands": {
+            "pattern": "@apply|run|trigger",
+            "location": "HANDOFF CHECKLIST section",
+            "required": true,
+            "line": 212
+          },
+          "dependencies": {
+            "pattern": "requires|after|before",
+            "location": "HANDOFF CHECKLIST section",
+            "required": true,
+            "line": 213
+          },
+          "continuation": {
+            "pattern": "generate_session_continuation|continuation",
+            "location": "HANDOFF CHECKLIST section",
+            "required": true,
+            "line": 214
+          }
+        }
+      }
+    }
+  },
+  "validate_protocol_reasoning": {
+    "file": "validate_protocol_reasoning.py",
+    "pass_threshold": 0.85,
+    "warning_threshold": 0.7,
+    "dimensions": {
+      "reasoning_patterns": {
+        "line": 92,
+        "weight": 0.25,
+        "checks": {
+          "pattern_terms": {
+            "pattern": "pattern|heuristic|strategy|playbook|framework",
+            "location": "WORKFLOW section",
+            "required": true,
+            "min_count": 2,
+            "line": 104
+          },
+          "explanations": {
+            "pattern": "because|so that|therefore|why",
+            "location": "WORKFLOW section",
+            "required": true,
+            "min_count": 2,
+            "line": 105
+          },
+          "improvement": {
+            "pattern": "improve|refine|adjust",
+            "location": "WORKFLOW section",
+            "required": true,
+            "line": 106
+          },
+          "example_references": {
+            "pattern": "example",
+            "location": "WORKFLOW section",
+            "required": true,
+            "line": 107
+          }
+        }
+      },
+      "decision_trees": {
+        "line": 119,
+        "weight": 0.25,
+        "checks": {
+          "decision_points": {
+            "pattern": "decision|option|choose|select|branch",
+            "location": "WORKFLOW or QUALITY GATES sections",
+            "required": true,
+            "min_count": 3,
+            "line": 132
+          },
+          "criteria": {
+            "pattern": "criteria|if|when|threshold",
+            "location": "WORKFLOW or QUALITY GATES sections",
+            "required": true,
+            "min_count": 4,
+            "line": 133
+          },
+          "outcomes": {
+            "pattern": "outcome|result|path",
+            "location": "WORKFLOW or QUALITY GATES sections",
+            "required": true,
+            "min_count": 2,
+            "line": 134
+          },
+          "logging": {
+            "pattern": "log|record|document",
+            "location": "WORKFLOW or QUALITY GATES sections",
+            "required": true,
+            "min_count": 2,
+            "line": 135
+          }
+        }
+      },
+      "problem_solving_logic": {
+        "line": 147,
+        "weight": 0.2,
+        "checks": {
+          "problem_identification": {
+            "pattern": "issue|problem|risk|blocker",
+            "location": "WORKFLOW or QUALITY GATES sections",
+            "required": true,
+            "min_count": 3,
+            "line": 160
+          },
+          "root_cause": {
+            "pattern": "root cause|analysis|diagnose",
+            "location": "WORKFLOW or QUALITY GATES sections",
+            "required": true,
+            "min_count": 1,
+            "line": 161
+          },
+          "solutions": {
+            "pattern": "mitigate|resolve|fix",
+            "location": "WORKFLOW or QUALITY GATES sections",
+            "required": true,
+            "min_count": 2,
+            "line": 162
+          },
+          "validation": {
+            "pattern": "validate|confirm|re-run|test",
+            "location": "WORKFLOW or QUALITY GATES sections",
+            "required": true,
+            "min_count": 2,
+            "line": 163
+          }
+        }
+      },
+      "learning_mechanisms": {
+        "line": 175,
+        "weight": 0.15,
+        "checks": {
+          "feedback": {
+            "pattern": "feedback|lessons|retro|retrospective|continuous",
+            "location": "EVIDENCE or HANDOFF sections",
+            "required": true,
+            "line": 188
+          },
+          "improvement_tracking": {
+            "pattern": "improvement|enhancement|refine",
+            "location": "EVIDENCE or HANDOFF sections",
+            "required": true,
+            "line": 189
+          },
+          "knowledge_base": {
+            "pattern": "knowledge|catalog|library|index",
+            "location": "EVIDENCE or HANDOFF sections",
+            "required": true,
+            "line": 190
+          },
+          "adaptation": {
+            "pattern": "adapt|update|evolve",
+            "location": "EVIDENCE or HANDOFF sections",
+            "required": true,
+            "line": 191
+          }
+        }
+      },
+      "meta_cognition": {
+        "line": 204,
+        "weight": 0.15,
+        "checks": {
+          "awareness": {
+            "pattern": "aware|limitations|capacity",
+            "location": "any section",
+            "required": true,
+            "line": 216
+          },
+          "monitoring": {
+            "pattern": "monitor|track|inspect",
+            "location": "any section",
+            "required": true,
+            "line": 217
+          },
+          "correction": {
+            "pattern": "correct|adjust|calibrate",
+            "location": "any section",
+            "required": true,
+            "line": 218
+          },
+          "improvement": {
+            "pattern": "improve|mature|evolve",
+            "location": "any section",
+            "required": true,
+            "line": 219
+          }
+        }
+      }
+    }
+  },
+  "validate_protocol_reflection": {
+    "file": "validate_protocol_reflection.py",
+    "pass_threshold": 0.85,
+    "warning_threshold": 0.7,
+    "dimensions": {
+      "retrospective_analysis": {
+        "line": 92,
+        "weight": 0.3,
+        "checks": {
+          "review": {
+            "pattern": "retrospective|review|analysis|postmortem",
+            "location": "WORKFLOW or HANDOFF sections",
+            "required": true,
+            "line": 105
+          },
+          "performance": {
+            "pattern": "performance|metric|score",
+            "location": "WORKFLOW or HANDOFF sections",
+            "required": true,
+            "line": 106
+          },
+          "issues": {
+            "pattern": "issue|problem|risk",
+            "location": "WORKFLOW or HANDOFF sections",
+            "required": true,
+            "line": 107
+          },
+          "success": {
+            "pattern": "success|win|effective",
+            "location": "WORKFLOW or HANDOFF sections",
+            "required": true,
+            "line": 108
+          }
+        }
+      },
+      "continuous_improvement": {
+        "line": 120,
+        "weight": 0.25,
+        "checks": {
+          "opportunities": {
+            "pattern": "improvement|optimize|enhance",
+            "location": "any section",
+            "required": true,
+            "line": 132
+          },
+          "plans": {
+            "pattern": "plan|roadmap|task",
+            "location": "any section",
+            "required": true,
+            "line": 133
+          },
+          "tracking": {
+            "pattern": "track|monitor|measure",
+            "location": "any section",
+            "required": true,
+            "line": 134
+          },
+          "evidence": {
+            "pattern": "evidence|proof|report",
+            "location": "any section",
+            "required": true,
+            "line": 135
+          }
+        }
+      },
+      "system_evolution": {
+        "line": 148,
+        "weight": 0.2,
+        "checks": {
+          "version_history": {
+            "pattern": "version|v\\d+\\.\\d+\\.\\d+",
+            "location": "anywhere",
+            "required": true,
+            "line": 160
+          },
+          "rationale": {
+            "pattern": "rationale|because|why",
+            "location": "anywhere",
+            "required": true,
+            "line": 161
+          },
+          "impact": {
+            "pattern": "impact|effect|change",
+            "location": "anywhere",
+            "required": true,
+            "line": 162
+          },
+          "rollback": {
+            "pattern": "rollback|revert|undo",
+            "location": "anywhere",
+            "required": true,
+            "line": 163
+          }
+        }
+      },
+      "knowledge_capture": {
+        "line": 175,
+        "weight": 0.15,
+        "checks": {
+          "lessons": {
+            "pattern": "lessons|best practice|anti-pattern",
+            "location": "any section",
+            "required": true,
+            "line": 187
+          },
+          "knowledge_base": {
+            "pattern": "knowledge|wiki|repository|catalog",
+            "location": "any section",
+            "required": true,
+            "line": 188
+          },
+          "storage": {
+            "pattern": "store|archive|record",
+            "location": "any section",
+            "required": true,
+            "line": 189
+          },
+          "sharing": {
+            "pattern": "share|broadcast|publish",
+            "location": "any section",
+            "required": true,
+            "line": 190
+          }
+        }
+      },
+      "future_planning": {
+        "line": 203,
+        "weight": 0.1,
+        "checks": {
+          "roadmap": {
+            "pattern": "roadmap|future|next phase|upcoming",
+            "location": "any section",
+            "required": true,
+            "line": 215
+          },
+          "priorities": {
+            "pattern": "priority|prioritize",
+            "location": "any section",
+            "required": true,
+            "line": 216
+          },
+          "resources": {
+            "pattern": "resource|budget|team",
+            "location": "any section",
+            "required": true,
+            "line": 217
+          },
+          "timeline": {
+            "pattern": "timeline|schedule|when",
+            "location": "any section",
+            "required": true,
+            "line": 218
+          }
+        }
+      }
+    }
+  }
+}

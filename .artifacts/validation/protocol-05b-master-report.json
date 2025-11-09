@@ -1,72 +1,66 @@
 {
   "validator": "master_validator",
   "protocol_id": "05b",
-  "validation_timestamp": "2025-11-08T21:25:08.805497Z",
-  "overall_score": 0.8640969696969696,
+  "validation_timestamp": "2025-11-09T12:24:40.291784Z",
+  "overall_score": 0.8927314814814814,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
       "status": "warning",
-      "score": 0.9
+      "score": 0.9333333333333332
     },
     "protocol_role": {
       "status": "pass",
       "score": 1.0
     },
     "protocol_workflow": {
-      "status": "warning",
-      "score": 0.896969696969697
+      "status": "fail",
+      "score": 0.798148148148148
     },
     "protocol_quality_gates": {
-      "status": "pass",
-      "score": 1.0
+      "status": "warning",
+      "score": 0.8958333333333333
     },
     "protocol_scripts": {
       "status": "fail",
-      "score": 0.644
+      "score": 0.65
     },
     "protocol_communication": {
-      "status": "warning",
-      "score": 0.8875000000000001
+      "status": "pass",
+      "score": 1.0
     },
     "protocol_evidence": {
       "status": "pass",
-      "score": 0.925
+      "score": 1.0
     },
     "protocol_handoff": {
-      "status": "fail",
-      "score": 0.7375
+      "status": "warning",
+      "score": 0.8875
     },
     "protocol_reasoning": {
-      "status": "warning",
-      "score": 0.75
+      "status": "pass",
+      "score": 0.875
     },
     "protocol_reflection": {
       "status": "pass",
-      "score": 0.8999999999999999
+      "score": 0.8875
     }
   },
   "issues": [
     "Protocol number not found in header",
-    "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md",
     "Not all steps define explicit actions",
     "Evidence expectations missing in some steps",
-    "Several workflow steps omit explicit action prompts",
-    "Traceability gaps: outputs",
-    "Ready-for-next-protocol statement missing",
-    "Learning mechanisms incomplete: feedback, improvement_tracking, knowledge_base, adaptation",
-    "Knowledge capture gaps: knowledge_base, sharing",
-    "Roadmap or future direction not documented"
+    "Insufficient automation commands listed",
+    "Knowledge capture gaps: sharing"
   ],
   "recommendations": [
     "Document communication prompts per step",
+    "Add rollback or retry guidance for failure scenarios",
     "Provision config/protocol_gates/05b.yaml when automated gating is expected",
+    "Document executable automation commands for gates",
+    "Document end-to-end automation steps for the protocol",
     "Register automation commands in scripts/script-registry.json: scripts/validate_all_protocols.py",
-    "Describe CI/CD context (workflow name, runner, or trigger)",
-    "Document environment/dependency expectations",
-    "Clarify access and credential requirements",
-    "Document how command outputs are captured",
-    "Enhance archival plan with: cleanup"
+    "Document how command outputs are captured"
   ]
 }

@@ -1,42 +1,38 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "05b",
-  "validation_timestamp": "2025-11-08T21:25:08.727375Z",
-  "overall_score": 0.644,
+  "validation_timestamp": "2025-11-09T12:24:40.240849Z",
+  "overall_score": 0.65,
   "validation_status": "fail",
-  "issues": [],
+  "issues": [
+    "Insufficient automation commands listed"
+  ],
   "recommendations": [
+    "Document end-to-end automation steps for the protocol",
     "Register automation commands in scripts/script-registry.json: scripts/validate_all_protocols.py",
-    "Describe CI/CD context (workflow name, runner, or trigger)",
-    "Document environment/dependency expectations",
-    "Clarify access and credential requirements",
     "Document how command outputs are captured"
   ],
   "script_inventory": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
-    "recommendations": [],
+    "score": 0.4,
+    "status": "fail",
+    "issues": [
+      "Insufficient automation commands listed"
+    ],
+    "recommendations": [
+      "Document end-to-end automation steps for the protocol"
+    ],
     "details": {
-      "command_count": 25,
+      "command_count": 2,
       "commands": [
-        "bash\npython scripts/orchestration/validate_protocol_evidence.py \\",
-        "bash\npython scripts/orchestration/validate_project_brief.py \\",
-        "bash\npython scripts/orchestration/parse_project_brief.py \\",
-        "bash\npython scripts/orchestration/parse_architecture.py \\",
-        "bash\npython scripts/orchestration/parse_bootstrap_manifest.py \\",
-        "bash\npython scripts/orchestration/inventory_artifacts.py \\",
-        "bash\npython scripts/orchestration/validate_artifact_completeness.py \\",
-        "bash\npython scripts/orchestration/classify_project_type.py \\",
-        "bash\npython scripts/orchestration/detect_characteristics.py \\",
-        "bash\npython scripts/orchestration/generate_classification_reasoning.py \\"
+        "bash\n# Validation of new protocols (if gaps detected in STEP 4.5)",
+        "python3 validators-system/scripts/validate_all_protocols.py \\"
       ],
       "missing_scripts": []
     }
   },
   "registry_alignment": {
-    "score": 0.97,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [
       "Register automation commands in scripts/script-registry.json: scripts/validate_all_protocols.py"
@@ -47,28 +43,24 @@
       "registry_reference": true,
       "workflow_mapping": true,
       "ownership": true,
-      "total_commands": 25,
-      "registered_commands": 22,
-      "registration_ratio": 0.88,
+      "total_commands": 2,
+      "registered_commands": 0,
+      "registration_ratio": 0.0,
       "unregistered_commands": [
         "scripts/validate_all_protocols.py"
       ]
     }
   },
   "execution_context": {
-    "score": 0.0,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Describe CI/CD context (workflow name, runner, or trigger)",
-      "Document environment/dependency expectations",
-      "Clarify access and credential requirements"
-    ],
+    "recommendations": [],
     "details": {
-      "ci_context": false,
-      "environment": false,
-      "scheduling": false,
-      "permissions": false
+      "ci_context": true,
+      "environment": true,
+      "scheduling": true,
+      "permissions": true
     }
   },
   "command_syntax": {
@@ -79,11 +71,11 @@
       "Document how command outputs are captured"
     ],
     "details": {
-      "command_count": 25,
+      "command_count": 2,
       "flag_usage": false,
       "output_redirection": false,
-      "parameterization": true,
-      "documentation": false
+      "parameterization": false,
+      "documentation": true
     }
   },
   "error_handling": {

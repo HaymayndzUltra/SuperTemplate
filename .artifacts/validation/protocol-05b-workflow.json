@@ -1,16 +1,16 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "05b",
-  "validation_timestamp": "2025-11-08T21:25:08.713456Z",
-  "overall_score": 0.896969696969697,
-  "validation_status": "warning",
+  "validation_timestamp": "2025-11-09T12:24:40.232904Z",
+  "overall_score": 0.798148148148148,
+  "validation_status": "fail",
   "issues": [
     "Not all steps define explicit actions",
-    "Evidence expectations missing in some steps",
-    "Several workflow steps omit explicit action prompts"
+    "Evidence expectations missing in some steps"
   ],
   "recommendations": [
-    "Document communication prompts per step"
+    "Document communication prompts per step",
+    "Add rollback or retry guidance for failure scenarios"
   ],
   "workflow_structure": {
     "score": 1.0,
@@ -25,8 +25,7 @@
         4,
         5,
         6,
-        7,
-        8
+        7
       ],
       "section_present": true,
       "step_headings": true,
@@ -35,8 +34,8 @@
     }
   },
   "step_definitions": {
-    "score": 0.787878787878788,
-    "status": "warning",
+    "score": 0.5925925925925926,
+    "status": "fail",
     "issues": [
       "Not all steps define explicit actions",
       "Evidence expectations missing in some steps"
@@ -45,40 +44,40 @@
       "Document communication prompts per step"
     ],
     "details": {
-      "steps": 33,
-      "action_coverage": 0.9696969696969697,
-      "communication_coverage": 0.696969696969697,
-      "evidence_coverage": 0.696969696969697
+      "steps": 9,
+      "action_coverage": 0.0,
+      "communication_coverage": 0.8888888888888888,
+      "evidence_coverage": 0.8888888888888888
     }
   },
   "action_markers": {
-    "score": 0.6666666666666666,
-    "status": "warning",
-    "issues": [
-      "Several workflow steps omit explicit action prompts"
-    ],
-    "recommendations": [],
-    "details": {
-      "imperative_balance": true,
-      "action_clarity": false,
-      "contextual_support": true,
-      "step_count": 32,
-      "imperative_count": 93,
-      "action_prompts": 2,
-      "context_prompts": 81,
-      "optional_guidance": 1,
-      "cautionary_statements": 0
-    }
-  },
-  "halt_conditions": {
     "score": 1.0,
     "status": "pass",
     "issues": [],
     "recommendations": [],
     "details": {
+      "imperative_balance": true,
+      "action_clarity": true,
+      "contextual_support": true,
+      "step_count": 8,
+      "imperative_count": 47,
+      "action_prompts": 8,
+      "context_prompts": 26,
+      "optional_guidance": 1,
+      "cautionary_statements": 0
+    }
+  },
+  "halt_conditions": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Add rollback or retry guidance for failure scenarios"
+    ],
+    "details": {
       "halt_defined": true,
-      "validation_gates": true,
-      "rollback_steps": true,
+      "validation_gates": false,
+      "rollback_steps": false,
       "user_confirmation": true
     }
   },
@@ -92,8 +91,8 @@
       "artifact_locations": true,
       "manifest": true,
       "downstream_trace": true,
-      "evidence_mentions": 39,
-      "artifact_mentions": 71
+      "evidence_mentions": 19,
+      "artifact_mentions": 45
     }
   }
 }

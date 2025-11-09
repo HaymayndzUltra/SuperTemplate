@@ -1,7 +1,7 @@
 {
   "validator": "protocol_role",
   "protocol_id": "05b",
-  "validation_timestamp": "2025-11-08T21:25:08.704965Z",
+  "validation_timestamp": "2025-11-09T12:24:40.229005Z",
   "overall_score": 1.0,
   "validation_status": "pass",
   "issues": [],
@@ -39,9 +39,9 @@
       "guardrails": true,
       "boundaries": true,
       "workflow_alignment": true,
-      "guardrail_count": 106,
-      "boundary_count": 8,
-      "workflow_links": 102,
+      "guardrail_count": 64,
+      "boundary_count": 9,
+      "workflow_links": 46,
       "optional_guidance": 1
     }
   },

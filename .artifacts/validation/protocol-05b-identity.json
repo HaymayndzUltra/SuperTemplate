@@ -1,19 +1,18 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "05b",
-  "validation_timestamp": "2025-11-08T21:25:08.693853Z",
+  "validation_timestamp": "2025-11-09T12:24:40.222807Z",
   "basic_information": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.6666666666666666,
+    "status": "warning",
     "issues": [
       "Protocol number not found in header",
-      "Protocol version not found (semantic versioning expected)",
       "Phase assignment not found or invalid in AGENTS.md"
     ],
     "elements_found": {
       "protocol_number": false,
-      "protocol_name": "**",
-      "protocol_version": false,
+      "protocol_name": "API Rate Limiting registered",
+      "protocol_version": true,
       "phase_assignment": false,
       "purpose_statement": true,
       "scope_definition": true
@@ -72,11 +71,10 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.9,
+  "overall_score": 0.9333333333333332,
   "validation_status": "warning",
   "issues": [
     "Protocol number not found in header",
-    "Protocol version not found (semantic versioning expected)",
     "Phase assignment not found or invalid in AGENTS.md"
   ],
   "recommendations": []
