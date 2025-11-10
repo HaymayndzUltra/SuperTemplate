@@ -1,7 +1,47 @@
 {
   "registry_version": "1.0.0",
-  "last_updated": "2025-11-09T05:22:00Z",
+  "last_updated": "2025-11-10T01:22:00Z",
   "scripts": {
+    "extract_features": {
+      "path": "scripts/ai/extract_features.py",
+      "protocol": "10",
+      "phase": "PHASE 3",
+      "purpose": "Extract features from cleaned datasets for Protocol 10-AI",
+      "status": "active",
+      "owner": "Protocol 10-AI Feature Engineering",
+      "dependencies": ["pandas", "numpy"],
+      "version": "1.0.0"
+    },
+    "select_features": {
+      "path": "scripts/ai/select_features.py",
+      "protocol": "10",
+      "phase": "PHASE 3",
+      "purpose": "Select relevant features using statistical methods for Protocol 10-AI",
+      "status": "active",
+      "owner": "Protocol 10-AI Feature Engineering",
+      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "version": "1.0.0"
+    },
+    "encode_transform_features": {
+      "path": "scripts/ai/encode_transform_features.py",
+      "protocol": "10",
+      "phase": "PHASE 3",
+      "purpose": "Encode categorical features and apply transformations for Protocol 10-AI",
+      "status": "active",
+      "owner": "Protocol 10-AI Feature Engineering",
+      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "version": "1.0.0"
+    },
+    "validate_feature_engineering": {
+      "path": "scripts/ai/validate_feature_engineering.py",
+      "protocol": "10",
+      "phase": "PHASE 3",
+      "purpose": "Validate feature engineering completeness and quality for Protocol 10-AI",
+      "status": "active",
+      "owner": "Protocol 10-AI Feature Engineering",
+      "dependencies": ["pandas", "numpy"],
+      "version": "1.0.0"
+    },
     "validate_protocol_evidence": {
       "path": "scripts/orchestration/validate_protocol_evidence.py",
       "protocol": "05b",

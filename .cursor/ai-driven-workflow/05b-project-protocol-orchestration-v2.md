@@ -1,19 +1,26 @@
 ---
-protocol_version: "1.0.0"
+protocol_version: "1.1.0"
 protocol_number: "05b"
 protocol_name: "Project Protocol Orchestration & Execution Planning"
 protocol_type: "Workflow Orchestration"
 phase_assignment: "Phase 0 (Foundation & Discovery - Transition Gate)"
-description: "Intelligent workflow router that analyzes completed foundation artifacts to select, sequence, and customize the optimal protocol execution path, mixing protocols from both generic and AI-specific workflows as needed"
+description: "Intelligent workflow router that analyzes completed foundation artifacts to select, sequence, and customize the optimal protocol execution path, mixing protocols from both generic and AI-specific workflows as needed. NOW WITH: Project-specific protocol generation capability (PHASE 7)"
 dependencies: ["01", "02", "03", "04", "05"]
 consumers: ["Variable - depends on project classification"]
 alwaysApply: false
-triggers: ["protocol 05 complete", "foundation complete", "orchestration", "protocol selection", "workflow planning"]
+triggers: ["protocol 05 complete", "foundation complete", "orchestration", "protocol selection", "workflow planning", "protocol generation"]
 scope: "system-wide"
 compliance_status:
   validator_scores: "pending"
   last_validation: "not_yet_run"
   target_score: 0.95
+changelog:
+  - version: "1.1.0"
+    date: "2025-01-10"
+    changes: "Added PHASE 7: Project-Specific Protocol Generation with 7 automation scripts and Gate 7 validation"
+  - version: "1.0.0"
+    date: "2025-11-08"
+    changes: "Initial release with 6 phases and 19 automation scripts"
 ---
 
 <!-- [Category: EXECUTION - REASONING variant] -->
@@ -25,13 +32,13 @@ compliance_status:
 
 # PROTOCOL 05B: PROJECT PROTOCOL ORCHESTRATION & EXECUTION PLANNING
 
-**Version:** 1.0.0  
+**Version:** 1.1.0 ✨ NEW: Protocol Generation  
 **Protocol Number:** 05b  
 **Phase:** Phase 0 (Foundation & Discovery - Transition Gate)  
 **Criticality:** High  
 **Complexity:** High  
 
-**Mission:** Analyze completed foundation artifacts (Protocols 01-05) to intelligently select, sequence, and customize the optimal protocol execution path for the specific project, mixing protocols from both generic and AI-specific workflows as needed.
+**Mission:** Analyze completed foundation artifacts (Protocols 01-05) to intelligently select, sequence, and customize the optimal protocol execution path for the specific project, mixing protocols from both generic and AI-specific workflows as needed. **NEW in v1.1.0:** Generate customized, project-specific protocol instances from foundation templates (PHASE 7).
 
 ---
 
@@ -71,10 +78,10 @@ compliance_status:
 - **Protocol Name:** Project Protocol Orchestration & Execution Planning
 - **Protocol Owner:** Technical Lead / Workflow Architect
 - **Created:** 2025-11-08
-- **Version:** 1.0.0
+- **Version:** 1.1.0 (Updated: 2025-01-10)
 - **Category:** Planning/Orchestration
 - **Criticality:** High (blocks all downstream protocols)
-- **Complexity:** High (7 phases, 19 automation scripts, 35+ artifacts)
+- **Complexity:** High (8 phases [0-7], 26 automation scripts, 40+ artifacts)
 - **Scope:** System-wide (affects entire project execution)
 
 ### Protocol Lineage
@@ -1708,6 +1715,278 @@ Evidence: `.artifacts/protocol-05b/approval-record.json`
 
 ---
 
+### PHASE 7: PROJECT-SPECIFIC PROTOCOL GENERATION
+
+**Purpose:** Generate customized, project-specific protocol instances from foundation templates based on the execution plan.
+
+**Status:** ✅ NEW - Added in v1.1.0 (Hybrid Architecture Implementation)
+
+**When to Execute:** After PHASE 6 approval obtained, before handoff to next protocol
+
+**Skip Conditions:**
+- Project uses only foundation protocols (Protocols 01-05) without customization
+- User explicitly opts out of protocol generation
+- Project classification is "Simple" with no special requirements
+
+---
+
+### STEP 7.1: Prepare Generation Environment
+
+**Action:** **[MUST]** Set up project-specific protocol directory structure:
+
+```bash
+python scripts/orchestration/prepare_protocol_generation.py \
+  --project-root . \
+  --output .artifacts/protocol-05b/generation-environment.json
+```
+
+**Directory Structure Created:**
+```
+{project-root}/
+└── .cursor/
+    └── project-protocols/
+        ├── README.md (generation metadata)
+        ├── .protocol-manifest.json (tracking file)
+        └── [protocols will be generated here]
+```
+
+**Communication:** `[PROTOCOL 05B | PHASE 7 START] - Preparing protocol generation environment`
+
+**Evidence:** `.artifacts/protocol-05b/generation-environment.json`
+
+**Error Handling:**
+- Directory creation fails → **BLOCK**, check permissions
+- Manifest creation fails → **BLOCK**, validate JSON schema
+
+---
+
+### STEP 7.2: Load Foundation Templates
+
+**Action:** **[MUST]** Read foundation protocol templates from `.cursor/ai-driven-workflow/`:
+
+```bash
+python scripts/orchestration/load_foundation_templates.py \
+  --template-dir .cursor/ai-driven-workflow \
+  --execution-plan PROTOCOL-EXECUTION-PLAN.md \
+  --output .artifacts/protocol-05b/loaded-templates.json
+```
+
+**Loading Logic:**
+- Read PROTOCOL-EXECUTION-PLAN.md Section 5 (Execution Sequence)
+- For each REQUIRED/RECOMMENDED protocol:
+  - Load template file from `.cursor/ai-driven-workflow/{protocol-id}-{name}.md`
+  - Parse YAML frontmatter
+  - Extract parameterization points
+  - Store in memory for transformation
+
+**Communication:** `[PROTOCOL 05B | PHASE 7] - Loaded X foundation templates for customization`
+
+**Evidence:** `.artifacts/protocol-05b/loaded-templates.json`
+
+**Error Handling:**
+- Template file not found → **WARN**, skip protocol (use foundation directly)
+- Template parse error → **BLOCK**, validate template format
+- Missing parameterization points → **WARN**, generate without customization
+
+---
+
+### STEP 7.3: Apply Transformation Rules
+
+**Action:** **[MUST]** Transform foundation templates into project-specific instances:
+
+```bash
+python scripts/orchestration/transform_protocols.py \
+  --templates .artifacts/protocol-05b/loaded-templates.json \
+  --project-brief PROJECT-BRIEF.md \
+  --execution-plan PROTOCOL-EXECUTION-PLAN.md \
+  --customizations .artifacts/protocol-05b/customization-requirements.json \
+  --output .artifacts/protocol-05b/transformed-protocols.json
+```
+
+**Transformation Rules:**
+
+1. **Project Name Substitution:**
+   - Replace `{PROJECT_NAME}` → Actual project name from PROJECT-BRIEF.md
+   - Replace `{PROJECT_TYPE}` → Classification from PHASE 2
+   - Replace `{PROJECT_DOMAIN}` → Domain from PROJECT-BRIEF.md
+
+2. **Tech Stack Customization:**
+   - Inject tech-specific sections based on `tech_stack` from PROJECT-BRIEF
+   - Add framework-specific validation steps
+   - Customize automation scripts for tech stack
+
+3. **Workflow Step Customization:**
+   - Add/remove steps based on project characteristics
+   - Inject project-specific validation rules
+   - Customize quality gates based on requirements
+
+4. **Artifact Path Customization:**
+   - Update artifact paths to project-specific locations
+   - Customize evidence requirements
+   - Update integration points
+
+5. **Validation Rule Injection:**
+   - Add project-specific validators
+   - Customize quality thresholds
+   - Inject compliance requirements
+
+**Communication:** `[PROTOCOL 05B | PHASE 7] - Transformed X protocols with Y customizations`
+
+**Evidence:** `.artifacts/protocol-05b/transformed-protocols.json`
+
+**Error Handling:**
+- Transformation fails → **BLOCK**, log transformation error
+- Invalid customization → **WARN**, skip customization
+- Missing required fields → **BLOCK**, validate transformation rules
+
+---
+
+### STEP 7.4: Validate Generated Protocols
+
+**Action:** **[MUST]** Run 11-validator system on generated protocols:
+
+```bash
+python validators-system/scripts/validate_all_protocols.py \
+  --workspace . \
+  --protocol-dir .cursor/project-protocols \
+  --protocol-ids [generated-protocol-ids] \
+  --output .artifacts/protocol-05b/generation-validation.json
+```
+
+**Validation Requirements:**
+- Overall score ≥0.95 for each generated protocol
+- Each validator dimension ≥0.90
+- Zero critical validation failures
+- Structural integrity 100%
+
+**Communication:** `[PROTOCOL 05B | PHASE 7] - Validating X generated protocols`
+
+**Evidence:** `.artifacts/protocol-05b/generation-validation.json`
+
+**Error Handling:**
+- Validation score <0.95 → **RETRY** transformation with fixes
+- Critical failure → **BLOCK**, escalate to user
+- Max 3 retry attempts → **ESCALATE** if still failing
+
+---
+
+### STEP 7.5: Write Generated Protocols to Disk
+
+**Action:** **[MUST]** Save validated protocols to project-specific directory:
+
+```bash
+python scripts/orchestration/write_generated_protocols.py \
+  --protocols .artifacts/protocol-05b/transformed-protocols.json \
+  --validation .artifacts/protocol-05b/generation-validation.json \
+  --output-dir .cursor/project-protocols \
+  --manifest .artifacts/protocol-05b/generation-manifest.json
+```
+
+**File Naming Convention:**
+```
+.cursor/project-protocols/
+├── 06-create-prd-{project-name}.md
+├── 07-technical-design-{project-name}.md
+├── 08-task-generation-{project-name}.md
+└── ...
+```
+
+**Manifest Format:**
+```json
+{
+  "generation_timestamp": "ISO8601",
+  "project_name": "string",
+  "foundation_version": "1.0.0",
+  "protocols_generated": [
+    {
+      "protocol_id": "06",
+      "protocol_name": "Create PRD",
+      "source_template": ".cursor/ai-driven-workflow/06-create-prd.md",
+      "generated_file": ".cursor/project-protocols/06-create-prd-{project}.md",
+      "customizations_applied": ["tech_stack", "validation_rules"],
+      "validation_score": 0.97
+    }
+  ],
+  "total_protocols": 15,
+  "total_customizations": 42
+}
+```
+
+**Communication:** `[PROTOCOL 05B | PHASE 7] - Generated X project-specific protocols`
+
+**Evidence:** 
+- `.artifacts/protocol-05b/generation-manifest.json`
+- `.cursor/project-protocols/.protocol-manifest.json`
+- Generated protocol files in `.cursor/project-protocols/`
+
+**Error Handling:**
+- Write permission denied → **BLOCK**, check directory permissions
+- Disk space insufficient → **BLOCK**, request cleanup
+- File already exists → **WARN**, backup existing and overwrite
+
+---
+
+### STEP 7.6: Update Execution Plan with Generated Protocols
+
+**Action:** **[MUST]** Update PROTOCOL-EXECUTION-PLAN.md to reference generated protocols:
+
+```bash
+python scripts/orchestration/update_execution_plan.py \
+  --execution-plan PROTOCOL-EXECUTION-PLAN.md \
+  --generation-manifest .artifacts/protocol-05b/generation-manifest.json \
+  --output PROTOCOL-EXECUTION-PLAN.md
+```
+
+**Updates Applied:**
+- Add "Generated Protocols" section
+- Update protocol paths to point to `.cursor/project-protocols/`
+- Add generation metadata (timestamp, customizations)
+- Update handoff instructions
+
+**Communication:** `[PROTOCOL 05B | PHASE 7] - Updated execution plan with generated protocols`
+
+**Evidence:** Updated `PROTOCOL-EXECUTION-PLAN.md` with generation section
+
+**Error Handling:**
+- Update fails → **WARN**, manual update required
+- Execution plan corrupted → **BLOCK**, restore from backup
+
+---
+
+### STEP 7.7: Generate Protocol Generation Report
+
+**Action:** **[MUST]** Create comprehensive generation report:
+
+```bash
+python scripts/orchestration/generate_protocol_report.py \
+  --generation-manifest .artifacts/protocol-05b/generation-manifest.json \
+  --validation .artifacts/protocol-05b/generation-validation.json \
+  --output .artifacts/protocol-05b/PROTOCOL-GENERATION-REPORT.md
+```
+
+**Report Sections:**
+1. **Executive Summary** (protocols generated, customizations applied, validation scores)
+2. **Generation Details** (per-protocol customizations, transformation rules applied)
+3. **Validation Results** (validator scores, issues found, remediation applied)
+4. **Usage Instructions** (how to use generated protocols, integration points)
+5. **Maintenance Notes** (how to regenerate, update procedures)
+
+**Communication:** `[PROTOCOL 05B | PHASE 7 COMPLETE] - Protocol generation successful`
+
+**Evidence:** `.artifacts/protocol-05b/PROTOCOL-GENERATION-REPORT.md`
+
+---
+
+**PHASE 7 OUTPUTS:**
+- ✅ `.cursor/project-protocols/` directory with generated protocols
+- ✅ `.cursor/project-protocols/.protocol-manifest.json` (tracking file)
+- ✅ `.artifacts/protocol-05b/generation-manifest.json` (generation metadata)
+- ✅ `.artifacts/protocol-05b/PROTOCOL-GENERATION-REPORT.md` (comprehensive report)
+- ✅ `.artifacts/protocol-05b/generation-validation.json` (validation results)
+- ✅ Updated `PROTOCOL-EXECUTION-PLAN.md` with generation details
+
+---
+
 ## QUALITY GATES
 
 ### Gate 0: Pre-Flight Validation [Prerequisite]
@@ -1997,6 +2276,83 @@ python validators-system/scripts/validate_all_protocols.py \
 - **Regulatory:** Ensures execution plan meets compliance requirements
 
 **Evidence:** `PROTOCOL-EXECUTION-PLAN.md`, `PROTOCOL-CHECKLIST.md`, `handoff-package.zip`, `approval-record.json`
+
+---
+
+### Gate 7: Protocol Generation Validation [Completion]
+
+**Type:** Automated | **Trigger:** After PHASE 7 protocol generation | **Blocking:** Yes
+
+**Status:** ✅ NEW - Added in v1.1.0 (Hybrid Architecture Implementation)
+
+**Criteria:**
+- All generated protocols score ≥0.95 on validation
+- Project-specific directory `.cursor/project-protocols/` created successfully
+- Generation manifest complete and valid
+- All transformation rules applied successfully
+- Zero critical generation failures
+
+**Pass Threshold:** 
+- Overall validation score ≥0.95 for ALL generated protocols
+- Structural integrity 100%
+- Generation manifest complete
+
+**Fail Threshold:** 
+- Any protocol score <0.95 after 3 retry attempts
+- Critical transformation failure
+- Generation manifest invalid
+
+**Automation:**
+```bash
+python validators-system/scripts/validate_all_protocols.py \
+  --workspace . \
+  --protocol-dir .cursor/project-protocols \
+  --protocol-ids [generated-protocol-ids] \
+  --output .artifacts/protocol-05b/generation-validation.json
+```
+
+**Pass Criteria:**
+- Exit code: 0
+- All generated protocols have validation score ≥0.95
+- Generation manifest JSON valid
+- All protocol files written successfully
+- PROTOCOL-EXECUTION-PLAN.md updated with generation details
+
+**Failure Handling:**
+- **On Fail (<0.95):** Retry transformation with fixes (max 3 attempts)
+- **Remediation:** 
+  - Analyze validation failures
+  - Apply auto-fixes for common issues
+  - Re-run transformation with corrections
+  - Re-validate generated protocols
+- **Rollback:** If generation fails completely, continue with foundation templates
+- **Notification:** Alert user with generation status and fallback plan
+- **Escalation:** If generation cannot succeed after 3 attempts, escalate to user with options:
+  - Option A: Use foundation templates directly (no customization)
+  - Option B: Manual protocol customization
+  - Option C: Skip problematic protocols
+
+**Waiver Policy:** 
+- Waivers permitted for non-critical protocols with score ≥0.90
+- Critical protocols (06-09) must achieve ≥0.95
+- All waivers require documented justification
+
+**Compliance Integration:**
+- **Security:** Validates generated protocol integrity
+- **Audit Trail:** Logs all generation attempts, transformations, and validations
+- **Regulatory:** Ensures generated protocols meet compliance standards
+- **Quality:** Maintains protocol quality standards across generated instances
+
+**Evidence:** 
+- `.artifacts/protocol-05b/generation-validation.json`
+- `.artifacts/protocol-05b/generation-manifest.json`
+- `.artifacts/protocol-05b/PROTOCOL-GENERATION-REPORT.md`
+- `.cursor/project-protocols/.protocol-manifest.json`
+
+**Skip Conditions:**
+- PHASE 7 skipped (user opted out or simple project)
+- No protocols require customization
+- Project uses only foundation protocols
 
 ---
 

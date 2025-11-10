@@ -1,0 +1,138 @@
+# Protocol 10-AI Feature Engineering Quality Gates Configuration
+# Generated: 2025-01-10
+
+protocol_id: "10"
+protocol_name: "AI Feature Engineering & Transformation"
+phase: "Phase 3: AI Model Development"
+
+gates:
+  - id: 1
+    name: "Feature Engineering Completeness"
+    type: "execution"
+    threshold:
+      type: "numeric"
+      operator: ">="
+      value: 0.98
+    metrics:
+      - name: "completeness_score"
+        description: "Percentage of required features successfully engineered"
+        target: 0.98
+      - name: "coverage_rate"
+        description: "Percentage of data samples with complete feature values"
+        target: 1.0
+      - name: "missing_feature_count"
+        description: "Number of missing or failed features"
+        target: 0
+    evidence:
+      - path: ".artifacts/protocol-10-ai-feature-engineering/reports/completeness-report.json"
+        type: "json"
+        required: true
+      - path: ".artifacts/protocol-10-ai-feature-engineering/feature-manifest.json"
+        type: "json"
+        required: true
+    validation_script: "scripts/ai/validate_feature_engineering.py"
+    compliance_standards:
+      - "ISO/IEC 42001 (AI Management System)"
+      - "GDPR (data privacy)"
+      - "SOC2 (data security)"
+    failure_actions:
+      - rollback: "Revert to Protocol 09 datasets"
+      - retry: "Re-run extraction with adjusted parameters"
+      - notification: "Alert technical lead when completeness < 0.98"
+    waiver: false
+
+  - id: 2
+    name: "Feature Correlation Analysis"
+    type: "execution"
+    threshold:
+      type: "boolean"
+      value: true
+    metrics:
+      - name: "correlation_matrix"
+        description: "Pairwise correlation coefficients for all features"
+        target: "computed"
+      - name: "vif_scores"
+        description: "Variance Inflation Factor scores for features"
+        target: "<10"
+      - name: "feature_independence_score"
+        description: "Percentage of feature pairs with correlation < 0.95"
+        target: 1.0
+    evidence:
+      - path: ".artifacts/protocol-10-ai-feature-engineering/reports/correlation-report.json"
+        type: "json"
+        required: true
+      - path: ".artifacts/protocol-10-ai-feature-engineering/correlation-matrix.csv"
+        type: "csv"
+        required: true
+    validation_script: "scripts/ai/validate_feature_engineering.py"
+    compliance_standards:
+      - "Statistical best practices"
+      - "HIPAA (if healthcare data)"
+      - "Regulatory compliance for model fairness"
+    failure_actions:
+      - rollback: "Remove highly correlated features"
+      - retry: "Re-run correlation analysis"
+      - notification: "Alert data science team when multicollinearity detected"
+    waiver: true
+    waiver_conditions: "Domain knowledge justifies retaining correlated features with stakeholder approval"
+
+  - id: 3
+    name: "Feature Store Validation"
+    type: "completion"
+    threshold:
+      type: "boolean"
+      value: true
+    metrics:
+      - name: "accessibility_score"
+        description: "Feature store connectivity test success rate"
+        target: 1.0
+      - name: "metadata_completeness"
+        description: "Percentage of features with complete metadata"
+        target: 1.0
+      - name: "versioning_correctness"
+        description: "Feature version consistency check"
+        target: 1.0
+      - name: "data_integrity_score"
+        description: "Feature data integrity validation success rate"
+        target: 1.0
+    evidence:
+      - path: ".artifacts/protocol-10-ai-feature-engineering/reports/feature-store-validation.json"
+        type: "json"
+        required: true
+      - path: ".artifacts/protocol-10-ai-feature-engineering/feature-store-metadata.json"
+        type: "json"
+        required: true
+    validation_script: "scripts/ai/validate_feature_engineering.py"
+    compliance_standards:
+      - "Data governance policies"
+      - "PCI-DSS (if payment data)"
+      - "FedRAMP (if federal data)"
+    failure_actions:
+      - rollback: "Fix feature store configuration"
+      - retry: "Re-populate features and re-run validation"
+      - notification: "Alert infrastructure team when validation fails"
+    waiver: false
+
+automation:
+  enabled: true
+  ci_integration: true
+  scripts:
+    - name: "extract_features"
+      path: "scripts/ai/extract_features.py"
+      gates: [1]
+    - name: "select_features"
+      path: "scripts/ai/select_features.py"
+      gates: [1, 2]
+    - name: "encode_transform_features"
+      path: "scripts/ai/encode_transform_features.py"
+      gates: [1, 2]
+    - name: "validate_feature_engineering"
+      path: "scripts/ai/validate_feature_engineering.py"
+      gates: [1, 2, 3]
+
+reporting:
+  format: "json"
+  output_path: ".artifacts/protocol-10-ai-feature-engineering/reports/"
+  include_metrics: true
+  include_evidence: true
+  include_compliance: true

@@ -1,29 +1,25 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "10",
-  "validation_timestamp": "2025-11-06T16:43:35.327339Z",
-  "overall_score": 0.8374999999999999,
-  "validation_status": "warning",
-  "issues": [
-    "Reasoning patterns not explicitly named",
-    "Self-awareness statements missing"
-  ],
+  "validation_timestamp": "2025-11-10T01:35:17.718164Z",
+  "overall_score": 0.9375,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [],
   "reasoning_patterns": {
-    "score": 0.5,
-    "status": "fail",
-    "issues": [
-      "Reasoning patterns not explicitly named"
-    ],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [],
     "recommendations": [],
     "details": {
       "matches": [
+        "pattern",
         "strategy"
       ],
-      "pattern_terms": false,
+      "pattern_terms": true,
       "explanations": true,
-      "improvement": false,
-      "example_references": true
+      "improvement": true,
+      "example_references": false
     }
   },
   "decision_trees": {
@@ -63,14 +59,12 @@
     }
   },
   "meta_cognition": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Self-awareness statements missing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "awareness": false,
+      "awareness": true,
       "monitoring": true,
       "correction": true,
       "improvement": true

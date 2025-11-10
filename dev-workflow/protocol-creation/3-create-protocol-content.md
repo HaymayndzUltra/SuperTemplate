@@ -33,8 +33,9 @@ You are a **Protocol Content Writer**. Your mission is to populate the protocol 
 3. Follows existing protocol patterns and style
 4. Includes all required examples and explanations
 5. Passes content validation checks
+6. **Generates actual script files** (not just placeholders) for all documented automation hooks
 
-**Success Criteria**: Complete protocol document that is ready for validator testing in Protocol 4.
+**Success Criteria**: Complete protocol document with actual generated script files that is ready for validator testing in Protocol 4.
 
 ---
 
@@ -187,6 +188,276 @@ usable requirements documentation.
 - **Required**: Command syntax (flags, output redirection, parameterization)
 - **Required**: Error handling (exit codes, fallback, logging, manual paths)
 - **Content**: Document specific automation scripts and commands
+
+#### 3.7.5 GENERATE ACTUAL SCRIPT FILES
+**[STRICT]** After documenting scripts in AUTOMATION HOOKS section, you MUST generate actual script files.
+
+**Process**:
+1. **Extract Script Requirements** from AUTOMATION HOOKS section:
+   - Script names (e.g., `validate_gate_XX_*.py`, `aggregate_evidence_XX.py`)
+   - Script purposes (what each script automates)
+   - Input/output requirements
+   - Dependencies
+
+2. **Determine Script Types**:
+   - **Gate Validators**: `validate_gate_{protocol_num}_{gate_name}.py`
+   - **Evidence Aggregation**: `aggregate_evidence_{protocol_num}.py`
+   - **Protocol Gates Runner**: `run_protocol_{protocol_num}_gates.py`
+   - **Prerequisites Validator**: `validate_prerequisites_{protocol_num}.py`
+   - **Custom Scripts**: Based on protocol-specific needs
+
+3. **Generate Script Files** using templates:
+
+**Template 1: Gate Validator Script**
+```python
+#!/usr/bin/env python3
+"""Gate validation for Protocol {protocol_num}: {protocol_name}.
+
+{gate_description}
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+# Add scripts directory to path
+sys.path.insert(0, str(Path(__file__).parent))
+
+from gate_utils import validate_gate, write_gate_result
+
+
+def validate_{gate_name}_gate(protocol_num: str, workspace: Path) -> dict:
+    """Validate {gate_name} gate for Protocol {protocol_num}.
+    
+    Args:
+        protocol_num: Protocol number (e.g., "01")
+        workspace: Workspace root path
+        
+    Returns:
+        Validation result dict with status, threshold, metrics, evidence
+    """
+    # Gate validation logic
+    artifacts_dir = workspace / f".artifacts/protocol-{protocol_num}"
+    
+    # Check if required artifacts exist
+    required_artifacts = [
+        # Add required artifact paths
+    ]
+    
+    missing_artifacts = [a for a in required_artifacts if not (artifacts_dir / a).exists()]
+    
+    if missing_artifacts:
+        return {
+            "status": "fail",
+            "threshold": "{threshold}",
+            "metrics": {"missing_artifacts": len(missing_artifacts)},
+            "evidence": f"Missing artifacts: {', '.join(missing_artifacts)}",
+            "notes": "Required artifacts not found"
+        }
+    
+    # Perform validation checks
+    # Add specific validation logic here
+    
+    return {
+        "status": "pass",
+        "threshold": "{threshold}",
+        "metrics": {{"completeness": 100}},
+        "evidence": str(artifacts_dir / "{evidence_file}"),
+        "notes": "Gate validation passed"
+    }
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Main entry point for gate validator."""
+    parser = argparse.ArgumentParser(
+        description="Validate {gate_name} gate for Protocol {protocol_num}"
+    )
+    parser.add_argument(
+        "--protocol",
+        type=str,
+        default="{protocol_num}",
+        help="Protocol number"
+    )
+    parser.add_argument(
+        "--workspace",
+        type=Path,
+        default=Path.cwd(),
+        help="Workspace root directory"
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        help="Output JSON file for results"
+    )
+    
+    args = parser.parse_args(argv)
+    
+    result = validate_{gate_name}_gate(args.protocol, args.workspace)
+    
+    if args.output:
+        write_gate_result(result, args.output)
+    else:
+        print(json.dumps(result, indent=2))
+    
+    return 0 if result["status"] == "pass" else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+```
+
+**Template 2: Evidence Aggregation Script**
+```python
+#!/usr/bin/env python3
+"""Evidence aggregation for Protocol {protocol_num}: {protocol_name}.
+
+Collects all gate validation results and artifacts into a consolidated evidence manifest.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import subprocess
+import sys
+from datetime import datetime
+from pathlib import Path
+
+# Add scripts directory to path
+sys.path.insert(0, str(Path(__file__).parent))
+
+from gate_utils import load_manifest_data, write_manifest
+
+
+def aggregate_evidence(protocol_num: str, workspace: Path) -> dict:
+    """Aggregate all evidence for Protocol {protocol_num}.
+    
+    Args:
+        protocol_num: Protocol number (e.g., "01")
+        workspace: Workspace root path
+        
+    Returns:
+        Evidence manifest dict
+    """
+    artifacts_dir = workspace / f".artifacts/protocol-{protocol_num}"
+    artifacts_dir.mkdir(parents=True, exist_ok=True)
+    
+    manifest = {{
+        "protocol": protocol_num,
+        "timestamp": datetime.now().isoformat(),
+        "artifacts": [],
+        "gates": []
+    }}
+    
+    # Collect artifacts
+    # Add artifact collection logic here
+    
+    # Collect gate results
+    # Add gate result collection logic here
+    
+    return manifest
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Main entry point for evidence aggregation."""
+    parser = argparse.ArgumentParser(
+        description="Aggregate evidence for Protocol {protocol_num}"
+    )
+    parser.add_argument(
+        "--protocol",
+        type=str,
+        default="{protocol_num}",
+        help="Protocol number"
+    )
+    parser.add_argument(
+        "--workspace",
+        type=Path,
+        default=Path.cwd(),
+        help="Workspace root directory"
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        help="Output manifest file"
+    )
+    
+    args = parser.parse_args(argv)
+    
+    manifest = aggregate_evidence(args.protocol, args.workspace)
+    
+    output_file = args.output or args.workspace / f".artifacts/protocol-{args.protocol}/evidence-manifest.json"
+    write_manifest(manifest, output_file)
+    
+    print(f"Evidence manifest written to: {{output_file}}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+```
+
+**Template 3: Protocol Gates Runner Script**
+```python
+#!/usr/bin/env python3
+"""Run all gates for Protocol {protocol_num}: {protocol_name}."""
+
+from __future__ import annotations
+
+from gate_stub_framework import run_protocol_cli
+
+
+if __name__ == "__main__":
+    raise SystemExit(run_protocol_cli("run_protocol_{protocol_num}_gates"))
+```
+
+4. **Create Script Files**:
+   - For each script documented in AUTOMATION HOOKS:
+     - Generate script file using appropriate template
+     - Replace placeholders: `{protocol_num}`, `{protocol_name}`, `{gate_name}`, etc.
+     - Save to `scripts/` directory
+     - Make executable: `chmod +x scripts/{script_name}.py`
+
+5. **Register Scripts in script-registry.json**:
+   ```json
+   {{
+     "{script_key}": {{
+       "path": "scripts/{script_name}.py",
+       "protocol": "{protocol_num}",
+       "phase": "{protocol_phase}",
+       "purpose": "{script_purpose}",
+       "status": "active",
+       "owner": "Protocol {protocol_num}",
+       "dependencies": ["python3", "gate_utils"],
+       "version": "1.0.0"
+     }}
+   }}
+   ```
+
+6. **Update AUTOMATION HOOKS Section**:
+   - Replace placeholder script names with actual generated script paths
+   - Update command examples to use actual script names
+   - Add verification that scripts exist
+
+**Validation Checklist**:
+- ✓ All documented scripts have corresponding `.py` files in `scripts/` directory
+- ✓ All scripts are registered in `scripts/script-registry.json`
+- ✓ All scripts have executable permissions
+- ✓ Script templates match existing script patterns
+- ✓ AUTOMATION HOOKS section references actual script files
+
+**Example Output**:
+```bash
+# Generated scripts:
+scripts/validate_gate_{protocol_num}_compliance.py
+scripts/aggregate_evidence_{protocol_num}.py
+scripts/run_protocol_{protocol_num}_gates.py
+
+# Updated script-registry.json:
+Added 3 new script entries for Protocol {protocol_num}
+```
 
 #### 3.8 HANDOFF CHECKLIST Section
 - **Required**: ≥6 checklist items across ≥3 categories
@@ -408,6 +679,21 @@ if not run_prevalidation(role_content):
    - Ensure proper markdown syntax
    - Ensure all links valid
 
+### STEP 5.5: Generate Script Files (NEW)
+
+**[STRICT]** After completing AUTOMATION HOOKS section, execute STEP 3.7.5 to generate actual script files:
+
+1. **Extract Script Requirements** from completed AUTOMATION HOOKS section
+2. **Generate Script Files** using templates from STEP 3.7.5
+3. **Register Scripts** in `scripts/script-registry.json`
+4. **Update AUTOMATION HOOKS** section with actual script paths
+5. **Verify Scripts** exist and are executable
+
+**Output**: 
+- Generated `.py` files in `scripts/` directory
+- Updated `scripts/script-registry.json`
+- Updated AUTOMATION HOOKS section with actual script references
+
 ### STEP 6: Save Protocol Artifact
 
 Save the complete protocol to:
@@ -461,6 +747,9 @@ Save the complete protocol to:
 ### Status Announcements
 - `[CONTENT CREATION START]` Populating protocol structure...
 - `[SECTION COMPLETE] Section {name} populated`
+- `[SCRIPT GENERATION START]` Generating actual script files from AUTOMATION HOOKS...
+- `[SCRIPTS GENERATED]` Created {count} script files in `scripts/` directory
+- `[REGISTRY UPDATED]` Registered {count} scripts in `scripts/script-registry.json`
 - `[VALIDATION COMPLETE]` Content meets requirements
 - `[PROTOCOL READY]` Protocol file created: `.cursor/ai-driven-workflow/XX-protocol-name.md`
 
@@ -487,7 +776,12 @@ python3 scripts/check_placeholders.py --file .cursor/ai-driven-workflow/XX-proto
 
 # Validate content requirements
 python3 scripts/validate_content_requirements.py --protocol XX
+
+# Generate script files (executed during Protocol 3)
+python3 scripts/generate_protocol_scripts.py --protocol XX --workspace .
 ```
+
+**Note**: Script files are **actually generated** during Protocol 3 execution (STEP 3.7.5), not just documented. All scripts referenced here must exist in `scripts/` directory and be registered in `scripts/script-registry.json`.
 
 ---
 
@@ -502,6 +796,9 @@ python3 scripts/validate_content_requirements.py --protocol XX
 - [ ] All 9 sections populated with content
 - [ ] All placeholders replaced
 - [ ] Content validated against requirements
+- [ ] Script files generated (STEP 3.7.5)
+- [ ] Scripts registered in script-registry.json
+- [ ] AUTOMATION HOOKS section updated with actual script paths
 
 ### Quality
 - [ ] Content completeness: 100%
@@ -512,6 +809,8 @@ python3 scripts/validate_content_requirements.py --protocol XX
 - [ ] Protocol file saved to `.cursor/ai-driven-workflow/`
 - [ ] Content creation log saved
 - [ ] Requirements compliance report generated
+- [ ] Script files created in `scripts/` directory
+- [ ] Script registry updated with new entries
 
 ### Integration
 - [ ] Protocol file ready for validation
@@ -526,6 +825,8 @@ python3 scripts/validate_content_requirements.py --protocol XX
 | Protocol File | `.cursor/ai-driven-workflow/XX-protocol-name.md` | Protocol | Completeness: 100% |
 | Content Creation Log | `.artifacts/protocol-creation/content-creation.log` | Log | Sections: 9/9 |
 | Requirements Compliance Report | `.artifacts/protocol-creation/compliance-report.json` | Report | Compliance: ≥95% |
+| Generated Scripts | `scripts/validate_gate_XX_*.py`, `scripts/aggregate_evidence_XX.py`, etc. | Scripts | Count: ≥3 scripts |
+| Script Registry Update | `scripts/script-registry.json` | Registry | New entries: ≥3 |
 
 ---
 

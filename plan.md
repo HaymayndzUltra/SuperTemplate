@@ -1,169 +1,367 @@
-**Prompt:** Pakireview ulit ang planong ito at sundin ang mga hakbang sa ibaba:
-1. I-cross-check ang nilalaman sa `/home/haymayndz/SuperTemplate/AI-project-workflow` at `/home/haymayndz/SuperTemplate/.cursor/ai-driven-workflow` para malaman kung paano sila sumusuporta o kumokontra sa kasalukuyang assessment.
-2. Ilatag ang napansing gaps, overlaps, at kulang na automation/validators base sa dalawang directory na iyon.
-3. Gumawa ng consolidated analysis section na nagha-highlight kung alin sa 23 protocols ang kailangan pang i-refine o dagdagan para maging AI-ready.
-4. Maghanda ng final recommendation summary (strategic level) at isang implementation plan na naka-breakdown sa phased actions, owners, dependencies, at timeline hints.
-5. Ilista ang mga kinakailangang artifacts at evidence na dapat i-produce sa bawat phase (e.g., ADRs, risk logs, change-request forms, validator scripts).
+# PROJECT-SPECIFIC PROTOCOL GENERATION SYSTEM
+## Implementation Plan
+
+**Status**: ✅ Architecture Decided - Ready for Implementation  
+**Last Updated**: 2025-01-XX  
+**Approach**: Hybrid Architecture - Enhance Protocol 05b with Generation Capability
+
+---
+
+## 🎯 GOAL
+
+### Core Vision
+Create a **protocol generator** that can generate the correct protocols depending on the specific project requirements.
+
+### Key Principle
+**"One Template Per Project"** = Each project gets its own customized protocol files tailored to that specific project.
+
+### What This Means
+- **Input**: Project information (requirements, tech stack, scope)
+- **Process**: Analyze project → Generate project-specific protocols
+- **Output**: Customized protocol files for that specific project
+- **Storage**: Project-specific location (not shared generic protocols)
+
+---
+
+## ✅ ARCHITECTURAL DECISION
+
+### Decision: Hybrid Architecture (Option A + Option B Combined)
+
+**Answer to Key Question:**
+Para makagawa ng tamang protocols ayon sa magiging project, mas tama na:
+- **✅ Hybrid Approach**: Keep existing foundation (`.cursor/ai-driven-workflow/`) as **template library**, but **generate project-specific protocol instances** in project-specific locations.
+
+### Architecture Overview
+
+```
+Foundation Templates (Read-Only):
+  .cursor/ai-driven-workflow/
+    ├── 01-client-proposal-generation.md (template)
+    ├── 02-client-discovery-initiation.md (template)
+    ├── 03-project-brief-creation.md (template)
+    └── ... (all existing protocols as templates)
+    ↓
+Protocol 05b Enhanced (Generator):
+  - Analyzes PROJECT-BRIEF.md
+  - Selects which protocols are needed
+  - Transforms templates → project-specific
+  - Generates customized instances
+    ↓
+Project-Specific Instances (Generated):
+  {project-root}/.cursor/project-protocols/
+    ├── 06-create-prd.md (customized for this project)
+    ├── 07-technical-design-architecture.md (customized)
+    └── ... (only protocols needed for this project)
+```
+
+### Key Principles
+1. **Single Source of Truth**: Foundation templates remain in `.cursor/ai-driven-workflow/`
+2. **Project Isolation**: Each project gets its own `.cursor/project-protocols/` directory
+3. **No Duplication**: Templates stay in foundation, instances generated per project
+4. **Backward Compatible**: Existing Protocol 05b workflow preserved, enhanced with generation
+
+---
+
+## 📋 IMPLEMENTATION PLAN
+
+### Phase 1: Decision Framework (Suggestion 2)
+**Status**: ⏳ To Do  
+**Priority**: High  
+**Estimated Time**: 2-3 days
+
+#### Tasks:
+1. **Create Decision Framework Document**
+   - Define evaluation criteria:
+     - Project isolation requirements (High/Medium/Low)
+     - Maintenance overhead acceptable? (Yes/No)
+     - Template reuse needed? (Yes/No)
+     - Integration complexity? (Simple/Complex)
+   - Create scoring rubric for each option
+   - Document decision rationale with evidence
+
+2. **Apply Framework to Current Decision**
+   - Evaluate Hybrid Architecture using framework
+   - Document why Hybrid > Option A or Option B alone
+   - Create decision artifact: `.artifacts/architecture-decision.md`
+
+3. **Establish Review Process**
+   - Define when to re-evaluate framework
+   - Create framework update process
+   - Document framework versioning
 
 **Deliverables:**
-- Updated analysis section (insert within this document) na nagre-reference sa parehong directories.
-- Final recommendation summary.
-- Detailed implementation plan table o bullet list.
-
-Review of AI Project Workflow and Suggested Enhancements
-Overview of Provided Workflow and Summary
-
-The supplied workflow describes a series of 23 “protocols” intended to govern an AI-driven project from initiation through closure. Each protocol includes inputs, outputs, quality gates and automation hooks. The user’s summary outlines several logical issues (e.g., overlapping protocols, numbering gaps, redundant validators and inconsistent governance) and highlights missing workflows such as change management, data/model lifecycle processes, risk and compliance assessment, architecture documentation, script governance and post‑deployment feedback loops.
-
-Evaluation of Accuracy, Completeness and Suitability
-Logical Coherence
-
-The overall sequence attempts to follow a logical progression from client onboarding to discovery, planning, execution, testing, deployment and closure. However, several issues affect clarity:
-
-Overlapping bootstrap protocols – Protocol 04 (“creating a governed scaffold”) and Protocol 05 (“legacy alignment and governance rules”) cover similar ground. Without clear demarcation, team members could confuse responsibilities, leading to duplication of effort or gaps.
-
-Numbering gaps and missing Protocol 07 – Later protocols refer to a technical design step (Protocol 07), yet the summary does not include its description. A missing design protocol makes it difficult to see how the project transitions from requirements (Protocol 06) to task execution (Protocol 08). Logical flow should be explicit.
-
-Redundant validation scripts – Protocols 10 and 14, 12 and 16, and 13 and 17 appear to share identical gate validators. If these phases genuinely differ (e.g., staging vs production testing), then separate scripts should implement phase‑specific checks; otherwise they could be consolidated to reduce noise.
-
-Inconsistent governance of scripts and naming – Several protocols have empty validator lists while others refer to scripts that are not registered, suggesting incomplete automation. Mixing zero‑indexed and one‑indexed protocol numbers may confuse contributors. Clear versioning and ownership metadata should accompany each protocol.
-
-Completeness
-
-The current workflow covers many typical software‑development steps (proposal, discovery, briefing, scaffold creation, technical design, task execution, testing, rollout, maintenance and closure). It emphasizes quality gates and evidence collection, which is commendable. However, as the user summary indicates, there are significant gaps for an AI‑specific project. Key omissions include:
-
-Data and model lifecycle – There is no dedicated protocol for data preparation, model training, evaluation or deployment. An AI lifecycle should address data quality, feature engineering, experiment tracking, model versioning and performance monitoring. The AI development lifecycle emphasises phases of data collection, preparation, model design, training, evaluation, deployment and monitoring【703713494355336†L335-L570】. Without these protocols, the workflow risks treating model work as a black box.
-
-Change control – Projects often evolve due to client feedback or emerging insights. A formal change‑request process should manage scope creep by capturing requests, assessing impact, obtaining approval and updating plans. Change control guidelines recommend documenting requests, assessing impacts, deciding approvals, implementing updates and closing the change with a documented log
-asana.com
-.
-
-Risk and compliance assessment – AI projects carry security, privacy, ethical and regulatory risks. A structured AI risk assessment involves defining scope, inventorying systems, ranking risks based on likelihood and impact, implementing mitigations and continuously monitoring
-mindgard.ai
-. Current protocols mention security testing but lack a dedicated risk and ethics step.
-
-Architecture documentation and decision logging – It is unclear how architectural decisions are captured or communicated. Architectural decision records (ADRs) provide a structured way to document decisions, context, alternatives and consequences
-dev.to
-. Without ADRs, reasoning behind design choices may be lost, hindering maintenance and onboarding.
-
-Script/tool governance – The workflow heavily relies on automation scripts but lacks a protocol to maintain a script registry, assign ownership, and retire obsolete scripts. Untracked scripts can cause drift between intended and actual processes.
-
-Post‑deployment feedback and continuous improvement – Maintenance protocols mention monitoring but do not formalize user feedback collection, bug triage, service‑level agreement (SLA) compliance, or continuous improvement loops. AI systems should include performance and drift monitoring, user feedback collection, and retraining triggers【703713494355336†L335-L570】.
-
-Suitability and Readiness for Deployment
-
-The described workflow is partially suitable for general software projects but not fully ready for AI‑driven workflows. It lacks essential AI lifecycle elements, risk management and change control processes. The quality‑gate approach and automation hooks are aligned with DevOps practices, but missing automation and inconsistent script governance reduce reliability. Scalability and integration depend on the completeness of scripts and clear ownership; missing validators and configuration files (e.g., absent gate YAMLs) raise deployment risks.
-
-Recommendations and Improvements
-
-To align the workflow with best practices and ensure reliability, consider the following enhancements (some of which correspond to the user’s suggestions):
-
-1. Integrate a Formal Change Request Process
-
-Add a protocol between task generation (Protocol 08) and execution that handles scope adjustments. This protocol should:
-
-Accept change requests via a structured form (from clients or internal stakeholders).
-
-Perform impact analysis on timeline, cost and downstream artefacts.
-
-Require approval from the product owner or steering committee before implementation.
-
-Update the requirements document and task backlog, with evidence logged.
-
-Following best practices, change control should include request initiation, assessment, decision/approval, implementation and closure with documentation
-asana.com
-.
-
-2. Add Data Pipeline & Model Development Protocols
-
-Introduce dedicated protocols for data pipeline planning, model development, and evaluation:
-
-Data ingestion and preparation – define data requirements, source data, perform quality and bias checks, document data dictionaries and preprocessing scripts. Use automation to validate schema and detect anomalies.
-
-Model training and experimentation – specify target metrics, design model architectures, run experiments with reproducibility (tracking hyperparameters and random seeds), and store training logs. Ensure baseline performance thresholds and fairness metrics are met before proceeding.
-
-Model evaluation and drift monitoring – evaluate models on separate validation and test sets, perform robustness and fairness checks, and document results. Establish a monitoring plan for production (data drift detection, performance tracking, A/B testing)【703713494355336†L335-L570】.
-
-These protocols should produce versioned model artefacts, evaluation reports and monitoring dashboards.
-
-3. Introduce a Risk & Compliance Assessment Protocol
-
-Place a protocol after discovery/prior to technical design (around Protocol 03 or 04) dedicated to risk and compliance. Activities should include:
-
-Identifying potential risks (security vulnerabilities, privacy concerns, algorithmic bias) and regulatory obligations.
-
-Ranking risks using a risk matrix (likelihood vs. impact) and creating mitigation plans
-mindgard.ai
-.
-
-Reviewing compliance with frameworks (e.g., GDPR, ISO/IEC 42001) and documenting ethical considerations.
-
-Obtaining stakeholder sign‑off on the risk and mitigation plan.
-
-This protocol ensures that ethical and legal issues are addressed early in the project.
-
-4. Expand Technical Design into Architecture Design & Decision Logging
-
-Ensure that the technical design step (Protocol 07) explicitly produces:
-
-A system architecture diagram showing components, data flows and interfaces.
-
-Architectural Decision Records (ADRs) that capture key design choices, context, alternatives and consequences, following best practices
-dev.to
-. Store ADRs alongside code to facilitate future maintenance.
-
-Onboarding documentation summarizing architecture and providing guidelines for new developers.
-
-Create automation to validate that every requirement is addressed by a design element and link ADRs to requirements.
-
-5. Implement Automation Script Governance
-
-Add a closure‑stage protocol that audits all scripts used throughout the project. It should:
-
-Update a script-registry.json with purpose, owner, version and status for each script.
-
-Mark temporary or obsolete scripts as deprecated and remove them if no longer needed.
-
-Assign maintenance responsibility for active scripts and schedule periodic reviews.
-
-Automation can scan the repository for unregistered scripts and enforce registry updates during CI. This governance reduces technical debt and ensures traceability.
-
-6. Formalize User Feedback & Continuous Improvement
-
-Expand post‑deployment protocols to include:
-
-User feedback collection (through surveys, support tickets, analytics) and bug triage.
-
-SLA compliance reporting (uptime, response time) and identification of performance issues.
-
-Continuous improvement backlog, capturing enhancement ideas and prioritizing them for the next iteration.
-
-Model drift monitoring to detect changes in data distribution or performance and trigger retraining【703713494355336†L335-L570】.
-
-Quality gates should ensure all critical issues are documented and addressed, and improvement actions are planned before project closure.
-
-7. Consolidate Redundant Protocols and Clarify Numbering
-
-Combine overlapping bootstrap protocols and consolidate redundant test/incident response protocols by parameterizing them for staging vs production. This reduces confusion and duplication.
-
-Adopt a consistent numbering scheme (e.g., 01–n) without zero‑prefixed duplicates. Include explicit references to prerequisites and successor protocols so the flow is evident.
-
-8. Ensure Completeness of Gate Validators and Automation
-
-Audit the repository to ensure that all protocols have corresponding validator scripts and configuration files. Missing gate YAMLs (as seen in the repository) should be added; otherwise the quality gates will fail. Document script owners and ensure test coverage for validators.
-
-9. Address Scalability and Integration
-
-Plan for scalability by specifying deployment options (cloud, on‑prem, serverless) and ensuring the architecture supports horizontal scaling. Document integration points (APIs, data connectors) to ease incorporation into existing systems.
-
-Include explicit guidelines for containerization and version control of models and infrastructure, along with rollback procedures. The AI lifecycle emphasises containerization, version control and rollback strategies for deployment and monitoring【703713494355336†L335-L570】.
-
-10. Ethical and Cultural Considerations
-
-Incorporate bias detection and mitigation in the data and model protocols. Evaluate models for fairness across demographic groups and document remediation steps. This aligns with regulatory trends and builds trust.
-
-Provide transparency to stakeholders through interpretable models and clear communication of limitations.
-
-Conclusion
-
-The provided workflow demonstrates a commendable commitment to quality gates and evidence‑driven project management but suffers from logical inconsistencies, incomplete automation and missing AI‑specific elements. Incorporating the recommended protocols—change management, data and model lifecycle, risk and compliance assessment, architecture decision logging, script governance and user feedback—will greatly enhance the workflow’s robustness and bring it in line with industry best practices. Aligning numbering, consolidating overlapping steps and ensuring full implementation of automation scripts will further improve clarity and efficiency. These adjustments will make the workflow ready for deployment in complex AI projects and ensure ethical, compliant and sustainable outcomes.
+- `DECISION-FRAMEWORK.md` - Reusable framework for architectural decisions
+- `.artifacts/architecture-decision.md` - Current decision with evidence
+
+---
+
+### Phase 2: Protocol 05b Enhancement (Suggestion 1)
+**Status**: ⏳ To Do  
+**Priority**: Critical  
+**Estimated Time**: 5-7 days
+
+#### Tasks:
+1. **Extend Protocol 05b Analysis Engine**
+   - Add protocol generation capability to existing analysis
+   - Integrate with template reading logic
+   - Maintain backward compatibility with existing workflow
+
+2. **Create Template-to-Instance Transformation Engine**
+   - Design transformation rules:
+     - Replace `{PROJECT_NAME}` with actual project name
+     - Customize workflow steps based on tech stack
+     - Add/remove protocol sections based on project needs
+     - Inject project-specific validation rules
+   - Implement transformation logic
+   - Create transformation configuration format
+
+3. **Define Project-Specific Storage Structure**
+   - Create directory structure: `{project-root}/.cursor/project-protocols/`
+   - Define naming conventions for generated files
+   - Create storage manifest (track generated protocols)
+
+4. **Add Generation Workflow Phase to Protocol 05b**
+   - Add new PHASE 7: Protocol Generation
+   - Integrate with existing phases (0-6)
+   - Add quality gates for generation
+
+**Deliverables:**
+- Enhanced `05b-project-protocol-orchestration-v2.md` with generation capability
+- `transformation-engine/` - Template transformation logic
+- `storage-structure.md` - Project-specific storage documentation
+
+---
+
+### Phase 3: Template-Based Generation Engine (Suggestion 3)
+**Status**: ⏳ To Do  
+**Priority**: Critical  
+**Estimated Time**: 7-10 days
+
+#### Tasks:
+1. **Design Template Format with Parameterization**
+   - Identify parameterization points in existing protocols:
+     - Project name placeholders
+     - Tech stack-specific sections
+     - Workflow customization points
+     - Validation rule injection points
+   - Create template parameter specification format
+   - Document template structure requirements
+
+2. **Create Transformation Rules Engine**
+   - Build rules engine: `project requirements → protocol customizations`
+   - Map PROJECT-BRIEF.md sections to protocol transformations
+   - Implement classification logic (reuse Protocol 05b's logic)
+   - Handle edge cases and customizations
+
+3. **Implement Generation Pipeline**
+   - Read foundation templates from `.cursor/ai-driven-workflow/`
+   - Read PROJECT-BRIEF.md and Protocol 03 artifacts
+   - Analyze protocol needs using Protocol 05b classification
+   - Apply transformations to templates
+   - Generate customized protocol instances
+   - Save to `{project-root}/.cursor/project-protocols/`
+
+4. **Integrate with Protocol 05b**
+   - Call generation engine from Protocol 05b PHASE 7
+   - Pass analysis results from Protocol 05b to generation engine
+   - Handle generation errors and edge cases
+
+**Deliverables:**
+- `generation-engine/` - Complete generation system
+- `template-parameterization.md` - Template format specification
+- `transformation-rules.md` - Transformation rules documentation
+- Integration with Protocol 05b
+
+---
+
+### Phase 4: Validation and Quality Assurance (Suggestion 4)
+**Status**: ⏳ To Do  
+**Priority**: High  
+**Estimated Time**: 5-7 days
+
+#### Tasks:
+1. **Integrate with Existing 11-Validator System**
+   - Ensure generated protocols pass all validators
+   - Create validator execution pipeline
+   - Handle validator output and scoring
+
+2. **Create Automated Validation Pipeline**
+   - Run validators on generated protocols automatically
+   - Check structural integrity (markdown format, sections)
+   - Verify integration compatibility (works with Protocol 05b)
+   - Generate validation reports
+
+3. **Design Quality Gates**
+   - Define quality thresholds:
+     - Validator compliance: ≥0.95
+     - Structural integrity: 100%
+     - Integration compatibility: 100%
+   - Block generation if validation fails
+   - Allow override with manual approval
+
+4. **Implement Remediation Workflows**
+   - Auto-fix common issues (formatting, missing sections)
+   - Flag complex issues for manual review
+   - Regenerate after fixes
+   - Track remediation history
+
+5. **Establish Validation Metrics and Reporting**
+   - Track validation success rates
+   - Identify common failure patterns
+   - Generate validation reports
+   - Create validation dashboard/metrics
+
+**Deliverables:**
+- `validation-pipeline/` - Complete validation system
+- `quality-gates.md` - Quality gate definitions
+- `remediation-workflows.md` - Auto-fix and manual review processes
+- Validation metrics and reporting system
+
+---
+
+## 🔄 COMPLETE WORKFLOW
+
+### End-to-End Flow
+
+```
+1. User completes Protocols 01-05
+   ↓
+2. Protocol 05b Enhanced runs:
+   a. Reads PROJECT-BRIEF.md
+   b. Analyzes project requirements (existing)
+   c. Selects protocols needed (existing)
+   d. Sequences protocols (existing)
+   e. NEW: Reads foundation templates
+   f. NEW: Transforms templates → project-specific
+   g. NEW: Generates customized protocol files
+   h. NEW: Validates generated protocols
+   i. NEW: Saves to {project}/.cursor/project-protocols/
+   ↓
+3. Quality Gates:
+   - Validator compliance ≥0.95? ✅
+   - Structural integrity? ✅
+   - Integration compatibility? ✅
+   ↓
+4. Output:
+   - Protocol execution plan (existing)
+   - Generated protocol files (NEW)
+   - Validation report (NEW)
+   ↓
+5. User proceeds with project-specific protocols
+```
+
+---
+
+## 📊 SUCCESS METRICS
+
+### Phase 1: Decision Framework
+- ✅ Framework document created and reusable
+- ✅ Current decision documented with evidence
+- ✅ Framework applied successfully
+
+### Phase 2: Protocol 05b Enhancement
+- ✅ Protocol 05b enhanced without breaking existing workflow
+- ✅ Transformation engine functional
+- ✅ Project-specific storage structure defined
+
+### Phase 3: Generation Engine
+- ✅ 80% reduction in manual protocol creation time
+- ✅ 100% format consistency across generated protocols
+- ✅ Generated protocols pass validators ≥0.95
+
+### Phase 4: Validation
+- ✅ 95%+ validator compliance rate
+- ✅ 70% faster issue identification
+- ✅ 60% reduction in production issues
+
+### Overall System
+- ✅ "One Template Per Project" principle achieved
+- ✅ Each project gets customized protocols
+- ✅ Foundation templates remain single source of truth
+- ✅ Backward compatibility maintained
+
+---
+
+## 🚀 NEXT STEPS
+
+### Immediate Actions (This Week)
+1. **Start Phase 1**: Create Decision Framework
+   - Document evaluation criteria
+   - Apply framework to current decision
+   - Create decision artifact
+
+2. **Plan Phase 2**: Protocol 05b Enhancement
+   - Review current Protocol 05b structure
+   - Design enhancement approach
+   - Create enhancement specification
+
+### Short-Term (Next 2 Weeks)
+3. **Implement Phase 2**: Enhance Protocol 05b
+   - Add generation capability
+   - Create transformation engine
+   - Define storage structure
+
+4. **Start Phase 3**: Build Generation Engine
+   - Design template parameterization
+   - Create transformation rules
+   - Begin implementation
+
+### Medium-Term (Next Month)
+5. **Complete Phase 3**: Finish Generation Engine
+   - Complete transformation logic
+   - Integrate with Protocol 05b
+   - Test with sample projects
+
+6. **Implement Phase 4**: Validation System
+   - Integrate with validators
+   - Create quality gates
+   - Build remediation workflows
+
+---
+
+## 📝 NOTES
+
+### Key Decisions Made
+- ✅ **Architecture**: Hybrid (templates in foundation, instances per project)
+- ✅ **Implementation**: Enhance Protocol 05b (no new protocol needed)
+- ✅ **Validation**: Comprehensive automated pipeline with quality gates
+- ✅ **Approach**: Template-based generation with transformation rules
+
+### Risks and Mitigations
+- **Risk**: Template updates may break existing project instances
+  - **Mitigation**: Versioning strategy for templates and instances
+- **Risk**: Transformation logic complexity
+  - **Mitigation**: Incremental implementation, extensive testing
+- **Risk**: Validation overhead slows generation
+  - **Mitigation**: Optimize validation pipeline, allow async validation
+
+### Dependencies
+- Protocol 05b must be stable before enhancement
+- 11-validator system must be accessible
+- PROJECT-BRIEF.md format must be standardized
+- Foundation templates must be parameterizable
+
+---
+
+## 💡 SUGGESTIONS
+
+### Suggestion 1: Hybrid Architecture with Protocol 05b Integration
+**Status**: ✅ Favorable ✅  
+**Implementation**: Phase 2 - Protocol 05b Enhancement
+
+### Suggestion 2: Decision Framework for Protocol Placement Strategy
+**Status**: ✅ Favorable ✅  
+**Implementation**: Phase 1 - Decision Framework
+
+### Suggestion 3: Template-Based Protocol Generation Engine
+**Status**: ✅ Favorable ✅  
+**Implementation**: Phase 3 - Generation Engine
+
+### Suggestion 4: Validation and Quality Assurance Strategy
+**Status**: ✅ Favorable ✅  
+**Implementation**: Phase 4 - Validation System
+
+---
+
+**Status**: ✅ Plan Complete - Ready for Implementation  
+**Next Action**: Start Phase 1 - Create Decision Framework
