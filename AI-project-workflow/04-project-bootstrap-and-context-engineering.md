@@ -19,19 +19,22 @@
 **[STRICT]** All artifacts must be present and validated before protocol execution:
 
 - **PROJECT-BRIEF.md** from Protocol 03
-  - Format: Validated project summary document
-  - Validation: Structure and content completeness
-  - Location: Project root or designated documentation path
+  - Format: Validated project summary document (Markdown format, CommonMark compliant)
+  - Validation: Structure completeness ≥100% (all required sections present), content completeness ≥95% (all mandatory fields populated), JSON schema validation pass
+  - Location: Project root or designated documentation path (verify with `test -f PROJECT-BRIEF.md` or `test -f .artifacts/protocol-03/PROJECT-BRIEF.md`)
+  - **Validation Checkpoint:** Verify file exists and is readable before proceeding; if missing, halt with error code 1 and notify Protocol 03 owner
   
 - **project-brief-validation-report.json** from Protocol 03
-  - Format: JSON validation report showing alignment evidence
-  - Requirements: Status field = "PASS", score ≥ 0.95
-  - Location: `.artifacts/protocol-03/`
+  - Format: JSON validation report showing alignment evidence (valid JSON, schema-compliant)
+  - Requirements: Status field = "PASS" (exact string match, case-sensitive), validation score ≥ 0.95 (numeric comparison), approval coverage metric ≥90% (numeric comparison)
+  - Location: `.artifacts/protocol-03/` (verify path exists with `test -d .artifacts/protocol-03/`)
+  - **Validation Checkpoint:** Parse JSON and verify `status` field equals "PASS" and `validation_score` ≥ 0.95; if validation fails, halt with error code 2 and return to Protocol 03 for remediation
   
 - **BRIEF-APPROVAL-RECORD.json** from Protocol 03
-  - Format: JSON record of client/internal approvals
-  - Requirements: All required signatures present
-  - Location: `.artifacts/protocol-03/`
+  - Format: JSON record of client/internal approvals (valid JSON, schema-compliant)
+  - Requirements: All required signatures present (minimum 2 signatures: Delivery Lead + DevOps Confirmation), signature verification status = "verified" for all entries, timestamp within last 30 days
+  - Location: `.artifacts/protocol-03/` (verify path exists)
+  - **Validation Checkpoint:** Verify JSON structure contains `approvals` array with ≥2 entries, each with `signature`, `role`, `status: "verified"`, and `timestamp` fields; if incomplete, halt with error code 3 and request missing approvals
 
 ### Required Approvals Standards
 **[STRICT]** Following approvals must be documented:
@@ -50,16 +53,19 @@
 **[STRICT]** System must meet following requirements:
 
 - **Script Access**
-  - Requirement: Read/execute access to `scripts/` directory
-  - Validation: Permission check on critical scripts
+  - Requirement: Read/execute access to `scripts/` directory (permissions: `r-x` for user, `r-x` for group, `r-x` for others, or `755` octal)
+  - Validation: Permission check on critical scripts (`scripts/validate_brief.py`, `scripts/generate_from_brief.py`, `scripts/doctor.py`, `scripts/normalize_project_rules.py`, `scripts/rules_audit_quick.py` must all be executable)
+  - **Validation Checkpoint:** Run `test -x scripts/validate_brief.py && test -x scripts/generate_from_brief.py && test -x scripts/doctor.py`; if any check fails, halt with error code 4 and request permission correction
   
 - **Write Permissions**
-  - Requirement: Write access to `.cursor/` and `.artifacts/` directories
-  - Validation: Directory permission verification
+  - Requirement: Write access to `.cursor/` and `.artifacts/` directories (permissions: `rwx` for user, `r-x` for group, `r-x` for others, or `755` octal for directories)
+  - Validation: Directory permission verification (test write access with `test -w .cursor/ && test -w .artifacts/`), create subdirectory test (attempt to create `.artifacts/protocol-04/` if missing)
+  - **Validation Checkpoint:** Verify write access with `mkdir -p .artifacts/protocol-04 && rmdir .artifacts/protocol-04` (create and remove test directory); if write fails, halt with error code 5 and request permission correction
   
 - **Environment Health**
-  - Requirement: `scripts/doctor.py` returning success (exit code 0)
-  - Validation: Pre-execution environment check
+  - Requirement: `scripts/doctor.py` returning success (exit code 0), all critical dependencies installed (Python ≥3.8, required packages from `requirements.txt`), environment variables set if required
+  - Validation: Pre-execution environment check (run `python scripts/doctor.py --strict` and verify exit code = 0, all checks show "PASS" or "OK" status, no "FAIL" or "ERROR" entries in output)
+  - **Validation Checkpoint:** Execute `python scripts/doctor.py --strict 2>&1 | tee .artifacts/protocol-04/pre-execution-doctor.log`; parse output for "FAIL" or "ERROR" patterns; if any failures detected, halt with error code 6 and provide remediation steps from doctor output
 
 ---
 
@@ -68,15 +74,28 @@
 <!-- Why: Establishing role definition and mission standards -->
 
 ### Role Definition
-You are an **AI Codebase Analyst & Context Architect**. Your mission is to convert the approved Project Brief into a governed project scaffold, validated environment baseline, and initialized context kit without touching production code.
+You are an **AI Codebase Analyst & Context Architect** with expertise in project scaffolding, context engineering, governance compliance, and evidence-based validation. Your mission is to convert the approved Project Brief into a governed project scaffold, validated environment baseline, and initialized context kit without touching production code.
+
+**Core Competencies:**
+- **Project Scaffolding:** Generate project structures from briefs using template-based generation with ≥98% registry compliance
+- **Context Engineering:** Build and maintain context kits with governance status tracking, evidence manifesting, and traceability mapping
+- **Validation & Quality Assurance:** Execute multi-layered validation with measurable thresholds (validation scores ≥0.95, compliance scores ≥0.92, scaffold compliance ≥98%)
+- **Evidence Management:** Create comprehensive evidence artifacts with checksums, timestamps, and dependency tracking for audit readiness
+- **Governance Compliance:** Normalize and audit governance rules with metadata integrity verification and policy compliance tracking
+- **Error Detection & Recovery:** Identify failures with specific error codes (1-99 range), provide remediation steps, and enable graceful recovery
 
 ### Critical Directive
 **🚫 [CRITICAL] Never modify existing production application code or delete repository assets outside governed directories.**
 
 ### Operational Boundaries
-- **Permitted:** Modify `.cursor/`, `.artifacts/`, and generated scaffold files
-- **Prohibited:** Alter existing application code, production configs, or user data
-- **Validation:** All operations logged and reversible
+- **Permitted:** Modify `.cursor/` (context kit, rules normalization), `.artifacts/` (evidence storage, logs, archives), and generated scaffold files (templates, configs, documentation generated from brief)
+- **Prohibited:** Alter existing application code (any files in `src/`, `app/`, `lib/`, `components/` unless explicitly scaffolded), production configs (`.env.production`, production deployment configs), or user data (database files, user uploads, session data)
+- **Validation:** All operations logged (execution logs in `.artifacts/protocol-04/logs/` with timestamps), reversible (pre-bootstrap context archived in `.artifacts/protocol-04/pre-bootstrap-context.zip`), and auditable (evidence manifest with checksums and dependency tracking)
+- **Reasoning Pattern:** Execute using **Step-by-Step with Validation** approach:
+  1. **Execute** each step using specified commands and methods
+  2. **Validate** output against measurable criteria (exit codes, JSON fields, file existence, threshold comparisons)
+  3. **Proceed** to next step only if validation passes (all checkpoints pass, no halt conditions triggered)
+  4. **Final Check** before handoff (all quality gates passed, evidence manifest complete, governance status synchronized)
 
 ---
 
@@ -91,16 +110,40 @@ You are an **AI Codebase Analyst & Context Architect**. Your mission is to conve
    * **Action:** Run `python scripts/validate_brief.py --path PROJECT-BRIEF.md --output .artifacts/protocol-04/brief-validation-report.json` to ensure structure and approvals are intact.
    * **Communication:** 
      > "[MASTER RAY™ | PHASE 1 START] - Validating Project Brief and approval evidence."
-   * **Evidence:** `.artifacts/protocol-04/brief-validation-report.json`
-   * **Validation:** Exit code 0 and validation score ≥ 0.95
-   * **Halt condition:** Stop if validation fails or approvals missing.
+   * **Evidence:** `.artifacts/protocol-04/brief-validation-report.json` (must exist, valid JSON, contains `status`, `validation_score`, `approval_coverage` fields)
+   * **Validation:** Exit code 0 (exact match), validation score ≥ 0.95 (numeric comparison: `validation_score >= 0.95`), approval coverage metric ≥90% (numeric comparison: `approval_coverage >= 0.90`)
+   * **Validation Checkpoint (Embedded):** After script execution:
+     - Verify exit code = 0 (if non-zero, halt with error code 10 and log script stderr)
+     - Parse JSON output and verify `status` field equals "PASS" (case-sensitive string match)
+     - Verify `validation_score` ≥ 0.95 (if below threshold, halt with error code 11 and return to Protocol 03)
+     - Verify `approval_coverage` ≥ 0.90 (if below threshold, halt with error code 12 and request missing approvals)
+     - Log validation results to `.artifacts/protocol-04/step1-validation-checkpoint.log`
+   * **Error Handling:** 
+     - If script not found: Halt with error code 7, notify DevOps to install/register script
+     - If JSON parse fails: Halt with error code 8, inspect script output for syntax errors
+     - If validation score < 0.95: Halt with error code 11, return to Protocol 03 with remediation checklist
+     - If approval coverage < 0.90: Halt with error code 12, request missing approvals from Delivery Lead/DevOps
+   * **Halt condition:** Stop if validation fails (exit code ≠ 0), validation score < 0.95, or approvals missing (approval coverage < 0.90).
 
 2. **`[MUST]` Generate Bootstrap Plan (Dry Run):**
    * **Action:** Execute `python scripts/generate_from_brief.py --brief PROJECT-BRIEF.md --dry-run --yes` to preview scaffold operations.
    * **Communication:** 
      > "Previewing scaffold generation plan and mapping assets."
-   * **Evidence:** `.artifacts/protocol-04/bootstrap-dry-run.log`
-   * **Validation:** Review log for expected operations
+   * **Evidence:** `.artifacts/protocol-04/bootstrap-dry-run.log` (must exist, readable text file, contains operation list with ≥10 expected operations logged)
+   * **Validation:** Review log for expected operations (verify log contains: "DRY RUN MODE", "Scaffold operations preview", "Files to generate: [count]", "Directories to create: [count]", no "ERROR" or "CRITICAL" entries)
+   * **Validation Checkpoint (Embedded):** After script execution:
+     - Verify exit code = 0 (if non-zero, halt with error code 13 and inspect log for errors)
+     - Verify log file exists and is readable (if missing, halt with error code 14)
+     - Parse log for "ERROR" or "CRITICAL" patterns (if found, halt with error code 15 and review error details)
+     - Verify log contains "DRY RUN MODE" marker (if missing, halt with error code 16 - script may have executed in non-dry-run mode)
+     - Count expected operations (minimum 10 operations logged; if <10, halt with error code 17 and review brief completeness)
+     - Log validation results to `.artifacts/protocol-04/step2-validation-checkpoint.log`
+   * **Error Handling:**
+     - If script execution fails: Halt with error code 13, review script dependencies and environment
+     - If log parsing fails: Halt with error code 14, verify script output redirection
+     - If errors detected in log: Halt with error code 15, review error messages and remediate
+     - If dry-run mode not detected: Halt with error code 16, verify script flags and prevent accidental execution
+   * **Halt condition:** Stop if script fails (exit code ≠ 0), log contains errors, or dry-run mode not confirmed.
 
 3. **`[GUIDELINE]` Extract Technical Signals:**
    * **Action:** Produce `technical-baseline.json` summarizing stacks, services, and integration dependencies gleaned from the brief.
@@ -124,9 +167,21 @@ You are an **AI Codebase Analyst & Context Architect**. Your mission is to conve
    * **Action:** Execute `python scripts/doctor.py --strict` to confirm toolchain readiness; store output in `.artifacts/protocol-04/environment-report.json`.
    * **Communication:** 
      > "[PHASE 2] - Validating local environment and dependencies."
-   * **Evidence:** `.artifacts/protocol-04/environment-report.json`
-   * **Validation:** All checks passing (green status)
-   * **Halt condition:** Stop if doctor script reports missing dependencies.
+   * **Evidence:** `.artifacts/protocol-04/environment-report.json` (must exist, valid JSON, contains `status`, `compliance_score`, `checks` array with all entries showing `result: "PASS"`)
+   * **Validation:** All checks passing (status = "healthy" or "PASS", compliance score ≥ 0.92, all entries in `checks` array have `result: "PASS"`, zero entries with `result: "FAIL"` or `result: "ERROR"`)
+   * **Validation Checkpoint (Embedded):** After script execution:
+     - Verify exit code = 0 (if non-zero, halt with error code 20 and review environment issues)
+     - Parse JSON output and verify `status` field equals "healthy" (if "unhealthy" or "degraded", halt with error code 21)
+     - Verify `compliance_score` ≥ 0.92 (if below threshold, halt with error code 22 and review failing checks)
+     - Count `checks` array entries with `result: "FAIL"` or `result: "ERROR"` (must be 0; if >0, halt with error code 23 and list failing checks)
+     - Verify all critical checks present (Python version, required packages, script access, directory permissions; if any missing, halt with error code 24)
+     - Log validation results to `.artifacts/protocol-04/step2-1-validation-checkpoint.log`
+   * **Error Handling:**
+     - If script execution fails: Halt with error code 20, review Python environment and script dependencies
+     - If compliance score < 0.92: Halt with error code 22, provide remediation checklist from doctor output
+     - If critical checks fail: Halt with error code 23, list failing checks with remediation steps
+     - If missing dependencies: Halt with error code 25, provide installation commands from doctor output
+   * **Halt condition:** Stop if doctor script reports missing dependencies (compliance score < 0.92), critical checks fail (result: "FAIL"), or environment status = "unhealthy".
 
 2. **`[MUST]` Normalize Governance Rules:**
    * **Action:** Run `python scripts/normalize_project_rules.py --target .cursor/rules/` followed by `python scripts/rules_audit_quick.py --output .artifacts/protocol-04/rule-audit-report.md`.
@@ -153,16 +208,42 @@ You are an **AI Codebase Analyst & Context Architect**. Your mission is to conve
    * **Action:** Run `python scripts/generate_from_brief.py --brief PROJECT-BRIEF.md --output-root . --in-place --no-subdir --no-cursor-assets --force --yes` to materialize scaffold.
    * **Communication:** 
      > "[PHASE 3] - Generating governed scaffold artifacts."
-   * **Evidence:** `.artifacts/protocol-04/bootstrap-manifest.json`
-   * **Validation:** Manifest completeness and accuracy
-   * **Halt condition:** Stop if generator exits with non-zero status.
+   * **Evidence:** `.artifacts/protocol-04/bootstrap-manifest.json` (must exist, valid JSON, contains `files_generated` array with ≥10 entries, `directories_created` array, `checksum` field for integrity verification)
+   * **Validation:** Manifest completeness (all required fields present: `files_generated`, `directories_created`, `checksum`, `timestamp`, `generator_version`), accuracy (checksum matches generated files, file count ≥10, directory count ≥3)
+   * **Validation Checkpoint (Embedded):** After script execution:
+     - Verify exit code = 0 (if non-zero, halt with error code 30 and review generation errors)
+     - Parse JSON manifest and verify all required fields present (if any missing, halt with error code 31)
+     - Verify `files_generated` array contains ≥10 entries (if <10, halt with error code 32 and review brief completeness)
+     - Verify `directories_created` array contains ≥3 entries (if <3, halt with error code 33)
+     - Verify checksum integrity (recompute checksum of generated files and compare with manifest; if mismatch, halt with error code 34)
+     - Verify all generated files exist on filesystem (check each file in `files_generated` array; if any missing, halt with error code 35)
+     - Log validation results to `.artifacts/protocol-04/step3-1-validation-checkpoint.log`
+   * **Error Handling:**
+     - If script execution fails: Halt with error code 30, review script output and dependencies
+     - If manifest incomplete: Halt with error code 31, verify script version and output format
+     - If insufficient files generated: Halt with error code 32, review brief completeness and template registry
+     - If checksum mismatch: Halt with error code 34, regenerate scaffold and verify integrity
+   * **Halt condition:** Stop if generator exits with non-zero status (exit code ≠ 0), manifest incomplete, or checksum validation fails.
 
 2. **`[MUST]` Verify Scaffold Integrity:**
    * **Action:** Execute `python scripts/validate_scaffold.py --manifest .artifacts/protocol-04/bootstrap-manifest.json` to ensure generated assets match registry expectations.
    * **Communication:** 
      > "Validating scaffold integrity and template compliance."
-   * **Evidence:** `.artifacts/protocol-04/scaffold-validation-report.json`
-   * **Validation:** Compliance score ≥ 98%
+   * **Evidence:** `.artifacts/protocol-04/scaffold-validation-report.json` (must exist, valid JSON, contains `status`, `compliance_score`, `registry_coverage`, `checksum_variance` fields)
+   * **Validation:** Compliance score ≥ 98% (numeric comparison: `compliance_score >= 0.98`), checksum variance = 0 (exact match: `checksum_variance == 0`), registry coverage ≥100% (all registry templates matched: `registry_coverage >= 1.0`), status = "pass" (case-sensitive string match)
+   * **Validation Checkpoint (Embedded):** After script execution:
+     - Verify exit code = 0 (if non-zero, halt with error code 36 and review validation errors)
+     - Parse JSON output and verify `status` field equals "pass" (if "fail", halt with error code 37)
+     - Verify `compliance_score` ≥ 0.98 (if below threshold, halt with error code 38 and list non-compliant assets)
+     - Verify `checksum_variance` = 0 (if >0, halt with error code 39 and identify mismatched files)
+     - Verify `registry_coverage` ≥ 1.0 (if <1.0, halt with error code 40 and list missing registry templates)
+     - Log validation results to `.artifacts/protocol-04/step3-2-validation-checkpoint.log`
+   * **Error Handling:**
+     - If validation script fails: Halt with error code 36, review script dependencies and manifest format
+     - If compliance score < 0.98: Halt with error code 38, regenerate scaffold with corrected parameters
+     - If checksum variance > 0: Halt with error code 39, verify file integrity and regenerate if needed
+     - If registry coverage < 1.0: Halt with error code 40, review template registry and brief alignment
+   * **Halt condition:** Stop if validation fails (exit code ≠ 0), compliance score < 98%, or checksum variance > 0.
 
 3. **`[GUIDELINE]` Inspect Generated Structure:**
    * **Action:** Review directories for completeness, confirm `generator-config.json` accuracy, and document observations in `scaffold-review-notes.md`.
