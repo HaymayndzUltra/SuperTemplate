@@ -1,0 +1,33 @@
+[WARN] Validation completed with issues (exit code 1)
+[MASTER RAY™ | PROTOCOL GENERATION START]
+[INFO] Generating protocols: 06,07,08,09,10
+[INFO] Project brief: /home/haymayndz/SuperTemplate/tests/protocol-generation/test-project-brief-simple.md
+[INFO] Output directory: /home/haymayndz/SuperTemplate/tests/protocol-generation/results/scenario1-simple
+
+[STEP 7.2] Loading foundation templates...
+[OK] Templates loaded successfully
+
+[STEP 7.3] Applying transformations...
+[OK] Transformations applied successfully
+
+[STEP 7.5] Writing generated protocols to disk...
+[OK] Protocols written successfully
+
+[STEP 7.4] Validating generated protocols...
+
+[STEP 7.7] Generating protocol generation report...
+[OK] Report generated: /home/haymayndz/SuperTemplate/tests/protocol-generation/results/scenario1-artifacts/PROTOCOL-GENERATION-REPORT.md
+
+============================================================
+PROTOCOL GENERATION SUMMARY
+============================================================
+Project: artisans-corner-dashboard
+Protocols Generated: 5
+Customizations Applied: 5
+Total Size: 277.31 KB
+Duration: 169 ms
+Output Directory: /home/haymayndz/SuperTemplate/tests/protocol-generation/results/scenario1-simple
+Manifest: /home/haymayndz/SuperTemplate/tests/protocol-generation/results/scenario1-simple/.protocol-manifest.json
+============================================================
+
+[MASTER RAY™ | PROTOCOL GENERATION COMPLETE]

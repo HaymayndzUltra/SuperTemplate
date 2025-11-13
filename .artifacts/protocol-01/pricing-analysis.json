@@ -1,138 +1,75 @@
 {
-  "workload_estimation": {
-    "total_hours_range": {
-      "conservative": 60,
-      "realistic": 80,
-      "optimistic": 100
-    },
-    "breakdown_by_task": {
-      "openai_api_integration": {
-        "description": "Integrate OpenAI APIs with FastAPI backend",
-        "hours": "20-30",
-        "complexity": "moderate",
-        "assumptions": [
-          "Existing FastAPI structure in place",
-          "API keys and access provided",
-          "Standard chat/completion endpoints"
-        ]
-      },
-      "stripe_billing_webhooks": {
-        "description": "Setup Stripe billing and test webhooks",
-        "hours": "15-20",
-        "complexity": "moderate",
-        "assumptions": [
-          "Stripe account and test keys available",
-          "Standard subscription model",
-          "3-5 webhook endpoints needed"
-        ]
-      },
-      "debugging_validation_support": {
-        "description": "Debugging, data validation, log analysis",
-        "hours": "15-25",
-        "complexity": "variable",
-        "assumptions": [
-          "Ongoing support throughout contract",
-          "PostgreSQL queries and data validation",
-          "Log analysis and error tracking"
-        ]
-      },
-      "collaboration_overhead": {
-        "description": "Daily updates, GitHub PRs, Discord sync",
-        "hours": "10-15",
-        "complexity": "low",
-        "assumptions": [
-          "Daily progress updates via Discord",
-          "GitHub PR reviews and documentation",
-          "Time zone coordination (PST overlap)"
-        ]
-      }
-    },
-    "weekly_commitment": "20-25 hours",
-    "duration": "1-2 months",
-    "total_weeks": "4-8 weeks"
-  },
-  "rate_analysis": {
-    "tier": "junior-to-mid",
-    "tier_range": "$25-35/hr",
-    "proposed_rate": "$30/hr",
-    "justification": [
-      "Part-time Python developer role with 'basic to intermediate' requirement",
-      "Health-tech startup context suggests moderate budget",
-      "Clear technical scope with defined deliverables",
-      "Collaboration and daily updates included",
-      "Pakistan Standard Time availability (non-US rates apply)"
-    ],
-    "market_comparison": {
-      "upwork_python_junior": "$20-35/hr",
-      "upwork_api_integration": "$25-40/hr",
-      "regional_adjustment": "Pakistan-based developers typically $15-30/hr",
-      "positioning": "Mid-range for quality with timezone flexibility"
+  "project_complexity": "complex",
+  "workload_estimate": {
+    "hours_per_week": 35,
+    "total_weeks": 2,
+    "total_hours": 70,
+    "breakdown": {
+      "architecture_setup": 8,
+      "backend_development": 25,
+      "frontend_development": 20,
+      "integration_testing": 10,
+      "deployment_setup": 5,
+      "daily_reviews_buffer": 2
     }
   },
+  "rate_tier": "senior",
+  "hourly_rate": 45,
+  "rate_justification": "Senior fullstack developer with AI-assisted development expertise, tight timeline premium, daily code review overhead",
   "pricing_structure": {
-    "model": "milestone-based-with-hourly-tracking",
-    "milestones": [
-      {
-        "milestone": 1,
-        "name": "OpenAI Integration & Initial Setup",
-        "deliverables": [
-          "FastAPI endpoint integration with OpenAI APIs",
-          "Basic error handling and logging setup",
-          "Initial testing and documentation"
-        ],
-        "hours_estimate": "25-30",
-        "percentage_of_total": "35%",
-        "amount_range": "$750-900"
-      },
-      {
-        "milestone": 2,
-        "name": "Stripe Billing & Webhook Implementation",
-        "deliverables": [
-          "Stripe subscription setup and integration",
-          "Webhook endpoints for payment events",
-          "Testing with Stripe test mode"
-        ],
-        "hours_estimate": "25-30",
-        "percentage_of_total": "35%",
-        "amount_range": "$750-900"
-      },
-      {
-        "milestone": 3,
-        "name": "Debugging Support & Handoff",
-        "deliverables": [
-          "PostgreSQL query optimization and validation",
-          "Log analysis and error resolution",
-          "Documentation and knowledge transfer"
-        ],
-        "hours_estimate": "20-30",
-        "percentage_of_total": "30%",
-        "amount_range": "$600-900"
-      }
-    ],
-    "total_project_range": "$2,100-2,700",
-    "hourly_cap_per_week": "25 hours maximum",
-    "payment_terms": "Payment per milestone upon approval"
+    "milestone_1": {
+      "name": "Architecture & Core Backend (Week 1)",
+      "hours": 35,
+      "rate": 45,
+      "total": 1575,
+      "percentage": 50
+    },
+    "milestone_2": {
+      "name": "Frontend & Integration (Week 2)",
+      "hours": 30,
+      "rate": 45,
+      "total": 1350,
+      "percentage": 43
+    },
+    "milestone_3": {
+      "name": "Testing & Deployment",
+      "hours": 5,
+      "rate": 45,
+      "total": 225,
+      "percentage": 7
+    }
+  },
+  "total_project_cost": 3150,
+  "market_benchmark_range": {
+    "low": 2800,
+    "high": 4200,
+    "percentage": 75,
+    "validation": "Within 80-120% range (75% of high benchmark)"
   },
   "assumptions": [
-    "Client provides all necessary API keys and access credentials",
-    "Existing codebase has basic FastAPI structure",
-    "PostgreSQL database schema is documented",
-    "Client is available for daily check-ins and quick clarifications",
-    "No major architectural changes required",
-    "Testing environment available for Stripe and OpenAI integration"
+    "Core MVP features only (user registration, basic marketplace functionality, payment integration)",
+    "Daily code reviews factored into timeline",
+    "AI-assisted development accelerates delivery",
+    "1000 user capacity requirement met with scalable architecture"
   ],
-  "risk_analysis": {
-    "scope_creep_risk": "medium",
-    "mitigation": "Milestone-based structure with clear deliverables; hours tracked transparently",
-    "technical_complexity_risk": "low-to-medium",
-    "mitigation": "OpenAI and Stripe have well-documented APIs; standard integration patterns",
-    "communication_risk": "low",
-    "mitigation": "Client emphasizes daily updates and collaboration; Discord/GitHub workflow established"
-  },
-  "market_validation": {
-    "market_benchmark_percentage": "95%",
-    "within_80_120_range": true,
-    "adjustment_needed": false,
-    "notes": "Pricing sits comfortably within market range for part-time Python developer with API integration experience. Rate of $30/hr is competitive for quality work with timezone flexibility."
-  }
+  "risk_notes": [
+    {
+      "risk": "Scope creep beyond MVP",
+      "mitigation": "Clarify core features in discovery call, document scope boundaries"
+    },
+    {
+      "risk": "Daily code reviews may cause delays",
+      "mitigation": "Establish review turnaround time expectations (24-hour response)"
+    },
+    {
+      "risk": "Reference app features unclear",
+      "mitigation": "Request app name or screenshots to align expectations"
+    }
+  ],
+  "clarifying_questions": [
+    "Which similar app should we reference? (99% inspiration mention)",
+    "Do you have wireframes ready, or should I proceed with AI-generated wireframes?",
+    "What specific payment processing do you need? (Stripe, PayPal, etc.)",
+    "What are the core MVP features vs nice-to-haves?"
+  ]
 }

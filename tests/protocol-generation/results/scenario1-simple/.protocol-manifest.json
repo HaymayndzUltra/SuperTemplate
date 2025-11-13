@@ -1,0 +1,71 @@
+{
+  "generation_timestamp": "2025-11-10T18:29:26.685514Z",
+  "project_name": "artisans-corner-dashboard",
+  "project_type": "Web Application",
+  "foundation_version": "1.0.0",
+  "transformation_engine_version": "1.0.0",
+  "protocols_generated": [
+    {
+      "protocol_id": "06",
+      "filename": "06-create-prd-artisans-corner-dashboard.md",
+      "path": "/home/haymayndz/SuperTemplate/tests/protocol-generation/results/scenario1-simple/06-create-prd-artisans-corner-dashboard.md",
+      "size_bytes": 67527,
+      "line_count": 1328,
+      "checksum_sha256": "503ab336611f4f1ac98422e8279aabba3f160688536b138bee88236f41d33cea",
+      "source_template": "/home/haymayndz/SuperTemplate/.cursor/ai-driven-workflow/06-create-prd.md",
+      "customizations_applied": 1
+    },
+    {
+      "protocol_id": "07",
+      "filename": "07-technical-design-artisans-corner-dashboard.md",
+      "path": "/home/haymayndz/SuperTemplate/tests/protocol-generation/results/scenario1-simple/07-technical-design-artisans-corner-dashboard.md",
+      "size_bytes": 53919,
+      "line_count": 1202,
+      "checksum_sha256": "1ccb8869d88a45f4552b1c2134004291e5593fcb9431411e143ef130f9275ce1",
+      "source_template": "/home/haymayndz/SuperTemplate/.cursor/ai-driven-workflow/07-technical-design-architecture.md",
+      "customizations_applied": 1
+    },
+    {
+      "protocol_id": "08",
+      "filename": "08-task-generation-artisans-corner-dashboard.md",
+      "path": "/home/haymayndz/SuperTemplate/tests/protocol-generation/results/scenario1-simple/08-task-generation-artisans-corner-dashboard.md",
+      "size_bytes": 55517,
+      "line_count": 1250,
+      "checksum_sha256": "b8743410f0f2036ea5b175ed69ead6b62723b0172dab82551ebd738903b18a66",
+      "source_template": "/home/haymayndz/SuperTemplate/.cursor/ai-driven-workflow/08-generate-tasks.md",
+      "customizations_applied": 1
+    },
+    {
+      "protocol_id": "09",
+      "filename": "09-environment-setup-artisans-corner-dashboard.md",
+      "path": "/home/haymayndz/SuperTemplate/tests/protocol-generation/results/scenario1-simple/09-environment-setup-artisans-corner-dashboard.md",
+      "size_bytes": 51435,
+      "line_count": 1170,
+      "checksum_sha256": "c3647de5bd21ca142c21d4373ad3b6f8b71777d0195cf7b1fd3795688d9ddbac",
+      "source_template": "/home/haymayndz/SuperTemplate/.cursor/ai-driven-workflow/09-environment-setup-validation.md",
+      "customizations_applied": 1
+    },
+    {
+      "protocol_id": "10",
+      "filename": "10-execute-tasks-artisans-corner-dashboard.md",
+      "path": "/home/haymayndz/SuperTemplate/tests/protocol-generation/results/scenario1-simple/10-execute-tasks-artisans-corner-dashboard.md",
+      "size_bytes": 55565,
+      "line_count": 1281,
+      "checksum_sha256": "edbd450b9c868e8b0c37eaa523327329a078427d210025810fa132b7a01bdbdf",
+      "source_template": "/home/haymayndz/SuperTemplate/.cursor/ai-driven-workflow/10-process-tasks.md",
+      "customizations_applied": 1
+    }
+  ],
+  "total_protocols": 5,
+  "total_customizations": 5,
+  "total_size_bytes": 283963,
+  "total_lines": 6231,
+  "project_info": {
+    "project_name": "artisans-corner-dashboard",
+    "tech_stack": {
+      "frontend": "Next.js",
+      "backend": "FastAPI",
+      "database": "PostgreSQL"
+    }
+  }
+}

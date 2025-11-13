@@ -29,7 +29,21 @@
 - [ ] Python runtime available for validation scripts
 - [ ] `scripts/script-registry.json` up to date (check protocol 23 if unsure)
 
-If any prerequisite fails, pause and resolve before continuing.
+**[STRICT]** If any prerequisite fails, pause and resolve before continuing.
+
+**Validation Checkpoint:**
+- ✓ All input files exist and are readable (verify file permissions and paths)
+- ✓ System dependencies are available (Python 3.8+, required libraries installed)
+- ✓ Artifact directory is writable (test write permission with touch command)
+- ✓ Script registry is accessible and parseable (validate JSON structure)
+- ✓ Time allocation confirmed (30-60 minutes available without interruption)
+
+**Failure Handling:**
+- **IF** input file missing → Document missing file in notes.md, request file from source, halt until provided
+- **IF** system dependency unavailable → Install missing dependency or document workaround, verify installation
+- **IF** artifact directory not writable → Fix permissions (chmod 755) or create directory, verify write access
+- **IF** script registry invalid → Validate JSON syntax, fix or regenerate registry, verify structure
+- **IF** time allocation insufficient → Reschedule execution window or reduce scope, confirm availability
 
 ---
 
@@ -153,7 +167,15 @@ Success is measured by human believability, evidence completeness, and the abili
 3. **`[MUST]` Capture Source Job Post Copy:**
    * **Action:** Copy the authoritative job post (`/home/haymayndz/SuperTemplate/JOB-POST.md`) into the protocol artifacts directory by running `cp /home/haymayndz/SuperTemplate/JOB-POST.md .artifacts/protocol-01/job-post.md`; if the original path differs, document the adjusted source in `notes.md` and copy that file instead.
    * **Evidence:** `.artifacts/protocol-01/job-post.md`
-   * **Validation:** File exists, matches the source job post, and path recorded in `notes.md`
+   * **Validation:** 
+     - ✓ File exists at target location (verify with `ls -la .artifacts/protocol-01/job-post.md`)
+     - ✓ File size > 0 bytes (verify with `wc -c` or `stat -f%z`)
+     - ✓ Content matches source (compare SHA-256 checksums: `sha256sum source.md` vs `sha256sum .artifacts/protocol-01/job-post.md`)
+     - ✓ Path recorded in notes.md with timestamp (verify entry exists with timestamp format: `YYYY-MM-DD HH:MM:SS`)
+   * **Error Handling:**
+     - **IF** source file not found → Document error in notes.md, request correct path, halt until resolved
+     - **IF** copy fails → Check permissions, verify disk space, retry copy operation, verify success
+     - **IF** checksum mismatch → Re-copy source file, verify integrity, document resolution in notes.md
 
 ---
 
@@ -406,6 +428,20 @@ Success is measured by human believability, evidence completeness, and the abili
 - **Automation Justification:** Manual review misses forbidden phrases and structural inconsistencies; scripts enforce objectivity
 - **Validation Chain:** Prerequisites → Structure → Voice → Pricing → Evidence → SHA integrity
 
+**Step-by-Step Validation Protocol:**
+1. **Prerequisites Validation:** Verify all inputs, approvals, and system state (threshold: 100% prerequisites met)
+2. **Structure Validation:** Verify proposal structure matches anti-template format (threshold: all 5 sections present with required elements)
+3. **Voice Validation:** Verify human voice compliance (threshold: ≥3 contractions, ≥1 uncertainty, 0 forbidden phrases)
+4. **Pricing Validation:** Verify pricing realism (threshold: 80-120% market benchmark, balanced milestones)
+5. **Evidence Validation:** Verify artifact completeness (threshold: 100% artifacts present with valid SHA-256 checksums)
+6. **SHA Integrity Validation:** Verify artifact integrity (threshold: all checksums match, no corruption detected)
+
+**Validation Checkpoint Criteria:**
+- Each validation step must pass with measurable threshold before proceeding to next step
+- If any validation fails, halt execution, document failure in notes.md, and remediate at source
+- Re-run failed validation after remediation and verify pass before continuing
+- Document all validation results in `.artifacts/protocol-01/validation-results.json` with timestamps
+
 1. **`[MUST]` Run Automation Scripts:**
    * **Action:** Execute validation scripts (see Automation Hooks) to verify structure, voice compliance, pricing realism, and evidence completeness
    * **Evidence:** Script execution logs
@@ -445,9 +481,15 @@ Success is measured by human believability, evidence completeness, and the abili
 - Config: `config/protocol_gates/01.yaml` defines gate thresholds
 
 **Failure Handling:**
-- **Rollback:** Halt proposal generation, return to job post analysis phase
-- **Notification:** Alert technical lead via email/Slack if coverage < 90%
-- **Waiver:** Document waiver in `.artifacts/protocol-01/gate-waivers.json` with justification if client language unclear
+- **Rollback:** Halt proposal generation, return to job post analysis phase (Phase 1)
+- **Notification:** Alert technical lead via email/Slack if coverage < 90% (include coverage score, missing elements, and remediation steps)
+- **Waiver:** Document waiver in `.artifacts/protocol-01/gate-waivers.json` with justification if client language unclear (include: waiver reason, alternative validation method, approval signature, timestamp)
+- **Recovery Procedure:**
+  1. Identify missing coverage elements (list specific gaps with line numbers from job post)
+  2. Re-extract verbatim quotes (minimum 2 additional quotes required)
+  3. Re-run analysis script with updated input
+  4. Verify coverage score ≥90% before proceeding
+  5. Document remediation in notes.md with timestamp
 
 ### Gate 2: Tone Alignment
 **Type:** Execution  

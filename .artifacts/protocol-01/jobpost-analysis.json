@@ -1,97 +1,57 @@
 {
   "exact_quotes": [
-    "Assist in integrating OpenAI APIs with a FastAPI backend",
-    "Support Stripe billing setup and webhook testing",
-    "Help with debugging, data validation, and log analysis",
-    "Collaborate via GitHub and Discord for daily progress updates",
-    "Minimum 20 hrs/week"
+    "I am specifically looking for a hyper honest/transparent senior engineer who fully understands the capability of Claude AI coding and is comfortable with their work being fact checked daily by another senior engineer",
+    "I need to build an MVP as quickly as possible (1-2 weeks maximum)",
+    "I am okay with sacrificing quality/perfectness to achieve my timeline but the app must be functional for at least 1000 users"
   ],
   "tech_stack": [
-    "Python",
-    "FastAPI",
-    "Flask",
-    "REST APIs",
-    "PostgreSQL",
-    "JSON",
-    "OpenAI APIs",
-    "Stripe",
-    "GitHub",
-    "Discord",
-    "Next.js",
-    "ElevenLabs APIs",
-    "Webhooks"
+    "Fullstack",
+    "SaaS",
+    "Double Sided Marketplace",
+    "Claude AI coding",
+    "MVP"
   ],
   "pain_points": [
-    "Need assistance with OpenAI API integration into FastAPI backend",
-    "Requires Stripe billing setup and webhook testing support",
-    "Needs help with debugging, data validation, and log analysis",
-    "Looking for collaborative developer who can provide daily progress updates"
+    "Need MVP built extremely fast (1-2 weeks)",
+    "Must handle 1000 users minimum",
+    "Daily code reviews required",
+    "Tight timeline with quality trade-offs acceptable",
+    "Urgent hiring deadline (end of day Wednesday)"
   ],
-  "tone_type": "technical",
+  "tone_type": "casual",
   "urgency_signals": [
-    "minimum 20 hrs/week",
-    "daily progress updates",
-    "1-2 months (extendable)",
-    "part-time remote position"
+    "as quickly as possible",
+    "1-2 weeks maximum",
+    "end of day Wednesday",
+    "MVP as quickly as possible"
   ],
   "vague_requirements": [
     {
-      "client_says": "Basic to intermediate Python skills",
+      "client_says": "We are drawing 99% inspiration from a similar app in the market",
       "interpretation_needed": true,
-      "clarification": "What specific Python proficiency level or years of experience are you targeting?"
+      "clarifying_question": "Which similar app should we reference? Can you share the app name or screenshots?"
     },
     {
-      "client_says": "Support Stripe billing setup and webhook testing",
+      "client_says": "I can either provide wireframes or you can do this yourself using AI",
       "interpretation_needed": true,
-      "clarification": "Are you looking for complete Stripe integration from scratch or assistance with specific webhook endpoints?"
+      "clarifying_question": "Do you have wireframes ready, or should I proceed with AI-generated wireframes based on the reference app?"
     },
     {
-      "client_says": "Future Opportunity: Potential for long-term contract",
+      "client_says": "very generous hourly wage",
       "interpretation_needed": true,
-      "clarification": "What would the long-term scope look like beyond the initial 1-2 months?"
+      "clarifying_question": "What is the budget range for this project? What hourly rate are you considering?"
     }
   ],
-  "budget_signals": {
-    "duration": "1-2 months",
-    "hours_per_week": "minimum 20",
-    "commitment": "part-time",
-    "extension_possibility": true
-  },
-  "red_flags": [],
-  "objectives": [
-    "Integrate OpenAI APIs with existing FastAPI backend",
-    "Setup Stripe billing system with webhook functionality",
-    "Provide debugging and data validation support",
-    "Maintain daily collaboration via GitHub and Discord"
-  ],
-  "deliverables": [
-    "Functional OpenAI API endpoints in FastAPI",
-    "Stripe subscription billing with tested webhooks",
-    "PostgreSQL data validation and query optimization",
-    "Documentation and knowledge transfer",
-    "Daily progress updates and code reviews"
-  ],
-  "tone_signals": {
-    "formality": "semi-formal",
-    "technical_depth": "high",
-    "urgency_level": "moderate",
-    "collaboration_emphasis": "high"
-  },
-  "risks": [
+  "red_flags": [
     {
-      "risk": "Scope creep in debugging support",
-      "severity": "medium",
-      "mitigation": "Time-box debugging sessions, track hours per milestone"
+      "flag": "Extremely tight timeline (1-2 weeks for full MVP)",
+      "concern": "Risk of scope creep or unrealistic expectations",
+      "mitigation": "Clarify core MVP features vs nice-to-haves, set clear boundaries"
     },
     {
-      "risk": "Unclear webhook requirements",
-      "severity": "low",
-      "mitigation": "Clarify specific webhook events needed in kickoff call"
-    },
-    {
-      "risk": "Timezone coordination challenges",
-      "severity": "low",
-      "mitigation": "Client mentions PST availability, developer in Pakistan (GMT+5)"
+      "flag": "Daily code reviews by external engineer",
+      "concern": "Potential bottleneck or conflicting feedback",
+      "mitigation": "Establish review process and response time expectations"
     }
   ]
 }

@@ -1,0 +1,243 @@
+{
+  "validation_timestamp": "2025-01-10T14:30:00Z",
+  "protocols_validated": 5,
+  "protocols_passed": 0,
+  "protocols_failed": 5,
+  "min_score_required": 0.95,
+  "average_score": 0.883,
+  "min_score_achieved": 0.883,
+  "max_score_achieved": 0.883,
+  "auto_fix_enabled": true,
+  "results": [
+    {
+      "protocol": "06-create-prd-artisans-corner-dashboard.md",
+      "overall_score": 0.883,
+      "passed": false,
+      "validations": [
+        {
+          "protocol": "06-create-prd-artisans-corner-dashboard.md",
+          "validation_type": "structure",
+          "score": 0.6499999999999999,
+          "passed": false,
+          "issues": [
+            "Missing required section: ## PREREQUISITES",
+            "Missing required section: ## QUALITY GATES",
+            "File should start with a heading"
+          ],
+          "metrics": {
+            "size_bytes": 67751,
+            "line_count": 1342,
+            "sections_found": 3
+          }
+        },
+        {
+          "protocol": "06-create-prd-artisans-corner-dashboard.md",
+          "validation_type": "customization",
+          "score": 1.0,
+          "passed": true,
+          "issues": [],
+          "metrics": {
+            "placeholders_remaining": 0,
+            "project_name_found": true
+          }
+        },
+        {
+          "protocol": "06-create-prd-artisans-corner-dashboard.md",
+          "validation_type": "integration",
+          "score": 1.0,
+          "passed": true,
+          "issues": [],
+          "metrics": {
+            "has_integration_section": true,
+            "has_inputs": true,
+            "has_outputs": true
+          }
+        }
+      ]
+    },
+    {
+      "protocol": "07-technical-design-artisans-corner-dashboard.md",
+      "overall_score": 0.883,
+      "passed": false,
+      "validations": [
+        {
+          "protocol": "07-technical-design-artisans-corner-dashboard.md",
+          "validation_type": "structure",
+          "score": 0.6499999999999999,
+          "passed": false,
+          "issues": [
+            "Missing required section: ## PREREQUISITES",
+            "Missing required section: ## QUALITY GATES",
+            "File should start with a heading"
+          ],
+          "metrics": {
+            "size_bytes": 54143,
+            "line_count": 1216,
+            "sections_found": 3
+          }
+        },
+        {
+          "protocol": "07-technical-design-artisans-corner-dashboard.md",
+          "validation_type": "customization",
+          "score": 1.0,
+          "passed": true,
+          "issues": [],
+          "metrics": {
+            "placeholders_remaining": 0,
+            "project_name_found": true
+          }
+        },
+        {
+          "protocol": "07-technical-design-artisans-corner-dashboard.md",
+          "validation_type": "integration",
+          "score": 1.0,
+          "passed": true,
+          "issues": [],
+          "metrics": {
+            "has_integration_section": true,
+            "has_inputs": true,
+            "has_outputs": true
+          }
+        }
+      ]
+    },
+    {
+      "protocol": "08-task-generation-artisans-corner-dashboard.md",
+      "overall_score": 0.883,
+      "passed": false,
+      "validations": [
+        {
+          "protocol": "08-task-generation-artisans-corner-dashboard.md",
+          "validation_type": "structure",
+          "score": 0.6499999999999999,
+          "passed": false,
+          "issues": [
+            "Missing required section: ## PREREQUISITES",
+            "Missing required section: ## QUALITY GATES",
+            "File should start with a heading"
+          ],
+          "metrics": {
+            "size_bytes": 55741,
+            "line_count": 1264,
+            "sections_found": 3
+          }
+        },
+        {
+          "protocol": "08-task-generation-artisans-corner-dashboard.md",
+          "validation_type": "customization",
+          "score": 1.0,
+          "passed": true,
+          "issues": [],
+          "metrics": {
+            "placeholders_remaining": 0,
+            "project_name_found": true
+          }
+        },
+        {
+          "protocol": "08-task-generation-artisans-corner-dashboard.md",
+          "validation_type": "integration",
+          "score": 1.0,
+          "passed": true,
+          "issues": [],
+          "metrics": {
+            "has_integration_section": true,
+            "has_inputs": true,
+            "has_outputs": true
+          }
+        }
+      ]
+    },
+    {
+      "protocol": "09-environment-setup-artisans-corner-dashboard.md",
+      "overall_score": 0.883,
+      "passed": false,
+      "validations": [
+        {
+          "protocol": "09-environment-setup-artisans-corner-dashboard.md",
+          "validation_type": "structure",
+          "score": 0.6499999999999999,
+          "passed": false,
+          "issues": [
+            "Missing required section: ## PREREQUISITES",
+            "Missing required section: ## QUALITY GATES",
+            "File should start with a heading"
+          ],
+          "metrics": {
+            "size_bytes": 51659,
+            "line_count": 1184,
+            "sections_found": 3
+          }
+        },
+        {
+          "protocol": "09-environment-setup-artisans-corner-dashboard.md",
+          "validation_type": "customization",
+          "score": 1.0,
+          "passed": true,
+          "issues": [],
+          "metrics": {
+            "placeholders_remaining": 0,
+            "project_name_found": true
+          }
+        },
+        {
+          "protocol": "09-environment-setup-artisans-corner-dashboard.md",
+          "validation_type": "integration",
+          "score": 1.0,
+          "passed": true,
+          "issues": [],
+          "metrics": {
+            "has_integration_section": true,
+            "has_inputs": true,
+            "has_outputs": true
+          }
+        }
+      ]
+    },
+    {
+      "protocol": "10-execute-tasks-artisans-corner-dashboard.md",
+      "overall_score": 0.883,
+      "passed": false,
+      "validations": [
+        {
+          "protocol": "10-execute-tasks-artisans-corner-dashboard.md",
+          "validation_type": "structure",
+          "score": 0.6499999999999999,
+          "passed": false,
+          "issues": [
+            "Missing required section: ## PREREQUISITES",
+            "Missing required section: ## QUALITY GATES",
+            "File should start with a heading"
+          ],
+          "metrics": {
+            "size_bytes": 55789,
+            "line_count": 1295,
+            "sections_found": 3
+          }
+        },
+        {
+          "protocol": "10-execute-tasks-artisans-corner-dashboard.md",
+          "validation_type": "customization",
+          "score": 1.0,
+          "passed": true,
+          "issues": [],
+          "metrics": {
+            "placeholders_remaining": 0,
+            "project_name_found": true
+          }
+        },
+        {
+          "protocol": "10-execute-tasks-artisans-corner-dashboard.md",
+          "validation_type": "integration",
+          "score": 1.0,
+          "passed": true,
+          "issues": [],
+          "metrics": {
+            "has_integration_section": true,
+            "has_inputs": true,
+            "has_outputs": true
+          }
+        }
+      ]
+    }
+  ]
+}

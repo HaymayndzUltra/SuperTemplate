@@ -1,27 +1,21 @@
-Responsibilities:
-• Assist in integrating OpenAI APIs with a FastAPI backend
-• Support Stripe billing setup and webhook testing
-• Help with debugging, data validation, and log analysis
-• Collaborate via GitHub and Discord for daily progress updates
+Hey Everyone!! My name is Nik, I am a tenured multi brand business owner and I looking to hire a senior fullstack developer to create a Double Sided Market Place SaaS.  
 
-Requirements:
-• Basic to intermediate Python skills
-• Familiarity with FastAPI or Flask
-• Understanding of REST APIs, PostgreSQL, and JSON
-• Interest in AI or health-tech products
-• Availability during Pakistan Standard Time (GMT+5)
+I am specifically looking for a hyper honest/transparent senior engineer who fully understands the capability of Claude AI coding and is comfortable with their work being fact checked daily by another senior engineer (Friend of mine who owns an agency but doesn't have the bandwidth to take on the project)
 
-Nice to Have:
-• Experience with Next.js or frontend integration testing
-• Exposure to OpenAI / ElevenLabs APIs
-• Familiarity with Stripe or webhooks
+I need to build an MVP as quickly as possible (1-2 weeks maximum)
+I am okay with sacrificing quality/perfectness to achieve my timeline but the app must be functional for at least 1000 users
 
-Details:
-• Type: Remote, part-time (minimum 20 hrs/week)
-• Duration: 1–2 months (extendable)
-• Future Opportunity: Potential for long-term contract.
+Daily standups and external code reviews are a must.
+I can either provide wireframes or you can do this yourself using AI (We are drawing 99% inspiration from a similar app in the market)
 
-To Apply:
-1. A short intro about yourself and your current studies or background
-2. GitHub link or sample code (even small projects are fine)
-3. Your weekly availability
+If you believe you have the experience with claude or other co pilot code tools to achieve this timeline I am willing to pay a very generous hourly wage.  
+
+Fluent English is an absolute must.
+
+I am looking to make my hire by end of day Wednesday
+
+If you are up for it lets jump on a video call and discuss the details!
+Nik
+
+Deliverables
+Develop a double sided market place SaaS platform MVP
