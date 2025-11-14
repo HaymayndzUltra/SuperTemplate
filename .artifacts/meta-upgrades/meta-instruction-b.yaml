@@ -1,0 +1,240 @@
+# ============================================
+# META-INSTRUCTION B
+# PR Evaluation Framework
+# ============================================
+
+version: "3.0"
+generated_from: "Meta-Instruction A"
+
+# --------------------------------------------
+# CONTEXT
+# --------------------------------------------
+
+original_prompt_summary: |
+  Develop a validation workflow that assesses ten meta-upgrades (UPG01–UPG10)
+  against core protocols 01–23, ensuring causal continuity, validation chain
+  integrity, governance compliance, and evidence-backed decisions while
+  producing specified artifacts within the `.artifacts/meta-upgrades` tree.
+
+primary_intent: "Define an evaluation system that validates each meta-upgrade against existing protocols without violating governance or introducing regressions."
+
+secondary_intents:
+  - "Ensure every meta-upgrade produces required intent, analysis, alignment, decision, and adapter artifacts."
+  - "Plan integration and governance activation sequencing using the mandated S0–S9 order and POP activation criteria."
+
+technical_domain: "AI workflow governance and validation orchestration"
+complexity_level: "highly-complex"
+
+# --------------------------------------------
+# REQUIREMENTS CHECKLIST
+# --------------------------------------------
+
+requirements:
+  explicit:
+    - "Respect hard gates: master rules present, no new circular dependencies, quality gates unchanged or stricter, evidence required for decisions."
+    - "Generate per-upgrade artifacts: intent.json, analysis.json, alignment.md, decision.json, and adapter-specific evidence."
+    - "Build shared artifacts: protocol_catalog.json, upgrade_protocol_graph.json, integration_plan.json, pop-activation-check.json, final_report.md, acceptance_matrix.csv, next_actions.md."
+    - "Score each upgrade using the prescribed alignment formula and decision thresholds (Accept/Adapt/Reject)."
+    - "Follow integration sequence S0–S9 with stated dependency logic and POP activation gating."
+    - "Detect conflicts/overlaps and produce cross-upgrade remediation artifacts (conflicts_matrix.md, remediation_plan.json)."
+    - "Simulate governance impacts via causal_replay.md and governance_diffs.json without modifying protocol files."
+    - "Maintain isolation per upgrade lane with outputs confined to `.artifacts/meta-upgrades/UPGxx/` and shared catalog files."
+    - "Halt and produce halt_report.md if master rules missing, cycles introduced, gates weakened, or evidence absent."
+  implicit:
+    - "Reference protocols 01–23 comprehensively when extracting objectives, dependencies, gates, and invariants."
+    - "Ensure scoring inputs map transparently to evidence citations to uphold the evidence_required_for_decisions gate."
+    - "Honor POP observer-to-controller activation criteria before enabling governance enforcement."
+    - "Ensure integration sequencing documents fallback/rollback considerations to preserve causal continuity."
+  technical:
+    - "All outputs must reside under `.artifacts/meta-upgrades/` without altering protocol source files."
+    - "Analyses must operate within Cursor multi-worktree compatible, parallel-safe assumptions (one lane per upgrade)."
+  quality:
+    - "Documentation artifacts must cite supporting protocol sections or evidence excerpts."
+    - "Decisions require explicit change_impact summaries listing affected protocols, gates, and mitigation steps."
+
+# --------------------------------------------
+# EVALUATION FRAMEWORK
+# --------------------------------------------
+
+evaluation_axes:
+  - axis: "Intent Alignment"
+    weight: 0.35
+    question: "Does the PR provide a framework that validates meta-upgrades against protocol goals without violating governance intent?"
+    scoring:
+      10: "Precisely operationalizes the validation intent, covering governance, continuity, and evidence mandates for all upgrades."
+      7: "Captures the primary validation intent with minor omissions in governance or evidence coverage."
+      4: "Addresses the validation concept superficially, missing key intent aspects such as governance safeguards or continuity."
+      1: "Fails to align with the validation intent or ignores governance and continuity requirements."
+    evaluation_steps:
+      - "Verify the framework enforces master rules presence and prevents circular dependencies."
+      - "Check that alignment scoring formula and decision thresholds match the prompt specifications."
+      - "Confirm governance activation sequencing and halt conditions are represented."
+
+  - axis: "Completeness"
+    weight: 0.25
+    question: "Are all prompt-mandated artifacts, processes, and decision gates incorporated into the framework?"
+    scoring:
+      10: "Every explicit and implicit requirement is addressed with clear instructions and artifact coverage."
+      7: "Covers most requirements but omits a few non-critical artifacts or steps."
+      4: "Misses multiple required artifacts, phases, or gating rules."
+      1: "Lacks the majority of mandated requirements or disregards artifact production."
+    evaluation_steps:
+      - "Map framework outputs to the explicit requirements checklist."
+      - "Ensure per-upgrade and shared artifacts are all specified."
+      - "Confirm integration plan, POP activation checks, and simulation artifacts are present."
+
+  - axis: "Implementation Quality"
+    weight: 0.20
+    question: "Is the evaluation framework clearly structured, internally consistent, and practical for execution in this domain?"
+    scoring:
+      10: "Structure is lucid, modular, and execution-ready with unambiguous instructions and consistent terminology."
+      7: "Generally clear with minor ambiguities or organizational issues."
+      4: "Usable but suffers from noticeable inconsistency or unclear sequencing."
+      1: "Disorganized, contradictory, or impractical for operators to follow."
+    evaluation_steps:
+      - "Review logical flow between phases (intent extraction → validation → decisions → integration)."
+      - "Check terminology consistency with original prompt (protocol IDs, artifact names)."
+      - "Assess clarity of procedural guidance for parallel lanes and evidence handling."
+
+  - axis: "Governance & Constraint Compliance"
+    weight: 0.10
+    question: "Does the framework enforce hard gates, governance rules, and POP activation criteria without weakening them?"
+    scoring:
+      10: "Explicitly codifies all governance constraints, activation criteria, and halt conditions with enforcement steps."
+      7: "Captures most constraints but leaves minor enforcement gaps or ambiguous handling."
+      4: "Mentions constraints without detailing enforcement or misses significant criteria."
+      1: "Ignores governance constraints or allows gate weakening."
+    evaluation_steps:
+      - "Verify handling of master_rules_present, quality gates, and evidence requirements."
+      - "Confirm POP observer mode, activation conditions, and halt/escalate instructions are preserved."
+      - "Ensure no instructions contradict the no new circular dependencies mandate."
+
+  - axis: "Evidence & Artifact Traceability"
+    weight: 0.10
+    question: "Does the framework ensure evidence-backed decisions with traceable artifacts across all phases?"
+    scoring:
+      10: "Mandates evidence citations for every decision, defines artifact locations, and links scores to documented data."
+      7: "Generally enforces evidence traceability with minor clarity gaps."
+      4: "Acknowledges evidence but lacks systematic traceability guidance."
+      1: "Provides no clear path for evidence-backed decisions or artifact traceability."
+    evaluation_steps:
+      - "Check that decision.json requires evidence_refs and change_impact details."
+      - "Ensure simulation, telemetry, and adapter artifacts include guidance for evidence capture."
+      - "Verify catalog and graph artifacts are referenced for cross-upgrade traceability."
+
+# --------------------------------------------
+# EVALUATION PROTOCOL
+# --------------------------------------------
+
+target_inputs: "4 Pull Requests (PR-A, PR-B, PR-C, PR-D)"
+
+execution_steps:
+  step_1: "Read each PR's code changes thoroughly."
+  step_2: "Score each PR against all evaluation axes (1-10 scale)."
+  step_3: "Write 1-2 sentence justification per axis score referencing relevant framework elements."
+  step_4: "Calculate weighted total: Σ(axis_score × weight)."
+  step_5: "Rank all 4 PRs by weighted total (highest first)."
+  step_6: "Select the top-ranked PR."
+  step_7: "Write recommendation with comparison to other PRs."
+
+output_format: |
+  
+    # PR EVALUATION RESULTS
+    
+    ## Context
+    - Original Intent: [primary_intent]
+    - Domain: [technical_domain]
+    - Total Requirements: [count]
+    
+    ---
+    
+    ## PR-A Evaluation
+    
+    **Scores:**
+    - [Axis 1]: X/10 - [justification]
+    - [Axis 2]: X/10 - [justification]
+    - [Axis 3]: X/10 - [justification]
+    - [Axis 4]: X/10 - [justification]
+    - [Axis 5]: X/10 - [justification]
+    
+    **Weighted Total: X.XX/10**
+    
+    **Strengths:** [2-3 key strengths]
+    **Weaknesses:** [2-3 key weaknesses]
+    
+    ---
+    
+    ## PR-B Evaluation
+    [Same format]
+    
+    ---
+    
+    ## PR-C Evaluation
+    [Same format]
+    
+    ---
+    
+    ## PR-D Evaluation
+    [Same format]
+    
+    ---
+    
+    ## Final Ranking
+    
+    1. PR-[X] - [score]/10
+    2. PR-[Y] - [score]/10
+    3. PR-[Z] - [score]/10
+    4. PR-[W] - [score]/10
+    
+    ---
+    
+    ## ✅ RECOMMENDED PR: PR-[X]
+    
+    **Rationale:**
+    
+    [3-5 sentences explaining why this PR is the best choice.
+    Must reference how it addresses the primary_intent and
+    key requirements better than the other PRs.]
+    
+    **Comparison:**
+    - vs PR-[Y]: [Key differentiator]
+    - vs PR-[Z]: [Key differentiator]
+    - vs PR-[W]: [Key differentiator]
+    
+    **Trade-offs:**
+    [Any important considerations, or "None - clear winner"]
+
+# --------------------------------------------
+# EVALUATION CONSTRAINTS
+# --------------------------------------------
+
+constraints:
+  - "Score based only on observable code in the PRs."
+  - "Do not infer requirements not in original_prompt."
+  - "Do not penalize style differences unless they affect quality."
+  - "If PRs are equally strong, explain the tie."
+  - "If no PR meets minimum requirements, state this clearly."
+  - "Focus on how well each PR solves the stated problem."
+
+# ============================================
+# ANTI-HALLUCINATION RULES
+# ============================================
+
+critical_rules:
+  - "Extract criteria ONLY from original_prompt."
+  - "Do not add requirements not stated or implied."
+  - "Do not assume tech stack unless specified."
+  - "If prompt is ambiguous, note it in Meta-B."
+  - "Use exact terminology from original_prompt."
+  - "Select axes relevant to prompt's domain only."
+  - "Scoring rubrics must be based on prompt requirements."
+
+# ============================================
+# USAGE
+# ============================================
+
+how_to_use:
+  step_1: "Paste your prompt in the original_prompt field above."
+  step_2: "Give this entire file to an AI."
+  step_3: "AI generates Meta-Instruction B."
+  step_4: "Use Meta-B + 4 PRs to get evaluation and recommendation."
