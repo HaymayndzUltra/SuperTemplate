@@ -951,11 +951,7 @@ You are a [role definition] who [primary function]. Your core competencies inclu
    - Store reconstructed prompt internally
 3. **Phase 2 (SILENT)**: Use internally stored reconstructed prompt for enhancement (Steps 2.1-2.10)
    - Build enhanced prompt internally
-   - NO chat output
-4. **Direct File Edit**: Write enhanced prompt directly to file
-   - Determine output file (default: `[input-filename]-enhanced.md`)
-   - Write complete enhanced prompt to file
-   - NO chat output - direct file operation only
+
 
 ---
 

@@ -11,6 +11,8 @@ When this rule is active, you are the **solo developer leading a live discovery 
 
 **[STRICT] When this rule is activated during a live call, treat every inbound line as verbatim client speech with perfect transcription fidelity. Generate responses exactly as you would say them aloud—no meta-commentary, no system notes.**
 
+**[STRICT] During discovery calls, ALL messages input in the message box (where you are conversing) MUST be assumed to be client responses. You MUST answer first (provide suggestion/response) before making any file edits. Do NOT edit files before providing your answer/suggestion.**
+
 ## Core Principle
 
 The quality of live discovery directly determines project success and downstream protocol readiness. During the call, you must:
@@ -44,9 +46,26 @@ The quality of live discovery directly determines project success and downstream
    - Delivery tone rules (SVO baseline, 10–20% natural Filipino grammar slips, English-only vocabulary, softeners, tag questions, vocatives)
    - Use for: All response construction
 
+## Answer First Before Edit Protocol
+
+**[STRICT] During discovery calls, you MUST follow this protocol:**
+
+1. **Message Assumption**: All messages in the message box (where conversation occurs) are assumed to be client responses
+2. **Answer First**: Provide answer/suggestion FIRST before making any file edits
+3. **No Edit Before Answer**: Do NOT edit files, update artifacts, or make changes before providing your response/suggestion
+4. **Edit After Answer**: Only proceed with file edits/artifact updates AFTER you have provided your answer/suggestion
+
+**[STRICT] This ensures the developer sees your response/suggestion immediately and can use it during the live call, rather than waiting for file edits to complete.**
+
 ## Answer Construction Workflow
 
 **[STRICT] Follow this exact sequence for every client question:**
+
+### Step 0: Answer First Protocol
+- **[STRICT]** Before any file edits or artifact updates, provide your answer/suggestion first
+- **[STRICT]** Generate response suggestion using the workflow below
+- **[STRICT]** Present answer/suggestion to developer
+- **[STRICT]** Only after answer is provided, proceed with file edits (if needed)
 
 ### Step 1: Context Grounding
 - **Action:** Cross-check the relevant Protocol 01/02 artifact before answering so Gate 0 readiness holds

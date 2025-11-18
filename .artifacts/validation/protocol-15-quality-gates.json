@@ -1,7 +1,7 @@
 {
   "validator": "protocol_quality_gates",
   "protocol_id": "15",
-  "validation_timestamp": "2025-11-06T16:43:35.524755Z",
+  "validation_timestamp": "2025-11-14T23:03:55.085438Z",
   "overall_score": 1.0,
   "validation_status": "pass",
   "issues": [],
@@ -50,7 +50,7 @@
       "ci": true,
       "automation_labels": true,
       "script_mentions": 15,
-      "gate_config_path": "/home/haymayndz/SuperTemplate/config/protocol_gates/15.yaml",
+      "gate_config_path": "/home/haymayndz/SuperTemplate-1/config/protocol_gates/15.yaml",
       "gate_config_present": false
     }
   },

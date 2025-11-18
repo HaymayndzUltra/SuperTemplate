@@ -1,31 +1,34 @@
 {
   "validator": "protocol_role",
   "protocol_id": "11",
-  "validation_timestamp": "2025-11-06T16:43:35.351457Z",
-  "overall_score": 0.5,
-  "validation_status": "fail",
-  "issues": [
-    "AI ROLE AND MISSION section missing",
-    "Mission statement unavailable"
-  ],
+  "validation_timestamp": "2025-11-13T16:32:12.760562Z",
+  "overall_score": 1.0,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [],
   "role_definition": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "AI ROLE AND MISSION section missing"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "role_title": true,
+      "role_description": true,
+      "domain_expertise": true,
+      "behavioral_traits": true
+    }
   },
   "mission_statement": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "Mission statement unavailable"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
-    "details": {}
+    "details": {
+      "mission_clarity": true,
+      "scope_boundaries": true,
+      "success_criteria": true,
+      "value_proposition": true
+    }
   },
   "constraints_guidelines": {
     "score": 1.0,
@@ -36,9 +39,9 @@
       "guardrails": true,
       "boundaries": true,
       "workflow_alignment": true,
-      "guardrail_count": 28,
-      "boundary_count": 32,
-      "workflow_links": 10,
+      "guardrail_count": 19,
+      "boundary_count": 2,
+      "workflow_links": 5,
       "optional_guidance": 0
     }
   },

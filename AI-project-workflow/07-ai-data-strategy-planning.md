@@ -3,11 +3,29 @@
 © 2025 - All Rights Reserved
 ---
 
-# PROTOCOL 07: AI DATA STRATEGY & REQUIREMENTS PLANNING (PLANNING COMPLIANT)
+protocol_version: "1.1.0"
+protocol_number: "07"
+protocol_name: "AI Data Strategy & Requirements Planning"
+protocol_type: "Workflow Orchestration"
+phase_assignment: "Phase 1-2: AI Project Planning"
+description: "Transform approved AI use cases into a complete, explicit data strategy—defining what data is needed, from where, at what quality/volume, how it will be labeled, stored, and governed—so that all downstream data collection, cleaning, and modeling work is aligned and gap-free"
+dependencies: ["06-ai-use-case-definition-prioritization"]
+consumers: ["08-ai-data-collection-ingestion", "09-ai-data-cleaning-validation", "10-ai-feature-engineering", "11-ai-dataset-preparation-splitting"]
+alwaysApply: false
+triggers: ["use-cases-approved", "data-strategy-required"]
+scope: "AI data strategy planning, requirements definition, compliance mapping, and source identification. Excludes actual data collection and cleaning."
+compliance_status:
+  validator_scores: "pending"
+  last_validation: "not_yet_run"
+  target_score: ">=0.95"
+  industry_standards: ["GDPR", "HIPAA", "ISO/IEC 27001", "ISO/IEC 42001", "NIST AI RMF"]
+  regulatory_requirements: ["Data Protection", "Privacy Compliance", "Data Residency"]
+
+---
+
+# PROTOCOL 07: AI DATA STRATEGY & REQUIREMENTS PLANNING
 
 **Mission:** Transform approved AI use cases into a complete, explicit data strategy—defining what data is needed, from where, at what quality/volume, how it will be labeled, stored, and governed—so that all downstream data collection, cleaning, and modeling work is aligned and gap-free.
-
-**Brand Signal:** Internally maintains MASTER RAY™ terminology for automation, evidence, and handoffs while operating as the AI Data Strategy Planning component of the comprehensive workflow system.
 
 ---
 
@@ -70,15 +88,45 @@ You are a **Data Strategy Architect**. Your mission is to orchestrate comprehens
 
 ### Inputs From
 - **Protocol 06**: AI use case definitions with data requirements and feasibility notes
+  - **Artifact**: `ai-use-case-definition.md`, `handoff-package-protocol-07.json`
+  - **Format**: Markdown (.md), JSON (.json)
+  - **Assumptions**: Use cases are prioritized, signed-off, and include data requirements
 - **Protocol 03**: Business goals and success criteria affecting data strategy
+  - **Artifact**: `project-brief.md`
+  - **Format**: Markdown (.md)
+  - **Assumptions**: Project brief contains measurable success targets and business context
 - **Protocol 04**: Existing systems and tech stack constraints
+  - **Artifact**: `bootstrap-summary.json`
+  - **Format**: JSON (.json)
+  - **Assumptions**: Bootstrap provides existing systems inventory and technical constraints
 - **Protocol 05**: Environment setup and initial configuration
+  - **Artifact**: Environment configuration files
+  - **Format**: YAML (.yaml), JSON (.json)
+  - **Assumptions**: Environment provides access to data catalog systems
+
+### Input Validation
+- **Missing Inputs**: If any required input is missing, halt protocol execution, escalate to source protocol owner, document gap in `.artifacts/protocol-07-ai-data-strategy-planning/input-gaps.md`
+- **Low Quality Inputs**: If input quality below threshold (e.g., incomplete use case definitions), request clarification from source protocol, document quality issues, proceed with documented assumptions
+- **Invalid Inputs**: If inputs are invalid (e.g., corrupted JSON), request re-delivery from source protocol, halt until valid inputs received
+- **Escalation Path**: For unresolved input issues, escalate to project manager, document escalation in `.artifacts/protocol-07-ai-data-strategy-planning/escalation-log.md`
 
 ### Outputs To
 - **Protocol 08**: Data source inventory and collection plans
+  - **Artifact**: `data-strategy.md`, `data-requirements-inventory.json`
+  - **Format**: Markdown (.md), JSON (.json)
+  - **Guarantees**: Data sources are identified, accessible, and compliant; contingency plans documented
 - **Protocol 09**: Data quality specifications and validation criteria
+  - **Artifact**: `data-requirements-inventory.json`, `compliance-requirements.json`
+  - **Format**: JSON (.json)
+  - **Guarantees**: Data quality thresholds defined, compliance requirements mapped
 - **Protocol 10**: Feature engineering requirements and data transformations
+  - **Artifact**: `data-strategy.md` (feature requirements section)
+  - **Format**: Markdown (.md)
+  - **Guarantees**: Feature requirements documented, transformation needs identified
 - **Protocol 11**: Dataset splitting strategies and preparation guidelines
+  - **Artifact**: `data-strategy.md` (dataset preparation section)
+  - **Format**: Markdown (.md)
+  - **Guarantees**: Dataset preparation approach documented, splitting strategy defined
 
 ### Data Formats
 - **Strategy Documents**: Markdown (.md) for human-readable plans
@@ -104,6 +152,12 @@ You are a **Data Strategy Architect**. Your mission is to orchestrate comprehens
 <!-- [Category: EXECUTION-SUBSTEPS] -->
 <!-- Why: Need precise tracking of multiple input sources and their consolidation -->
 
+**Action:** Consolidate all input sources and map use cases to preliminary data needs.
+
+**Communication:** Announce consolidation start, report input sources processed, request validation if gaps found.
+
+**Evidence:** Input sources summary, use case to data needs mapping, project context summary.
+
 1. **`[CRITICAL]` Index and Consolidate All Input Sources:**
    * **1.1. Load AI Use Cases:**
        - **Action:** Read and parse `06-ai-use-case-definition-prioritization.md`
@@ -119,18 +173,33 @@ You are a **Data Strategy Architect**. Your mission is to orchestrate comprehens
        - **Action:** Create preliminary mapping of use_case_id → high-level data categories
        - **Evidence:** `phase-01-context/01-use-case-to-data-needs-sketch.md`
        - **Validation:** 100% use cases have initial data need identification
+   * **Edge Cases:**
+     - **Missing use case definitions**: If Protocol 06 outputs missing, halt protocol, escalate to Protocol 06 owner, document gap
+     - **Corrupted input files**: If input files corrupted, request re-delivery from source protocol, halt until received
+     - **Incomplete project context**: If project context incomplete, document assumptions, proceed with documented gaps, flag for validation
+     - **Evidence storage**: All consolidation artifacts stored in `.artifacts/protocol-07-ai-data-strategy-planning/phase-01-context/`
 
 2. **`[MUST]` Generate Input Sources Summary:**
    * **Action:** Compile comprehensive summary of all inputs and their relevance
    * **Evidence:** `phase-01-context/01-input-sources-summary.md`
    * **Communication:** 
      > "[MASTER RAY™ | PHASE 1 START] - Consolidating context and inputs for data strategy planning..."
+   * **Edge Cases:**
+     - **Input quality below threshold**: If input quality insufficient, request clarification, document quality issues, proceed with assumptions
+     - **Conflicting inputs**: If inputs conflict, document conflicts, escalate to stakeholders for resolution
+     - **Evidence storage**: Input summary stored in `.artifacts/protocol-07-ai-data-strategy-planning/phase-01-context/`
 
 ### STEP 2: DATA REQUIREMENTS & SOURCE MAPPING
 ### PHASE 2: DATA REQUIREMENTS & SOURCE MAPPING
 
 <!-- [Category: EXECUTION-REASONING] -->
 <!-- Why: Complex data source decisions require documented rationale and alternatives -->
+
+**Action:** Define detailed data requirements per use case and map to candidate source systems.
+
+**Communication:** Announce requirements definition start, report requirements completeness, request technical validation.
+
+**Evidence:** Data requirements inventory, source mapping, data gaps log.
 
 **Reasoning Pattern:** Requirements-before-sources heuristic — systematically define data requirements before source mapping. This prevents mismatched source selections and rework.
 
@@ -174,6 +243,11 @@ You are a **Data Strategy Architect**. Your mission is to orchestrate comprehens
          - Risk: Source system doesn't exist → Mitigation: Identify alternative sources
          - Risk: Data quality insufficient → Mitigation: Plan data enhancement processes
        - **Acceptance Link:** Use case requirements specify minimum data quality thresholds
+   * **Edge Cases:**
+     - **Source system unavailable**: If primary source unavailable, document fallback/backup plan, assess impact on use cases
+     - **Data source failure scenario**: If data source failure identified, document contingency plan, create backup source mapping
+     - **Access permission denied**: If access permission denied, document escalation path, assess impact on timeline
+     - **Evidence storage**: Source mapping stored in `.artifacts/protocol-07-ai-data-strategy-planning/phase-02-requirements/`
 
 2. **`[MUST]` Identify and Document Data Gaps:**
    * **Action:** For each requirement, assess source availability and accessibility
@@ -192,8 +266,51 @@ You are a **Data Strategy Architect**. Your mission is to orchestrate comprehens
        "sensitivity": "high"
      }
      ```
+   * **Edge Cases:**
+     - **Critical data unavailable**: If critical data unavailable, document impact, assess use case viability, escalate to stakeholders
+     - **Partial data availability**: If only partial data available, document coverage gaps, assess sufficiency for use case, plan augmentation
+     - **Data scarcity identified**: If data scarcity identified, document cold-start strategy (synthetic data, transfer learning, data augmentation)
+     - **Evidence storage**: Data gaps log stored in `.artifacts/protocol-07-ai-data-strategy-planning/phase-02-requirements/`
 
-3. **`[GUIDELINE]` Checkpoint A - Technical Validation (Await "Technical-Go"):**
+3. **`[MUST]` Create Data Residency & Jurisdiction Matrix:**
+   * **Action:** Document data residency requirements and jurisdiction constraints for each dataset:
+     - List jurisdictions (e.g., EU, US, APAC, Canada)
+     - Document associated constraints (GDPR for EU, CCPA for California, data localization requirements)
+     - Map datasets to jurisdictions based on source location and user geography
+     - Document cross-border data transfer requirements
+   * **Evidence:** `phase-02-requirements/DATA-RESIDENCY-MATRIX.md`
+   * **Edge Cases:**
+     - **Multi-jurisdiction data**: If data spans multiple jurisdictions, document most restrictive requirements, plan compliance for all
+     - **Unclear jurisdiction**: If jurisdiction unclear, consult legal team, document assumptions, create compliance checklist
+     - **Data localization required**: If data localization required, document storage location requirements, assess infrastructure impact
+     - **Evidence storage**: Residency matrix stored in `.artifacts/protocol-07-ai-data-strategy-planning/phase-02-requirements/`
+
+4. **`[MUST]` Document Contingency Plans for Key Data Sources:**
+   * **Action:** For each critical data source, document fallback/backup plan:
+     - Primary source failure scenarios and responses
+     - Backup source identification and access validation
+     - Data source failure impact assessment
+     - Recovery procedures and timeline
+   * **Evidence:** `phase-02-requirements/data-source-contingency-plans.md`
+   * **Edge Cases:**
+     - **No backup source available**: If no backup source available, document risk, assess use case impact, create mitigation plan
+     - **Backup source quality insufficient**: If backup source quality below threshold, document quality gaps, plan enhancement
+     - **Evidence storage**: Contingency plans stored in `.artifacts/protocol-07-ai-data-strategy-planning/phase-02-requirements/`
+
+5. **`[MUST]` Document Data Scarcity/Cold-Start Strategy:**
+   * **Action:** Create cold-start strategy document covering:
+     - Synthetic data generation approach (if applicable)
+     - Transfer learning strategy (if applicable)
+     - Data augmentation techniques
+     - Minimum viable data requirements
+     - Timeline for data collection ramp-up
+   * **Evidence:** `phase-02-requirements/COLD-START-STRATEGY.md`
+   * **Edge Cases:**
+     - **Insufficient historical data**: If historical data insufficient, document synthetic data approach, validate with stakeholders
+     - **Cold-start timeline too long**: If cold-start timeline exceeds project window, assess use case viability, consider alternatives
+     - **Evidence storage**: Cold-start strategy stored in `.artifacts/protocol-07-ai-data-strategy-planning/phase-02-requirements/`
+
+6. **`[GUIDELINE]` Checkpoint A - Technical Validation (Await "Technical-Go"):**
    * **Present:** Data requirements draft and source mapping for technical review
    * **Announce:** 
      > "[PHASE 2] Data requirements and source mapping ready for technical validation..."
@@ -204,6 +321,12 @@ You are a **Data Strategy Architect**. Your mission is to orchestrate comprehens
 
 <!-- [Category: EXECUTION-REASONING] -->
 <!-- Why: Compliance trade-offs need documented rationale for audit purposes -->
+
+**Action:** Map compliance requirements, assess risks, and document mitigation strategies.
+
+**Communication:** Announce compliance assessment start, report compliance coverage, request compliance validation.
+
+**Evidence:** Compliance requirements mapping, risk assessment, mitigation strategies.
 
 1. **`[CRITICAL]` Map Privacy and Compliance Requirements:**
    * **3.1. Identify Applicable Regulations:**
@@ -230,6 +353,10 @@ You are a **Data Strategy Architect**. Your mission is to orchestrate comprehens
    * **Action:** For each high-risk dataset, define specific mitigation approaches
    * **Evidence:** `phase-03-compliance/03-data-risk-assessment.md`
    - **Content:** Risks, mitigations, residual risk assessment, monitoring requirements
+   * **Edge Cases:**
+     - **Unmitigatable risk**: If risk cannot be mitigated, document residual risk, require stakeholder approval, assess use case viability
+     - **Regulatory uncertainty**: If regulatory requirements unclear, consult legal team, document assumptions, create compliance checklist
+     - **Evidence storage**: Risk assessments stored in `.artifacts/protocol-07-ai-data-strategy-planning/phase-03-compliance/`
 
 3. **`[GUIDELINE]` Checkpoint B - Compliance Validation (Await "Compliance-Go"):**
    * **Present:** Compliance requirements and risk assessment for security/legal review
@@ -242,6 +369,12 @@ You are a **Data Strategy Architect**. Your mission is to orchestrate comprehens
 
 <!-- [Category: EXECUTION-BASIC] -->
 <!-- Why: Deterministic generation of final artifacts and sign-off documentation -->
+
+**Action:** Assemble final data strategy document, generate sign-off package, and obtain approvals.
+
+**Communication:** Announce finalization start, report strategy completeness, request final approvals.
+
+**Evidence:** Final strategy document, labeling strategy, sign-off documentation.
 
 1. **`[CRITICAL]` Assemble Final Data Strategy:**
    * **4.1. Generate Main Strategy Document:**
@@ -258,12 +391,20 @@ You are a **Data Strategy Architect**. Your mission is to orchestrate comprehens
    * **Action:** Create comprehensive sign-off record with all approvals
    * **Evidence:** `data-strategy-signoff.md`
    - **Content:** Approver names, dates, conditions, any objections or requirements
+   * **Edge Cases:**
+     - **Conditional approval**: If approval granted with conditions, document conditions clearly, create compliance checklist
+     - **Partial sign-off**: If only partial sign-off obtained, document pending approvals, create follow-up schedule
+     - **Evidence storage**: Sign-off documentation stored in `.artifacts/protocol-07-ai-data-strategy-planning/phase-04-signoff/`
 
 3. **`[GUIDELINE]` Checkpoint C - Final Sign-off (Await "Final-Go"):**
    * **Present:** Complete data strategy package for business and technical approval
    * **Announce:**
      > "[PHASE 4 COMPLETE] Data strategy ready for final business and technical sign-off..."
    * **HALT AND AWAIT** business + technical stakeholder approval before proceeding to Protocol 08
+   * **Edge Cases:**
+     - **Sign-off delayed**: If sign-off delayed, document delay reason, create escalation plan, maintain protocol state
+     - **Approval rejection**: If approval rejected, document rejection rationale, revise strategy, re-submit for approval
+     - **Evidence storage**: Approval documentation stored in `.artifacts/protocol-07-ai-data-strategy-planning/phase-04-signoff/`
 
 ---
 
@@ -310,7 +451,17 @@ You are a **Data Strategy Architect**. Your mission is to orchestrate comprehens
 - **Threshold:** 100% of high-risk items have documented mitigations
 - **Action on Failure:** Cannot proceed without mitigation plans for all high-risk items
 
-### Gate 4: Final Sign-off
+### Gate 4: Data Strategy Feasibility & Lawfulness
+- **Trigger:** End of Phase 2 before Checkpoint A
+- **Criteria:** Data strategy is feasible (sources accessible, volumes achievable) and lawful (compliance requirements met)
+- **Threshold:** feasibility_score ≥ 0.90, compliance_coverage = 100%, data_residency_compliant = YES
+- **Metrics:** source_accessibility ≥ 90%, volume_achievable = YES, compliance_mapping = 100%, residency_matrix_complete = YES
+- **Evidence:** `DATA-RESIDENCY-MATRIX.md`, `data-source-contingency-plans.md`, `COLD-START-STRATEGY.md`
+- **Compliance:** GDPR, HIPAA, ISO/IEC 27001, ISO/IEC 42001, NIST AI RMF, data residency regulations
+- **Action on Failure:** Document feasibility issues, create mitigation plan, require stakeholder approval, or adjust use case scope
+- **Blocking:** YES - Cannot proceed to compliance assessment without feasible and lawful strategy
+
+### Gate 5: Final Sign-off
 - **Trigger:** End of Phase 4
 - **Criteria:** `data-strategy-signoff.md` has at least 1 business/product approver and 1 technical/data approver
 - **Threshold:** Minimum 2 approvers with documented sign-off, approval_count ≥ 2, all_conditions_met = TRUE
@@ -490,18 +641,21 @@ python scripts/validate_handoff.py --from 07 --to 08
 All artifacts generated by this protocol are stored in the designated evidence directory with complete version control and audit trails.
 
 ### Generated Artifacts
-| Artifact | Purpose | Format | Location |
-|----------|---------|--------|----------|
-| `01-input-sources-summary.md` | Context consolidation summary | .md | `phase-01-context/` |
-| `01-use-case-to-data-needs-sketch.md` | Preliminary data needs mapping | .md | `phase-01-context/` |
-| `02-data-requirements.md` | Detailed requirements per use case | .md | `phase-02-requirements/` |
-| `02-data-requirements-inventory.json` | Machine-usable requirements structure | .json | `phase-02-requirements/` |
-| `02-data-gaps-log.md` | Missing data documentation | .md | `phase-02-requirements/` |
-| `03-compliance-requirements.json` | Regulatory compliance mapping | .json | `phase-03-compliance/` |
-| `03-data-risk-assessment.md` | Risk analysis and mitigations | .md | `phase-03-compliance/` |
-| `data-strategy.md` | Main strategy document | .md | `phase-04-signoff/` |
-| `labeling-strategy.yaml` | Supervised learning labeling plan | .yaml | `phase-04-signoff/` |
-| `data-strategy-signoff.md` | Stakeholder approval record | .md | `phase-04-signoff/` |
+| Artifact | Purpose | Format | Location | Consumers |
+|----------|---------|--------|----------|-----------|
+| `01-input-sources-summary.md` | Context consolidation summary | .md | `phase-01-context/` | Internal reference |
+| `01-use-case-to-data-needs-sketch.md` | Preliminary data needs mapping | .md | `phase-01-context/` | Internal reference |
+| `02-data-requirements.md` | Detailed requirements per use case | .md | `phase-02-requirements/` | Protocol 08, Protocol 09 |
+| `02-data-requirements-inventory.json` | Machine-usable requirements structure | .json | `phase-02-requirements/` | Protocol 08, Protocol 09 |
+| `02-data-gaps-log.md` | Missing data documentation | .md | `phase-02-requirements/` | Internal reference |
+| `DATA-RESIDENCY-MATRIX.md` | Data residency and jurisdiction constraints | .md | `phase-02-requirements/` | Protocol 08, Protocol 09 |
+| `data-source-contingency-plans.md` | Fallback plans for key data sources | .md | `phase-02-requirements/` | Protocol 08 |
+| `COLD-START-STRATEGY.md` | Data scarcity and cold-start approach | .md | `phase-02-requirements/` | Protocol 08, Protocol 09 |
+| `03-compliance-requirements.json` | Regulatory compliance mapping | .json | `phase-03-compliance/` | Protocol 08, Protocol 09, Protocol 10 |
+| `03-data-risk-assessment.md` | Risk analysis and mitigations | .md | `phase-03-compliance/` | Protocol 08, Protocol 09 |
+| `data-strategy.md` | Main strategy document | .md | `phase-04-signoff/` | Protocol 08, Protocol 09, Protocol 10, Protocol 11 |
+| `labeling-strategy.yaml` | Supervised learning labeling plan | .yaml | `phase-04-signoff/` | Protocol 08, Protocol 09 |
+| `data-strategy-signoff.md` | Stakeholder approval record | .md | `phase-04-signoff/` | Internal reference |
 
 ### Evidence Manifest Structure
 ```json
@@ -544,6 +698,20 @@ All artifacts generated by this protocol are stored in the designated evidence d
 - **Strategy Validation:** `.artifacts/protocol-07/validation-report.json`
 - **Completeness Assessment:** `.artifacts/protocol-07/completeness-report.md`
 - **Compliance Review:** `.artifacts/protocol-07/compliance-review.json`
+
+### Drift Baselines and Monitoring Hooks
+- **Data Requirements Baseline**: Baseline version of data requirements stored in `.artifacts/protocol-07-ai-data-strategy-planning/baselines/data-requirements-baseline-v{version}.json`
+  - **Purpose**: Track changes to data requirements over time
+  - **Monitoring**: If data requirements change significantly (>20% scope change), trigger change request process
+  - **Consumer**: Protocol 23 (Data Drift & Concept Drift Detection) for monitoring requirements drift
+- **Compliance Baseline**: Baseline of compliance requirements stored in `.artifacts/protocol-07-ai-data-strategy-planning/baselines/compliance-baseline-v{version}.json`
+  - **Purpose**: Track compliance requirements and regulatory constraints
+  - **Monitoring**: If regulatory requirements change, trigger change request process, notify Protocol 08-11
+  - **Consumer**: All downstream protocols for compliance validation
+- **Data Source Baseline**: Baseline of data source mappings stored in `.artifacts/protocol-07-ai-data-strategy-planning/baselines/data-source-baseline-v{version}.json`
+  - **Purpose**: Track data source availability and accessibility
+  - **Monitoring**: If data source availability changes, notify Protocol 08, trigger contingency plans
+  - **Consumer**: Protocol 08, Protocol 23
 
 ---
 
