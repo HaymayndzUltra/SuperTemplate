@@ -1,11 +1,31 @@
 ---
+protocol_version: "1.1.0"
+protocol_number: "10"
+protocol_name: "AI Feature Engineering & Transformation"
+protocol_type: "Workflow Orchestration"
+phase_assignment: "Phase 1-2: AI Planning & Development (Feature Engineering)"
+description: "Extract, transform, and select features from cleaned datasets with rigorous validation and feature store integration"
+dependencies: ["09-ai-data-cleaning-validation"]
+consumers: ["11-ai-dataset-preparation-splitting", "12-ai-algorithm-selection-baseline"]
+alwaysApply: false
+triggers: ["data-cleaning-complete", "feature-engineering-required"]
+scope: "AI feature engineering, transformation, selection, and feature store management. Excludes model training and evaluation."
+compliance_status:
+  validator_scores: "pending"
+  last_validation: "not_yet_run"
+  target_score: ">=0.95"
+  industry_standards: ["ISO/IEC 25012", "IEEE 42020", "NIST AI RMF"]
+  regulatory_requirements: ["Feature Engineering Standards", "Data Transformation Compliance"]
+
+---
+
 **MASTER RAY™ AI-Driven Workflow Protocol**
 © 2025 - All Rights Reserved
 ---
 
 # PROTOCOL 10: AI FEATURE ENGINEERING & TRANSFORMATION
 
-**Version**: v1.0.0 | **Phase**: Phase 3: AI Model Development | **Status**: Production-Ready
+**Version**: v1.1.0 | **Phase**: Phase 3: AI Model Development | **Status**: Production-Ready
 
 ---
 
@@ -55,7 +75,14 @@ You are a **Feature Engineering Specialist** with deep expertise and domain know
 
 ## WORKFLOW
 
+### STEP 1: FEATURE EXTRACTION
 ### PHASE 1 — Feature Extraction (15-30 minutes)
+
+**Action:** Extract domain-specific features from cleaned datasets, generate interaction and polynomial features.
+
+**Communication:** Announce extraction start, report feature extraction progress, request validation if issues found.
+
+**Evidence:** Feature extraction log, feature manifest, schema validation report.
 
 **[REASONING]:**
 - **Decision Logic:** IF cleaned data contains complex structures THEN apply domain-specific extraction techniques ELSE use standard extraction methods
@@ -80,13 +107,29 @@ You are a **Feature Engineering Specialist** with deep expertise and domain know
    - **Output**: Augmented feature set
    - **Validation**: Verify feature generation correctness
 
+**Edge Cases:**
+- **Missing cleaned datasets**: If cleaned datasets not found, request re-delivery from Protocol 09, document gap, halt until datasets available
+- **Schema mismatch**: If schema differs from expected, document differences, update schema documentation, adjust extraction strategy
+- **Feature extraction failures**: If extraction fails for specific features, document failures, use alternative extraction methods, flag for review
+- **Memory constraints**: If datasets too large for in-memory processing, use chunking approach, document chunking strategy, validate chunk consistency
+- **Domain knowledge gaps**: If domain-specific extraction unclear, request domain expert input, document assumptions, proceed with standard methods
+
 **Evidence Tracking:**
 - **Feature Extraction Log**: `.artifacts/protocol-10-ai-feature-engineering/extraction-log.json`
 - **Feature Manifest**: `.artifacts/protocol-10-ai-feature-engineering/feature-manifest.json`
 
+**Halt-and-await**: Confirm feature extraction complete and feature manifest validated before proceeding to Phase 2.
+
 ---
 
+### STEP 2: FEATURE SELECTION
 ### PHASE 2 — Feature Selection (20-40 minutes)
+
+**Action:** Analyze feature relevance, select features based on thresholds, apply automated selection algorithms.
+
+**Communication:** Announce selection start, report feature selection progress, request approval if critical features removed.
+
+**Evidence:** Feature selection report, selected feature list, relevance scores.
 
 **[REASONING]:**
 - **Decision Logic:** IF feature count > 100 THEN apply automated selection ELSE use statistical methods
@@ -111,13 +154,29 @@ You are a **Feature Engineering Specialist** with deep expertise and domain know
    - **Output**: Final selected feature set
    - **Validation**: Verify algorithm convergence
 
+**Edge Cases:**
+- **No relevant features**: If no features meet relevance thresholds, lower thresholds with justification, document decision, escalate for review
+- **Algorithm convergence failure**: If selection algorithms fail to converge, adjust parameters, use alternative methods, document approach
+- **Critical feature removal**: If critical domain features removed, restore features, document rationale, request domain expert approval
+- **High multicollinearity**: If high correlation detected, remove redundant features, document correlation matrix, validate feature independence
+- **Computational resource limits**: If selection algorithms exceed resources, use sampling approach, document sampling strategy, validate results
+
 **Evidence Tracking:**
 - **Feature Selection Report**: `.artifacts/protocol-10-ai-feature-engineering/selection-report.md`
 - **Selected Feature List**: `.artifacts/protocol-10-ai-feature-engineering/selected-features.json`
 
+**Halt-and-await**: Confirm feature selection complete and selected features validated before proceeding to Phase 3.
+
 ---
 
+### STEP 3: ENCODING
 ### PHASE 3 — Encoding (10-20 minutes)
+
+**Action:** Identify categorical features, determine encoding strategy, apply encoding transformations, validate encoding correctness.
+
+**Communication:** Announce encoding start, report encoding progress, request validation if issues found.
+
+**Evidence:** Encoding transformation log, encoding schema, validation report.
 
 **[REASONING]:**
 - **Decision Logic:** IF high cardinality (>50 values) THEN use target encoding ELSE use one-hot encoding
@@ -142,13 +201,29 @@ You are a **Feature Engineering Specialist** with deep expertise and domain know
    - **Output**: Validated encoded features
    - **Validation**: Verify encoding value ranges correct
 
+**Edge Cases:**
+- **Unknown categories**: If unknown categories encountered during encoding, create "UNKNOWN" category, document handling, validate encoding consistency
+- **High cardinality encoding failures**: If target encoding fails for high cardinality, use alternative methods, document approach, validate results
+- **Encoding schema drift**: If encoding schema differs from expected, update schema, document changes, validate backward compatibility
+- **Memory overflow**: If one-hot encoding creates too many features, use alternative encoding, document decision, validate feature count
+- **Ordinal relationship ambiguity**: If ordinal relationships unclear, request domain expert input, document assumptions, use appropriate encoding
+
 **Evidence Tracking:**
 - **Encoding Transformation Log**: `.artifacts/protocol-10-ai-feature-engineering/encoding-log.json`
 - **Encoding Schema**: `.artifacts/protocol-10-ai-feature-engineering/encoding-schema.json`
 
+**Halt-and-await**: Confirm encoding complete and encoding schema validated before proceeding to Phase 4.
+
 ---
 
+### STEP 4: NORMALIZATION/SCALING
 ### PHASE 4 — Normalization/Scaling (10-20 minutes)
+
+**Action:** Analyze feature distributions, apply normalization and scaling transformations, validate scaling correctness.
+
+**Communication:** Announce scaling start, report scaling progress, request validation if issues found.
+
+**Evidence:** Normalization parameters, scaling transformation log, validation report.
 
 **[REASONING]:**
 - **Decision Logic:** IF features have outliers THEN use robust scaling ELSE use standardization
@@ -173,13 +248,29 @@ You are a **Feature Engineering Specialist** with deep expertise and domain know
    - **Output**: Validated scaled features
    - **Validation**: Verify scaling value ranges correct
 
+**Edge Cases:**
+- **Zero variance features**: If features have zero variance, remove features, document removal, validate feature set
+- **Extreme outliers**: If outliers too extreme for robust scaling, use winsorization, document approach, validate scaling
+- **Mixed distributions**: If features have mixed distributions, use per-feature scaling, document strategy, validate consistency
+- **Scaling parameter drift**: If scaling parameters differ from expected, update parameters, document changes, validate backward compatibility
+- **Feature range violations**: If scaled features outside expected range, investigate cause, adjust scaling, validate results
+
 **Evidence Tracking:**
 - **Normalization Parameters**: `.artifacts/protocol-10-ai-feature-engineering/normalization-params.json`
 - **Scaling Transformation Log**: `.artifacts/protocol-10-ai-feature-engineering/scaling-log.json`
 
+**Halt-and-await**: Confirm scaling complete and normalization parameters validated before proceeding to Phase 5.
+
 ---
 
+### STEP 5: FEATURE STORE SETUP
 ### PHASE 5 — Feature Store Setup (15-30 minutes)
+
+**Action:** Configure feature store, populate with engineered features, validate feature store accessibility.
+
+**Communication:** Announce feature store setup start, report setup progress, request validation if issues found.
+
+**Evidence:** Feature store configuration, feature store metadata, ingestion log.
 
 **[REASONING]:**
 - **Decision Logic:** IF feature store exists THEN configure and populate ELSE document manual storage
@@ -204,10 +295,19 @@ You are a **Feature Engineering Specialist** with deep expertise and domain know
    - **Output**: Feature store validation report
    - **Validation**: Verify feature store accessible
 
+**Edge Cases:**
+- **Feature store unavailable**: If feature store infrastructure unavailable, document manual storage approach, create storage manifest, plan migration
+- **Ingestion failures**: If feature ingestion fails, retry with backoff, document failures, escalate if persistent
+- **Metadata incompleteness**: If metadata incomplete, complete metadata manually, document gaps, validate completeness
+- **Version conflicts**: If feature versions conflict, resolve conflicts, document resolution, validate version consistency
+- **Access permission issues**: If access permissions insufficient, request permissions, document requirements, validate access
+
 **Evidence Tracking:**
 - **Feature Store Configuration**: `.artifacts/protocol-10-ai-feature-engineering/feature-store-config.yaml`
 - **Feature Store Metadata**: `.artifacts/protocol-10-ai-feature-engineering/feature-store-metadata.json`
 - **Ingestion Log**: `.artifacts/protocol-10-ai-feature-engineering/ingestion-log.json`
+
+**Halt-and-await**: Confirm feature store setup complete and validation passed before declaring protocol complete.
 
 ---
 
@@ -222,31 +322,35 @@ You are a **Feature Engineering Specialist** with deep expertise and domain know
 ## INTEGRATION POINTS
 
 ### Inputs From
+- **Protocol 09**: Cleaned datasets, quality reports, leakage checklist
+  - **Artifact**: Cleaned datasets, `09-data-quality-report.json`, `09-LEAKAGE-CHECKLIST.md`, `09-clean-datasets-manifest.json`
+  - **Format**: Parquet (cleaned), JSON (quality reports), Markdown (documentation)
+  - **Assumptions**: Data is clean, validated, no leakage, quality score ≥0.90
 
-- **Protocol 09**: Cleaned datasets (`.csv`, `.parquet`) from `.artifacts/protocol-09/cleaned-data/`
-- **Protocol 09**: Data quality report (`.json`) from `.artifacts/protocol-09/quality-report.json`
-- **Protocol 09**: Data schema (`.yaml`) from `.artifacts/protocol-09/schema.yaml`
+### Input Validation
+- **Missing Inputs**: If any required input is missing, halt protocol execution, escalate to source protocol owner, document gap in `.artifacts/protocol-10-ai-feature-engineering/input-gaps.md`
+- **Low Quality Inputs**: If input quality below threshold (e.g., quality score <0.90), request clarification from source protocol, document quality issues, proceed with documented assumptions
+- **Invalid Inputs**: If inputs are invalid (e.g., corrupted Parquet files), request re-delivery from source protocol, halt until valid inputs received
+- **Escalation Path**: For unresolved input issues, escalate to project manager, document escalation in `.artifacts/protocol-10-ai-feature-engineering/escalation-log.md`
 
 ### Outputs To
-
-- **Protocol 11**: Feature-engineered datasets (`.parquet`) to `.artifacts/protocol-11/input-data/`
-- **Protocol 11**: Feature manifest (`.json`) to `.artifacts/protocol-11/feature-manifest.json`
-- **Protocol 11**: Transformation parameters (`.json`) to `.artifacts/protocol-11/transformation-params.json`
+- **Protocol 11**: Feature-engineered datasets for model training
+  - **Artifact**: Feature-engineered datasets, feature manifest, transformation parameters, encoding schema
+  - **Format**: Parquet (features), JSON (metadata, parameters, schema)
+  - **Guarantees**: Features are engineered, validated, no multicollinearity, feature store accessible
+- **Protocol 12**: Feature-engineered datasets for algorithm selection
+  - **Artifact**: Feature-engineered datasets, feature manifest, feature importance scores
+  - **Format**: Parquet (features), JSON (metadata, importance)
+  - **Guarantees**: Features are engineered, validated, ready for algorithm evaluation
 
 ### Data Formats
-
-- **Markdown (.md)** for documentation and reports
-- **JSON (.json)** for structured metadata and logs
-- **YAML (.yaml)** for configuration
-- **Parquet (.parquet)** for efficient dataset storage
-- **CSV (.csv)** for human-readable datasets
+- **Input**: Parquet, JSON, Markdown from Protocol 09
+- **Output**: Parquet (features), JSON (metadata, parameters, schema), Markdown (reports)
 
 ### Storage Locations
-
-- **`.artifacts/protocol-10-ai-feature-engineering/`** for all protocol artifacts
-- **`.artifacts/protocol-10-ai-feature-engineering/features/`** for feature datasets
-- **`.artifacts/protocol-10-ai-feature-engineering/logs/`** for transformation logs
-- **`.artifacts/protocol-10-ai-feature-engineering/reports/`** for validation reports
+- **Primary**: `.artifacts/protocol-10-ai-feature-engineering/`
+- **Feature Datasets**: `.artifacts/protocol-10-ai-feature-engineering/features/`
+- **Feature Store**: Configured feature store system (if available)
 
 ---
 
@@ -287,6 +391,18 @@ You are a **Feature Engineering Specialist** with deep expertise and domain know
   - Rollback: Fix configuration, re-populate features, re-run validation
   - Notification: Alert infrastructure team when validation fails
   - Waiver: Not applicable - validation mandatory
+
+### Gate 4: Feature Stability & Importance Tracking (Completion)
+
+- **Trigger**: After Step 2 (Feature Selection)
+- **Criteria**: Feature importance scores documented, feature stability assessed, critical features tracked
+- **Threshold**: feature_importance_documented = YES, feature_stability_assessed = YES
+- **Metrics**: Feature importance scores, stability metrics, critical feature retention rate
+- **Evidence**: `feature-importance-scores.json`, `feature-stability-report.json`
+- **Validation Method**: Automated feature importance calculation and stability assessment
+- **Pass Criteria**: All features have importance scores, critical features retained, stability assessed
+- **Action on Failure**: Document missing importance scores, assess feature stability, escalate if critical features unstable
+- **Blocking**: NO - Warning only, proceed with documented assumptions
 
 ---
 
@@ -504,6 +620,20 @@ python3 scripts/ai/validate_feature_engineering.py \
 - **Retention**: 90 days for intermediate artifacts, permanent for final feature store
 - **Retrieval**: Feature store query API for feature retrieval
 - **Cleanup**: Automated cleanup of intermediate artifacts after 90 days
+
+### Drift Baselines and Monitoring Hooks
+- **Feature Importance Baseline**: Document feature importance scores for drift detection
+  - Location: `.artifacts/protocol-10-ai-feature-engineering/feature-importance-scores.json`
+  - Monitoring Hook: Compare future feature importance against baseline, alert if significant shifts detected
+  - Consumer: Protocol 23 (Model Drift Monitoring)
+- **Feature Stability Baseline**: Document feature stability metrics for consistency tracking
+  - Location: `.artifacts/protocol-10-ai-feature-engineering/feature-stability-report.json`
+  - Monitoring Hook: Track feature stability over time, alert if features become unstable
+  - Consumer: Protocol 23 (Model Drift Monitoring)
+- **Feature Distribution Baseline**: Document feature distributions for concept drift detection
+  - Location: `.artifacts/protocol-10-ai-feature-engineering/feature-distribution-baseline.json`
+  - Monitoring Hook: Compare future feature distributions against baseline, alert if significant drift detected
+  - Consumer: Protocol 23 (Model Drift Monitoring)
 
 ---
 

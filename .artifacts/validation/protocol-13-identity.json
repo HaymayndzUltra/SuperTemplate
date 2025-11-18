@@ -1,18 +1,19 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "13",
-  "validation_timestamp": "2025-11-06T16:43:35.429603Z",
+  "validation_timestamp": "2025-11-13T16:45:38.567226Z",
   "basic_information": {
-    "score": 0.8333333333333334,
+    "score": 0.6666666666666666,
     "status": "warning",
     "issues": [
-      "Protocol version not found (semantic versioning expected)"
+      "Protocol version not found (semantic versioning expected)",
+      "Phase assignment not found or invalid in AGENTS.md"
     ],
     "elements_found": {
       "protocol_number": true,
       "protocol_name": "** `QUALITY-AUDIT-PACKAGE.zip` \u2013 verifies audit completeness before UAT",
       "protocol_version": false,
-      "phase_assignment": "Phase 3",
+      "phase_assignment": false,
       "purpose_statement": true,
       "scope_definition": true
     }
@@ -70,10 +71,11 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.9666666666666668,
-  "validation_status": "pass",
+  "overall_score": 0.9333333333333332,
+  "validation_status": "warning",
   "issues": [
-    "Protocol version not found (semantic versioning expected)"
+    "Protocol version not found (semantic versioning expected)",
+    "Phase assignment not found or invalid in AGENTS.md"
   ],
   "recommendations": []
 }

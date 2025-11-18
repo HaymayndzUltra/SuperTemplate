@@ -7,7 +7,7 @@
 
 **Mission**: Transform approved data strategies into reliable, scalable data collection and ingestion pipelines while maintaining data quality, security, and compliance standards.
 
-protocol_version: "1.0.0"
+protocol_version: "1.1.0"
 protocol_number: "08"
 protocol_name: "AI Data Collection & Ingestion"
 protocol_type: "Workflow Orchestration"
@@ -244,6 +244,10 @@ If any prerequisite fails, pause and resolve before continuing.
    * **Announce**: "[MASTER RAY™ | PHASE 2 COMPLETE] - Extraction strategy configured"
    * **Halt Condition**: Stop if extraction method doesn't meet strategy requirements
    * **HALT AND AWAIT** user confirmation to begin data ingestion
+   * **Edge Cases:**
+     - **Strategy requirements unclear**: If strategy requirements unclear, request clarification from Protocol 07, document assumptions
+     - **Extraction method incompatible**: If selected method incompatible with source, document incompatibility, select alternative method
+     - **Evidence storage**: Extraction strategy stored in `.artifacts/protocol-08-ai-data-collection-ingestion/`
 
 **[Halt condition]**: Stop if extraction method doesn't meet strategy requirements.
 
@@ -253,6 +257,12 @@ If any prerequisite fails, pause and resolve before continuing.
 ### PHASE 3: Data Ingestion & Quality Validation
 <!-- [Category: EXECUTION-FORMATS - SUBSTEPS variant] -->
 <!-- Why: Precise sequence critical for data integrity and quality -->
+
+**Action:** Execute data ingestion, handle late/duplicate/backfilled data, detect anomalies, and validate quality.
+
+**Communication:** Announce ingestion start, report progress, request validation if quality issues found.
+
+**Evidence:** Ingestion logs, late/duplicate/backfill artifacts, anomaly detection logs, quality metrics.
 
 1. **`[MUST]` Execute Data Ingestion:**
    * **3.1. Initialize Data Collection:**
@@ -270,8 +280,50 @@ If any prerequisite fails, pause and resolve before continuing.
        - Detect anomalies and outliers automatically
        - Create data quality scorecards
        - **Evidence**: `AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/profiling-reports/`
+   * **Edge Cases:**
+     - **Ingestion failure**: If ingestion fails, document failure reason, implement retry logic, escalate if persistent
+     - **Source system timeout**: If source system times out, implement backoff strategy, document timeout handling
+     - **Evidence storage**: Ingestion logs stored in `.artifacts/protocol-08-ai-data-collection-ingestion/`
 
-2. **`[MUST]` Validate Data Quality:**
+2. **`[MUST]` Handle Late, Duplicate, and Backfilled Data:**
+   * **2.1. Late Event Processing:**
+       - **Action:** Define retention window for late events (e.g., 7 days, 30 days)
+       - **Action:** Implement reprocessing pipeline for late events within retention window
+       - **Action:** Document policy for events arriving after retention window (drop vs archive)
+       - **Evidence**: `AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/late-event-policy.md`
+   * **2.2. Duplicate Detection and Deduplication:**
+       - **Action:** Implement duplicate detection strategy (hash-based, key-based)
+       - **Action:** Document deduplication approach (first-write-wins, last-write-wins, merge)
+       - **Action:** Log duplicate detection metrics and decisions
+       - **Evidence**: `AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/duplicate-detection-log.json`
+   * **2.3. Backfill Run Procedures:**
+       - **Action:** Document backfill run procedures for historical data
+       - **Action:** Create backfill run artifact with scope, duration, validation
+       - **Action:** Track backfill progress and completion status
+       - **Evidence**: `AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/BACKFILL-RUN-{timestamp}.md`
+   * **Edge Cases:**
+     - **Late events exceed retention window**: If late events arrive after retention window, document decision (drop/archive), assess impact on downstream protocols
+     - **Duplicate detection failure**: If duplicate detection fails, implement manual review, document false positives/negatives
+     - **Backfill run failure**: If backfill run fails, document failure reason, create recovery plan, assess impact on timeline
+     - **Evidence storage**: All late/duplicate/backfill artifacts stored in `.artifacts/protocol-08-ai-data-collection-ingestion/`
+
+3. **`[MUST]` Implement Data Poisoning/Anomaly Detection:**
+   * **3.1. Anomaly Detection Checks:**
+       - **Action:** Implement statistical anomaly detection (outlier detection, distribution shifts)
+       - **Action:** Set anomaly detection thresholds per data source
+       - **Action:** Document anomaly detection method and validation
+       - **Evidence**: `AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/ANOMALY-DETECTION-LOG.md`
+   * **3.2. Data Poisoning Risk Assessment:**
+       - **Action:** Assess risk of data poisoning for each data source
+       - **Action:** Implement quarantine procedures for suspicious data
+       - **Action:** Document mitigation strategies (source validation, data verification)
+       - **Evidence**: `AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/poisoning-risk-assessment.md`
+   * **Edge Cases:**
+     - **Anomaly threshold exceeded**: If anomaly threshold exceeded, quarantine suspicious data, escalate to data owner, document decision
+     - **Data poisoning suspected**: If data poisoning suspected, halt ingestion, quarantine data, escalate to security team
+     - **Evidence storage**: Anomaly detection logs stored in `.artifacts/protocol-08-ai-data-collection-ingestion/`
+
+4. **`[MUST]` Validate Data Quality:**
    * **4.1. Check Completeness:**
        - Verify record counts match expectations
        - Validate no missing critical fields
@@ -285,8 +337,12 @@ If any prerequisite fails, pause and resolve before continuing.
        - Validate timeliness requirements met
        - Check for stale or duplicate records
    * **Evidence**: `AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/quality-metrics.json`
+   * **Edge Cases:**
+     - **Quality below threshold**: If quality below threshold, document quality issues, create remediation plan, assess impact on downstream protocols
+     - **Schema violations**: If schema violations detected, quarantine invalid records, document violations, create fix plan
+     - **Evidence storage**: Quality metrics stored in `.artifacts/protocol-08-ai-data-collection-ingestion/`
 
-3. **Quality Validation Checkpoint (Await "Validate"):**
+5. **Quality Validation Checkpoint (Await "Validate"):**
    * **Present**: Data quality scores and profiling results
    * **Announce**: "[MASTER RAY™ | PHASE 3 COMPLETE] - Data quality validated"
    * **Halt Condition**: Stop if data quality falls below 90% threshold
@@ -301,6 +357,12 @@ If any prerequisite fails, pause and resolve before continuing.
 <!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
 <!-- Why: Straightforward packaging and documentation steps -->
 
+**Action:** Package raw datasets, generate documentation, and prepare handoff package for Protocol 09.
+
+**Communication:** Announce handoff preparation start, report package completeness, request final validation.
+
+**Evidence:** Raw datasets, documentation, handoff package.
+
 1. **`[MUST]` Package Raw Datasets:**
    * **Action**: Organize ingested data in data lake structure
    * **Location**: `AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/raw-data/`
@@ -313,14 +375,22 @@ If any prerequisite fails, pause and resolve before continuing.
 
 3. **`[MUST]` Prepare Handoff Package:**
    * **Action**: Bundle all artifacts for Protocol 09
-   * **Contents**: Raw data, configs, reports, access credentials
+   * **Contents**: Raw data, configs, reports, access credentials, backfill logs, anomaly detection logs
    * **Format**: `AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/handoff-package.zip`
+   * **Edge Cases:**
+     - **Missing artifacts**: If artifacts missing, identify gaps, create missing artifacts, update handoff package
+     - **Package validation failure**: If package validation fails, fix issues, re-validate, document fixes
+     - **Evidence storage**: Handoff package stored in `.artifacts/protocol-08-ai-data-collection-ingestion/`
 
 4. **Handoff Readiness Checkpoint (Await "Handoff"):**
    * **Present**: Complete handoff package with all required artifacts
    * **Announce**: "[MASTER RAY™ | PHASE 4 COMPLETE] - Handoff package ready"
    * **Halt Condition**: Stop if any checklist item is incomplete
    * **HALT AND AWAIT** user confirmation for protocol completion
+   * **Edge Cases:**
+     - **Checklist incomplete**: If checklist incomplete, document missing items, create completion plan, schedule follow-up
+     - **Handoff delayed**: If handoff delayed, document delay reason, maintain protocol state, create escalation plan
+     - **Evidence storage**: Handoff validation stored in `.artifacts/protocol-08-ai-data-collection-ingestion/`
 
 **[Halt condition]**: Stop if any checklist item is incomplete.
 
@@ -381,7 +451,17 @@ If any prerequisite fails, pause and resolve before continuing.
 - **Metrics**: Volume, completeness, timeliness, schema compliance
 - **Action on Failure**: Isolate problematic data, implement remediation
 
-### Gate 4: Compliance Validation
+### Gate 4: Anomaly Detection & Poisoning Risk
+- **Trigger**: During Phase 3 execution (after anomaly detection)
+- **Criteria**: Anomaly detection checks pass, no data poisoning detected, suspicious data quarantined
+- **Threshold**: anomaly_detection_coverage = 100%, poisoning_risk_assessed = YES, quarantine_rate < 5%
+- **Metrics**: anomaly_count, quarantine_count, poisoning_risk_score
+- **Evidence**: `ANOMALY-DETECTION-LOG.md`, `poisoning-risk-assessment.md`
+- **Validation Script**: `scripts/ai/validate_anomaly_detection.py`
+- **Action on Failure**: Quarantine suspicious data, escalate to security team, document mitigation plan
+- **Blocking**: YES - Cannot proceed if poisoning risk high without mitigation
+
+### Gate 5: Compliance Validation
 - **Trigger**: After Phase 3 completion
 - **Criteria**: No PII violations, all access controls enforced
 - **Threshold**: ≥95% success rate
@@ -390,9 +470,9 @@ If any prerequisite fails, pause and resolve before continuing.
 - **Requirements**: GDPR, HIPAA, organizational data policies
 - **Action on Failure**: Immediate halt and security escalation
 
-### Gate 5: Documentation Completeness
+### Gate 6: Documentation Completeness
 - **Trigger**: After Phase 4 completion
-- **Criteria**: All artifacts generated, audit trail complete
+- **Criteria**: All artifacts generated, audit trail complete, backfill logs documented
 - **Threshold**: ≥95% success rate
 - **Threshold**: 100% documentation coverage
 - **Validation Script**: `scripts/ai/validate_documentation.py`
@@ -407,15 +487,23 @@ If any prerequisite fails, pause and resolve before continuing.
 <!-- [Category: GUIDELINES-FORMATS] -->
 <!-- Why: Defining integration rules and standards for protocol connections -->
 
-### Input Dependencies
+### Inputs From
 - **Protocol 07**: Data strategy approval and source inventory
-- **Security Team**: Access credentials and authorization
-- **Infrastructure**: Data lake setup and network connectivity
+  - **Artifact**: `data-strategy.md`, `data-requirements-inventory.json`, `DATA-RESIDENCY-MATRIX.md`, `data-source-contingency-plans.md`
+  - **Format**: Markdown (.md), JSON (.json)
+  - **Assumptions**: Data sources are identified, accessible, and compliant; contingency plans documented
 
-### Output Targets  
+### Input Validation
+- **Missing Inputs**: If any required input is missing, halt protocol execution, escalate to source protocol owner, document gap in `.artifacts/protocol-08-ai-data-collection-ingestion/input-gaps.md`
+- **Low Quality Inputs**: If input quality below threshold (e.g., incomplete data strategy), request clarification from source protocol, document quality issues, proceed with documented assumptions
+- **Invalid Inputs**: If inputs are invalid (e.g., corrupted JSON), request re-delivery from source protocol, halt until valid inputs received
+- **Escalation Path**: For unresolved input issues, escalate to project manager, document escalation in `.artifacts/protocol-08-ai-data-collection-ingestion/escalation-log.md`
+
+### Outputs To
 - **Protocol 09**: Cleaned and validated datasets for processing
-- **Data Lake**: Raw data storage with proper organization
-- **Monitoring**: Ingestion metrics and quality dashboards
+  - **Artifact**: Raw datasets, ingestion logs, quality metrics, backfill logs, anomaly detection logs
+  - **Format**: Parquet datasets, JSON logs, Markdown documentation
+  - **Guarantees**: Data is ingested with quality validation, late/duplicate/backfilled data handled, anomalies detected and quarantined
 
 ### Data Format Standards
 - **Input**: JSON strategy files, YAML configurations
@@ -596,6 +684,11 @@ python scripts/ai/validate_handoff.py --package AI-project-workflow/.artifacts/p
 - [ ] `quality-metrics.json` – Initial quality assessment
 - [ ] `profiling-reports/` – Statistical analysis results
 - [ ] `ingestion-log.json` – Complete execution audit trail
+- [ ] `late-event-policy.md` – Late event handling policy
+- [ ] `duplicate-detection-log.json` – Duplicate detection metrics
+- [ ] `BACKFILL-RUN-{timestamp}.md` – Backfill run documentation (if applicable)
+- [ ] `ANOMALY-DETECTION-LOG.md` – Anomaly detection results
+- [ ] `poisoning-risk-assessment.md` – Data poisoning risk assessment
 
 ### Verification Procedures
 - [ ] **Data Volume**: Record counts match strategy expectations
@@ -648,14 +741,19 @@ All artifacts generated by this protocol are stored in the designated evidence d
 ### Required Artifacts
 All evidence MUST live under `AI-project-workflow/.artifacts/protocol-08-ai-data-collection-ingestion/`:
 
-| Artifact | Location | Format | Validation Status | Quality Score |
-|----------|----------|--------|-------------------|---------------|
-| `source-connections.json` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | JSON | Pass | 0.95 |
-| `etl-configuration.yaml` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | YAML | Pass | 0.98 |
-| `ingestion-log.json` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | JSON | Pass | 0.94 |
-| `quality-metrics.json` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | JSON | Pass | 0.92 |
-| `profiling-reports/` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | Directory | Pass | 0.89 |
-| `handoff-package.zip` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | ZIP | Pass | 0.97 |
+| Artifact | Location | Format | Purpose | Consumers |
+|----------|----------|--------|---------|------------|
+| `source-connections.json` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | JSON | Connection documentation | Protocol 09 |
+| `etl-configuration.yaml` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | YAML | Pipeline specifications | Protocol 09 |
+| `ingestion-log.json` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | JSON | Execution audit trail | Protocol 09 |
+| `quality-metrics.json` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | JSON | Quality assessment | Protocol 09 |
+| `profiling-reports/` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | Directory | Statistical analysis | Protocol 09 |
+| `late-event-policy.md` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | Markdown | Late event handling policy | Protocol 09 |
+| `duplicate-detection-log.json` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | JSON | Duplicate detection metrics | Protocol 09 |
+| `BACKFILL-RUN-{timestamp}.md` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | Markdown | Backfill run documentation | Protocol 09 |
+| `ANOMALY-DETECTION-LOG.md` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | Markdown | Anomaly detection results | Protocol 09 |
+| `poisoning-risk-assessment.md` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | Markdown | Data poisoning risk assessment | Protocol 09 |
+| `handoff-package.zip` | `.artifacts/protocol-08-ai-data-collection-ingestion/` | ZIP | Complete handoff package | Protocol 09 |
 
 ### Evidence Package Structure
 ```json
@@ -730,6 +828,20 @@ All evidence MUST live under `AI-project-workflow/.artifacts/protocol-08-ai-data
 - [ ] Content structure matches specifications
 - [ ] Quality thresholds met or exceeded
 - [ ] Audit trail complete and accurate
+
+### Drift Baselines and Monitoring Hooks
+- **Ingestion Baseline**: Baseline version of ingestion metrics stored in `.artifacts/protocol-08-ai-data-collection-ingestion/baselines/ingestion-baseline-v{version}.json`
+  - **Purpose**: Track changes to ingestion patterns over time
+  - **Monitoring**: If ingestion patterns change significantly (>20% volume change), notify Protocol 09, trigger investigation
+  - **Consumer**: Protocol 09, Protocol 23 (Data Drift & Concept Drift Detection)
+- **Quality Baseline**: Baseline of data quality metrics stored in `.artifacts/protocol-08-ai-data-collection-ingestion/baselines/quality-baseline-v{version}.json`
+  - **Purpose**: Track data quality trends for drift detection
+  - **Monitoring**: If quality degrades significantly, notify Protocol 09, trigger quality remediation
+  - **Consumer**: Protocol 09, Protocol 23
+- **Anomaly Baseline**: Baseline of anomaly detection patterns stored in `.artifacts/protocol-08-ai-data-collection-ingestion/baselines/anomaly-baseline-v{version}.json`
+  - **Purpose**: Track normal anomaly patterns for comparison
+  - **Monitoring**: If anomaly patterns change significantly, escalate to security team, trigger investigation
+  - **Consumer**: Protocol 09, Protocol 23
 
 
 ---

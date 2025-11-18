@@ -5,53 +5,41 @@
     "I am okay with sacrificing quality/perfectness to achieve my timeline but the app must be functional for at least 1000 users"
   ],
   "tech_stack": [
-    "Fullstack",
-    "SaaS",
-    "Double Sided Marketplace",
-    "Claude AI coding",
-    "MVP"
+    "Fullstack development",
+    "Claude AI coding tools",
+    "AI copilot tools",
+    "SaaS platform",
+    "Double-sided marketplace"
   ],
   "pain_points": [
-    "Need MVP built extremely fast (1-2 weeks)",
-    "Must handle 1000 users minimum",
-    "Daily code reviews required",
-    "Tight timeline with quality trade-offs acceptable",
-    "Urgent hiring deadline (end of day Wednesday)"
+    "Need MVP built extremely quickly (1-2 weeks)",
+    "Timeline pressure - willing to sacrifice quality for speed",
+    "Need transparency and honesty in development process",
+    "Requires daily code reviews and standups",
+    "Must handle 1000+ users at MVP stage"
   ],
   "tone_type": "casual",
   "urgency_signals": [
     "as quickly as possible",
     "1-2 weeks maximum",
-    "end of day Wednesday",
-    "MVP as quickly as possible"
+    "I am looking to make my hire by end of day Wednesday",
+    "lets jump on a video call"
   ],
   "vague_requirements": [
     {
       "client_says": "We are drawing 99% inspiration from a similar app in the market",
       "interpretation_needed": true,
-      "clarifying_question": "Which similar app should we reference? Can you share the app name or screenshots?"
-    },
-    {
-      "client_says": "I can either provide wireframes or you can do this yourself using AI",
-      "interpretation_needed": true,
-      "clarifying_question": "Do you have wireframes ready, or should I proceed with AI-generated wireframes based on the reference app?"
+      "clarification_question": "Which similar app are you referencing? Can you share the app name or provide wireframes?"
     },
     {
       "client_says": "very generous hourly wage",
       "interpretation_needed": true,
-      "clarifying_question": "What is the budget range for this project? What hourly rate are you considering?"
-    }
-  ],
-  "red_flags": [
-    {
-      "flag": "Extremely tight timeline (1-2 weeks for full MVP)",
-      "concern": "Risk of scope creep or unrealistic expectations",
-      "mitigation": "Clarify core MVP features vs nice-to-haves, set clear boundaries"
+      "clarification_question": "What is the specific hourly rate range you're considering?"
     },
     {
-      "flag": "Daily code reviews by external engineer",
-      "concern": "Potential bottleneck or conflicting feedback",
-      "mitigation": "Establish review process and response time expectations"
+      "client_says": "functional for at least 1000 users",
+      "interpretation_needed": true,
+      "clarification_question": "What does 'functional' mean specifically? Core features only, or full marketplace functionality including payments, messaging, reviews?"
     }
   ]
 }

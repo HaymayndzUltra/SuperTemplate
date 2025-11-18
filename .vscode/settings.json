@@ -1,3 +1,4 @@
 {
-    "cursor.composer.shouldAllowCustomModes": true
+    "cursor.composer.shouldAllowCustomModes": true,
+    "livePreview.defaultPreviewPath": "/index.html"
 }

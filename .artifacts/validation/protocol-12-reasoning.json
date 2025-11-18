@@ -1,29 +1,29 @@
 {
   "validator": "protocol_reasoning",
   "protocol_id": "12",
-  "validation_timestamp": "2025-11-06T16:43:35.412945Z",
-  "overall_score": 0.7250000000000001,
+  "validation_timestamp": "2025-11-13T16:41:04.065425Z",
+  "overall_score": 0.7875000000000001,
   "validation_status": "warning",
   "issues": [
     "Reasoning patterns not explicitly named",
     "Self-awareness statements missing"
   ],
-  "recommendations": [
-    "Include root-cause analysis guidance"
-  ],
+  "recommendations": [],
   "reasoning_patterns": {
-    "score": 0.25,
+    "score": 0.5,
     "status": "fail",
     "issues": [
       "Reasoning patterns not explicitly named"
     ],
     "recommendations": [],
     "details": {
-      "matches": [],
+      "matches": [
+        "pattern"
+      ],
       "pattern_terms": false,
-      "explanations": false,
-      "improvement": false,
-      "example_references": true
+      "explanations": true,
+      "improvement": true,
+      "example_references": false
     }
   },
   "decision_trees": {
@@ -42,13 +42,11 @@
     "score": 0.75,
     "status": "warning",
     "issues": [],
-    "recommendations": [
-      "Include root-cause analysis guidance"
-    ],
+    "recommendations": [],
     "details": {
       "problem_identification": true,
-      "root_cause": false,
-      "solutions": true,
+      "root_cause": true,
+      "solutions": false,
       "validation": true
     }
   },

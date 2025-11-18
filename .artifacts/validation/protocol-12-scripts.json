@@ -1,101 +1,76 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "12",
-  "validation_timestamp": "2025-11-06T16:43:35.403759Z",
-  "overall_score": 0.6875,
-  "validation_status": "fail",
-  "issues": [
-    "Referenced command paths not found: scripts/collect_change_context.py, scripts/run_comprehensive_review.py",
-    "Exit code handling not described"
-  ],
-  "recommendations": [
-    "Document environment/dependency expectations",
-    "Clarify access and credential requirements",
-    "Document how command outputs are captured"
-  ],
+  "validation_timestamp": "2025-11-13T16:41:04.047313Z",
+  "overall_score": 0.8375000000000001,
+  "validation_status": "warning",
+  "issues": [],
+  "recommendations": [],
   "script_inventory": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [
-      "Referenced command paths not found: scripts/collect_change_context.py, scripts/run_comprehensive_review.py"
-    ],
-    "recommendations": [],
-    "details": {
-      "command_count": 10,
-      "commands": [
-        "bash\n# Prerequisite validation",
-        "python scripts/validate_prerequisites_4.py",
-        "python scripts/validate_gate_4_pre_audit.py --threshold 0.80",
-        "python scripts/validate_gate_4_reporting.py --threshold 0.95",
-        "python scripts/aggregate_evidence_4.py --output .artifacts/quality-audit/",
-        "python scripts/run_protocol_4_gates.py",
-        "bash\n       python scripts/collect_change_context.py --since main --output .artifacts/quality-audit/change-context.json",
-        "python\n       selected = router.resolve(mode)",
-        "bash\n       python scripts/run_comprehensive_review.py --output .artifacts/quality-audit/comprehensive-trace.json",
-        "python\n     save_summary(findings, path=\".cursor/context-kit/quality-audit-summary.json\")"
-      ],
-      "missing_scripts": [
-        "scripts/collect_change_context.py",
-        "scripts/run_comprehensive_review.py"
-      ]
-    }
-  },
-  "registry_alignment": {
-    "score": 0.875,
+    "score": 0.8,
     "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
-      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "command_count": 4,
+      "commands": [
+        "bash\n# Evaluate multiple algorithms on training data",
+        "python3 scripts/ai/evaluate_algorithms.py --train-data .artifacts/protocol-11/datasets/train.parquet --val-data .artifacts/protocol-11/datasets/validation.parquet --problem-type classification --output-matrix .artifacts/protocol-12/algorithm-evaluation-matrix.json > .artifacts/protocol-12/evaluate-algorithms.log 2>&1",
+        "python3 scripts/ai/create_baseline_model.py --train-data .artifacts/protocol-11/datasets/train.parquet --val-data .artifacts/protocol-11/datasets/validation.parquet --algorithm random-forest --output-model .artifacts/protocol-12/baseline-model.pkl --output-metrics .artifacts/protocol-12/baseline-performance.json > .artifacts/protocol-12/create-baseline.log 2>&1",
+        "python3 scripts/ai/setup_experiment_tracking.py --platform mlflow --project-name ai-model-training --baseline-model .artifacts/protocol-12/baseline-model.pkl --baseline-metrics .artifacts/protocol-12/baseline-performance.json --output-config .artifacts/protocol-12/tracking-config.yaml > .artifacts/protocol-12/setup-tracking.log 2>&1"
+      ],
+      "missing_scripts": []
+    }
+  },
+  "registry_alignment": {
+    "score": 0.6875,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate-1/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": true,
       "workflow_mapping": true,
-      "ownership": true,
-      "total_commands": 10,
-      "registered_commands": 5,
-      "registration_ratio": 0.5,
+      "ownership": false,
+      "total_commands": 4,
+      "registered_commands": 3,
+      "registration_ratio": 0.75,
       "unregistered_commands": []
     }
   },
   "execution_context": {
-    "score": 0.25,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document environment/dependency expectations",
-      "Clarify access and credential requirements"
-    ],
+    "recommendations": [],
     "details": {
       "ci_context": true,
-      "environment": false,
-      "scheduling": false,
-      "permissions": false
+      "environment": true,
+      "scheduling": true,
+      "permissions": true
     }
   },
   "command_syntax": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
-    "recommendations": [
-      "Document how command outputs are captured"
-    ],
+    "recommendations": [],
     "details": {
-      "command_count": 10,
+      "command_count": 4,
       "flag_usage": true,
-      "output_redirection": false,
+      "output_redirection": true,
       "parameterization": false,
       "documentation": true
     }
   },
   "error_handling": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Exit code handling not described"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "exit_codes": false,
+      "exit_codes": true,
       "fallback": true,
       "logging": true,
       "manual_paths": true

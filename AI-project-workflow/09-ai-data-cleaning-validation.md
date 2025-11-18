@@ -1,6 +1,6 @@
 ---
 
-protocol_version: "1.0.0"
+protocol_version: "1.1.0"
 protocol_number: "09"
 protocol_name: "AI Data Cleaning & Validation"
 protocol_type: "Workflow Orchestration"
@@ -109,11 +109,29 @@ As a Data Quality Engineer, I am aware that:
 
 ### Inputs From
 - **Protocol 08**: Raw ingested datasets, ingestion logs, initial quality metrics
+  - **Artifact**: Raw datasets, `ingestion-log.json`, `quality-metrics.json`, `ANOMALY-DETECTION-LOG.md`
+  - **Format**: Parquet, JSON, Markdown
+  - **Assumptions**: Data is ingested with quality validation, late/duplicate/backfilled data handled
 - **Protocol 07**: Data requirements inventory, compliance requirements, quality thresholds
+  - **Artifact**: `data-requirements-inventory.json`, `compliance-requirements.json`
+  - **Format**: JSON
+  - **Assumptions**: Requirements are complete and validated
+
+### Input Validation
+- **Missing Inputs**: If any required input is missing, halt protocol execution, escalate to source protocol owner, document gap in `.artifacts/protocol-09-ai-data-cleaning-validation/input-gaps.md`
+- **Low Quality Inputs**: If input quality below threshold (e.g., incomplete ingestion logs), request clarification from source protocol, document quality issues, proceed with documented assumptions
+- **Invalid Inputs**: If inputs are invalid (e.g., corrupted Parquet files), request re-delivery from source protocol, halt until valid inputs received
+- **Escalation Path**: For unresolved input issues, escalate to project manager, document escalation in `.artifacts/protocol-09-ai-data-cleaning-validation/escalation-log.md`
 
 ### Outputs To
 - **Protocol 10**: Clean datasets for feature engineering
+  - **Artifact**: Cleaned datasets, quality reports, leakage checklist, concept drift probes
+  - **Format**: Parquet (cleaned), JSON (quality reports), Markdown (documentation)
+  - **Guarantees**: Data is clean, validated, no leakage, concept drift assessed
 - **Protocol 11**: Prepared datasets for model training
+  - **Artifact**: Cleaned datasets, quality reports
+  - **Format**: Parquet (cleaned), JSON (quality reports)
+  - **Guarantees**: Data is clean, validated, ready for splitting
 
 ### Data Formats
 - **Input**: Parquet, JSON, CSV from Protocol 08
@@ -134,6 +152,12 @@ As a Data Quality Engineer, I am aware that:
 
 <!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
 <!-- Why: Data assessment requires interpretation of profiling results and strategic decisions about cleaning approach -->
+
+**Action:** Assess raw data quality, identify issues, and determine cleaning strategy.
+
+**Communication:** Announce assessment start, report quality issues, request strategy approval.
+
+**Evidence:** Profiling reports, quality issues analysis, cleaning strategy document.
 
 **Reasoning Pattern:** Profile-before-clean heuristic — systematically assess data quality through profiling before cleaning operations. This prevents wasted cleaning effort on misdiagnosed issues.
 
@@ -175,6 +199,14 @@ As a Data Quality Engineer, I am aware that:
    - Evidence: Updated `09-quality-issues-analysis.md` with risk flags
    - Validation: Risk criteria applied consistently
 
+**Edge Cases:**
+- **Inaccessible datasets**: If datasets cannot be loaded or accessed, document access issues, escalate to infrastructure team, create recovery plan
+- **Corrupted data files**: If data files are corrupted, request re-delivery from Protocol 08, document corruption details, halt until valid data received
+- **Missing profiling tools**: If profiling scripts unavailable, use alternative profiling methods, document method used, register scripts for future use
+- **Incomplete requirements**: If data requirements from Protocol 07 incomplete, document gaps, request clarification, proceed with documented assumptions
+- **Schema drift**: If schema differs from expected, document drift, update schema documentation, adjust cleaning strategy accordingly
+- **Extremely large datasets**: If datasets too large for standard profiling, use sampling approach, document sampling strategy, validate sample representativeness
+
 **[REASONING]**
 The profiling results indicate specific data quality challenges that require strategic cleaning decisions. Based on the missingness patterns and schema violations identified, the cleaning strategy prioritizes key field preservation while applying appropriate remediation techniques for non-critical fields. High-risk datasets are flagged early to prevent wasted processing effort on unusable data.
 
@@ -187,6 +219,12 @@ The profiling results indicate specific data quality challenges that require str
 
 <!-- [Category: EXECUTION-FORMATS - SUBSTEPS variant] -->
 <!-- Why: Every cleaning operation must be trackable and reproducible with detailed audit trail -->
+
+**Action:** Execute cleaning operations including missing value handling, outlier treatment, and concept drift probes.
+
+**Communication:** Announce cleaning start, report cleaning progress, request validation if issues found.
+
+**Evidence:** Cleaning logs, outlier reports, concept drift probes, leakage checklist.
 
 **[STRICT]** Execute cleaning operations in sequence. Do not skip steps. All operations must be logged.
 
@@ -245,6 +283,12 @@ The profiling results indicate specific data quality challenges that require str
 
 <!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
 <!-- Why: Quality scoring and pass/fail logic are decision-heavy requiring explicit rationale -->
+
+**Action:** Calculate quality scores, validate datasets meet thresholds, and check for leakage.
+
+**Communication:** Announce validation start, report quality scores, request approval if below threshold.
+
+**Evidence:** Component scores, quality reports, leakage validation, validation confirmation.
 
 **[STRICT]** Validate all cleaned datasets meet quality criteria before handoff consideration.
 
@@ -312,6 +356,12 @@ The quality scoring methodology balances correctness and constraints with higher
 <!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
 <!-- Why: Straightforward generation of manifest, reports, and handoff documentation -->
 
+**Action:** Generate handoff package with all cleaned datasets, quality reports, and documentation.
+
+**Communication:** Announce handoff preparation start, report package completeness, request final validation.
+
+**Evidence:** Clean datasets manifest, quality reports, handoff package.
+
 **[STRICT]** Prepare complete handoff package for Protocol 10 and 11.
 
 ### 4.1 Artifact Generation
@@ -337,7 +387,11 @@ The quality scoring methodology balances correctness and constraints with higher
    - Input: All validation check results
    - Action: Generate comprehensive `09-validation-log.json`
    - Evidence: Complete validation log
-   - Validation: All validation steps logged with pass/fail status
+   - Validation: All validation steps logged
+   - **Edge Cases:**
+     - **Missing validation logs**: If validation logs missing, regenerate logs, document regeneration, update handoff package
+     - **Validation incomplete**: If validation incomplete, document gaps, create completion plan, schedule follow-up
+     - **Evidence storage**: Validation logs stored in `.artifacts/protocol-09-ai-data-cleaning-validation/` with pass/fail status
 
 5. **Step 4.5: Document Issues and Exceptions**
    - Input: Unresolved issues, quarantined data, compliance matters
@@ -410,13 +464,24 @@ The quality scoring methodology balances correctness and constraints with higher
 **Pass Criteria**: All compliance requirements met, violations quarantined
 **Action on Failure**: Immediate halt, human escalation required
 
-### Gate 4: Quality Score Gate
-**Threshold**: quality_score ≥0.90 for handoff datasets
-**Validation Method**: Automated quality scoring calculation
-**Pass Criteria**: Weighted score meets threshold, no hard violations
-**Action on Failure**: Dataset marked REVIEW_REQUIRED, human approval needed
+### Gate 4: Leakage Detection Gate
+- **Trigger**: After Step 2.9 (Leakage Review Checklist)
+- **Criteria**: No temporal, target, or feature leakage detected in cleaned datasets
+- **Threshold**: leakage_detected = NO, leakage_checklist_complete = YES
+- **Metrics**: temporal_leakage = 0, target_leakage = 0, feature_leakage = 0
+- **Evidence**: `09-LEAKAGE-CHECKLIST.md`
+- **Validation Method**: Automated leakage detection scripts and manual review
+- **Pass Criteria**: All leakage checks pass, no leakage violations
+- **Action on Failure**: Quarantine affected features, document leakage type, escalate to data scientist, block handoff until resolved
+- **Blocking**: YES - Cannot proceed if leakage detected without mitigation
 
-### Gate 5: Handoff Readiness Gate
+### Gate 5: Quality Score Gate
+- **Threshold**: quality_score ≥0.90 for handoff datasets
+- **Validation Method**: Automated quality scoring calculation
+- **Pass Criteria**: Weighted score meets threshold, no hard violations
+- **Action on Failure**: Dataset marked REVIEW_REQUIRED, human approval needed
+
+### Gate 6: Handoff Readiness Gate
 **Threshold**: All required artifacts generated and validated
 **Validation Method**: Artifact completeness check and schema validation
 **Pass Criteria**: 100% of deliverables present and properly formatted
@@ -438,12 +503,15 @@ All artifacts generated by this protocol are stored in the designated evidence d
 **[STRICT]** Document all evidence for auditability and reproducibility.
 
 ### Artifact Summary Table
-| Artifact | Type | Purpose | Location | Status |
-|----------|------|---------|----------|--------|
-| `09-clean-datasets-manifest.json` | Manifest | Dataset inventory | `.artifacts/protocol-09/` | Required |
-| `09-data-quality-report.json` | Report | Quality metrics | `.artifacts/protocol-09/` | Required |
-| `09-cleaning-rules-applied.md` | Documentation | Operations log | `.artifacts/protocol-09/` | Required |
-| `09-validation-log.json` | Log | Validation results | `.artifacts/protocol-09/` | Required |
+| Artifact | Type | Purpose | Location | Consumers |
+|----------|------|---------|----------|-----------|
+| `09-clean-datasets-manifest.json` | Manifest | Dataset inventory | `.artifacts/protocol-09/` | Protocol 10, Protocol 11 |
+| `09-data-quality-report.json` | Report | Quality metrics | `.artifacts/protocol-09/` | Protocol 10, Protocol 11 |
+| `09-cleaning-rules-applied.md` | Documentation | Operations log | `.artifacts/protocol-09/` | Internal reference |
+| `09-validation-log.json` | Log | Validation results | `.artifacts/protocol-09/` | Internal reference |
+| `09-concept-drift-probe-{timestamp}.json` | Probe | Concept drift assessment | `.artifacts/protocol-09/` | Protocol 23 |
+| `09-LEAKAGE-CHECKLIST.md` | Checklist | Leakage validation | `.artifacts/protocol-09/` | Protocol 10, Protocol 11 |
+| `09-DISPUTED-RECORDS-LOG.md` | Log | Disputed outlier review | `.artifacts/protocol-09/` | Internal reference |
 
 ### Required Evidence Artifacts
 - [ ] **09-clean-datasets-manifest.json** - List of all cleaned datasets with locations, row counts, timestamps
@@ -485,6 +553,20 @@ All artifacts generated by this protocol are stored in the designated evidence d
 - [ ] **09-handoff-summary.md** - Handoff guidance for Protocol 10/11
   - Location: `.artifacts/protocol-09-ai-data-cleaning-validation/09-handoff-summary.md`
   - Validation: Clear guidance on approved datasets and usage restrictions
+
+### Drift Baselines and Monitoring Hooks
+- **Data Quality Baseline**: Document baseline quality scores (completeness, consistency, validity) for drift detection
+  - Location: `.artifacts/protocol-09-ai-data-cleaning-validation/quality-baseline.json`
+  - Monitoring Hook: Compare future cleaning runs against baseline, alert if quality degrades >5%
+  - Consumer: Protocol 23 (Model Drift Monitoring)
+- **Concept Drift Baseline**: Document concept drift probe results from cleaning stage
+  - Location: `.artifacts/protocol-09-ai-data-cleaning-validation/09-concept-drift-probe-{timestamp}.json`
+  - Monitoring Hook: Track distribution shifts in cleaned data, alert if significant drift detected
+  - Consumer: Protocol 23 (Model Drift Monitoring)
+- **Leakage Baseline**: Document leakage detection results as baseline for future validation
+  - Location: `.artifacts/protocol-09-ai-data-cleaning-validation/09-LEAKAGE-CHECKLIST.md`
+  - Monitoring Hook: Validate no leakage introduced in future cleaning runs
+  - Consumer: Protocol 10, Protocol 11
 
 ---
 

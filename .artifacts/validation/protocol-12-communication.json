@@ -1,62 +1,73 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "12",
-  "validation_timestamp": "2025-11-06T16:43:35.404877Z",
-  "overall_score": 0.8375,
-  "validation_status": "warning",
-  "issues": [],
-  "recommendations": [],
+  "validation_timestamp": "2025-11-13T16:41:04.049320Z",
+  "overall_score": 0.6749999999999999,
+  "validation_status": "fail",
+  "issues": [
+    "Phase transition announcements missing",
+    "Missing user interaction prompts: clarification"
+  ],
+  "recommendations": [
+    "Add explicit remediation instructions to error prompts"
+  ],
   "status_announcements": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.5,
+    "status": "fail",
+    "issues": [
+      "Phase transition announcements missing"
+    ],
     "recommendations": [],
     "details": {
-      "phase_transitions": true,
-      "branded_announcements": true,
+      "phase_transitions": false,
+      "branded_announcements": false,
       "completion_callouts": true,
       "time_estimates": true
     }
   },
   "user_interaction": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Missing user interaction prompts: clarification"
+    ],
     "recommendations": [],
     "details": {
       "confirmation": true,
-      "clarification": true,
+      "clarification": false,
       "decision_points": true,
       "feedback": true
     }
   },
   "error_messaging": {
+    "score": 0.5,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [
+      "Add explicit remediation instructions to error prompts"
+    ],
+    "details": {
+      "templates": true,
+      "severity": true,
+      "context": false,
+      "resolution": false
+    }
+  },
+  "progress_tracking": {
     "score": 0.75,
     "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
-      "templates": true,
-      "severity": true,
-      "context": false,
-      "resolution": true
-    }
-  },
-  "progress_tracking": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [],
-    "recommendations": [],
-    "details": {
       "terms": [
-        "percent",
+        "progress",
         "%",
         "complete"
       ],
       "progress_terms": true,
-      "timeline": false,
+      "timeline": true,
       "current_activity": false,
-      "next_steps": false
+      "next_steps": true
     }
   },
   "evidence_communication": {
