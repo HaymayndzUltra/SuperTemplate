@@ -1,0 +1,226 @@
+# ============================================
+# META-INSTRUCTION B
+# PR Evaluation Framework
+# ============================================
+
+version: "3.0"
+generated_from: "Meta-Instruction A"
+
+# --------------------------------------------
+# CONTEXT
+# --------------------------------------------
+
+original_prompt_summary: |
+  The original instruction defines a comprehensive validation program for ten meta-upgrades
+  across protocols 01–23, requiring intent capture, alignment scoring, decision gates, and
+  integration planning while preserving governance constraints and evidence trails.
+
+primary_intent: "Provide an evaluation framework that selects the PR which best enables the mandated validation and integration workflow for the ten meta-upgrades."
+
+secondary_intents:
+  - "Ensure the chosen PR enforces artifact generation, decision thresholds, and governance safeguards from the prompt."
+  - "Verify the recommended PR supports parallel, evidence-driven analysis without modifying protocol source files."
+
+technical_domain: "workflow governance & validation tooling"
+complexity_level: "highly-complex"
+
+# --------------------------------------------
+# REQUIREMENTS CHECKLIST
+# --------------------------------------------
+
+requirements:
+  explicit:
+    - "Framework must cover all ten upgrades (UPG01–UPG10) with intent extraction, validation, and decision artifacts."
+    - "Must enforce alignment scoring using the defined weighted formula and thresholds for Accept/Adapt/Reject."
+    - "Needs to generate and reference required artifacts (intent.json, analysis.json, decision.json, integration_plan.json, etc.)."
+    - "Must respect hard gates: no new circular dependencies, no gate weakening, and evidence required for decisions."
+    - "Integration sequencing S0–S9 must be produced even if some upgrades are rejected."
+    - "POP activation criteria and governance enforcement must be monitored and reported."
+  implicit:
+    - "Evaluation workflow operates analysis-only; no protocol or code edits occur."
+    - "Master rules `1-master-rule-context-discovery.mdc` and `2-master-rule-ai-collaboration-guidelines.mdc` must be acknowledged as prerequisites."
+    - "Parallel execution lanes must remain isolated except for shared catalog artifacts."
+    - "Halt conditions (missing rules, detected cycles, gate weakening, or missing evidence) must stop processing with a halt report."
+  technical:
+    - "Protocols reside under `.cursor/ai-driven-workflow/` covering range 01–23."
+    - "Artifacts must be written beneath `.artifacts/meta-upgrades/` respecting per-upgrade directories."
+    - "Alignment scoring formula: 0.35*intent_match + 0.25*dependency_satisfaction + 0.20*gate_compatibility + 0.20*governance_coherence - performance_risk_penalty."
+    - "Parallelism target is ten lanes (one per upgrade) with shared catalog cache."
+  quality:
+    - "All decisions require evidence references and documented change impacts."
+    - "Simulation, integration, and final sign-off artifacts (e.g., causal_replay.md, final_report.md) must be planned."
+    - "Governance changes cannot weaken quality gates; stricter gates preferred."
+    - "Reports must cite specific protocol sections or artifacts backing findings."
+
+# --------------------------------------------
+# EVALUATION FRAMEWORK
+# --------------------------------------------
+
+evaluation_axes:
+  - axis: "Intent Alignment"
+    weight: 0.35
+    question: "Does this PR deliver an evaluation system that fulfills the meta-upgrade validation mandate without violating stated scope?"
+    scoring:
+      10: "Perfectly operationalizes the mandated validation workflow for all upgrades, preserving analysis-only scope."
+      7: "Covers the validation workflow with minor scope gaps or assumptions that are easy to remedy."
+      4: "Partially addresses the workflow, omitting notable upgrade phases or weakening scope boundaries."
+      1: "Fails to reflect the required validation intent or disregards scope constraints."
+    evaluation_steps:
+      - "Confirm the PR captures goal, layers, touchpoints, dependencies, expected outcomes, and risks per upgrade."
+      - "Verify master rules and governance prerequisites are explicitly integrated into the framework."
+      - "Ensure analysis remains artifact-driven with no protocol modifications."
+
+  - axis: "Completeness"
+    weight: 0.25
+    question: "Are all prompt-defined artifacts, decision gates, and integration requirements addressed end-to-end?"
+    scoring:
+      10: "Implements every explicit and implicit requirement, including halt conditions and full artifact inventory."
+      7: "Implements most requirements with only minor omissions or unclear handling of low-risk items."
+      4: "Misses several required artifacts or governance steps."
+      1: "Leaves the majority of mandated requirements unaddressed."
+    evaluation_steps:
+      - "Check coverage of all items in the requirements checklist."
+      - "Verify Accept/Adapt/Reject thresholds and evidence rules are enforced."
+      - "Confirm integration sequencing S0–S9 and POP activation criteria are included."
+
+  - axis: "Implementation Quality"
+    weight: 0.20
+    question: "Is the proposed evaluation system structured, maintainable, and clear for governance-heavy analysis?"
+    scoring:
+      10: "Exhibits clear modular structure, precise terminology, and maintainable processes tailored to governance workflows."
+      7: "Generally well-organized with minor clarity or maintainability issues."
+      4: "Functional but exhibits confusing structure or insufficient guidance for operators."
+      1: "Disorganized, ambiguous, or impractical to execute."
+    evaluation_steps:
+      - "Review organization of phases, parallel lanes, and cross-upgrade coordination."
+      - "Assess clarity of instructions for artifact generation and evidence citation."
+      - "Check for unambiguous handling of halt/escalate conditions and governance checkpoints."
+
+  - axis: "Governance & Constraint Compliance"
+    weight: 0.20
+    question: "Does the PR uphold hard gates, governance rules, and risk controls defined in the original prompt?"
+    scoring:
+      10: "Fully enforces all governance constraints, risk mitigations, and gate protections with proactive safeguards."
+      7: "Enforces most constraints with minor enforcement or monitoring gaps."
+      4: "Provides limited governance coverage or tolerates potential gate regressions."
+      1: "Neglects critical governance requirements or allows gate weakening."
+    evaluation_steps:
+      - "Verify monitoring for circular dependencies, gate regressions, and POP activation rules."
+      - "Confirm risk profiles and mitigation steps are captured per upgrade."
+      - "Ensure halt-report protocol triggers when evidence or governance violations occur."
+
+# --------------------------------------------
+# EVALUATION PROTOCOL
+# --------------------------------------------
+
+target_inputs: "4 Pull Requests (PR-A, PR-B, PR-C, PR-D)"
+
+execution_steps:
+  step_1: "Read each PR's code changes thoroughly"
+  step_2: "Score each PR against all evaluation axes (1-10 scale)"
+  step_3: "Write 1-2 sentence justification per axis score"
+  step_4: "Calculate weighted total: Σ(axis_score × weight)"
+  step_5: "Rank all 4 PRs by weighted total (highest first)"
+  step_6: "Select the top-ranked PR"
+  step_7: "Write recommendation with comparison to other PRs"
+
+output_format: |
+  
+    # PR EVALUATION RESULTS
+    
+    ## Context
+    - Original Intent: [primary_intent]
+    - Domain: [technical_domain]
+    - Total Requirements: [count]
+    
+    ---
+    
+    ## PR-A Evaluation
+    
+    **Scores:**
+    - [Axis 1]: X/10 - [justification]
+    - [Axis 2]: X/10 - [justification]
+    - [Axis 3]: X/10 - [justification]
+    - [Axis 4]: X/10 - [justification]
+    
+    **Weighted Total: X.XX/10**
+    
+    **Strengths:** [2-3 key strengths]
+    **Weaknesses:** [2-3 key weaknesses]
+    
+    ---
+    
+    ## PR-B Evaluation
+    [Same format]
+    
+    ---
+    
+    ## PR-C Evaluation
+    [Same format]
+    
+    ---
+    
+    ## PR-D Evaluation
+    [Same format]
+    
+    ---
+    
+    ## Final Ranking
+    
+    1. PR-[X] - [score]/10
+    2. PR-[Y] - [score]/10
+    3. PR-[Z] - [score]/10
+    4. PR-[W] - [score]/10
+    
+    ---
+    
+    ## ✅ RECOMMENDED PR: PR-[X]
+    
+    **Rationale:**
+    
+    [3-5 sentences explaining why this PR is the best choice.
+    Must reference how it addresses the primary_intent and
+    key requirements better than the other PRs.]
+    
+    **Comparison:**
+    - vs PR-[Y]: [Key differentiator]
+    - vs PR-[Z]: [Key differentiator]
+    - vs PR-[W]: [Key differentiator]
+    
+    **Trade-offs:**
+    [Any important considerations, or "None - clear winner"]
+
+# --------------------------------------------
+# EVALUATION CONSTRAINTS
+# --------------------------------------------
+
+constraints:
+  - "Score based only on observable code in the PRs"
+  - "Do not infer requirements not in original_prompt"
+  - "Do not penalize style differences unless they affect quality"
+  - "If PRs are equally strong, explain the tie"
+  - "If no PR meets minimum requirements, state this clearly"
+  - "Focus on how well each PR solves the stated problem"
+
+# ============================================
+# ANTI-HALLUCINATION RULES
+# ============================================
+
+critical_rules:
+  - "Extract criteria ONLY from original_prompt"
+  - "Do not add requirements not stated or implied"
+  - "Do not assume tech stack unless specified"
+  - "If prompt is ambiguous, note it in Meta-B"
+  - "Use exact terminology from original_prompt"
+  - "Select axes relevant to prompt's domain only"
+  - "Scoring rubrics must be based on prompt requirements"
+
+# ============================================
+# USAGE
+# ============================================
+
+how_to_use:
+  step_1: "Paste your prompt in the original_prompt field above"
+  step_2: "Give this entire file to an AI"
+  step_3: "AI generates Meta-Instruction B"
+  step_4: "Use Meta-B + 4 PRs to get evaluation and recommendation"
