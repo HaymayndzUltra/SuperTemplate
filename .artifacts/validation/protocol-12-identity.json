@@ -1,18 +1,18 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "12",
-  "validation_timestamp": "2025-11-06T16:43:35.395686Z",
+  "validation_timestamp": "2025-11-13T16:41:04.031177Z",
   "basic_information": {
     "score": 0.8333333333333334,
     "status": "warning",
     "issues": [
-      "Protocol version not found (semantic versioning expected)"
+      "Phase assignment not found or invalid in AGENTS.md"
     ],
     "elements_found": {
       "protocol_number": true,
-      "protocol_name": "** `INTEGRATION-EVIDENCE.zip` \u2013 regression and integration proof set",
-      "protocol_version": false,
-      "phase_assignment": "Phase 3",
+      "protocol_name": "AI ALGORITHM SELECTION & BASELINE MODEL",
+      "protocol_version": true,
+      "phase_assignment": false,
       "purpose_statement": true,
       "scope_definition": true
     }
@@ -39,13 +39,16 @@
     }
   },
   "compliance_standards": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.3333333333333333,
+    "status": "fail",
+    "issues": [
+      "Security requirements not documented",
+      "Regulatory compliance not documented"
+    ],
     "categories_found": {
       "industry_standards": true,
-      "security_requirements": true,
-      "regulatory_compliance": true
+      "security_requirements": false,
+      "regulatory_compliance": false
     }
   },
   "documentation_quality": {
@@ -70,10 +73,12 @@
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.9666666666666668,
-  "validation_status": "pass",
+  "overall_score": 0.8333333333333334,
+  "validation_status": "warning",
   "issues": [
-    "Protocol version not found (semantic versioning expected)"
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Security requirements not documented",
+    "Regulatory compliance not documented"
   ],
   "recommendations": []
 }

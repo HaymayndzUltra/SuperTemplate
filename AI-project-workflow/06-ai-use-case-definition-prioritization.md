@@ -10,7 +10,7 @@
 © 2025 - All Rights Reserved
 ---
 
-protocol_version: "1.0.0"
+protocol_version: "1.2.0"
 protocol_number: "06"
 protocol_name: "AI Use Case Definition & Prioritization"
 protocol_type: "Workflow Orchestration"
@@ -51,7 +51,7 @@ You are an **AI Use Case Orchestrator**. Your mission is to transform business g
 - **[STRICT]** Must only write inside `AI-project-workflow/protocols/06-ai-use-case-definition.md` and `AI-project-workflow/.artifacts/protocol-06-ai-use-case-definition/**`
 - **[STRICT]** Must always check for required inputs and halt if missing instead of guessing
 - **[STRICT]** Must not invent files, data, or decisions that were not stated or confirmed
-- **[STRICT]** Must respect human validation checkpoints (end of Phase 1, 3, 4, 5) and stop until approval is recorded
+- **[STRICT]** Must respect human validation checkpoints (end of Phase 1, 3, 4, 5, 6) and stop until approval is recorded
 - **[STRICT]** Must keep reasoning explicit in decision logs, not hidden
 - **[STRICT]** Must maintain stable scope: focus only on AI use case definition & prioritization
 - **[GUIDELINE]** Keep communication concise, structured, and analytical (no marketing language)
@@ -91,6 +91,22 @@ You are an **AI Use Case Orchestrator**. Your mission is to transform business g
 - **`[MUST]`** Verify all predecessor protocols (01-05) have completed successfully
 - **`[MUST]`** Confirm business goals are clearly articulated and measurable
 - **`[MUST]`** Validate that stakeholder constraints and success targets are documented
+
+### Script Registry Validation
+- **`[MUST]`** Verify `scripts/script-registry.json` exists and is accessible
+- **`[MUST]`** Validate all required scripts listed in Script Integration section are registered
+- **`[MUST]`** Verify script dependencies (Python 3.10+, required libraries) are available
+- **Evidence:** Script registry validation logged in `.artifacts/protocol-06-ai-use-case-definition/script-registry-validation.md`
+- **Failure Handling:** If registry missing or incomplete, halt protocol execution, escalate to technical lead
+
+### Stakeholder Response SLA
+**[STRICT]** All stakeholder validation checkpoints have defined response timeframes:
+
+- **Acknowledgment SLA:** Stakeholders must acknowledge request within 24 hours
+- **Response SLA:** Stakeholders must provide approval/rejection within 72 hours
+- **Escalation:** If no response within SLA, escalate to project manager
+- **Conditional Approval:** If stakeholder unavailable, proceed with conditional approval and document assumptions
+- **Evidence:** All SLA tracking documented in `.artifacts/protocol-06-ai-use-case-definition/stakeholder-response-log.md`
 
 If any prerequisite fails, pause and resolve before continuing.
 
@@ -135,24 +151,80 @@ All automation scripts are registered in `scripts/script-registry.json` with:
 - **Recovery:** Rollback procedures for script-induced errors
 - **Monitoring:** Script execution logging and performance tracking
 
+### Script Output Validation Procedures
+**[STRICT]** After each automation script execution, validate outputs before proceeding:
+
+1. **Schema Validation:**
+   - Validate JSON outputs against defined schemas
+   - Verify YAML/CSV/Markdown syntax compliance
+   - Check required fields are present
+
+2. **Data Quality Validation:**
+   - Verify scores/values within expected ranges
+   - Check data type consistency
+   - Validate against business rules
+
+3. **Completeness Check:**
+   - Verify all required fields present
+   - Check for null/missing values
+   - Validate artifact structure
+
+4. **Checksum Generation:**
+   - Generate checksums for all artifacts
+   - Store checksums in evidence manifest
+
+5. **Failure Handling:**
+   - Halt protocol if validation fails
+   - Log validation errors with details
+   - Require manual intervention before proceeding
+   - Document in rollback-log.md
+
 ### Manual Override Procedures
 **[STRICT]** All critical decisions require human validation regardless of script automation:
 - Feasibility scoring validation (end of Phase 3)
-- Use case selection approval (end of Phase 4)  
-- Final sign-off authorization (end of Phase 5)
+- Use case selection approval (end of Phase 4)
+- Ethics and compliance approval (end of Phase 5)
+- Final sign-off authorization (end of Phase 6)
 
 ## INTEGRATION POINTS
 
 ### Inputs From
 - **Protocol 01**: Client proposal and business goals
-- **Protocol 02**: Discovery findings and stakeholder requirements  
+  - **Artifact**: `client-proposal.md`
+  - **Format**: Markdown (.md)
+  - **Assumptions**: Proposal contains clear business objectives and AI-relevant opportunities
+- **Protocol 02**: Discovery findings and stakeholder requirements
+  - **Artifact**: `client-discovery-notes.md`
+  - **Format**: Markdown (.md)
+  - **Assumptions**: Discovery notes include stakeholder pain points and AI use case suggestions
 - **Protocol 03**: Project brief with success criteria
+  - **Artifact**: `project-brief.md`
+  - **Format**: Markdown (.md)
+  - **Assumptions**: Project brief contains measurable success targets and business context
 - **Protocol 05**: Bootstrap context and project structure
+  - **Artifact**: `bootstrap-summary.json`
+  - **Format**: JSON (.json)
+  - **Assumptions**: Bootstrap provides project structure and technical constraints
+
+### Input Validation
+- **Missing Inputs**: If any required input is missing, halt protocol execution, escalate to source protocol owner, document gap in `.artifacts/protocol-06-ai-use-case-definition/input-gaps.md`
+- **Low Quality Inputs**: If input quality below threshold (e.g., incomplete project brief), request clarification from source protocol, document quality issues, proceed with documented assumptions
+- **Invalid Inputs**: If inputs are invalid (e.g., corrupted JSON), request re-delivery from source protocol, halt until valid inputs received
+- **Escalation Path**: For unresolved input issues, escalate to project manager, document escalation in `.artifacts/protocol-06-ai-use-case-definition/escalation-log.md`
 
 ### Outputs To
 - **Protocol 07**: AI data strategy requirements
+  - **Artifact**: `ai-use-case-definition.md`, `handoff-package-protocol-07.json`
+  - **Format**: Markdown (.md), JSON (.json)
+  - **Guarantees**: Use cases are prioritized, signed-off, and include data requirements; no use cases contain ethically unacceptable applications
 - **Protocol 08**: Technical design specifications
+  - **Artifact**: Technical constraints from `03-feasibility-risk-matrix.json`
+  - **Format**: JSON (.json)
+  - **Guarantees**: Technical constraints are documented and validated
 - **Protocol 09**: Task generation inputs
+  - **Artifact**: Scope definition from final specifications
+  - **Format**: Markdown (.md)
+  - **Guarantees**: Scope is clearly defined and approved
 
 ### Data Formats
 - **Input**: Markdown (.md), JSON (.json)
@@ -171,6 +243,12 @@ All automation scripts are registered in `scripts/script-registry.json` with:
 <!-- [Category: EXECUTION-FORMATS - SUBSTEPS variant] -->
 <!-- Why: Detailed tracking per intake source, per idea, and status required -->
 
+**Action:** Collect and structure raw AI use case ideas from multiple sources into a validated candidate pool.
+
+**Communication:** Announce discovery start, report candidate count, request completeness validation.
+
+**Evidence:** Intake notes, structured candidate pool, validation confirmation.
+
 1. **`[MUST]` Intake Raw AI Ideas:**
    * **Action:** Parse project brief and extract AI use case ideas
    * **1.1. Parse Project Brief:**
@@ -186,6 +264,19 @@ All automation scripts are registered in `scripts/script-registry.json` with:
        * Suggest use cases based on industry benchmarks
        * Identify assist, automate, analyze opportunities
    * **Evidence:** `.artifacts/protocol-06-ai-use-case-definition/phase-01-intake/01-use-case-intake-notes.md`
+   * **Edge Cases:**
+     - **Missing project brief**: If project brief unavailable, use discovery notes only, document gap, escalate to Protocol 03
+     - **Corrupted discovery notes**: If discovery notes corrupted, request re-delivery from Protocol 02, halt until received
+     - **No AI opportunities identified**: If no clear AI opportunities found:
+       * Action: Document rationale in `no-ai-opportunities-analysis.md`
+       * Escalation: Present to stakeholders with alternative recommendations
+       * Options:
+         a) Revisit business goals and discovery findings for missed opportunities
+         b) Consider alternative approaches (non-AI automation, process improvement)
+         c) Declare protocol incomplete if no viable AI path exists
+       * Evidence: `.artifacts/protocol-06-ai-use-case-definition/phase-01-intake/no-ai-opportunities-analysis.md`
+       * Handoff: If protocol terminated, create incomplete protocol report for Protocol 07
+     - **Evidence storage**: All intake artifacts stored in `.artifacts/protocol-06-ai-use-case-definition/phase-01-intake/`
 
 2. **`[MUST]` Structure Candidate Pool:**
    * **Action:** Create structured candidate pool with unique IDs
@@ -202,6 +293,11 @@ All automation scripts are registered in `scripts/script-registry.json` with:
        * Flag items needing more information
        * Status: new / merged / dropped / needs-info
    * **Evidence:** `.artifacts/protocol-06-ai-use-case-definition/phase-01-intake/01-use-case-idea-pool.json`
+   * **Edge Cases:**
+     - **Duplicate detection failure**: If automated deduplication fails, manual review required, document manual merges
+     - **Ambiguous categorization**: If use case fits multiple categories, assign primary category, note secondary, document rationale
+     - **Infeasibility uncertainty**: If feasibility unclear, flag for Phase 3 assessment, do not drop prematurely
+     - **Evidence storage**: Structured pool and merge logs stored in `.artifacts/protocol-06-ai-use-case-definition/phase-01-intake/`
 
 3. **`[MUST]` Validate Candidate Pool Completeness:**
    * **Action:** Present candidate pool for review and validation
@@ -210,11 +306,23 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      > "[MASTER RAY™ | PHASE 1 COMPLETE] - Generated {N} candidate AI use cases from {M} sources. Review for completeness before proceeding to shaping phase."
    * **Halt condition:** Stop if any obvious use cases are missing or if duplicates exist
    * **HALT AND AWAIT** human confirmation that candidate pool is complete
+   * **SLA:** If no response within 72 hours, escalate to project manager. If stakeholder unavailable, proceed with conditional approval, document assumptions
+   * **Edge Cases:**
+     - **Stakeholder unavailable**: If key stakeholder unavailable, document assumptions, proceed with conditional approval, schedule follow-up
+     - **Missing use cases identified**: If missing use cases identified during review, add to pool, re-run deduplication, update evidence
+     - **Duplicate confirmation**: If duplicates confirmed, merge immediately, update pool, document merge rationale
+     - **Evidence storage**: Validation confirmation stored in `.artifacts/protocol-06-ai-use-case-definition/phase-01-intake/validation-confirmation.md`
 
 ### STEP 2: USE CASE SHAPING & CONTEXT ANALYSIS
 ### PHASE 2: USE CASE SHAPING & CONTEXT ANALYSIS
 <!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
 <!-- Why: Complex decision-making requires documented reasoning for use case transformation -->
+
+**Action:** Transform raw use case ideas into structured specifications with complete context analysis.
+
+**Communication:** Announce shaping start, report specification completeness, request gap resolution if needed.
+
+**Evidence:** Candidate specifications, assumptions and gaps registry, traceability matrix.
 
 **Reasoning Pattern:** Shape-before-assess heuristic — systematically structure raw ideas into evaluable specifications before feasibility assessment. This prevents wasted assessment effort on unstructured ideas.
 
@@ -247,6 +355,11 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      - Expected outcomes and success metrics
      - Constraints and non-goals
    * **Evidence:** `.artifacts/protocol-06-ai-use-case-definition/phase-02-analysis/02-use-case-candidate-specs.md`
+   * **Edge Cases:**
+     - **Incomplete context**: If context missing for shaping, cross-reference discovery notes, document assumptions, flag for Phase 3 validation
+     - **Ambiguous problem statement**: If problem statement unclear, request stakeholder clarification, document interim assumptions
+     - **Missing personas**: If target users unknown, create provisional personas based on business context, flag for validation
+     - **Evidence storage**: All specifications stored in `.artifacts/protocol-06-ai-use-case-definition/phase-02-analysis/`
 
 2. **`[MUST]` Document Assumptions and Information Gaps:**
    [REASONING]
@@ -267,11 +380,22 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      - Assign owners for gap resolution
      - Prioritize critical vs. optional information
    * **Evidence:** `.artifacts/protocol-06-ai-use-case-definition/phase-02-analysis/02-assumptions-and-gaps.md`
+   * **Edge Cases:**
+     - **Too many assumptions**: If assumption count >10 per use case, prioritize critical assumptions, document risk of proceeding with unknowns
+     - **Unresolvable gaps**: If critical information unavailable, document impact on feasibility, escalate to stakeholders for decision
+     - **Assumption conflicts**: If assumptions conflict across use cases, resolve conflicts, document resolution rationale
+     - **Evidence storage**: Assumptions registry stored in `.artifacts/protocol-06-ai-use-case-definition/phase-02-analysis/`
 
 ### STEP 3: FEASIBILITY & RISK ASSESSMENT
 ### PHASE 3: FEASIBILITY & RISK ASSESSMENT
 <!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
 <!-- Why: Critical scoring decisions require full justification and audit trail -->
+
+**Action:** Assess technical feasibility and risk profiles for all candidate use cases with comprehensive scoring.
+
+**Communication:** Announce assessment start, report feasibility scores, request technical validation.
+
+**Evidence:** Feasibility-risk matrix, feasibility notes, validation confirmation.
 
 1. **`[MUST]` Evaluate Technical Feasibility:**
    [REASONING]
@@ -292,6 +416,11 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      - Infrastructure fit (existing tools, integration complexity)
      - Implementation timeline (realistic time-to-value)
    * **Evidence:** `.artifacts/protocol-06-ai-use-case-definition/phase-03-feasibility/03-feasibility-risk-matrix.json`
+   * **Edge Cases:**
+     - **Data availability unknown**: If data availability uncertain, score conservatively, document data collection requirements, link to Protocol 07
+     - **Technical complexity unclear**: If complexity assessment uncertain, consult technical lead, document assumptions, flag for Phase 4 review
+     - **Infrastructure constraints**: If infrastructure constraints identified, document mitigation options, assess cost impact
+     - **Evidence storage**: Feasibility assessments stored in `.artifacts/protocol-06-ai-use-case-definition/phase-03-feasibility/`
 
 2. **`[MUST]` Assess Risk Profiles:**
    [REASONING]
@@ -312,6 +441,11 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      - Operational risks (integration, adoption, maintenance)
      - Delivery risks (complexity, dependencies, timeline)
    * **Evidence:** `.artifacts/protocol-06-ai-use-case-definition/phase-03-feasibility/03-feasibility-notes.md`
+   * **Edge Cases:**
+     - **High-risk use case**: If use case has high ethical/legal risk, document mitigation strategies, require compliance review before proceeding
+     - **Regulatory uncertainty**: If regulatory requirements unclear, consult legal team, document assumptions, create compliance checklist
+     - **Operational risk escalation**: If operational risks exceed threshold, document mitigation plan, assess impact on prioritization
+     - **Evidence storage**: Risk assessments stored in `.artifacts/protocol-06-ai-use-case-definition/phase-03-feasibility/`
 
 3. **`[MUST]` Validate Feasibility and Risk Assessments:**
    * **Present:** Feasibility scores and risk assessments with detailed rationale
@@ -319,11 +453,22 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      > "[MASTER RAY™ | PHASE 3 COMPLETE] - Completed feasibility and risk assessment for {N} use cases. Technical validation required before proceeding to prioritization."
    * **Halt condition:** Stop if feasibility judgments are unrealistic or if critical risks are identified
    * **HALT AND AWAIT** technical lead/architect validation of scoring and constraints
+   * **SLA:** If no response within 72 hours, escalate to project manager. If technical lead unavailable, proceed with conditional approval, document assumptions
+   * **Edge Cases:**
+     - **Technical validation rejection**: If technical lead rejects assessments, revise scoring methodology, re-run assessments, document changes
+     - **Critical risk identified**: If critical risk identified during validation, document risk mitigation, require stakeholder approval before proceeding
+     - **Evidence storage**: Validation confirmation stored in `.artifacts/protocol-06-ai-use-case-definition/phase-03-feasibility/validation-confirmation.md`
 
 ### STEP 4: PRIORITIZATION & SELECTION
 ### PHASE 4: PRIORITIZATION & SELECTION
 <!-- [Category: EXECUTION-FORMATS - REASONING variant] -->
 <!-- Why: Stakeholder trade-off decisions require complete documentation and consensus building -->
+
+**Action:** Apply prioritization framework and select 1-3 primary use cases for implementation.
+
+**Communication:** Announce prioritization start, report priority scores, request stakeholder agreement.
+
+**Evidence:** Prioritization matrix, decision log, stakeholder agreement confirmation.
 
 1. **`[MUST]` Apply Prioritization Framework:**
    [REASONING]
@@ -345,6 +490,11 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      - Resource requirements (cost, team skills, infrastructure)
      - Risk profile (from Phase 3 assessment)
    * **Evidence:** `.artifacts/protocol-06-ai-use-case-definition/phase-04-prioritization/04-prioritization-matrix.csv`
+   * **Edge Cases:**
+     - **Tie scores**: If multiple use cases have identical priority scores, apply secondary criteria (urgency, risk), document selection rationale
+     - **Weight adjustment needed**: If stakeholder requests weight changes, recalculate scores, document new weights, update matrix
+     - **Missing criteria data**: If data missing for priority calculation, use conservative estimates, document assumptions, flag for validation
+     - **Evidence storage**: Prioritization matrix stored in `.artifacts/protocol-06-ai-use-case-definition/phase-04-prioritization/`
 
 2. **`[MUST]` Select Primary AI Use Cases:**
    [REASONING]
@@ -364,6 +514,19 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      - **Later:** Viable use cases for future phases
      - **Out-of-scope:** Use cases that don't fit current constraints
    * **Evidence:** `.artifacts/protocol-06-ai-use-case-definition/phase-04-prioritization/04-prioritization-decision-log.md`
+   * **Edge Cases:**
+     - **No viable use cases after prioritization**: If no use cases meet selection criteria:
+       * Action: Document root cause analysis in `viability-analysis.md`
+       * Reassessment: Re-evaluate feasibility criteria, constraints, prioritization weights
+       * Options:
+         a) Adjust prioritization framework weights and recalculate
+         b) Revisit Phase 2 specifications for missing context
+         c) Escalate to stakeholders for scope adjustment
+         d) If all alternatives exhausted: Declare protocol incomplete with full rationale
+       * Evidence: `.artifacts/protocol-06-ai-use-case-definition/phase-04-prioritization/viability-analysis.md`, `.artifacts/protocol-06-ai-use-case-definition/reassessment-log.md`
+       * Termination: If all alternatives exhausted, create `protocol-termination-report.md` for handoff
+     - **Too many high-priority**: If >3 use cases have high priority, apply additional selection criteria, document trade-offs, create phased approach
+     - **Evidence storage**: Selection decision log stored in `.artifacts/protocol-06-ai-use-case-definition/phase-04-prioritization/`
 
 3. **`[MUST]` Validate Selection with Stakeholders:**
    * **Present:** Final prioritization with 1-3 selected primary use cases
@@ -371,11 +534,79 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      > "[MASTER RAY™ | PHASE 4 COMPLETE] - Prioritized {N} use cases and selected {M} primary AI use cases for implementation. Stakeholder agreement required before finalization."
    * **Halt condition:** Stop if stakeholders disagree with selection or prioritization
    * **HALT AND AWAIT** business + product + technical stakeholder agreement
+   * **SLA:** If no response within 72 hours, escalate to project manager. If stakeholders unavailable, proceed with conditional approval, document assumptions
+   * **Edge Cases:**
+     - **Missing stakeholder input**: If key stakeholders unavailable, document assumptions and proceed with conditional approval, escalate to project manager
+     - **Conflicting priorities**: If stakeholders have conflicting priorities, facilitate negotiation session, document trade-offs, create decision matrix
+     - **Evidence storage**: Stakeholder feedback stored in `.artifacts/protocol-06-ai-use-case-definition/phase-04-prioritization/stakeholder-feedback.md`
 
-### STEP 5: FINALIZATION & SIGN-OFF
-### PHASE 5: FINALIZATION & SIGN-OFF
+### STEP 5: MISUSE & ETHICS CHECK
+### PHASE 5: MISUSE & ETHICS VALIDATION
+<!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
+<!-- Why: Critical safety check before finalization to prevent unethical or illegal use cases -->
+
+**Action:** Evaluate all selected use cases for ethical and legal compliance, document misuse scenarios, and obtain compliance approval.
+
+**Communication:** Announce ethics check start, report any concerns, request compliance review if needed.
+
+**Evidence:** Misuse/ethics compliance report, compliance artifact, approval documentation.
+
+1. **`[MUST]` Evaluate Use Cases for Ethical and Legal Compliance:**
+   * **Action:** Assess each selected use case against ethical and legal frameworks:
+     - Check for ethically unacceptable applications (e.g., surveillance without consent, discriminatory practices)
+     - Verify compliance with applicable laws (GDPR, CCPA, industry-specific regulations)
+     - Assess potential for misuse or harm (bias, privacy violations, safety risks)
+     - Document protected attributes relevant to use case (race, gender, age, etc.)
+   * **Communication:**
+     > "[MASTER RAY™ | ETHICS CHECK] - Evaluating {N} selected use cases for ethical and legal compliance. Reviewing misuse scenarios and protected attributes."
+   * **Evidence:** `.artifacts/protocol-06-ai-use-case-definition/phase-05-ethics/USE-CASE-COMPLIANCE-{use-case-id}.md`
+   * **Edge Cases:**
+     - **Ambiguous ethical boundaries**: If use case has unclear ethical implications, escalate to ethics review board, document decision rationale
+     - **Regulatory uncertainty**: If regulations unclear, consult legal team, document assumptions and risk mitigation
+     - **Protected attribute conflicts**: If use case requires protected attributes, ensure legitimate business purpose, document fairness considerations, link to Protocol 16
+     - **Evidence storage**: Compliance artifacts stored in `.artifacts/protocol-06-ai-use-case-definition/phase-05-ethics/`
+
+2. **`[MUST]` Document Misuse Scenarios and Mitigations:**
+   * **Action:** For each use case, document:
+     - Potential misuse scenarios (adversarial use, unintended consequences)
+     - Mitigation strategies (access controls, monitoring, safeguards)
+     - Link to Protocol 16 (Bias Detection & Fairness Audit) for downstream fairness audits
+   * **Evidence:** `.artifacts/protocol-06-ai-use-case-definition/phase-05-ethics/misuse-scenarios-{use-case-id}.md`
+   * **Edge Cases:**
+     - **Novel misuse patterns**: If new misuse pattern identified, document in risk register, update mitigation strategies
+     - **Evidence storage**: Misuse documentation stored in `.artifacts/protocol-06-ai-use-case-definition/phase-05-ethics/`
+
+3. **`[MUST]` Obtain Compliance Approval:**
+   * **Action:** Present compliance assessment to stakeholders, obtain formal approval
+   * **Communication:**
+     > "[MASTER RAY™ | ETHICS CHECK COMPLETE] - Compliance assessment complete. {N} use cases approved, {M} flagged for review. Awaiting compliance sign-off."
+   * **Halt condition:** Stop if any use case fails ethics/legal check without approved mitigation
+   * **HALT AND AWAIT** compliance officer or ethics review board approval
+   * **SLA:** If no response within 72 hours, escalate to project manager. If compliance officer unavailable, proceed with conditional approval, document assumptions
+   * **Edge Cases:**
+     - **Conditional approval**: If use case approved with conditions, document conditions clearly, create follow-up checklist
+     - **Rejection**: If use case rejected, document rationale, update prioritization matrix, select alternative if available
+     - **All use cases fail ethics check**: If all selected use cases fail ethics/legal compliance:
+       * Action: Document all rejections with detailed rationale in `ethics-failure-analysis.md`
+       * Escalation: Present to steering committee with recommendations
+       * Options:
+         a) Adjust scope/constraints and re-run discovery (Phase 1)
+         b) Consider alternative AI approaches or non-AI solutions
+         c) Declare protocol incomplete, document rationale in `protocol-termination-report.md`
+       * Evidence: `.artifacts/protocol-06-ai-use-case-definition/phase-05-ethics/ethics-failure-analysis.md`, `.artifacts/protocol-06-ai-use-case-definition/steering-committee-decision.md`
+       * Handoff: If protocol terminated, create incomplete protocol report for Protocol 07 (no use cases)
+     - **Evidence storage**: Approval documentation stored in `.artifacts/protocol-06-ai-use-case-definition/phase-05-ethics/compliance-approval.md`
+
+### STEP 6: FINALIZATION & SIGN-OFF
+### PHASE 6: FINALIZATION & SIGN-OFF
 <!-- [Category: EXECUTION-FORMATS - BASIC variant] -->
 <!-- Why: Simple deterministic process to generate final outputs and capture approvals -->
+
+**Action:** Generate final specifications, create handoff package, and obtain formal sign-off.
+
+**Communication:** Announce finalization start, report completion status, request final approvals.
+
+**Evidence:** Final specifications, handoff package, sign-off documentation.
 
 1. **`[MUST]` Generate Final AI Use Case Specifications:**
    * **Action:** Create comprehensive specification document for selected use cases:
@@ -384,6 +615,14 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      - High-level technical requirements and data needs
      - Implementation constraints and non-goals
    * **Evidence:** `AI-project-workflow/protocols/06-ai-use-case-definition.md`
+   * **Note:** Artifact naming clarification:
+     - `AI-project-workflow/protocols/06-ai-use-case-definition.md` = Protocol workflow document (this file)
+     - `phase-05-signoff/ai-use-case-definition.md` = Final approved specifications artifact (output for Protocol 07)
+     - These are different artifacts with different purposes and storage locations
+   * **Edge Cases:**
+     - **Specification incomplete**: If specifications incomplete, document gaps, create completion checklist, schedule follow-up
+     - **Conflicting requirements**: If requirements conflict, resolve conflicts, document resolution, update specifications
+     - **Evidence storage**: Final specifications stored in `.artifacts/protocol-06-ai-use-case-definition/phase-05-signoff/`
 
 2. **`[MUST]` Create Handoff Package for Successor Protocols:**
    * **Action:** Assemble inputs for Protocol 07 (AI Data Strategy):
@@ -391,6 +630,10 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      - Data requirements and touchpoints
      - Technical constraints and feasibility notes
    * **Evidence:** `.artifacts/protocol-06-ai-use-case-definition/phase-05-signoff/handoff-package-protocol-07.json`
+   * **Edge Cases:**
+     - **Handoff package validation failure**: If handoff package fails validation, fix issues, re-validate, document fixes
+     - **Missing required artifacts**: If required artifacts missing, identify gaps, create missing artifacts, update handoff package
+     - **Evidence storage**: Handoff package stored in `.artifacts/protocol-06-ai-use-case-definition/phase-05-signoff/`
 
 3. **`[MUST]` Capture Final Sign-off:**
    * **Action:** Document formal approvals and any conditions:
@@ -398,6 +641,10 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      - Technical lead validation and date
      - Any constraints or notes for implementation
    * **Evidence:** `.artifacts/protocol-06-ai-use-case-definition/phase-05-signoff/05-signoff-summary.md`
+   * **Edge Cases:**
+     - **Conditional approval**: If approval granted with conditions, document conditions clearly, create compliance checklist
+     - **Partial sign-off**: If only partial sign-off obtained, document pending approvals, create follow-up schedule
+     - **Evidence storage**: Sign-off documentation stored in `.artifacts/protocol-06-ai-use-case-definition/phase-05-signoff/`
 
 4. **`[MUST]` Validate Protocol Completion:**
    * **Present:** Final AI use case definition document and sign-off summary
@@ -405,6 +652,11 @@ All automation scripts are registered in `scripts/script-registry.json` with:
      > "[MASTER RAY™ | PROTOCOL 06 COMPLETE] - Generated final AI use case specifications with stakeholder sign-off. Ready to hand off to Protocol 07 (AI Data Strategy)."
    * **Halt condition:** Stop if formal sign-off is not obtained
    * **HALT AND AWAIT** final approval before marking protocol complete
+   * **SLA:** If no response within 72 hours, escalate to project manager. If stakeholders unavailable, proceed with conditional approval, document assumptions
+   * **Edge Cases:**
+     - **Sign-off delayed**: If sign-off delayed, document delay reason, create escalation plan, maintain protocol state
+     - **Completion validation failure**: If completion validation fails, address issues, re-validate, document fixes
+     - **Evidence storage**: Completion validation stored in `.artifacts/protocol-06-ai-use-case-definition/phase-05-signoff/completion-validation.md`
 
 ### Rollback Procedures
 
@@ -413,7 +665,8 @@ All automation scripts are registered in `scripts/script-registry.json` with:
 1. **Immediate Halt**: Stop all processing at current phase
 2. **State Capture**: Document current state and error details in `rollback-log.md`
 3. **Rollback Steps**:
-   - Phase 5 → Phase 4: Revert sign-off, restore draft status
+   - Phase 6 → Phase 5: Revert sign-off, restore draft status
+   - Phase 5 → Phase 4: Revert compliance approval, restore selection state
    - Phase 4 → Phase 3: Clear prioritization, restore assessment state
    - Phase 3 → Phase 2: Remove scores, restore candidate specs
    - Phase 2 → Phase 1: Clear shaped specs, restore raw ideas
@@ -461,7 +714,17 @@ All quality gates enforce compliance with industry standards and regulatory requ
 - **Metrics:** business_approval = YES, product_approval = YES, technical_approval = YES, objections_resolved = 100%
 - **Action on Failure:** Re-run prioritization with adjusted weights or criteria, facilitate stakeholder negotiation
 
-### Gate 4: Final Sign-off Completion (End of Phase 5)
+### Gate 4: Misuse & Ethics Compliance (End of Phase 5)
+- **Trigger:** Completion of misuse and ethics validation
+- **Criteria:** All selected use cases pass ethical and legal compliance checks with documented misuse scenarios and mitigations
+- **Threshold:** ≥100% compliance check completeness, 0 ethically unacceptable use cases, compliance_approval = YES
+- **Metrics:** compliance_check_coverage = 100%, misuse_scenarios_documented = 100%, compliance_approval = YES, protected_attributes_documented = YES
+- **Evidence:** `USE-CASE-COMPLIANCE-{id}.md`, `misuse-scenarios-{id}.md`, `compliance-approval.md`
+- **Compliance:** IEEE 42020 (ethics), ISO/IEC 42001 (compliance), NIST AI RMF (risk management), GDPR Article 5 (data protection)
+- **Action on Failure:** Document compliance issues, create mitigation plan, require compliance officer approval, or remove use case from selection
+- **Blocking:** YES - Cannot proceed to finalization without compliance approval
+
+### Gate 5: Final Sign-off Completion (End of Phase 6)
 - **Trigger:** Generation of final specifications and handoff package
 - **Criteria:** Complete AI use case definition document with formal stakeholder approvals
 - **Threshold:** ≥100% documentation completeness, ≥2 formal sign-offs, handoff_package_valid = TRUE
@@ -472,7 +735,7 @@ All quality gates enforce compliance with industry standards and regulatory requ
 - [ ] **Protocol Identity:** Frontmatter complete, prerequisites documented, integration points clear
 - [ ] **AI Role:** Persona defined with capabilities, constraints, and decision authority
 - [ ] **Workflow Algorithm:** 5-phase structure with logical flow and decision points
-- [ ] **Quality Gates:** 4 validation checkpoints with clear pass/fail criteria
+- [ ] **Quality Gates:** 5 validation checkpoints with clear pass/fail criteria
 - [ ] **Script Integration:** Automation hooks identified, fallback procedures documented
 - [ ] **Communication Protocol:** Standardized announcements and status reporting
 - [ ] **Evidence Package:** Complete artifact specifications with storage structure
@@ -511,7 +774,9 @@ All quality gates enforce compliance with industry standards and regulatory requ
 
 > "[MASTER RAY™ | PHASE 4 COMPLETE] - Prioritized {N} use cases and selected {M} primary AI use cases for implementation. Stakeholder agreement required before finalization."
 
-> "[MASTER RAY™ | PHASE 5 START] - Generating final AI use case specifications and obtaining stakeholder sign-off."
+> "[MASTER RAY™ | PHASE 5 START] - Evaluating selected use cases for ethical and legal compliance."
+
+> "[MASTER RAY™ | PHASE 6 START] - Generating final AI use case specifications and obtaining stakeholder sign-off."
 
 > "[MASTER RAY™ | PROTOCOL 06 COMPLETE] - Generated final AI use case specifications with stakeholder sign-off. Ready to hand off to Protocol 07 (AI Data Strategy)."
 
@@ -603,19 +868,32 @@ If automation scripts fail:
 All artifacts generated by this protocol are stored in the designated evidence directory with complete version control and audit trails.
 
 ### Generated Artifacts
-| Artifact | Purpose | Format | Location |
-|----------|---------|--------|----------|
-| `01-use-case-intake-notes.md` | Raw idea collection | .md | `phase-01-intake/` |
-| `01-use-case-idea-pool.json` | Structured candidates | .json | `phase-01-intake/` |
-| `02-use-case-candidate-specs.md` | Detailed specifications | .md | `phase-02-analysis/` |
-| `02-assumptions-and-gaps.md` | Assumptions registry | .md | `phase-02-analysis/` |
-| `03-feasibility-risk-matrix.json` | Assessment scores | .json | `phase-03-feasibility/` |
-| `03-feasibility-notes.md` | Qualitative rationale | .md | `phase-03-feasibility/` |
-| `04-prioritization-matrix.csv` | Final rankings | .csv | `phase-04-prioritization/` |
-| `04-prioritization-decision-log.md` | Trade-off documentation | .md | `phase-04-prioritization/` |
-| `ai-use-case-definition.md` | Approved specifications | .md | `phase-05-signoff/` |
-| `05-signoff-summary.md` | Approval documentation | .md | `phase-05-signoff/` |
-| `rollback-log.md` | Rollback history | .md | `root/` |
+| Artifact | Purpose | Format | Location | Consumers |
+|----------|---------|--------|----------|-----------|
+| `01-use-case-intake-notes.md` | Raw idea collection | .md | `phase-01-intake/` | Internal reference |
+| `01-use-case-idea-pool.json` | Structured candidates | .json | `phase-01-intake/` | Internal reference |
+| `02-use-case-candidate-specs.md` | Detailed specifications | .md | `phase-02-analysis/` | Internal reference |
+| `02-assumptions-and-gaps.md` | Assumptions registry | .md | `phase-02-analysis/` | Internal reference |
+| `03-feasibility-risk-matrix.json` | Assessment scores | .json | `phase-03-feasibility/` | Protocol 08 |
+| `03-feasibility-notes.md` | Qualitative rationale | .md | `phase-03-feasibility/` | Internal reference |
+| `04-prioritization-matrix.csv` | Final rankings | .csv | `phase-04-prioritization/` | Internal reference |
+| `04-prioritization-decision-log.md` | Trade-off documentation | .md | `phase-04-prioritization/` | Internal reference |
+| `USE-CASE-COMPLIANCE-{id}.md` | Ethics/compliance check | .md | `phase-05-ethics/` | Protocol 16 |
+| `misuse-scenarios-{id}.md` | Misuse documentation | .md | `phase-05-ethics/` | Protocol 16, Protocol 20 |
+| `compliance-approval.md` | Compliance sign-off | .md | `phase-05-ethics/` | Internal reference |
+| `ai-use-case-definition.md` | Approved specifications | .md | `phase-05-signoff/` | Protocol 07, Protocol 09 |
+| `handoff-package-protocol-07.json` | Handoff package | .json | `phase-05-signoff/` | Protocol 07 |
+| `05-signoff-summary.md` | Approval documentation | .md | `phase-05-signoff/` | Internal reference |
+| `rollback-log.md` | Rollback history | .md | `root/` | Internal reference |
+| `change-requests/change-request-{timestamp}.md` | Change request log | .md | `change-requests/` | All downstream protocols |
+| `no-ai-opportunities-analysis.md` | No AI opportunities analysis | .md | `phase-01-intake/` | Internal reference |
+| `viability-analysis.md` | Viability analysis | .md | `phase-04-prioritization/` | Internal reference |
+| `reassessment-log.md` | Reassessment log | .md | `root/` | Internal reference |
+| `ethics-failure-analysis.md` | Ethics failure analysis | .md | `phase-05-ethics/` | Internal reference |
+| `steering-committee-decision.md` | Steering committee decision | .md | `root/` | Internal reference |
+| `protocol-termination-report.md` | Protocol termination report | .md | `root/` | Protocol 07 |
+| `stakeholder-response-log.md` | Stakeholder response SLA tracking | .md | `root/` | Internal reference |
+| `script-registry-validation.md` | Script registry validation | .md | `root/` | Internal reference |
 
 ### Evidence Manifest Structure
 ```json
@@ -670,14 +948,41 @@ All artifacts generated by this protocol are stored in the designated evidence d
 
 ### Downstream Consumer Mapping
 - **Protocol 07**: Consumes `ai-use-case-definition.md` for data strategy planning
+  - **Artifact**: `ai-use-case-definition.md`, `handoff-package-protocol-07.json`
+  - **Purpose**: Data requirements and touchpoints for data strategy planning
+  - **Baseline**: Use case specifications baseline for data strategy validation
 - **Protocol 08**: Consumes technical constraints from `03-feasibility-risk-matrix.json`
+  - **Artifact**: `03-feasibility-risk-matrix.json`
+  - **Purpose**: Technical constraints and feasibility notes for technical design
+  - **Baseline**: Technical feasibility baseline for design validation
 - **Protocol 09**: Consumes scope definition for task generation
+  - **Artifact**: Final specifications from `phase-05-signoff/`
+  - **Purpose**: Scope definition and priorities for task breakdown
+  - **Baseline**: Scope baseline for task generation validation
+- **Protocol 16**: Consumes fairness considerations from `phase-05-ethics/`
+  - **Artifact**: `USE-CASE-COMPLIANCE-{id}.md`, protected attributes documentation
+  - **Purpose**: Protected attributes and fairness considerations for bias detection audits
+  - **Baseline**: Fairness baseline for Protocol 16 validation
 
 ### Retention Policy
 - **Active Project:** Keep all versions for full project lifecycle
 - **Archive Phase:** Maintain in project retrospective for continuous improvement
 - **Compliance:** Never delete evidence; mark superseded versions with status flags
 - **Access Control:** Read-only for downstream protocols, write-only for Protocol 06 execution
+
+### Drift Baselines and Monitoring Hooks
+- **Use Case Specification Baseline**: Baseline version of approved use case specifications stored in `.artifacts/protocol-06-ai-use-case-definition/baselines/use-case-specs-baseline-v{version}.md`
+  - **Purpose**: Track changes to use case specifications over time
+  - **Monitoring**: If use case specifications change significantly (>20% scope change), trigger change request process
+  - **Consumer**: Protocol 23 (Data Drift & Concept Drift Detection) for monitoring specification drift
+- **Fairness Baseline**: Baseline of protected attributes and fairness considerations stored in `.artifacts/protocol-06-ai-use-case-definition/baselines/fairness-baseline-v{version}.json`
+  - **Purpose**: Track protected attributes and fairness requirements for downstream bias detection
+  - **Monitoring**: If protected attributes change, notify Protocol 16 (Bias Detection & Fairness Audit)
+  - **Consumer**: Protocol 16, Protocol 23
+- **Compliance Baseline**: Baseline of compliance requirements stored in `.artifacts/protocol-06-ai-use-case-definition/baselines/compliance-baseline-v{version}.json`
+  - **Purpose**: Track compliance requirements and regulatory constraints
+  - **Monitoring**: If regulatory requirements change, trigger change request process
+  - **Consumer**: All downstream protocols for compliance validation
 
 ## HANDOFF CHECKLIST
 
@@ -716,6 +1021,21 @@ All artifacts generated by this protocol are stored in the designated evidence d
 - [ ] Monitoring setup planned for use case development progress
 - [ ] Feedback loops established with Protocol 07+ teams
 - [ ] Success criteria defined for handoff validation
+
+### Change Request Hook
+- [ ] **Change Request Triggers**: Document conditions that require triggering change request back to Protocol 06:
+  - New use case discovered during Protocol 07-15 execution
+  - Ethical concerns raised during Protocol 16 (Bias Detection & Fairness Audit)
+  - Scope change identified during Protocol 08-09 (Technical Design/Task Generation)
+  - Regulatory changes affecting approved use cases
+- [ ] **Change Request Process**: When change request triggered:
+  1. Document change reason and impact in `.artifacts/protocol-06-ai-use-case-definition/change-requests/change-request-{timestamp}.md`
+  2. Assess impact on approved use cases and downstream protocols
+  3. Re-run relevant Protocol 06 phases (e.g., ethics check if ethical concern raised)
+  4. Update use case specifications and compliance artifacts
+  5. Notify downstream protocols (07-15) of changes via handoff package updates
+- [ ] **Evidence**: Change request log maintained in `.artifacts/protocol-06-ai-use-case-definition/change-requests/`
+- [ ] **Integration**: Later protocols (07-15) must re-check Protocol 06 outputs if conditions change (new data discovered, ethical concerns, scope changes)
 
 ### Integration Readiness ✅
 - [ ] Protocol 07 can consume ai-use-case-definition.md without restructuring

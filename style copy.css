@@ -1,0 +1,393 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling, especially for full-screen states */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* Native app like font */
+    color: #262626; /* Default text color */
+}
+
+#app-container { /* Main container for the funnel */
+    width: 100%;
+    height: 100%;
+    position: relative; /* For absolutely positioned states */
+    background-color: #fff; /* Default background */
+}
+
+/* Base State Styling */
+.state {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Hidden by default */
+    overflow: hidden;
+    touch-action: pan-y; /* Allow vertical pan/scroll if content overflows, otherwise none */
+}
+.state.active {
+    display: flex; /* Or block, depending on content layout */
+    flex-direction: column; /* Common for mobile layouts */
+    justify-content: space-between; /* To push header/footer to edges */
+}
+
+/* State 1: Static Preview (Landing State) */
+#state1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f2f5; /* Light grey background from image */
+    padding: 16px; /* Example padding */
+    box-sizing: border-box;
+}
+
+.preview-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0 16px 0; /* Adjusted padding based on image */
+    max-width: 450px; /* Constrain header width similar to content */
+}
+.preview-header .logo-image {
+    height: 32px;
+    width: auto;
+    display: block;
+    margin-left: 8px;
+}
+.preview-header .continue-link {
+    color: #0095f6; /* Instagram blue */
+    text-decoration: none;
+    font-weight: 600; /* Semi-bold */
+    font-size: 14px; /* Adjusted size */
+    margin-right: 8px; /* Slight right padding */
+}
+.preview-header .continue-link._ab16 {
+    /* Instagram-specific class styling */
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+.preview-header .continue-link._ab16:hover {
+    opacity: 0.7;
+}
+.preview-header .continue-link._ab16:active {
+    opacity: 0.5;
+}
+
+.preview-content {
+    flex-grow: 1; /* Allows content to take available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 450px; /* Max width for content area, matching image proportions */
+    padding-bottom: 20px; /* Space between video and "Watch this reel" text */
+}
+
+.video-thumbnail-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 125%; /* 4:5 aspect ratio, common for Instagram vertical videos */
+    background-color: black;
+    border-radius: 8px; /* Rounded corners for video thumbnail */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+}
+.video-thumbnail {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 50%;
+    width: 60px; /* Adjusted size */
+    height: 60px; /* Adjusted size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10; /* Ensure it's above the thumbnail */
+}
+.play-button svg {
+    width: 24px; /* Adjust play icon size */
+    height: 24px;
+    fill: white;
+}
+
+.preview-footer {
+    width: 100%;
+    padding: 20px 16px 20px 16px; /* Adjusted padding based on image, more vertical space */
+    max-width: 450px; /* Constrain footer width */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+.watch-text {
+    font-size: 15px; /* Adjusted font size based on image */
+    font-weight: 600; /* Semi-bold */
+    margin-bottom: 18px; /* Adjusted space between text and buttons */
+}
+.cta-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 12px; /* Adjusted space between buttons */
+    margin-bottom: 20px; /* Adjusted space between buttons and terms */
+}
+.open-app-button, .signup-button {
+    width: 100%; /* Full width within container */
+    padding: 14px 16px; /* Adjusted padding for button height */
+    border-radius: 8px; /* More rounded corners */
+    border: none; /* No border for primary button */
+    font-weight: bold;
+    font-size: 15px; /* Adjusted font size */
+    cursor: pointer;
+    -webkit-appearance: none; /* Reset default button styles */
+    -moz-appearance: none;
+    appearance: none;
+}
+.open-app-button {
+    background-color: #385898; /* Darker blue from image */
+    color: #fff;
+}
+.signup-button {
+    background-color: transparent; /* No background */
+    color: #0095f6; /* Instagram blue */
+    border: none; /* No border */
+    font-size: 14px; /* Smaller font size for secondary button */
+    font-weight: 600; /* Semi-bold */
+    padding: 0; /* No vertical padding needed for this text-like button */
+}
+.terms-policy-text {
+    font-size: 12px; /* Smaller font size */
+    color: #8e8e8e; /* Lighter grey */
+    line-height: 1.4;
+    margin-top: 20px; /* Adjusted margin-top to separate from "Sign up" button */
+    padding: 0 10px; /* Add some horizontal padding */
+}
+
+/* Instagram-style footer content wrapper (matches Instagram's structure) */
+.footer-content {
+    /* Container matches Instagram's utility class structure */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* State 2: Immersive Player (Engagement State) */
+#state2 {
+    background-color: black;
+    position: relative; /* important for video positioning */
+}
+
+#immersive-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures video covers the entire area */
+    z-index: 0;
+}
+
+.ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Above the video */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes header to top, icons to bottom */
+    pointer-events: none; /* Make overlay elements non-interactive by default */
+}
+
+.overlay-header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Pushes links to the right */
+    gap: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0)); /* Gradient for visibility */
+}
+.overlay-header a, .overlay-header button {
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-size: 1em;
+    pointer-events: auto; /* Re-enable pointer events for actual links/buttons if needed, but per spec they are non-functional here */
+    cursor: default; /* Make them appear non-clickable */
+    -webkit-appearance: none; /* Reset default button styles */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.user-info-panel {
+    display: flex;
+    align-items: center;
+    align-self: flex-start; /* Aligns to the left in column flex */
+    margin-left: 15px;
+    margin-top: auto; /* Pushes it towards the bottom, above interaction icons */
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.4); /* Slightly transparent background */
+    border-radius: 20px;
+    pointer-events: auto; /* Re-enable pointer events for elements that could be interactive in a real app */
+    cursor: default;
+    opacity: 0.9;
+}
+.user-info-panel .user-profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 1px solid rgba(255,255,255,0.5);
+}
+.user-info-panel .username {
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.interaction-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    align-self: flex-end; /* Aligns to the right in column flex */
+    margin-right: 15px;
+    margin-bottom: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0)); /* Gradient for visibility */
+    padding: 10px; /* Small padding for the gradient */
+    border-radius: 8px; /* Optional */
+    pointer-events: auto; /* Re-enable pointer events for elements that could be interactive in a real app */
+    cursor: default;
+}
+.interaction-icons .icon-button {
+    background: none;
+    border: none;
+    padding: 0;
+    -webkit-appearance: none; /* Reset default button styles */
+    -moz-appearance: none;
+    appearance: none;
+}
+.interaction-icons .icon-button img {
+    width: 30px;
+    height: 30px;
+    filter: invert(1); /* Example to make icons white */
+}
+
+
+/* State 3: Call-to-Action (Conversion State) */
+#state3 {
+    position: relative;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+}
+
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark overlay */
+    z-index: 2; /* Above video/previous states */
+    opacity: 0; /* Hidden for initial animation */
+    transition: opacity 0.3s ease-out;
+}
+#state3.active .dark-overlay {
+    opacity: 1;
+}
+
+.cta-modal {
+    position: relative; /* For circular reveal positioning */
+    z-index: 3; /* Above the dark overlay */
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px 20px;
+    width: 90%;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    opacity: 0; /* Initially hidden for animation */
+    transform: scale(0.9); /* Slight scale for animation */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* State for showing the modal */
+#state3.active .cta-modal {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.circular-reveal-container {
+    width: 100px; /* Size of the revealed area */
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    background-color: #eee; /* Placeholder background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Initial state for circular reveal */
+    clip-path: circle(0% at 50% 50%); /* Start hidden */
+    transition: clip-path 0.5s ease-out; /* Animate clip-path */
+    box-shadow: 0 0 0 5px rgba(0,0,0,0.1); /* Subtle border effect */
+}
+
+/* When active, reveal the circle */
+#state3.active .circular-reveal-container.revealed {
+    clip-path: circle(75% at 50% 50%); /* Reveal to cover the container */
+}
+
+.modal-profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* Ensure image is circular within its container */
+    display: block; /* Remove extra space below img */
+}
+
+.prompt-text {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #262626;
+    margin: 0;
+}
+
+.action-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none; /* If it's an anchor */
+    -webkit-appearance: none; /* Reset default button styles */
+    -moz-appearance: none;
+    appearance: none;
+}

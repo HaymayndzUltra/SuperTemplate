@@ -1,74 +1,73 @@
 {
   "validator": "master_validator",
   "protocol_id": "13",
-  "validation_timestamp": "2025-11-06T16:43:35.462876Z",
-  "overall_score": 0.8785416666666667,
+  "validation_timestamp": "2025-11-13T16:45:38.613131Z",
+  "overall_score": 0.8608333333333332,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
-      "status": "pass",
-      "score": 0.9666666666666668
+      "status": "warning",
+      "score": 0.9333333333333332
     },
     "protocol_role": {
-      "status": "warning",
-      "score": 0.8125
+      "status": "pass",
+      "score": 0.9624999999999999
     },
     "protocol_workflow": {
-      "status": "fail",
-      "score": 0.65
+      "status": "warning",
+      "score": 0.85
     },
     "protocol_quality_gates": {
-      "status": "pass",
-      "score": 1.0
+      "status": "warning",
+      "score": 0.8624999999999999
     },
     "protocol_scripts": {
-      "status": "fail",
-      "score": 0.73125
+      "status": "warning",
+      "score": 0.8375000000000001
     },
     "protocol_communication": {
-      "status": "pass",
-      "score": 0.9249999999999999
+      "status": "fail",
+      "score": 0.6749999999999999
     },
     "protocol_evidence": {
       "status": "pass",
       "score": 1.0
     },
     "protocol_handoff": {
-      "status": "pass",
-      "score": 1.0
+      "status": "warning",
+      "score": 0.8500000000000001
     },
     "protocol_reasoning": {
-      "status": "warning",
-      "score": 0.7250000000000001
+      "status": "pass",
+      "score": 0.8500000000000001
     },
     "protocol_reflection": {
-      "status": "pass",
-      "score": 0.9750000000000001
+      "status": "warning",
+      "score": 0.7875
     }
   },
   "issues": [
     "Protocol version not found (semantic versioning expected)",
-    "Domain expertise keywords missing",
-    "Behavioral traits not articulated",
-    "Value proposition not captured",
-    "Less than two workflow steps defined",
-    "Step numbering is not sequential",
-    "Several workflow steps omit explicit action prompts",
-    "Downstream consumer mapping missing",
-    "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/build_uat_toolkit.py, scripts/generate_release_notes.py, scripts/validate_prerequisites_15.py",
-    "Exit code handling not described",
-    "Limited progress terminology in communications",
-    "Reasoning patterns not explicitly named",
-    "Decision points insufficiently described",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Halt conditions rarely documented",
+    "Insufficient compliance standards referenced",
+    "Phase transition announcements missing",
+    "Missing user interaction prompts: clarification",
+    "Documentation expectations under-specified",
     "Self-awareness statements missing",
+    "Continuous improvement gaps: plans",
+    "Knowledge capture gaps: storage, sharing",
     "Roadmap or future direction not documented"
   ],
   "recommendations": [
-    "Use '### STEP X' headings for clarity",
+    "Outline decision-making expectations",
+    "Optional or cautionary guidance can highlight operator judgement without blocking validation",
     "Add rollback or retry guidance for failure scenarios",
+    "Document evidence manifests or registries",
+    "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/13.yaml when automated gating is expected",
-    "Document environment/dependency expectations",
-    "Document how command outputs are captured",
-    "Include root-cause analysis guidance"
+    "Add explicit remediation instructions to error prompts",
+    "Optionally reference a manifest file or inventory for quick lookup",
+    "Optionally outline archival format, retention, retrieval, and cleanup steps"
   ]
 }

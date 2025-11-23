@@ -1,22 +1,22 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "11",
-  "validation_timestamp": "2025-11-06T16:43:35.368974Z",
-  "overall_score": 1.0,
-  "validation_status": "pass",
+  "validation_timestamp": "2025-11-13T16:32:12.779022Z",
+  "overall_score": 0.8875,
+  "validation_status": "warning",
   "issues": [],
   "recommendations": [],
   "checklist_completeness": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
-      "item_count": 13,
+      "item_count": 50,
       "items": true,
       "categories": true,
       "dependencies": true,
-      "status_markers": true
+      "status_markers": false
     }
   },
   "verification_procedures": {
@@ -26,11 +26,11 @@
     "recommendations": [],
     "details": {
       "term_counts": {
-        "validate": 15,
-        "ensure": 15,
-        "confirm": 7,
-        "verify": 23,
-        "gate": 4
+        "validate": 14,
+        "ensure": 2,
+        "confirm": 17,
+        "verify": 12,
+        "gate": 5
       },
       "verification_terms": true,
       "qa_involvement": true,
@@ -58,9 +58,6 @@
     "details": {
       "terms": [
         "log",
-        "brief",
-        "notes",
-        "transcript",
         "manifest",
         "report"
       ],
@@ -71,14 +68,14 @@
     }
   },
   "next_protocol_alignment": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
       "ready_statements": true,
       "next_commands": true,
-      "dependencies": true,
+      "dependencies": false,
       "continuation": true
     }
   }

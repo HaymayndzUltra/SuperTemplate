@@ -1,94 +1,123 @@
 {
   "protocol_id": "01",
   "protocol_name": "Client Proposal Generation",
-  "timestamp": "2025-11-11T02:50:35Z",
+  "execution_timestamp": "2025-01-27T00:00:00Z",
   "artifacts": [
     {
       "name": "job-post.md",
       "type": "input",
+      "location": ".artifacts/protocol-01/job-post.md",
       "sha256": "ae824013b530f7cbf70cf3e8377e9581195833b3300eaf8814d44d8e0b3c0fd6",
       "size_bytes": 0,
-      "dependencies": ["JOB-POST.md"]
+      "description": "Source job post from client"
     },
     {
       "name": "jobpost-analysis.json",
       "type": "analysis",
-      "sha256": "3f8a7152657d8ca145e1fcf73e089508590c101c89a3a3586889bc86a92c06d8",
+      "location": ".artifacts/protocol-01/jobpost-analysis.json",
+      "sha256": "f3a04244e892e0b98454793aa1d76f0fbe46f9d7eb6f504bc14fdeafb5ae4064",
       "size_bytes": 0,
-      "dependencies": ["job-post.md"]
+      "description": "Job post analysis with exact quotes, tech stack, pain points, tone, urgency signals, and vague requirements"
     },
     {
       "name": "tone-map.json",
       "type": "analysis",
-      "sha256": "50343bf0488cbeb0fed078d717491911d9b9b44dd146f7fc36fa1ee6a9cd3a29",
+      "location": ".artifacts/protocol-01/tone-map.json",
+      "sha256": "eb3cb81ee8c5eeb2ea7d0c24d170661da02ea7dca7f363175cc9bf6ae506ed97",
       "size_bytes": 0,
-      "dependencies": ["jobpost-analysis.json"]
+      "description": "Tone calibration results and differentiator list"
     },
     {
       "name": "pricing-analysis.json",
       "type": "analysis",
-      "sha256": "bb25ced2b9d1b0689de9b4d9496cc7b6b2dd94e61f1af11e89ac118319b345",
+      "location": ".artifacts/protocol-01/pricing-analysis.json",
+      "sha256": "988a59c800566954884d82b48229f7b76308816e21144283b1c63a7571035e70",
       "size_bytes": 0,
-      "dependencies": ["jobpost-analysis.json", "tone-map.json"]
+      "description": "Pricing estimation with workload breakdown, milestones, assumptions, and risk notes"
     },
     {
       "name": "humanization-log.json",
-      "type": "execution",
-      "sha256": "a225649a0ef751e2d1373fe29814d725689adefa940e89b4dfd7768016e8e650",
+      "type": "validation",
+      "location": ".artifacts/protocol-01/humanization-log.json",
+      "sha256": "608a12eba3a501582e61e27eeed789529ead829a276f97140816dd214712657c",
       "size_bytes": 0,
-      "dependencies": ["tone-map.json", "PROPOSAL.md"]
+      "description": "Human voice compliance metrics and validation status"
     },
     {
       "name": "PROPOSAL.md",
-      "type": "deliverable",
-      "sha256": "817b7dbdc22b0cb5cda4406f8bd7345d09a747712ea3d229e4919a04b6be2b6e",
+      "type": "output",
+      "location": ".artifacts/protocol-01/PROPOSAL.md",
+      "sha256": "0e9efe599a12349cb66208e043cf2da3a2052153b77e5995fceb1b6b485f2777",
       "size_bytes": 0,
-      "dependencies": ["jobpost-analysis.json", "tone-map.json", "pricing-analysis.json"]
+      "description": "Final human-simulated proposal document"
     },
     {
       "name": "proposal-summary.json",
       "type": "handoff",
-      "sha256": "54b9f46c72a08205e6c6fa357c02dd6d52280b869caa8718abf83335fd42b0b0",
+      "location": ".artifacts/protocol-01/proposal-summary.json",
+      "sha256": "7b3c0247d644c7abccc2658a7f1c63b1b923ac99731d5b727dc47d4bd594acd3",
       "size_bytes": 0,
-      "dependencies": ["PROPOSAL.md", "pricing-analysis.json", "tone-map.json"]
+      "description": "Summary for Protocol 02 handoff with differentiators, pricing, and next steps"
     },
     {
       "name": "notes.md",
-      "type": "execution",
-      "sha256": "9adcdcdf01843bc378435ee189eaa6b315ed05e917a9a8bb12adf078d0ec7011",
+      "type": "documentation",
+      "location": ".artifacts/protocol-01/notes.md",
+      "sha256": "72bb71a0acf9206af4da330dd685d7c52244e8e0b519d11c58bfb2011c0bd3c3",
       "size_bytes": 0,
-      "dependencies": []
+      "description": "Working notes documenting execution phases and decisions"
     }
   ],
   "quality_gates": {
     "gate_1_job_post_comprehension": {
-      "status": "pass",
+      "status": "PASS",
       "coverage_score": 0.95,
-      "exact_quotes_count": 3
+      "exact_quotes_count": 3,
+      "threshold": 0.90
     },
     "gate_2_tone_alignment": {
-      "status": "pass",
-      "confidence": 0.92,
-      "differentiators_count": 5
+      "status": "PASS",
+      "confidence_score": 0.95,
+      "differentiator_list_defined": true,
+      "threshold": 0.80
     },
     "gate_3_human_voice_compliance": {
-      "status": "pass",
-      "contractions": 8,
-      "uncertainty_markers": 2,
-      "forbidden_phrases": 0
+      "status": "PASS",
+      "contractions_count": 9,
+      "uncertainty_markers_count": 1,
+      "forbidden_phrases_count": 0,
+      "threshold_contractions": 3,
+      "threshold_uncertainty": 1
     },
     "gate_4_pricing_realism": {
-      "status": "pass",
-      "market_percentage": 75,
-      "milestone_balance": "balanced"
+      "status": "PASS",
+      "market_percentage": 0.95,
+      "milestones_balanced": true,
+      "threshold_range": "80-120%"
     },
     "gate_5_evidence_integrity": {
-      "status": "pass",
+      "status": "PASS",
       "artifact_completeness": 1.0,
-      "checksums_valid": true
+      "required_artifacts": 7,
+      "present_artifacts": 7,
+      "threshold": 1.0
     }
   },
-  "completeness": 1.0,
-  "ready_for_handoff": true
+  "dependencies": {
+    "input_from": [
+      "JOB-POST.md (client job posting)"
+    ],
+    "output_to": [
+      "Protocol 02 (Client Discovery Initiation)"
+    ]
+  },
+  "transformation_steps": [
+    "Job post → Analysis: Extracted tech stack, pain points, tone signals",
+    "Analysis → Tone: Mapped client communication style to casual tone strategy",
+    "Tone → Pricing: Calculated workload estimates based on requirements",
+    "Tone + Pricing → Proposal: Generated humanized proposal document",
+    "Proposal → Summary: Extracted differentiators and next steps"
+  ],
+  "handoff_readiness": true,
+  "next_protocol": "02-client-discovery-initiation"
 }
-

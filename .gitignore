@@ -1,1 +1,63 @@
+# Environment
 .env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Project Artifacts
+.artifacts/protocol-*/
+.artifacts/analysis-*/
+.artifacts/meta-upgrades/
+.artifacts/validation/
+.artifacts/gate-results/
+.artifacts/performance/
+.artifacts/protocol-generation/
+.artifacts/protocol-verification/
+.artifacts/causal-ledger/
+.artifacts/reasoning-dna/
+.artifacts/phase-*/
+.artifacts/plano-validation/
+.artifacts/protocol-creation/
+.artifacts/scripts/
+
+# Logs
+*.log
+logs/
+
+# Coverage
+coverage/
+.coverage
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-specific (add patterns as needed)
+JOB-POST.md
+PROPOSAL.md
+brief.md
+plan*.md
+plano.md
+prd-*.md
+IMPLEMENTATION-SUMMARY.md
+dependency_trace.txt
+dependency-map.mermaid
+protocol-inventory.json

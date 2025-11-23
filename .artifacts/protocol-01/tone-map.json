@@ -1,19 +1,29 @@
 {
   "tone_type": "casual",
-  "confidence": 0.92,
-  "reasoning": "Client uses casual language ('Hey Everyone!!', conversational phrasing, exclamation marks), startup context (MVP, fast-paced), and direct communication style",
-  "differentiators": [
-    "Experience with Claude AI coding and AI-assisted development workflows",
-    "Comfortable with daily code reviews and transparent development process",
-    "Ability to deliver functional MVP under tight timelines (1-2 weeks)",
-    "Fullstack expertise for double-sided marketplace SaaS",
-    "Understanding of scalability requirements (1000+ users)"
+  "confidence": 0.95,
+  "tone_indicators": [
+    "Hey Everyone!!",
+    "lets jump on a video call",
+    "I am okay with sacrificing quality/perfectness",
+    "If you believe you have the experience",
+    "If you are up for it"
   ],
-  "voice_characteristics": {
-    "formality": "low",
-    "urgency": "high",
-    "directness": "high",
-    "enthusiasm": "moderate"
-  },
-  "client_communication_style": "Direct, urgent, values transparency and speed over perfection"
+  "communication_style": "conversational",
+  "formality_level": "low",
+  "urgency_level": "high",
+  "transparency_requirement": "high",
+  "differentiator_list": [
+    "Experience with Claude AI and copilot tools",
+    "Comfortable with daily code reviews and transparency",
+    "Ability to work under tight timelines with AI acceleration",
+    "Fullstack expertise for marketplace SaaS",
+    "Fluent English communication"
+  ],
+  "client_personality": {
+    "direct": true,
+    "results_focused": true,
+    "transparency_valued": true,
+    "speed_prioritized": true,
+    "collaborative": true
+  }
 }

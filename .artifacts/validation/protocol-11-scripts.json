@@ -1,85 +1,65 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "11",
-  "validation_timestamp": "2025-11-06T16:43:35.358623Z",
-  "overall_score": 0.7571428571428571,
-  "validation_status": "fail",
-  "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_9.py, scripts/generate_artifact_manifest.py, scripts/run_contract_tests.py, scripts/validate_environment.py, scripts/validate_prerequisites_9.py"
-  ],
-  "recommendations": [
-    "Clarify access and credential requirements",
-    "Document how command outputs are captured"
-  ],
+  "validation_timestamp": "2025-11-13T16:32:12.768469Z",
+  "overall_score": 0.8375000000000001,
+  "validation_status": "warning",
+  "issues": [],
+  "recommendations": [],
   "script_inventory": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [
-      "Referenced command paths not found: scripts/aggregate_evidence_9.py, scripts/generate_artifact_manifest.py, scripts/run_contract_tests.py, scripts/validate_environment.py, scripts/validate_prerequisites_9.py"
-    ],
-    "recommendations": [],
-    "details": {
-      "command_count": 7,
-      "commands": [
-        "bash\n# Prerequisite validation",
-        "python scripts/validate_prerequisites_9.py",
-        "python scripts/validate_environment.py --env integration --output .artifacts/protocol-15/environment-validation-report.json",
-        "python scripts/run_contract_tests.py --env integration --output .artifacts/protocol-15/contract-validation-results.json",
-        "python scripts/generate_artifact_manifest.py --input .artifacts/protocol-15/ --output .artifacts/protocol-15/integration-evidence-manifest.json",
-        "python scripts/aggregate_evidence_9.py --output .artifacts/protocol-15/",
-        "python scripts/run_protocol_11_gates.py"
-      ],
-      "missing_scripts": [
-        "scripts/validate_prerequisites_9.py",
-        "scripts/validate_environment.py",
-        "scripts/run_contract_tests.py",
-        "scripts/generate_artifact_manifest.py",
-        "scripts/aggregate_evidence_9.py"
-      ]
-    }
-  },
-  "registry_alignment": {
-    "score": 0.7857142857142857,
+    "score": 0.8,
     "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
-      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "command_count": 4,
+      "commands": [
+        "bash\n# Split dataset with configurable ratios and stratification",
+        "python3 scripts/ai/split_dataset.py --input-data .artifacts/protocol-10/feature-engineered-data.parquet --train-ratio 0.70 --val-ratio 0.15 --test-ratio 0.15 --stratify-column target --output-dir .artifacts/protocol-11/datasets/ --version v1.0.0 > .artifacts/protocol-11/split-dataset.log 2>&1",
+        "python3 scripts/ai/check_data_leakage.py --train-data .artifacts/protocol-11/datasets/train.parquet --val-data .artifacts/protocol-11/datasets/validation.parquet --test-data .artifacts/protocol-11/datasets/test.parquet --target-column target --output-report .artifacts/protocol-11/leakage-detection-report.json > .artifacts/protocol-11/check-leakage.log 2>&1",
+        "python3 scripts/ai/version_dataset.py --dataset-dir .artifacts/protocol-11/datasets/ --version-method dvc --version-tag v1.0.0 --output-metadata .artifacts/protocol-11/version-metadata.json > .artifacts/protocol-11/version-dataset.log 2>&1"
+      ],
+      "missing_scripts": []
+    }
+  },
+  "registry_alignment": {
+    "score": 0.6875,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate-1/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": true,
       "workflow_mapping": true,
-      "ownership": true,
-      "total_commands": 7,
-      "registered_commands": 1,
-      "registration_ratio": 0.14285714285714285,
+      "ownership": false,
+      "total_commands": 4,
+      "registered_commands": 3,
+      "registration_ratio": 0.75,
       "unregistered_commands": []
     }
   },
   "execution_context": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Clarify access and credential requirements"
-    ],
+    "recommendations": [],
     "details": {
       "ci_context": true,
       "environment": true,
-      "scheduling": false,
-      "permissions": false
+      "scheduling": true,
+      "permissions": true
     }
   },
   "command_syntax": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
-    "recommendations": [
-      "Document how command outputs are captured"
-    ],
+    "recommendations": [],
     "details": {
-      "command_count": 7,
+      "command_count": 4,
       "flag_usage": true,
-      "output_redirection": false,
+      "output_redirection": true,
       "parameterization": false,
       "documentation": true
     }

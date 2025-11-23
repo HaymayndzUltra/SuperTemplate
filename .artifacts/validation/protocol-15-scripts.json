@@ -1,14 +1,15 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "15",
-  "validation_timestamp": "2025-11-06T16:43:35.526751Z",
-  "overall_score": 0.7458333333333333,
+  "validation_timestamp": "2025-11-14T23:03:55.088696Z",
+  "overall_score": 0.7125000000000001,
   "validation_status": "fail",
   "issues": [
     "Referenced command paths not found: scripts/aggregate_evidence_11.py, scripts/validate_prerequisites_11.py",
     "Exit code handling not described"
   ],
   "recommendations": [
+    "Register automation commands in scripts/script-registry.json: scripts/deploy_backend.sh, scripts/run_protocol_15_gates.py, scripts/validate_gate_11_freeze.py, scripts/validate_gate_11_launch.py, scripts/validate_gate_11_readiness.py, scripts/validate_gate_11_reporting.py",
     "Document environment/dependency expectations",
     "Clarify access and credential requirements",
     "Document how command outputs are captured"
@@ -40,20 +41,29 @@
     }
   },
   "registry_alignment": {
-    "score": 0.9166666666666666,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
-    "recommendations": [],
+    "recommendations": [
+      "Register automation commands in scripts/script-registry.json: scripts/deploy_backend.sh, scripts/run_protocol_15_gates.py, scripts/validate_gate_11_freeze.py, scripts/validate_gate_11_launch.py, scripts/validate_gate_11_readiness.py, scripts/validate_gate_11_reporting.py"
+    ],
     "details": {
-      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "registry_file": "/home/haymayndz/SuperTemplate-1/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": true,
       "workflow_mapping": true,
       "ownership": true,
       "total_commands": 9,
-      "registered_commands": 6,
-      "registration_ratio": 0.6666666666666666,
-      "unregistered_commands": []
+      "registered_commands": 0,
+      "registration_ratio": 0.0,
+      "unregistered_commands": [
+        "scripts/deploy_backend.sh",
+        "scripts/run_protocol_15_gates.py",
+        "scripts/validate_gate_11_freeze.py",
+        "scripts/validate_gate_11_launch.py",
+        "scripts/validate_gate_11_readiness.py",
+        "scripts/validate_gate_11_reporting.py"
+      ]
     }
   },
   "execution_context": {

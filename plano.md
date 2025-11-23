@@ -1,1 +1,0 @@
-ilagay ang approved ideas

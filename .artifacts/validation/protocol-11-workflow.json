@@ -1,33 +1,29 @@
 {
   "validator": "protocol_workflow",
   "protocol_id": "11",
-  "validation_timestamp": "2025-11-06T16:43:35.354070Z",
-  "overall_score": 0.8,
-  "validation_status": "warning",
-  "issues": [
-    "Less than two workflow steps defined",
-    "Step numbering is not sequential",
-    "Several workflow steps omit explicit action prompts"
-  ],
+  "validation_timestamp": "2025-11-13T16:32:12.762989Z",
+  "overall_score": 0.95,
+  "validation_status": "pass",
+  "issues": [],
   "recommendations": [
-    "Use '### STEP X' headings for clarity"
+    "Optional or cautionary guidance can highlight operator judgement without blocking validation"
   ],
   "workflow_structure": {
-    "score": 0.25,
-    "status": "fail",
-    "issues": [
-      "Less than two workflow steps defined",
-      "Step numbering is not sequential"
-    ],
-    "recommendations": [
-      "Use '### STEP X' headings for clarity"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [],
     "details": {
-      "steps": [],
+      "steps": [
+        1,
+        2,
+        3,
+        4
+      ],
       "section_present": true,
-      "step_headings": false,
-      "sequential": false,
-      "completeness": false
+      "step_headings": true,
+      "sequential": true,
+      "completeness": true
     }
   },
   "step_definitions": {
@@ -36,39 +32,39 @@
     "issues": [],
     "recommendations": [],
     "details": {
-      "steps": 1,
+      "steps": 4,
       "action_coverage": 1.0,
       "communication_coverage": 1.0,
       "evidence_coverage": 1.0
     }
   },
   "action_markers": {
-    "score": 0.6666666666666666,
-    "status": "warning",
-    "issues": [
-      "Several workflow steps omit explicit action prompts"
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "recommendations": [
+      "Optional or cautionary guidance can highlight operator judgement without blocking validation"
     ],
-    "recommendations": [],
     "details": {
       "imperative_balance": true,
-      "action_clarity": false,
+      "action_clarity": true,
       "contextual_support": true,
-      "step_count": 1,
-      "imperative_count": 28,
-      "action_prompts": 0,
-      "context_prompts": 22,
+      "step_count": 4,
+      "imperative_count": 3,
+      "action_prompts": 14,
+      "context_prompts": 8,
       "optional_guidance": 0,
-      "cautionary_statements": 1
+      "cautionary_statements": 0
     }
   },
   "halt_conditions": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
       "halt_defined": true,
-      "validation_gates": true,
+      "validation_gates": false,
       "rollback_steps": true,
       "user_confirmation": true
     }
@@ -83,8 +79,8 @@
       "artifact_locations": true,
       "manifest": true,
       "downstream_trace": true,
-      "evidence_mentions": 61,
-      "artifact_mentions": 31
+      "evidence_mentions": 24,
+      "artifact_mentions": 40
     }
   }
 }

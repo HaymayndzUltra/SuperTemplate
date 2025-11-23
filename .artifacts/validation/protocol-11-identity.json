@@ -1,18 +1,18 @@
 {
   "validator": "protocol_identity",
   "protocol_id": "11",
-  "validation_timestamp": "2025-11-06T16:43:35.347408Z",
+  "validation_timestamp": "2025-11-13T16:32:12.755891Z",
   "basic_information": {
     "score": 0.8333333333333334,
     "status": "warning",
     "issues": [
-      "Protocol version not found (semantic versioning expected)"
+      "Phase assignment not found or invalid in AGENTS.md"
     ],
     "elements_found": {
       "protocol_number": true,
-      "protocol_name": "Quality Audit",
-      "protocol_version": false,
-      "phase_assignment": "Phase 3",
+      "protocol_name": "AI DATASET PREPARATION & SPLITTING",
+      "protocol_version": true,
+      "phase_assignment": false,
       "purpose_statement": true,
       "scope_definition": true
     }
@@ -28,12 +28,15 @@
     }
   },
   "integration_points": {
-    "score": 0.0,
-    "status": "fail",
-    "issues": [
-      "INTEGRATION POINTS section not found"
-    ],
-    "elements_found": {}
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
+    "elements_found": {
+      "input_sources": true,
+      "output_destinations": true,
+      "data_formats": true,
+      "storage_locations": true
+    }
   },
   "compliance_standards": {
     "score": 1.0,
@@ -46,17 +49,14 @@
     }
   },
   "documentation_quality": {
-    "score": 0.9111111111111112,
-    "status": "fail",
-    "issues": [
-      "Required section missing: AI ROLE AND MISSION",
-      "Required section missing: INTEGRATION POINTS"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "sections_found": {
       "PREREQUISITES": true,
-      "AI ROLE AND MISSION": false,
+      "AI ROLE AND MISSION": true,
       "WORKFLOW": true,
-      "INTEGRATION POINTS": false,
+      "INTEGRATION POINTS": true,
       "QUALITY GATES": true,
       "COMMUNICATION PROTOCOLS": true,
       "AUTOMATION HOOKS": true,
@@ -64,19 +64,16 @@
       "EVIDENCE SUMMARY": true
     },
     "metrics": {
-      "completeness": 0.7777777777777778,
+      "completeness": 1.0,
       "clarity": 1.0,
       "accessibility": 1.0,
       "technical_accuracy": 1.0
     }
   },
-  "overall_score": 0.7488888888888889,
-  "validation_status": "fail",
+  "overall_score": 0.9666666666666668,
+  "validation_status": "pass",
   "issues": [
-    "Protocol version not found (semantic versioning expected)",
-    "INTEGRATION POINTS section not found",
-    "Required section missing: AI ROLE AND MISSION",
-    "Required section missing: INTEGRATION POINTS"
+    "Phase assignment not found or invalid in AGENTS.md"
   ],
   "recommendations": []
 }

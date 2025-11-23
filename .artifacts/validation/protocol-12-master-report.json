@@ -1,74 +1,69 @@
 {
   "validator": "master_validator",
   "protocol_id": "12",
-  "validation_timestamp": "2025-11-06T16:43:35.429393Z",
-  "overall_score": 0.8641666666666667,
+  "validation_timestamp": "2025-11-13T16:41:04.085893Z",
+  "overall_score": 0.8658333333333333,
   "validation_status": "fail",
   "validators": {
     "protocol_identity": {
-      "status": "pass",
-      "score": 0.9666666666666668
+      "status": "warning",
+      "score": 0.8333333333333334
     },
     "protocol_role": {
-      "status": "fail",
-      "score": 0.75
-    },
-    "protocol_workflow": {
-      "status": "fail",
-      "score": 0.75
-    },
-    "protocol_quality_gates": {
       "status": "pass",
       "score": 1.0
     },
-    "protocol_scripts": {
+    "protocol_workflow": {
+      "status": "warning",
+      "score": 0.8999999999999999
+    },
+    "protocol_quality_gates": {
       "status": "fail",
-      "score": 0.6875
+      "score": 0.825
+    },
+    "protocol_scripts": {
+      "status": "warning",
+      "score": 0.8375000000000001
     },
     "protocol_communication": {
-      "status": "warning",
-      "score": 0.8375
+      "status": "fail",
+      "score": 0.6749999999999999
     },
     "protocol_evidence": {
       "status": "pass",
       "score": 1.0
     },
     "protocol_handoff": {
-      "status": "pass",
-      "score": 1.0
+      "status": "warning",
+      "score": 0.8875
     },
     "protocol_reasoning": {
       "status": "warning",
-      "score": 0.7250000000000001
+      "score": 0.7875000000000001
     },
     "protocol_reflection": {
       "status": "pass",
-      "score": 0.925
+      "score": 0.9125000000000001
     }
   },
   "issues": [
-    "Protocol version not found (semantic versioning expected)",
-    "Domain expertise keywords missing",
-    "Behavioral traits not articulated",
-    "Success criteria absent from mission",
-    "Value proposition not captured",
-    "Less than two workflow steps defined",
-    "Step numbering is not sequential",
-    "Several workflow steps omit explicit action prompts",
-    "Referenced command paths not found: scripts/collect_change_context.py, scripts/run_comprehensive_review.py",
-    "Exit code handling not described",
+    "Phase assignment not found or invalid in AGENTS.md",
+    "Security requirements not documented",
+    "Regulatory compliance not documented",
+    "Halt conditions rarely documented",
+    "Insufficient compliance standards referenced",
+    "Phase transition announcements missing",
+    "Missing user interaction prompts: clarification",
     "Reasoning patterns not explicitly named",
     "Self-awareness statements missing",
-    "Roadmap or future direction not documented"
+    "Knowledge capture gaps: sharing"
   ],
   "recommendations": [
-    "Use '### STEP X' headings for clarity",
     "Optional or cautionary guidance can highlight operator judgement without blocking validation",
     "Add rollback or retry guidance for failure scenarios",
+    "Include quantitative metrics for gate evaluation",
     "Provision config/protocol_gates/12.yaml when automated gating is expected",
-    "Document environment/dependency expectations",
-    "Clarify access and credential requirements",
-    "Document how command outputs are captured",
-    "Include root-cause analysis guidance"
+    "Link compliance checks to automation commands",
+    "Add explicit remediation instructions to error prompts"
   ]
 }

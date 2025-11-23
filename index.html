@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mobile Preview Funnel</title>
+    <link rel="preload" as="image" href="https://static.wixstatic.com/media/8455f5_a1a05e78db8345938482383301ff10bc~mv2.png" fetchpriority="high">
+    <link rel="preload" as="image" href="https://static.wixstatic.com/media/8455f5_c082110886634d768b1c7a9f956c3b1b~mv2.jpg">
+    <link rel="preload" as="video" href="https://video.wixstatic.com/video/8455f5_03845574298047bab65cfd1c0e15e5ff/480p/mp4/file.mp4">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #101010;
+            background-color: #0f0f0f;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: #f4f4f4;
+        }
+
+        #app-root {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            min-height: 100vh;
+            overflow: hidden;
+            margin: 0 auto;
+            background: #f4f4f4;
+        }
+
+        body[data-state="immersive"],
+        body[data-state="cta"] {
+            background: #000;
+        }
+
+        body[data-state="immersive"] #app-root,
+        body[data-state="cta"] #app-root {
+            max-width: none;
+            width: 100%;
+            background: #000;
+            min-height: 100vh;
+        }
+
+        .state {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 200ms ease;
+        }
+
+        .state.is-active {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 3;
+        }
+
+        .state-preview {
+            position: relative;
+            z-index: 3;
+            background: linear-gradient(180deg, #fefefe 0%, #f4f4f4 100%);
+            border-radius: 24px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.18);
+            padding: 20px 24px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            overflow-y: auto;
+        }
+
+        .state-preview.is-transitioning {
+            animation: previewExit var(--preview-exit-duration, 420ms) ease forwards;
+        }
+
+        @keyframes previewExit {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            60% {
+                transform: translateY(-10px) scale(0.97);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-20px) scale(0.94);
+                opacity: 0;
+            }
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo-row {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 4px 0;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-area img,
+        .logo-area svg {
+            display: block;
+            height: 26px;
+            width: auto;
+        }
+
+        .continue-link {
+            font-size: 13px;
+            font-weight: 600;
+            color: #0095f6;
+            line-height: 1;
+            margin-left: auto;
+        }
+
+        .preview-media {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            aspect-ratio: 9/16;
+            background: #000;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+            max-width: 360px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .preview-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%);
+        }
+
+        .play-trigger {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 150ms ease, background 150ms ease;
+        }
+
+        .play-trigger:focus-visible,
+        .play-trigger:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        .play-trigger svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .preview-caption {
+            margin: 16px auto 0;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            color: #111;
+        }
+
+        .preview-footer {
+            width: 100%;
+            max-width: 360px;
+            margin: 20px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .action-button {
+            border: none;
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .action-button.primary {
+            background: #4c5bec;
+            color: #fff;
+        }
+
+        .action-button.secondary {
+            background: transparent;
+            color: #4c5bec;
+        }
+
+        .terms-text {
+            margin: 10px 0 0;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .terms-text a {
+            color: #4c5bec;
+            text-decoration: none;
+        }
+
+        .state-immersive {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            min-height: 100vh;
+        }
+
+        .state-immersive video {
+            width: 100%;
+            height: 100%;
+            min-height: 100vh;
+            object-fit: cover;
+            transform: translateZ(0);
+        }
+
+        .immersive-overlay {
+            position: absolute;
+            inset: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        .immersive-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .pill {
+            border-radius: 999px;
+            padding: 6px 14px;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .immersive-icons {
+            position: absolute;
+            right: 16px;
+            bottom: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .overlay-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .overlay-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #fff;
+            font-size: 14px;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        .icon-count {
+            font-size: 13px;
+        }
+
+        .icon-ellipsis {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 24px;
+            margin-top: 2px;
+        }
+
+        .immersive-user {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.45);
+            padding: 12px 16px;
+            border-radius: 16px;
+            color: #fff;
+            max-width: 80%;
+        }
+
+        .immersive-user img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+        }
+
+        .user-inline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .inline-dot {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .follow-chip {
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 999px;
+            padding: 4px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .immersive-footer {
+            position: absolute;
+            bottom: 18px;
+            left: 12px;
+            right: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .immersive-footer .immersive-user {
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(6px);
+            max-width: 100%;
+            border-radius: 999px;
+            padding: 8px 12px;
+        }
+
+        .immersive-cta-btn {
+            border: none;
+            width: 100%;
+            border-radius: 999px;
+            padding: 12px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            background: #fff;
+            color: #111;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .state-immersive.show-fallback .video-fallback {
+            opacity: 1;
+        }
+
+        .video-fallback {
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 14px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            border-radius: 999px;
+            font-size: 13px;
+            opacity: 0;
+            transition: opacity 150ms ease;
+        }
+
+        .state-cta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0;
+            min-height: 100vh;
+        }
+
+        .state-cta.active {
+            pointer-events: auto;
+            opacity: 1;
+        }
+
+        .dark-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            opacity: 0;
+            transition: opacity 300ms ease-out;
+            pointer-events: none;
+        }
+
+        .state-cta.active .dark-overlay {
+            opacity: 1;
+        }
+
+        .cta-modal {
+            position: relative;
+            max-width: 90%;
+            width: auto;
+            margin: 0 auto;
+            padding: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            opacity: 0;
+            transform: translateY(12px) scale(0.98);
+            transition: opacity 300ms ease-out, transform 300ms ease-out;
+            text-align: center;
+            pointer-events: auto;
+        }
+
+        .state-cta.active .cta-modal {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .circular-reveal-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            overflow: hidden;
+            clip-path: circle(0% at 50% 50%);
+            transition: clip-path 500ms ease-out;
+        }
+
+        .circular-reveal-container.revealed {
+            clip-path: circle(75% at 50% 50%);
+        }
+
+        .modal-profile-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .cta-heading {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+        }
+
+        .cta-btn {
+            border: none;
+            background: #1877f2;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 36px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 150ms ease;
+            min-width: 220px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-btn:active {
+            background: #166fe5;
+        }
+
+        .cta-btn-facebook {
+            background: #1877f2;
+            color: #fff;
+            border-radius: 12px;
+            padding: 12px 28px;
+            min-width: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 16px rgba(24, 119, 242, 0.35);
+        }
+
+        .cta-btn-facebook .cta-icon {
+            display: inline-flex;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #fff;
+            color: #1877f2;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-btn-facebook svg {
+            width: 10px;
+            height: 10px;
+        }
+
+        @media (max-width: 480px) {
+            #app-root {
+                width: 100%;
+                height: 100vh;
+            }
+
+            .state-preview {
+                border-radius: 0;
+                padding: 18px 16px 26px;
+                gap: 16px;
+            }
+
+            .preview-media {
+                border-radius: 18px;
+            }
+
+            .cta-modal {
+                gap: 12px;
+            }
+
+            .cta-heading {
+                font-size: 20px;
+            }
+
+            .cta-btn {
+                width: 100%;
+                min-width: 0;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .play-trigger {
+                width: 56px;
+                height: 56px;
+            }
+
+            .preview-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .state-preview {
+                padding: 16px 12px 22px;
+            }
+
+            .cta-heading {
+                font-size: 18px;
+            }
+
+            .cta-btn {
+                padding: 12px 24px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body data-state="preview">
+    <div id="app-root" data-state="preview">
+        <main class="state state-preview is-active" aria-live="polite">
+            <header class="preview-header" aria-label="Instagram preview header">
+                <div class="logo-row">
+                    <div class="logo-area" aria-hidden="true">
+                        <img class="instagram-logo" src="https://static.wixstatic.com/media/8455f5_effc9f568a1645b08e796419f20ee45b~mv2.png" alt="Instagram logo">
+                    </div>
+                    <span class="continue-link" aria-hidden="true">Continue on web</span>
+                </div>
+            </header>
+
+            <section class="preview-media" aria-label="Video teaser">
+                <img class="preview-thumbnail" src="https://static.wixstatic.com/media/8455f5_a1a05e78db8345938482383301ff10bc~mv2.png" alt="Preview thumbnail" loading="eager" decoding="async">
+
+                <span class="video-overlay" aria-hidden="true"></span>
+                <button type="button" class="play-trigger" data-role="play-trigger" aria-label="Play and open immersive experience">
+                    <svg aria-hidden="true" class="play-icon" viewBox="0 0 24 24" role="presentation">
+                        <path d="M5.888 22.5a3.46 3.46 0 0 1-1.721-.46l-.003-.002a3.451 3.451 0 0 1-1.72-2.982V4.943a3.445 3.445 0 0 1 5.163-2.987l12.226 7.059a3.444 3.444 0 0 1-.001 5.967l-12.22 7.056a3.462 3.462 0 0 1-1.724.462Z"/>
+                    </svg>
+                </button>
+            </section>
+
+            <p class="preview-caption">Watch this reel in the app</p>
+
+            <footer class="preview-footer" aria-label="Primary actions">
+                <button class="action-button primary" type="button">Open Instagram</button>
+                <button class="action-button secondary" type="button">Sign up</button>
+                <p class="terms-text">By continuing, you agree to Instagram's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
+            </footer>
+        </main>
+
+        <section class="state state-immersive" aria-hidden="true">
+            <video id="immersiveVideo" playsinline muted preload="metadata" poster="https://static.wixstatic.com/media/8455f5_a1a05e78db8345938482383301ff10bc~mv2.png" loop>
+                <source src="https://video.wixstatic.com/video/8455f5_03845574298047bab65cfd1c0e15e5ff/480p/mp4/file.mp4" type="video/mp4">
+
+            </video>
+            <div class="immersive-overlay" aria-hidden="true">
+                <div class="immersive-header">
+                    <span>Log in</span>
+                    <span class="pill">Open app</span>
+                </div>
+
+                <div class="immersive-icons">
+                    <div class="icon-item" aria-hidden="true">
+                        <span class="overlay-icon">
+                            <svg viewBox="0 0 24 24" role="presentation">
+                                <path d="M12 21.638h-.014C9.403 21.59 1.5 14.856 1.5 8.478c0-3.064 2.325-5.522 5.353-5.522 2.198 0 3.926 1.426 4.647 2.221.72-.795 2.45-2.22 4.646-2.22 3.03 0 5.354 2.457 5.354 5.52 0 6.38-7.905 13.115-10.487 13.162H12Z"/>
+                            </svg>
+                        </span>
+                        <span class="icon-count">1</span>
+                    </div>
+                    <div class="icon-item" aria-hidden="true">
+                        <span class="overlay-icon">
+                            <svg viewBox="0 0 24 24" role="presentation">
+                                <path d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </span>
+                        <span class="icon-count">1</span>
+                    </div>
+                    <div class="icon-item" aria-hidden="true">
+                        <span class="overlay-icon">
+                            <svg viewBox="0 0 24 24" role="presentation">
+                                <path d="M22 3H2v2h20V3Zm0 7H2v2h20v-2Zm0 7H2v2h20v-2Z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="icon-ellipsis" aria-hidden="true">…</div>
+                </div>
+
+                <div class="immersive-footer">
+                    <div class="immersive-user">
+                        <img data-profile-img alt="Profile avatar" width="40" height="40" loading="lazy" src="https://static.wixstatic.com/media/8455f5_c082110886634d768b1c7a9f956c3b1b~mv2.jpg">
+
+                        <div class="user-inline">
+                            <span class="username">Balita</span>
+                            <span class="inline-dot">•</span>
+                            <button type="button" class="follow-chip">Follow</button>
+                        </div>
+                    </div>
+                    <button type="button" class="immersive-cta-btn">Sign up for Instagram</button>
+                </div>
+            </div>
+            <div class="video-fallback" role="alert" aria-live="assertive">Video unavailable. Showing preview.</div>
+        </section>
+
+        <section class="state state-cta" aria-hidden="true">
+            <div class="dark-overlay" aria-hidden="true"></div>
+            <div class="cta-modal" role="dialog" aria-modal="true" aria-labelledby="cta-title">
+                <div class="circular-reveal-container">
+                    <img data-profile-img alt="Profile avatar" class="modal-profile-pic" width="160" height="160" src="https://static.wixstatic.com/media/8455f5_c082110886634d768b1c7a9f956c3b1b~mv2.jpg">
+
+                </div>
+                <p id="cta-title" class="cta-heading">Sign in to keep watching</p>
+                <button id="ctaButton" type="button" class="cta-btn cta-btn-facebook" data-target-url="">
+                    <span class="cta-icon" aria-hidden="true">
+                        <svg viewBox="0 0 20 20" role="presentation">
+                            <path d="M18 0H2C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h8.6v-7H8v-3h2.6V7c0-2.6 1.6-4 3.8-4 1.1 0 2.1.1 2.6.1v3h-1.8c-1.4 0-1.7.7-1.7 1.6v2.3H17l-.4 3h-2.7V20H18c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z" fill="currentColor" />
+                        </svg>
+                    </span>
+                    Continue with Facebook
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const root = document.querySelector('#app-root');
+            const body = document.body;
+
+            const previewState = document.querySelector('.state-preview');
+            const immersiveState = document.querySelector('.state-immersive');
+            const ctaState = document.querySelector('.state-cta');
+            const playTrigger = document.querySelector('[data-role="play-trigger"]');
+            const profileImgs = document.querySelectorAll('[data-profile-img]');
+            const videoEl = document.getElementById('immersiveVideo');
+            const ctaButton = document.getElementById('ctaButton');
+            const ctaModal = document.querySelector('.cta-modal');
+            const circularReveal = document.querySelector('.circular-reveal-container');
+            const requiredAssets = {
+                video: 'https://video.wixstatic.com/video/8455f5_03845574298047bab65cfd1c0e15e5ff/480p/mp4/file.mp4',
+                thumbnail: 'https://static.wixstatic.com/media/8455f5_a1a05e78db8345938482383301ff10bc~mv2.png',
+                profile: 'https://static.wixstatic.com/media/8455f5_c082110886634d768b1c7a9f956c3b1b~mv2.jpg',
+            };
+
+            let stateTwoTimer = null;
+            let timerStart = 0;
+            const STATE_TWO_DURATION = 5000; // ms
+            const TIMER_TOLERANCE = 100;
+            const CTA_ANIMATION_MAX = 800;
+            const PREVIEW_TRANSITION_DURATION = 420; // ms
+
+            const logValidation = (message) => console.info(`[Validation] ${message}`);
+
+            const preloadProfile = () => {
+                const img = new Image();
+                return new Promise((resolve, reject) => {
+                    img.src = requiredAssets.profile;
+                    img.onload = () => {
+                        profileImgs.forEach((node) => {
+                            node.src = img.src;
+                        });
+                        resolve();
+                    };
+                    img.onerror = reject;
+                });
+            };
+
+            const verifyAssets = async () => {
+                const checks = await Promise.allSettled([
+                    fetch(requiredAssets.video, { method: 'HEAD' }),
+                    fetch(requiredAssets.thumbnail, { method: 'HEAD' }),
+                    fetch(requiredAssets.profile, { method: 'HEAD' }),
+                ]);
+                const failed = checks.filter((c) => c.status === 'rejected');
+                if (failed.length) {
+                    console.warn('Asset validation failed. Experience may degrade.', failed);
+                } else {
+                    logValidation('Assets accessible');
+                }
+            };
+
+            const setState = (state) => {
+                root.dataset.state = state;
+                body.dataset.state = state;
+                const showPreview = state === 'preview';
+                const showImmersive = state === 'immersive' || state === 'cta';
+                const showCta = state === 'cta';
+
+                previewState.classList.toggle('is-active', showPreview);
+                immersiveState.classList.toggle('is-active', showImmersive);
+                ctaState.classList.toggle('is-active', showCta);
+                ctaState.classList.toggle('active', showCta);
+                ctaState.setAttribute('aria-hidden', (!showCta).toString());
+            };
+
+            const cleanupTimer = () => {
+                if (stateTwoTimer) {
+                    cancelAnimationFrame(stateTwoTimer);
+                    stateTwoTimer = null;
+                }
+            };
+
+            const transitionToStateTwo = () => {
+                setState('immersive');
+                videoEl.currentTime = 0;
+                const playPromise = videoEl.play();
+                if (playPromise?.catch) {
+                    playPromise.catch(() => {
+                        immersiveState.classList.add('show-fallback');
+                        logValidation('Autoplay blocked, showing fallback');
+                    });
+                }
+                timerStart = performance.now();
+                const tick = (now) => {
+                    const elapsed = now - timerStart;
+                    if (elapsed >= STATE_TWO_DURATION - TIMER_TOLERANCE) {
+                        logValidation(`State 2 timer reached ${elapsed.toFixed(2)}ms`);
+                        transitionToStateThree(now);
+                        return;
+                    }
+                    stateTwoTimer = requestAnimationFrame(tick);
+                };
+                stateTwoTimer = requestAnimationFrame(tick);
+            };
+
+            const transitionToStateThree = (timestamp) => {
+                cleanupTimer();
+                videoEl.pause();
+                setState('cta');
+                ctaState.dataset.animationStart = timestamp;
+                startCtaAnimation();
+                setTimeout(() => {
+                    const animationElapsed = performance.now() - timestamp;
+                    if (animationElapsed <= CTA_ANIMATION_MAX) {
+                        logValidation(`CTA animation completed in ${animationElapsed.toFixed(2)}ms`);
+                    } else {
+                        console.warn('CTA animation exceeded required duration');
+                    }
+                }, CTA_ANIMATION_MAX);
+            };
+
+            const startCtaAnimation = () => {
+                if (!ctaModal) return;
+                circularReveal?.classList.remove('revealed');
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        circularReveal?.classList.add('revealed');
+                    }, 120);
+                });
+            };
+
+            const animatePreviewExit = () => new Promise((resolve) => {
+                if (!previewState) {
+                    resolve();
+                    return;
+                }
+                const finish = () => {
+                    previewState.classList.remove('is-transitioning');
+                    resolve();
+                };
+                previewState.classList.add('is-transitioning');
+                const timeoutId = setTimeout(finish, PREVIEW_TRANSITION_DURATION + 60);
+                previewState.addEventListener('animationend', () => {
+                    clearTimeout(timeoutId);
+                    finish();
+                }, { once: true });
+            });
+
+            const init = async () => {
+                await verifyAssets();
+                try {
+                    await preloadProfile();
+                    logValidation('Profile image cached');
+                } catch (err) {
+                    console.warn('Profile preload failed, using fallback', err);
+                    profileImgs.forEach((node) => {
+                        node.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"%3E%3Ccircle cx="40" cy="40" r="40" fill="%23333"/%3E%3Ctext x="40" y="48" fill="white" font-size="24" alignment-baseline="middle" text-anchor="middle"%3F%3E%F0%9F%90%BB%3C/text%3E%3C/svg%3E';
+                    });
+                }
+
+                playTrigger?.addEventListener('click', async (event) => {
+                    event.preventDefault();
+                    if (root.dataset.state !== 'preview') return;
+                    playTrigger.setAttribute('disabled', 'true');
+                    await animatePreviewExit();
+                    logValidation('Entering State 2');
+                    transitionToStateTwo();
+                });
+
+                ctaButton?.addEventListener('click', () => {
+                    const url = ctaButton.dataset.targetUrl;
+                    if (!url) {
+                        console.warn('CTA URL not configured yet.');
+                        return;
+                    }
+                    ctaButton.disabled = true;
+                    ctaButton.textContent = 'Redirecting…';
+                    window.location.href = url;
+                });
+
+                window.addEventListener('beforeunload', cleanupTimer);
+                window.addEventListener('resize', () => {
+                    if (root.dataset.state === 'immersive') {
+                        logValidation('Resize detected during State 2, maintaining full screen');
+                    }
+                });
+
+                setState('preview');
+                logValidation('State 1 ready, waiting for interaction');
+            };
+
+            init();
+        });
+    </script>
+</body>
+</html>

@@ -1,99 +1,76 @@
 {
   "validator": "protocol_scripts",
   "protocol_id": "13",
-  "validation_timestamp": "2025-11-06T16:43:35.437684Z",
-  "overall_score": 0.73125,
-  "validation_status": "fail",
-  "issues": [
-    "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/build_uat_toolkit.py, scripts/generate_release_notes.py, scripts/validate_prerequisites_15.py",
-    "Exit code handling not described"
-  ],
-  "recommendations": [
-    "Document environment/dependency expectations",
-    "Document how command outputs are captured"
-  ],
+  "validation_timestamp": "2025-11-13T16:45:38.579717Z",
+  "overall_score": 0.8375000000000001,
+  "validation_status": "warning",
+  "issues": [],
+  "recommendations": [],
   "script_inventory": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [
-      "Referenced command paths not found: scripts/aggregate_evidence_15.py, scripts/build_uat_toolkit.py, scripts/generate_release_notes.py, scripts/validate_prerequisites_15.py"
-    ],
-    "recommendations": [],
-    "details": {
-      "command_count": 8,
-      "commands": [
-        "bash\n# Prerequisite validation",
-        "python scripts/validate_prerequisites_15.py",
-        "python scripts/validate_gate_15_entry.py --checklist .artifacts/uat/uat-entry-checklist.json",
-        "python scripts/validate_gate_15_defects.py --register .artifacts/uat/uat-defect-register.csv",
-        "python scripts/aggregate_evidence_15.py --output .artifacts/uat/",
-        "python scripts/run_protocol_15_gates.py",
-        "bash\n     python scripts/build_uat_toolkit.py --scenarios config/uat-scenarios.yaml --output .artifacts/uat/uat-toolkit-manifest.json",
-        "bash\n       python scripts/generate_release_notes.py --source .artifacts/uat/feedback-notebook.md --output .artifacts/uat/release-notes-draft.md"
-      ],
-      "missing_scripts": [
-        "scripts/validate_prerequisites_15.py",
-        "scripts/aggregate_evidence_15.py",
-        "scripts/build_uat_toolkit.py",
-        "scripts/generate_release_notes.py"
-      ]
-    }
-  },
-  "registry_alignment": {
-    "score": 0.84375,
+    "score": 0.8,
     "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
-      "registry_file": "/home/haymayndz/SuperTemplate/scripts/script-registry.json",
+      "command_count": 4,
+      "commands": [
+        "bash\n# Setup training pipeline and execute hyperparameter optimization",
+        "python3 scripts/ai/train_model.py --train-data .artifacts/protocol-11/datasets/train.parquet --val-data .artifacts/protocol-11/datasets/validation.parquet --baseline-model .artifacts/protocol-12/baseline-model.pkl --output-model .artifacts/protocol-13/final-model.pkl --output-metrics .artifacts/protocol-13/test-performance.json > .artifacts/protocol-13/train-model.log 2>&1",
+        "python3 scripts/ai/tune_hyperparameters.py --train-data .artifacts/protocol-11/datasets/train.parquet --val-data .artifacts/protocol-11/datasets/validation.parquet --search-space .artifacts/protocol-13/hyperparameter-space.json --output-results .artifacts/protocol-13/optimization-results.json --optimization-method bayesian > .artifacts/protocol-13/tune-hyperparameters.log 2>&1",
+        "python3 scripts/ai/validate_training.py --model .artifacts/protocol-13/final-model.pkl --test-data .artifacts/protocol-11/datasets/test.parquet --baseline-metrics .artifacts/protocol-12/baseline-benchmarks.json --output-report .artifacts/protocol-13/training-report.md > .artifacts/protocol-13/validate-training.log 2>&1"
+      ],
+      "missing_scripts": []
+    }
+  },
+  "registry_alignment": {
+    "score": 0.6875,
+    "status": "fail",
+    "issues": [],
+    "recommendations": [],
+    "details": {
+      "registry_file": "/home/haymayndz/SuperTemplate-1/scripts/script-registry.json",
       "registry_available": true,
       "registry_reference": true,
       "workflow_mapping": true,
-      "ownership": true,
-      "total_commands": 8,
+      "ownership": false,
+      "total_commands": 4,
       "registered_commands": 3,
-      "registration_ratio": 0.375,
+      "registration_ratio": 0.75,
       "unregistered_commands": []
     }
   },
   "execution_context": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 1.0,
+    "status": "pass",
     "issues": [],
-    "recommendations": [
-      "Document environment/dependency expectations"
-    ],
+    "recommendations": [],
     "details": {
       "ci_context": true,
-      "environment": false,
-      "scheduling": false,
+      "environment": true,
+      "scheduling": true,
       "permissions": true
     }
   },
   "command_syntax": {
-    "score": 0.5,
-    "status": "fail",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
-    "recommendations": [
-      "Document how command outputs are captured"
-    ],
+    "recommendations": [],
     "details": {
-      "command_count": 8,
+      "command_count": 4,
       "flag_usage": true,
-      "output_redirection": false,
+      "output_redirection": true,
       "parameterization": false,
       "documentation": true
     }
   },
   "error_handling": {
-    "score": 0.75,
-    "status": "warning",
-    "issues": [
-      "Exit code handling not described"
-    ],
+    "score": 1.0,
+    "status": "pass",
+    "issues": [],
     "recommendations": [],
     "details": {
-      "exit_codes": false,
+      "exit_codes": true,
       "fallback": true,
       "logging": true,
       "manual_paths": true

@@ -1,22 +1,24 @@
 {
   "validator": "protocol_handoff",
   "protocol_id": "13",
-  "validation_timestamp": "2025-11-06T16:43:35.444568Z",
-  "overall_score": 1.0,
-  "validation_status": "pass",
-  "issues": [],
+  "validation_timestamp": "2025-11-13T16:45:38.590543Z",
+  "overall_score": 0.8500000000000001,
+  "validation_status": "warning",
+  "issues": [
+    "Documentation expectations under-specified"
+  ],
   "recommendations": [],
   "checklist_completeness": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
-      "item_count": 13,
+      "item_count": 56,
       "items": true,
       "categories": true,
       "dependencies": true,
-      "status_markers": true
+      "status_markers": false
     }
   },
   "verification_procedures": {
@@ -27,10 +29,10 @@
     "details": {
       "term_counts": {
         "validate": 4,
-        "ensure": 3,
-        "confirm": 8,
-        "verify": 2,
-        "gate": 2
+        "ensure": 2,
+        "confirm": 6,
+        "verify": 12,
+        "gate": 8
       },
       "verification_terms": true,
       "qa_involvement": true,
@@ -51,34 +53,32 @@
     }
   },
   "documentation_requirements": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Documentation expectations under-specified"
+    ],
     "recommendations": [],
     "details": {
       "terms": [
         "log",
-        "brief",
-        "notes",
-        "transcript",
-        "manifest",
         "report"
       ],
-      "doc_terms": true,
+      "doc_terms": false,
       "storage": true,
       "reviewer_docs": true,
       "format": true
     }
   },
   "next_protocol_alignment": {
-    "score": 1.0,
-    "status": "pass",
+    "score": 0.75,
+    "status": "warning",
     "issues": [],
     "recommendations": [],
     "details": {
       "ready_statements": true,
       "next_commands": true,
-      "dependencies": true,
+      "dependencies": false,
       "continuation": true
     }
   }

@@ -1,0 +1,100 @@
+protocol_id: "11"
+protocol_name: "AI Dataset Preparation & Splitting"
+phase: "Phase 3: AI Model Development"
+
+gates:
+  - gate_id: 1
+    gate_name: "Data Leakage Check"
+    gate_type: "Prerequisite"
+    criteria: "No data leakage detected between train/validation/test sets"
+    pass_threshold: "leakage_detected = false"
+    metrics:
+      - name: "leakage_detection_score"
+        type: "numeric"
+        min: 0.0
+        max: 1.0
+    failure_handling:
+      - action: "rollback"
+        description: "Revert to feature engineering step, identify and remove leakage sources"
+      - action: "notification"
+        description: "Alert technical lead and stakeholders of leakage detection"
+      - action: "waiver"
+        description: "No waiver permitted for data leakage (blocking gate)"
+    compliance_standards:
+      - standard: "data_integrity"
+        requirement: "Zero data leakage between splits"
+
+  - gate_id: 2
+    gate_name: "Split Ratios Validated"
+    gate_type: "Execution"
+    criteria: "Train/validation/test split ratios match target ratios within ±2% tolerance"
+    pass_threshold: "split_ratios_valid = true"
+    metrics:
+      - name: "ratio_deviation_percentage"
+        type: "numeric"
+        min: 0.0
+        max: 2.0
+      - name: "class_distribution_preservation"
+        type: "percentage"
+        min: 98.0
+        max: 100.0
+    failure_handling:
+      - action: "rollback"
+        description: "Re-execute splitting with adjusted parameters"
+      - action: "notification"
+        description: "Report ratio deviation to technical lead"
+      - action: "waiver"
+        description: "Waiver permitted if deviation <2% with technical lead approval"
+    compliance_standards:
+      - standard: "data_quality"
+        requirement: "Split ratios within ±2% tolerance"
+
+  - gate_id: 3
+    gate_name: "Dataset Versioned"
+    gate_type: "Completion"
+    criteria: "All datasets versioned with complete audit trails and integrity checksums"
+    pass_threshold: "dataset_versioned = true"
+    metrics:
+      - name: "version_control_status"
+        type: "boolean"
+      - name: "integrity_checksum_validation"
+        type: "percentage"
+        min: 100.0
+        max: 100.0
+    failure_handling:
+      - action: "rollback"
+        description: "Reinitialize version control, re-add datasets"
+      - action: "notification"
+        description: "Alert DevOps team of versioning failure"
+      - action: "waiver"
+        description: "No waiver permitted for versioning failures (blocking gate)"
+    compliance_standards:
+      - standard: "audit_trail"
+        requirement: "Complete version control with checksums"
+      - standard: "reproducibility"
+        requirement: "Full dataset versioning and traceability"
+
+automation:
+  - script_name: "split_dataset.py"
+    script_path: "scripts/ai/split_dataset.py"
+    trigger: "manual"
+    timeout_seconds: 300
+
+  - script_name: "check_data_leakage.py"
+    script_path: "scripts/ai/check_data_leakage.py"
+    trigger: "manual"
+    timeout_seconds: 300
+
+  - script_name: "version_dataset.py"
+    script_path: "scripts/ai/version_dataset.py"
+    trigger: "manual"
+    timeout_seconds: 300
+
+notifications:
+  failure_notification_path: ".artifacts/protocol-11/gate-failure-notifications/"
+  success_notification_path: ".artifacts/protocol-11/gate-success-notifications/"
+
+documentation:
+  gate_definitions: ".artifacts/protocol-11/gate-definitions.md"
+  failure_procedures: ".artifacts/protocol-11/failure-procedures.md"
+  waiver_policy: ".artifacts/protocol-11/waiver-policy.md"

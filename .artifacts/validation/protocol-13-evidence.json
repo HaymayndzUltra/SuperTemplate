@@ -1,11 +1,14 @@
 {
   "validator": "protocol_evidence",
   "protocol_id": "13",
-  "validation_timestamp": "2025-11-06T16:43:35.441450Z",
+  "validation_timestamp": "2025-11-13T16:45:38.585992Z",
   "overall_score": 1.0,
   "validation_status": "pass",
   "issues": [],
-  "recommendations": [],
+  "recommendations": [
+    "Optionally reference a manifest file or inventory for quick lookup",
+    "Optionally outline archival format, retention, retrieval, and cleanup steps"
+  ],
   "artifact_generation": {
     "score": 1.0,
     "status": "pass",
@@ -16,9 +19,9 @@
       "artifact_column": true,
       "metrics_column": true,
       "row_coverage": true,
-      "table_rows": 7,
-      "artifact_mentions": 17,
-      "metric_mentions": 21
+      "table_rows": 10,
+      "artifact_mentions": 11,
+      "metric_mentions": 4
     }
   },
   "storage_structure": {
@@ -44,14 +47,14 @@
     "score": 1.0,
     "status": "pass",
     "issues": [],
-    "recommendations": [],
+    "recommendations": [
+      "Optionally reference a manifest file or inventory for quick lookup"
+    ],
     "details": {
-      "manifest_reference": true,
-      "metadata": true,
-      "dependencies": true,
-      "coverage": true,
-      "metadata_mentions": 12,
-      "dependency_mentions": 12
+      "manifest_reference": false,
+      "metadata": 3,
+      "dependencies": 2,
+      "coverage": 1
     }
   },
   "traceability": {
@@ -70,14 +73,11 @@
     "score": 1.0,
     "status": "pass",
     "issues": [],
-    "recommendations": [],
+    "recommendations": [
+      "Optionally outline archival format, retention, retrieval, and cleanup steps"
+    ],
     "details": {
-      "compression": true,
-      "retention": true,
-      "retrieval": true,
-      "cleanup": true,
-      "compression_mentions": 13,
-      "retention_mentions": 4
+      "archival_reference": false
     }
   }
 }

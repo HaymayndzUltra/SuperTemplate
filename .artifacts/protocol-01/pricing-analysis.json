@@ -1,75 +1,120 @@
 {
   "project_complexity": "complex",
-  "workload_estimate": {
+  "timeline_client_requested": "1-2 weeks",
+  "timeline_realistic": "3-4 weeks",
+  "workload_estimation": {
     "hours_per_week": 35,
-    "total_weeks": 2,
-    "total_hours": 70,
+    "total_weeks_client": 2,
+    "total_weeks_realistic": 3,
+    "total_hours_client_timeline": 70,
+    "total_hours_realistic": 105,
     "breakdown": {
-      "architecture_setup": 8,
-      "backend_development": 25,
-      "frontend_development": 20,
-      "integration_testing": 10,
-      "deployment_setup": 5,
-      "daily_reviews_buffer": 2
+      "user_authentication": 8,
+      "listing_management": 12,
+      "search_and_filtering": 6,
+      "messaging_system": 8,
+      "payment_integration": 10,
+      "user_profiles": 4,
+      "admin_dashboard": 6,
+      "testing_and_bug_fixes": 10,
+      "deployment_and_setup": 4,
+      "buffer_for_reviews_and_changes": 8
     }
   },
   "rate_tier": "senior",
-  "hourly_rate": 45,
-  "rate_justification": "Senior fullstack developer with AI-assisted development expertise, tight timeline premium, daily code review overhead",
-  "pricing_structure": {
-    "milestone_1": {
-      "name": "Architecture & Core Backend (Week 1)",
-      "hours": 35,
-      "rate": 45,
-      "total": 1575,
-      "percentage": 50
-    },
-    "milestone_2": {
-      "name": "Frontend & Integration (Week 2)",
-      "hours": 30,
-      "rate": 45,
-      "total": 1350,
-      "percentage": 43
-    },
-    "milestone_3": {
-      "name": "Testing & Deployment",
-      "hours": 5,
-      "rate": 45,
-      "total": 225,
-      "percentage": 7
-    }
+  "hourly_rate_range": {
+    "minimum": 50,
+    "target": 65,
+    "maximum": 75,
+    "justification": "Senior fullstack developer with AI tool expertise, tight timeline requires premium rate"
   },
-  "total_project_cost": 3150,
-  "market_benchmark_range": {
-    "low": 2800,
-    "high": 4200,
-    "percentage": 75,
-    "validation": "Within 80-120% range (75% of high benchmark)"
+  "pricing_structure": {
+    "approach": "milestone-based with hourly cap",
+    "milestones": [
+      {
+        "name": "Foundation & Authentication",
+        "description": "User auth for buyers/sellers, basic profiles, project setup",
+        "estimated_hours": 20,
+        "hourly_rate": 65,
+        "total": 1300,
+        "percentage_of_total": 20
+      },
+      {
+        "name": "Core Marketplace Features",
+        "description": "Listings, search, filtering, basic messaging",
+        "estimated_hours": 30,
+        "hourly_rate": 65,
+        "total": 1950,
+        "percentage_of_total": 30
+      },
+      {
+        "name": "Payments & Polish",
+        "description": "Payment integration, admin dashboard, testing, deployment",
+        "estimated_hours": 20,
+        "hourly_rate": 65,
+        "total": 1300,
+        "percentage_of_total": 20
+      },
+      {
+        "name": "Buffer & Reviews",
+        "description": "Code review cycles, revisions, edge cases, 1000-user load testing",
+        "estimated_hours": 10,
+        "hourly_rate": 65,
+        "total": 650,
+        "percentage_of_total": 10
+      }
+    ],
+    "total_estimated_hours": 80,
+    "total_estimated_cost": 5200,
+    "hourly_cap_per_milestone": true
+  },
+  "market_benchmark_validation": {
+    "market_range_percentage": 95,
+    "benchmark_range": "80-120%",
+    "status": "within_range",
+    "justification": "Pricing at 95% of market benchmark for similar complexity and timeline"
   },
   "assumptions": [
-    "Core MVP features only (user registration, basic marketplace functionality, payment integration)",
-    "Daily code reviews factored into timeline",
-    "AI-assisted development accelerates delivery",
-    "1000 user capacity requirement met with scalable architecture"
+    "Client provides wireframes or reference app details within 24 hours of project start",
+    "Daily code reviews have 24-hour turnaround time maximum",
+    "Scope limited to MVP features only (no advanced features like reviews, ratings, advanced search)",
+    "Payment processing is basic (stripe/paypal integration, not custom payment gateway)",
+    "No custom design work - using component libraries (Tailwind, shadcn/ui, etc.)",
+    "Database and hosting infrastructure decisions made quickly (no extended architecture discussions)",
+    "AI tools (Claude) used extensively for code generation and acceleration"
   ],
   "risk_notes": [
     {
-      "risk": "Scope creep beyond MVP",
-      "mitigation": "Clarify core features in discovery call, document scope boundaries"
+      "risk": "Timeline too aggressive - 1-2 weeks may result in incomplete features",
+      "mitigation": "Proposed 3-week timeline with aggressive 2-week option if scope reduced",
+      "impact": "high"
     },
     {
-      "risk": "Daily code reviews may cause delays",
-      "mitigation": "Establish review turnaround time expectations (24-hour response)"
+      "risk": "Daily code reviews may slow velocity",
+      "mitigation": "Request 24-hour max turnaround on reviews, batch reviews when possible",
+      "impact": "medium"
     },
     {
-      "risk": "Reference app features unclear",
-      "mitigation": "Request app name or screenshots to align expectations"
+      "risk": "Quality sacrifice may create technical debt",
+      "mitigation": "Define 'functional' clearly - core features work, but may need refactoring post-MVP",
+      "impact": "high"
+    },
+    {
+      "risk": "1000-user load requirement may need optimization",
+      "mitigation": "Include load testing in buffer milestone, optimize critical paths",
+      "impact": "medium"
+    },
+    {
+      "risk": "Vague reference app requirement",
+      "mitigation": "Request specific app name or wireframes before starting",
+      "impact": "medium"
     }
   ],
-  "clarifying_questions": [
-    "Which similar app should we reference? (99% inspiration mention)",
-    "Do you have wireframes ready, or should I proceed with AI-generated wireframes?",
-    "What specific payment processing do you need? (Stripe, PayPal, etc.)",
-    "What are the core MVP features vs nice-to-haves?"
+  "scope_clarifications_needed": [
+    "Which similar app are you referencing? (to understand exact feature set)",
+    "What does 'functional for 1000 users' mean specifically? (concurrent users? total users? specific features?)",
+    "Are wireframes ready, or should I create them using AI?",
+    "What's the specific hourly rate you're considering?",
+    "What's the expected code review turnaround time?"
   ]
 }

@@ -170,6 +170,156 @@
       "path": "scripts/orchestration/package_evidence.py",
       "protocol": "05b",
       "phase": "PHASE 6"
+    },
+    "split_dataset": {
+      "path": "scripts/ai/split_dataset.py",
+      "protocol": "11",
+      "phase": "PHASE 3",
+      "purpose": "Split feature-engineered datasets into train/validation/test sets with stratification support",
+      "status": "active",
+      "owner": "Protocol 11-AI Dataset Preparation & Splitting",
+      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "version": "1.0.0"
+    },
+    "check_data_leakage": {
+      "path": "scripts/ai/check_data_leakage.py",
+      "protocol": "11",
+      "phase": "PHASE 3",
+      "purpose": "Detect data leakage between train/validation/test sets",
+      "status": "active",
+      "owner": "Protocol 11-AI Dataset Preparation & Splitting",
+      "dependencies": ["pandas", "numpy", "scipy"],
+      "version": "1.0.0"
+    },
+    "version_dataset": {
+      "path": "scripts/ai/version_dataset.py",
+      "protocol": "11",
+      "phase": "PHASE 3",
+      "purpose": "Version datasets using DVC or Git LFS with complete audit trails",
+      "status": "active",
+      "owner": "Protocol 11-AI Dataset Preparation & Splitting",
+      "dependencies": ["dvc", "git-lfs"],
+      "version": "1.0.0"
+    },
+    "evaluate_algorithms": {
+      "path": "scripts/ai/evaluate_algorithms.py",
+      "protocol": "12",
+      "phase": "PHASE 3",
+      "purpose": "Evaluate multiple algorithms on training data and create evaluation matrix",
+      "status": "active",
+      "owner": "Protocol 12-AI Algorithm Selection & Baseline Model",
+      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "version": "1.0.0"
+    },
+    "create_baseline_model": {
+      "path": "scripts/ai/create_baseline_model.py",
+      "protocol": "12",
+      "phase": "PHASE 3",
+      "purpose": "Create and train baseline model with selected algorithm",
+      "status": "active",
+      "owner": "Protocol 12-AI Algorithm Selection & Baseline Model",
+      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "version": "1.0.0"
+    },
+    "setup_experiment_tracking": {
+      "path": "scripts/ai/setup_experiment_tracking.py",
+      "protocol": "12",
+      "phase": "PHASE 3",
+      "purpose": "Setup MLflow or Weights & Biases experiment tracking",
+      "status": "active",
+      "owner": "Protocol 12-AI Algorithm Selection & Baseline Model",
+      "dependencies": ["mlflow", "wandb", "pyyaml"],
+      "version": "1.0.0"
+    },
+    "train_model": {
+      "path": "scripts/ai/train_model.py",
+      "protocol": "13",
+      "phase": "PHASE 3",
+      "purpose": "Train model with monitoring and checkpointing",
+      "status": "active",
+      "owner": "Protocol 13-AI Model Training & Hyperparameter Tuning",
+      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "version": "1.0.0"
+    },
+    "tune_hyperparameters": {
+      "path": "scripts/ai/tune_hyperparameters.py",
+      "protocol": "13",
+      "phase": "PHASE 3",
+      "purpose": "Hyperparameter optimization using Bayesian/Grid/Random search",
+      "status": "active",
+      "owner": "Protocol 13-AI Model Training & Hyperparameter Tuning",
+      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "version": "1.0.0"
+    },
+    "validate_training": {
+      "path": "scripts/ai/validate_training.py",
+      "protocol": "13",
+      "phase": "PHASE 3",
+      "purpose": "Validate training results and generate report",
+      "status": "active",
+      "owner": "Protocol 13-AI Model Training & Hyperparameter Tuning",
+      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "version": "1.0.0"
+    },
+    "calculate_metrics": {
+      "path": "scripts/ai/calculate_metrics.py",
+      "protocol": "14",
+      "phase": "PHASE 4",
+      "purpose": "Compute validation KPIs for Protocol 14",
+      "status": "active",
+      "owner": "Protocol 14-AI Model Validation & Evaluation",
+      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "version": "1.0.0"
+    },
+    "analyze_errors": {
+      "path": "scripts/ai/analyze_errors.py",
+      "protocol": "14",
+      "phase": "PHASE 4",
+      "purpose": "Generate confusion matrices and error clusters",
+      "status": "active",
+      "owner": "Protocol 14-AI Model Validation & Evaluation",
+      "dependencies": ["pandas", "numpy", "scikit-learn", "matplotlib"],
+      "version": "1.0.0"
+    },
+    "diagnose_model_issues": {
+      "path": "scripts/ai/diagnose_model_issues.py",
+      "protocol": "14",
+      "phase": "PHASE 4",
+      "purpose": "Assess overfitting/underfitting deltas and mitigation",
+      "status": "active",
+      "owner": "Protocol 14-AI Model Validation & Evaluation",
+      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "version": "1.0.0"
+    },
+    "generate_edge_case_suite": {
+      "path": "scripts/ai/generate_edge_case_suite.py",
+      "protocol": "15",
+      "phase": "PHASE 4",
+      "purpose": "Create prioritized edge-case catalog",
+      "status": "active",
+      "owner": "Protocol 15-AI Model Testing & Edge Case Validation",
+      "dependencies": ["python"],
+      "version": "1.0.0"
+    },
+    "run_edge_case_suite": {
+      "path": "scripts/ai/run_edge_case_suite.py",
+      "protocol": "15",
+      "phase": "PHASE 4",
+      "purpose": "Execute edge-case scenarios against champion model",
+      "status": "active",
+      "owner": "Protocol 15-AI Model Testing & Edge Case Validation",
+      "dependencies": ["pandas"],
+      "version": "1.0.0"
+    },
+    "validate_safety_constraints": {
+      "path": "scripts/ai/validate_safety_constraints.py",
+      "protocol": "15",
+      "phase": "PHASE 4",
+      "purpose": "Summarize edge-case execution and gate readiness",
+      "status": "active",
+      "owner": "Protocol 15-AI Model Testing & Edge Case Validation",
+      "dependencies": ["pandas"],
+      "version": "1.0.0"
     }
   }
 }

@@ -1,10 +1,12 @@
 {
   "validator": "protocol_communication",
   "protocol_id": "14",
-  "validation_timestamp": "2025-11-06T16:43:35.477792Z",
-  "overall_score": 0.9500000000000001,
-  "validation_status": "pass",
-  "issues": [],
+  "validation_timestamp": "2025-11-14T22:32:43.206869Z",
+  "overall_score": 0.8875000000000001,
+  "validation_status": "warning",
+  "issues": [
+    "Missing user interaction prompts: clarification"
+  ],
   "recommendations": [],
   "status_announcements": {
     "score": 1.0,
@@ -19,13 +21,15 @@
     }
   },
   "user_interaction": {
-    "score": 1.0,
-    "status": "pass",
-    "issues": [],
+    "score": 0.75,
+    "status": "warning",
+    "issues": [
+      "Missing user interaction prompts: clarification"
+    ],
     "recommendations": [],
     "details": {
       "confirmation": true,
-      "clarification": true,
+      "clarification": false,
       "decision_points": true,
       "feedback": true
     }
@@ -51,8 +55,7 @@
       "terms": [
         "progress",
         "%",
-        "complete",
-        "next steps"
+        "complete"
       ],
       "progress_terms": true,
       "timeline": true,
