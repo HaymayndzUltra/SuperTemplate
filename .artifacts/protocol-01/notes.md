@@ -1,4 +1,4 @@
-# Protocol 01 Execution Notes
+# Protocol 01 Working Notes
 
 **Execution Start:** 2025-01-XX HH:MM:SS
 **Protocol Version:** 2.0

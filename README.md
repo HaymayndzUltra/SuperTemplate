@@ -89,9 +89,12 @@ Supporting documentation protocols (24–27) provide integration maps, implement
 
 | Directory | Description |
 | --- | --- |
-| `.cursor/ai-driven-workflow/` | Canonical protocol definitions, integration map, validation guide |
-| `scripts/` | Orchestration, validation, compliance, and lifecycle automation scripts wired to the 23-protocol flow |
-| `unified_workflow/` | AI orchestrator, evidence manager, and workflow automation packages |
+| `.cursor/ai-driven-workflow/` | Canonical protocol definitions (23 core protocols + documentation protocols 24-28, 31), integration map, validation guide |
+| `.cursor/AI-project-workflow/` | AI/ML-specific protocols (9 protocols: 01-09) covering foundation & discovery (01-05) and AI project planning (06-09) |
+| `AI-project-workflow/` | AI/ML workflow protocols (11 protocols: 01-04, 05b, 05c, 06-10) - working directory for AI/ML project lifecycle |
+| `scripts/` | Orchestration, validation, compliance, and lifecycle automation scripts (82+ scripts) wired to protocol flows |
+| `dev-workflow/` | Streamlined 5-protocol development workflow (bootstrap → PRD → tasks → implementation → quality audit) |
+| `dev-workflow/protocol-creation/` | Protocol creation workflow (5 protocols) for generating validator-compliant protocol documents |
 | `validators-system/` | Modular validator implementations plus roadmap for the 10-validator suite |
 | `project_generator/` | Python package that crafts full projects using template packs and workflow rules |
 | `template-packs/` | Frontend/backend/devex/compliance packs consumed by the generator |
@@ -103,29 +106,94 @@ Supporting documentation protocols (24–27) provide integration maps, implement
 
 ## ⚙️ Getting Started
 
+### Quick Start: Development Workflow
+
+For standard development projects, use the streamlined 5-protocol workflow:
+
 1. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
-2. **Validate environment & context**
+
+2. **Bootstrap your project** (one-time setup)
+   ```bash
+   # Apply bootstrap protocol to build context kit
+   @apply dev-workflow/0-bootstrap-your-project.md
+   ```
+
+3. **Create PRD**
+   ```bash
+   # Define your feature requirements
+   @apply dev-workflow/1-create-prd.md
+   ```
+
+4. **Generate tasks**
+   ```bash
+   # Transform PRD into execution plan
+   @apply dev-workflow/2-generate-tasks.md to @prd-my-feature.md
+   ```
+
+5. **Process tasks with quality gates**
+   ```bash
+   # Implement with integrated quality validation
+   @apply dev-workflow/3-process-tasks.md to @tasks-my-feature.md
+   ```
+
+6. **Quality audit**
+   ```bash
+   # Comprehensive 6-layer validation
+   @apply dev-workflow/4-quality-audit.md
+   ```
+
+### Full Protocol Workflow
+
+For complete 23-protocol lifecycle execution:
+
+1. **Validate environment & context**
    ```bash
    python scripts/doctor.py --strict
    python scripts/analyze_brief.py PROJECT-BRIEF.md --output brief-analysis.json
    ```
-3. **Run workflow orchestration**
+
+2. **Run workflow orchestration**
    ```bash
-   python unified_workflow/automation/ai_orchestrator.py \
+   python scripts/run_workflow.py \
      --project-name "demo" \
      --phases "0-6" \
      --brief brief-analysis.json
    ```
-4. **Execute validation gates and evidence packaging**
+
+3. **Execute validation gates and evidence packaging**
    ```bash
    python scripts/quality_gates.py
    python scripts/evidence_report.py --project demo --output .artifacts/evidence/demo.json
    ```
 
-Refer to `unified_workflow/README.md` for orchestration CLI details and `validators-system/README.md` for protocol-level validation coverage.
+### Protocol Creation Workflow
+
+To create new validator-compliant protocols:
+
+1. **Analyze validator requirements**
+   ```bash
+   @apply dev-workflow/protocol-creation/1-analyze-validator-requirements.md
+   ```
+
+2. **Generate protocol structure**
+   ```bash
+   @apply dev-workflow/protocol-creation/2-generate-protocol-structure.md
+   ```
+
+3. **Create protocol content**
+   ```bash
+   @apply dev-workflow/protocol-creation/3-create-protocol-content.md
+   ```
+
+4. **Validate protocol**
+   ```bash
+   @apply dev-workflow/protocol-creation/4-validate-protocol.md
+   ```
+
+Refer to `dev-workflow/README.md` for the streamlined workflow, `dev-workflow/protocol-creation/README.md` for protocol creation, and `validators-system/README.md` for protocol-level validation coverage.
 
 ---
 
@@ -149,37 +217,49 @@ Key governance documents:
 
 | Component | Purpose |
 | --- | --- |
-| **Protocol Blueprints** | Step-by-step, AI-friendly workflow instructions with prerequisites, evidence, and gates |
-| **Automation Scripts** | Python & shell tooling for generation, validation, deployment, compliance, and retrospectives |
+| **Protocol Blueprints** | Step-by-step, AI-friendly workflow instructions with prerequisites, evidence, and gates (23 core protocols + 9 AI/ML protocols in `.cursor/AI-project-workflow/` + 11 in root `AI-project-workflow/`) |
+| **Development Workflow** | Streamlined 5-protocol workflow (bootstrap → PRD → tasks → implementation → quality audit) for rapid feature development |
+| **Protocol Creation System** | 5-protocol workflow for generating validator-compliant protocol documents with automated validation |
+| **Automation Scripts** | Python & shell tooling for generation, validation, deployment, compliance, and retrospectives (82+ scripts) |
 | **Template Packs** | Opinionated code scaffolds, CI/CD workflows, and devex assets for multiple stacks |
 | **Meta Generators** | AI prompts + forms for reverse-engineering existing protocols or drafting new ones |
-| **Validators** | Scoring engines that provide lifecycle, quality, and governance assurance |
+| **Validators** | Scoring engines that provide lifecycle, quality, and governance assurance (10-validator suite planned) |
 
 ---
 
 ## 📚 Recommended Reading Order
 
 1. `.cursor/ai-driven-workflow/AGENTS.md` – Verification playbook for AI agents
-2. `.cursor/ai-driven-workflow/25-protocol-integration-map-DOCUMENTATION.md` – Cross-protocol dependencies
-3. `unified_workflow/README.md` – Execution stack overview
-4. `scripts/README.md` – Automation script catalogue and usage
+2. `dev-workflow/README.md` – Streamlined 5-protocol development workflow overview
+3. `.cursor/ai-driven-workflow/25-protocol-integration-map-DOCUMENTATION.md` – Cross-protocol dependencies
+4. `scripts/README.md` – Automation script catalogue and usage (82+ scripts)
 5. `validators-system/README.md` – Validator scope, progress, and roadmap
+6. `dev-workflow/protocol-creation/README.md` – Protocol creation workflow guide
 
 ---
 
 ## ✅ Current Status (Oct 2025)
 
-- Protocol set updated to 23 core execution protocols with supporting documentation tracks
-- Gap closure and integration corrections complete (see `documentation/gap-closure-report.md`)
-- Validator system at 10% implementation with production-ready identity validator
-- Template registry unified across generator and workflow subsystems
-- Continuous evidence capture configured for audit readiness
+- **Protocol Sets**: 
+  - 23 core execution protocols in `.cursor/ai-driven-workflow/` (01-23)
+  - Supporting documentation protocols (24-28, 31) in `.cursor/ai-driven-workflow/` for integration and validation
+  - 9 AI/ML protocols in `.cursor/AI-project-workflow/` (01-09: foundation 01-05 + AI planning 06-09)
+  - 11 AI/ML workflow protocols in `AI-project-workflow/` (01-04, 05b, 05c, 06-10) - active development directory
+- **Development Workflows**:
+  - Streamlined 5-protocol workflow (`dev-workflow/`) for rapid feature development
+  - Protocol creation workflow (`dev-workflow/protocol-creation/`) for generating new protocols
+- **Automation**: 82+ scripts covering orchestration, validation, compliance, and lifecycle management
+- **Gap Closure**: Integration corrections complete (see `documentation/gap-closure-report.md`)
+- **Validator System**: 10% implementation with production-ready identity validator
+- **Template Registry**: Unified across generator and workflow subsystems
+- **Evidence Capture**: Continuous evidence capture configured for audit readiness
 
 Roadmap priorities:
 
 1. Deliver Validators 02–04 (AI Role, Workflow, Quality Gates)
 2. Expand automation coverage for Protocols 15–23 (operations & maintenance)
 3. Harden CI/CD evidence validation pipeline and GitHub workflow integrations
+4. Complete AI/ML protocol suite implementation (currently 9 protocols in `.cursor/AI-project-workflow/`, expand to full 28-protocol MLOps lifecycle: Protocols 10–28 for model development, testing, deployment, and monitoring)
 
 ---
 
@@ -442,8 +522,12 @@ python scripts/generate_gap_analysis.py --priority critical
 - **Session Instructions**: `.cursor/session-instructions/`
 - **Validation Reports**: `.artifacts/validation/`
 - **Evidence Collection**: `.artifacts/protocol-[number]/`
-- **Scripts Directory**: `.artifacts/scripts/`
-- **Protocol Directory**: `.cursor/ai-driven-workflow/`
+- **Scripts Directory**: `scripts/` (82+ automation scripts)
+- **Core Protocols**: `.cursor/ai-driven-workflow/` (23 core protocols + documentation protocols 24-28, 31)
+- **AI/ML Protocols**: `.cursor/AI-project-workflow/` (9 protocols: 01-09)
+- **AI/ML Workflow**: `AI-project-workflow/` (11 protocols: 01-04, 05b, 05c, 06-10)
+- **Development Workflow**: `dev-workflow/` (5-protocol streamlined workflow)
+- **Protocol Creation**: `dev-workflow/protocol-creation/` (5-protocol creation workflow)
 - **Gap Documentation**: `documentation/` ✨ NEW
 
 ### Key Files
@@ -508,10 +592,11 @@ python scripts/verify_readiness_assessment.py --include-details
 - **Project Rules**: `.cursor/rules/project-rules/`
 
 ### Automation Scripts
-- **Scripts Directory**: `.artifacts/scripts/`
+- **Scripts Directory**: `scripts/` (82+ scripts for orchestration, validation, compliance)
 - **CI/CD Workflows**: `.github/workflows/`
-- **Quality Gates**: Built into each protocol
+- **Quality Gates**: Built into each protocol (`scripts/quality_gates.py`, `scripts/enforce_gates.py`)
 - **Session Management**: `.cursor/session-instructions/`
+- **Workflow Orchestration**: `scripts/run_workflow.py`, `scripts/ai_orchestrator.py`
 
 ### Template Packs & Generators
 - **Generators Directory**: `generators/`
