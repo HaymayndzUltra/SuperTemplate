@@ -1,57 +1,18 @@
 {
-  "target_tone": "casual",
+  "target_tone": "technical",
   "required_contraction_count": 3,
-  "actual_contraction_count": 9,
-  "contractions_found": ["I'm", "here's", "we're", "that's", "I'll", "You'll", "Everything's"],
-  "planned_uncertainty_line": "I'm not gonna lie—1-2 weeks is tight, but here's how we can make it work...",
-  "uncertainty_markers_count": 1,
-  "uncertainty_markers_found": ["I'm not gonna lie—1-2 weeks is tight"],
-  "direct_questions_count": 3,
-  "direct_questions_found": [
-    "What's the turnaround time on reviews?",
-    "Which one?",
-    "What time works for you?"
+  "planned_uncertainty_line": "If the MVP spec aligns with the architecture you've outlined, I can deliver the first week's features within the timeline.",
+  "forbidden_phrases_checklist": [
+    "I am excited to",
+    "I am confident I can",
+    "I would be delighted",
+    "I have extensive experience",
+    "High-quality work guaranteed",
+    "Looking forward to working with you"
   ],
-  "forbidden_phrases_checklist": {
-    "I am excited to": false,
-    "I am confident I can": false,
-    "I would be delighted": false,
-    "I have extensive experience": false,
-    "High-quality work guaranteed": false,
-    "Looking forward to working with you": false
-  },
-  "forbidden_phrases_count": 0,
-  "word_count": 220,
-  "humanization_strategy": {
-    "contractions_required": 3,
-    "uncertainty_markers_required": 1,
-    "direct_questions_required": 1,
-    "conversational_phrasing": true,
-    "avoid_corporate_speak": true,
-    "show_understanding_before_pitching": true
-  },
-  "differentiators_selected": [
-    "Deep experience with Claude AI and AI-assisted development workflows",
-    "Transparency-first approach - comfortable with daily reviews and fact-checking",
-    "Proven track record building marketplace MVPs under tight timelines",
-    "Fullstack expertise covering both sides of marketplace (buyers and sellers)",
-    "Clear communication and fluent English for daily standups"
-  ],
-  "workflow_demo_triggered": true,
-  "workflow_demo_reason": "no_prior_experience_proof + integration_context",
-  "workflow_demo_inserted_at": "Phase 4.3",
-  "workflow_demo_text": "The workflow I use is already built to prevent the exact issues most clients hit at this stage—like scope mismatches and integration delays. You'll see results from Day 1 because the process includes validation gates and artifact logging. Everything's traceable. Every integration gets tested internally before touching your codebase.",
-  "humanization_adjustments": {
-    "cadence_breaks": 2,
-    "short_sentences_added": true,
-    "rhythm_breaks": ["You'll see results from Day 1", "Everything's traceable"]
-  },
-  "validation_status": {
-    "contractions": "PASS (9/3 required)",
-    "uncertainty": "PASS (1/1 required)",
-    "questions": "PASS (3/1 required)",
-    "forbidden_phrases": "PASS (0 found)",
-    "word_count": "PASS (220 words, within 180-220 range)",
-    "tone_alignment": "PASS (casual, conversational)"
-  }
+  "forbidden_phrases_found": 0,
+  "contractions_count": 0,
+  "uncertainty_markers_count": 0,
+  "direct_questions_count": 0,
+  "workflow_demo_triggered": false
 }

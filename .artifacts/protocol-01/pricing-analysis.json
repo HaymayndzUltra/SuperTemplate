@@ -1,120 +1,88 @@
 {
-  "project_complexity": "complex",
-  "timeline_client_requested": "1-2 weeks",
-  "timeline_realistic": "3-4 weeks",
-  "workload_estimation": {
-    "hours_per_week": 35,
-    "total_weeks_client": 2,
-    "total_weeks_realistic": 3,
-    "total_hours_client_timeline": 70,
-    "total_hours_realistic": 105,
-    "breakdown": {
-      "user_authentication": 8,
-      "listing_management": 12,
-      "search_and_filtering": 6,
-      "messaging_system": 8,
-      "payment_integration": 10,
-      "user_profiles": 4,
-      "admin_dashboard": 6,
-      "testing_and_bug_fixes": 10,
-      "deployment_and_setup": 4,
-      "buffer_for_reviews_and_changes": 8
+  "project_complexity": "moderate-to-complex",
+  "complexity_reasoning": "AI companion app with LLM integration, Azure GPU infrastructure, multiple AI services (Whisper, LLaMA, TTS), requires senior-level technical expertise",
+  "workload_estimate": {
+    "weekly_hours": 30,
+    "project_duration_weeks": {
+      "minimum": 8,
+      "maximum": 12,
+      "estimated": 10
+    },
+    "total_hours_range": {
+      "minimum": 240,
+      "maximum": 360,
+      "estimated": 300
     }
   },
-  "rate_tier": "senior",
+  "rate_tier": "mid-to-senior",
+  "rate_justification": "Requires FastAPI expertise, LLM integration (LLaMA/Ollama), Azure infrastructure, AI services (Whisper, TTS), and systematic implementation approach",
   "hourly_rate_range": {
-    "minimum": 50,
-    "target": 65,
-    "maximum": 75,
-    "justification": "Senior fullstack developer with AI tool expertise, tight timeline requires premium rate"
+    "minimum": 40,
+    "maximum": 50,
+    "selected": 45
   },
   "pricing_structure": {
-    "approach": "milestone-based with hourly cap",
-    "milestones": [
-      {
-        "name": "Foundation & Authentication",
-        "description": "User auth for buyers/sellers, basic profiles, project setup",
-        "estimated_hours": 20,
-        "hourly_rate": 65,
-        "total": 1300,
-        "percentage_of_total": 20
-      },
-      {
-        "name": "Core Marketplace Features",
-        "description": "Listings, search, filtering, basic messaging",
-        "estimated_hours": 30,
-        "hourly_rate": 65,
-        "total": 1950,
-        "percentage_of_total": 30
-      },
-      {
-        "name": "Payments & Polish",
-        "description": "Payment integration, admin dashboard, testing, deployment",
-        "estimated_hours": 20,
-        "hourly_rate": 65,
-        "total": 1300,
-        "percentage_of_total": 20
-      },
-      {
-        "name": "Buffer & Reviews",
-        "description": "Code review cycles, revisions, edge cases, 1000-user load testing",
-        "estimated_hours": 10,
-        "hourly_rate": 65,
-        "total": 650,
-        "percentage_of_total": 10
-      }
-    ],
-    "total_estimated_hours": 80,
-    "total_estimated_cost": 5200,
-    "hourly_cap_per_milestone": true
+    "model": "fixed_weekly_rate",
+    "weekly_rate": 1350,
+    "calculation": "30 hours × $45/hr = $1,350/week",
+    "total_project_range": {
+      "minimum": 10800,
+      "maximum": 16200,
+      "estimated": 13500
+    }
   },
   "market_benchmark_validation": {
     "market_range_percentage": 95,
-    "benchmark_range": "80-120%",
-    "status": "within_range",
-    "justification": "Pricing at 95% of market benchmark for similar complexity and timeline"
+    "validation_status": "within_range",
+    "reasoning": "Rate of $45/hr for senior FastAPI + LLM integration work aligns with market rates ($40-60/hr for similar expertise)"
+  },
+  "milestone_structure": {
+    "milestone_type": "weekly_deliverables",
+    "milestone_balance": "even_distribution",
+    "milestone_details": [
+      {
+        "week": 1,
+        "percentage": 10,
+        "amount": 1350,
+        "deliverable": "Week 1 features per MVP spec"
+      },
+      {
+        "week": 2,
+        "percentage": 10,
+        "amount": 1350,
+        "deliverable": "Week 2 features per MVP spec"
+      }
+    ],
+    "note": "Each week represents equal 10% milestone (for 10-week project) or 8.33% (for 12-week project)"
   },
   "assumptions": [
-    "Client provides wireframes or reference app details within 24 hours of project start",
-    "Daily code reviews have 24-hour turnaround time maximum",
-    "Scope limited to MVP features only (no advanced features like reviews, ratings, advanced search)",
-    "Payment processing is basic (stripe/paypal integration, not custom payment gateway)",
-    "No custom design work - using component libraries (Tailwind, shadcn/ui, etc.)",
-    "Database and hosting infrastructure decisions made quickly (no extended architecture discussions)",
-    "AI tools (Claude) used extensively for code generation and acceleration"
+    "30 hours/week includes development, testing, and basic documentation",
+    "Payment verification occurs within 1 week of delivery",
+    "ChatGPT instructions are technically sound and implementable",
+    "Azure VM infrastructure is already provisioned and accessible",
+    "MVP spec is complete and accurate as stated"
   ],
   "risk_notes": [
     {
-      "risk": "Timeline too aggressive - 1-2 weeks may result in incomplete features",
-      "mitigation": "Proposed 3-week timeline with aggressive 2-week option if scope reduced",
-      "impact": "high"
+      "risk": "Payment only upon delivery may cause cash flow issues",
+      "mitigation": "Request weekly payment terms with 1-week verification window"
     },
     {
-      "risk": "Daily code reviews may slow velocity",
-      "mitigation": "Request 24-hour max turnaround on reviews, batch reviews when possible",
-      "impact": "medium"
+      "risk": "Vague '30 hours of work' definition may lead to scope disputes",
+      "mitigation": "Clarify scope definition in proposal and request written confirmation"
     },
     {
-      "risk": "Quality sacrifice may create technical debt",
-      "mitigation": "Define 'functional' clearly - core features work, but may need refactoring post-MVP",
-      "impact": "high"
+      "risk": "Rigid 'exactly according to' requirements may conflict with technical best practices",
+      "mitigation": "Propose collaborative approach: follow instructions but flag technical concerns proactively"
     },
     {
-      "risk": "1000-user load requirement may need optimization",
-      "mitigation": "Include load testing in buffer milestone, optimize critical paths",
-      "impact": "medium"
-    },
-    {
-      "risk": "Vague reference app requirement",
-      "mitigation": "Request specific app name or wireframes before starting",
-      "impact": "medium"
+      "risk": "Close monitoring may indicate micromanagement",
+      "mitigation": "Emphasize transparent communication and daily updates to build trust"
     }
   ],
-  "scope_clarifications_needed": [
-    "Which similar app are you referencing? (to understand exact feature set)",
-    "What does 'functional for 1000 users' mean specifically? (concurrent users? total users? specific features?)",
-    "Are wireframes ready, or should I create them using AI?",
-    "What's the specific hourly rate you're considering?",
-    "What's the expected code review turnaround time?"
-  ]
+  "pricing_alignment_check": {
+    "within_80_120_percent": true,
+    "market_percentage": 95,
+    "status": "PASS"
+  }
 }

@@ -9,7 +9,10 @@
       "purpose": "Extract features from cleaned datasets for Protocol 10-AI",
       "status": "active",
       "owner": "Protocol 10-AI Feature Engineering",
-      "dependencies": ["pandas", "numpy"],
+      "dependencies": [
+        "pandas",
+        "numpy"
+      ],
       "version": "1.0.0"
     },
     "select_features": {
@@ -19,7 +22,11 @@
       "purpose": "Select relevant features using statistical methods for Protocol 10-AI",
       "status": "active",
       "owner": "Protocol 10-AI Feature Engineering",
-      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "scikit-learn"
+      ],
       "version": "1.0.0"
     },
     "encode_transform_features": {
@@ -29,7 +36,11 @@
       "purpose": "Encode categorical features and apply transformations for Protocol 10-AI",
       "status": "active",
       "owner": "Protocol 10-AI Feature Engineering",
-      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "scikit-learn"
+      ],
       "version": "1.0.0"
     },
     "validate_feature_engineering": {
@@ -39,7 +50,10 @@
       "purpose": "Validate feature engineering completeness and quality for Protocol 10-AI",
       "status": "active",
       "owner": "Protocol 10-AI Feature Engineering",
-      "dependencies": ["pandas", "numpy"],
+      "dependencies": [
+        "pandas",
+        "numpy"
+      ],
       "version": "1.0.0"
     },
     "validate_protocol_evidence": {
@@ -178,7 +192,11 @@
       "purpose": "Split feature-engineered datasets into train/validation/test sets with stratification support",
       "status": "active",
       "owner": "Protocol 11-AI Dataset Preparation & Splitting",
-      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "scikit-learn"
+      ],
       "version": "1.0.0"
     },
     "check_data_leakage": {
@@ -188,7 +206,11 @@
       "purpose": "Detect data leakage between train/validation/test sets",
       "status": "active",
       "owner": "Protocol 11-AI Dataset Preparation & Splitting",
-      "dependencies": ["pandas", "numpy", "scipy"],
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "scipy"
+      ],
       "version": "1.0.0"
     },
     "version_dataset": {
@@ -198,7 +220,10 @@
       "purpose": "Version datasets using DVC or Git LFS with complete audit trails",
       "status": "active",
       "owner": "Protocol 11-AI Dataset Preparation & Splitting",
-      "dependencies": ["dvc", "git-lfs"],
+      "dependencies": [
+        "dvc",
+        "git-lfs"
+      ],
       "version": "1.0.0"
     },
     "evaluate_algorithms": {
@@ -208,7 +233,11 @@
       "purpose": "Evaluate multiple algorithms on training data and create evaluation matrix",
       "status": "active",
       "owner": "Protocol 12-AI Algorithm Selection & Baseline Model",
-      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "scikit-learn"
+      ],
       "version": "1.0.0"
     },
     "create_baseline_model": {
@@ -218,7 +247,11 @@
       "purpose": "Create and train baseline model with selected algorithm",
       "status": "active",
       "owner": "Protocol 12-AI Algorithm Selection & Baseline Model",
-      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "scikit-learn"
+      ],
       "version": "1.0.0"
     },
     "setup_experiment_tracking": {
@@ -228,7 +261,11 @@
       "purpose": "Setup MLflow or Weights & Biases experiment tracking",
       "status": "active",
       "owner": "Protocol 12-AI Algorithm Selection & Baseline Model",
-      "dependencies": ["mlflow", "wandb", "pyyaml"],
+      "dependencies": [
+        "mlflow",
+        "wandb",
+        "pyyaml"
+      ],
       "version": "1.0.0"
     },
     "train_model": {
@@ -238,7 +275,11 @@
       "purpose": "Train model with monitoring and checkpointing",
       "status": "active",
       "owner": "Protocol 13-AI Model Training & Hyperparameter Tuning",
-      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "scikit-learn"
+      ],
       "version": "1.0.0"
     },
     "tune_hyperparameters": {
@@ -248,7 +289,11 @@
       "purpose": "Hyperparameter optimization using Bayesian/Grid/Random search",
       "status": "active",
       "owner": "Protocol 13-AI Model Training & Hyperparameter Tuning",
-      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "scikit-learn"
+      ],
       "version": "1.0.0"
     },
     "validate_training": {
@@ -258,7 +303,11 @@
       "purpose": "Validate training results and generate report",
       "status": "active",
       "owner": "Protocol 13-AI Model Training & Hyperparameter Tuning",
-      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "scikit-learn"
+      ],
       "version": "1.0.0"
     },
     "calculate_metrics": {
@@ -268,7 +317,11 @@
       "purpose": "Compute validation KPIs for Protocol 14",
       "status": "active",
       "owner": "Protocol 14-AI Model Validation & Evaluation",
-      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "scikit-learn"
+      ],
       "version": "1.0.0"
     },
     "analyze_errors": {
@@ -278,7 +331,12 @@
       "purpose": "Generate confusion matrices and error clusters",
       "status": "active",
       "owner": "Protocol 14-AI Model Validation & Evaluation",
-      "dependencies": ["pandas", "numpy", "scikit-learn", "matplotlib"],
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "scikit-learn",
+        "matplotlib"
+      ],
       "version": "1.0.0"
     },
     "diagnose_model_issues": {
@@ -288,7 +346,11 @@
       "purpose": "Assess overfitting/underfitting deltas and mitigation",
       "status": "active",
       "owner": "Protocol 14-AI Model Validation & Evaluation",
-      "dependencies": ["pandas", "numpy", "scikit-learn"],
+      "dependencies": [
+        "pandas",
+        "numpy",
+        "scikit-learn"
+      ],
       "version": "1.0.0"
     },
     "generate_edge_case_suite": {
@@ -298,7 +360,9 @@
       "purpose": "Create prioritized edge-case catalog",
       "status": "active",
       "owner": "Protocol 15-AI Model Testing & Edge Case Validation",
-      "dependencies": ["python"],
+      "dependencies": [
+        "python"
+      ],
       "version": "1.0.0"
     },
     "run_edge_case_suite": {
@@ -308,7 +372,9 @@
       "purpose": "Execute edge-case scenarios against champion model",
       "status": "active",
       "owner": "Protocol 15-AI Model Testing & Edge Case Validation",
-      "dependencies": ["pandas"],
+      "dependencies": [
+        "pandas"
+      ],
       "version": "1.0.0"
     },
     "validate_safety_constraints": {
@@ -318,8 +384,23 @@
       "purpose": "Summarize edge-case execution and gate readiness",
       "status": "active",
       "owner": "Protocol 15-AI Model Testing & Edge Case Validation",
-      "dependencies": ["pandas"],
+      "dependencies": [
+        "pandas"
+      ],
       "version": "1.0.0"
+    }
+  },
+  "protocols": {
+    "31": {
+      "id": "31",
+      "name": "Static Site Deployment",
+      "track": "generic",
+      "path": ".artifacts/protocol-05b/new-protocols/31-static-site-deployment.md",
+      "generated": true,
+      "generated_at": "2025-11-26T01:32:34.812311",
+      "gap_spec": "tests/orchestration/fixtures/sample-gap-specification.json",
+      "validation_score": null,
+      "status": "active"
     }
   }
 }

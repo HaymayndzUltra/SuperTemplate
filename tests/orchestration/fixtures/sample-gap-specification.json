@@ -1,0 +1,141 @@
+{
+  "gap_id": "31",
+  "gap_name": "Static Site Deployment",
+  "gap_description": "Deploy and configure static websites to CDN-backed hosting platforms with SSL, custom domains, and caching optimization",
+  "required_sections": [
+    "IDENTITY",
+    "AI_ROLE",
+    "PREREQUISITES",
+    "WORKFLOW",
+    "QUALITY_GATES",
+    "AUTOMATION_HOOKS",
+    "EVIDENCE_SUMMARY",
+    "INTEGRATION_POINTS",
+    "COMMUNICATION",
+    "HANDOFF"
+  ],
+  "workflow_steps": [
+    {
+      "step_id": 1,
+      "name": "Build Verification",
+      "description": "Verify static site build output is valid and complete",
+      "inputs": ["build_output_directory", "build_config"],
+      "outputs": ["build_verification_report.json"],
+      "validation": "All required files present, no broken links"
+    },
+    {
+      "step_id": 2,
+      "name": "Platform Configuration",
+      "description": "Configure deployment platform settings",
+      "inputs": ["platform_credentials", "domain_config"],
+      "outputs": ["platform_config.json"],
+      "validation": "Platform API accessible, credentials valid"
+    },
+    {
+      "step_id": 3,
+      "name": "Asset Upload",
+      "description": "Upload static assets to CDN",
+      "inputs": ["build_output_directory", "platform_config.json"],
+      "outputs": ["upload_manifest.json", "cdn_urls.json"],
+      "validation": "All files uploaded successfully, checksums match"
+    },
+    {
+      "step_id": 4,
+      "name": "DNS Configuration",
+      "description": "Configure DNS records for custom domain",
+      "inputs": ["domain_config", "cdn_urls.json"],
+      "outputs": ["dns_records.json"],
+      "validation": "DNS propagation complete, domain resolves correctly"
+    },
+    {
+      "step_id": 5,
+      "name": "SSL Certificate",
+      "description": "Provision and configure SSL certificate",
+      "inputs": ["domain_config"],
+      "outputs": ["ssl_certificate.json"],
+      "validation": "Certificate issued and valid, HTTPS working"
+    },
+    {
+      "step_id": 6,
+      "name": "Cache Configuration",
+      "description": "Configure CDN caching rules",
+      "inputs": ["cache_policy", "platform_config.json"],
+      "outputs": ["cache_config.json"],
+      "validation": "Cache headers configured correctly"
+    },
+    {
+      "step_id": 7,
+      "name": "Deployment Verification",
+      "description": "Verify deployment is live and functioning",
+      "inputs": ["cdn_urls.json", "ssl_certificate.json"],
+      "outputs": ["deployment_verification.json"],
+      "validation": "Site accessible, all pages load correctly"
+    }
+  ],
+  "quality_gates": [
+    {
+      "gate_id": 0,
+      "name": "Build Readiness",
+      "description": "Verify build is ready for deployment",
+      "threshold": 1.0,
+      "criteria": [
+        "Build output exists",
+        "No build errors",
+        "All required files present"
+      ]
+    },
+    {
+      "gate_id": 1,
+      "name": "Platform Access",
+      "description": "Verify platform access and permissions",
+      "threshold": 1.0,
+      "criteria": [
+        "API credentials valid",
+        "Deployment permissions granted"
+      ]
+    },
+    {
+      "gate_id": 2,
+      "name": "Upload Verification",
+      "description": "Verify all assets uploaded correctly",
+      "threshold": 0.95,
+      "criteria": [
+        "All files uploaded",
+        "Checksums match",
+        "No upload errors"
+      ]
+    },
+    {
+      "gate_id": 3,
+      "name": "Deployment Live",
+      "description": "Verify deployment is live and accessible",
+      "threshold": 1.0,
+      "criteria": [
+        "Site accessible via HTTPS",
+        "All pages load correctly",
+        "No 404 errors on known routes"
+      ]
+    }
+  ],
+  "integration_points": {
+    "input_from": ["Protocol 05b", "Protocol 18 (Performance Optimization)"],
+    "output_to": ["Protocol 22 (Monitoring)", "Protocol 20 (Handover)"]
+  },
+  "automation_hooks": [
+    {
+      "hook_id": "deploy_static_site",
+      "name": "Deploy Static Site",
+      "script": "scripts/deployment/deploy_static_site.py",
+      "trigger": "on_build_complete"
+    },
+    {
+      "hook_id": "verify_deployment",
+      "name": "Verify Deployment",
+      "script": "scripts/deployment/verify_deployment.py",
+      "trigger": "on_deploy_complete"
+    }
+  ],
+  "track": "generic",
+  "complexity": "medium"
+}
+

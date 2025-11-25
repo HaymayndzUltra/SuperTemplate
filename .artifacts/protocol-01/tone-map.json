@@ -1,29 +1,14 @@
 {
-  "tone_type": "casual",
+  "tone_type": "technical",
   "confidence": 0.95,
-  "tone_indicators": [
-    "Hey Everyone!!",
-    "lets jump on a video call",
-    "I am okay with sacrificing quality/perfectness",
-    "If you believe you have the experience",
-    "If you are up for it"
+  "reasoning": "Job post uses structured technical language, specific technology stack mentions, and direct communication style typical of technical hiring managers",
+  "differentiators": [
+    "Experience with FastAPI backend development",
+    "LLM integration expertise (LLaMA/Ollama)",
+    "Azure infrastructure deployment",
+    "Systematic workflow approach with validation gates",
+    "Clear communication and daily update practices"
   ],
-  "communication_style": "conversational",
-  "formality_level": "low",
-  "urgency_level": "high",
-  "transparency_requirement": "high",
-  "differentiator_list": [
-    "Experience with Claude AI and copilot tools",
-    "Comfortable with daily code reviews and transparency",
-    "Ability to work under tight timelines with AI acceleration",
-    "Fullstack expertise for marketplace SaaS",
-    "Fluent English communication"
-  ],
-  "client_personality": {
-    "direct": true,
-    "results_focused": true,
-    "transparency_valued": true,
-    "speed_prioritized": true,
-    "collaborative": true
-  }
+  "client_communication_style": "direct, structured, detail-oriented",
+  "recommended_proposal_tone": "technical but approachable, demonstrating precision and systematic thinking"
 }

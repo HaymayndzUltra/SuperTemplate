@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "gap-specification.schema.json",
+  "title": "Gap Specification",
+  "description": "Schema for Protocol 0 gap specification input",
+  "type": "object",
+  "required": ["gap_id", "gap_name", "gap_description", "required_sections", "workflow_steps"],
+  "properties": {
+    "gap_id": {
+      "type": "string",
+      "pattern": "^[0-9]+$",
+      "description": "Unique protocol ID for the new protocol"
+    },
+    "gap_name": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 100,
+      "description": "Human-readable name for the protocol"
+    },
+    "gap_description": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Detailed description of what the protocol covers"
+    },
+    "required_sections": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "IDENTITY",
+          "AI_ROLE",
+          "PREREQUISITES",
+          "WORKFLOW",
+          "QUALITY_GATES",
+          "AUTOMATION_HOOKS",
+          "EVIDENCE_SUMMARY",
+          "INTEGRATION_POINTS",
+          "COMMUNICATION",
+          "HANDOFF",
+          "REASONING",
+          "REFLECTION"
+        ]
+      },
+      "minItems": 6,
+      "uniqueItems": true,
+      "description": "Required sections for the generated protocol"
+    },
+    "workflow_steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["step_id", "name", "inputs", "outputs"],
+        "properties": {
+          "step_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "outputs": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "validation": {
+            "type": "string"
+          }
+        }
+      },
+      "minItems": 1,
+      "description": "Workflow steps for the protocol"
+    },
+    "quality_gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["gate_id", "name", "threshold"],
+        "properties": {
+          "gate_id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "threshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "criteria": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        }
+      },
+      "description": "Quality gates for the protocol"
+    },
+    "integration_points": {
+      "type": "object",
+      "properties": {
+        "input_from": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Protocols that provide input to this protocol"
+        },
+        "output_to": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Protocols that receive output from this protocol"
+        }
+      },
+      "description": "Integration points with other protocols"
+    },
+    "automation_hooks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hook_id": {"type": "string"},
+          "name": {"type": "string"},
+          "script": {"type": "string"},
+          "trigger": {"type": "string"}
+        }
+      },
+      "description": "Automation hooks for the protocol"
+    },
+    "track": {
+      "type": "string",
+      "enum": ["generic", "ai_ml", "hybrid"],
+      "default": "generic",
+      "description": "Protocol track"
+    },
+    "complexity": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "default": "medium",
+      "description": "Protocol complexity level"
+    }
+  }
+}
+

@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "project-brief-parsed.schema.json",
+  "title": "Parsed Project Brief",
+  "description": "Schema for the output of parse_project_brief.py",
+  "type": "object",
+  "required": ["project_name", "tech_stack"],
+  "properties": {
+    "project_name": {
+      "type": "string",
+      "description": "Name of the project"
+    },
+    "project_goals": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "List of project goals"
+    },
+    "deliverables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "description": {"type": "string"}
+        }
+      },
+      "description": "List of project deliverables"
+    },
+    "tech_stack": {
+      "type": "object",
+      "properties": {
+        "frontend": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "backend": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "database": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "infrastructure": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "ai_ml": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "description": "Technical stack information"
+    },
+    "quality_requirements": {
+      "type": "object",
+      "description": "Quality requirements"
+    },
+    "timeline_constraints": {
+      "type": "object",
+      "description": "Timeline constraints"
+    },
+    "team_structure": {
+      "type": "object",
+      "description": "Team structure information"
+    },
+    "explicit_protocol_mentions": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Explicit mentions of protocols or requirements"
+    },
+    "frontmatter": {
+      "type": "object",
+      "description": "YAML frontmatter data if present"
+    },
+    "sections_detected": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "List of markdown sections detected"
+    }
+  }
+}
+

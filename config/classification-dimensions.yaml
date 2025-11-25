@@ -1,0 +1,477 @@
+# Classification Dimensions Configuration
+# Used by Protocol 05b for project classification and characteristic detection
+# Version: 1.0.0
+
+dimensions:
+  # AI/ML Characteristics
+  - id: "model_training"
+    name: "Model Training Required"
+    category: "ai_ml"
+    keywords:
+      - "model training"
+      - "train model"
+      - "machine learning"
+      - "neural network"
+      - "deep learning"
+      - "supervised learning"
+      - "unsupervised learning"
+    tech_stack_indicators:
+      - "tensorflow"
+      - "pytorch"
+      - "keras"
+      - "scikit-learn"
+      - "xgboost"
+    confidence_weight: 0.9
+
+  - id: "model_deployment"
+    name: "Model Deployment/Serving"
+    category: "ai_ml"
+    keywords:
+      - "model deployment"
+      - "model serving"
+      - "inference"
+      - "model endpoint"
+      - "ml model api"
+    tech_stack_indicators:
+      - "mlflow"
+      - "kubeflow"
+      - "sagemaker"
+      - "torchserve"
+      - "triton"
+    confidence_weight: 0.85
+
+  - id: "data_pipeline"
+    name: "Data Pipeline Needed"
+    category: "ai_ml"
+    keywords:
+      - "data pipeline"
+      - "etl"
+      - "data processing"
+      - "data transformation"
+      - "feature store"
+    tech_stack_indicators:
+      - "airflow"
+      - "prefect"
+      - "dask"
+      - "spark"
+    confidence_weight: 0.8
+
+  - id: "feature_engineering"
+    name: "Feature Engineering"
+    category: "ai_ml"
+    keywords:
+      - "feature engineering"
+      - "feature extraction"
+      - "feature selection"
+      - "feature transformation"
+    confidence_weight: 0.75
+
+  - id: "model_monitoring"
+    name: "Model Monitoring"
+    category: "ai_ml"
+    keywords:
+      - "model monitoring"
+      - "drift detection"
+      - "model performance"
+      - "model observability"
+    tech_stack_indicators:
+      - "evidently"
+      - "whylogs"
+      - "prometheus"
+    confidence_weight: 0.7
+
+  - id: "bias_detection"
+    name: "Bias Detection"
+    category: "ai_ml"
+    keywords:
+      - "bias detection"
+      - "fairness"
+      - "algorithmic bias"
+      - "model fairness"
+    confidence_weight: 0.65
+
+  - id: "explainability"
+    name: "Explainability Requirements"
+    category: "ai_ml"
+    keywords:
+      - "explainability"
+      - "interpretability"
+      - "shap"
+      - "lime"
+      - "model explanation"
+    tech_stack_indicators:
+      - "shap"
+      - "lime"
+      - "eli5"
+    confidence_weight: 0.7
+
+  # Data Characteristics
+  - id: "database_sql"
+    name: "SQL Database"
+    category: "data"
+    tech_stack_indicators:
+      - "postgresql"
+      - "mysql"
+      - "sqlite"
+      - "sql server"
+      - "oracle"
+    confidence_weight: 0.9
+
+  - id: "database_nosql"
+    name: "NoSQL Database"
+    category: "data"
+    tech_stack_indicators:
+      - "mongodb"
+      - "cassandra"
+      - "dynamodb"
+      - "redis"
+    confidence_weight: 0.9
+
+  - id: "database_vector"
+    name: "Vector Database"
+    category: "data"
+    keywords:
+      - "vector database"
+      - "embeddings"
+      - "semantic search"
+      - "rag"
+    tech_stack_indicators:
+      - "pinecone"
+      - "weaviate"
+      - "qdrant"
+      - "chromadb"
+    confidence_weight: 0.85
+
+  - id: "data_volume_small"
+    name: "Small Data Volume"
+    category: "data"
+    keywords:
+      - "< 1gb"
+      - "small dataset"
+      - "prototype data"
+    confidence_weight: 0.6
+
+  - id: "data_volume_large"
+    name: "Large Data Volume"
+    category: "data"
+    keywords:
+      - "big data"
+      - "terabytes"
+      - "petabytes"
+      - "large scale"
+    confidence_weight: 0.8
+
+  - id: "realtime_processing"
+    name: "Real-time Processing"
+    category: "data"
+    keywords:
+      - "real-time"
+      - "streaming"
+      - "live data"
+      - "real-time processing"
+    tech_stack_indicators:
+      - "kafka"
+      - "flink"
+      - "storm"
+    confidence_weight: 0.85
+
+  - id: "batch_processing"
+    name: "Batch Processing"
+    category: "data"
+    keywords:
+      - "batch processing"
+      - "scheduled jobs"
+      - "cron"
+      - "batch jobs"
+    confidence_weight: 0.75
+
+  # Application Characteristics
+  - id: "authentication"
+    name: "Authentication/Authorization"
+    category: "application"
+    keywords:
+      - "authentication"
+      - "auth"
+      - "login"
+      - "user authentication"
+      - "oauth"
+      - "jwt"
+    tech_stack_indicators:
+      - "auth0"
+      - "firebase auth"
+      - "supabase auth"
+      - "keycloak"
+    confidence_weight: 0.9
+
+  - id: "user_management"
+    name: "User Management"
+    category: "application"
+    keywords:
+      - "user management"
+      - "user accounts"
+      - "user profiles"
+      - "user roles"
+    confidence_weight: 0.8
+
+  - id: "file_uploads"
+    name: "File Uploads"
+    category: "application"
+    keywords:
+      - "file upload"
+      - "file storage"
+      - "document upload"
+    confidence_weight: 0.7
+
+  - id: "realtime_features"
+    name: "Real-time Features"
+    category: "application"
+    keywords:
+      - "websocket"
+      - "server-sent events"
+      - "real-time"
+      - "live updates"
+    tech_stack_indicators:
+      - "socket.io"
+      - "websocket"
+      - "sse"
+    confidence_weight: 0.8
+
+  - id: "internationalization"
+    name: "Internationalization"
+    category: "application"
+    keywords:
+      - "i18n"
+      - "internationalization"
+      - "localization"
+      - "multi-language"
+    confidence_weight: 0.7
+
+  - id: "multitenancy"
+    name: "Multi-tenancy"
+    category: "application"
+    keywords:
+      - "multi-tenant"
+      - "multi-tenancy"
+      - "tenant isolation"
+    confidence_weight: 0.75
+
+  # Infrastructure Characteristics
+  - id: "cloud_aws"
+    name: "AWS Deployment"
+    category: "infrastructure"
+    tech_stack_indicators:
+      - "aws"
+      - "amazon web services"
+      - "s3"
+      - "ec2"
+      - "lambda"
+    confidence_weight: 0.9
+
+  - id: "cloud_gcp"
+    name: "GCP Deployment"
+    category: "infrastructure"
+    tech_stack_indicators:
+      - "gcp"
+      - "google cloud"
+      - "cloud run"
+      - "gke"
+    confidence_weight: 0.9
+
+  - id: "cloud_azure"
+    name: "Azure Deployment"
+    category: "infrastructure"
+    tech_stack_indicators:
+      - "azure"
+      - "azure functions"
+      - "aks"
+    confidence_weight: 0.9
+
+  - id: "containerization"
+    name: "Containerization"
+    category: "infrastructure"
+    keywords:
+      - "docker"
+      - "container"
+      - "kubernetes"
+      - "k8s"
+    tech_stack_indicators:
+      - "docker"
+      - "kubernetes"
+      - "docker-compose"
+    confidence_weight: 0.85
+
+  - id: "cicd_pipeline"
+    name: "CI/CD Pipeline"
+    category: "infrastructure"
+    keywords:
+      - "ci/cd"
+      - "continuous integration"
+      - "continuous deployment"
+      - "github actions"
+      - "gitlab ci"
+    tech_stack_indicators:
+      - "github actions"
+      - "gitlab ci"
+      - "jenkins"
+      - "circleci"
+    confidence_weight: 0.85
+
+  - id: "monitoring"
+    name: "Monitoring/Observability"
+    category: "infrastructure"
+    keywords:
+      - "monitoring"
+      - "observability"
+      - "logging"
+      - "metrics"
+      - "tracing"
+    tech_stack_indicators:
+      - "prometheus"
+      - "grafana"
+      - "datadog"
+      - "new relic"
+    confidence_weight: 0.8
+
+  - id: "scalability"
+    name: "Scalability Requirements"
+    category: "infrastructure"
+    keywords:
+      - "scalable"
+      - "high availability"
+      - "load balancing"
+      - "horizontal scaling"
+    confidence_weight: 0.75
+
+  # Compliance Characteristics
+  - id: "gdpr_compliance"
+    name: "GDPR Compliance"
+    category: "compliance"
+    keywords:
+      - "gdpr"
+      - "general data protection regulation"
+      - "data privacy"
+      - "eu compliance"
+    confidence_weight: 0.9
+
+  - id: "hipaa_compliance"
+    name: "HIPAA Compliance"
+    category: "compliance"
+    keywords:
+      - "hipaa"
+      - "health insurance portability"
+      - "healthcare compliance"
+    confidence_weight: 0.9
+
+  - id: "soc2_compliance"
+    name: "SOC 2 Requirements"
+    category: "compliance"
+    keywords:
+      - "soc 2"
+      - "soc2"
+      - "security compliance"
+    confidence_weight: 0.85
+
+  - id: "security_audit"
+    name: "Security Audit Requirements"
+    category: "compliance"
+    keywords:
+      - "security audit"
+      - "penetration testing"
+      - "security review"
+    confidence_weight: 0.8
+
+  # Team Characteristics
+  - id: "solo_developer"
+    name: "Solo Developer"
+    category: "team"
+    keywords:
+      - "solo"
+      - "individual"
+      - "single developer"
+    confidence_weight: 0.7
+
+  - id: "team_collaboration"
+    name: "Team Collaboration"
+    category: "team"
+    keywords:
+      - "team"
+      - "collaboration"
+      - "multiple developers"
+    confidence_weight: 0.7
+
+  - id: "frontend_backend_separation"
+    name: "Frontend/Backend Separation"
+    category: "team"
+    keywords:
+      - "separate repos"
+      - "frontend backend"
+      - "monorepo"
+    confidence_weight: 0.65
+
+  - id: "devops_capability"
+    name: "DevOps Capability"
+    category: "team"
+    keywords:
+      - "devops"
+      - "infrastructure"
+      - "deployment"
+    confidence_weight: 0.7
+
+# Project Type Classification Rules
+project_types:
+  - id: "generic_web_app"
+    name: "Generic Web Application"
+    description: "Standard web app without AI/ML"
+    indicators:
+      frontend_frameworks: ["react", "vue", "angular", "next.js", "nuxt"]
+      backend_frameworks: ["express", "django", "flask", "fastapi", "rails"]
+      excludes: ["tensorflow", "pytorch", "scikit-learn"]
+    confidence_threshold: 0.85
+
+  - id: "ai_ml_application"
+    name: "AI/ML Application"
+    description: "Primary focus on machine learning"
+    indicators:
+      ai_frameworks: ["tensorflow", "pytorch", "scikit-learn", "keras"]
+      keywords: ["model training", "machine learning", "neural network", "deep learning"]
+      requires: ["model_training"]
+    confidence_threshold: 0.9
+
+  - id: "hybrid_application"
+    name: "Hybrid Application"
+    description: "Mix of generic and AI/ML features"
+    indicators:
+      has_frontend: true
+      has_ai_components: true
+    confidence_threshold: 0.7
+
+  - id: "data_pipeline"
+    name: "Data Pipeline"
+    description: "ETL, data processing, analytics"
+    indicators:
+      keywords: ["etl", "data pipeline", "data processing", "analytics"]
+      tech_stack: ["airflow", "spark", "dask"]
+    confidence_threshold: 0.8
+
+  - id: "mobile_application"
+    name: "Mobile Application"
+    description: "iOS, Android, React Native"
+    indicators:
+      tech_stack: ["react native", "flutter", "swift", "kotlin", "ios", "android"]
+    confidence_threshold: 0.9
+
+  - id: "api_microservice"
+    name: "API/Microservice"
+    description: "Backend services, REST/GraphQL APIs"
+    indicators:
+      keywords: ["api", "microservice", "rest", "graphql"]
+      no_frontend: true
+    confidence_threshold: 0.9
+
+  - id: "other"
+    name: "Other"
+    description: "Blockchain, IoT, Desktop, etc."
+    indicators:
+      keywords: ["blockchain", "iot", "desktop", "embedded"]
+    confidence_threshold: 0.5
+

@@ -1,45 +1,53 @@
 {
   "exact_quotes": [
-    "I am specifically looking for a hyper honest/transparent senior engineer who fully understands the capability of Claude AI coding and is comfortable with their work being fact checked daily by another senior engineer",
-    "I need to build an MVP as quickly as possible (1-2 weeks maximum)",
-    "I am okay with sacrificing quality/perfectness to achieve my timeline but the app must be functional for at least 1000 users"
+    "We're building Vircella, an AI companion app using FastAPI, PostgreSQL, Whisper, LLaMA, and Azure GPU infrastructure.",
+    "All work is monitored closely for accuracy and consistency",
+    "You will follow precise implementation instructions provided by ChatGPT",
+    "Paid only upon delivery and verification of the weekly assigned tasks"
   ],
   "tech_stack": [
-    "Fullstack development",
-    "Claude AI coding tools",
-    "AI copilot tools",
-    "SaaS platform",
-    "Double-sided marketplace"
+    "FastAPI",
+    "PostgreSQL",
+    "Whisper",
+    "LLaMA",
+    "Azure GPU",
+    "Python",
+    "Linux",
+    "SSH",
+    "Ollama",
+    "Piper",
+    "Azure TTS"
   ],
   "pain_points": [
-    "Need MVP built extremely quickly (1-2 weeks)",
-    "Timeline pressure - willing to sacrifice quality for speed",
-    "Need transparency and honesty in development process",
-    "Requires daily code reviews and standups",
-    "Must handle 1000+ users at MVP stage"
+    "Need exact implementation without deviation",
+    "Work monitored closely for accuracy",
+    "Daily updates required",
+    "Quick blocker communication needed",
+    "Payment only upon delivery and verification"
   ],
-  "tone_type": "casual",
+  "tone_type": "technical",
   "urgency_signals": [
-    "as quickly as possible",
-    "1-2 weeks maximum",
-    "I am looking to make my hire by end of day Wednesday",
-    "lets jump on a video call"
+    "Provide daily updates",
+    "communicate blockers quickly",
+    "monitored closely",
+    "exactly according to",
+    "without deviation"
   ],
   "vague_requirements": [
     {
-      "client_says": "We are drawing 99% inspiration from a similar app in the market",
+      "client_says": "Fixed weekly workload: equivalent to 30 hours of development",
       "interpretation_needed": true,
-      "clarification_question": "Which similar app are you referencing? Can you share the app name or provide wireframes?"
+      "clarification": "What exactly counts as 'development'? Does it include testing, debugging, documentation?"
     },
     {
-      "client_says": "very generous hourly wage",
+      "client_says": "If you finish the assigned weekly work in 15 hours or 60 hours, it doesn't matter",
       "interpretation_needed": true,
-      "clarification_question": "What is the specific hourly rate range you're considering?"
+      "clarification": "How is 'finishing' defined? Is it completion of features or passing all tests?"
     },
     {
-      "client_says": "functional for at least 1000 users",
+      "client_says": "Estimated duration: 8–12 weeks",
       "interpretation_needed": true,
-      "clarification_question": "What does 'functional' mean specifically? Core features only, or full marketplace functionality including payments, messaging, reviews?"
+      "clarification": "Is this timeline fixed or flexible based on MVP complexity?"
     }
   ]
 }

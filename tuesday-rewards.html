@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>T-Mobile Tuesdays</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --magenta: #e20074;
+        --magenta-dark: #b8005a;
+        --magenta-light: #ff1f8f;
+        --black: #000000;
+        --dark-gray: #2b2b2b;
+        --mid-gray: #4c4c4c;
+        --white: #ffffff;
+        --orange: #f5a623;
+        --lime: #00c853;
+        --card-radius: 20px;
+        --spacing-xs: 8px;
+        --spacing-sm: 16px;
+        --spacing-md: 24px;
+        --spacing-lg: 28px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--black);
+        color: var(--white);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      /* Header */
+      header {
+        background: var(--white);
+        height: 56px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .header-inner {
+        max-width: 390px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-sm);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo-tile {
+        width: 38px;
+        height: 38px;
+        background: var(--magenta);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-weight: 800;
+        font-size: 1.2rem;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        color: var(--black);
+      }
+
+      .header-actions a {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--black);
+      }
+
+      .icon-btn {
+        background: none;
+        border: none;
+        padding: 4px;
+        color: var(--black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Hero Banner */
+      .hero {
+        background: linear-gradient(135deg, var(--magenta) 0%, var(--magenta-light) 45%, var(--magenta-dark) 100%);
+        position: relative;
+        padding: var(--spacing-lg) var(--spacing-sm) calc(var(--spacing-lg) + 20px);
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.15), transparent 60%);
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 390px;
+        margin: 0 auto;
+      }
+
+      .wordmark-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: var(--spacing-md);
+        min-height: 200px;
+      }
+
+      .wordmark-vertical {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: rotate(-90deg);
+        transform-origin: center;
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--white);
+        line-height: 1.2;
+        white-space: nowrap;
+        height: fit-content;
+        margin-top: 40px;
+      }
+
+      .wordmark-main {
+        flex: 1;
+      }
+
+      .wordmark-main .tues {
+        font-size: clamp(4rem, 14vw, 5.5rem);
+        font-weight: 900;
+        line-height: 0.85;
+        letter-spacing: -0.03em;
+        color: var(--white);
+        display: block;
+      }
+
+      .wordmark-main .days {
+        font-size: clamp(4rem, 14vw, 5.5rem);
+        font-weight: 900;
+        line-height: 0.85;
+        letter-spacing: -0.03em;
+        color: var(--white);
+        display: block;
+        margin-top: -12px;
+      }
+
+      .hero-heading {
+        font-size: clamp(1.5rem, 5vw, 1.75rem);
+        font-weight: 700;
+        color: var(--white);
+        margin: var(--spacing-md) 0 var(--spacing-sm);
+        line-height: 1.3;
+      }
+
+      .hero-heading .normal {
+        font-weight: 400;
+      }
+
+      .hero-copy {
+        font-size: 0.8125rem;
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: var(--spacing-md);
+        line-height: 1.5;
+      }
+
+      .store-badges {
+        display: flex;
+        gap: 10px;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .store-badge {
+        flex: 1;
+        background: var(--black);
+        color: var(--white);
+        border-radius: 10px;
+        padding: 12px 10px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        min-height: 48px;
+      }
+
+      .store-badge svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .hero-legal {
+        font-size: 0.6875rem;
+        color: rgba(255, 255, 255, 0.85);
+        text-align: center;
+      }
+
+      /* Don't Miss This Perk Section */
+      .perk-section {
+        background: var(--magenta);
+        padding: var(--spacing-md) var(--spacing-sm);
+      }
+
+      .perk-section-title {
+        text-align: center;
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: var(--spacing-md);
+      }
+
+      .popeyes-card {
+        background: var(--white);
+        border-radius: var(--card-radius);
+        overflow: hidden;
+        margin: 0 auto;
+        max-width: 358px;
+      }
+
+      .popeyes-card-top {
+        padding: var(--spacing-md);
+      }
+
+      .popeyes-card-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--black);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .popeyes-card-copy {
+        font-size: 0.875rem;
+        color: var(--mid-gray);
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.5;
+      }
+
+      .popeyes-card-legal {
+        font-size: 0.6875rem;
+        color: var(--mid-gray);
+      }
+
+      .popeyes-banner {
+        background: var(--orange);
+        padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+        text-align: center;
+        position: relative;
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .popeyes-banner-text {
+        font-size: clamp(3rem, 12vw, 4rem);
+        font-weight: 900;
+        color: var(--white);
+        letter-spacing: -0.02em;
+        margin-bottom: var(--spacing-md);
+        line-height: 1;
+      }
+
+      .popeyes-banner img {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        border-radius: 12px;
+      }
+
+      /* Black Section Header */
+      .perks-header {
+        background: var(--black);
+        padding: var(--spacing-md) var(--spacing-sm);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .perks-header-text {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--white);
+        line-height: 1.3;
+      }
+
+      .carousel-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--white);
+        border: none;
+        color: var(--black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      /* Perks Grid */
+      .perks-container {
+        background: var(--black);
+        padding: var(--spacing-md) var(--spacing-sm);
+      }
+
+      .perk-card {
+        background: var(--white);
+        border-radius: var(--card-radius);
+        margin-bottom: var(--spacing-md);
+        overflow: hidden;
+      }
+
+      .perk-card-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        background: linear-gradient(135deg, var(--magenta), var(--magenta-light));
+        position: relative;
+      }
+
+      .perk-card-image::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.2), transparent 70%),
+                    radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.15), transparent 60%);
+        pointer-events: none;
+      }
+
+      .perk-card-content {
+        padding: var(--spacing-md);
+      }
+
+      .perk-eyebrow {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--mid-gray);
+        margin-bottom: var(--spacing-xs);
+      }
+
+      .perk-card-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--black);
+        margin-bottom: var(--spacing-xs);
+        line-height: 1.3;
+      }
+
+      .perk-card-desc {
+        font-size: 0.875rem;
+        color: var(--mid-gray);
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.5;
+      }
+
+      .perk-cta {
+        background: var(--magenta);
+        color: var(--white);
+        border: none;
+        border-radius: 10px;
+        padding: 12px 20px;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        margin-top: var(--spacing-xs);
+      }
+
+      .perk-fine-print {
+        font-size: 0.6875rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: var(--spacing-sm);
+        text-align: center;
+      }
+
+      /* Travel Section */
+      .travel-photo {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .travel-card {
+        background: var(--white);
+        border-radius: var(--card-radius);
+        margin: var(--spacing-md) var(--spacing-sm);
+        padding: var(--spacing-md);
+      }
+
+      .travel-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .travel-logo-icon {
+        width: 24px;
+        height: 24px;
+        background: var(--magenta);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-weight: 800;
+        font-size: 0.875rem;
+      }
+
+      .travel-logo-text {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--black);
+      }
+
+      .travel-card-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--black);
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.3;
+      }
+
+      .travel-cta {
+        background: var(--magenta);
+        color: var(--white);
+        border: none;
+        border-radius: 10px;
+        padding: 12px 24px;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        margin-top: var(--spacing-sm);
+      }
+
+      /* T-Life Card */
+      .tlife-card {
+        background: var(--white);
+        border-radius: var(--card-radius);
+        margin: var(--spacing-md) var(--spacing-sm);
+        overflow: hidden;
+      }
+
+      .tlife-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        background: linear-gradient(135deg, var(--magenta), var(--magenta-light));
+        position: relative;
+      }
+
+      .tlife-logo-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+
+      .tlife-logo-icon {
+        width: 48px;
+        height: 48px;
+        background: var(--white);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--magenta);
+        font-weight: 800;
+        font-size: 1.5rem;
+        margin: 0 auto var(--spacing-xs);
+      }
+
+      .tlife-logo-text {
+        color: var(--white);
+        font-weight: 700;
+        font-size: 1rem;
+      }
+
+      .tlife-content {
+        padding: var(--spacing-md);
+      }
+
+      .tlife-store-badges {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        margin-top: var(--spacing-sm);
+      }
+
+      .tlife-store-badge {
+        background: var(--black);
+        color: var(--white);
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      /* Exclusive Benefits Card */
+      .exclusive-card {
+        background: var(--white);
+        border-radius: var(--card-radius);
+        margin: var(--spacing-md) var(--spacing-sm);
+        overflow: hidden;
+      }
+
+      .exclusive-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        background: linear-gradient(135deg, var(--magenta), var(--magenta-dark));
+        position: relative;
+      }
+
+      .exclusive-content {
+        padding: var(--spacing-md);
+      }
+
+      .exclusive-cta {
+        background: var(--magenta);
+        color: var(--white);
+        border: none;
+        border-radius: 10px;
+        padding: 12px 24px;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        margin-top: var(--spacing-sm);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark-gray);
+        padding: var(--spacing-lg) var(--spacing-sm);
+      }
+
+      .footer-inner {
+        max-width: 390px;
+        margin: 0 auto;
+      }
+
+      .footer-follow {
+        font-size: 0.9375rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .footer-social {
+        display: flex;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        font-size: 0.875rem;
+        color: var(--white);
+      }
+
+      .footer-language {
+        display: flex;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+        font-size: 0.9375rem;
+        color: var(--white);
+      }
+
+      .footer-language span:first-child {
+        font-weight: 700;
+      }
+
+      .footer-accordion {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+      }
+
+      .accordion-item {
+        background: #1b1b1b;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 14px var(--spacing-sm);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--white);
+        font-size: 1rem;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .accordion-chevron {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .footer-bottom {
+        margin-top: var(--spacing-lg);
+        padding-top: var(--spacing-md);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .footer-logo {
+        width: 32px;
+        height: 32px;
+        background: var(--magenta);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-weight: 800;
+        font-size: 1rem;
+      }
+
+      .footer-bottom-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+        font-size: 0.6875rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .footer-bottom-links a {
+        text-decoration: underline;
+      }
+
+      @media (min-width: 768px) {
+        .header-inner,
+        .hero-content,
+        .footer-inner {
+          max-width: 390px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-inner">
+        <div class="logo-tile">T</div>
+        <div class="header-actions">
+          <a href="#">Login</a>
+          <button class="icon-btn" aria-label="Shopping cart">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+          </button>
+          <button class="icon-btn" aria-label="Menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="4" y1="6" x2="20" y2="6" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="18" x2="20" y2="18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="wordmark-container">
+          <div class="wordmark-vertical">T-MOBILE</div>
+          <div class="wordmark-main">
+            <span class="tues">TUES</span>
+            <span class="days">DAYS</span>
+          </div>
+        </div>
+        <h1 class="hero-heading">
+          Tuesday is when we say <span class="normal">thanks.</span>
+        </h1>
+        <p class="hero-copy">
+          Thank you sounds better with free stuff. Last year, T-Mobile offered over $1,000 worth of freebies, giveaways, and perks through T-Mobile Tuesdays.
+        </p>
+        <div class="store-badges">
+          <div class="store-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17 3.5C15.9 4.8 15.1 6.5 15.3 8.2c1.7.1 3.3-.9 4.4-2.2A6.5 6.5 0 0 0 17 3.5zm-2.8 2.4c-1.1 0-2.2.7-2.8.7-.6 0-1.6-.7-2.6-.7-2.1 0-4.3 2-4.3 5.2 0 3.3 2.7 7.7 4.8 7.7.7 0 1.4-.5 2.3-.5s1.5.5 2.4.5c2 0 4.2-4.2 4.2-7.5 0-3.7-2.4-5.4-4-5.4z" />
+            </svg>
+            <span>Download on the<br />App Store</span>
+          </div>
+          <div class="store-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21.6 12.2a1.3 1.3 0 0 0-.6-.6L4.4 2.5A1.2 1.2 0 0 0 3 3.7v16.6a1.2 1.2 0 0 0 1.4 1.2l16.6-9.1c.2 0 .4-.2.6-.4a1.1 1.1 0 0 0 0-.8Z" />
+            </svg>
+            <span>Get it on<br />Google Play</span>
+          </div>
+        </div>
+        <p class="hero-legal">
+          Based on the value of all free items offered during 2024; qualifying plan required.
+        </p>
+      </div>
+    </section>
+
+    <!-- Don't Miss This Perk -->
+    <section class="perk-section">
+      <h2 class="perk-section-title">Don't miss this perk.</h2>
+      <div class="popeyes-card">
+        <div class="popeyes-card-top">
+          <h3 class="popeyes-card-title">We've got your wing fix for FREE.</h3>
+          <p class="popeyes-card-copy">
+            T-Mobile members can tame their cravings with FREE 6pc. wings (boneless or bone-in) with any $5+ purchase at participating Popeyes locations.
+          </p>
+          <p class="popeyes-card-legal">
+            Plus tax. Limited time. Qualifying plan required. Visit T-Mobile Tuesdays in the app for details.
+          </p>
+        </div>
+        <div class="popeyes-banner">
+          <div class="popeyes-banner-text">POPEYES</div>
+          <img src="https://images.unsplash.com/photo-1608039829574-0e4ac2596d8c?auto=format&fit=crop&w=400&q=80" alt="Popeyes fried chicken" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Perks Header -->
+    <div class="perks-header">
+      <div class="perks-header-text">
+        Awesome perks available<br />every month.
+      </div>
+      <button class="carousel-btn" aria-label="Next">→</button>
+    </div>
+
+    <!-- Perks Container -->
+    <div class="perks-container">
+      <!-- 7-Eleven Slurpee Card -->
+      <article class="perk-card">
+        <img class="perk-card-image" src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=400&q=80" alt="7-Eleven Slurpee" />
+        <div class="perk-card-content">
+          <p class="perk-eyebrow">7-ELEVEN & SPEEDWAY</p>
+          <h3 class="perk-card-title">
+            Get one large<br />Slurpee every month.
+          </h3>
+          <p class="perk-card-desc">
+            Save up to $6 monthly. Limit one redemption per line while supplies last. Track it inside T-Mobile Tuesdays.
+          </p>
+        </div>
+      </article>
+      <p class="perk-fine-print">
+        Limited time. Qualifying plan required. Visit T-Mobile Tuesdays for details.
+      </p>
+
+      <!-- Travel Photo + Card -->
+      <img class="travel-photo" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=400&q=80" alt="Family loading car" />
+      <div class="travel-card">
+        <div class="travel-logo">
+          <div class="travel-logo-icon">T</div>
+          <span class="travel-logo-text">TRAVEL</span>
+        </div>
+        <h3 class="travel-card-title">
+          Save up to 40% on hotels<br />and Pay Now rental cars.
+        </h3>
+        <button class="travel-cta">Book your trip</button>
+        <p class="popeyes-card-legal" style="margin-top: var(--spacing-xs);">
+          See T-Mobile TRIPS for details. Book faster with exclusive member pricing and flexible cancellations.
+        </p>
+      </div>
+
+      <!-- T-Life App Card -->
+      <article class="tlife-card">
+        <div class="tlife-image">
+          <div class="tlife-logo-overlay">
+            <div class="tlife-logo-icon">T</div>
+            <div class="tlife-logo-text">LIFE</div>
+          </div>
+        </div>
+        <div class="tlife-content">
+          <h3 class="perk-card-title">Get all your perks in the T-Life app.</h3>
+          <div class="tlife-store-badges">
+            <div class="tlife-store-badge">Download on the App Store</div>
+            <div class="tlife-store-badge">Get it on Google Play</div>
+          </div>
+          <p class="popeyes-card-legal" style="margin-top: var(--spacing-sm);">
+            Download to access weekly exclusives, reminders, and giveaways from anywhere.
+          </p>
+        </div>
+      </article>
+
+      <!-- Exclusive Benefits Card -->
+      <article class="exclusive-card">
+        <div class="exclusive-image">
+          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=400&q=80" alt="People at event" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.3;" />
+        </div>
+        <div class="exclusive-content">
+          <h3 class="perk-card-title">
+            Exclusive benefits.<br />Unforgettable experiences.
+          </h3>
+          <p class="perk-card-desc">
+            Being a member unlocks T-Mobile exclusives.
+          </p>
+          <button class="exclusive-cta">Explore our benefits</button>
+          <p class="popeyes-card-legal" style="margin-top: var(--spacing-xs);">
+            Unlock exclusive perks with partners across entertainment, dining, travel, and more.
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <p class="footer-follow">Follow T-Mobile</p>
+        <div class="footer-social">
+          <span>Instagram</span>
+          <span>Facebook</span>
+          <span>X</span>
+          <span>YouTube</span>
+        </div>
+        <div class="footer-language">
+          <span>English</span>
+          <span>Español</span>
+        </div>
+        <div class="footer-accordion">
+          <button class="accordion-item">
+            <span>Even more plans</span>
+            <span class="accordion-chevron">⌄</span>
+          </button>
+          <button class="accordion-item">
+            <span>Shop cell phones by brand</span>
+            <span class="accordion-chevron">⌄</span>
+          </button>
+          <button class="accordion-item">
+            <span>New featured cell phones</span>
+            <span class="accordion-chevron">⌄</span>
+          </button>
+          <button class="accordion-item">
+            <span>New featured tablets, smartwatches & more</span>
+            <span class="accordion-chevron">⌄</span>
+          </button>
+          <button class="accordion-item">
+            <span>Helpful consumer guides</span>
+            <span class="accordion-chevron">⌄</span>
+          </button>
+          <button class="accordion-item">
+            <span>T-Mobile customer benefits</span>
+            <span class="accordion-chevron">⌄</span>
+          </button>
+          <button class="accordion-item">
+            <span>Switch to T-Mobile</span>
+            <span class="accordion-chevron">⌄</span>
+          </button>
+          <button class="accordion-item">
+            <span>Additional support</span>
+            <span class="accordion-chevron">⌄</span>
+          </button>
+          <button class="accordion-item">
+            <span>About T-Mobile</span>
+            <span class="accordion-chevron">⌄</span>
+          </button>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-logo">T</div>
+          <div class="footer-bottom-links">
+            <a href="#">About</a>
+            <a href="#">Investor relations</a>
+            <a href="#">Press</a>
+            <a href="#">Careers</a>
+            <a href="#">Privacy Notice</a>
+            <a href="#">Terms & conditions</a>
+            <a href="#">Accessibility</a>
+          </div>
+        </div>
+        <p style="margin-top: var(--spacing-md); font-size: 0.6875rem; color: rgba(255, 255, 255, 0.6); line-height: 1.5;">
+          © 2025 T-Mobile USA, Inc. All rights reserved.<br />
+          T-Mobile, the T logo, Magenta and the magenta color are registered trademarks of Deutsche Telekom AG.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "project_type": "fullstack",
+  "scaffold_structure": {
+    "directories": [
+      "src/",
+      "src/components/",
+      "src/pages/",
+      "src/api/",
+      "tests/",
+      "docs/"
+    ],
+    "files": [
+      "package.json",
+      "tsconfig.json",
+      ".env.example",
+      "README.md"
+    ],
+    "template": "nextjs-fastapi"
+  },
+  "tooling_config": {
+    "package_manager": "pnpm",
+    "linter": "eslint",
+    "formatter": "prettier",
+    "test_framework": "vitest",
+    "build_tool": "turbo"
+  },
+  "environment": {
+    "node_version": "20.x",
+    "python_version": "3.11",
+    "runtime": "nodejs",
+    "env_vars": [
+      "DATABASE_URL",
+      "REDIS_URL",
+      "STRIPE_SECRET_KEY",
+      "OPENAI_API_KEY"
+    ]
+  },
+  "timestamp": "2025-11-25T10:00:00Z"
+}
+

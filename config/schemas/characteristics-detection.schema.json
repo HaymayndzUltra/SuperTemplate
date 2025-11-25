@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "characteristics-detection.schema.json",
+  "title": "Characteristics Detection",
+  "description": "Schema for the output of detect_characteristics.py",
+  "type": "object",
+  "required": ["timestamp", "summary", "all_characteristics"],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp"
+    },
+    "project_classification": {
+      "type": "string",
+      "description": "Project classification from previous step"
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "total_dimensions": {"type": "integer"},
+        "detected": {"type": "integer"},
+        "not_detected": {"type": "integer"},
+        "detection_rate": {"type": "number"}
+      },
+      "required": ["total_dimensions", "detected", "not_detected", "detection_rate"]
+    },
+    "by_category": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "detected": {
+            "type": "array",
+            "items": {"$ref": "#/definitions/characteristic"}
+          },
+          "not_detected": {
+            "type": "array",
+            "items": {"$ref": "#/definitions/characteristic"}
+          }
+        }
+      }
+    },
+    "all_characteristics": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/characteristic"}
+    },
+    "input_files": {
+      "type": "object"
+    }
+  },
+  "definitions": {
+    "characteristic": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "category": {"type": "string"},
+        "detected": {"type": "boolean"},
+        "confidence": {"type": "number"},
+        "matches": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {"type": "string"},
+              "match": {"type": "string"}
+            }
+          }
+        }
+      },
+      "required": ["id", "name", "detected", "confidence"]
+    }
+  }
+}
+

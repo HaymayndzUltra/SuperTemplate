@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "protocol-selection.schema.json",
+  "title": "Protocol Selection",
+  "description": "Schema for the output of select_protocols.py",
+  "type": "object",
+  "required": ["timestamp", "classification", "selected_protocols", "summary"],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "classification": {
+      "type": "string"
+    },
+    "selected_protocols": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/protocol"}
+        },
+        "recommended": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/protocol"}
+        },
+        "optional": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/protocol"}
+        },
+        "unavailable": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/protocol"}
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "total_characteristics": {"type": "integer"},
+        "covered_characteristics": {"type": "integer"},
+        "coverage_percentage": {"type": "number"},
+        "uncovered_characteristics": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "required_count": {"type": "integer"},
+        "recommended_count": {"type": "integer"},
+        "optional_count": {"type": "integer"},
+        "unavailable_count": {"type": "integer"},
+        "total_selected": {"type": "integer"},
+        "coverage_percentage": {"type": "number"}
+      }
+    }
+  },
+  "definitions": {
+    "protocol": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "track": {"type": "string"},
+        "score": {"type": "number"},
+        "reasons": {"type": "array"},
+        "template_path": {"type": "string"},
+        "status": {"type": "string"}
+      },
+      "required": ["id", "name"]
+    }
+  }
+}
+
